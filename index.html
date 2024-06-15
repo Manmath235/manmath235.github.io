@@ -144,7 +144,7 @@
         <ul>
           <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+          <li><a href="#Experience" class="nav-link scrollto"><i class="bx bx-id-card"></i> <span>Experience</span></a></li>
           <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
           <li><a href="#certifications" class="nav-link scrollto"><i class="bi bi-trophy"></i> <span>Certifications</span></a></li>
           <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
@@ -322,46 +322,32 @@ modal.addEventListener("click", function(event) {
       </div>
     </section><!-- End Skills Section -->
 
-    <!-- ======= Resume Section ======= -->
-<section id="resume" class="resume">
+   <!-- ======= Experience Section ======= -->
+<section id="Experience" class="resume">
   <div class="container" data-aos="fade-up">
 
     <div class="section-title">
-      <h2>Resume</h2>
+      <h2>Experience</h2>
     </div>
-
     <div class="row">
-      <div class="col-lg-6">
-        <h3 class="resume-title">Summary</h3>
-        <div class="resume-item pb-0">
-          <h4>Manmathnath Mahanta</h4>
-          <p><em>
-            As a data analyst fresher, I bring a strong analytical mindset and proficiency in data manipulation tools like SQL and Python. Eager to apply my skills to solve real-world problems and contribute to meaningful projects in the field of data analysis.</em></p>
-          <ul>
-            <li>Bhubaneswar</li>
-            <li>7008548402, 7855948771</li>
-            <li>manmath.contact@gmail.com</li>
-          </ul>
-        </div>
-      </div>                 
-      <div class="col-lg-6">
-        <h3 class="resume-title">Professional Experience</h3>
+      <div class="col-lg-12">
+        <h3 class="resume-title">AFAME TECHNOLOGIES</h3>
         <div class="resume-item">
           <h4>Data Analyst</h4>
           <h5>Internship</h5>
-          <p><em>Afame Technologies </em></p>
           <ul>
-            <li>Excel Mastery: Completed a dynamic internship, refining skills in MS Excel. Spearheaded data cleaning, sorting, and labelling processes, optimizing data management workflows.</li>
-            <li>Power BI Proficiency: Developed a comprehensive sales analysis dashboard, leveraging three years of sales data. Presented actionable insights to drive strategic decisions.</li>
-            <li>Project Collaboration: Contributed to HR report preparation, showcasing adaptability and delivering quality results within deadlines</li>
-            <li>Analytical Application: Translated theoretical knowledge into practical solutions, honing problem-solving abilities in real-world scenarios.</li>
+            <li><strong>Excel Mastery:</strong> Completed a dynamic internship, refining skills in MS Excel. Spearheaded data cleaning, sorting, and labelling processes, optimizing data management workflows.</li>
+            <li><strong>Power BI Proficiency:</strong> Developed a comprehensive sales analysis dashboard, leveraging three years of sales data. Presented actionable insights to drive strategic decisions.</li>
+            <li><strong>Project Collaboration:</strong> Contributed to HR report preparation, showcasing adaptability and delivering quality results within deadlines.</li>
+            <li><strong>Analytical Application:</strong> Translated theoretical knowledge into practical solutions, honing problem-solving abilities in real-world scenarios.</li>
           </ul>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End Resume Section -->
+<!-- End Experience Section -->
+
 
     <!-- Resume Button -->
     <section class="resume-button">
@@ -376,32 +362,31 @@ modal.addEventListener("click", function(event) {
     <div class="section-title">
       <h2>Portfolio</h2>
     </div>
-<!-- Tools Banner -->
-<div class="tools-banner" style="text-align: center; margin-bottom: 40px;">
-  <h3>Tools and Technologies Used</h3>
-  <div class="tools-icons">
-    <div class="tool-icon">
-      <img src="skills icons/Excel icon.png" alt="Excel">
-      
+    <!-- Tools Banner -->
+    <div class="tools-banner" style="text-align: center; margin-bottom: 40px;">
+      <h3>Tools and Technologies Used</h3>
+      <div id="tools-counts">
+        <!-- Tool counts will be inserted here by JavaScript -->
+      </div>
+      <div class="tools-icons">
+        <div class="tool-icon" data-tool="Excel">
+          <img src="skills icons/Excel icon.png" alt="Excel">
+        </div>
+        <div class="tool-icon" data-tool="Power BI">
+          <img src="skills icons/Power BI icon.png" alt="Power BI">
+        </div>
+        <div class="tool-icon" data-tool="SQL">
+          <img src="skills icons/SQL icon.png" alt="SQL">
+        </div>
+        <div class="tool-icon" data-tool="Python">
+          <img src="skills icons/python icon.png" alt="Python">
+        </div>
+      </div>
     </div>
-    <div class="tool-icon">
-      <img src="skills icons\Power BI icon.png" alt="Power BI">
-      
-    </div>
-    <div class="tool-icon">
-      <img src="skills icons\SQL icon.png" alt="SQL">
-      
-    </div>
-    <div class="tool-icon">
-      <img src="skills icons\python icon.png" alt="Python">
-      
-    </div>
-  </div>
-</div>
     <!-- Projects -->
     <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
       <!-- Project 1 -->
-      <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+      <div class="col-lg-4 col-md-6 portfolio-item filter-app" data-tools="Excel, Power BI, SQL">
         <img src="assets/img/portfolio/Power BI Job Simulation on Forage.jpg" class="img-fluid" alt="Call Center Data Analysis">
         <div class="portfolio-info">
           <div class="portfolio-links">
@@ -412,9 +397,8 @@ modal.addEventListener("click", function(event) {
           <a href="#" onclick="openModal('project1_details.html', event)" class="btn btn-sm btn-primary shadow view-project-btn" style="background-color: #538392; outline: none;">View Project</a>
         </div>
       </div>
-
       <!-- Project 2 -->
-      <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+      <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-tools="Power BI, SQL">
         <img src="assets/img/portfolio/India Population Census 2011.jpg" class="img-fluid" alt="">
         <div class="portfolio-info">
           <div class="portfolio-links">
@@ -425,35 +409,36 @@ modal.addEventListener("click", function(event) {
           <a href="#" onclick="openModal('project2_details.html', event)" class="btn btn-sm btn-primary shadow view-project-btn" style="background-color: #538392; outline: none;">View Project</a>
         </div>
       </div>
-<!-- Project 3 -->
-<div class="col-lg-4 col-md-6 portfolio-item filter-web">
-  <img src="assets\img\portfolio\Sales Analysis.jpg" class="img-fluid" alt="">
-  <div class="portfolio-info">
-    <div class="portfolio-links">
-      <a href="#" onclick="openModal('project2_details.html', event)" class="portfolio-lightbox" title="India Population Census 2011 Dashboard"></a>
-    </div>
-  </div>
-  <div class="text-center mt-3">
-    <a href="#" onclick="openModal('project3_details.html', event)" class="btn btn-sm btn-primary shadow view-project-btn" style="background-color: #538392; outline: none;">View Project</a>
-  </div>
-</div>
-  <!-- Project 4 -->
-<div class="col-lg-4 col-md-6 portfolio-item filter-web">
-  <img src="assets\img\portfolio\Google Trend Analysis Dashboard.jpg" class="img-fluid" alt="">
-  <div class="portfolio-info">
-    <div class="portfolio-links">
-      <a href="#" onclick="openModal('project2_details.html', event)" class="portfolio-lightbox" title="Google Trend Analysis Dashboard"></a>
-    </div>
-  </div>
-  <div class="text-center mt-3">
-    <a href="#" onclick="openModal('project4_details.html', event)" class="btn btn-sm btn-primary shadow view-project-btn" style="background-color: #538392; outline: none;">View Project</a>
-  </div>
-</div>   
-
-      
+      <!-- Project 3 -->
+      <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-tools="Excel, Power BI, Python">
+        <img src="assets/img/portfolio/Sales Analysis.jpg" class="img-fluid" alt="">
+        <div class="portfolio-info">
+          <div class="portfolio-links">
+            <a href="#" onclick="openModal('project3_details.html', event)" class="portfolio-lightbox" title="Sales Analysis"></a>
+          </div>
+        </div>
+        <div class="text-center mt-3">
+          <a href="#" onclick="openModal('project3_details.html', event)" class="btn btn-sm btn-primary shadow view-project-btn" style="background-color: #538392; outline: none;">View Project</a>
+        </div>
+      </div>
+      <!-- Project 4 -->
+      <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-tools="Power BI, SQL, Python">
+        <img src="assets/img/portfolio/Google Trend Analysis Dashboard.jpg" class="img-fluid" alt="">
+        <div class="portfolio-info">
+          <div class="portfolio-links">
+            <a href="#" onclick="openModal('project4_details.html', event)" class="portfolio-lightbox" title="Google Trend Analysis Dashboard"></a>
+          </div>
+        </div>
+        <div class="text-center mt-3">
+          <a href="#" onclick="openModal('project4_details.html', event)" class="btn btn-sm btn-primary shadow view-project-btn" style="background-color: #538392; outline: none;">View Project</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+
+
 
 <!-- Floating Window Modal -->
 <div id="projectModal2" class="modal" style="display: none;">
