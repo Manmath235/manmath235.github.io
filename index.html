@@ -362,31 +362,33 @@ modal.addEventListener("click", function(event) {
     <div class="section-title">
       <h2>Portfolio</h2>
     </div>
-    <!-- Tools Banner -->
-    <div class="tools-banner" style="text-align: center; margin-bottom: 40px;">
-      <h3>Tools and Technologies Used</h3>
-      <div id="tools-counts">
-        <!-- Tool counts will be inserted here by JavaScript -->
-      </div>
-      <div class="tools-icons">
-        <div class="tool-icon" data-tool="Excel">
-          <img src="skills icons/Excel icon.png" alt="Excel">
-        </div>
-        <div class="tool-icon" data-tool="Power BI">
-          <img src="skills icons/Power BI icon.png" alt="Power BI">
-        </div>
-        <div class="tool-icon" data-tool="SQL">
-          <img src="skills icons/SQL icon.png" alt="SQL">
-        </div>
-        <div class="tool-icon" data-tool="Python">
-          <img src="skills icons/python icon.png" alt="Python">
-        </div>
-      </div>
+<!-- Tools Banner -->
+<div class="tools-banner" style="text-align: center; margin-bottom: 40px;">
+  <h3>Tools and Technologies Used</h3>
+  <div class="tools-icons">
+    <div class="tool-icon" data-tool="Excel">
+      <img src="skills icons/Excel icon.png" alt="Excel">
+      <span class="tool-count">0</span>
     </div>
+    <div class="tool-icon" data-tool="Power BI">
+      <img src="skills icons/Power BI icon.png" alt="Power BI">
+      <span class="tool-count">0</span>
+    </div>
+    <div class="tool-icon" data-tool="SQL">
+      <img src="skills icons/SQL icon.png" alt="SQL">
+      <span class="tool-count">0</span>
+    </div>
+    <div class="tool-icon" data-tool="Python">
+      <img src="skills icons/python icon.png" alt="Python">
+      <span class="tool-count">0</span>
+    </div>
+  </div>
+</div>
+
     <!-- Projects -->
     <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
       <!-- Project 1 -->
-      <div class="col-lg-4 col-md-6 portfolio-item filter-app" data-tools="Excel, Power BI, SQL">
+      <div class="col-lg-4 col-md-6 portfolio-item filter-app" data-tools="Excel, Power BI">
         <img src="assets/img/portfolio/Power BI Job Simulation on Forage.jpg" class="img-fluid" alt="Call Center Data Analysis">
         <div class="portfolio-info">
           <div class="portfolio-links">
@@ -398,7 +400,7 @@ modal.addEventListener("click", function(event) {
         </div>
       </div>
       <!-- Project 2 -->
-      <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-tools="Power BI, SQL">
+      <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-tools="Excel, Power BI">
         <img src="assets/img/portfolio/India Population Census 2011.jpg" class="img-fluid" alt="">
         <div class="portfolio-info">
           <div class="portfolio-links">
@@ -410,7 +412,7 @@ modal.addEventListener("click", function(event) {
         </div>
       </div>
       <!-- Project 3 -->
-      <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-tools="Excel, Power BI, Python">
+      <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-tools="Power BI">
         <img src="assets/img/portfolio/Sales Analysis.jpg" class="img-fluid" alt="">
         <div class="portfolio-info">
           <div class="portfolio-links">
@@ -422,7 +424,7 @@ modal.addEventListener("click", function(event) {
         </div>
       </div>
       <!-- Project 4 -->
-      <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-tools="Power BI, SQL, Python">
+      <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-tools="Excel, Power BI">
         <img src="assets/img/portfolio/Google Trend Analysis Dashboard.jpg" class="img-fluid" alt="">
         <div class="portfolio-info">
           <div class="portfolio-links">
@@ -437,8 +439,63 @@ modal.addEventListener("click", function(event) {
   </div>
 </section>
 
+<script>
+  const toolCounts = {};
+  
+  const projects = document.querySelectorAll('.portfolio-item');
+  projects.forEach(project => {
+    const tools = project.getAttribute('data-tools');
+    if (tools) {
+      const toolList = tools.split(', ');
+      toolList.forEach(tool => {
+        if (toolCounts[tool]) {
+          toolCounts[tool]++;
+        } else {
+          toolCounts[tool] = 1;
+        }
+      });
+    }
+  });
+  
+  function displayToolCounts() {
+    const toolIcons = document.querySelectorAll('.tool-icon');
+    toolIcons.forEach(icon => {
+      const tool = icon.getAttribute('data-tool');
+      const count = toolCounts[tool] || 0;
+      const countElement = icon.querySelector('.tool-count');
+      countElement.textContent = count;
+    });
+  }
+  
+  displayToolCounts();
+  </script>
+<style>
+  .tool-icon {
+    position: relative;
+    display: inline-block;
+    margin: 0 15px;
+  }
 
+  .tool-icon-container {
+    position: relative;
+    display: inline-block;
+  }
 
+  .tool-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #f44336;
+    color: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
 
 <!-- Floating Window Modal -->
 <div id="projectModal2" class="modal" style="display: none;">
