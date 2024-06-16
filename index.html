@@ -284,9 +284,9 @@ modal.addEventListener("click", function(event) {
             </div>
 
             <div class="progress">
-              <span class="skill">Advance Excel <i class="val">80%</i></span>
+              <span class="skill">Advance Excel <i class="val">90%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div>
 
@@ -295,9 +295,9 @@ modal.addEventListener("click", function(event) {
           <div class="col-lg-6">
 
             <div class="progress">
-              <span class="skill">Power BI <i class="val">80%</i></span>
+              <span class="skill">Power BI <i class="val">85%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div>
 
@@ -352,9 +352,12 @@ modal.addEventListener("click", function(event) {
     <!-- Resume Button -->
     <section class="resume-button">
       <div class="container text-center mt-3">
-        <a href="assets\img\Resume.pdf" class="btn btn-primary btn-lg" target="_blank">View Resume</a> 
+        <a href="assets/img/Resume.pdf" class="btn btn-primary btn-lg btn-view-project" style="background-color: #538392; padding: 8px 16px; font-size: 12px; outline: none; box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);" target="_blank"><strong>View Resume</strong></a> 
       </div>
     </section>
+    
+    
+    
   
 <!-- ======= Portfolio Section ======= -->
 <section id="portfolio" class="portfolio section-bg" style="margin-bottom: 100px;">
@@ -387,54 +390,55 @@ modal.addEventListener("click", function(event) {
 
     <!-- Projects -->
     <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-      <!-- Project 1 -->
-      <div class="col-lg-4 col-md-6 portfolio-item filter-app" data-tools="Excel, Power BI">
-        <img src="assets/img/portfolio/Power BI Job Simulation on Forage.jpg" class="img-fluid" alt="Call Center Data Analysis">
-        <div class="portfolio-info">
+      <!-- Project - Call Center Data Analysis details -->
+      <div class="col-lg-4 col-md-6 portfolio-item filter-app shadow" style="border-radius: 5px;" data-tools="Excel, Power BI">
+        <img src="assets/img/portfolio/Power BI Job Simulation on Forage.jpg" class="img-fluid" alt="Call Center Data Analysis" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">
+        <div class="portfolio-info" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
           <div class="portfolio-links">
-            <a href="#" onclick="openModal('project1_details.html', event)" class="portfolio-lightbox" title="Call Center Data Analysis"></a>
+            <a href="#" onclick="openModal('Call_Center_Data_Analysis_details.html', event)" class="portfolio-lightbox" title="Call Center Data Analysis"></a>
           </div>
         </div>
+        <div class="project-summary mt-3" style="text-align: justify;">
+          <h6><strong>Project Summary</strong></h6>
+          <p>This project involves analyzing call center data to improve customer service and operational efficiency. Key metrics such as call duration, wait time, and customer satisfaction were analyzed using Power BI.</p>
+        </div>
+        <div class="tools-used mt-3">
+          <h6>
+            <strong>Tools Used:</strong>
+            <img src="skills icons/Excel icon.png" alt="Excel Icon" style="width: 24px; height: 24px; margin-left: 10px;">
+            <img src="skills icons/Power BI icon.png" alt="Power BI Icon" style="width: 24px; height: 24px; margin-left: 10px;">
+          </h6>
+        </div>
         <div class="text-center mt-3">
-          <a href="#" onclick="openModal('project1_details.html', event)" class="btn btn-sm btn-primary shadow view-project-btn" style="background-color: #538392; outline: none;">View Project</a>
+          <a href="#" onclick="openModal('Call_Center_Data_Analysis_details.html', event)" class="btn btn-sm btn-primary shadow view-project-btn" style="background-color: #538392; outline: none;">View Project</a>
         </div>
       </div>
-      <!-- Project 2 -->
-      <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-tools="Excel, Power BI">
-        <img src="assets/img/portfolio/India Population Census 2011.jpg" class="img-fluid" alt="">
-        <div class="portfolio-info">
+
+      <!-- Project  - Google Trend Analysis Dashboard -->
+      <div class="col-lg-4 col-md-6 portfolio-item filter-web shadow" style="border-radius: 5px;" data-tools="Excel, Power BI">
+        <img src="assets/img/portfolio/Google Trend Analysis Dashboard.jpg" class="img-fluid" alt="" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">
+        <div class="portfolio-info" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
           <div class="portfolio-links">
-            <a href="#" onclick="openModal('project2_details.html', event)" class="portfolio-lightbox" title="India Population Census 2011 Dashboard"></a>
+            <a href="#" onclick="openModal('Google Trend Analysis Dashboard_details.html', event)" class="portfolio-lightbox" title="Google Trend Analysis Dashboard"></a>
           </div>
         </div>
-        <div class="text-center mt-3">
-          <a href="#" onclick="openModal('project2_details.html', event)" class="btn btn-sm btn-primary shadow view-project-btn" style="background-color: #538392; outline: none;">View Project</a>
+        <div class="project-summary mt-3" style="text-align: justify;">
+          <h6><strong>Project Summary</strong></h6>
+          <p>This project involves analyzing Google Trends data to identify patterns and insights for various search terms. Key metrics and visualizations were created to track and analyze trends over time using Power BI.</p>
         </div>
-      </div>
-      <!-- Project 3 -->
-      <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-tools="Power BI">
-        <img src="assets/img/portfolio/Sales Analysis.jpg" class="img-fluid" alt="">
-        <div class="portfolio-info">
-          <div class="portfolio-links">
-            <a href="#" onclick="openModal('project3_details.html', event)" class="portfolio-lightbox" title="Sales Analysis"></a>
-          </div>
-        </div>
-        <div class="text-center mt-3">
-          <a href="#" onclick="openModal('project3_details.html', event)" class="btn btn-sm btn-primary shadow view-project-btn" style="background-color: #538392; outline: none;">View Project</a>
-        </div>
-      </div>
-      <!-- Project 4 -->
-      <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-tools="Excel, Power BI">
-        <img src="assets/img/portfolio/Google Trend Analysis Dashboard.jpg" class="img-fluid" alt="">
-        <div class="portfolio-info">
-          <div class="portfolio-links">
-            <a href="#" onclick="openModal('project4_details.html', event)" class="portfolio-lightbox" title="Google Trend Analysis Dashboard"></a>
-          </div>
+        <div class="tools-used mt-3">
+          <h6>
+            <strong>Tools Used:</strong>
+            <img src="skills icons/Excel icon.png" alt="Excel Icon" style="width: 24px; height: 24px; margin-left: 10px;">
+            <img src="skills icons/Power BI icon.png" alt="Power BI Icon" style="width: 24px; height: 24px; margin-left: 10px;">
+          </h6>
         </div>
         <div class="text-center mt-3">
-          <a href="#" onclick="openModal('project4_details.html', event)" class="btn btn-sm btn-primary shadow view-project-btn" style="background-color: #538392; outline: none;">View Project</a>
+          <a href="#" onclick="openModal('Google Trend Analysis Dashboard_details.html', event)" class="btn btn-sm btn-primary shadow view-project-btn" style="background-color: #538392; outline: none;">View Project</a>
         </div>
       </div>
+      
+      
     </div>
   </div>
 </section>
@@ -534,21 +538,21 @@ modal.addEventListener("click", function(event) {
       <div class="col-lg-4">
         <div class="certificate-item">
           <img src="certificates\Google Data Analytics.jpg" class="img-fluid" >
-          <a href="https://www.coursera.org/account/accomplishments/professional-cert/JPUG55Y3GZAS" class="btn btn-credibility btn-sm mt-2" target="_blank">Credentials</a>
+          <a href="https://www.coursera.org/account/accomplishments/professional-cert/JPUG55Y3GZAS" class="btn btn-credibility btn-sm mt-2"style="background-color: #538392; outline: none;" target="_blank">Credentials</a>
         </div>
       </div>
 
       <div class="col-lg-4">
         <div class="certificate-item">
           <img src="certificates\EXCEL - Codebasics.jpg" class="img-fluid" alt="Certificate 2">
-          <a href="https://codebasics.io/certificate/CB-51-342372" class="btn btn-credibility btn-sm mt-2" target="_blank">Credentials</a>
+          <a href="https://codebasics.io/certificate/CB-51-342372" class="btn btn-credibility btn-sm mt-2"style="background-color: #538392; outline: none;" target="_blank">Credentials</a>
         </div>
       </div>
      
       <div class="col-lg-4">
         <div class="certificate-item">
           <img src="certificates\POWER BI - Codebasics.jpg" class="img-fluid" alt="Certificate 2">
-          <a href="https://codebasics.io/certificate/CB-49-342372" class="btn btn-credibility btn-sm mt-2" target="_blank">Credentials</a>
+          <a href="https://codebasics.io/certificate/CB-49-342372" class="btn btn-credibility btn-sm mt-2"style="background-color: #538392; outline: none;" target="_blank">Credentials</a>
         </div>
       </div>
     </div>
