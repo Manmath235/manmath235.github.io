@@ -11,6 +11,7 @@
   
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -45,15 +46,14 @@
     }
 
     .btn-credibility-container {
-  text-align: center; /* Align button container to the center */
-  position: absolute; /* Position the container relative to its containing element */
-  bottom: 10px; /* Adjust vertical position as needed */
-  left: 0; /* Start from the left edge */
-  right: 0; /* Extend to the right edge */
-  margin: 0 auto; /* Center horizontally */
-  width: max-content; /* Set width to fit content */
-}
-
+      text-align: center; /* Align button container to the center */
+      position: absolute; /* Position the container relative to its containing element */
+      bottom: 10px; /* Adjust vertical position as needed */
+      left: 0; /* Start from the left edge */
+      right: 0; /* Extend to the right edge */
+      margin: 0 auto; /* Center horizontally */
+      width: max-content; /* Set width to fit content */
+    }
 
     .btn-credibility {
       background-color: #f9f9f9; /* Set background color to sky blue */
@@ -68,47 +68,77 @@
       background-color: #d259187d; /* Darker shade of sky blue on hover */
       border-color: #000000; /* Darker shade of sky blue on hover */
     }
+
     .modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 5%;
-  padding: 2px;
-  width: 80%;
-  box-shadow: 0 0 20px rgba(48, 48, 48, 0.434);
-}
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-.modal-content2 {
-  background-color: #fefefe;
-  margin: 10% auto;
-  padding: 20px;
-  width: 90%; /* Adjust the width as needed */
-  box-shadow: 0 0 20px rgba(62, 153, 238, 0.434);
-}
-.tools-banner {
+      --gap: 15px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      padding: var(--gap);
+      background: rgba(0, 0, 0, 0.5);
+      font-family: sans-serif;
+      z-index: 1000;
+    }
+    .modal__inner {
+      background: #ffffff;
+      width: 100%;
+      max-width: 90vw;
+      height: 90vh;
+      overflow: hidden;
+      border-radius: 4px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .modal__top {
+      display: flex;
+      align-items: center;
+      background-color: #eeeeee;
+      padding: 10px var(--gap);
+    }
+    .modal__title {
+      flex-grow: 1;
+      font-size: 20px;
+    }
+    .modal__close {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      background: none;
+      border: none;
+      outline: none;
+    }
+    .modal__content {
+      padding: 0;
+      height: calc(100% - 50px);
+      overflow: auto;
+    }
+    .modal__bottom {
+      text-align: right;
+      padding: 10px var(--gap);
+    }
+    .modal__button {
+      display: inline-block;
+      padding: 6px 12px;
+      background: #009578;
+      border: none;
+      outline: none;
+      border-radius: 3px;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .modal__button:not(:last-child) {
+      margin-right: var(--gap);
+    }
+    .modal__button:hover {
+      background: #008066;
+    }
+    .tools-banner {
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       padding: 15px;
       border-radius: 10px;
@@ -125,10 +155,7 @@
     .tool-icon img {
       height: 40px;
     }
-    
   </style>
-</head>
- 
 </head>
 
 <body>
@@ -163,50 +190,11 @@
             <a href="https://github.com/Manmath235" class="github"><i class="bx bxl-github"></i></a>
             <a href="http://www.linkedin.com/in/connect-manmath" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             <a href="https://www.youtube.com/@DiveIntoDataWithManmath" class="youtube"><i class="bx bxl-youtube"></i></a>
-            <a href="#" class="intro-video" onclick="openVideoModal()"><i class="bx bx-video"></i></a>
         </div>
     </div>
 </section>
 <!-- End Hero -->
 
-<!-- Video Modal -->
-<div id="videoModal" class="modal" style="display: none;">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <video id="introVideo" controls style="width: 100%;" src="INTRO.mp4"></video>
-  </div>
-</div>
-
-<script>
- // Get the modal
-var modal = document.getElementById("videoModal");
-
-// Get the video element
-var videoElement = document.getElementById("introVideo");
-
-// Function to open the modal
-function openVideoModal() {
-  console.log("Opening modal");
-  modal.style.display = "block";
-}
-
-// Function to close the modal and pause the video
-function closeVideoModal() {
-  modal.style.display = "none";
-  videoElement.pause(); // Pause the video
-}
-
-// Event delegation for close button and outside click
-modal.addEventListener("click", function(event) {
-  // Check if the clicked element is the video itself
-  if (event.target === videoElement) {
-    return; // If clicked on the video, do nothing
-  }
-
-  if (event.target.classList.contains("close") || event.target === modal) {
-    closeVideoModal();
-  }
-});
 </script>
   <main id="main">
 
@@ -628,13 +616,6 @@ modal.addEventListener("click", function(event) {
 
 <!-- Floating Window Modal -->
 <!-- Modal Structure -->
-<div id="projectModal2" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <iframe id="projectFrame" src="" style="width: 100%; height: 100%; border: none;"></iframe>
-  </div>
-</div>
-
 <!-- JavaScript for Modal Functionality -->
 <script>
   function openModal(url, event) {
@@ -642,13 +623,30 @@ modal.addEventListener("click", function(event) {
     var modal = document.getElementById("projectModal2");
     var projectFrame = document.getElementById("projectFrame");
     projectFrame.src = url;
-    modal.style.display = "flex"; // Use flex to center the modal
+    modal.style.display = "flex";
   }
 
   function closeModal() {
     var modal = document.getElementById("projectModal2");
     modal.style.display = "none";
+    var projectFrame = document.getElementById("projectFrame");
+    projectFrame.src = ""; // Clear the iframe source when closing
   }
+
+  // Close modal when clicking outside of it
+  window.onclick = function(event) {
+    var modal = document.getElementById("projectModal2");
+    if (event.target == modal) {
+      closeModal();
+    }
+  }
+
+  // Close modal when pressing ESC key
+  document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+      closeModal();
+    }
+  });
 </script>
 
 <!-- End Portfolio Section -->
@@ -807,7 +805,61 @@ modal.addEventListener("click", function(event) {
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
+  <script>
+    function showModal(titleHtml, contentHtml, buttons) {
+      const modal = document.createElement("div");
+      modal.classList.add("modal");
+      modal.innerHTML = `
+        <div class="modal__inner">
+          <div class="modal__top">
+            <div class="modal__title">${titleHtml}</div>
+            <button class="modal__close" type="button">
+              <span class="material-icons">close</span>
+            </button>
+          </div>
+          <div class="modal__content">${contentHtml}</div>
+          <div class="modal__bottom"></div>
+        </div>
+      `;
+      for (const button of buttons) {
+        const element = document.createElement("button");
+        element.setAttribute("type", "button");
+        element.classList.add("modal__button");
+        element.textContent = button.label;
+        element.addEventListener("click", () => {
+          if (button.triggerClose) {
+            document.body.removeChild(modal);
+          }
+          button.onClick(modal);
+        });
+        modal.querySelector(".modal__bottom").appendChild(element);
+      }
+      modal.querySelector(".modal__close").addEventListener("click", () => {
+        document.body.removeChild(modal);
+      });
+      document.body.appendChild(modal);
+    }
+
+    function openModal(url, event) {
+      event.preventDefault();
+      showModal(
+        "Project Details",
+        `<iframe src="${url}" style="width: 100%; height: 100%; border: none;"></iframe>`,
+        [
+          {
+            label: "Close",
+            onClick: (modal) => {
+              document.body.removeChild(modal);
+            },
+            triggerClose: true
+          }
+        ]
+      );
+    }
+  </script>
+
+
+   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
