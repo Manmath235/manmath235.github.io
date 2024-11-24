@@ -965,3 +965,15 @@ iframe {
   height: 100%;
   border: none;
 }
+.company-header {
+  display: flex;
+  align-items: center;
+}
+
+.company-header h3 {
+  margin-right: 10px; /* Space between the name and the logo */
+}
+
+.company-logo {
+  max-width: 40px; 
+}
