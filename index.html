@@ -187,20 +187,22 @@
   </header><!-- End Header -->
 
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex flex-column justify-content-center">
-  <div class="container" data-aos="zoom-in" data-aos-delay="100">
+<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+  <div class="container text-center" data-aos="zoom-in" data-aos-delay="100">
     <h1>Manmathnath Mahanta</h1>
     <p>I'm <span class="typed" data-typed-items="a Business Analyst"></span></p>
     <div class="social-links">
       <a href="https://github.com/Manmath235" class="github"><i class="bx bxl-github"></i></a>
       <a href="http://www.linkedin.com/in/connect-manmath" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      <!-- Resume Download Icon -->
       <a href="Manmathnath Mahanta - Resume.pdf" class="download-btn" download>
-        <i class="bx bx-download"></i> <!-- This is the download icon -->
+        <i class="bx bx-download"></i>
       </a>
     </div>
   </div>
 </section>
+
+
+
 <!-- End Hero -->
 </script>
 
@@ -363,6 +365,8 @@
       <button class="btn btn-credibility btn-sm mt-2" style="background-color: #d25918; outline: none;" id="load-more-btn"><strong>Load More</strong></button>
     </div>
   </div>
+
+  
 </section>
 
 <!-- Hidden Companies -->
@@ -616,34 +620,44 @@
 <!-- JavaScript for Modal Functionality -->
 <script>
   function openModal(url, event) {
-    event.preventDefault();
-    var modal = document.getElementById("projectModal2");
-    var projectFrame = document.getElementById("projectFrame");
+  if (event) event.preventDefault();
+
+  var modal = document.getElementById("projectModal2");
+  var projectFrame = document.getElementById("projectFrame");
+
+  if (modal && projectFrame) {
     projectFrame.src = url;
-    modal.style.display = "flex";
+    modal.classList.add("show");
   }
+}
 
-  function closeModal() {
-    var modal = document.getElementById("projectModal2");
-    modal.style.display = "none";
-    var projectFrame = document.getElementById("projectFrame");
-    projectFrame.src = ""; // Clear the iframe source when closing
+function closeModal() {
+  var modal = document.getElementById("projectModal2");
+  var projectFrame = document.getElementById("projectFrame");
+
+  if (modal && projectFrame) {
+    modal.classList.remove("show");
+    setTimeout(() => {
+      projectFrame.src = ""; // Clear iframe source after closing
+    }, 300);
   }
+}
 
-  // Close modal when clicking outside of it
-  window.onclick = function(event) {
-    var modal = document.getElementById("projectModal2");
-    if (event.target == modal) {
-      closeModal();
-    }
+// Close modal when clicking outside of it
+window.addEventListener("click", function(event) {
+  var modal = document.getElementById("projectModal2");
+  if (modal && event.target === modal) {
+    closeModal();
   }
+});
 
-  // Close modal when pressing ESC key
-  document.addEventListener('keydown', function(event) {
-    if (event.key === "Escape") {
-      closeModal();
-    }
-  });
+// Close modal when pressing ESC key
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    closeModal();
+  }
+});
+
 </script>
 
 <!-- End Portfolio Section -->
