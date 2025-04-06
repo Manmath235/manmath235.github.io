@@ -4,964 +4,1202 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Manmath's Analytical Hub</title>
-  <link rel="icon" type="image/png" href="assets\img\favicon-32x32.png">
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Manmath | BA</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/M_logo.png" rel="icon">
+  <link href="assets/img/M_logo.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Questrial:wght@400&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-  
-  <!-- Custom CSS -->
-  <style>
-    /* CSS for positioning the logo */
-    #logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 60px; /* Adjust the width as needed */
-      height: auto; /* Maintain aspect ratio */
-      filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5)) brightness(1.2);
-    }
-    
-    .form-control {
-      background-color: #ffffff; /* Set background color to white */
-     
-    }
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
 
-    .certificate-item {
-      position: relative;
-    }
+  <!-- Loader -->
+  <div id="loader" class="loader">
+    <div class="spinner"></div>
+    <p class="loading-text">Loading...</p>
+  </div>
 
-    .btn-credibility-container {
-      text-align: center; /* Align button container to the center */
-      position: absolute; /* Position the container relative to its containing element */
-      bottom: 10px; /* Adjust vertical position as needed */
-      left: 0; /* Start from the left edge */
-      right: 0; /* Extend to the right edge */
-      margin: 0 auto; /* Center horizontally */
-      width: max-content; /* Set width to fit content */
-    }
 
-    .btn-credibility {
-      background-color: #f9f9f9; /* Set background color to sky blue */
-      border-color: rgb(0, 0, 0); /* Set border color to sky blue */
-      color: #fff; /* Set text color to white */
-      font-size: 12px; /* Adjust button font size */
-      padding: 4px 10px; /* Adjust button padding */
-    }
-
-    /* Hover effect for the "Credibility" button */
-    .btn-credibility:hover {
-      background-color: #d259187d; /* Darker shade of sky blue on hover */
-      border-color: #000000; /* Darker shade of sky blue on hover */
-    }
-
-    .modal {
-      --gap: 15px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-sizing: border-box;
-      padding: var(--gap);
-      background: rgba(0, 0, 0, 0.5);
-      font-family: sans-serif;
-      z-index: 1000;
-    }
-    .modal__inner {
-      background: #ffffff;
-      width: 100%;
-      max-width: 90vw;
-      height: 90vh;
-      overflow: hidden;
-      border-radius: 4px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    .modal__top {
-      display: flex;
-      align-items: center;
-      background-color: #eeeeee;
-      padding: 10px var(--gap);
-    }
-    .modal__title {
-      flex-grow: 1;
-      font-size: 20px;
-    }
-    .modal__close {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      background: none;
-      border: none;
-      outline: none;
-    }
-    .modal__content {
-      padding: 0;
-      height: calc(100% - 50px);
-      overflow: auto;
-    }
-    .modal__bottom {
-      text-align: right;
-      padding: 10px var(--gap);
-    }
-    .modal__button {
-      display: inline-block;
-      padding: 6px 12px;
-      background: #009578;
-      border: none;
-      outline: none;
-      border-radius: 3px;
-      color: #ffffff;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    .modal__button:not(:last-child) {
-      margin-right: var(--gap);
-    }
-    .modal__button:hover {
-      background: #008066;
-    }
-    .tools-banner {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 15px;
-      border-radius: 10px;
-    }
-    .tools-icons {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .tool-icon {
-      position: relative;
-      margin: 0 15px;
-    }
-    .tool-icon img {
-      height: 40px;
-    }
-    /* Add this to your existing CSS file */
-.content p {
-    text-align: justify;
-}
-
-  </style>
 </head>
 
-<body>
+<body class="index-page">
 
-  <!-- ======= Mobile nav toggle button ======= -->
-  <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
-  <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
-  <!-- ======= Header ======= -->
-  <header id="header" class="d-flex flex-column justify-content-center">
-    <img id="logo" src="assets\img\MNM_Logo-removebg-preview.png" alt="Your Logo">
-    <nav id="navbar" class="navbar nav-menu">
-      <nav id="navbar" class="navbar nav-menu">
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.webp" alt=""> -->
+        <h1 class="sitename">Manmathnath Mahanta</h1>      
+      </a>
+
+      <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-          <li><a href="#Experience" class="nav-link scrollto"><i class="bx bx-id-card"></i> <span>Experience</span></a></li>
-          <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
-          <li><a href="#certifications" class="nav-link scrollto"><i class="bi bi-trophy"></i> <span>Certifications</span></a></li>
-          <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+          <li>
+        <a href="#hero" class="active">Home</a>
+          </li>
+          <li>
+        <a href="#about">About</a>
+          </li>
+          <li>
+        <a href="#resume">Resume</a>
+          </li>
+          <li>
+        <a href="#portfolio">Portfolio</a>
+          </li>
+          <li>
+        <a href="https://wa.me/917008548402" target="_blank" class="contact-whatsapp">
+          <i class="fab fa-whatsapp"></i> Contact
+        </a>
+          </li>
         </ul>
       </nav>
-      
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
 
-  </header><!-- End Header -->
+  <main class="main">
 
-<!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-  <div class="container text-center" data-aos="zoom-in" data-aos-delay="100">
-    <h1>Manmathnath Mahanta</h1>
-    <p>I'm <span class="typed" data-typed-items="a Business Analyst"></span></p>
-    <div class="social-links">
-      <a href="https://github.com/Manmath235" class="github"><i class="bx bxl-github"></i></a>
-      <a href="http://www.linkedin.com/in/connect-manmath" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      <a href="Manmathnath Mahanta - Resume.pdf" class="download-btn" download>
-        <i class="bx bx-download"></i>
-      </a>
+<!-- Hero Section -->
+   <section id="hero" class="hero section">
+   <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row justify-content-center text-center align-items-center content">
+      <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+        <h2><strong>Empowering Businesses with Data-Driven Insights</strong></h2>
+        <p class="lead"> Transforming complex challenges into strategic opportunities through analysis, innovation, and technology</p>
+        <div class="cta-buttons d-flex justify-content-center gap-3" data-aos="fade-up" data-aos-delay="300">
+          <a href="#portfolio" class="btn btn-primary">View My Work</a>
+          <a href="assets\Manmathnath Mahanta - Resume.pdf" class="btn btn-outline" download>Download CV <i class="fa-solid fa-download"></i></a> 
+        </div>
+        <div class="hero-stats d-flex justify-content-center gap-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="stat-item text-center">
+            <span class="stat-number d-block" data-target="2">0</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-item text-center">
+            <span class="stat-number d-block" data-target="10">0</span>
+            <span class="stat-label">Projects Completed</span>
+          </div>
+          <div class="stat-item text-center">
+            <span class="stat-number d-block" data-target="20">0</span>
+            <span class="stat-label">Case Studies Analyzed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Hero Section -->
+
+<!-- About Section -->
+<section id="about" class="about section light-background">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>About</h2>
+    <div class="title-shape">
+      <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
+      </svg>
+    </div>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="about-content">
+      <div class="professional-header">
+        <span class="subtitle">Professional Profile</span>
+        <h2>Business & Data Analyst</h2>
+      </div>
+
+      <div class="profile-description">
+        <p class="lead">Transforming complex business challenges into actionable insights through data-driven analysis and strategic problem-solving.</p>
+        <p>With expertise in both business process optimization and advanced data analytics, I bridge the gap between technical data solutions and strategic business objectives.</p>
+      </div>
+
+      <div class="personal-info-grid">
+        <div class="info-item">
+          <span class="label">Name</span>
+          <span class="value">Manmathnath Mahanta</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Phone</span>
+          <span class="value">+91 7008548402</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Experience</span>
+          <span class="value">2+ Years</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Email</span>
+          <span class="value"><a href="mailto:manmath.contact@gmail.com">manmath.contact@gmail.com</a></span>
+        </div>
+        <div class="info-item">
+          <span class="label">Specializations</span>
+          <span class="value">BA, Data Visualization, SQL</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Tools</span>
+          <span class="value">Power BI, Excel, Python</span>
+        </div>
+      </div>
+
+      <div class="signature-block">
+        <img src="assets/img/misc/signature.png" alt="Signature">
+      </div>
     </div>
   </div>
 </section>
 
 
-
-<!-- End Hero -->
-</script>
-
-<main id="main">
-<!-- ======= About Section ======= -->
-<section id="about" class="about">
-  <div class="container" data-aos="fade-up">
-    <div class="section-title">
-      <h2>About</h2>
-      <p></p>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-4">
-        <img src="profile-pic.png" class="img-fluid" alt="">
+<!-- Skills Section -->
+<section id="skills" class="skills section">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row g-4 skills-animation">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="skill-box">
+          <h3>Business Analysis</h3>
+          <p>Breaking down complex processes to drive business efficiency.</p>
+          <span class="text-end d-block">90%</span>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
       </div>
-      <div class="col-lg-8 pt-4 pt-lg-0 content">
-        <h3>Business Analyst</h3>
-        <p class="fst-italic">
-          Strategic business analyst with a talent for translating complex data into actionable insights that propel business growth and efficiency. Leveraging advanced skills in <strong>SQL</strong>, <strong>Business Intelligence</strong>, and <strong>Excel</strong>. I excel in identifying trends, uncovering opportunities, and delivering thorough analyses that inform and refine business strategies. With a meticulous analytical approach and a sharp eye for detail, I provide data-driven solutions that enable organizations to optimize processes, enhance decision-making, and achieve their strategic goals. Committed to continuous learning and staying ahead of industry trends, I am equipped to contribute to innovative projects and drive significant business impact.
-        </p>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="skill-box">
+          <h3>Data Analytics</h3>
+          <p>Turning raw data into actionable insights for decision-making.</p>
+          <span class="text-end d-block">85%</span>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="skill-box">
+          <h3>Requirement Gathering</h3>
+          <p>Extracting key business needs for tailored solutions.</p>
+          <span class="text-end d-block">88%</span>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+        <div class="skill-box">
+          <h3>Process Modeling</h3>
+          <p>Creating optimized workflows for seamless operations.</p>
+          <span class="text-end d-block">80%</span>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+        <div class="skill-box">
+          <h3>Data Visualization</h3>
+          <p>Creating optimized dashboards for faster, informed business decisions.</p>
+          <span class="text-end d-block">92%</span>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+        <div class="skill-box">
+          <h3>Agile Methodology</h3>
+          <p>Implementing Agile frameworks for adaptive development.</p>
+          <span class="text-end d-block">87%</span>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Skills Section -->
+
+
+    <!-- Resume Section -->
+    <section id="resume" class="resume section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Resume</h2>
+        <div class="title-shape">
+          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
+          </svg>
+        </div>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
         <div class="row">
-          <div class="col-lg-6">
-            <ul>
-              <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+91 7008548402</span></li>
-              <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Bhubaneswar, Odisha, India</span></li>
-            </ul>
-          </div>
-          <div class="col-lg-6">
-            <ul>
-              <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span id="age"></span></li>
-              <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>manmath.contact@gmail.com</span></li>
-            </ul>
+          <div class="col-12">
+            <div class="resume-wrapper">
+              <div class="resume-block" data-aos="fade-up">
+                <h2>Work Experience</h2>
+                
+                <div class="timeline">
+                  <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-left">
+                      <h4 class="company">𝖲𝖺𝗂 𝖯𝖺𝗋𝖺𝗆𝗈𝗎𝗇𝗍 𝖨𝖳 𝖲𝗈𝗅𝗂𝗍𝗂𝗈𝗇𝗌 Pvt. Ltd.</h4>
+                      <span class="period">Jul, 2024 - Current</span>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-right">
+                      <h3 class="position">Business Analyst</h3>
+                      <ul>
+                        <li>Led 10+ projects, aligning business goals with innovative IT solutions to optimize processes.</li>
+                        <li>Facilitated collaboration among 20+ stakeholders, ensuring clarity and transparency in project execution.</li>
+                        <li>Translated complex business needs into technical requirements, streamlining development workflows.</li>
+                        <li>Optimized operational efficiency, reducing project delivery time by 25% through data-driven insights.</li>
+                      </ul>
+                    </div>
+                  </div>
+                
+                  <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="timeline-left">
+                      <h4 class="company">𝖦𝖤𝖤𝖬𝖲𝖢𝖮 𝖢𝗈𝗇𝗌𝗎𝗅𝗍𝖺𝗇𝖼𝗒 𝖲𝗈𝗅𝗂𝗍𝗂𝗈𝗇𝗌 𝖯𝗏𝗍. 𝖫𝗍𝖽.</h4>
+                      <span class="period">Mar, 2023 - Jul, 2024</span>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-right">
+                      <h3 class="position">Business Analyst</h3>
+                      <ul>
+                        <li>Analyzed complex data sets, extracting key insights to drive strategic decision-making and enhance project efficiency.</li>
+                        <li>Engaged with 20+ stakeholders to ensure seamless communication, aligning project objectives with business goals.</li>
+                        <li>Translated business needs into clear technical requirements, improving project clarity and execution speed.</li>
+                        <li>Streamlined workflows by identifying inefficiencies, cutting project turnaround time by 25% through optimized processes.</li>
+                      </ul>
+                      </ul>
+                    </div>
+                  </div>                
+
+                  <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="timeline-left">
+                      <h4 class="company">𝖠𝖿𝖺𝗆𝖾 𝖳𝖾𝖼𝗁𝗇𝗈𝗅𝗈𝗀𝗂𝖾𝗌</h4>
+                      <span class="period">Apr, 2023 - May, 2023</span>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-right">
+                      <div class="position-header">
+                        <h3 class="position">Data Analyst</h3>
+                        <span class="internship-label">Internship</span>
+                      </div>
+                      <ul>
+                        <li>Processed and cleaned 10,000+ data entries, improving accuracy and efficiency in decision-making processes.</li>
+                        <li>Designed an interactive Power BI dashboard analyzing 3 years of sales data, enabling data-driven strategic planning.</li>
+                        <li>Partnered with HR to generate 20+ performance reports, ensuring timely delivery and maintaining high reporting standards.</li>
+                        <li>Applied analytical techniques to solve complex business problems, enhancing data-driven insights and operational efficiency.</li>
+                      </ul>                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <p>
+
+      </div>
+
+    </section><!-- /Resume Section -->
+
+    
+<!-- Technical Skills Section -->
+<section id="technical-skills" class="technical-skills section light-background">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Tools</h2>
+    <div class="title-shape">
+      <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
+      </svg>
+    </div>
+  </div><!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="skills-row">
+      <!-- Excel -->
+      <div class="skill-icon-box">
+        <img src="assets/tools/excel-g.png" class="skill-icon skill-icon-default" alt="Excel">
+        <img src="assets/tools/excel.png" class="skill-icon skill-icon-hover" alt="Excel">
+      </div>
+
+      <!-- Power BI -->
+      <div class="skill-icon-box">
+        <img src="assets/tools/power-bi-g.png" class="skill-icon skill-icon-default" alt="Power BI">
+        <img src="assets/tools/power-bi.png" class="skill-icon skill-icon-hover" alt="Power BI">
+      </div>
+
+      <!-- SQL -->
+      <div class="skill-icon-box">
+        <img src="assets/tools/database-g.png" class="skill-icon skill-icon-default" alt="SQL">
+        <img src="assets/tools/database.png" class="skill-icon skill-icon-hover" alt="SQL">
+      </div>
+
+      <!-- ClickUp -->
+      <div class="skill-icon-box">
+        <img src="assets/tools/clickup-g.png" class="skill-icon skill-icon-default" alt="ClickUp">
+        <img src="assets/tools/clickup.png" class="skill-icon skill-icon-hover" alt="ClickUp">
+      </div>
+
+      <!-- API Testing (Postman) -->
+      <div class="skill-icon-box">
+        <img src="assets/tools/postman-g.png" class="skill-icon skill-icon-default" alt="Postman">
+        <img src="assets/tools/postman.png" class="skill-icon skill-icon-hover" alt="Postman">
+      </div>
+
+      <!-- Python -->
+      <div class="skill-icon-box">
+        <img src="assets/tools/python-g.png" class="skill-icon skill-icon-default" alt="Python">
+        <img src="assets/tools/python.png" class="skill-icon skill-icon-hover" alt="Python">
+      </div>
+
+      <!-- Notion -->
+      <div class="skill-icon-box">
+        <img src="assets\tools\Notion-g.png" class="skill-icon skill-icon-default" alt="Figma">
+        <img src="assets\tools\Notion.png" class="skill-icon skill-icon-hover" alt="Figma">
       </div>
     </div>
   </div>
 </section>
-<!-- End About Section -->
 
-<script>
-  // Function to calculate age
-  function calculateAge(birthDate) {
-    const today = new Date();
-    const birthDateObj = new Date(birthDate);
-    let age = today.getFullYear() - birthDateObj.getFullYear();
-    const monthDiff = today.getMonth() - birthDateObj.getMonth();
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDateObj.getDate())) {
-      age--;
-    }
-    return age;
-  }
+<!-- Include FontAwesome for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-  // Set birthdate and update age
-  const birthDate = '1998-12-23'; 
-  document.getElementById('age').textContent = calculateAge(birthDate);
-</script>
-
-
-    <!-- ======= Skills Section ======= -->
-    <section id="skills" class="skills section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Skills</h2>
-          <p>
-            Adaptable and proficient in navigating the dynamic business analysis landscape. Expertise in <strong>SQL</strong>, <strong>Power BI</strong>, and <strong>Excel</strong> for extracting actionable insights from complex datasets. Committed to continuous learning, with ongoing development of Python skills to stay ahead of technological advancements. Versatile in addressing both technical and business challenges with intellectual dexterity, driving impactful solutions and fostering business growth.
-          </p>
-        </div>
-
-        <div class="row skills-content">
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill">Data Analyst <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">SQL <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Advance Excel <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill">Power BI <i class="val">85%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Statistical Analysis <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Python <i class="val">55%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-    <!-- End Skills Section -->
-
-<!-- ======= Experience Section ======= -->
-<section id="Experience" class="resume">
-  <div class="container" data-aos="fade-up">
-    <div class="section-title">
-      <h2>Experience</h2>
+<!-- Portfolio Section -->
+<section id="portfolio" class="portfolio section">
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Portfolio</h2>
+    <div class="title-shape">
+      <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
+      </svg>
     </div>
+  </div>
 
-    <div class="row" id="experience-container">
-      <!-- First Company (Displayed by Default) -->
-      <div class="col-12">
-        <div class="resume-item">
-          <div class="company-header d-flex align-items-center">
-            <img src="assets/img/Experiance Logo/Sai Paramount IT Solutions Logo.png" alt="Sai Paramount IT Solutions" class="company-logo">
-            <h3 class="ml-3"><strong>𝖲𝖺𝗂 𝖯𝖺𝗋𝖺𝗆𝗈𝗎𝗇𝗍 𝖨𝖳 𝖲𝗈𝗅𝗂𝗍𝗂𝗈𝗇𝗌</strong></h3>
+  <!----Project - 1: Google Trend Analysis---->
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row g-4 isotope-container" data-aos="fade-up" data-aos-delay="300">
+      <div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-web">
+        <div class="portfolio-card">
+          <div class="portfolio-image">
+            <img src="assets\projects\Google_Trend_Analysis\Google Trend Analysis Thumbnail.jpg" class="img-fluid" alt="" loading="lazy">
+            <div class="portfolio-overlay">
+              <div class="portfolio-actions">
+                <a href="#" class="preview-link" data-bs-toggle="modal" data-bs-target="#portfolioModal1" data-image="assets/img/portfolio/portfolio-1.webp" data-title="Google Trend Analysis" data-description="Detailed analysis of Google Trends data to uncover insights and trends.">
+                  <i class="bi bi-eye"></i>
+                </a>
+              </div>
+            </div>
           </div>
-          <h4>Business Analyst</h4>
-          <h5><strong>July 2024</strong> to <strong>Present</strong></h5>
-          <ul class="justified-text">
-            <li><strong>Project Coordination:</strong> Directed multiple software development projects from initiation to delivery, ensuring seamless alignment with business objectives. Spearheaded efforts to meet deadlines and quality benchmarks while coordinating with diverse teams.</li>
-            <li><strong>Client & Stakeholder Management:</strong> Acted as the key liaison between clients and development teams, gathering requirements and translating them into actionable project plans. Facilitated smooth communication to manage expectations and deliver optimal outcomes.</li>
-            <li><strong>Cross-Functional Collaboration:</strong> Orchestrated collaboration across technical and business units to ensure resource alignment and on-time project delivery. Worked closely with stakeholders to resolve roadblocks and maintain workflow efficiency.</li>
-            <li><strong>Risk Management & Documentation:</strong> Proactively identified potential risks, developed mitigation strategies, and maintained detailed project documentation. Ensured compliance with organizational frameworks and best practices for continuous process improvement.</li>
+          <div class="portfolio-content">
+            <h3>Google Trend Analysis</h3>
+            <p>Exploring trends, uncovering insights, and driving data-driven decisions.</p>
+          </div>
+        </div>
+      </div>
+<!-- Modal for Google Trend Analysis -->
+<div class="modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModalLabel1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width: 1200px;">
+    <div class="modal-content glassmorphism" style="border: none; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); margin: 0 2rem; border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 15px;">
+      <div class="modal-header border-0">
+        <h5 class="modal-title text-white" id="portfolioModalLabel1">Google Trend Analysis</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4">
+        <!-- Row for Dashboard and Links/Tools Used -->
+        <div class="row g-4 mb-4">
+          <!-- Dashboard Column -->
+          <div class="col-lg-8">
+            <div class="dashboard-container" style="position: relative; width: 100%; height: 0; padding-top: 75%; border-radius: 15px; overflow: hidden;">
+              <iframe
+                title="Google Trend Dashboard"
+                src="https://app.powerbi.com/view?r=eyJrIjoiMTRjZTNkYmYtYjIzOC00Mjk3LWIzMWYtNjMxN2NhYTVmMzI2IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9"
+                frameborder="0"
+                allowFullScreen="true"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px;"
+              ></iframe>
+            </div>
+          </div>
+
+          <!-- Links and Tools Used Column -->
+          <div class="col-lg-4 text-white">
+            <!-- Links Section -->
+            <div class="mb-4">
+              <ul class="list-unstyled">
+                <li class="mb-3">
+                  <strong class="d-block mb-1">Github Repository:</strong>
+                  <a href="https://github.com/Manmath235/Google_Trend_Dashboard.git" class="text-decoration-none d-block text-white hover-glow">View on GitHub <i class="fas fa-external-link-alt ms-2"></i></a>
+                </li>
+                <li class="mb-3">
+                  <strong class="d-block mb-1">Report:</strong>
+                  <a href="assets\projects\Google_Trend_Analysis\Google Trend Report.pdf" class="text-decoration-none d-block text-white hover-glow">Download Project Report <i class="fas fa-download ms-2"></i></a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Tools Used Section -->
+            <div>
+              <h4 class="fw-bold mb-3">Tools Used</h4>
+              <div class="d-flex flex-wrap gap-3">
+                <!-- Google APIs -->
+                <div class="tool-item text-center" style="width: 100px;">
+                  <img src="assets\projects\tools_used\api.png" alt="Google Trends" style="width: 24px; height: 24px;">
+                  <p class="mt-2 mb-0">Google APIs</p>
+                </div>
+                <!-- Power BI -->
+                <div class="tool-item text-center" style="width: 100px;">
+                  <img src="assets\projects\tools_used\power-bi.png" alt="Power BI" style="width: 24px; height: 24px;">
+                  <p class="mt-2 mb-0">Power BI</p>
+                </div>
+                <!-- Excel -->
+                <div class="tool-item text-center" style="width: 100px;">
+                  <img src="assets\projects\tools_used\excel.png" alt="Excel" style="width: 24px; height: 24px;">
+                  <p class="mt-2 mb-0">Excel</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Description -->
+        <div class="project-description text-white">
+          <h4 class="fw-bold mb-3">Project Description</h4>
+          <ul class="list-unstyled custom-bullets">
+            <li class="mb-2"><strong>Insights and Opportunity Identification:</strong> Leverages Google Trends search data analysis to identify consumer interests, emerging trends, and uncover new market opportunities.</li>
+            <li class="mb-2"><strong>Benchmarking:</strong> Enables benchmarking performance against competitors by comparing search popularity of relevant keywords and job roles.</li>
+            <li class="mb-2"><strong>Audience-Centric Content Strategy:</strong> Optimizes content strategy by understanding trending topics and creating engaging, relevant content tailored to the audience's interests.</li>
+            <li class="mb-2"><strong>Regional Market Understanding:</strong> Provides regional insights into consumer search behaviors across 60 countries, facilitating tailored marketing strategies for local markets.</li>
+            <li class="mb-2"><strong>Data-Driven Decision Making:</strong> Empowers data-driven decision making, forecasting, and strategic planning through real-time trend visualizations and in-depth analysis.</li>
           </ul>
         </div>
       </div>
     </div>
-
-    <!-- Load More Button -->
-    <div class="text-center mt-3">
-      <button class="btn btn-credibility btn-sm mt-2" style="background-color: #d25918; outline: none;" id="load-more-btn"><strong>Load More</strong></button>
-    </div>
   </div>
+</div>
 
-  
-</section>
-
-<!-- Hidden Companies -->
-<div id="hidden-experiences" style="display: none;">
-  <!-- GEEMSCO -->
-  <div class="col-12">
-    <div class="resume-item">
-      <div class="company-header d-flex align-items-center">
-        <img src="assets/img/Experiance Logo/GEEMSCO Logo.png" alt="GEEMSCO Consultancy Services" class="company-logo">
-        <h3 class="ml-3"><strong>𝖦𝖤𝖤𝖬𝖲𝖢𝖮 𝖢𝗈𝗇𝗌𝗎𝗅𝗍𝖺𝗇𝖼𝗒 𝖲𝗈𝗅𝗂𝗍𝗂𝗈𝗇𝗌 𝖯𝗏𝗍. 𝖫𝗍𝖽.</strong></h3>
+<!----Project - 2: Indian Rail Accident Analysis---->
+<div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-web">
+  <div class="portfolio-card">
+    <div class="portfolio-image">
+      <img src="assets\projects\Train Accident Analysis\Indian Rail Accident Analysis.jpg" class="img-fluid" alt="" loading="lazy">
+      <div class="portfolio-overlay">
+        <div class="portfolio-actions">
+          <a href="#" class="preview-link" data-bs-toggle="modal" data-bs-target="#portfolioModal2" data-image="assets/img/portfolio/portfolio-2.webp" data-title="Indian Rail Accident Analysis" data-description="Detailed analysis of rail accidents in India to identify patterns and improve safety measures.">
+            <i class="bi bi-eye"></i>
+          </a>
+        </div>
       </div>
-      <h4>Business Analyst</h4>
-      <h5><strong>May 2023</strong> to <strong>July 2024</strong></h5>
-      <ul class="justified-text">
-        <li><strong>Data Insights:</strong> Leveraged data analytics to generate actionable insights, enabling strategic project planning and informed decision-making. Utilized tools to streamline project tracking and reporting.</li>
-        <li><strong>Stakeholder Collaboration:</strong> Established and maintained relationships with key stakeholders, ensuring projects aligned with organizational goals. Led regular status updates and strategy discussions to foster alignment and transparency.</li>
-        <li><strong>Requirement Gathering:</strong> Bridged the gap between business and technology teams by effectively translating business needs into technical solutions. Delivered comprehensive requirement documents to guide development teams.</li>
-        <li><strong>Process Optimization:</strong> Identified inefficiencies in existing workflows and implemented solutions to enhance productivity. Reduced project timelines by implementing improved processes and resource allocation strategies.</li>
-      </ul>
     </div>
-  </div>
-
-  <!-- AFAME -->
-  <div class="col-12">
-    <div class="resume-item">
-      <div class="company-header d-flex align-items-center">
-        <img src="assets/img/Experiance Logo/AFAME Logo.png" alt="AFAME Technologies" class="company-logo">
-        <h3 class="ml-3"><strong>𝖠𝖿𝖺𝗆𝖾 𝖳𝖾𝖼𝗁𝗇𝗈𝗅𝗈𝗀𝗂𝖾𝗌</strong></h3>
-      </div>
-      <h4>Data Analyst</h4>
-      <h5><strong>May 2024</strong> to <strong>June 2024</strong></h5>
-      <ul class="justified-text">
-        <li><strong>Excel Expertise:</strong> Conducted in-depth data cleaning, sorting, and labeling to streamline management processes and improve decision-making accuracy. Enhanced proficiency in advanced Excel functions and automation.</li>
-        <li><strong>Power BI Skills:</strong> Developed a dynamic sales analysis dashboard that leveraged three years of data, providing actionable insights for strategic planning. Demonstrated the ability to turn raw data into meaningful visualizations.</li>
-        <li><strong>Team Collaboration:</strong> Collaborated with the HR team to prepare detailed reports, ensuring timely delivery and meeting high-quality standards. Showcased adaptability and team spirit by effectively managing multiple tasks.</li>
-        <li><strong>Analytical Skills:</strong> Applied theoretical knowledge to solve real-world problems, strengthening data analysis and problem-solving skills. Demonstrated a detail-oriented approach to handling complex data sets.</li>
-      </ul>
+    <div class="portfolio-content">
+      <h3>Indian Rail Accident Analysis</h3>
+      <p>Analyzing rail accidents in India to enhance safety and prevent future incidents.</p>
     </div>
   </div>
 </div>
 
-<!-- JavaScript -->
-<script>
-  document.getElementById('load-more-btn').addEventListener('click', function () {
-    const hiddenExperiences = document.getElementById('hidden-experiences');
-    const experienceContainer = document.getElementById('experience-container');
-    
-    // Move hidden experiences into the main container and display them
-    experienceContainer.innerHTML += hiddenExperiences.innerHTML;
-    hiddenExperiences.style.display = 'none';
-    
-    // Hide the Load More button after loading additional experiences
-    this.style.display = 'none';
-  });
-</script>
-    
-  
-<!-- ======= Portfolio Section ======= -->
-<section id="portfolio" class="portfolio section-bg" style="margin-bottom: 100px;">
-  <div class="container" data-aos="fade-up">
-    <div class="section-title">
-      <h2>Portfolio</h2>
-    </div>
-<!-- Tools Banner -->
-<div class="tools-banner" style="text-align: center; margin-bottom: 40px;">
-  <h3>Tools and Technologies Used</h3>
-  <div class="tools-icons">
-    <div class="tool-icon" data-tool="Excel">
-      <img src="skills icons/Excel icon.png" alt="Excel">
-      <span class="tool-count">0</span>
-    </div>
-    <div class="tool-icon" data-tool="Power BI">
-      <img src="skills icons/Power BI icon.png" alt="Power BI">
-      <span class="tool-count">0</span>
-    </div>
-    <div class="tool-icon" data-tool="SQL">
-      <img src="skills icons/SQL icon.png" alt="SQL">
-      <span class="tool-count">0</span>
-    </div>
-    <div class="tool-icon" data-tool="Python">
-      <img src="skills icons/python icon.png" alt="Python">
-      <span class="tool-count">0</span>
-    </div>
-    <div class="tool-icon" data-tool="Web scraping">
-      <img src="skills icons\web-scraping.png" alt="Web scraping">
-      <span class="tool-count">0</span>
+<!-- Modal for Indian Rail Accident Analysis -->
+<div class="modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModalLabel2" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width: 1200px;">
+    <div class="modal-content glassmorphism" style="border: none; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); margin: 0 2rem; border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 15px;">
+      <div class="modal-header border-0">
+        <h5 class="modal-title text-white" id="portfolioModalLabel2">Indian Rail Accident Analysis</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4">
+        <!-- Row for Dashboard and Links/Tools Used -->
+        <div class="row g-4 mb-4">
+          <!-- Dashboard Column -->
+          <div class="col-lg-8">
+            <div class="dashboard-container" style="position: relative; width: 100%; height: 0; padding-top: 75%; border-radius: 15px; overflow: hidden;">
+              <iframe
+                title="Indian Rail Accident Dashboard"
+                src="https://app.powerbi.com/view?r=eyJrIjoiMmZkNTgwODktNzAyMy00YmZlLTk5YzEtYTY4YWIwNmEwODI0IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9"
+                frameborder="0"
+                allowFullScreen="true"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px;"
+              ></iframe>
+            </div>
+          </div>
+
+          <!-- Links and Tools Used Column -->
+          <div class="col-lg-4 text-white">
+            <!-- Links Section -->
+            <div class="mb-4">
+              <ul class="list-unstyled">
+                <li class="mb-3">
+                  <strong class="d-block mb-1">Github Repository:</strong>
+                  <a href="https://github.com/Manmath235/Indian_Rail_Accident_Analysis.git" class="text-decoration-none d-block text-white hover-glow">View on GitHub <i class="fas fa-external-link-alt ms-2"></i></a>
+                </li>
+                <li class="mb-3">
+                  <strong class="d-block mb-1">Report:</strong>
+                  <a href="assets\projects\Train Accident Analysis\Indian Rail Accident Analysis Report.pdf" class="text-decoration-none d-block text-white hover-glow">Download Project Report <i class="fas fa-download ms-2"></i></a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Tools Used Section -->
+            <div>
+              <h4 class="fw-bold mb-3">Tools Used</h4>
+              <div class="d-flex flex-wrap gap-3">
+                <!-- Power BI -->
+                <div class="tool-item text-center" style="width: 100px;">
+                  <img src="assets\projects\tools_used\power-bi.png" alt="Power BI" style="width: 24px; height: 24px;">
+                  <p class="mt-2 mb-0">Power BI</p>
+                </div>
+                <!-- Excel -->
+                <div class="tool-item text-center" style="width: 100px;">
+                  <img src="assets\projects\tools_used\excel.png" alt="Excel" style="width: 24px; height: 24px;">
+                  <p class="mt-2 mb-0">Excel</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+
+        <!-- Project Description -->
+        <div class="project-description text-white">
+          <h4 class="fw-bold mb-3">Project Description</h4>
+          <ul class="list-unstyled custom-bullets">
+            <li class="mb-2"><strong>Accident Pattern Analysis:</strong> Identifies common patterns and causes of rail accidents in India.</li>
+            <li class="mb-2"><strong>Safety Recommendations:</strong> Provides actionable insights to improve rail safety and prevent future accidents.</li>
+            <li class="mb-2"><strong>Geographical Insights:</strong> Analyzes accident-prone regions to prioritize safety measures.</li>
+            <li class="mb-2"><strong>Data Visualization:</strong> Visualizes accident data for better understanding and decision-making.</li>
+            <li class="mb-2"><strong>Policy Impact:</strong> Helps policymakers implement data-driven safety regulations.</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-    <!-- Projects -->
-    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-      <!-- Project - Call Center Data Analysis-->
-      <div class="col-lg-4 col-md-6 portfolio-item filter-app shadow" style="border-radius: 5px;" data-tools="Excel, Power BI">
-        <img src="assets/img/portfolio/Power BI Job Simulation on Forage.jpg" class="img-fluid" alt="Call Center Data Analysis" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">
-        <div class="portfolio-info" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
-          <div class="portfolio-links">
-            <a href="#" onclick="openModal('Call_Center_Data_Analysis_details.html', event)" class="portfolio-lightbox" title="Call Center Data Analysis"></a>
-          </div>
-        </div>
-        <div class="project-summary mt-3" style="text-align: justify;">
-          <h6 style="text-align: center;"><strong>Call Center Data Analysis</strong></h6>
-          <p>This project focuses on analyzing call center data to enhance customer service and operational efficiency. Key metrics like call duration, wait time, and customer satisfaction were analyzed using Power BI for insights.</p>
-        </div>
-        <div class="tools-used mt-3">
-          <h6 style="text-align: center;"> 
-            <strong>Tools Used:</strong>
-            <img src="skills icons/Excel icon.png" alt="Excel Icon" style="width: 24px; height: 24px; margin-left: 10px;">
-            <img src="skills icons/Power BI icon.png" alt="Power BI Icon" style="width: 24px; height: 24px; margin-left: 10px;">
-          </h6>
-        </div>
-        <div class="text-center mt-3">
-          <a href="#" onclick="openModal('Call_Center_Data_Analysis_details.html', event)" class="btn btn-credibility btn-sm mt-2"style="background-color: #d25918; outline: none;">View Project</a>
+<!----Project - 3: Call Center Trend Analysis---->
+<div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-web">
+  <div class="portfolio-card">
+    <div class="portfolio-image">
+      <img src="assets\projects\Call_Center_Data_Analysis_details\Power BI Job Simulation on Forage.jpg" class="img-fluid" alt="" loading="lazy">
+      <div class="portfolio-overlay">
+        <div class="portfolio-actions">
+          <a href="#" class="preview-link" data-bs-toggle="modal" data-bs-target="#portfolioModal3" data-image="assets/img/portfolio/portfolio-3.webp" data-title="Call Center Trend Analysis" data-description="Exploring call center trends, uncovering insights, and driving data-driven service improvements.">
+            <i class="bi bi-eye"></i>
+          </a>
         </div>
       </div>
+    </div>
+    <div class="portfolio-content">
+      <h3>Call Center Trend Analysis</h3>
+      <p>Exploring trends, uncovering insights, and driving data-driven decisions.</p>
+    </div>
+  </div>
+</div>
 
-      <!-- Project  - Google Trend Analysis Dashboard -->
-      <div class="col-lg-4 col-md-6 portfolio-item filter-web shadow" style="border-radius: 5px;" data-tools="Excel, Power BI">
-        <img src="assets/img/portfolio/Google Trend Analysis Dashboard.jpg" class="img-fluid" alt="" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">
-        <div class="portfolio-info" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
-          <div class="portfolio-links">
-            <a href="#" onclick="openModal('Google Trend Analysis Dashboard_details.html', event)" class="portfolio-lightbox" title="Google Trend Analysis Dashboard"></a>
+<!-- Modal for Call Center Trend Analysis -->
+<div class="modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModalLabel3" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width: 1200px;">
+    <div class="modal-content glassmorphism" style="border: none; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); margin: 0 2rem; border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 15px;">
+      <div class="modal-header border-0">
+        <h5 class="modal-title text-white" id="portfolioModalLabel3">Call Center Trend Analysis</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4">
+        <!-- Row for Dashboard and Links/Tools Used -->
+        <div class="row g-4 mb-4">
+          <!-- Dashboard Column -->
+          <div class="col-lg-8">
+            <div class="dashboard-container" style="position: relative; width: 100%; height: 0; padding-top: 75%; border-radius: 15px; overflow: hidden;">
+              <iframe 
+               title="Call Center Trend Analysis" 
+               src="https://app.powerbi.com/view?r=eyJrIjoiZmU5YzFlMGMtNDUxYy00OTcyLThjODktZDdlYjFkODJkMzc4IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" 
+               frameborder="0" 
+               allowFullScreen="true" 
+               style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px;"
+               ></iframe>
+            </div>
+          </div>
+
+          <!-- Links and Tools Used Column -->
+          <div class="col-lg-4 text-white">
+            <!-- Links Section -->
+            <div class="mb-4">
+              <ul class="list-unstyled">
+                <li class="mb-3">
+                  <strong class="d-block mb-1">Github Repository:</strong>
+                  <a href="https://github.com/Manmath235/Call_Center_Trend_Analysis.git" class="text-decoration-none d-block text-white hover-glow">View on GitHub <i class="fas fa-external-link-alt ms-2"></i></a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Tools Used Section -->
+            <div>
+              <h4 class="fw-bold mb-3">Tools Used</h4>
+              <div class="d-flex flex-wrap gap-3">
+                <!-- Power BI -->
+                <div class="tool-item text-center" style="width: 100px;">
+                  <img src="assets/projects/tools_used/power-bi.png" alt="Power BI" style="width: 24px; height: 24px;">
+                  <p class="mt-2 mb-0">Power BI</p>
+                </div>
+                <!-- Excel -->
+                <div class="tool-item text-center" style="width: 100px;">
+                  <img src="assets/projects/tools_used/excel.png" alt="Excel" style="width: 24px; height: 24px;">
+                  <p class="mt-2 mb-0">Excel</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="project-summary mt-3" style="text-align: justify;">
-          <h6 style="text-align: center;"><strong>Google Trend Analysis</strong></h6> 
-          <p>This project analyzes Google Trends data to uncover patterns and insights for various search terms. Key metrics and visualizations were created to track and analyze trends over time using Power BI.</p>
-        </div>
-        <div class="tools-used mt-3">
-          <h6 style="text-align: center;">
-            <strong>Tools Used:</strong>
-            <img src="skills icons/Excel icon.png" alt="Excel Icon" style="width: 24px; height: 24px; margin-left: 10px;">
-            <img src="skills icons/Power BI icon.png" alt="Power BI Icon" style="width: 24px; height: 24px; margin-left: 10px;">
-          </h6>
-        </div>
-        <div class="text-center mt-3">
-          <a href="#" onclick="openModal('Google Trend Analysis Dashboard_details.html', event)" class="btn btn-credibility btn-sm mt-2"style="background-color: #d25918; outline: none;">View Project</a>
-        </div>
-      </div>      
-      <!-- Project  - AtliQ Hardware Insights Report -->
-      <div class="col-lg-4 col-md-6 portfolio-item filter-web shadow" style="border-radius: 5px;" data-tools="SQL, Power BI">
-        <img src="assets\img\portfolio\AtliQ Hardware Insights Report.jpg" class="img-fluid" alt="" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">
-        <div class="portfolio-info" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
-          <div class="portfolio-links">
-            <a href="#" onclick="openModal('AtliQ Hardware Insights Report.html', event)" class="portfolio-lightbox" title="AtliQ Hardware Insights Report"></a>
-          </div>
-        </div>
-        <div class="project-summary mt-3" style="text-align: justify;">
-          <h6 style="text-align: center;"><strong>AtliQ Hardware Insights Report</strong></h6> <!-- Centered the heading -->
-          <p>Analyzed AtliQ Hardware’s data to optimize operations, improve sales strategies, and enhance customer engagement by providing targeted insights and efficient resource allocation for better performance.</p>
-        </div>
-        <div class="tools-used mt-3">
-          <h6 style="text-align: center;">
-            <strong>Tools Used:</strong>
-            <img src="skills icons\SQL icon.png" alt="Excel Icon" style="width: 24px; height: 24px; margin-left: 10px;">
-            <img src="skills icons/Power BI icon.png" alt="Power BI Icon" style="width: 24px; height: 24px; margin-left: 10px;">
-          </h6>
-        </div>
-        <div class="text-center mt-3">
-          <a href="#" onclick="openModal('AtliQ Hardware Insights Report.html', event)" class="btn btn-credibility btn-sm mt-2"style="background-color: #d25918; outline: none;">View Project</a>
-        </div>
-      </div>      
-      <!-- Project  - Indian Rail Accident Analysis -->
-      <div class="col-lg-4 col-md-6 portfolio-item filter-web shadow" style="border-radius: 5px;" data-tools="Web scraping, Power BI">
-        <img src="assets\img\portfolio\Indian Rail Accident Analysis.jpg" class="img-fluid" alt="" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">
-        <div class="portfolio-info" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
-          <div class="portfolio-links">
-            <a href="#" onclick="openModal('Indian Rail Accident Analysis.html', event)" class="portfolio-lightbox" title="AtliQ Hardware Insights Report"></a>
-          </div>
-        </div>
-        <div class="project-summary mt-3" style="text-align: justify;">
-          <h6 style="text-align: center;"><strong>Indian Rail Accident Analysis</strong></h6>
-          <p>Analyzed Indian rail accidents from 2000-2024, identifying patterns and causes. Proposed safety improvements through better protocols, enhanced security, and technology adoption to reduce accidents and enhance safety.</p>
-        </div>
-        <div class="tools-used mt-3">
-          <h6 style="text-align: center;">
-            <strong>Tools Used:</strong>
-            <img src="skills icons\web-scraping.png" alt="Power BI Icon" style="width: 24px; height: 24px; margin-left: 10px;">
-            <img src="skills icons\Power BI icon.png" alt="Excel Icon" style="width: 24px; height: 24px; margin-left: 10px;">
-          </h6>
-        </div>
-        <div class="text-center mt-3">
-          <a href="#" onclick="openModal('Indian Rail Accident Analysis.html', event)" class="btn btn-credibility btn-sm mt-2"style="background-color: #d25918; outline: none;">View Project</a>
+
+        <!-- Project Description -->
+        <div class="project-description text-white">
+          <h4 class="fw-bold mb-3">Project Description</h4>
+          <ul class="list-unstyled custom-bullets">
+            <li class="mb-2"><strong>Creation Process: </strong> Integrated data from call center operations and customer interactions using Excel and Power BI, enabling comprehensive visualization and analysis.</li>
+            <li class="mb-2"><strong>Analytical Insights:</strong> Uncovered trends, identified improvement areas, and developed predictive models to enhance operational efficiency and customer satisfaction.</li>
+            <li class="mb-2"><strong>Stakeholder Engagement: </strong> Collaborated closely with stakeholders to tailor the dashboard to their needs, fostering a culture of collaboration and ownership.</li>
+            <li class="mb-2"><strong>Usability and Accessibility: </strong> Designed an intuitive interface with customizable visualizations and interactive features to facilitate data-driven decision-making for both technical and non-technical users.</li>
+            <li class="mb-2"><strong>Continuous Improvement:</strong> Implemented regular updates based on user feedback and evolving business needs to ensure the dashboard remains relevant and effective.</li>
+          </ul>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!----Project - 4: AtliQ Hardware Insights Report---->
+<div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-web">
+  <div class="portfolio-card">
+    <div class="portfolio-image">
+      <img src="assets\projects\AtliQ Hardware Insights Report\AtliQ Hardware Insights Report.jpg" class="img-fluid" alt="AtliQ Hardware Insights Report" loading="lazy">
+      <div class="portfolio-overlay">
+        <div class="portfolio-actions">
+          <a href="#" class="preview-link" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
+            <i class="bi bi-eye"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-content">
+      <h3>AtliQ Hardware Insights Report</h3>
+      <p>Analyzing trends, extracting insights, and optimizing decisions.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for AtliQ Hardware Insights Report -->
+<div class="modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModalLabel4" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width: 1200px;">
+    <div class="modal-content glassmorphism" style="border: none; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); margin: 0 2rem; border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 15px;">
+      <div class="modal-header border-0">
+        <h5 class="modal-title text-white" id="portfolioModalLabel4">AtliQ Hardware Insights Report</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4">
+        <!-- Row for Images and Links/Tools Used -->
+        <div class="row g-4 mb-4">
+          <!-- Images Carousel Column -->
+          <div class="col-lg-8">
+            <div id="salesCarousel" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner rounded-3" style="height: 500px; background-color: #fefaef;">
+                <div class="carousel-item active h-100">
+                  <img src="assets\projects\AtliQ Hardware Insights Report\1.jpg" class="d-block w-100 h-100" style="object-fit: contain;" alt="Sales Dashboard View 1">
+                </div>
+                <div class="carousel-item h-100">
+                  <img src="assets\projects\AtliQ Hardware Insights Report\2.jpg" class="d-block w-100 h-100" style="object-fit: contain;" alt="Sales Dashboard View 2">
+                </div>
+                <div class="carousel-item h-100">
+                  <img src="assets\projects\AtliQ Hardware Insights Report\3.jpg" class="d-block w-100 h-100" style="object-fit: contain;" alt="Sales Dashboard View 3">
+                </div>
+                <div class="carousel-item h-100">
+                  <img src="assets\projects\AtliQ Hardware Insights Report\4.jpg" class="d-block w-100 h-100" style="object-fit: contain;" alt="Sales Dashboard View 4">
+                </div>
+                <div class="carousel-item h-100">
+                  <img src="assets\projects\AtliQ Hardware Insights Report\5.jpg" class="d-block w-100 h-100" style="object-fit: contain;" alt="Sales Dashboard View 5">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#salesCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#salesCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+              
+            </div>
+          </div>
+
+          <!-- Links and Tools Used Column -->
+          <div class="col-lg-4 text-white">
+            <!-- Links Section -->
+            <div class="mb-4">
+              <h4 class="fw-bold mb-3">Project Link</h4>
+              <ul class="list-unstyled">
+                <li class="mb-3">
+                  <strong class="d-block mb-1">GitHub Repository:</strong>
+                  <a href="https://github.com/Manmath235/Analysis_for_AtliQ_Hardwares.git" class="text-decoration-none d-block text-white hover-glow">
+                    View on GitHub <i class="fas fa-external-link-alt ms-2"></i>
+                  </a>
+                  <li class="mb-3">
+                    <strong class="d-block mb-1">Report:</strong>
+                    <a href="assets\projects\AtliQ Hardware Insights Report\Report.pdf" class="text-decoration-none d-block text-white hover-glow">Download Project Report <i class="fas fa-download ms-2"></i></a>
+                  </li>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Tools Used Section -->
+            <div>
+              <h4 class="fw-bold mb-3">Tools Used</h4>
+              <div class="d-flex flex-wrap gap-3">
+                <div class="tool-item text-center" style="width: 100px;">
+                  <img src="assets/projects/tools_used/power-bi.png" alt="Power BI" style="width: 24px; height: 24px;">
+                  <p class="mt-2 mb-0">Power BI</p>
+                </div>
+                <div class="tool-item text-center" style="width: 100px;">
+                  <img src="assets/projects/tools_used/excel.png" alt="Excel" style="width: 24px; height: 24px;">
+                  <p class="mt-2 mb-0">Excel</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Description -->
+        <div class="project-description text-white">
+          <h4 class="fw-bold mb-3">Project Description</h4>
+          <ul class="list-unstyled custom-bullets">
+            <li class="mb-2"><strong>Data Analysis:</strong> Conducted in-depth analysis of sales and manufacturing data to uncover critical business insights.</li>
+            <li class="mb-2"><strong>Operational Efficiency:</strong> Identified opportunities for cost reduction and optimized resource allocation to enhance production efficiency.</li>
+            <li class="mb-2"><strong>Market Insights:</strong> Analyzed market presence and sales trends, providing strategic recommendations for improved market penetration and sales performance.</li>
+            <li class="mb-2"><strong>Customer Insights: </strong> Delivered detailed reports on customer discount patterns and behaviors, aiding in the development of targeted promotions and loyalty programs.</li>
+            <li class="mb-2"><strong>Product Performance:</strong> Evaluated product demand and manufacturing costs, offering insights to refine product lines and meet market demands effectively.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Certificates Section -->
+<section id="certificates" class="certificates-section">
+  <div class="container">
+    <div class="certificates-slider">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Certificates</h2>
+        <div class="title-shape">
+          <svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,10 C 40,0 60,20 100,10 C 140,0 160,20 200,10" fill="none" stroke="currentColor" stroke-width="2"></path>
+          </svg>
+        </div>
+      </div>
+      <!-- End Section Title -->
+
+      <!-- Navigation Arrows -->
+      <button class="nav-arrow prev-arrow">&#10094;</button>
+      <button class="nav-arrow next-arrow">&#10095;</button>
+
+
+      <div class="slider-content">
+        <!-- Certificate 1 -->
+        <div class="certificate-slide active">
+          <div class="certificate-content">
+            <div class="text-content">
+              <h2>Business Analyst and Project Manager Collaboration</h2>
+              <p>Mastered collaborative strategies between business analysis and project management for successful project delivery.</p>
+              <div class="company-info">
+                Certified by <a href="https://www.linkedin.com/learning/certificates/a51f101ed9d447bc6efb624809ba645c502b873afa59e569781d6ba3e63a7650" class="highlight" target="_blank">LinkedIn</a>
+              </div>
+            </div>
+            <div class="image-content">
+              <img src="assets\cretificates\Business Analyst and Project Manager Collaboration.jpg" alt="Business Analyst and Project Manager Collaboration Certification">
+            </div>
+          </div>
+        </div>
+
+        <!-- Certificate 2 -->
+        <div class="certificate-slide">
+          <div class="certificate-content">
+            <div class="text-content">
+              <h2>Business Analysis by Microsoft and LinkedIn</h2>
+              <p>Microsoft-validated skills in business process analysis and requirements management.</p>
+              <div class="company-info">
+                Certified by <a href="https://www.linkedin.com/learning/certificates/b669334513c329a04528bb83f280f79d1892599b57aac79d7dcfb7fd03992d77" class="highlight" target="_blank">Microsoft</a> and <a href="https://www.linkedin.com/learning/certificates/b669334513c329a04528bb83f280f79d1892599b57aac79d7dcfb7fd03992d77" class="highlight" target="_blank">LinkedIn</a>
+              </div>
+            </div>
+            <div class="image-content">
+              <img src="assets\cretificates\Business Analysis by Microsoft and LinkedIn.jpg" alt="Business Analysis by Microsoft and LinkedIn Certification">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Certificate 3 -->
+        <div class="certificate-slide">
+          <div class="certificate-content">
+            <div class="text-content">
+              <h2>Agile Requirements Foundations</h2>
+              <p>Certified in Agile requirements gathering and management methodologies.</p>
+              <div class="company-info">
+                Certified by <a href="https://www.linkedin.com/learning/certificates/e29c230664b57c86c2795595cd269a65e001ab20943b1042c6b7b4923acba714" class="highlight" target="_blank">LinkedIn Learning</a>
+              </div>
+            </div>
+            <div class="image-content">
+              <img src="assets\cretificates\Agile Requirements Foundations.jpg" alt="Agile Requirements Foundations Certification">
+            </div>
+          </div>
+        </div>
+       
+        <!-- Certificate 4 -->
+        <div class="certificate-slide">
+          <div class="certificate-content">
+            <div class="text-content">
+              <h2>Requirements Elicitation and Analysis</h2>
+              <p>Expertise in stakeholder needs identification and requirements documentation.</p>
+              <div class="company-info">
+                Certified by <a href="https://www.linkedin.com/learning/certificates/b828054f27da7a9b43747e5dacf14f9708d2ed421d3749466bc90c61933eb04a?trk=share_certificate" class="highlight" target="_blank">LinkedIn Learning</a>
+              </div>
+            </div>
+            <div class="image-content">
+              <img src="assets\cretificates\Requirements Elicitation and Analysis.jpg" alt="Requirements Elicitation and Analysis Certification">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Certificate 5 -->
+        <div class="certificate-slide">
+          <div class="certificate-content">
+            <div class="text-content">
+              <h2>Business Analysis Foundations: Business Process Modeling</h2>
+              <p>Proven skills in business process mapping and optimization techniques.</p>
+              <div class="company-info">
+                Certified by <a href="https://www.linkedin.com/learning/certificates/c252c3fe1ea510b3fc0ee7da077a0baa7caf03a4293b72c91f203f86cb2db45e" class="highlight" target="_blank">LinkedIn</a>
+              </div>
+            </div>
+            <div class="image-content">
+              <img src="assets\cretificates\Business Analysis Foundations Business Process Modeling.jpg" alt="Business Process Modeling Certification">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Certificate 6 -->
+        <div class="certificate-slide">
+          <div class="certificate-content">
+            <div class="text-content">
+              <h2>SQL</h2>
+              <p>Data manipulation and analysis using SQL for business intelligence.</p>
+              <div class="company-info">
+                Certified by <a href="https://codebasics.io/certificate/CB-50-342372" class="highlight" target="_blank">Codebasics</a>
+              </div>
+            </div>
+            <div class="image-content">
+              <img src="assets\cretificates\SQL - Codebasics.jpg" alt="SQL Certification">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Certificate 7 -->
+        <div class="certificate-slide">
+          <div class="certificate-content">
+            <div class="text-content">
+              <h2>POWER BI</h2>
+              <p>Data visualization and business analytics using Microsoft Power BI.</p>
+              <div class="company-info">
+                Certified by <a href="https://codebasics.io/certificate/CB-49-342372" class="highlight" target="_blank">Codebasics</a>
+              </div>
+            </div>
+            <div class="image-content">
+              <img src="assets\cretificates\POWER BI - Codebasics.jpg" alt="Power BI Certification">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Certificate 8 -->
+        <div class="certificate-slide">
+          <div class="certificate-content">
+            <div class="text-content">
+              <h2>EXCEL</h2>
+              <p>Advanced data analysis and business modeling with Excel.</p>
+              <div class="company-info">
+                Certified by <a href="https://codebasics.io/certificate/CB-51-342372" class="highlight" target="_blank">Codebasics</a>
+              </div>
+            </div>
+            <div class="image-content">
+              <img src="assets\cretificates\EXCEL - Codebasics.jpg" alt="Excel Certification">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Certificate 9 -->
+        <div class="certificate-slide">
+          <div class="certificate-content">
+            <div class="text-content">
+              <h2>Google Data Analytics</h2>
+              <p>Google-certified in data analysis and insights generation.</p>
+              <div class="company-info">
+                Certified by <a href="https://www.coursera.org/account/accomplishments/professional-cert/JPUG55Y3GZAS" class="highlight" target="_blank">Google (via Coursera)</a>
+              </div>
+            </div>
+            <div class="image-content">
+              <img src="assets\cretificates\Google Data Analytics.jpg" alt="Google Data Analytics Certification">
+            </div>
+          </div>
+        </div>
+        
+
+      <!-- Navigation Dots -->
       
     </div>
+    <div class="slider-dots"></div>
   </div>
 </section>
+</main>
+<!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-<script>
-  const toolCounts = {};
-  
-  const projects = document.querySelectorAll('.portfolio-item');
-  projects.forEach(project => {
-    const tools = project.getAttribute('data-tools');
-    if (tools) {
-      const toolList = tools.split(', ');
-      toolList.forEach(tool => {
-        if (toolCounts[tool]) {
-          toolCounts[tool]++;
-        } else {
-          toolCounts[tool] = 1;
-        }
-      });
-    }
-  });
-  
-  function displayToolCounts() {
-    const toolIcons = document.querySelectorAll('.tool-icon');
-    toolIcons.forEach(icon => {
-      const tool = icon.getAttribute('data-tool');
-      const count = toolCounts[tool] || 0;
-      const countElement = icon.querySelector('.tool-count');
-      countElement.textContent = count;
-    });
-  }
-  
-  displayToolCounts();
-  </script>
-<style>
-  .tool-icon {
-    position: relative;
-    display: inline-block;
-    margin: 0 15px;
-  }
-
-  .tool-icon-container {
-    position: relative;
-    display: inline-block;
-  }
-
-  .tool-count {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background-color: #f44336;
-    color: #fff;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    font-size: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-</style>
-
-<!-- Floating Window Modal -->
-<!-- Modal Structure -->
-<!-- JavaScript for Modal Functionality -->
-<script>
-  function openModal(url, event) {
-  if (event) event.preventDefault();
-
-  var modal = document.getElementById("projectModal2");
-  var projectFrame = document.getElementById("projectFrame");
-
-  if (modal && projectFrame) {
-    projectFrame.src = url;
-    modal.classList.add("show");
-  }
-}
-
-function closeModal() {
-  var modal = document.getElementById("projectModal2");
-  var projectFrame = document.getElementById("projectFrame");
-
-  if (modal && projectFrame) {
-    modal.classList.remove("show");
-    setTimeout(() => {
-      projectFrame.src = ""; // Clear iframe source after closing
-    }, 300);
-  }
-}
-
-// Close modal when clicking outside of it
-window.addEventListener("click", function(event) {
-  var modal = document.getElementById("projectModal2");
-  if (modal && event.target === modal) {
-    closeModal();
-  }
-});
-
-// Close modal when pressing ESC key
-document.addEventListener("keydown", function(event) {
-  if (event.key === "Escape") {
-    closeModal();
-  }
-});
-
-</script>
-
-<!-- End Portfolio Section -->
-
-<!-- ======= Certifications Section ======= -->
-<section id="certifications" class="certifications">
-  <div class="container" data-aos="fade-up">
-    <div class="section-title">
-      <h2>Certifications</h2>
-    </div>
-    <div class="row">
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="certificate-item">
-          <img src="certificates/Business Analysis by Microsoft and LinkedIn.jpg" class="img-fluid" alt="Business Analysis by Microsoft and LinkedIn">
-          <a href="https://www.linkedin.com/learning/certificates/b669334513c329a04528bb83f280f79d1892599b57aac79d7dcfb7fd03992d77?trk=share_certificate" class="btn btn-credibility btn-sm mt-2" style="background-color: #d25918; outline: none;" target="_blank">Credentials</a>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="certificate-item">
-          <img src="certificates/Google Data Analytics.jpg" class="img-fluid" alt="Google Data Analytics Certificate">
-          <a href="https://www.coursera.org/account/accomplishments/professional-cert/JPUG55Y3GZAS" class="btn btn-credibility btn-sm mt-2" style="background-color: #d25918; outline: none;" target="_blank">Credentials</a>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="certificate-item">
-          <img src="certificates/Agile Requirements Foundations.jpg" class="img-fluid" alt="Agile Requirements Foundations">
-          <a href="https://www.linkedin.com/learning/certificates/e29c230664b57c86c2795595cd269a65e001ab20943b1042c6b7b4923acba714?trk=share_certificate" class="btn btn-credibility btn-sm mt-2" style="background-color: #d25918; outline: none;" target="_blank">Credentials</a>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="certificate-item">
-          <img src="certificates/EXCEL - Codebasics.jpg" class="img-fluid" alt="Excel Codebasics Certificate">
-          <a href="https://codebasics.io/certificate/CB-51-342372" class="btn btn-credibility btn-sm mt-2" style="background-color: #d25918; outline: none;" target="_blank">Credentials</a>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="certificate-item">
-          <img src="certificates/POWER BI - Codebasics.jpg" class="img-fluid" alt="Power BI Codebasics Certificate">
-          <a href="https://codebasics.io/certificate/CB-49-342372" class="btn btn-credibility btn-sm mt-2" style="background-color: #d25918; outline: none;" target="_blank">Credentials</a>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="certificate-item">
-          <img src="certificates/SQL - Codebasics.jpg" class="img-fluid" alt="SQL Codebasics Certificate">
-          <a href="https://codebasics.io/certificate/CB-50-342372" class="btn btn-credibility btn-sm mt-2" style="background-color: #d25918; outline: none;" target="_blank">Credentials</a>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="certificate-item">
-          <img src="certificates/Business Analysis Foundations Business Process Modeling.jpg" class="img-fluid" alt="Business Analysis Foundations Business Process Modeling">
-          <a href="https://www.linkedin.com/learning/certificates/c252c3fe1ea510b3fc0ee7da077a0baa7caf03a4293b72c91f203f86cb2db45e?trk=share_certificate" class="btn btn-credibility btn-sm mt-2" style="background-color: #d25918; outline: none;" target="_blank">Credentials</a>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="certificate-item">
-          <img src="certificates/Business Analyst and Project Manager Collaboration.jpg" class="img-fluid" alt="Business Analyst and Project Manager Collaboration">
-          <a href="https://www.linkedin.com/learning/certificates/a51f101ed9d447bc6efb624809ba645c502b873afa59e569781d6ba3e63a7650?trk=share_certificate" class="btn btn-credibility btn-sm mt-2" style="background-color: #d25918; outline: none;" target="_blank">Credentials</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-<!-- End Certifications Section -->
-
-<style>
-  .contact .php-email-form .form-control {
-    background-color: #f8f9fa;
-    border: 1px solid #f8f9fa;
-  }
-  .contact .php-email-form .form-control:focus {
-    background-color: #fff;
-    border-color: #d25918;
-    box-shadow: 0 0 0 0.2rem rgba(210, 89, 24, 0.25);
-  }
-</style>
-
-<!-- ======= Contact Section ======= -->
-<section id="contact" class="contact">
-  <div class="container" data-aos="fade-up">
-    <div class="section-title">
-      <h2>Contact</h2>
-    </div>
-
-    <div class="row mb-5">
-      <div class="col-lg-4 mb-3">
-        <div class="info-box p-4 text-center">
-          <i class="bx bx-map fs-1 mb-3 text-secondary"></i>
-          <h3 class="fs-5 mb-3">Address</h3>
-          <p class="mb-0">Bhubaneswar, Odisha, India</p>
-        </div>
-      </div>
-
-      <div class="col-lg-4 mb-3">
-        <div class="info-box p-4 text-center">
-          <i class="bx bx-envelope fs-1 mb-3 text-secondary"></i>
-          <h3 class="fs-5 mb-3">Email</h3>
-          <p class="mb-0">manmath.contact@gmail.com</p>
-        </div>
-      </div>
-
-      <div class="col-lg-4 mb-3">
-        <div class="info-box p-4 text-center">
-          <i class="bx bx-phone-call fs-1 mb-3 text-secondary"></i>
-          <h3 class="fs-5 mb-3">Call</h3>
-          <p class="mb-0">+91 7008548402</p>
-        </div>
-      </div>
-    </div>
-
-    <style>
-      .form-control:focus {
-        border-color: #d25918;
-        box-shadow: 0 0 0 0.2rem rgba(210, 89, 24, 0.25);
-      }
-      .invalid-feedback {
-        display: none;
-        color: #dc3545;
-        font-size: 0.875em;
-      }
-      .was-validated .form-control:invalid ~ .invalid-feedback {
-        display: block;
-      }
-    </style>
-    
-    <div class="row">
-      <div class="col-lg-12">
-        <form id="contactForm" action="https://formspree.io/f/xayrdeeq" method="POST" role="form" class="php-email-form p-4" novalidate>
-          <div class="row">
-            <div class="col-md-6 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Name" required>
-              <div class="invalid-feedback">Please provide your name.</div>
-            </div>
-            <div class="col-md-6 form-group mt-3 mt-md-0">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
-              <div class="invalid-feedback">Please provide a valid email address.</div>
-            </div>
-          </div>
-          <div class="form-group mt-3">
-            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-            <div class="invalid-feedback">Please provide a subject.</div>
-          </div>
-          <div class="form-group mt-3">
-            <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-            <div class="invalid-feedback">Please provide a message.</div>
-          </div>
-          <div class="my-3">
-            <div class="loading"></div>
-            <div class="sent-message"></div>
-          </div>
-          <div class="text-center">
-            <button type="submit" class="btn btn-credibility btn-sm mt-2" style="background-color: #d25918; outline: none;">Send Message</button>
-          </div>
-        </form>
-      </div>
-    </div>
-    
-    <script>
-    (function() {
-      'use strict';
-      window.addEventListener('load', function() {
-        var form = document.getElementById('contactForm');
-        form.addEventListener('submit', function(event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      }, false);
-    })();
-    </script>
-  </div>
-</section>
-<!-- End Contact Section -->
-
-<script>
-  document.getElementById('contactForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevent default form submission
-
-    // Get form data
-    var formData = new FormData(this);
-
-    // Send form data using fetch
-    fetch(this.action, {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => {
-      if (response.ok) {
-        // If the response is ok, display success message
-        document.querySelector('.sent-message').innerHTML = 'Message sent successfully.Thank you';
-        // Clear form fields
-        document.getElementById('name').value = '';
-        document.getElementById('email').value = '';
-        document.getElementById('subject').value = '';
-        document.getElementById('message').value = '';
-      } else {
-        // If the response is not ok, display an error message
-        throw new Error('Failed to send message');
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      // Display error message
-      document.querySelector('.sent-message').innerHTML = 'Message sent successfully.Thank you';
-    });
-  });
-</script>
-
-<!-- ======= Footer ======= -->
-<footer id="footer">
-  <div class="container d-flex justify-content-between align-items-center">
-    <h2>Manmathnath Mahanta</h2>
-    <div class="social-links">
-      <a href="http://www.linkedin.com/in/connect-manmath" class="linkedin"><i class="bi bi-linkedin"></i></a>
-      <a href="https://github.com/Manmath235" class="github"><i class="bi bi-github"></i></a>
-      <a href="https://www.youtube.com/@DiveIntoDataWithManmath" class="youtube"><i class="bx bxl-youtube"></i></a>
-    </div>
-  </div>
-</footer>
-<!-- End Footer -->
-
-
-
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <script>
-    function showModal(titleHtml, contentHtml, buttons) {
-      const modal = document.createElement("div");
-      modal.classList.add("modal");
-      modal.innerHTML = `
-        <div class="modal__inner">
-          <div class="modal__top">
-            <div class="modal__title">${titleHtml}</div>
-            <button class="modal__close" type="button">
-              <span class="material-icons">close</span>
-            </button>
-          </div>
-          <div class="modal__content">${contentHtml}</div>
-          <div class="modal__bottom"></div>
-        </div>
-      `;
-      for (const button of buttons) {
-        const element = document.createElement("button");
-        element.setAttribute("type", "button");
-        element.classList.add("modal__button");
-        element.textContent = button.label;
-        element.addEventListener("click", () => {
-          if (button.triggerClose) {
-            document.body.removeChild(modal);
-          }
-          button.onClick(modal);
-        });
-        modal.querySelector(".modal__bottom").appendChild(element);
-      }
-      modal.querySelector(".modal__close").addEventListener("click", () => {
-        document.body.removeChild(modal);
-      });
-      document.body.appendChild(modal);
-    }
-
-    function openModal(url, event) {
-      event.preventDefault();
-      showModal(
-        "Project Details",
-        `<iframe src="${url}" style="width: 100%; height: 100%; border: none;"></iframe>`,
-        [
-          {
-            label: "Close",
-            onClick: (modal) => {
-              document.body.removeChild(modal);
-            },
-            triggerClose: true
-          }
-        ]
-      );
-    }
-  </script>
-
-
-   <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
+  <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
+  <!-- Main JS File -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
   <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const counters = document.querySelectorAll(".stat-number");
+      const speed = 1;
   
+      counters.forEach(counter => {
+        const updateCount = () => {
+          const target = +counter.getAttribute("data-target");
+          const count = +counter.innerText;
+          const increment = target / speed;
+  
+          if (count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(updateCount, 200);
+          } else {
+            counter.innerText = target + "+";
+          }
+        };
+  
+        updateCount();
+      });
+    });
+  </script>
+   <!-- Function to check the age -->
+   <script>
+    function calculateAge(birthDate) {
+      const today = new Date();
+      const birthDateObj = new Date(birthDate);
+      let age = today.getFullYear() - birthDateObj.getFullYear();
+      const monthDiff = today.getMonth() - birthDateObj.getMonth();
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDateObj.getDate())) {
+        age--;
+      }
+      return age;
+    }
+  
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("age").innerText = calculateAge("1998-12-23") + " Years";
+    });
+  </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const slides = document.querySelectorAll('.certificate-slide');
+  const dots = document.querySelectorAll('.dot');
+  const nextBtn = document.querySelector('.next-arrow');
+  const prevBtn = document.querySelector('.prev-arrow');
+  let currentSlide = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      if (i === index) {
+        slide.classList.add('active');
+        slide.classList.remove('prev');
+      } else if (i < index) {
+        slide.classList.add('prev');
+        slide.classList.remove('active');
+      } else {
+        slide.classList.remove('active', 'prev');
+      }
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  nextBtn.addEventListener('click', nextSlide);
+  prevBtn.addEventListener('click', prevSlide);
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      currentSlide = index;
+      showSlide(currentSlide);
+    });
+  });
+});
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const slides = document.querySelectorAll(".certificate-slide");
+      const dotsContainer = document.querySelector(".slider-dots");
+  
+      // Generate dots based on slides
+      slides.forEach((_, index) => {
+        const dot = document.createElement("button");
+        dot.classList.add("dot");
+        if (index === 0) dot.classList.add("active"); // First dot active by default
+        dot.addEventListener("click", () => changeSlide(index));
+        dotsContainer.appendChild(dot);
+      });
+  
+      const dots = document.querySelectorAll(".dot");
+      const prevArrow = document.querySelector(".prev-arrow");
+      const nextArrow = document.querySelector(".next-arrow");
+  
+      let currentIndex = 0;
+  
+      function changeSlide(index) {
+        slides[currentIndex].classList.remove("active");
+        dots[currentIndex].classList.remove("active");
+        currentIndex = index;
+        slides[currentIndex].classList.add("active");
+        dots[currentIndex].classList.add("active");
+      }
+  
+      prevArrow.addEventListener("click", () => {
+        const newIndex = (currentIndex - 1 + slides.length) % slides.length;
+        changeSlide(newIndex);
+      });
+  
+      nextArrow.addEventListener("click", () => {
+        const newIndex = (currentIndex + 1) % slides.length;
+        changeSlide(newIndex);
+      });
+    });
+  </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const loader = document.getElementById("loader");
+  
+    // Function to show the loader
+    function showLoader() {
+      loader.style.display = "flex";
+    }
+  
+    // Function to hide the loader
+    function hideLoader() {
+      loader.style.display = "none";
+    }
+  
+    // Example: Show loader when the page starts loading
+    showLoader();
+  
+    // Example: Hide loader when all data/content is loaded
+    window.addEventListener("load", function () {
+      hideLoader();
+    });
+  
+    // Example: Hide loader when embedded content (iframe) is loaded
+    const iframe = document.querySelector("iframe");
+    if (iframe) {
+      iframe.addEventListener("load", function () {
+        hideLoader();
+      });
+    }
+  });
+   </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const previewLinks = document.querySelectorAll(".preview-link");
+    const modalImage = document.getElementById("portfolioImage");
+    const modalTitle = document.getElementById("portfolioTitle");
+    const modalDescription = document.getElementById("portfolioDescription");
+
+    previewLinks.forEach(link => {
+      link.addEventListener("click", function(event) {
+        event.preventDefault();
+        modalImage.src = this.getAttribute("data-image");
+        modalTitle.textContent = this.getAttribute("data-title");
+        modalDescription.textContent = this.getAttribute("data-description");
+      });
+    });
+  });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const loader = document.getElementById("loader");
+  const portfolioModal = document.getElementById("portfolioModal");
+  const dashboardIframe = document.getElementById("dashboardIframe");
+
+  // Function to show the loader
+  function showLoader() {
+    loader.style.display = "flex";
+  }
+
+  // Function to hide the loader
+  function hideLoader() {
+    loader.style.display = "none";
+  }
+
+  // Show loader when modal is opened
+  portfolioModal.addEventListener("show.bs.modal", function () {
+    showLoader();
+  });
+
+  // Hide loader when iframe content is loaded
+  if (dashboardIframe) {
+    dashboardIframe.addEventListener("load", function () {
+      hideLoader();
+    });
+  }
+
+  // Hide loader if there's no iframe
+  portfolioModal.addEventListener("shown.bs.modal", function () {
+    if (!dashboardIframe || !dashboardIframe.src) {
+      hideLoader();
+    }
+  });
+});
+
+</script>
+
 </body>
 
 </html>
