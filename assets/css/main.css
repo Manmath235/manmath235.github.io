@@ -7,21 +7,21 @@
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #0a0f14; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #0f2943; /* Color for headings, subheadings and title throughout the website */
+  --background-color: #1C1C1C; /* Background color for the entire website, including individual sections */
+  --default-color: #ffffff; /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #F5F5F5; /* Color for headings, subheadings and title throughout the website */
   --accent-color: #e87532; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --surface-color: #000000; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #0a0f14;  /* The default color of the main navmenu links */
+  --nav-color: #ffffff;  /* The default color of the main navmenu links */
   --nav-hover-color: #e87532; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
+  --nav-mobile-background-color: #1C1C1C; /* Used as the background color for mobile navigation menu */
   --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #0a0f14; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-color: #ffffff; /* Used for navigation links of the dropdown items in the navigation menu. */
   --nav-dropdown-hover-color: #e87532; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 /* Loader Styles */
@@ -82,16 +82,16 @@
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #faf9fb;
-  --surface-color: #ffffff;
+  --background-color: #1C1C1C;
+  --surface-color: #1C1C1C;
 }
 
 .dark-background {
   --background-color: #060606;
-  --default-color: #ffffff;
-  --heading-color: #ffffff;
+  --default-color: #1C1C1C;
+  --heading-color: #1C1C1C;
   --surface-color: #252525;
-  --contrast-color: #ffffff;
+  --contrast-color: #1C1C1C;
 }
 
 /* Smooth scroll */
@@ -475,7 +475,7 @@ h6 {
   }
 
   .mobile-nav-active .mobile-nav-toggle {
-    color: #fff;
+    color: #ffffff;
     position: absolute;
     font-size: 32px;
     top: 15px;
@@ -762,7 +762,7 @@ section,
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(224, 224, 224, 0.4); /* Light faded overlay to show the image better */
+  background: #1C1C1C; /* Light faded overlay to show the image better */
   z-index: 1;
 }
 
@@ -786,7 +786,7 @@ section,
 
 .stat-item {
   text-align: center;
-  color: #fff;
+  color: #1C1C1C;
 }
 
 .stat-number {
@@ -795,7 +795,7 @@ section,
 }
 
 .text-shadow {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
 }
 @import url('https://fonts.googleapis.com/css2?family=Apricots&display=swap');
 
@@ -976,7 +976,7 @@ section,
 }
 
 .about .about-image img {
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 30px rgba(253, 253, 253, 0.1);
 }
 
 .about .about-content {
@@ -1015,7 +1015,7 @@ section,
   padding: 2rem;
   background-color: var(--surface-color);
   border-radius: 1rem;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
 }
 
 .about .personal-info .info-item {
@@ -1062,7 +1062,7 @@ section,
   background-color: var(--surface-color);
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
 }
 
 .skills .skill-box h3 {
@@ -1404,7 +1404,7 @@ section,
 /* Technical Skills Section */
 .technical-skills {
   padding: 40px 0;
-  background-color: #f8f9fa;
+  background-color: #1C1C1C;
 }
 
 /* Container for the icons */
@@ -1623,7 +1623,7 @@ section,
 /* Certificates Section */
 .certificates-section {
   padding: 80px 0;
-  background-color: #ffffff;
+  background-color: #1C1C1C;
   position: relative;
   overflow: hidden;
 }
@@ -1692,7 +1692,7 @@ section,
 .text-content h2 {
   font-size: 2em;
   margin-bottom: 20px;
-  color: #333;
+  color: #dcdcdc;
   font-weight: bold;
 }
 
@@ -2120,7 +2120,7 @@ section,
 /* About Section */
 .about {
   padding: 80px 0;
-  background-color: #f8f9fa;
+  background-color: #1C1C1C;
 }
 
 /* Section Title */
@@ -2131,16 +2131,14 @@ section,
   margin-bottom: 15px;
 }
 
-.title-shape svg {
-  color: #4e73df;
-}
+
 
 /* Content Styling */
 .about-content {
-  background: white;
+  background: 1C1C1C;
   border-radius: 8px;
   padding: 40px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
   max-width: 900px;
   margin: 0 auto;
 }
@@ -2151,7 +2149,7 @@ section,
 }
 
 .subtitle {
-  color: #4e73df;
+  color: #0f395e;
   font-weight: 600;
   letter-spacing: 1px;
   display: block;
@@ -2198,20 +2196,20 @@ section,
 }
 
 .info-item:hover {
-  background: #f8f9fa;
+  background: #1C1C1C;
   transform: translateX(5px);
 }
 
 .label {
   display: block;
-  color: #6c757d;
+  color: #b8c4ce;
   font-size: 0.9rem;
   margin-bottom: 5px;
 }
 
 .value {
   display: block;
-  color: #343a40;
+  color: #cfd3d8;
   font-weight: 500;
 }
 
@@ -2263,8 +2261,8 @@ section,
 
 .internship-label {
   font-size: 0.8rem;
-  color: #6c757d;
-  background: #f8f9fa;
+  color: #e87532;
+  background: #424242;
   padding: 2px 8px;
   border-radius: 4px;
   font-weight: 500;
