@@ -181,84 +181,52 @@ h6 {
   }
 }
 
-/*--------------------------------------------------------------
-# Global Header
---------------------------------------------------------------*/
-.header {
-  color: var(--default-color);
-  background-color: var(--background-color);
-  padding: 20px 0;
-  transition: all 0.5s;
-  z-index: 997;
+/* Bottom Navigation - Pill Style Centered */
+.bottom-nav {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
 }
 
-.header .header-container {
-  background: var(--surface-color);
-  border-radius: 50px;
-  padding: 5px 25px;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+.bottom-nav-container {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  padding: 12px 28px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
-.header .logo {
-  line-height: 1;
-}
-
-.header .logo img {
-  max-height: 36px;
-  margin-right: 8px;
-}
-
-.header .logo h1 {
-  font-size: 24px;
-  margin: 0;
-  padding-left: 5px;
+.bottom-nav-container a {
+  color: #fff;
   font-weight: 500;
-  color: var(--heading-color);
+  font-size: 15px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.header .header-social-links {
-  padding-right: 15px;
+.bottom-nav-container a:hover,
+.bottom-nav-container a.active {
+  color: #f39c12; /* Accent color for active/hover */
 }
 
-.header .header-social-links a {
-  color: color-mix(in srgb, var(--default-color), transparent 40%);
-  padding-left: 6px;
-  display: inline-block;
-  transition: 0.3s;
+.bottom-nav-container i {
   font-size: 16px;
 }
 
-.header .header-social-links a:hover {
-  color: var(--accent-color);
+/* Optional: prevent overlap with bottom nav */
+body {
+  padding-bottom: 100px;
 }
 
-.header .header-social-links a i {
-  line-height: 0px;
-}
-
-@media (max-width: 1200px) {
-  .header {
-    padding-top: 10px;
-  }
-
-  .header .header-container {
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 10px 5px 10px 15px;
-  }
-
-  .header .logo {
-    order: 1;
-  }
-
-  .header .header-social-links {
-    order: 2;
-  }
-
-  .header .navmenu {
-    order: 3;
-  }
-}
 
 /*--------------------------------------------------------------
 # Navigation Menu
@@ -542,39 +510,66 @@ h6 {
   text-align: center;
 }
 
-/*--------------------------------------------------------------
-# Scroll Top Button
---------------------------------------------------------------*/
+/* Scroll-to-Top Button with Scroll Fill Animation */
 .scroll-top {
   position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: transparent;
+  z-index: 9999;
   visibility: hidden;
   opacity: 0;
-  right: 15px;
-  bottom: -15px;
-  z-index: 99999;
-  background-color: var(--accent-color);
-  width: 44px;
-  height: 44px;
-  border-radius: 50px;
-  transition: all 0.4s;
-}
-
-.scroll-top i {
-  font-size: 24px;
-  color: var(--contrast-color);
-  line-height: 0;
-}
-
-.scroll-top:hover {
-  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
-  color: var(--contrast-color);
+  transition: opacity 0.3s, transform 0.3s;
+  cursor: pointer;
 }
 
 .scroll-top.active {
   visibility: visible;
   opacity: 1;
-  bottom: 15px;
+  transform: scale(1);
 }
+
+.scroll-top svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+}
+
+.scroll-top .progress-circle circle {
+  fill: none;
+  stroke-width: 4;
+  cx: 24;
+  cy: 24;
+  r: 20;
+}
+
+.scroll-top .progress-circle .bg {
+  stroke: #ddd;
+  opacity: 0.2;
+}
+
+.scroll-top .progress-circle .progress {
+  stroke: var(--accent-color);
+  stroke-dasharray: 126; /* 2πr = 2π20 ≈ 126 */
+  stroke-dashoffset: 126;
+  transition: stroke-dashoffset 0.2s ease-out;
+}
+
+.scroll-top i {
+  font-size: 24px;
+  color: var(--contrast-color);
+  z-index: 1;
+  position: relative;
+}
+
+.scroll-top:hover .progress {
+  stroke: color-mix(in srgb, var(--accent-color), white 20%);
+}
+
 
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
@@ -2157,7 +2152,7 @@ section,
 }
 
 .professional-header h2 {
-  color: #343a40;
+  color: #ffffff;
   font-size: 1.8rem;
   margin: 0;
 }
