@@ -7,13 +7,29 @@
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
-  --background-color: #1C1C1C; /* Background color for the entire website, including individual sections */
-  --default-color: #ffffff; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #F5F5F5; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #e87532; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #000000; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --background-solid: #1C1C1C; /* Fallback solid background */
+  --background-color: linear-gradient(
+    135deg,
+    #0f0f0f 0%,
+    #1a1a1f 30%,
+    #1c1c22 60%,
+    #262626 100%
+  ); /* Premium dark gradient */
+  
+  --default-color: #E0E0E0; /* Light grey text */
+  --heading-color: #F5F5F5; /* Bright for headings */
+  --accent-color: #e87532; /* Warm premium accent */
+  --surface-color: #000000; /* Deep black surfaces */
+  --contrast-color: #FFFFFF; /* For high contrast areas */
 }
+
+body {
+  background: var(--background-color, var(--background-solid));
+  color: var(--default-color);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
@@ -82,17 +98,39 @@
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #1C1C1C;
+  --background-solid: #1C1C1C; /* Fallback solid background */
+  --background-color: linear-gradient(
+    135deg,
+    #0f0f0f 0%,
+    #1a1a1f 30%,
+    #1c1c22 60%,
+    #262626 100%
+  );
   --surface-color: #1C1C1C;
 }
 
 .dark-background {
-  --background-color: #060606;
-  --default-color: #1C1C1C;
-  --heading-color: #1C1C1C;
-  --surface-color: #252525;
-  --contrast-color: #1C1C1C;
+  --background-color: linear-gradient(
+    135deg,
+    #0f0f0f 0%,
+    #1a1a1f 30%,
+    #1c1c22 60%,
+    #262626 100%
+  ); /* Premium dark gradient background */
+
+  --default-color: #E0E0E0; /* Light text for dark background */
+  --heading-color: #F5F5F5; /* Brighter for emphasis */
+  
+  --surface-color: linear-gradient(
+    145deg,
+    #1e1e1e 0%,
+    #2a2a2a 50%,
+    #252525 100%
+  ); /* Gradient surface for cards/boxes */
+
+  --contrast-color: #FFFFFF; /* High contrast for readable text/icons */
 }
+
 
 /* Smooth scroll */
 :root {
@@ -757,9 +795,9 @@ section,
   left: 0;
   width: 100%;
   height: 100%;
-  background: #1C1C1C; /* Light faded overlay to show the image better */
-  z-index: 1;
+  
 }
+
 
 #hero .container {
   position: relative;
@@ -1054,11 +1092,25 @@ section,
 # Skills Section
 --------------------------------------------------------------*/
 .skills .skill-box {
-  background-color: var(--surface-color);
+  background: rgba(255, 255, 255, 0.1); /* translucent glass */
+  backdrop-filter: blur(8px); /* frosted glass blur */
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 12px;
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  box-shadow: 
+    0 4px 30px rgba(0, 0, 0, 0.5), /* subtle dark shadow */
+    inset 0 0 10px rgba(255, 255, 255, 0.3); /* inner glow highlight */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* faint crystal border */
+  color: var(--default-color);
+  transition: box-shadow 0.3s ease;
 }
+
+.skills .skill-box:hover {
+  box-shadow: 
+    0 6px 40px rgba(255, 255, 255, 0.4), /* bright outer glow on hover */
+    inset 0 0 20px rgba(255, 255, 255, 0.6); /* stronger inner glow */
+}
+
 
 .skills .skill-box h3 {
   font-size: 1.2rem;
@@ -1396,11 +1448,6 @@ section,
 /*--------------------------------------------------------------
 # Technical Skills Section
 --------------------------------------------------------------*/
-/* Technical Skills Section */
-.technical-skills {
-  padding: 40px 0;
-  background-color: #1C1C1C;
-}
 
 /* Container for the icons */
 .skills-row {
@@ -1617,7 +1664,7 @@ section,
 
 /* Certificates Section */
 .certificates-section {
-  padding: 80px 0;
+  padding: 18px 0;
   background-color: #1C1C1C;
   position: relative;
   overflow: hidden;
@@ -2112,11 +2159,8 @@ section,
 .email-link:hover:after {
   width: 100%;
 }
-/* About Section */
-.about {
-  padding: 80px 0;
-  background-color: #1C1C1C;
-}
+
+
 
 /* Section Title */
 .section-title h2 {
