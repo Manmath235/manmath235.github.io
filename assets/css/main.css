@@ -1276,6 +1276,10 @@ section,
     padding-left: 2.5rem;
   }
 }
+.highlight-orange {
+    color: #E87532;
+    font-weight: bold;
+  }
 
 /*--------------------------------------------------------------
 # Portfolio Section
@@ -2230,14 +2234,16 @@ section,
 
 .info-item {
   padding: 15px;
-  border-left: 3px solid #4e73df;
+  border-left: 3px solid #ccc; /* Neutral light grey */
   transition: all 0.3s ease;
 }
 
 .info-item:hover {
   background: #1C1C1C;
   transform: translateX(5px);
+  border-left-color: #E87532; /* Accent only on hover */
 }
+
 
 .label {
   display: block;
@@ -2253,15 +2259,16 @@ section,
 }
 
 .value a {
-  color: #4e73df;
+  color: #E87532;
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .value a:hover {
-  color: #224abe;
+  color: #bc8c71; 
   text-decoration: underline;
 }
+
 
 /* Signature */
 .signature-block {
