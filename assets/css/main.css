@@ -235,10 +235,22 @@ h6 {
   display: flex;
   gap: 30px;
   align-items: center;
-  padding: 12px 28px;
+  padding: 16px 32px; /* Increased padding */
   border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  overflow-x: auto;
+  white-space: nowrap;
 }
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .bottom-nav-container {
+    padding: 12px 20px; /* Adjusted padding for mobile */
+    gap: 16px;
+    border-radius: 16px;
+  }
+}
+
 
 .bottom-nav-container a {
   color: #fff;
