@@ -18,7 +18,7 @@
   
   --default-color: #E0E0E0; /* Light grey text */
   --heading-color: #F5F5F5; /* Bright for headings */
-  --accent-color: #e87532; /* Warm premium accent */
+  --accent-color: #FE7F2D; /* Warm premium accent */
   --surface-color: #000000; /* Deep black surfaces */
   --contrast-color: #FFFFFF; /* For high contrast areas */
 }
@@ -34,11 +34,11 @@ body {
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
   --nav-color: #ffffff;  /* The default color of the main navmenu links */
-  --nav-hover-color: #e87532; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-hover-color: #FE7F2D; /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #1C1C1C; /* Used as the background color for mobile navigation menu */
   --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
   --nav-dropdown-color: #ffffff; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #e87532; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-dropdown-hover-color: #FE7F2D; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 /* Loader Styles */
 .loader {
@@ -1277,7 +1277,7 @@ section,
   }
 }
 .highlight-orange {
-    color: #E87532;
+    color: #FE7F2D;
     font-weight: bold;
   }
 
@@ -1324,13 +1324,13 @@ section,
   background-color: var(--surface-color);
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 5px 25px #0000000d;
   transition: all 0.3s ease-in-out;
 }
 
 .portfolio .portfolio-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 8px 35px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 35px #0000001a;
 }
 
 .portfolio .portfolio-card:hover .portfolio-overlay {
@@ -1361,7 +1361,7 @@ section,
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  background: linear-gradient(to top, #000000b3, transparent);
   opacity: 0;
   visibility: hidden;
   transition: all 0.4s ease-in-out;
@@ -2241,7 +2241,7 @@ section,
 .info-item:hover {
   background: #1C1C1C;
   transform: translateX(5px);
-  border-left-color: #E87532; /* Accent only on hover */
+  border-left-color: #FE7F2D; /* Accent only on hover */
 }
 
 
@@ -2259,7 +2259,7 @@ section,
 }
 
 .value a {
-  color: #E87532;
+  color: #FE7F2D;
   text-decoration: none;
   transition: all 0.3s ease;
 }
@@ -2307,7 +2307,7 @@ section,
 
 .internship-label {
   font-size: 0.8rem;
-  color: #e87532;
+  color: #FE7F2D;
   background: #424242;
   padding: 2px 8px;
   border-radius: 4px;
