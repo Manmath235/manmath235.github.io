@@ -1,1313 +1,899 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Manmath | BA</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-
-  <!-- Favicons -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manmath Mahanta — Business Analyst</title>
+  <meta name="description" content="Business Analyst with 2+ years of experience bridging business needs and technical delivery.">
   <link href="assets/img/M_logo.png" rel="icon">
   <link href="assets/img/M_logo.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Questrial:wght@400&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-
-
-  <!-- Main CSS File -->
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
   <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+    :root{--orange:#E87532;--orange-dim:rgba(232,117,50,0.12);--orange-mid:rgba(232,117,50,0.4);--bg:#0a0a0c;--bg-2:#0f1014;--bg-3:#14161c;--border:rgba(255,255,255,0.07);--text:#e8e8ec;--muted:rgba(232,232,236,0.45);--display:'DM Serif Display',Georgia,serif;--body:'Outfit',sans-serif;--r:18px;--ease:cubic-bezier(0.23,1,0.32,1)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:15px;line-height:1.7;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.35}
+    a{color:var(--orange);text-decoration:none;transition:color .3s}a:hover{color:#fff}
+    h1,h2,h3,h4{font-family:var(--display);line-height:1.2}
+    img{max-width:100%;display:block}
+    section{padding:96px 0}
+    .section-title{text-align:center;margin-bottom:3.5rem}
+    .section-title h2{font-size:clamp(2rem,5vw,3.2rem);color:#fff;letter-spacing:-.02em}
+    .title-line{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:.5rem}
+    .title-line span{display:block;height:1px;width:40px;background:var(--orange);opacity:.5}
+    .title-dot{width:6px;height:6px;border-radius:50%;background:var(--orange)}
+    .section-light{background:var(--bg-2)}.section-dark{background:var(--bg)}.section-mid{background:var(--bg-3)}
 
-  <!-- Loader -->
-  <!-- Water Wave Loader with Logo -->
- <div id="loader" class="loader">
-  <div class="logo-container">
-    <img src="assets/img/M_logo.png" alt="Logo" class="loader-logo">
-  </div>
-  <div class="wave-container">
-    <div class="wave wave1"></div>
-    <div class="wave wave2"></div>
-  </div>
-  <div class="loading-text">Loading...</div>
- </div>
+    /* LOADER */
+    #site-loader{position:fixed;inset:0;background:var(--bg);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transition:opacity .6s,visibility .6s}
+    #site-loader.hidden{opacity:0;visibility:hidden}
+    .loader-logo-wrap{width:80px;height:80px}
+    .loader-logo-wrap img{width:100%;height:100%;object-fit:contain;animation:lPulse 1.4s ease-in-out infinite;filter:drop-shadow(0 0 18px var(--orange))}
+    @keyframes lPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.08);opacity:.8}}
+    .loader-bar-wrap{width:180px;height:2px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
+    .loader-bar{height:100%;background:linear-gradient(90deg,var(--orange),#f4a261);border-radius:2px;animation:lFill 1.6s ease-out forwards}
+    @keyframes lFill{0%{width:0}100%{width:100%}}
+    .loader-text{font-size:.7rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);animation:lFade 1.4s ease-in-out infinite}
+    @keyframes lFade{0%,100%{opacity:.4}50%{opacity:1}}
+
+    /* BOTTOM NAV */
+    .bottom-nav{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:1000}
+    .bottom-nav-container{display:flex;align-items:center;gap:4px;background:rgba(17,19,24,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:8px 16px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+    .bottom-nav-container a{font-size:.78rem;font-weight:500;color:var(--muted);padding:7px 14px;border-radius:40px;transition:all .3s;white-space:nowrap;display:flex;align-items:center;gap:6px}
+    .bottom-nav-container a:hover,.bottom-nav-container a.active{color:#fff;background:rgba(232,117,50,.15)}
+    .bottom-nav-container a.cw{color:var(--orange);border:1px solid rgba(232,117,50,.3);margin-left:4px}
+    .bottom-nav-container a.cw:hover{background:var(--orange);color:#fff;border-color:var(--orange)}
+
+    /* ══════════════════════════════════
+       HERO — fixed spacing & alignment
+    ══════════════════════════════════ */
+    .hero-section{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;position:relative;overflow:hidden;padding-bottom:90px}
+    @media(max-width:900px){.hero-section{grid-template-columns:1fr}.hero-right{display:none}}
+
+    /* ambient glow right side */
+    .hero-section::before{content:'';position:absolute;top:0;right:0;width:55vw;height:100vh;background:radial-gradient(ellipse at 70% 40%,rgba(232,117,50,.09) 0%,transparent 60%);pointer-events:none}
+
+    /* faint grid */
+    .hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 100% 100% at 50% 50%,black 20%,transparent 100%)}
+
+    /* left content — NO top padding, grid centres vertically */
+    .hero-left{position:relative;z-index:2;padding:0 48px 0 80px;display:flex;flex-direction:column;align-items:flex-start}
+    @media(max-width:1280px){.hero-left{padding:0 36px 0 56px}}
+    @media(max-width:1100px){.hero-left{padding:0 28px 0 40px}}
+    @media(max-width:900px){.hero-left{padding:60px 24px 40px}}
+
+    .hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;animation:hIn .8s var(--ease) both}
+    .hero-eyebrow-line{width:28px;height:1px;background:linear-gradient(90deg,var(--orange),transparent);flex-shrink:0}
+    .hero-eyebrow-text{font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--orange)}
+
+    .hero-h1{font-family:var(--display);font-size:clamp(2.4rem,3.8vw,4.4rem);color:#fff;letter-spacing:-.03em;line-height:1.06;margin-bottom:1.4rem;animation:hIn .9s .12s var(--ease) both}
+    .hero-h1 em{color:var(--orange);font-style:italic}
+    .ua{display:inline-block;position:relative}
+    .ua::after{content:'';position:absolute;bottom:-3px;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--orange),transparent)}
+
+    .hero-lead{font-size:clamp(.9rem,1.3vw,1.02rem);color:var(--muted);max-width:420px;margin-bottom:2.2rem;line-height:1.78;animation:hIn .9s .24s var(--ease) both}
+
+    .hero-cta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:2.8rem;animation:hIn .9s .36s var(--ease) both}
+
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;font-family:var(--body);font-weight:600;font-size:.88rem;padding:13px 28px;border-radius:50px;border:none;cursor:pointer;transition:all .3s var(--ease);box-shadow:0 4px 24px rgba(232,117,50,.35)}
+    .btn-primary:hover{background:#d4662a;color:#fff;transform:translateY(-2px);box-shadow:0 8px 32px rgba(232,117,50,.5)}
+    .btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text);font-family:var(--body);font-weight:500;font-size:.88rem;padding:12px 26px;border-radius:50px;border:1px solid rgba(255,255,255,.15);cursor:pointer;transition:all .3s}
+    .btn-outline:hover{border-color:rgba(232,117,50,.5);color:var(--orange);transform:translateY(-2px)}
+
+    /* compact stats strip */
+    .hero-stats{display:flex;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.02);animation:hIn .9s .48s var(--ease) both;max-width:340px}
+    .hs-item{flex:1;padding:15px 18px;position:relative;transition:background .3s}
+    .hs-item:hover{background:var(--orange-dim)}
+    .hs-item+.hs-item::before{content:'';position:absolute;left:0;top:18%;bottom:18%;width:1px;background:var(--border)}
+    .hs-num{font-family:var(--display);font-size:1.75rem;color:var(--orange);line-height:1}
+    .hs-lbl{font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+
+    /* scroll hint */
+    .scroll-hint{position:absolute;bottom:100px;left:80px;z-index:2;display:flex;align-items:center;gap:10px;animation:fadeIn 1s 1.2s both}
+    @media(max-width:1280px){.scroll-hint{left:56px}}
+    @media(max-width:900px){.scroll-hint{display:none}}
+    .sh-line{width:36px;height:1px;background:linear-gradient(90deg,var(--orange),transparent)}
+    .scroll-hint span{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+    /* right visual */
+    .hero-right{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;z-index:2;overflow:hidden}
+    .hero-canvas{position:relative;width:400px;height:500px}
+
+    .hero-orbit{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:340px;height:340px;border-radius:50%;border:1px dashed rgba(232,117,50,.13);animation:spin 24s linear infinite;pointer-events:none}
+    .hero-orbit::before{content:'';position:absolute;top:-5px;left:50%;transform:translateX(-50%);width:10px;height:10px;border-radius:50%;background:var(--orange);box-shadow:0 0 10px var(--orange)}
+    .hero-orbit2{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:470px;height:470px;border-radius:50%;border:1px dashed rgba(255,255,255,.04);animation:spinR 34s linear infinite;pointer-events:none}
+    @keyframes spin{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+    @keyframes spinR{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(-360deg)}}
+
+    .hcard{position:absolute;background:rgba(20,22,28,.92);border:1px solid var(--border);border-radius:16px;backdrop-filter:blur(12px);padding:18px 20px;transition:transform .3s,border-color .3s}
+    .hcard:hover{border-color:rgba(232,117,50,.3)}
+    .hcard-main{top:50%;left:50%;transform:translate(-50%,-50%);width:230px;text-align:center;border-color:rgba(232,117,50,.22);box-shadow:0 0 60px rgba(232,117,50,.09);animation:floatA 6s ease-in-out infinite}
+    .hcard-main:hover{transform:translate(-50%,calc(-50% - 4px))!important}
+    @keyframes floatA{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-50%,calc(-50% - 10px))}}
+    .hcard-tl{top:24px;left:-10px;width:148px;animation:floatB 7s ease-in-out infinite}
+    .hcard-tr{top:32px;right:-4px;width:128px;animation:floatB 8s ease-in-out 1s infinite}
+    .hcard-br{bottom:48px;right:-8px;width:154px;animation:floatC 5.5s ease-in-out infinite}
+    @keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    @keyframes floatC{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+
+    .hcard-icon{width:38px;height:38px;border-radius:10px;background:var(--orange-dim);border:1px solid rgba(232,117,50,.18);display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:1rem;margin:0 auto 10px}
+    .hcard-sm-icon{width:26px;height:26px;border-radius:7px;background:var(--orange-dim);display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:.75rem;margin-bottom:8px}
+    .hcard-big{font-family:var(--display);font-size:2.2rem;color:var(--orange);line-height:1}
+    .hcard-title{font-size:.76rem;font-weight:700;color:#fff;margin-bottom:2px}
+    .hcard-sub{font-size:.67rem;color:var(--muted)}
+    .hcard-div{height:1px;background:var(--border);margin:10px 0}
+    .hcard-tags{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+    .hcard-tag{font-size:.62rem;border-radius:20px;padding:3px 9px}
+    .hcard-tag.a{background:var(--orange-dim);border:1px solid rgba(232,117,50,.18);color:var(--orange)}
+    .hcard-tag.p{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--muted)}
+
+    @keyframes hIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+    /* ══════════════════════════════════
+       ABOUT
+    ══════════════════════════════════ */
+    .about-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+    @media(max-width:768px){.about-layout{grid-template-columns:1fr;gap:2.5rem}}
+
+    .about-kicker{display:inline-flex;align-items:center;gap:8px;font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:.9rem}
+    .ak-dot{width:6px;height:6px;border-radius:50%;background:var(--orange)}
+    .about-h{font-size:clamp(1.8rem,3.5vw,2.8rem);color:#fff;letter-spacing:-.02em;margin-bottom:1.4rem;line-height:1.15}
+    .about-h em{color:var(--orange);font-style:italic}
+    .about-body{color:var(--muted);font-size:.93rem;line-height:1.8;margin-bottom:2rem}
+
+    .info-pills{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:2rem}
+    @media(max-width:480px){.info-pills{grid-template-columns:1fr}}
+    .ip{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:12px;padding:14px 16px;transition:border-color .3s,background .3s}
+    .ip:hover{border-color:rgba(232,117,50,.3);background:var(--orange-dim)}
+    .ip .lbl{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:3px}
+    .ip .val{font-size:.84rem;color:var(--text);font-weight:500}
+    .ip .val a{color:var(--text)}.ip .val a:hover{color:var(--orange)}
+    .about-cta{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+
+    .stats-stack{display:flex;flex-direction:column;gap:1rem}
+    .mini-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .stat-mini{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--r);padding:24px 20px;text-align:center;transition:border-color .3s,transform .4s var(--ease)}
+    .stat-mini:hover{border-color:rgba(232,117,50,.35);transform:translateY(-4px)}
+    .mn{font-family:var(--display);font-size:2.2rem;color:var(--orange);line-height:1;margin-bottom:4px}
+    .ml{font-size:.7rem;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+    .stat-big{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--r);padding:28px 26px;position:relative;overflow:hidden;transition:border-color .3s,transform .4s var(--ease)}
+    .stat-big:hover{border-color:rgba(232,117,50,.35);transform:translateY(-4px)}
+    .stat-big::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--orange),transparent);opacity:0;transition:opacity .4s}
+    .stat-big:hover::before{opacity:1}
+    .sbn{font-family:var(--display);font-size:3.2rem;color:var(--orange);line-height:1;margin-bottom:6px}
+    .sbl{font-size:.84rem;color:var(--muted);font-weight:500}
+    .skills-strip{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--r);padding:20px 22px}
+    .ss-title{font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+    .tags{display:flex;flex-wrap:wrap;gap:8px}
+    .tag{font-size:.73rem;font-weight:600;color:var(--muted);background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:20px;padding:5px 12px;transition:color .3s,border-color .3s,background .3s;cursor:default}
+    .tag:hover{color:var(--orange);border-color:rgba(232,117,50,.4);background:var(--orange-dim)}
+
+    /* ══════════════════════════════════
+       SKILLS
+    ══════════════════════════════════ */
+    .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+    @media(max-width:768px){.skills-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:480px){.skills-grid{grid-template-columns:1fr}}
+    .skill-card{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--r);padding:24px 22px;transition:border-color .3s,transform .4s var(--ease);position:relative;overflow:hidden}
+    .skill-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--orange),#f4a261);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+    .skill-card:hover{border-color:rgba(232,117,50,.35);transform:translateY(-4px)}
+    .skill-card:hover::before{transform:scaleX(1)}
+    .skill-card h3{font-family:var(--body);font-size:.95rem;font-weight:700;color:#fff;margin-bottom:4px}
+    .skill-card p{font-size:.8rem;color:var(--muted);margin-bottom:14px}
+    .skill-pct{font-size:.72rem;font-weight:700;color:var(--orange);text-align:right;margin-bottom:4px}
+    .skill-bar-bg{height:3px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
+    .skill-bar-fill{height:100%;background:linear-gradient(90deg,var(--orange),#f4a261);border-radius:3px;width:0;transition:width 1.2s var(--ease)}
+
+    /* ══════════════════════════════════
+       TIMELINE
+    ══════════════════════════════════ */
+    .timeline{position:relative;max-width:900px;margin:0 auto}
+    .timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,var(--orange) 20%,var(--orange) 80%,transparent);transform:translateX(-50%)}
+    @media(max-width:768px){.timeline::before{left:20px}}
+    .tl-item{display:grid;grid-template-columns:1fr 40px 1fr;gap:0 1.5rem;margin-bottom:3rem}
+    @media(max-width:768px){.tl-item{grid-template-columns:40px 1fr}}
+    .tl-left{text-align:right}
+    @media(max-width:768px){.tl-left{display:none}}
+    .tl-co{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+    .tl-per{font-size:.78rem;color:var(--muted)}
+    .tl-dot-wrap{display:flex;flex-direction:column;align-items:center}
+    .tl-dot{width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--orange);box-shadow:0 0 12px rgba(232,117,50,.5);flex-shrink:0;margin-top:4px;z-index:1}
+    .tl-right{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;transition:border-color .3s,box-shadow .3s}
+    .tl-right:hover{border-color:rgba(232,117,50,.3);box-shadow:0 8px 30px rgba(232,117,50,.08)}
+    .tl-mh{display:none}
+    @media(max-width:768px){.tl-mh{display:block;margin-bottom:10px}}
+    .tl-role{font-family:var(--body);font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+    .intern-badge{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(232,117,50,.4);border-radius:20px;padding:2px 9px}
+    .tl-right ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .tl-right ul li{font-size:.85rem;color:var(--muted);padding-left:16px;position:relative}
+    .tl-right ul li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--orange);opacity:.7}
+    .hl{color:var(--text);font-weight:600}
+
+    /* ══════════════════════════════════
+       TOOLS
+    ══════════════════════════════════ */
+    .tools-row{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem}
+    .tool-chip{display:flex;flex-direction:column;align-items:center;gap:10px;background:var(--bg-3);border:1px solid var(--border);border-radius:16px;padding:20px 18px;width:100px;cursor:default;transition:border-color .35s,transform .35s var(--ease),box-shadow .35s}
+    .tool-chip:hover{border-color:rgba(232,117,50,.4);transform:translateY(-6px);box-shadow:0 12px 28px rgba(232,117,50,.12)}
+    .t-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;position:relative}
+    .t-icon img.d{display:block}.t-icon img.h{display:none;position:absolute;inset:0}
+    .tool-chip:hover .t-icon img.d{display:none}.tool-chip:hover .t-icon img.h{display:block}
+    .t-icon img{width:40px;height:40px;object-fit:contain}
+    .tool-chip span{font-size:.72rem;font-weight:600;color:var(--muted);text-align:center;transition:color .3s}
+    .tool-chip:hover span{color:var(--orange)}
+
+    /* ══════════════════════════════════
+       BENTO PORTFOLIO
+    ══════════════════════════════════ */
+    .bento{display:grid;grid-template-columns:repeat(12,1fr);gap:1.25rem}
+    .bc.bl{grid-column:span 6}.bc.bs{grid-column:span 4}
+    @media(max-width:991px){.bc.bl{grid-column:span 12}.bc.bs{grid-column:span 6}}
+    @media(max-width:575px){.bc.bs{grid-column:span 12}}
+    .bc{position:relative;border-radius:var(--r);overflow:hidden;background:var(--bg-3);border:1px solid var(--border);display:flex;flex-direction:column;cursor:pointer;transition:transform .4s var(--ease),border-color .3s,box-shadow .4s}
+    .bc:hover{transform:translateY(-6px) scale(1.01);border-color:var(--orange-mid);box-shadow:0 20px 60px rgba(232,117,50,.15),0 4px 20px rgba(0,0,0,.4)}
+    .bimg{position:relative;width:100%;overflow:hidden}
+    .bl .bimg{height:260px}.bs .bimg{height:180px}
+    .bimg img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);filter:brightness(.82) saturate(1.1)}
+    .bc:hover .bimg img{transform:scale(1.07);filter:brightness(.95) saturate(1.2)}
+    .bimg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(10,10,14,.75) 100%);pointer-events:none}
+    .bglow{position:absolute;inset:0;z-index:2;background:radial-gradient(ellipse at 50% 50%,rgba(232,117,50,.18) 0%,transparent 70%);opacity:0;transition:opacity .4s;pointer-events:none}
+    .bc:hover .bglow{opacity:1}
+    .bbody{flex:1;padding:1.1rem 1.25rem .5rem;display:flex;flex-direction:column;gap:.4rem}
+    .btag{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+    .btitle{font-family:var(--body);font-size:1rem;font-weight:700;color:#fff;margin:0;line-height:1.3;transition:color .3s}
+    .bc:hover .btitle{color:var(--orange)}
+    .bdesc{font-size:.8rem;color:var(--muted);margin:0;line-height:1.55}
+    .bactions{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.25rem 1rem}
+    .beye{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--orange-dim);border:1px solid rgba(232,117,50,.3);color:var(--orange);font-size:.95rem;text-decoration:none;transition:background .3s,transform .3s,box-shadow .3s}
+    .beye:hover{background:var(--orange);color:#fff;transform:scale(1.15);box-shadow:0 0 18px rgba(232,117,50,.5)}
+    .bnum{font-size:.68rem;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.12)}
+    .bc::before{content:'';position:absolute;inset:0;border-radius:var(--r);padding:1px;background:linear-gradient(135deg,rgba(232,117,50,0) 0%,rgba(232,117,50,.55) 50%,rgba(232,117,50,0) 100%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .4s;pointer-events:none;z-index:10}
+    .bc:hover::before{opacity:1}
+
+    /* ══════════════════════════════════
+       CERTIFICATES — 16:9 sidebar layout
+    ══════════════════════════════════ */
+    .cert-wrap{display:grid;grid-template-columns:270px 1fr;gap:2.5rem;align-items:start}
+    @media(max-width:900px){.cert-wrap{grid-template-columns:1fr}}
+
+    .cert-sidebar{position:sticky;top:40px}
+    .cert-sidebar-lbl{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+
+    .cert-list{display:flex;flex-direction:column;gap:8px}
+    @media(max-width:900px){.cert-list{flex-direction:row;overflow-x:auto;padding-bottom:10px}}
+
+    .cli{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.02);cursor:pointer;transition:all .3s;flex-shrink:0}
+    .cli:hover{border-color:rgba(232,117,50,.3);background:var(--orange-dim)}
+    .cli.active{border-color:var(--orange);background:var(--orange-dim)}
+    .cli-num{font-family:var(--display);font-size:1.1rem;color:var(--muted);line-height:1;flex-shrink:0;transition:color .3s}
+    .cli.active .cli-num{color:var(--orange)}
+    .cli-info{display:flex;flex-direction:column;gap:2px;min-width:0}
+    .cli-name{font-size:.78rem;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .cli-iss{font-size:.65rem;color:var(--muted);white-space:nowrap}
+
+    /* main display */
+    .cert-display{}
+    .cert-mob-nav{display:none}
+    @media(max-width:900px){.cert-mob-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}}
+    .cnav-btn{width:40px;height:40px;border-radius:50%;background:var(--orange-dim);border:1px solid rgba(232,117,50,.3);color:var(--orange);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s}
+    .cnav-btn:hover{background:var(--orange);color:#fff}
+
+    .cert-panel{display:none;animation:cIn .45s ease}
+    .cert-panel.active{display:block}
+    @keyframes cIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+    /* 16:9 image frame */
+    .cert-img-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:0 20px 70px rgba(0,0,0,.5),0 0 0 1px rgba(232,117,50,.06);margin-bottom:1.5rem;background:var(--bg-3)}
+    .cert-img-frame img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.96);transition:filter .4s,transform .5s var(--ease)}
+    .cert-img-frame:hover img{filter:brightness(1.05);transform:scale(1.02)}
+    .cert-img-overlay{position:absolute;inset:0;background:linear-gradient(160deg,transparent 55%,rgba(10,10,14,.5) 100%);pointer-events:none}
+    .cert-img-badge{position:absolute;top:14px;right:14px;background:rgba(10,10,14,.82);backdrop-filter:blur(10px);border:1px solid rgba(232,117,50,.3);border-radius:8px;padding:6px 12px;font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}
+
+    .cert-info-row{display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+    .cert-info-main{flex:1;min-width:200px}
+    .cert-issuer{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+    .cert-title{font-family:var(--display);font-size:clamp(1.2rem,2.2vw,1.6rem);color:#fff;line-height:1.2;margin-bottom:8px}
+    .cert-desc{font-size:.84rem;color:var(--muted);line-height:1.7}
+    .cert-link{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;font-family:var(--body);font-weight:600;font-size:.82rem;padding:11px 22px;border-radius:50px;flex-shrink:0;white-space:nowrap;transition:all .3s;box-shadow:0 4px 20px rgba(232,117,50,.3)}
+    .cert-link:hover{background:#d4662a;color:#fff;transform:translateY(-2px);box-shadow:0 8px 30px rgba(232,117,50,.4)}
+
+    .cert-dots{display:flex;gap:6px;align-items:center;margin-top:1.2rem}
+    .cdot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.12);border:none;cursor:pointer;padding:0;transition:background .3s,width .3s}
+    .cdot.active{background:var(--orange);width:20px;border-radius:3px}
+
+    /* ══════════════════════════════════
+       MODALS — no sidebar scrollbar
+    ══════════════════════════════════ */
+    .modal-content{background:rgba(14,15,20,.97)!important;border:1px solid rgba(255,255,255,.08)!important;backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border-radius:20px!important}
+    .modal-header{border-bottom:1px solid rgba(255,255,255,.07)!important;padding:1.25rem 1.5rem}
+    .modal-title{font-family:var(--display)!important;font-size:1.4rem;color:#fff}
+    .modal-body{padding:1.5rem!important;overflow-y:auto;max-height:calc(90vh - 120px);scrollbar-width:thin;scrollbar-color:rgba(232,117,50,.3) transparent}
+    .modal-body::-webkit-scrollbar{width:4px}
+    .modal-body::-webkit-scrollbar-track{background:transparent}
+    .modal-body::-webkit-scrollbar-thumb{background:rgba(232,117,50,.3);border-radius:2px}
+    .cb li{font-size:.87rem;color:var(--muted);margin-bottom:.5rem}
+    .cb li strong{color:var(--text)}
+    .tool-pill{background:var(--bg-3);border:1px solid var(--border);border-radius:10px;padding:7px 12px;font-size:.77rem;color:var(--muted)}
+
+    /* ══════════════════════════════════
+       SCROLL TOP
+    ══════════════════════════════════ */
+    #scroll-top{position:fixed;bottom:90px;right:24px;width:48px;height:48px;border-radius:50%;background:var(--bg-3);border:1px solid var(--border);color:var(--orange);font-size:1.2rem;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s,border-color .3s,transform .3s;z-index:500;text-decoration:none}
+    #scroll-top.active{opacity:1;visibility:visible}
+    #scroll-top:hover{border-color:var(--orange);transform:translateY(-3px)}
+    .pc{position:absolute;top:0;left:0}
+    .pc .bg{fill:none;stroke:rgba(255,255,255,.06);stroke-width:2}
+    .pc .pr{fill:none;stroke:var(--orange);stroke-width:2;stroke-dasharray:126;stroke-dashoffset:126;transform:rotate(-90deg);transform-origin:50% 50%;transition:stroke-dashoffset .2s}
+
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @media(max-width:576px){section{padding:64px 0}.bottom-nav-container{padding:6px 10px}.bottom-nav-container a{font-size:.72rem;padding:6px 10px}}
+  </style>
 </head>
+<body>
 
-<body class="index-page">
+<!-- LOADER -->
+<div id="site-loader">
+  <div class="loader-logo-wrap"><img src="assets/img/M_logo.png" alt="M"></div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  <div class="loader-text">Loading</div>
+</div>
 
- <footer class="bottom-nav">
+<!-- BOTTOM NAV -->
+<footer class="bottom-nav" role="navigation" aria-label="Navigation">
   <nav class="bottom-nav-container">
     <a href="#hero" class="active">Home</a>
     <a href="#about">About</a>
     <a href="#resume">Experience</a>
     <a href="#portfolio">Projects</a>
-    <a href="https://wa.me/917008548402" target="_blank" class="contact-whatsapp">
+    <a href="https://wa.me/917008548402" target="_blank" rel="noopener" class="cw">
       <i class="fab fa-whatsapp"></i> Contact
     </a>
   </nav>
 </footer>
 
+<main>
 
-  <main class="main">
+<!-- ════════════════ HERO ════════════════ -->
+<section id="hero" class="hero-section section-dark">
+  <div class="hero-grid"></div>
 
-<!-- Hero Section -->
-   <section id="hero" class="hero section">
-   <div class="container" data-aos="fade-up" data-aos-delay="100">
-    <div class="row justify-content-center text-center align-items-center content">
-      <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
-        <h2><strong>Empowering Businesses with Data-Driven Insights</strong></h2>
-        <p class="lead"> Transforming complex challenges into strategic opportunities through analysis, innovation, and technology</p>
-        <div class="cta-buttons d-flex justify-content-center gap-3" data-aos="fade-up" data-aos-delay="300">
-          <a href="#portfolio" class="btn btn-primary">View My Work</a>
-          <a href="assets\Manmathnath Mahanta - Resume.pdf" class="btn btn-outline" download>Download CV <i class="fa-solid fa-download"></i></a> 
+  <!-- LEFT -->
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span class="hero-eyebrow-text">Business Analyst</span>
+    </div>
+    <h1 class="hero-h1">
+      Bridging Business<br>
+      Goals with<br>
+      <em>Clear, Actionable</em><br>
+      <span class="ua">Requirements</span>
+    </h1>
+    <p class="hero-lead">Turning complex challenges into structured solutions through requirement analysis, process optimisation, and stakeholder collaboration.</p>
+    <div class="hero-cta">
+      <a href="#portfolio" class="btn-primary">View My Work <i class="bi bi-arrow-right"></i></a>
+      <a href="assets/Manmathnath Mahanta - Resume.pdf" class="btn-outline" download>Download CV <i class="bi bi-download"></i></a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs-item"><div class="hs-num" data-target="2">0+</div><div class="hs-lbl">Years Exp.</div></div>
+      <div class="hs-item"><div class="hs-num" data-target="10">0+</div><div class="hs-lbl">Projects</div></div>
+      <div class="hs-item"><div class="hs-num" data-target="20">0+</div><div class="hs-lbl">Stakeholders</div></div>
+    </div>
+  </div>
+
+  <!-- RIGHT visual -->
+  <div class="hero-right">
+    <div class="hero-orbit"></div>
+    <div class="hero-orbit2"></div>
+    <div class="hero-canvas">
+      <div class="hcard hcard-main">
+        <div class="hcard-icon"><i class="bi bi-diagram-3-fill"></i></div>
+        <div class="hcard-title">Manmathnath Mahanta</div>
+        <div class="hcard-sub">Business Analyst</div>
+        <div class="hcard-div"></div>
+        <div class="hcard-tags">
+          <span class="hcard-tag a">Requirements</span>
+          <span class="hcard-tag p">UAT</span>
+          <span class="hcard-tag p">Agile</span>
         </div>
-        <div class="hero-stats d-flex justify-content-center gap-4" data-aos="fade-up" data-aos-delay="400">
-          <div class="stat-item text-center">
-            <span class="stat-number d-block" data-target="2">0</span>
-            <span class="stat-label">Years Experience</span>
-          </div>
-          <div class="stat-item text-center">
-            <span class="stat-number d-block" data-target="10">0</span>
-            <span class="stat-label">Projects Completed</span>
-          </div>
-          <div class="stat-item text-center">
-            <span class="stat-number d-block" data-target="20">0</span>
-            <span class="stat-label">Case Studies Analyzed</span>
+      </div>
+      <div class="hcard hcard-tl">
+        <div class="hcard-sm-icon"><i class="bi bi-briefcase-fill"></i></div>
+        <div class="hcard-big">2+</div>
+        <div class="hcard-title">Yrs Experience</div>
+      </div>
+      <div class="hcard hcard-tr">
+        <div class="hcard-sm-icon"><i class="bi bi-layers-fill"></i></div>
+        <div class="hcard-big">10+</div>
+        <div class="hcard-title">Projects</div>
+      </div>
+      <div class="hcard hcard-br">
+        <div class="hcard-sm-icon"><i class="bi bi-graph-up-arrow"></i></div>
+        <div class="hcard-big">30%</div>
+        <div class="hcard-title">Efficiency Gain</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <div class="sh-line"></div>
+    <span>Scroll to explore</span>
+  </div>
+</section>
+
+<!-- ════════════════ ABOUT ════════════════ -->
+<section id="about" class="section-light">
+  <div class="container">
+    <div class="section-title" data-aos="fade-up">
+      <h2>About Me</h2>
+      <div class="title-line"><span></span><div class="title-dot"></div><span></span></div>
+    </div>
+    <div class="about-layout">
+      <div data-aos="fade-right" data-aos-delay="100">
+        <div class="about-kicker"><div class="ak-dot"></div> Professional Profile</div>
+        <h2 class="about-h">Business Analyst<br>with a <em>Data-Driven</em> Edge</h2>
+        <p class="about-body">
+          Delivering clear requirements, high-quality releases, and measurable business outcomes through structured analysis and stakeholder collaboration.<br><br>
+          With 2+ years of experience across web and mobile application projects, I specialise in requirement elicitation, UML/functional flows, wireframes, and UAT execution — bridging the gap between business needs and technical delivery teams. My data analysis skills in Power BI, SQL, and Excel complement core BA work by turning raw data into actionable insights.
+        </p>
+        <div class="info-pills">
+          <div class="ip"><span class="lbl">Name</span><span class="val">Manmathnath Mahanta</span></div>
+          <div class="ip"><span class="lbl">Phone</span><span class="val">+91 7008548402</span></div>
+          <div class="ip"><span class="lbl">Experience</span><span class="val">2+ Years</span></div>
+          <div class="ip"><span class="lbl">Email</span><span class="val"><a href="mailto:manmath.contact@gmail.com">manmath.contact@gmail.com</a></span></div>
+          <div class="ip"><span class="lbl">Role</span><span class="val">Business Analyst</span></div>
+          <div class="ip"><span class="lbl">Tools</span><span class="val">Power BI · Excel · SQL</span></div>
+        </div>
+        <div class="about-cta">
+          <a href="assets/Manmathnath Mahanta - Resume.pdf" class="btn-primary" download style="font-size:.85rem;padding:12px 24px;">Download CV <i class="bi bi-download"></i></a>
+          <a href="https://wa.me/917008548402" target="_blank" rel="noopener" class="btn-outline" style="font-size:.85rem;padding:11px 24px;"><i class="fab fa-whatsapp"></i> Let's Talk</a>
+        </div>
+      </div>
+      <div class="stats-stack" data-aos="fade-left" data-aos-delay="200">
+        <div class="mini-row">
+          <div class="stat-mini"><div class="mn">2+</div><div class="ml">Years Exp.</div></div>
+          <div class="stat-mini"><div class="mn">10+</div><div class="ml">Projects</div></div>
+        </div>
+        <div class="mini-row">
+          <div class="stat-mini"><div class="mn">5</div><div class="ml">Certifications</div></div>
+          <div class="stat-mini"><div class="mn">20+</div><div class="ml">Stakeholders</div></div>
+        </div>
+        <div class="stat-big">
+          <div class="sbn">30%</div>
+          <div class="sbl">Operational efficiency improvement through better requirement clarity</div>
+        </div>
+        <div class="skills-strip">
+          <div class="ss-title">Core Competencies</div>
+          <div class="tags">
+            <span class="tag">Requirement Elicitation</span>
+            <span class="tag">BRD / FSD</span>
+            <span class="tag">UML Diagrams</span>
+            <span class="tag">Wireframing</span>
+            <span class="tag">UAT</span>
+            <span class="tag">Agile / Scrum</span>
+            <span class="tag">Data Analysis</span>
+            <span class="tag">Power BI</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Process Mapping</span>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- /Hero Section -->
 
-<!-- About Section -->
-<section id="about" class="about section light-background">
-  <!-- Section Title -->
-  <div class="container section-title" data-aos="fade-up">
-    <h2>About</h2>
-    <div class="title-shape" style="text-align:center;">
-  <svg viewBox="0 0 200 4" xmlns="http://www.w3.org/2000/svg" width="200" height="4" style="display:inline-block;">
-    <line x1="0" y1="2" x2="200" y2="2" stroke="#E87532" stroke-width="2" stroke-dasharray="4,8" />
-  </svg>
-</div>
-  </div>
-
-  <div class="container" data-aos="fade-up" data-aos-delay="100">
-    <div class="about-content">
-      <div class="professional-header">
-        <span class="subtitle">Professional Profile</span>
-        <h2>Business & Data Analyst</h2>
+<!-- ════════════════ SKILLS ════════════════ -->
+<section id="skills" class="section-dark">
+  <div class="container">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Core Skills</h2>
+      <div class="title-line"><span></span><div class="title-dot"></div><span></span></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
+        <h3>Business Analysis</h3><p>Bridging business needs and technical delivery through structured requirement analysis.</p>
+        <div class="skill-pct">90%</div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div>
       </div>
-
-      <div class="profile-description">
-        <p class="lead">Transforming complex business challenges into actionable insights through data-driven analysis and strategic problem-solving.</p>
-        <p>With expertise in both business process optimization and advanced data analytics, I bridge the gap between technical data solutions and strategic business objectives.</p>
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="150">
+        <h3>Requirement Gathering</h3><p>Extracting, documenting, and validating business needs through stakeholder workshops.</p>
+        <div class="skill-pct">88%</div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div>
       </div>
-
-      <div class="personal-info-grid">
-        <div class="info-item">
-          <span class="label">Name</span>
-          <span class="value">Manmathnath Mahanta</span>
-        </div>
-        <div class="info-item">
-          <span class="label">Phone</span>
-          <span class="value">+91 7008548402</span>
-        </div>
-        <div class="info-item">
-          <span class="label">Experience</span>
-          <span class="value">2+ Years</span>
-        </div>
-        <div class="info-item">
-          <span class="label">Email</span>
-          <span class="value"><a href="mailto:manmath.contact@gmail.com">manmath.contact@gmail.com</a></span>
-        </div>
-        <div class="info-item">
-          <span class="label">Specializations</span>
-          <span class="value">BA, Data Visualization, SQL</span>
-        </div>
-        <div class="info-item">
-          <span class="label">Tools</span>
-          <span class="value">Power BI, Excel, Python</span>
-        </div>
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
+        <h3>Process Modeling</h3><p>Creating UML diagrams, functional flows, and wireframes for clear technical communication.</p>
+        <div class="skill-pct">85%</div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div>
       </div>
-
-      <div class="signature-block">
-        <img src="assets/img/misc/signature.png" alt="Signature">
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="250">
+        <h3>UAT &amp; Quality Assurance</h3><p>Planning test scenarios, validating acceptance criteria, and coordinating defect resolution.</p>
+        <div class="skill-pct">87%</div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="87"></div></div>
+      </div>
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
+        <h3>Data Analysis</h3><p>Leveraging Power BI, SQL &amp; Excel to turn data into clear business insights supporting BA work.</p>
+        <div class="skill-pct">83%</div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="83"></div></div>
+      </div>
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="350">
+        <h3>Agile Methodology</h3><p>Driving iterative delivery through sprint planning, backlog grooming, and stakeholder reviews.</p>
+        <div class="skill-pct">87%</div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="87"></div></div>
       </div>
     </div>
   </div>
 </section>
 
-
-<!-- Skills Section -->
-<section id="skills" class="skills section">
-  <div class="container" data-aos="fade-up" data-aos-delay="100">
-    <div class="row g-4 skills-animation">
-      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="skill-box">
-          <h3>Business Analysis</h3>
-          <p>Breaking down complex processes to drive business efficiency.</p>
-          <span class="text-end d-block">90%</span>
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-        <div class="skill-box">
-          <h3>Data Analytics</h3>
-          <p>Turning raw data into actionable insights for decision-making.</p>
-          <span class="text-end d-block">85%</span>
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-        <div class="skill-box">
-          <h3>Requirement Gathering</h3>
-          <p>Extracting key business needs for tailored solutions.</p>
-          <span class="text-end d-block">88%</span>
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
-        <div class="skill-box">
-          <h3>Process Modeling</h3>
-          <p>Creating optimized workflows for seamless operations.</p>
-          <span class="text-end d-block">80%</span>
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
-        <div class="skill-box">
-          <h3>Data Visualization</h3>
-          <p>Creating optimized dashboards for faster, informed business decisions.</p>
-          <span class="text-end d-block">92%</span>
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
-        <div class="skill-box">
-          <h3>Agile Methodology</h3>
-          <p>Implementing Agile frameworks for adaptive development.</p>
-          <span class="text-end d-block">87%</span>
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-      </div>
+<!-- ════════════════ EXPERIENCE ════════════════ -->
+<section id="resume" class="section-light">
+  <div class="container">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Experience</h2>
+      <div class="title-line"><span></span><div class="title-dot"></div><span></span></div>
     </div>
-  </div>
-</section>
-<!-- /Skills Section -->
-
-
-    <!-- Resume Section -->
-<section id="resume" class="resume section">
-
-  <!-- Section Title -->
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Experience</h2>
-    <div class="title-shape" style="text-align:center;">
-      <svg viewBox="0 0 200 4" xmlns="http://www.w3.org/2000/svg" width="200" height="4" style="display:inline-block;">
-        <line x1="0" y1="2" x2="200" y2="2" stroke="#E87532" stroke-width="2" stroke-dasharray="4,8" />
-      </svg>
-    </div>
-  </div><!-- End Section Title -->
-
-  <div class="container" data-aos="fade-up" data-aos-delay="100">
-    <div class="row">
-      <div class="col-12">
-        <div class="resume-wrapper">
-          <div class="resume-block" data-aos="fade-up">
-            <div class="timeline">
-
-              <!-- Experience 1 -->
-              <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
-                <div class="timeline-left">
-                  <h4 class="company">𝖲𝖺𝗂 𝖯𝖺𝗋𝖺𝗆𝗈𝗎𝗇𝗍 𝖨𝖳 𝖲𝗈𝗅𝗂𝗍𝗂𝗈𝗇𝗌 Pvt. Ltd.</h4>
-                  <span class="period">Jul, 2024 - Current</span>
-                </div>
-                <div class="timeline-dot"></div>
-                <div class="timeline-right">
-                  <h3 class="position">Business Analyst</h3>
-                  <ul>
-                    <li><span class="highlight-orange">Led 10+ projects</span>, aligning business goals with innovative IT solutions to optimize processes.</li>
-                    <li>Facilitated collaboration among <span class="highlight-orange">20+ stakeholders</span>, ensuring clarity and transparency in project execution.</li>
-                    <li>Translated complex business needs into technical requirements, streamlining development workflows.</li>
-                    <li>Analysed and optimised key business processes, identifying inefficiencies and implementing improvements that boosted operational productivity by  <span class="highlight-orange">30%</span>.</li>
-                  </ul>
-                </div>
-              </div>
-
-              <!-- Experience 2 -->
-              <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
-                <div class="timeline-left">
-                  <h4 class="company">𝖦𝖤𝖤𝖬𝖲𝖢𝖮 𝖢𝗈𝗇𝗌𝗎𝗅𝗍𝖺𝗇𝖼𝗒 𝖲𝗈𝗅𝗂𝗍𝗂𝗈𝗇𝗌 𝖯𝗏𝗍. 𝖫𝗍𝖽.</h4>
-                  <span class="period">Mar, 2023 - Jul, 2024</span>
-                </div>
-                <div class="timeline-dot"></div>
-                <div class="timeline-right">
-                  <h3 class="position">Business Analyst</h3>
-                  <ul>
-                    <li>Analyzed complex data sets, extracting key insights to drive strategic decision-making and enhance project efficiency.</li>
-                    <li>Engaged with <span class="highlight-orange">20+ stakeholders</span> to ensure seamless communication, aligning project objectives with business goals.</li>
-                    <li>Translated business needs into clear technical requirements, improving project clarity and execution speed.</li>
-                    <li>Streamlined workflows by identifying inefficiencies, <span class="highlight-orange">cutting project turnaround time by 25%</span> through optimized processes.</li>
-                  </ul>
-                </div>
-              </div>
-
-              <!-- Experience 3 -->
-              <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
-                <div class="timeline-left">
-                  <h4 class="company">𝖠𝖿𝖺𝗆𝖾 𝖳𝖾𝖼𝗁𝗇𝗈𝗅𝗈𝗀𝗂𝖾𝗌</h4>
-                  <span class="period">Apr, 2023 - May, 2023</span>
-                </div>
-                <div class="timeline-dot"></div>
-                <div class="timeline-right">
-                  <div class="position-header">
-                    <h3 class="position">Data Analyst</h3>
-                    <span class="internship-label">Internship</span>
-                  </div>
-                  <ul>
-                    <li><span class="highlight-orange">Processed and cleaned 10,000+ data entries</span>, improving accuracy and efficiency in decision-making processes.</li>
-                    <li>Designed an interactive Power BI dashboard analyzing 3 years of sales data, enabling data-driven strategic planning.</li>
-                    <li>Partnered with HR to generate <span class="highlight-orange">20+ performance reports</span>, ensuring timely delivery and maintaining high reporting standards.</li>
-                    <li>Applied analytical techniques to solve complex business problems, enhancing data-driven insights and operational efficiency.</li>
-                  </ul>
-                </div>
-              </div>
-
-            </div>
-          </div>
+    <div class="timeline">
+      <div class="tl-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="tl-left"><div class="tl-co">Sai Paramount IT Solutions Pvt. Ltd.</div><div class="tl-per">Jul 2024 – Present</div></div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-right">
+          <div class="tl-mh"><div class="tl-co">Sai Paramount IT Solutions</div><div class="tl-per" style="font-size:.75rem;color:var(--muted)">Jul 2024 – Present</div></div>
+          <div class="tl-role">Business Analyst</div>
+          <ul>
+            <li>Worked with clients on <span class="hl">web and mobile application projects</span>, performing requirement elicitation and functional analysis.</li>
+            <li>Prepared <span class="hl">user stories, BRD/FSD documents, UML diagrams, functional flows, and wireframes</span>.</li>
+            <li>Led <span class="hl">User Acceptance Testing (UAT)</span> including test scenario preparation, acceptance criteria validation, and defect coordination.</li>
+            <li>Contributed to approximately <span class="hl">30% improvement in operational efficiency</span> through better requirement clarity.</li>
+          </ul>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- /Resume Section -->
-
-
-    
-<!-- Technical Skills Section -->
-<section id="technical-skills" class="technical-skills section light-background">
-  <!-- Section Title -->
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Tools</h2>
-   <div class="title-shape" style="text-align:center;">
-  <svg viewBox="0 0 200 4" xmlns="http://www.w3.org/2000/svg" width="200" height="4" style="display:inline-block;">
-    <line x1="0" y1="2" x2="200" y2="2" stroke="#E87532" stroke-width="2" stroke-dasharray="4,8" />
-  </svg>
-</div>
-
-  </div><!-- End Section Title -->
-
-  <div class="container" data-aos="fade-up" data-aos-delay="100">
-    <div class="skills-row">
-      <!-- Excel -->
-      <div class="skill-icon-box">
-        <img src="assets/tools/excel-g.png" class="skill-icon skill-icon-default" alt="Excel">
-        <img src="assets/tools/excel.png" class="skill-icon skill-icon-hover" alt="Excel">
-      </div>
-
-      <!-- Power BI -->
-      <div class="skill-icon-box">
-        <img src="assets/tools/power-bi-g.png" class="skill-icon skill-icon-default" alt="Power BI">
-        <img src="assets/tools/power-bi.png" class="skill-icon skill-icon-hover" alt="Power BI">
-      </div>
-
-      <!-- SQL -->
-      <div class="skill-icon-box">
-        <img src="assets/tools/database-g.png" class="skill-icon skill-icon-default" alt="SQL">
-        <img src="assets/tools/database.png" class="skill-icon skill-icon-hover" alt="SQL">
-      </div>
-
-      <!-- ClickUp -->
-      <div class="skill-icon-box">
-        <img src="assets/tools/clickup-g.png" class="skill-icon skill-icon-default" alt="ClickUp">
-        <img src="assets/tools/clickup.png" class="skill-icon skill-icon-hover" alt="ClickUp">
-      </div>
-
-      <!-- API Testing (Postman) -->
-      <div class="skill-icon-box">
-        <img src="assets/tools/postman-g.png" class="skill-icon skill-icon-default" alt="Postman">
-        <img src="assets/tools/postman.png" class="skill-icon skill-icon-hover" alt="Postman">
-      </div>
-
-      <!-- Python -->
-      <div class="skill-icon-box">
-        <img src="assets/tools/python-g.png" class="skill-icon skill-icon-default" alt="Python">
-        <img src="assets/tools/python.png" class="skill-icon skill-icon-hover" alt="Python">
-      </div>
-
-      <!-- Notion -->
-      <div class="skill-icon-box">
-        <img src="assets\tools\Notion-g.png" class="skill-icon skill-icon-default" alt="Figma">
-        <img src="assets\tools\Notion.png" class="skill-icon skill-icon-hover" alt="Figma">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Include FontAwesome for Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
-<!-- Portfolio Section -->
-<section id="portfolio" class="portfolio section">
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Projects</h2>
-    <div class="title-shape" style="text-align:center;">
-      <svg viewBox="0 0 200 4" xmlns="http://www.w3.org/2000/svg" width="200" height="4" style="display:inline-block;">
-        <line x1="0" y1="2" x2="200" y2="2" stroke="#E87532" stroke-width="2" stroke-dasharray="4,8" />
-      </svg>
-    </div>
-  </div>
-
-  <div class="container" data-aos="fade-up" data-aos-delay="100">
-    <!-- First Row: 2 Large Projects -->
-    <div class="row g-4 mb-5 isotope-container" data-aos="fade-up" data-aos-delay="300">
-      
-      <!-- Large Project 1: EV Market Analysis -->
-      <div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-web">
-        <div class="portfolio-card">
-          <div class="portfolio-image">
-            <img src="assets\projects\EV_Market_Analysis\EV_market_analysis.jpg" class="img-fluid" alt="" loading="lazy">
-            <div class="portfolio-overlay">
-              <div class="portfolio-actions">
-                <a href="#" class="preview-link" data-bs-toggle="modal" data-bs-target="#portfolioModal1" data-image="assets/img/portfolio/portfolio-1.webp" data-title="EV Market Analysis" data-description="Comprehensive analysis of Indian EV market trends and growth opportunities.">
-                  <i class="bi bi-eye"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="portfolio-content">
-            <h3>EV Market Analysis</h3>
-            <p>Strategic insights into India's EV market dynamics and growth patterns.</p>
-          </div>
+      <div class="tl-item" data-aos="fade-up" data-aos-delay="200">
+        <div class="tl-left"><div class="tl-co">GEEMSCO Consultancy Solutions Pvt. Ltd.</div><div class="tl-per">Mar 2023 – Jul 2024</div></div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-right">
+          <div class="tl-mh"><div class="tl-co">GEEMSCO Consultancy Solutions</div><div class="tl-per" style="font-size:.75rem;color:var(--muted)">Mar 2023 – Jul 2024</div></div>
+          <div class="tl-role">Business Analyst</div>
+          <ul>
+            <li>Supported <span class="hl">requirement gathering, documentation, and stakeholder coordination</span> across IT initiatives.</li>
+            <li>Performed data analysis using <span class="hl">SQL and Excel</span> to support reporting and business decision-making.</li>
+            <li>Assisted with <span class="hl">UAT planning, defect tracking, and release support</span> for smoother go-lives.</li>
+          </ul>
         </div>
       </div>
-
-      <!-- Large Project 2: Google Trend Analysis -->
-      <div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-web">
-        <div class="portfolio-card">
-          <div class="portfolio-image">
-            <img src="assets\projects\Google_Trend_Analysis\Google Trend Analysis Thumbnail.jpg" class="img-fluid" alt="" loading="lazy">
-            <div class="portfolio-overlay">
-              <div class="portfolio-actions">
-                <a href="#" class="preview-link" data-bs-toggle="modal" data-bs-target="#portfolioModal2" data-image="assets/img/portfolio/portfolio-2.webp" data-title="Google Trend Analysis" data-description="Detailed analysis of Google Trends data to uncover insights and trends.">
-                  <i class="bi bi-eye"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="portfolio-content">
-            <h3>Google Trend Analysis</h3>
-            <p>Exploring trends, uncovering insights, and driving data-driven decisions.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Second Row: 4 Small Projects -->
-    <div class="row g-3 isotope-container" data-aos="fade-up" data-aos-delay="400">
-      
-      <!-- Small Project 1: Indian Rail Accident Analysis -->
-      <div class="col-lg-3 col-md-6 col-sm-6 portfolio-item isotope-item filter-web">
-        <div class="portfolio-card small-card">
-          <div class="portfolio-image">
-            <img src="assets\projects\Train Accident Analysis\Indian Rail Accident Analysis.jpg" class="img-fluid" alt="" loading="lazy">
-            <div class="portfolio-overlay">
-              <div class="portfolio-actions">
-                <a href="#" class="preview-link" data-bs-toggle="modal" data-bs-target="#portfolioModal3" data-image="assets/img/portfolio/portfolio-3.webp" data-title="Indian Rail Accident Analysis" data-description="Detailed analysis of rail accidents in India to identify patterns and improve safety measures.">
-                  <i class="bi bi-eye"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="portfolio-content">
-            <h4>Indian Rail Accident Analysis</h4>
-            <p>Analyzing rail accidents to enhance safety measures.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Small Project 2: Call Center Trend Analysis -->
-      <div class="col-lg-3 col-md-6 col-sm-6 portfolio-item isotope-item filter-web">
-        <div class="portfolio-card small-card">
-          <div class="portfolio-image">
-            <img src="assets\projects\Call_Center_Data_Analysis_details\Power BI Job Simulation on Forage.jpg" class="img-fluid" alt="" loading="lazy">
-            <div class="portfolio-overlay">
-              <div class="portfolio-actions">
-                <a href="#" class="preview-link" data-bs-toggle="modal" data-bs-target="#portfolioModal4" data-image="assets/img/portfolio/portfolio-4.webp" data-title="Call Center Trend Analysis" data-description="Exploring call center trends, uncovering insights, and driving data-driven service improvements.">
-                  <i class="bi bi-eye"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="portfolio-content">
-            <h4>Call Center Trend Analysis</h4>
-            <p>Optimizing service through data insights.</p>
-          </div>
-        </div>
-      </div>
-      <!-- Small Project 3: Sales Data Analysis -->
-       <div class="col-lg-3 col-md-6 col-sm-6 portfolio-item isotope-item filter-web">
-        <div class="portfolio-card small-card">
-          <div class="portfolio-image">
-            <img src="assets\projects\AtliQ Hardware Insights Report\AtliQ Hardware Insights Report.jpg" class="img-fluid" alt="" loading="lazy">
-            <div class="portfolio-overlay">
-              <div class="portfolio-actions">
-                <a href="#" class="preview-link" data-bs-toggle="modal" data-bs-target="#portfolioModal5" data-image="assets/img/portfolio/portfolio-4.webp" data-title="Call Center Trend Analysis" data-description="Exploring call center trends, uncovering insights, and driving data-driven service improvements.">
-                  <i class="bi bi-eye"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="portfolio-content">
-            <h4>AtliQ Hardware Insights Report</h4>
-            <p>Analyzed AtliQ Hardware Data for Key Insights</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <style>
-    .portfolio-card.small-card {
-      height: 280px;
-    }
-    
-    .portfolio-card.small-card .portfolio-image {
-      height: 160px;
-      overflow: hidden;
-    }
-    
-    .portfolio-card.small-card .portfolio-content {
-      padding: 15px;
-      height: 120px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    
-    .portfolio-card.small-card .portfolio-content h4 {
-      font-size: 1rem;
-      margin-bottom: 8px;
-      line-height: 1.3;
-    }
-    
-    .portfolio-card.small-card .portfolio-content p {
-      font-size: 0.85rem;
-      margin-bottom: 0;
-      color: #666;
-      line-height: 1.4;
-    }
-    
-    .portfolio-card.small-card .portfolio-image img {
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    .portfolio-card.small-card:hover {
-      transform: translateY(-5px);
-      transition: transform 0.3s ease;
-    }
-  </style>
-</section>
-
-<!-- Modal for EV Market Analysis -->
-<div class="modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModalLabel1" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width: 1200px;">
-    <div class="modal-content glassmorphism" style="border: none; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); margin: 0 2rem; border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 15px;">
-      <div class="modal-header border-0">
-        <h5 class="modal-title text-white" id="portfolioModalLabel1">EV Market Analysis</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body p-4">
-        <!-- Row for Dashboard and Links/Tools Used -->
-        <div class="row g-4 mb-4">
-          <!-- Dashboard Column -->
-          <div class="col-lg-8">
-            <div class="dashboard-container" style="position: relative; width: 100%; height: 0; padding-top: 75%; border-radius: 15px; overflow: hidden;">
-              <iframe
-                title="EV Analysis"
-                src="https://app.powerbi.com/view?r=eyJrIjoiM2ZhNTA4ZTItYzY5NS00YWQ0LWJhOTEtMDNmZDkwMWQyOGRkIiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9"
-                frameborder="0"
-                allowFullScreen="true"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px;"
-              ></iframe>
-            </div>
-          </div>
-
-          <!-- Links and Tools Used Column -->
-          <div class="col-lg-4 text-white">
-            <!-- Links Section -->
-            <div class="mb-4">
-              <ul class="list-unstyled">
-                <li class="mb-3">
-                  <strong class="d-block mb-1">Project Report:</strong>
-                  <a href="assets\projects\EV_Market_Analysis\EV_Market_Analysis_Report_2022_2024.pdf" class="text-decoration-none d-block text-white hover-glow">Download Project Report <i class="fas fa-download ms-2"></i></a>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Tools Used Section -->
-            <div>
-              <h4 class="fw-bold mb-3">Tools Used</h4>
-              <div class="d-flex flex-wrap gap-3">
-                <!-- Power BI -->
-                <div class="tool-item text-center" style="width: 100px;">
-                  <img src="assets\projects\tools_used\power-bi.png" alt="Power BI" style="width: 24px; height: 24px;">
-                  <p class="mt-2 mb-0">Power BI</p>
-                </div>
-                 <!-- SQL -->
-                <div class="tool-item text-center" style="width: 100px;">
-                  <img src="assets\tools\database.png" alt="SQL" style="width: 24px; height: 24px;">
-                  <p class="mt-2 mb-0">SQL</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project Description -->
-        <div class="project-description text-white">
-          <h4 class="fw-bold mb-3">Project Description</h4>
-          <ul class="list-unstyled custom-bullets">
-            <li class="mb-2"><strong>Market Growth Analysis:</strong> Analyzed the Indian EV market (2022–2024) to identify growth trends, brand performance, and state-level adoption insights across two-wheeler and four-wheeler segments.</li>
-            <li class="mb-2"><strong>Regional Performance Insights:</strong> Focused on high-penetration and underperforming regions to understand geographical adoption patterns and market opportunities.</li>
-            <li class="mb-2"><strong>Brand Benchmarking:</strong> Conducted quarterly brand growth analysis and YoY performance comparisons to identify market leaders and emerging players.</li>
-            <li class="mb-2"><strong>Seasonal Trend Analysis:</strong> Examined temporal patterns and seasonal trends to understand optimal timing strategies for market entry and product launches.</li>
-            <li class="mb-2"><strong>Strategic Roadmap:</strong> Delivered comprehensive insights with strategic recommendations for market stakeholders to prioritize product strategy, investment zones, and infrastructure partnerships.</li>
+      <div class="tl-item" data-aos="fade-up" data-aos-delay="300">
+        <div class="tl-left"><div class="tl-co">Afame Technologies</div><div class="tl-per">Apr 2023 – May 2023</div></div>
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-right">
+          <div class="tl-mh"><div class="tl-co">Afame Technologies</div><div class="tl-per" style="font-size:.75rem;color:var(--muted)">Apr 2023 – May 2023</div></div>
+          <div class="tl-role">Data Analyst <span class="intern-badge">Internship</span></div>
+          <ul>
+            <li><span class="hl">Processed and cleaned 10,000+ data entries</span>, improving accuracy and decision-making.</li>
+            <li>Designed an interactive <span class="hl">Power BI dashboard</span> analysing 3 years of sales data.</li>
+            <li>Partnered with HR to generate <span class="hl">20+ performance reports</span> with high reporting standards.</li>
           </ul>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- Modal for Google Trend Analysis -->
-<div class="modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModalLabel2" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width: 1200px;">
-    <div class="modal-content glassmorphism" style="border: none; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); margin: 0 2rem; border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 15px;">
-      <div class="modal-header border-0">
-        <h5 class="modal-title text-white" id="portfolioModalLabel2">Google Trend Analysis</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- ════════════════ TOOLS ════════════════ -->
+<section id="technical-skills" class="section-dark">
+  <div class="container">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Tools &amp; Tech</h2>
+      <div class="title-line"><span></span><div class="title-dot"></div><span></span></div>
+    </div>
+    <div class="tools-row" data-aos="fade-up" data-aos-delay="100">
+      <div class="tool-chip"><div class="t-icon"><img class="d" src="assets/tools/excel-g.png" alt="Excel" loading="lazy"><img class="h" src="assets/tools/excel.png" alt="Excel" loading="lazy"></div><span>Excel</span></div>
+      <div class="tool-chip"><div class="t-icon"><img class="d" src="assets/tools/power-bi-g.png" alt="Power BI" loading="lazy"><img class="h" src="assets/tools/power-bi.png" alt="Power BI" loading="lazy"></div><span>Power BI</span></div>
+      <div class="tool-chip"><div class="t-icon"><img class="d" src="assets/tools/database-g.png" alt="SQL" loading="lazy"><img class="h" src="assets/tools/database.png" alt="SQL" loading="lazy"></div><span>SQL</span></div>
+      <div class="tool-chip"><div class="t-icon"><img class="d" src="assets/tools/clickup-g.png" alt="ClickUp" loading="lazy"><img class="h" src="assets/tools/clickup.png" alt="ClickUp" loading="lazy"></div><span>ClickUp</span></div>
+      <div class="tool-chip"><div class="t-icon"><img class="d" src="assets/tools/postman-g.png" alt="Postman" loading="lazy"><img class="h" src="assets/tools/postman.png" alt="Postman" loading="lazy"></div><span>Postman</span></div>
+      <div class="tool-chip"><div class="t-icon"><img class="d" src="assets/tools/Visio-g.png" alt="Visio" loading="lazy"><img class="h" src="assets/tools/visio.png" alt="Visio" loading="lazy"></div><span>Visio</span></div>
+      <div class="tool-chip"><div class="t-icon"><img class="d" src="assets/tools/Notion-g.png" alt="Notion" loading="lazy"><img class="h" src="assets/tools/Notion.png" alt="Notion" loading="lazy"></div><span>Notion</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ PORTFOLIO ════════════════ -->
+<section id="portfolio" class="section-mid">
+  <div class="container">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Projects</h2>
+      <div class="title-line"><span></span><div class="title-dot"></div><span></span></div>
+    </div>
+    <div class="bento">
+      <div class="bc bl" data-aos="fade-up" data-aos-delay="100">
+        <div class="bimg"><img src="assets/projects/EV_Market_Analysis/EV_market_analysis.jpg" alt="EV Market Analysis" loading="lazy"><div class="bglow"></div></div>
+        <div class="bbody"><span class="btag">Power BI · SQL</span><h3 class="btitle">EV Market Analysis</h3><p class="bdesc">Strategic insights into India's EV market dynamics, brand benchmarking, and regional growth patterns (2022–2024).</p></div>
+        <div class="bactions"><a href="#" class="beye" data-bs-toggle="modal" data-bs-target="#pm1"><i class="bi bi-eye"></i></a><span class="bnum">01</span></div>
       </div>
-      <div class="modal-body p-4">
-        <!-- Row for Dashboard and Links/Tools Used -->
-        <div class="row g-4 mb-4">
-          <!-- Dashboard Column -->
-          <div class="col-lg-8">
-            <div class="dashboard-container" style="position: relative; width: 100%; height: 0; padding-top: 75%; border-radius: 15px; overflow: hidden;">
-              <iframe
-                title="Google Trend Dashboard"
-                src="https://app.powerbi.com/view?r=eyJrIjoiMTRjZTNkYmYtYjIzOC00Mjk3LWIzMWYtNjMxN2NhYTVmMzI2IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9"
-                frameborder="0"
-                allowFullScreen="true"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px;"
-              ></iframe>
-            </div>
-          </div>
-
-          <!-- Links and Tools Used Column -->
-          <div class="col-lg-4 text-white">
-            <!-- Links Section -->
-            <div class="mb-4">
-              <ul class="list-unstyled">
-                <li class="mb-3">
-                  <strong class="d-block mb-1">Github Repository:</strong>
-                  <a href="https://github.com/Manmath235/Google_Trend_Dashboard.git" class="text-decoration-none d-block text-white hover-glow">View on GitHub <i class="fas fa-external-link-alt ms-2"></i></a>
-                </li>
-                <li class="mb-3">
-                  <strong class="d-block mb-1">Report:</strong>
-                  <a href="assets\projects\Google_Trend_Analysis\Google Trend Report.pdf" class="text-decoration-none d-block text-white hover-glow">Download Project Report <i class="fas fa-download ms-2"></i></a>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Tools Used Section -->
-            <div>
-              <h4 class="fw-bold mb-3">Tools Used</h4>
-              <div class="d-flex flex-wrap gap-3">
-                <!-- Google APIs -->
-                <div class="tool-item text-center" style="width: 100px;">
-                  <img src="assets\projects\tools_used\api.png" alt="Google Trends" style="width: 24px; height: 24px;">
-                  <p class="mt-2 mb-0">Google APIs</p>
-                </div>
-                <!-- Power BI -->
-                <div class="tool-item text-center" style="width: 100px;">
-                  <img src="assets\projects\tools_used\power-bi.png" alt="Power BI" style="width: 24px; height: 24px;">
-                  <p class="mt-2 mb-0">Power BI</p>
-                </div>
-                <!-- Excel -->
-                <div class="tool-item text-center" style="width: 100px;">
-                  <img src="assets\projects\tools_used\excel.png" alt="Excel" style="width: 24px; height: 24px;">
-                  <p class="mt-2 mb-0">Excel</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project Description -->
-        <div class="project-description text-white">
-          <h4 class="fw-bold mb-3">Project Description</h4>
-          <ul class="list-unstyled custom-bullets">
-            <li class="mb-2"><strong>Insights and Opportunity Identification:</strong> Leverages Google Trends search data analysis to identify consumer interests, emerging trends, and uncover new market opportunities.</li>
-            <li class="mb-2"><strong>Benchmarking:</strong> Enables benchmarking performance against competitors by comparing search popularity of relevant keywords and job roles.</li>
-            <li class="mb-2"><strong>Audience-Centric Content Strategy:</strong> Optimizes content strategy by understanding trending topics and creating engaging, relevant content tailored to the audience's interests.</li>
-            <li class="mb-2"><strong>Regional Market Understanding:</strong> Provides regional insights into consumer search behaviors across 60 countries, facilitating tailored marketing strategies for local markets.</li>
-            <li class="mb-2"><strong>Data-Driven Decision Making:</strong> Empowers data-driven decision making, forecasting, and strategic planning through real-time trend visualizations and in-depth analysis.</li>
-          </ul>
-        </div>
+      <div class="bc bl" data-aos="fade-up" data-aos-delay="200">
+        <div class="bimg"><img src="assets/projects/Google_Trend_Analysis/Google Trend Analysis Thumbnail.jpg" alt="Google Trend Analysis" loading="lazy"><div class="bglow"></div></div>
+        <div class="bbody"><span class="btag">Power BI · Excel · APIs</span><h3 class="btitle">Google Trend Analysis</h3><p class="bdesc">Exploring trends, uncovering insights, and driving data-driven decisions across 60+ countries.</p></div>
+        <div class="bactions"><a href="#" class="beye" data-bs-toggle="modal" data-bs-target="#pm2"><i class="bi bi-eye"></i></a><span class="bnum">02</span></div>
+      </div>
+      <div class="bc bs" data-aos="fade-up" data-aos-delay="300">
+        <div class="bimg"><img src="assets/projects/Train Accident Analysis/Indian Rail Accident Analysis.jpg" alt="Indian Rail" loading="lazy"><div class="bglow"></div></div>
+        <div class="bbody"><span class="btag">Power BI · Excel</span><h3 class="btitle">Indian Rail Accident Analysis</h3><p class="bdesc">Safety pattern analysis across accident-prone routes using geographical data.</p></div>
+        <div class="bactions"><a href="#" class="beye" data-bs-toggle="modal" data-bs-target="#pm3"><i class="bi bi-eye"></i></a><span class="bnum">03</span></div>
+      </div>
+      <div class="bc bs" data-aos="fade-up" data-aos-delay="400">
+        <div class="bimg"><img src="assets/projects/Call_Center_Data_Analysis_details/Power BI Job Simulation on Forage.jpg" alt="Customer Retention" loading="lazy"><div class="bglow"></div></div>
+        <div class="bbody"><span class="btag">Power BI · Excel</span><h3 class="btitle">Customer Retention &amp; Call Centre Optimisation</h3><p class="bdesc">26.54% churn reduction through segmentation and proactive engagement strategies.</p></div>
+        <div class="bactions"><a href="#" class="beye" data-bs-toggle="modal" data-bs-target="#pm4"><i class="bi bi-eye"></i></a><span class="bnum">04</span></div>
+      </div>
+      <div class="bc bs" data-aos="fade-up" data-aos-delay="500">
+        <div class="bimg"><img src="assets/projects/AtliQ Hardware Insights Report/AtliQ Hardware Insights Report.jpg" alt="AtliQ Hardware" loading="lazy"><div class="bglow"></div></div>
+        <div class="bbody"><span class="btag">Power BI · SQL</span><h3 class="btitle">AtliQ Hardware Insights Report</h3><p class="bdesc">In-depth sales and manufacturing analysis for key business and product performance insights.</p></div>
+        <div class="bactions"><a href="#" class="beye" data-bs-toggle="modal" data-bs-target="#pm5"><i class="bi bi-eye"></i></a><span class="bnum">05</span></div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- Modal for Sales & Manufacturing Analysis -->
-<div class="modal fade" id="portfolioModal5" tabindex="-1" aria-labelledby="portfolioModalLabel5" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width: 1200px;">
-    <div class="modal-content glassmorphism" style="border: none; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); margin: 0 2rem; border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 15px;">
-      <div class="modal-header border-0">
-        <h5 class="modal-title text-white" id="portfolioModalLabel5">Sales & Manufacturing Analysis</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- ════════════════ CERTIFICATES ════════════════ -->
+<section id="certificates" class="section-light">
+  <div class="container">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Certificates</h2>
+      <div class="title-line"><span></span><div class="title-dot"></div><span></span></div>
+    </div>
+    <div class="cert-wrap" data-aos="fade-up" data-aos-delay="100">
+      <!-- Sidebar -->
+      <div class="cert-sidebar">
+        <p class="cert-sidebar-lbl">All Certificates</p>
+        <div class="cert-list" id="certList">
+          <div class="cli active" data-cert="0"><span class="cli-num">01</span><div class="cli-info"><span class="cli-name">Google Data Analytics</span><span class="cli-iss">Google · Coursera</span></div></div>
+          <div class="cli" data-cert="1"><span class="cli-num">02</span><div class="cli-info"><span class="cli-name">Business Analysis</span><span class="cli-iss">Microsoft · LinkedIn</span></div></div>
+          <div class="cli" data-cert="2"><span class="cli-num">03</span><div class="cli-info"><span class="cli-name">Requirements Elicitation</span><span class="cli-iss">LinkedIn Learning</span></div></div>
+          <div class="cli" data-cert="3"><span class="cli-num">04</span><div class="cli-info"><span class="cli-name">Agile Requirements</span><span class="cli-iss">LinkedIn Learning</span></div></div>
+          <div class="cli" data-cert="4"><span class="cli-num">05</span><div class="cli-info"><span class="cli-name">Power BI Data Analytics</span><span class="cli-iss">Codebasics</span></div></div>
+        </div>
       </div>
-      <div class="modal-body p-4">
-        <!-- Row for Dashboard and Links/Tools Used -->
-        <div class="row g-4 mb-4">
-          <!-- Dashboard Column -->
-           <div class="col-lg-8">
-            <div class="dashboard-container" style="position: relative; width: 100%; height: 0; padding-top: 75%; border-radius: 15px; overflow: hidden;">
-              <div id="dashboardCarousel" class="carousel slide" data-bs-ride="carousel" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#dashboardCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#dashboardCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#dashboardCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                  <button type="button" data-bs-target="#dashboardCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                  <button type="button" data-bs-target="#dashboardCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                </div>
-                <div class="carousel-inner" style="height: 100%; border-radius: 15px;">
-                  <div class="carousel-item active">
-                    <img src="assets\projects\AtliQ Hardware Insights Report\1.jpg" class="d-block w-100" alt="Sales & Manufacturing Overview" style="height: 100%; object-fit: cover; border-radius: 15px; cursor: pointer;" onclick="openImageModal(this.src)">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="assets\projects\AtliQ Hardware Insights Report\2.jpg" class="d-block w-100" alt="Sales Metrics" style="height: 100%; object-fit: cover; border-radius: 15px; cursor: pointer;" onclick="openImageModal(this.src)">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="assets\projects\AtliQ Hardware Insights Report\3.jpg" class="d-block w-100" alt="Manufacturing Analysis" style="height: 100%; object-fit: cover; border-radius: 15px; cursor: pointer;" onclick="openImageModal(this.src)">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="assets\projects\AtliQ Hardware Insights Report\4.jpg" class="d-block w-100" alt="Market Insights" style="height: 100%; object-fit: cover; border-radius: 15px; cursor: pointer;" onclick="openImageModal(this.src)">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="assets\projects\AtliQ Hardware Insights Report\5.jpg" class="d-block w-100" alt="Customer Analysis" style="height: 100%; object-fit: cover; border-radius: 15px; cursor: pointer;" onclick="openImageModal(this.src)">
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#dashboardCarousel" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#dashboardCarousel" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-            </div>
+      <!-- Display -->
+      <div class="cert-display">
+        <div class="cert-mob-nav">
+          <button class="cnav-btn" id="cPrev">&#8592;</button>
+          <span style="font-size:.82rem;color:var(--muted)"><span id="cCur" style="color:var(--orange);font-weight:700">01</span> / 05</span>
+          <button class="cnav-btn" id="cNext">&#8594;</button>
+        </div>
+
+        <div class="cert-panel active" data-cert-panel="0">
+          <div class="cert-img-frame"><img src="assets/cretificates/Google Data Analytics.jpg" alt="Google Data Analytics" loading="lazy"><div class="cert-img-overlay"></div><div class="cert-img-badge">Google · Coursera</div></div>
+          <div class="cert-info-row">
+            <div class="cert-info-main"><div class="cert-issuer">Google · Coursera</div><h3 class="cert-title">Google Data Analytics Professional Certificate</h3><p class="cert-desc">Comprehensive program covering data analysis, visualization, and insights for business decision-making.</p></div>
+            <a href="https://www.coursera.org/account/accomplishments/professional-cert/JPUG55Y3GZAS" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="bi bi-box-arrow-up-right"></i></a>
           </div>
+          <div class="cert-dots" id="cDots"></div>
+        </div>
 
-          <!-- Links and Tools Used Column -->
-          <div class="col-lg-4 text-white">
-            <!-- Links Section -->
-            <div class="mb-4">
-              <ul class="list-unstyled">
-                <li class="mb-3">
-                 <strong class="d-block mb-1">Project Report:</strong>
-                 <a href="assets\projects\AtliQ Hardware Insights Report\Report.pdf" download class="text-decoration-none d-block text-white hover-glow">
-                  Download PDF <i class="fas fa-file-pdf ms-2"></i>
-                  </a>
-                </li>
-
-              </ul>
-            </div>
-
-            <!-- Tools Used Section -->
-            <div>
-              <h4 class="fw-bold mb-3">Tools Used</h4>
-              <div class="d-flex flex-wrap gap-3">
-                <!-- Power BI -->
-                <div class="tool-item text-center" style="width: 100px;">
-                  <img src="assets\projects\tools_used\power-bi.png" alt="Power BI" style="width: 24px; height: 24px;">
-                  <p class="mt-2 mb-0">Power BI</p>
-                </div>
-                <!-- SQL -->
-                <div class="tool-item text-center" style="width: 100px;">
-                  <img src="assets\tools\database.png" alt="SQL" style="width: 24px; height: 24px;">
-                  <p class="mt-2 mb-0">SQL</p>
-                </div>
-              </div>
-            </div>
+        <div class="cert-panel" data-cert-panel="1">
+          <div class="cert-img-frame"><img src="assets/cretificates/Business Analysis by Microsoft and LinkedIn.jpg" alt="Business Analysis" loading="lazy"><div class="cert-img-overlay"></div><div class="cert-img-badge">Microsoft · LinkedIn</div></div>
+          <div class="cert-info-row">
+            <div class="cert-info-main"><div class="cert-issuer">Microsoft · LinkedIn</div><h3 class="cert-title">Business Analysis by Microsoft and LinkedIn</h3><p class="cert-desc">Microsoft-validated skills in business process analysis, requirements management, and stakeholder collaboration.</p></div>
+            <a href="https://www.linkedin.com/learning/certificates/b669334513c329a04528bb83f280f79d1892599b57aac79d7dcfb7fd03992d77" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="bi bi-box-arrow-up-right"></i></a>
           </div>
         </div>
 
-        <!-- Project Description -->
-        <div class="project-description text-white">
-          <h4 class="fw-bold mb-3">Project Description</h4>
-          <ul class="list-unstyled custom-bullets">
-            <li class="mb-2"><strong>Data Analysis:</strong> Conducted in-depth analysis of sales and manufacturing data to uncover critical business insights.</li>
-            <li class="mb-2"><strong>Operational Efficiency:</strong> Identified opportunities for cost reduction and optimized resource allocation to enhance production efficiency.</li>
-            <li class="mb-2"><strong>Market Insights:</strong> Analyzed market presence and sales trends, providing strategic recommendations for improved market penetration and sales performance.</li>
-            <li class="mb-2"><strong>Customer Insights:</strong> Delivered detailed reports on customer discount patterns and behaviors, aiding in the development of targeted promotions and loyalty programs.</li>
-            <li class="mb-2"><strong>Product Performance:</strong> Evaluated product demand and manufacturing costs, offering insights to refine product lines and meet market demands effectively.</li>
-          </ul>
+        <div class="cert-panel" data-cert-panel="2">
+          <div class="cert-img-frame"><img src="assets/cretificates/Requirements Elicitation and Analysis.jpg" alt="Requirements Elicitation" loading="lazy"><div class="cert-img-overlay"></div><div class="cert-img-badge">LinkedIn Learning</div></div>
+          <div class="cert-info-row">
+            <div class="cert-info-main"><div class="cert-issuer">LinkedIn Learning</div><h3 class="cert-title">Requirements Elicitation and Analysis</h3><p class="cert-desc">Advanced expertise in stakeholder needs identification, requirements documentation, and analysis techniques.</p></div>
+            <a href="https://www.linkedin.com/learning/certificates/b828054f27da7a9b43747e5dacf14f9708d2ed421d3749466bc90c61933eb04a" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="bi bi-box-arrow-up-right"></i></a>
+          </div>
         </div>
+
+        <div class="cert-panel" data-cert-panel="3">
+          <div class="cert-img-frame"><img src="assets/cretificates/Agile Requirements Foundations.jpg" alt="Agile Requirements" loading="lazy"><div class="cert-img-overlay"></div><div class="cert-img-badge">LinkedIn Learning</div></div>
+          <div class="cert-info-row">
+            <div class="cert-info-main"><div class="cert-issuer">LinkedIn Learning</div><h3 class="cert-title">Agile Requirements Foundations</h3><p class="cert-desc">Specialised in Agile requirements gathering, user story creation, and iterative requirements management.</p></div>
+            <a href="https://www.linkedin.com/learning/certificates/e29c230664b57c86c2795595cd269a65e001ab20943b1042c6b7b4923acba714" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="bi bi-box-arrow-up-right"></i></a>
+          </div>
+        </div>
+
+        <div class="cert-panel" data-cert-panel="4">
+          <div class="cert-img-frame"><img src="assets/cretificates/POWER BI - Codebasics.jpg" alt="Power BI" loading="lazy"><div class="cert-img-overlay"></div><div class="cert-img-badge">Codebasics</div></div>
+          <div class="cert-info-row">
+            <div class="cert-info-main"><div class="cert-issuer">Codebasics</div><h3 class="cert-title">Microsoft Power BI Data Analytics</h3><p class="cert-desc">Advanced data visualization and BI using Power BI for interactive dashboards and actionable insights.</p></div>
+            <a href="https://codebasics.io/certificate/CB-49-342372" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="bi bi-box-arrow-up-right"></i></a>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- Modal for Train Accident Analysis -->
-<div class="modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModalLabel3" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width: 1200px;">
-    <div class="modal-content glassmorphism" style="border: none; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); margin: 0 2rem; border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 15px;">
-      <div class="modal-header border-0">
-        <h5 class="modal-title text-white" id="portfolioModalLabel5">Train Accident Analysis</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body p-4">
-        <!-- Row for Dashboard and Links/Tools Used -->
-        <div class="row g-4 mb-4">
-          <!-- Dashboard Column -->
-          <div class="col-lg-8">
-            <div class="dashboard-container" style="position: relative; width: 100%; height: 0; padding-top: 75%; border-radius: 15px; overflow: hidden;">
-              <iframe 
-                title="Train Accident Analysis" 
-                src="https://app.powerbi.com/view?r=eyJrIjoiMmZkNTgwODktNzAyMy00YmZlLTk5YzEtYTY4YWIwNmEwODI0IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" 
-                frameborder="0" 
-                allowFullScreen="true" 
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px;"
-              ></iframe>
-            </div>
-          </div>
-
-          <!-- Links and Tools Used Column -->
-          <div class="col-lg-4 text-white">
-             <!-- Links Section -->
-            <div class="mb-4">
-              <ul class="list-unstyled">
-                <li class="mb-3">
-                 <strong class="d-block mb-1">Project Report:</strong>
-                 <a href="assets\projects\Train Accident Analysis\Indian Rail Accident Analysis Report.pdf" download class="text-decoration-none d-block text-white hover-glow">
-                  Download PDF <i class="fas fa-file-pdf ms-2"></i>
-                  </a>
-                </li>
-
-              </ul>
-            </div>
-            <!-- Tools Used Section -->
-            <div>
-              <h4 class="fw-bold mb-3">Tools Used</h4>
-              <div class="d-flex flex-wrap gap-3">
-                <!-- Power BI -->
-                <div class="tool-item text-center" style="width: 100px;">
-                  <img src="assets/projects/tools_used/power-bi.png" alt="Power BI" style="width: 24px; height: 24px;">
-                  <p class="mt-2 mb-0">Power BI</p>
-                </div>
-                <!-- Excel -->
-                <div class="tool-item text-center" style="width: 100px;">
-                  <img src="assets/projects/tools_used/excel.png" alt="Excel" style="width: 24px; height: 24px;">
-                  <p class="mt-2 mb-0">Excel</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project Description -->
-        <div class="project-description text-white">
-          <h4 class="fw-bold mb-3">Project Description</h4>
-          <ul class="list-unstyled custom-bullets">
-            <li class="mb-2"><strong>High-Risk Area Identification:</strong> Identified high-risk areas and accident-prone routes through geographical analysis for targeted safety measures and resource planning.</li>
-            <li class="mb-2"><strong>Accident Cause Prioritization:</strong> Highlighted top accident causes such as derailments, collisions, and sabotage to guide focused safety initiatives.</li>
-            <li class="mb-2"><strong>Emergency Preparedness Enhancement:</strong> Enhanced preparedness by analyzing accident severity, casualties, and infrastructure damage patterns.</li>
-            <li class="mb-2"><strong>Maintenance Protocol Optimization:</strong> Improved inspection and maintenance strategies based on historical accident trends to reduce recurrence.</li>
-            <li class="mb-2"><strong>Safety Regulation and Technology Guidance:</strong> Informed policy formulation and technological investments through data-driven insights and recommendations.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal for Call Center Trend Analysis -->
-<div class="modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModalLabel4" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width: 1200px;">
-    <div class="modal-content glassmorphism" style="border: none; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); margin: 0 2rem; border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 15px;">
-      <div class="modal-header border-0">
-        <h5 class="modal-title text-white" id="portfolioModalLabel4">Call Center Trend Analysis</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body p-4">
-        <!-- Row for Dashboard and Links/Tools Used -->
-        <div class="row g-4 mb-4">
-          <!-- Dashboard Column -->
-          <div class="col-lg-8">
-            <div class="dashboard-container" style="position: relative; width: 100%; height: 0; padding-top: 75%; border-radius: 15px; overflow: hidden;">
-              <iframe 
-               title="Call Center Trend Analysis" 
-               src="https://app.powerbi.com/view?r=eyJrIjoiZmU5YzFlMGMtNDUxYy00OTcyLThjODktZDdlYjFkODJkMzc4IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" 
-               frameborder="0" 
-               allowFullScreen="true" 
-               style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px;"
-               ></iframe>
-            </div>
-          </div>
-
-          <!-- Links and Tools Used Column -->
-          <div class="col-lg-4 text-white">
-            <!-- Links Section -->
-            <div class="mb-4">
-              <ul class="list-unstyled">
-                <li class="mb-3">
-                  <strong class="d-block mb-1">Github Repository:</strong>
-                  <a href="https://github.com/Manmath235/Call_Center_Trend_Analysis.git" class="text-decoration-none d-block text-white hover-glow">View on GitHub <i class="fas fa-external-link-alt ms-2"></i></a>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Tools Used Section -->
-            <div>
-              <h4 class="fw-bold mb-3">Tools Used</h4>
-              <div class="d-flex flex-wrap gap-3">
-                <!-- Power BI -->
-                <div class="tool-item text-center" style="width: 100px;">
-                  <img src="assets/projects/tools_used/power-bi.png" alt="Power BI" style="width: 24px; height: 24px;">
-                  <p class="mt-2 mb-0">Power BI</p>
-                </div>
-                <!-- Excel -->
-                <div class="tool-item text-center" style="width: 100px;">
-                  <img src="assets/projects/tools_used/excel.png" alt="Excel" style="width: 24px; height: 24px;">
-                  <p class="mt-2 mb-0">Excel</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project Description -->
-        <div class="project-description text-white">
-          <h4 class="fw-bold mb-3">Project Description</h4>
-          <ul class="list-unstyled custom-bullets">
-            <li class="mb-2"><strong>Creation Process: </strong> Integrated data from call center operations and customer interactions using Excel and Power BI, enabling comprehensive visualization and analysis.</li>
-            <li class="mb-2"><strong>Analytical Insights:</strong> Uncovered trends, identified improvement areas, and developed predictive models to enhance operational efficiency and customer satisfaction.</li>
-            <li class="mb-2"><strong>Stakeholder Engagement: </strong> Collaborated closely with stakeholders to tailor the dashboard to their needs, fostering a culture of collaboration and ownership.</li>
-            <li class="mb-2"><strong>Usability and Accessibility: </strong> Designed an intuitive interface with customizable visualizations and interactive features to facilitate data-driven decision-making for both technical and non-technical users.</li>
-            <li class="mb-2"><strong>Continuous Improvement:</strong> Implemented regular updates based on user feedback and evolving business needs to ensure the dashboard remains relevant and effective.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Certificates Section -->
-    <section id="certificates" class="certificates-section">
-      <!-- Section Title -->
-                <div class="section-title">
-                    <h2>Certificates</h2>
-                    <div class="title-shape">
-                        <svg viewBox="0 0 200 4" xmlns="http://www.w3.org/2000/svg" width="200" height="4">
-                            <line x1="0" y1="2" x2="200" y2="2" stroke="#E87532" stroke-width="2" stroke-dasharray="4,8" />
-                        </svg>
-                    </div>
-                </div>
-        <div class="container">
-            <div class="certificates-slider">
-                <!-- Navigation Arrows -->
-                <button class="nav-arrow prev-arrow" aria-label="Previous certificate">&#10094;</button>
-                <button class="nav-arrow next-arrow" aria-label="Next certificate">&#10095;</button>
-
-                <div class="slider-content">
-                    <!-- Certificate 1 -->
-                    <div class="certificate-slide active">
-                        <div class="certificate-content">
-                            <div class="text-content">
-                                <h2>Google Data Analytics Professional Certificate</h2>
-                                <p>Comprehensive Google-certified program covering data analysis, visualization, and insights generation for business decision-making.</p>
-                                <div class="company-info">
-                                    Certified by <a href="https://www.coursera.org/account/accomplishments/professional-cert/JPUG55Y3GZAS" class="highlight" target="_blank" rel="noopener">Google (via Coursera)</a>
-                                </div>
-                            </div>
-                            <div class="image-content">
-                                <img src="assets/cretificates/Google Data Analytics.jpg" alt="Google Data Analytics Professional Certificate" loading="lazy">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Certificate 2 -->
-                    <div class="certificate-slide">
-                        <div class="certificate-content">
-                            <div class="text-content">
-                                <h2>Business Analysis by Microsoft and LinkedIn</h2>
-                                <p>Microsoft-validated comprehensive skills in business process analysis, requirements management, and stakeholder collaboration.</p>
-                                <div class="company-info">
-                                    Certified by <a href="https://www.linkedin.com/learning/certificates/b669334513c329a04528bb83f280f79d1892599b57aac79d7dcfb7fd03992d77" class="highlight" target="_blank" rel="noopener">Microsoft</a> and <a href="https://www.linkedin.com/learning/certificates/b669334513c329a04528bb83f280f79d1892599b57aac79d7dcfb7fd03992d77" class="highlight" target="_blank" rel="noopener">LinkedIn</a>
-                                </div>
-                            </div>
-                            <div class="image-content">
-                                <img src="assets/cretificates/Business Analysis by Microsoft and LinkedIn.jpg" alt="Business Analysis by Microsoft and LinkedIn Certification" loading="lazy">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Certificate 3 -->
-                    <div class="certificate-slide">
-                        <div class="certificate-content">
-                            <div class="text-content">
-                                <h2>Requirements Elicitation and Analysis</h2>
-                                <p>Advanced expertise in stakeholder needs identification, requirements documentation, and analysis techniques for successful project delivery.</p>
-                                <div class="company-info">
-                                    Certified by <a href="https://www.linkedin.com/learning/certificates/b828054f27da7a9b43747e5dacf14f9708d2ed421d3749466bc90c61933eb04a?trk=share_certificate" class="highlight" target="_blank" rel="noopener">LinkedIn Learning</a>
-                                </div>
-                            </div>
-                            <div class="image-content">
-                                <img src="assets/cretificates/Requirements Elicitation and Analysis.jpg" alt="Requirements Elicitation and Analysis Certification" loading="lazy">
-                            </div>
-                        </div>
-                    </div>
-                   
-                    <!-- Certificate 4 -->
-                    <div class="certificate-slide">
-                        <div class="certificate-content">
-                            <div class="text-content">
-                                <h2>Agile Requirements Foundations</h2>
-                                <p>Specialized certification in Agile requirements gathering, user story creation, and iterative requirements management methodologies.</p>
-                                <div class="company-info">
-                                    Certified by <a href="https://www.linkedin.com/learning/certificates/e29c230664b57c86c2795595cd269a65e001ab20943b1042c6b7b4923acba714" class="highlight" target="_blank" rel="noopener">LinkedIn Learning</a>
-                                </div>
-                            </div>
-                            <div class="image-content">
-                                <img src="assets/cretificates/Agile Requirements Foundations.jpg" alt="Agile Requirements Foundations Certification" loading="lazy">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Certificate 5 -->
-                    <div class="certificate-slide">
-                        <div class="certificate-content">
-                            <div class="text-content">
-                                <h2>Microsoft Power BI Data Analytics</h2>
-                                <p>Advanced data visualization and business intelligence skills using Power BI for creating interactive dashboards and actionable insights.</p>
-                                <div class="company-info">
-                                    Certified by <a href="https://codebasics.io/certificate/CB-49-342372" class="highlight" target="_blank" rel="noopener">Codebasics</a>
-                                </div>
-                            </div>
-                            <div class="image-content">
-                                <img src="assets/cretificates/POWER BI - Codebasics.jpg" alt="Microsoft Power BI Data Analytics Certification" loading="lazy">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Navigation Dots -->
-                <div class="slider-dots"></div>
-            </div>
-        </div>
-    </section>
 </main>
-<!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-  <svg class="progress-circle" width="48" height="48">
-    <circle class="bg" cx="24" cy="24" r="20" />
-    <circle class="progress" cx="24" cy="24" r="20" />
-  </svg>
+
+<!-- ════════════════ MODALS ════════════════ -->
+<div class="modal fade" id="pm1" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width:1100px">
+    <div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title">EV Market Analysis</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <div class="row g-4 mb-4">
+          <div class="col-lg-8"><div style="position:relative;width:100%;height:0;padding-top:75%;border-radius:12px;overflow:hidden"><iframe title="EV" src="https://app.powerbi.com/view?r=eyJrIjoiM2ZhNTA4ZTItYzY5NS00YWQ0LWJhOTEtMDNmZDkwMWQyOGRkIiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" frameborder="0" allowFullScreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border-radius:12px"></iframe></div></div>
+          <div class="col-lg-4"><div class="mb-4"><p style="font-size:.8rem;color:var(--muted);margin-bottom:6px">Report</p><a href="assets/projects/EV_Market_Analysis/EV_Market_Analysis_Report_2022_2024.pdf" class="btn-outline" style="font-size:.8rem;padding:8px 16px">Download PDF <i class="bi bi-download"></i></a></div><p style="font-size:.72rem;color:var(--muted);font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px">Tools Used</p><div class="d-flex gap-2 flex-wrap"><span class="tool-pill">Power BI</span><span class="tool-pill">SQL</span></div></div>
+        </div>
+        <h6 style="font-weight:700;color:#fff;margin-bottom:12px">Project Description</h6>
+        <ul class="cb list-unstyled"><li><strong>Market Growth Analysis:</strong> Analyzed the Indian EV market (2022–2024) to identify growth trends, brand performance, and state-level adoption insights.</li><li><strong>Regional Performance Insights:</strong> Focused on high-penetration and underperforming regions to understand geographical adoption patterns.</li><li><strong>Brand Benchmarking:</strong> Conducted quarterly brand growth analysis and YoY performance comparisons.</li><li><strong>Seasonal Trend Analysis:</strong> Examined temporal patterns and seasonal trends for optimal timing strategies.</li><li><strong>Strategic Roadmap:</strong> Delivered insights and recommendations for product strategy, investment zones, and infrastructure partnerships.</li></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="pm2" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width:1100px">
+    <div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title">Google Trend Analysis</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <div class="row g-4 mb-4">
+          <div class="col-lg-8"><div style="position:relative;width:100%;height:0;padding-top:75%;border-radius:12px;overflow:hidden"><iframe title="GT" src="https://app.powerbi.com/view?r=eyJrIjoiMTRjZTNkYmYtYjIzOC00Mjk3LWIzMWYtNjMxN2NhYTVmMzI2IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" frameborder="0" allowFullScreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border-radius:12px"></iframe></div></div>
+          <div class="col-lg-4"><div class="mb-3"><p style="font-size:.8rem;color:var(--muted);margin-bottom:6px">GitHub</p><a href="https://github.com/Manmath235/Google_Trend_Dashboard.git" class="btn-outline" style="font-size:.8rem;padding:8px 16px" target="_blank">GitHub <i class="bi bi-box-arrow-up-right"></i></a></div><div class="mb-4"><p style="font-size:.8rem;color:var(--muted);margin-bottom:6px">Report</p><a href="assets/projects/Google_Trend_Analysis/Google Trend Report.pdf" class="btn-outline" style="font-size:.8rem;padding:8px 16px">Download PDF <i class="bi bi-download"></i></a></div><p style="font-size:.72rem;color:var(--muted);font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px">Tools</p><div class="d-flex gap-2 flex-wrap"><span class="tool-pill">Google APIs</span><span class="tool-pill">Power BI</span><span class="tool-pill">Excel</span></div></div>
+        </div>
+        <h6 style="font-weight:700;color:#fff;margin-bottom:12px">Project Description</h6>
+        <ul class="cb list-unstyled"><li><strong>Insights &amp; Opportunity Identification:</strong> Leverages Google Trends to identify consumer interests, emerging trends, and market opportunities.</li><li><strong>Benchmarking:</strong> Compares search popularity of relevant keywords and job roles against competitors.</li><li><strong>Audience-Centric Content Strategy:</strong> Optimizes content strategy by understanding trending topics.</li><li><strong>Regional Market Understanding:</strong> Provides insights into consumer search behaviors across 60+ countries.</li><li><strong>Data-Driven Decision Making:</strong> Empowers forecasting and strategic planning through real-time trend visualizations.</li></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="pm3" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width:1100px">
+    <div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title">Indian Rail Accident Analysis</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <div class="row g-4 mb-4">
+          <div class="col-lg-8"><div style="position:relative;width:100%;height:0;padding-top:75%;border-radius:12px;overflow:hidden"><iframe title="Rail" src="https://app.powerbi.com/view?r=eyJrIjoiMmZkNTgwODktNzAyMy00YmZlLTk5YzEtYTY4YWIwNmEwODI0IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" frameborder="0" allowFullScreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border-radius:12px"></iframe></div></div>
+          <div class="col-lg-4"><div class="mb-4"><p style="font-size:.8rem;color:var(--muted);margin-bottom:6px">Report</p><a href="assets/projects/Train Accident Analysis/Indian Rail Accident Analysis Report.pdf" download class="btn-outline" style="font-size:.8rem;padding:8px 16px">Download PDF <i class="bi bi-download"></i></a></div><p style="font-size:.72rem;color:var(--muted);font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px">Tools</p><div class="d-flex gap-2 flex-wrap"><span class="tool-pill">Power BI</span><span class="tool-pill">Excel</span></div></div>
+        </div>
+        <h6 style="font-weight:700;color:#fff;margin-bottom:12px">Project Description</h6>
+        <ul class="cb list-unstyled"><li><strong>High-Risk Area Identification:</strong> Identified accident-prone routes through geographical analysis for targeted safety measures.</li><li><strong>Accident Cause Prioritization:</strong> Highlighted top causes (derailments, collisions, sabotage) to guide safety initiatives.</li><li><strong>Emergency Preparedness Enhancement:</strong> Analyzed accident severity, casualties, and infrastructure damage patterns.</li><li><strong>Maintenance Protocol Optimization:</strong> Improved inspection strategies based on historical accident trends.</li><li><strong>Safety Regulation Guidance:</strong> Informed policy formulation through data-driven insights.</li></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="pm4" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width:1100px">
+    <div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title">Customer Retention &amp; Call Centre Optimisation</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <div class="row g-4 mb-4">
+          <div class="col-lg-8"><div style="position:relative;width:100%;height:0;padding-top:75%;border-radius:12px;overflow:hidden"><iframe title="CR" src="https://app.powerbi.com/view?r=eyJrIjoiZmU5YzFlMGMtNDUxYy00OTcyLThjODktZDdlYjFkODJkMzc4IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" frameborder="0" allowFullScreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border-radius:12px"></iframe></div></div>
+          <div class="col-lg-4"><div class="mb-4"><p style="font-size:.8rem;color:var(--muted);margin-bottom:6px">GitHub</p><a href="https://github.com/Manmath235/Call_Center_Trend_Analysis.git" class="btn-outline" style="font-size:.8rem;padding:8px 16px" target="_blank">GitHub <i class="bi bi-box-arrow-up-right"></i></a></div><p style="font-size:.72rem;color:var(--muted);font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px">Tools</p><div class="d-flex gap-2 flex-wrap"><span class="tool-pill">Power BI</span><span class="tool-pill">Excel</span></div></div>
+        </div>
+        <h6 style="font-weight:700;color:#fff;margin-bottom:12px">Project Description</h6>
+        <ul class="cb list-unstyled"><li><strong>Churn Analysis:</strong> Achieved a 26.54% churn reduction through customer segmentation and proactive engagement strategies.</li><li><strong>Call Centre Performance:</strong> Identified performance gaps leading to improved response time and resolution rate KPIs.</li><li><strong>Personalised Customer Offers:</strong> Provided data-driven recommendations based on demographic and usage patterns.</li><li><strong>Infrastructure Planning:</strong> Assessed internet service reliability impact on customer satisfaction.</li><li><strong>Stakeholder Engagement:</strong> Tailored dashboards to business needs, fostering data-driven decision-making.</li></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="pm5" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width:1100px">
+    <div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title">AtliQ Hardware Insights Report</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <div class="row g-4 mb-4">
+          <div class="col-lg-8">
+            <div style="position:relative;width:100%;height:0;padding-top:75%;border-radius:12px;overflow:hidden">
+              <div id="dbc" class="carousel slide" data-bs-ride="carousel" style="position:absolute;inset:0;width:100%;height:100%">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#dbc" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#dbc" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#dbc" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  <button type="button" data-bs-target="#dbc" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                  <button type="button" data-bs-target="#dbc" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                </div>
+                <div class="carousel-inner" style="height:100%;border-radius:12px">
+                  <div class="carousel-item active"><img src="assets/projects/AtliQ Hardware Insights Report/1.jpg" class="d-block w-100" alt="1" style="height:100%;object-fit:cover;border-radius:12px" loading="lazy"></div>
+                  <div class="carousel-item"><img src="assets/projects/AtliQ Hardware Insights Report/2.jpg" class="d-block w-100" alt="2" style="height:100%;object-fit:cover;border-radius:12px" loading="lazy"></div>
+                  <div class="carousel-item"><img src="assets/projects/AtliQ Hardware Insights Report/3.jpg" class="d-block w-100" alt="3" style="height:100%;object-fit:cover;border-radius:12px" loading="lazy"></div>
+                  <div class="carousel-item"><img src="assets/projects/AtliQ Hardware Insights Report/4.jpg" class="d-block w-100" alt="4" style="height:100%;object-fit:cover;border-radius:12px" loading="lazy"></div>
+                  <div class="carousel-item"><img src="assets/projects/AtliQ Hardware Insights Report/5.jpg" class="d-block w-100" alt="5" style="height:100%;object-fit:cover;border-radius:12px" loading="lazy"></div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#dbc" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                <button class="carousel-control-next" type="button" data-bs-target="#dbc" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4"><div class="mb-4"><p style="font-size:.8rem;color:var(--muted);margin-bottom:6px">Report</p><a href="assets/projects/AtliQ Hardware Insights Report/Report.pdf" download class="btn-outline" style="font-size:.8rem;padding:8px 16px">Download PDF <i class="bi bi-download"></i></a></div><p style="font-size:.72rem;color:var(--muted);font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px">Tools</p><div class="d-flex gap-2 flex-wrap"><span class="tool-pill">Power BI</span><span class="tool-pill">SQL</span></div></div>
+        </div>
+        <h6 style="font-weight:700;color:#fff;margin-bottom:12px">Project Description</h6>
+        <ul class="cb list-unstyled"><li><strong>Data Analysis:</strong> In-depth analysis of sales and manufacturing data to uncover critical business insights.</li><li><strong>Operational Efficiency:</strong> Identified cost reduction opportunities and optimized resource allocation.</li><li><strong>Market Insights:</strong> Analysed market presence and sales trends for improved market penetration.</li><li><strong>Customer Insights:</strong> Detailed reports on discount patterns and behaviors for targeted promotions.</li><li><strong>Product Performance:</strong> Evaluated product demand and manufacturing costs to refine product lines.</li></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCROLL TOP -->
+<a href="#" id="scroll-top" aria-label="Back to top">
+  <svg class="pc" width="48" height="48" aria-hidden="true"><circle class="bg" cx="24" cy="24" r="20"/><circle class="pr" cx="24" cy="24" r="20"/></svg>
   <i class="bi bi-arrow-up-short"></i>
 </a>
 
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/aos/aos.js"></script>
+<script>
+(function(){
+  'use strict';
+  AOS.init({duration:700,easing:'ease-out-cubic',once:true,offset:60});
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  const loader=document.getElementById('site-loader');
+  window.addEventListener('load',()=>setTimeout(()=>loader.classList.add('hidden'),400));
+  setTimeout(()=>loader.classList.add('hidden'),2500);
 
-  <!-- Main JS File -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
-  <script src="assets/js/main.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const counters = document.querySelectorAll(".stat-number");
-      const speed = 1;
-  
-      counters.forEach(counter => {
-        const updateCount = () => {
-          const target = +counter.getAttribute("data-target");
-          const count = +counter.innerText;
-          const increment = target / speed;
-  
-          if (count < target) {
-            counter.innerText = Math.ceil(count + increment);
-            setTimeout(updateCount, 200);
-          } else {
-            counter.innerText = target + "+";
-          }
-        };
-  
-        updateCount();
-      });
+  document.addEventListener('DOMContentLoaded',()=>{
+
+    /* Hero counters */
+    document.querySelectorAll('.hs-num[data-target]').forEach(el=>{
+      const t=+el.dataset.target;let n=0;
+      const tick=()=>{n=Math.min(n+Math.ceil(t/20),t);el.textContent=n+'+';if(n<t)setTimeout(tick,60);};
+      setTimeout(tick,700);
     });
-  </script>
-   <!-- Function to check the age -->
-   <script>
-    function calculateAge(birthDate) {
-      const today = new Date();
-      const birthDateObj = new Date(birthDate);
-      let age = today.getFullYear() - birthDateObj.getFullYear();
-      const monthDiff = today.getMonth() - birthDateObj.getMonth();
-      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDateObj.getDate())) {
-        age--;
+
+    /* Skill bars */
+    const bObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.width=e.target.dataset.width+'%';bObs.unobserve(e.target);}});},{threshold:.4});
+    document.querySelectorAll('.skill-bar-fill').forEach(b=>bObs.observe(b));
+
+    /* Nav active */
+    const nls=document.querySelectorAll('.bottom-nav-container a:not(.cw)');
+    const secs=document.querySelectorAll('section[id]');
+    const uNav=()=>{let c='';secs.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id;});nls.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+c));};
+    window.addEventListener('scroll',uNav,{passive:true});
+
+    /* Scroll top */
+    const sb=document.getElementById('scroll-top');
+    const pr=sb.querySelector('.pr');
+    window.addEventListener('scroll',()=>{const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight);pr.style.strokeDashoffset=126-126*p;sb.classList.toggle('active',window.scrollY>200);},{passive:true});
+    sb.addEventListener('click',e=>{e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});});
+
+    /* Modal — no body padding shift */
+    document.querySelectorAll('.modal').forEach(m=>{
+      m.addEventListener('show.bs.modal',()=>{document.body.style.overflow='hidden';document.body.style.paddingRight='0';});
+      m.addEventListener('hidden.bs.modal',()=>{document.body.style.overflow='';document.body.style.paddingRight='';});
+    });
+
+    /* Certificates */
+    const clis=document.querySelectorAll('.cli');
+    const panels=document.querySelectorAll('.cert-panel');
+    const dotsWrap=document.getElementById('cDots');
+    const curEl=document.getElementById('cCur');
+    const prevBtn=document.getElementById('cPrev');
+    const nextBtn=document.getElementById('cNext');
+    const TOTAL=panels.length;
+    let active=0;
+
+    if(dotsWrap){
+      for(let i=0;i<TOTAL;i++){
+        const d=document.createElement('button');
+        d.className='cdot'+(i===0?' active':'');
+        d.setAttribute('aria-label','Certificate '+(i+1));
+        d.addEventListener('click',()=>go(i));
+        dotsWrap.appendChild(d);
       }
-      return age;
     }
-  
-    document.addEventListener("DOMContentLoaded", function () {
-      document.getElementById("age").innerText = calculateAge("1998-12-23") + " Years";
-    });
-  </script>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const slides = document.querySelectorAll('.certificate-slide');
-  const dots = document.querySelectorAll('.dot');
-  const nextBtn = document.querySelector('.next-arrow');
-  const prevBtn = document.querySelector('.prev-arrow');
-  let currentSlide = 0;
+    function go(idx){
+      active=((idx%TOTAL)+TOTAL)%TOTAL;
+      clis.forEach((c,i)=>c.classList.toggle('active',i===active));
+      panels.forEach((p,i)=>p.classList.toggle('active',i===active));
+      if(curEl)curEl.textContent=String(active+1).padStart(2,'0');
+      document.querySelectorAll('.cdot').forEach((d,i)=>d.classList.toggle('active',i===active));
+    }
 
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      if (i === index) {
-        slide.classList.add('active');
-        slide.classList.remove('prev');
-      } else if (i < index) {
-        slide.classList.add('prev');
-        slide.classList.remove('active');
-      } else {
-        slide.classList.remove('active', 'prev');
-      }
-    });
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === index);
-    });
-  }
+    clis.forEach((c,i)=>c.addEventListener('click',()=>go(i)));
+    if(prevBtn)prevBtn.addEventListener('click',()=>go(active-1));
+    if(nextBtn)nextBtn.addEventListener('click',()=>go(active+1));
 
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  }
-
-  function prevSlide() {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    showSlide(currentSlide);
-  }
-
-  nextBtn.addEventListener('click', nextSlide);
-  prevBtn.addEventListener('click', prevSlide);
-
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-      currentSlide = index;
-      showSlide(currentSlide);
-    });
   });
-});
-  </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const slides = document.querySelectorAll(".certificate-slide");
-      const dotsContainer = document.querySelector(".slider-dots");
-  
-      // Generate dots based on slides
-      slides.forEach((_, index) => {
-        const dot = document.createElement("button");
-        dot.classList.add("dot");
-        if (index === 0) dot.classList.add("active"); // First dot active by default
-        dot.addEventListener("click", () => changeSlide(index));
-        dotsContainer.appendChild(dot);
-      });
-  
-      const dots = document.querySelectorAll(".dot");
-      const prevArrow = document.querySelector(".prev-arrow");
-      const nextArrow = document.querySelector(".next-arrow");
-  
-      let currentIndex = 0;
-  
-      function changeSlide(index) {
-        slides[currentIndex].classList.remove("active");
-        dots[currentIndex].classList.remove("active");
-        currentIndex = index;
-        slides[currentIndex].classList.add("active");
-        dots[currentIndex].classList.add("active");
-      }
-  
-      prevArrow.addEventListener("click", () => {
-        const newIndex = (currentIndex - 1 + slides.length) % slides.length;
-        changeSlide(newIndex);
-      });
-  
-      nextArrow.addEventListener("click", () => {
-        const newIndex = (currentIndex + 1) % slides.length;
-        changeSlide(newIndex);
-      });
-    });
-  </script>
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const loader = document.getElementById("loader");
-  
-    // Function to show the loader
-    function showLoader() {
-      loader.style.display = "flex";
-    }
-  
-    // Function to hide the loader
-    function hideLoader() {
-      loader.style.display = "none";
-    }
-  
-    // Example: Show loader when the page starts loading
-    showLoader();
-  
-    // Example: Hide loader when all data/content is loaded
-    window.addEventListener("load", function () {
-      hideLoader();
-    });
-  
-    // Example: Hide loader when embedded content (iframe) is loaded
-    const iframe = document.querySelector("iframe");
-    if (iframe) {
-      iframe.addEventListener("load", function () {
-        hideLoader();
-      });
-    }
-  });
-   </script>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const previewLinks = document.querySelectorAll(".preview-link");
-    const modalImage = document.getElementById("portfolioImage");
-    const modalTitle = document.getElementById("portfolioTitle");
-    const modalDescription = document.getElementById("portfolioDescription");
-
-    previewLinks.forEach(link => {
-      link.addEventListener("click", function(event) {
-        event.preventDefault();
-        modalImage.src = this.getAttribute("data-image");
-        modalTitle.textContent = this.getAttribute("data-title");
-        modalDescription.textContent = this.getAttribute("data-description");
-      });
-    });
-  });
+})();
 </script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const loader = document.getElementById("loader");
-  const portfolioModal = document.getElementById("portfolioModal");
-  const dashboardIframe = document.getElementById("dashboardIframe");
-
-  // Function to show the loader
-  function showLoader() {
-    loader.style.display = "flex";
-  }
-
-  // Function to hide the loader
-  function hideLoader() {
-    loader.style.display = "none";
-  }
-
-  // Show loader when modal is opened
-  portfolioModal.addEventListener("show.bs.modal", function () {
-    showLoader();
-  });
-
-  // Hide loader when iframe content is loaded
-  if (dashboardIframe) {
-    dashboardIframe.addEventListener("load", function () {
-      hideLoader();
-    });
-  }
-
-  // Hide loader if there's no iframe
-  portfolioModal.addEventListener("shown.bs.modal", function () {
-    if (!dashboardIframe || !dashboardIframe.src) {
-      hideLoader();
-    }
-  });
-});
-<!-- JS to Hide Loader after Load -->
-window.addEventListener('load', () => {
-  const loader = document.getElementById('loader');
-  loader.style.transition = 'opacity 1s ease';
-  loader.style.opacity = '0';
-  setTimeout(() => {
-    loader.style.display = 'none';
-  }, 1000);
-});
-</script>
-<script>
-  const scrollTopBtn = document.getElementById("scroll-top");
-  const progressCircle = scrollTopBtn.querySelector(".progress");
-
-  function updateScrollProgress() {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = scrollTop / docHeight;
-    const offset = 126 - 126 * progress;
-    
-    if (scrollTop > 100) {
-      scrollTopBtn.classList.add("active");
-    } else {
-      scrollTopBtn.classList.remove("active");
-    }
-
-    progressCircle.style.strokeDashoffset = offset;
-  }
-
-  window.addEventListener("scroll", updateScrollProgress);
-
-  scrollTopBtn.addEventListener("click", function(e) {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-</script>
-
 </body>
-
 </html>
