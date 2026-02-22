@@ -194,29 +194,91 @@
     .skill-bar-fill{height:100%;background:linear-gradient(90deg,var(--orange),#f4a261);border-radius:3px;width:0;transition:width 1.2s var(--ease)}
 
     /* ══════════════════════════════════
-       TIMELINE
+       EXPERIENCE — spacious card layout
     ══════════════════════════════════ */
-    .timeline{position:relative;max-width:900px;margin:0 auto}
-    .timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,var(--orange) 20%,var(--orange) 80%,transparent);transform:translateX(-50%)}
-    @media(max-width:768px){.timeline::before{left:20px}}
-    .tl-item{display:grid;grid-template-columns:1fr 40px 1fr;gap:0 1.5rem;margin-bottom:3rem}
-    @media(max-width:768px){.tl-item{grid-template-columns:40px 1fr}}
-    .tl-left{text-align:right}
-    @media(max-width:768px){.tl-left{display:none}}
-    .tl-co{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
-    .tl-per{font-size:.78rem;color:var(--muted)}
-    .tl-dot-wrap{display:flex;flex-direction:column;align-items:center}
-    .tl-dot{width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--orange);box-shadow:0 0 12px rgba(232,117,50,.5);flex-shrink:0;margin-top:4px;z-index:1}
-    .tl-right{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;transition:border-color .3s,box-shadow .3s}
-    .tl-right:hover{border-color:rgba(232,117,50,.3);box-shadow:0 8px 30px rgba(232,117,50,.08)}
-    .tl-mh{display:none}
-    @media(max-width:768px){.tl-mh{display:block;margin-bottom:10px}}
-    .tl-role{font-family:var(--body);font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:10px}
-    .intern-badge{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(232,117,50,.4);border-radius:20px;padding:2px 9px}
-    .tl-right ul{list-style:none;display:flex;flex-direction:column;gap:8px}
-    .tl-right ul li{font-size:.85rem;color:var(--muted);padding-left:16px;position:relative}
-    .tl-right ul li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--orange);opacity:.7}
-    .hl{color:var(--text);font-weight:600}
+    .exp-list { display: flex; flex-direction: column; gap: 2rem; max-width: 1200px; margin: 0 auto; }
+
+    .exp-card {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 0;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: border-color 0.35s, box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
+    }
+    .exp-card:hover {
+      border-color: rgba(232,117,50,0.35);
+      box-shadow: 0 16px 60px rgba(232,117,50,0.1), 0 4px 20px rgba(0,0,0,0.35);
+      transform: translateY(-4px);
+    }
+    @media(max-width:768px) { .exp-card { grid-template-columns: 1fr; } }
+
+    /* Left sidebar strip */
+    .exp-sidebar {
+      background: rgba(255,255,255,0.025);
+      border-right: 1px solid var(--border);
+      padding: 32px 28px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      position: relative; overflow: hidden;
+    }
+    .exp-sidebar::before {
+      content: '';
+      position: absolute; top: 0; left: 0; bottom: 0; width: 2px;
+      background: linear-gradient(180deg, transparent, var(--orange) 30%, var(--orange) 70%, transparent);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .exp-card:hover .exp-sidebar::before { opacity: 1; }
+    @media(max-width:768px) { .exp-sidebar { border-right: none; border-bottom: 1px solid var(--border); padding: 24px 24px 20px; } }
+
+    .exp-company { font-size: 0.78rem; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.3; }
+    .exp-period {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--orange); background: var(--orange-dim);
+      border: 1px solid rgba(232,117,50,0.2); border-radius: 20px;
+      padding: 4px 10px; margin-bottom: 20px;
+    }
+    .exp-period i { font-size: 0.6rem; }
+    .exp-index { font-family: var(--display); font-size: 3.5rem; color: rgba(255,255,255,0.04); line-height: 1; letter-spacing: -0.04em; margin-top: auto; }
+
+    /* Right content */
+    .exp-body { padding: 40px 48px; }
+    @media(max-width:768px) { .exp-body { padding: 24px; } }
+
+    .exp-role-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+    .exp-role { font-family: var(--display); font-size: clamp(1.25rem, 2.2vw, 1.65rem); color: #fff; line-height: 1.2; }
+    .exp-badge {
+      flex-shrink: 0; display: inline-flex; align-items: center;
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--orange); border: 1px solid rgba(232,117,50,0.4);
+      border-radius: 20px; padding: 4px 12px; margin-top: 4px;
+    }
+
+    .exp-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
+
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .exp-bullets li {
+      font-size: 0.875rem; color: var(--muted); line-height: 1.75;
+      padding-left: 20px; position: relative;
+    }
+    .exp-bullets li::before {
+      content: '';
+      position: absolute; left: 0; top: 10px;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--orange); opacity: 0.55;
+    }
+    .exp-bullets li .hl { color: var(--text); font-weight: 600; }
+
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .exp-tag {
+      font-size: 0.68rem; font-weight: 600; color: var(--muted);
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      border-radius: 20px; padding: 4px 12px;
+      transition: color 0.3s, border-color 0.3s, background 0.3s;
+    }
+    .exp-card:hover .exp-tag { color: var(--orange); border-color: rgba(232,117,50,0.3); background: var(--orange-dim); }
 
     /* ══════════════════════════════════
        TOOLS
@@ -260,55 +322,152 @@
     .bc:hover::before{opacity:1}
 
     /* ══════════════════════════════════
-       CERTIFICATES — 16:9 sidebar layout
+       CERTIFICATES — Auto-scroll marquee
     ══════════════════════════════════ */
-    .cert-wrap{display:grid;grid-template-columns:270px 1fr;gap:2.5rem;align-items:start}
-    @media(max-width:900px){.cert-wrap{grid-template-columns:1fr}}
 
-    .cert-sidebar{position:sticky;top:40px}
-    .cert-sidebar-lbl{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+    /* Outer viewport — clips the scroll, fades edges */
+    .cert-marquee-outer {
+      position: relative;
+      overflow: hidden;
+      /* fade left & right edges */
+      mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
 
-    .cert-list{display:flex;flex-direction:column;gap:8px}
-    @media(max-width:900px){.cert-list{flex-direction:row;overflow-x:auto;padding-bottom:10px}}
+    /* The scrolling track — two identical sets side by side for seamless loop */
+    .cert-marquee-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: marqueeScroll 30s linear infinite;
+    }
+    /* Pause on hover */
+    .cert-marquee-outer:hover .cert-marquee-track { animation-play-state: paused; }
 
-    .cli{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.02);cursor:pointer;transition:all .3s;flex-shrink:0}
-    .cli:hover{border-color:rgba(232,117,50,.3);background:var(--orange-dim)}
-    .cli.active{border-color:var(--orange);background:var(--orange-dim)}
-    .cli-num{font-family:var(--display);font-size:1.1rem;color:var(--muted);line-height:1;flex-shrink:0;transition:color .3s}
-    .cli.active .cli-num{color:var(--orange)}
-    .cli-info{display:flex;flex-direction:column;gap:2px;min-width:0}
-    .cli-name{font-size:.78rem;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .cli-iss{font-size:.65rem;color:var(--muted);white-space:nowrap}
+    @keyframes marqueeScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
 
-    /* main display */
-    .cert-display{}
-    .cert-mob-nav{display:none}
-    @media(max-width:900px){.cert-mob-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}}
-    .cnav-btn{width:40px;height:40px;border-radius:50%;background:var(--orange-dim);border:1px solid rgba(232,117,50,.3);color:var(--orange);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s}
-    .cnav-btn:hover{background:var(--orange);color:#fff}
+    /* Second row scrolls opposite direction */
+    .cert-marquee-track.reverse {
+      animation-direction: reverse;
+      animation-duration: 36s;
+    }
 
-    .cert-panel{display:none;animation:cIn .45s ease}
-    .cert-panel.active{display:block}
-    @keyframes cIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+    .cert-rows { display: flex; flex-direction: column; gap: 16px; }
 
-    /* 16:9 image frame */
-    .cert-img-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:0 20px 70px rgba(0,0,0,.5),0 0 0 1px rgba(232,117,50,.06);margin-bottom:1.5rem;background:var(--bg-3)}
-    .cert-img-frame img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.96);transition:filter .4s,transform .5s var(--ease)}
-    .cert-img-frame:hover img{filter:brightness(1.05);transform:scale(1.02)}
-    .cert-img-overlay{position:absolute;inset:0;background:linear-gradient(160deg,transparent 55%,rgba(10,10,14,.5) 100%);pointer-events:none}
-    .cert-img-badge{position:absolute;top:14px;right:14px;background:rgba(10,10,14,.82);backdrop-filter:blur(10px);border:1px solid rgba(232,117,50,.3);border-radius:8px;padding:6px 12px;font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}
+    /* Individual card — also used as <a> tag */
+    .cert-card {
+      flex-shrink: 0;
+      width: 330px;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.35s ease, transform 0.35s var(--ease), box-shadow 0.35s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .cert-card:hover {
+      border-color: rgba(232,117,50,0.45);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(232,117,50,0.12);
+    }
+    /* top accent line reveals on hover */
+    .cert-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--orange), #f4a261);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s var(--ease);
+    }
+    .cert-card:hover::before { transform: scaleX(1); }
 
-    .cert-info-row{display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
-    .cert-info-main{flex:1;min-width:200px}
-    .cert-issuer{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
-    .cert-title{font-family:var(--display);font-size:clamp(1.2rem,2.2vw,1.6rem);color:#fff;line-height:1.2;margin-bottom:8px}
-    .cert-desc{font-size:.84rem;color:var(--muted);line-height:1.7}
-    .cert-link{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;font-family:var(--body);font-weight:600;font-size:.82rem;padding:11px 22px;border-radius:50px;flex-shrink:0;white-space:nowrap;transition:all .3s;box-shadow:0 4px 20px rgba(232,117,50,.3)}
-    .cert-link:hover{background:#d4662a;color:#fff;transform:translateY(-2px);box-shadow:0 8px 30px rgba(232,117,50,.4)}
+    /* subtle glow orb top-right */
+    .cert-card::after {
+      content: '';
+      position: absolute; top: -30px; right: -30px;
+      width: 100px; height: 100px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,117,50,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
-    .cert-dots{display:flex;gap:6px;align-items:center;margin-top:1.2rem}
-    .cdot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.12);border:none;cursor:pointer;padding:0;transition:background .3s,width .3s}
-    .cdot.active{background:var(--orange);width:20px;border-radius:3px}
+    .cert-card-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .cert-card-issuer-wrap { display: flex; align-items: center; gap: 10px; }
+    .cert-card-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: var(--orange-dim); border: 1px solid rgba(232,117,50,0.2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--orange); font-size: 0.95rem; flex-shrink: 0;
+    }
+    .cert-card-issuer { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); }
+    .cert-card-num { font-family: var(--display); font-size: 1.4rem; color: rgba(255,255,255,0.08); line-height: 1; }
+
+    .cert-card-title {
+      font-family: var(--body); font-size: 0.92rem; font-weight: 700;
+      color: #fff; line-height: 1.35; margin-bottom: 10px;
+    }
+    .cert-card-desc {
+      font-size: 0.76rem; color: var(--muted); line-height: 1.6; margin-bottom: 16px;
+    }
+    .cert-card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .cert-card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .cert-card-tag {
+      font-size: 0.64rem; font-weight: 600; color: var(--muted);
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      border-radius: 20px; padding: 3px 10px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .cert-card:hover .cert-card-tag { color: var(--orange); border-color: rgba(232,117,50,0.3); }
+    .cert-card-link {
+      display: flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--orange-dim); border: 1px solid rgba(232,117,50,0.25);
+      color: var(--orange); font-size: 0.8rem; flex-shrink: 0;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+    }
+    .cert-card-link:hover { background: var(--orange); color: #fff; transform: scale(1.15); box-shadow: 0 0 16px rgba(232,117,50,0.5); }
+
+    /* Arrow icon in card footer */
+    .cert-card-arrow {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--orange-dim); border: 1px solid rgba(232,117,50,0.2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--orange); font-size: 0.75rem; flex-shrink: 0;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .cert-card:hover .cert-card-arrow {
+      background: var(--orange); color: #fff;
+      transform: scale(1.1) rotate(45deg);
+      box-shadow: 0 0 14px rgba(232,117,50,0.45);
+    }
+
+    /* cert section override — marquee is full-bleed, not container-constrained */
+    #certificates { padding-bottom: 0; }
+    #certificates .container { margin-bottom: 2.5rem; }
+    .cert-hint { padding-bottom: 96px; }
+    .cert-hint {
+      text-align: center; margin-top: 1.75rem;
+      font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted);
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .cert-hint::before, .cert-hint::after {
+      content: ''; display: block; height: 1px; width: 32px;
+      background: linear-gradient(90deg, transparent, var(--border));
+    }
+    .cert-hint::after { background: linear-gradient(90deg, var(--border), transparent); }
 
     /* ══════════════════════════════════
        MODALS — no sidebar scrollbar
@@ -534,47 +693,99 @@
       <h2>Experience</h2>
       <div class="title-line"><span></span><div class="title-dot"></div><span></span></div>
     </div>
-    <div class="timeline">
-      <div class="tl-item" data-aos="fade-up" data-aos-delay="100">
-        <div class="tl-left"><div class="tl-co">Sai Paramount IT Solutions Pvt. Ltd.</div><div class="tl-per">Jul 2024 – Present</div></div>
-        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
-        <div class="tl-right">
-          <div class="tl-mh"><div class="tl-co">Sai Paramount IT Solutions</div><div class="tl-per" style="font-size:.75rem;color:var(--muted)">Jul 2024 – Present</div></div>
-          <div class="tl-role">Business Analyst</div>
-          <ul>
-            <li>Worked with clients on <span class="hl">web and mobile application projects</span>, performing requirement elicitation and functional analysis.</li>
-            <li>Prepared <span class="hl">user stories, BRD/FSD documents, UML diagrams, functional flows, and wireframes</span>.</li>
-            <li>Led <span class="hl">User Acceptance Testing (UAT)</span> including test scenario preparation, acceptance criteria validation, and defect coordination.</li>
-            <li>Contributed to approximately <span class="hl">30% improvement in operational efficiency</span> through better requirement clarity.</li>
+
+    <div class="exp-list">
+
+      <!-- Card 1 -->
+      <div class="exp-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="exp-sidebar">
+          <div>
+            <div class="exp-company">Sai Paramount IT Solutions Pvt. Ltd.</div>
+            <div class="exp-period"><i class="bi bi-calendar3"></i> Jul 2024 – Present</div>
+          </div>
+          <div class="exp-index">01</div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-role-row">
+            <div class="exp-role">Business Analyst</div>
+          </div>
+          <div class="exp-divider"></div>
+          <ul class="exp-bullets">
+            <li>Collaborated with clients on <span class="hl">web and mobile application projects</span>, driving requirement elicitation and end-to-end functional analysis.</li>
+            <li>Produced comprehensive <span class="hl">BRD/FSD documents, user stories, UML diagrams, functional flow charts, and wireframes</span> to align business and technical teams.</li>
+            <li>Owned <span class="hl">User Acceptance Testing (UAT)</span> — from test scenario creation and acceptance criteria validation through to defect tracking and sign-off coordination.</li>
+            <li>Contributed to a measured <span class="hl">~30% improvement in operational efficiency</span> by significantly reducing requirement ambiguity and rework cycles.</li>
           </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">BRD / FSD</span>
+            <span class="exp-tag">UML</span>
+            <span class="exp-tag">Wireframing</span>
+            <span class="exp-tag">UAT</span>
+            <span class="exp-tag">Stakeholder Management</span>
+            <span class="exp-tag">Agile</span>
+          </div>
         </div>
       </div>
-      <div class="tl-item" data-aos="fade-up" data-aos-delay="200">
-        <div class="tl-left"><div class="tl-co">GEEMSCO Consultancy Solutions Pvt. Ltd.</div><div class="tl-per">Mar 2023 – Jul 2024</div></div>
-        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
-        <div class="tl-right">
-          <div class="tl-mh"><div class="tl-co">GEEMSCO Consultancy Solutions</div><div class="tl-per" style="font-size:.75rem;color:var(--muted)">Mar 2023 – Jul 2024</div></div>
-          <div class="tl-role">Business Analyst</div>
-          <ul>
-            <li>Supported <span class="hl">requirement gathering, documentation, and stakeholder coordination</span> across IT initiatives.</li>
-            <li>Performed data analysis using <span class="hl">SQL and Excel</span> to support reporting and business decision-making.</li>
-            <li>Assisted with <span class="hl">UAT planning, defect tracking, and release support</span> for smoother go-lives.</li>
+
+      <!-- Card 2 -->
+      <div class="exp-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="exp-sidebar">
+          <div>
+            <div class="exp-company">GEEMSCO Consultancy Solutions Pvt. Ltd.</div>
+            <div class="exp-period"><i class="bi bi-calendar3"></i> Mar 2023 – Jul 2024</div>
+          </div>
+          <div class="exp-index">02</div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-role-row">
+            <div class="exp-role">Business Analyst</div>
+          </div>
+          <div class="exp-divider"></div>
+          <ul class="exp-bullets">
+            <li>Supported <span class="hl">requirement gathering, structured documentation, and stakeholder coordination</span> across multiple IT initiatives, improving delivery predictability.</li>
+            <li>Applied <span class="hl">SQL and Excel</span> for data analysis, generating reports that directly informed business planning and operational decisions.</li>
+            <li>Facilitated <span class="hl">UAT planning sessions, defect tracking, and release coordination</span>, contributing to smoother product go-lives and reduced post-launch issues.</li>
           </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Requirement Gathering</span>
+            <span class="exp-tag">SQL</span>
+            <span class="exp-tag">Excel</span>
+            <span class="exp-tag">UAT Planning</span>
+            <span class="exp-tag">Defect Tracking</span>
+          </div>
         </div>
       </div>
-      <div class="tl-item" data-aos="fade-up" data-aos-delay="300">
-        <div class="tl-left"><div class="tl-co">Afame Technologies</div><div class="tl-per">Apr 2023 – May 2023</div></div>
-        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
-        <div class="tl-right">
-          <div class="tl-mh"><div class="tl-co">Afame Technologies</div><div class="tl-per" style="font-size:.75rem;color:var(--muted)">Apr 2023 – May 2023</div></div>
-          <div class="tl-role">Data Analyst <span class="intern-badge">Internship</span></div>
-          <ul>
-            <li><span class="hl">Processed and cleaned 10,000+ data entries</span>, improving accuracy and decision-making.</li>
-            <li>Designed an interactive <span class="hl">Power BI dashboard</span> analysing 3 years of sales data.</li>
-            <li>Partnered with HR to generate <span class="hl">20+ performance reports</span> with high reporting standards.</li>
+
+      <!-- Card 3 -->
+      <div class="exp-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="exp-sidebar">
+          <div>
+            <div class="exp-company">Afame Technologies</div>
+            <div class="exp-period"><i class="bi bi-calendar3"></i> Apr 2023 – May 2023</div>
+          </div>
+          <div class="exp-index">03</div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-role-row">
+            <div class="exp-role">Data Analyst</div>
+            <span class="exp-badge">Internship</span>
+          </div>
+          <div class="exp-divider"></div>
+          <ul class="exp-bullets">
+            <li><span class="hl">Processed and cleaned over 10,000 data entries</span>, substantially improving dataset accuracy and downstream decision-making quality.</li>
+            <li>Designed an interactive <span class="hl">Power BI dashboard</span> analysing 3 years of sales data, enabling leadership to identify trends at a glance.</li>
+            <li>Collaborated with the HR team to generate <span class="hl">20+ structured performance reports</span>, setting a higher standard for reporting clarity across the organisation.</li>
           </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Power BI</span>
+            <span class="exp-tag">Data Cleaning</span>
+            <span class="exp-tag">Excel</span>
+            <span class="exp-tag">Dashboards</span>
+            <span class="exp-tag">Reporting</span>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -592,7 +803,7 @@
       <div class="tool-chip"><div class="t-icon"><img class="d" src="assets/tools/database-g.png" alt="SQL" loading="lazy"><img class="h" src="assets/tools/database.png" alt="SQL" loading="lazy"></div><span>SQL</span></div>
       <div class="tool-chip"><div class="t-icon"><img class="d" src="assets/tools/clickup-g.png" alt="ClickUp" loading="lazy"><img class="h" src="assets/tools/clickup.png" alt="ClickUp" loading="lazy"></div><span>ClickUp</span></div>
       <div class="tool-chip"><div class="t-icon"><img class="d" src="assets/tools/postman-g.png" alt="Postman" loading="lazy"><img class="h" src="assets/tools/postman.png" alt="Postman" loading="lazy"></div><span>Postman</span></div>
-      <div class="tool-chip"><div class="t-icon"><img class="d" src="assets/tools/Visio-g.png" alt="Visio" loading="lazy"><img class="h" src="assets/tools/Visio.png" alt="Visio" loading="lazy"></div><span>Visio</span></div>
+      <div class="tool-chip"><div class="t-icon"><img class="d" src="assets/tools/Visio-g.png" alt="Visio" loading="lazy"><img class="h" src="assets/tools/visio.png" alt="Visio" loading="lazy"></div><span>Visio</span></div>
       <div class="tool-chip"><div class="t-icon"><img class="d" src="assets/tools/Notion-g.png" alt="Notion" loading="lazy"><img class="h" src="assets/tools/Notion.png" alt="Notion" loading="lazy"></div><span>Notion</span></div>
     </div>
   </div>
@@ -642,70 +853,208 @@
       <h2>Certificates</h2>
       <div class="title-line"><span></span><div class="title-dot"></div><span></span></div>
     </div>
-    <div class="cert-wrap" data-aos="fade-up" data-aos-delay="100">
-      <!-- Sidebar -->
-      <div class="cert-sidebar">
-        <p class="cert-sidebar-lbl">All Certificates</p>
-        <div class="cert-list" id="certList">
-          <div class="cli active" data-cert="0"><span class="cli-num">01</span><div class="cli-info"><span class="cli-name">Google Data Analytics</span><span class="cli-iss">Google · Coursera</span></div></div>
-          <div class="cli" data-cert="1"><span class="cli-num">02</span><div class="cli-info"><span class="cli-name">Business Analysis</span><span class="cli-iss">Microsoft · LinkedIn</span></div></div>
-          <div class="cli" data-cert="2"><span class="cli-num">03</span><div class="cli-info"><span class="cli-name">Requirements Elicitation</span><span class="cli-iss">LinkedIn Learning</span></div></div>
-          <div class="cli" data-cert="3"><span class="cli-num">04</span><div class="cli-info"><span class="cli-name">Agile Requirements</span><span class="cli-iss">LinkedIn Learning</span></div></div>
-          <div class="cli" data-cert="4"><span class="cli-num">05</span><div class="cli-info"><span class="cli-name">Power BI Data Analytics</span><span class="cli-iss">Codebasics</span></div></div>
-        </div>
-      </div>
-      <!-- Display -->
-      <div class="cert-display">
-        <div class="cert-mob-nav">
-          <button class="cnav-btn" id="cPrev">&#8592;</button>
-          <span style="font-size:.82rem;color:var(--muted)"><span id="cCur" style="color:var(--orange);font-weight:700">01</span> / 05</span>
-          <button class="cnav-btn" id="cNext">&#8594;</button>
-        </div>
-
-        <div class="cert-panel active" data-cert-panel="0">
-          <div class="cert-img-frame"><img src="assets/cretificates/Google Data Analytics.jpg" alt="Google Data Analytics" loading="lazy"><div class="cert-img-overlay"></div><div class="cert-img-badge">Google · Coursera</div></div>
-          <div class="cert-info-row">
-            <div class="cert-info-main"><div class="cert-issuer">Google · Coursera</div><h3 class="cert-title">Google Data Analytics Professional Certificate</h3><p class="cert-desc">Comprehensive program covering data analysis, visualization, and insights for business decision-making.</p></div>
-            <a href="https://www.coursera.org/account/accomplishments/professional-cert/JPUG55Y3GZAS" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="bi bi-box-arrow-up-right"></i></a>
-          </div>
-          <div class="cert-dots" id="cDots"></div>
-        </div>
-
-        <div class="cert-panel" data-cert-panel="1">
-          <div class="cert-img-frame"><img src="assets/cretificates/Business Analysis by Microsoft and LinkedIn.jpg" alt="Business Analysis" loading="lazy"><div class="cert-img-overlay"></div><div class="cert-img-badge">Microsoft · LinkedIn</div></div>
-          <div class="cert-info-row">
-            <div class="cert-info-main"><div class="cert-issuer">Microsoft · LinkedIn</div><h3 class="cert-title">Business Analysis by Microsoft and LinkedIn</h3><p class="cert-desc">Microsoft-validated skills in business process analysis, requirements management, and stakeholder collaboration.</p></div>
-            <a href="https://www.linkedin.com/learning/certificates/b669334513c329a04528bb83f280f79d1892599b57aac79d7dcfb7fd03992d77" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="bi bi-box-arrow-up-right"></i></a>
-          </div>
-        </div>
-
-        <div class="cert-panel" data-cert-panel="2">
-          <div class="cert-img-frame"><img src="assets/cretificates/Requirements Elicitation and Analysis.jpg" alt="Requirements Elicitation" loading="lazy"><div class="cert-img-overlay"></div><div class="cert-img-badge">LinkedIn Learning</div></div>
-          <div class="cert-info-row">
-            <div class="cert-info-main"><div class="cert-issuer">LinkedIn Learning</div><h3 class="cert-title">Requirements Elicitation and Analysis</h3><p class="cert-desc">Advanced expertise in stakeholder needs identification, requirements documentation, and analysis techniques.</p></div>
-            <a href="https://www.linkedin.com/learning/certificates/b828054f27da7a9b43747e5dacf14f9708d2ed421d3749466bc90c61933eb04a" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="bi bi-box-arrow-up-right"></i></a>
-          </div>
-        </div>
-
-        <div class="cert-panel" data-cert-panel="3">
-          <div class="cert-img-frame"><img src="assets/cretificates/Agile Requirements Foundations.jpg" alt="Agile Requirements" loading="lazy"><div class="cert-img-overlay"></div><div class="cert-img-badge">LinkedIn Learning</div></div>
-          <div class="cert-info-row">
-            <div class="cert-info-main"><div class="cert-issuer">LinkedIn Learning</div><h3 class="cert-title">Agile Requirements Foundations</h3><p class="cert-desc">Specialised in Agile requirements gathering, user story creation, and iterative requirements management.</p></div>
-            <a href="https://www.linkedin.com/learning/certificates/e29c230664b57c86c2795595cd269a65e001ab20943b1042c6b7b4923acba714" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="bi bi-box-arrow-up-right"></i></a>
-          </div>
-        </div>
-
-        <div class="cert-panel" data-cert-panel="4">
-          <div class="cert-img-frame"><img src="assets/cretificates/POWER BI - Codebasics.jpg" alt="Power BI" loading="lazy"><div class="cert-img-overlay"></div><div class="cert-img-badge">Codebasics</div></div>
-          <div class="cert-info-row">
-            <div class="cert-info-main"><div class="cert-issuer">Codebasics</div><h3 class="cert-title">Microsoft Power BI Data Analytics</h3><p class="cert-desc">Advanced data visualization and BI using Power BI for interactive dashboards and actionable insights.</p></div>
-            <a href="https://codebasics.io/certificate/CB-49-342372" class="cert-link" target="_blank" rel="noopener">View Certificate <i class="bi bi-box-arrow-up-right"></i></a>
-          </div>
-        </div>
-
-      </div>
-    </div>
   </div>
+
+  <!-- Row 1 — scrolls left -->
+  <div class="cert-marquee-outer" data-aos="fade-up" data-aos-delay="100">
+    <div class="cert-marquee-track" id="row1">
+
+      <!-- SET A -->
+      <a class="cert-card" href="https://www.coursera.org/account/accomplishments/professional-cert/JPUG55Y3GZAS" target="_blank" rel="noopener">
+        <div class="cert-card-header">
+          <div class="cert-card-issuer-wrap">
+            <div class="cert-card-icon"><i class="bi bi-google"></i></div>
+            <span class="cert-card-issuer">Google · Coursera</span>
+          </div>
+          <span class="cert-card-num">01</span>
+        </div>
+        <div class="cert-card-title">Google Data Analytics Professional Certificate</div>
+        <div class="cert-card-desc">Comprehensive program covering data analysis, visualization, and insights for business decision-making.</div>
+        <div class="cert-card-footer">
+          <div class="cert-card-tags">
+            <span class="cert-card-tag">Data Analysis</span>
+            <span class="cert-card-tag">Visualization</span>
+          </div>
+          <div class="cert-card-arrow"><i class="bi bi-arrow-up-right"></i></div>
+        </div>
+      </a>
+
+      <a class="cert-card" href="https://www.linkedin.com/learning/certificates/b669334513c329a04528bb83f280f79d1892599b57aac79d7dcfb7fd03992d77" target="_blank" rel="noopener">
+        <div class="cert-card-header">
+          <div class="cert-card-issuer-wrap">
+            <div class="cert-card-icon"><i class="bi bi-microsoft"></i></div>
+            <span class="cert-card-issuer">Microsoft · LinkedIn</span>
+          </div>
+          <span class="cert-card-num">02</span>
+        </div>
+        <div class="cert-card-title">Business Analysis by Microsoft and LinkedIn</div>
+        <div class="cert-card-desc">Microsoft-validated skills in business process analysis, requirements management, and stakeholder collaboration.</div>
+        <div class="cert-card-footer">
+          <div class="cert-card-tags">
+            <span class="cert-card-tag">BRD / FSD</span>
+            <span class="cert-card-tag">Stakeholders</span>
+          </div>
+          <div class="cert-card-arrow"><i class="bi bi-arrow-up-right"></i></div>
+        </div>
+      </a>
+
+      <a class="cert-card" href="https://www.linkedin.com/learning/certificates/b828054f27da7a9b43747e5dacf14f9708d2ed421d3749466bc90c61933eb04a" target="_blank" rel="noopener">
+        <div class="cert-card-header">
+          <div class="cert-card-issuer-wrap">
+            <div class="cert-card-icon"><i class="bi bi-linkedin"></i></div>
+            <span class="cert-card-issuer">LinkedIn Learning</span>
+          </div>
+          <span class="cert-card-num">03</span>
+        </div>
+        <div class="cert-card-title">Requirements Elicitation and Analysis</div>
+        <div class="cert-card-desc">Advanced expertise in stakeholder needs identification, requirements documentation, and analysis techniques.</div>
+        <div class="cert-card-footer">
+          <div class="cert-card-tags">
+            <span class="cert-card-tag">Elicitation</span>
+            <span class="cert-card-tag">UAT</span>
+          </div>
+          <div class="cert-card-arrow"><i class="bi bi-arrow-up-right"></i></div>
+        </div>
+      </a>
+
+      <a class="cert-card" href="https://www.linkedin.com/learning/certificates/e29c230664b57c86c2795595cd269a65e001ab20943b1042c6b7b4923acba714" target="_blank" rel="noopener">
+        <div class="cert-card-header">
+          <div class="cert-card-issuer-wrap">
+            <div class="cert-card-icon"><i class="bi bi-linkedin"></i></div>
+            <span class="cert-card-issuer">LinkedIn Learning</span>
+          </div>
+          <span class="cert-card-num">04</span>
+        </div>
+        <div class="cert-card-title">Agile Requirements Foundations</div>
+        <div class="cert-card-desc">Specialised in Agile requirements gathering, user story creation, and iterative requirements management.</div>
+        <div class="cert-card-footer">
+          <div class="cert-card-tags">
+            <span class="cert-card-tag">Agile</span>
+            <span class="cert-card-tag">Scrum</span>
+          </div>
+          <div class="cert-card-arrow"><i class="bi bi-arrow-up-right"></i></div>
+        </div>
+      </a>
+
+      <a class="cert-card" href="https://codebasics.io/certificate/CB-49-342372" target="_blank" rel="noopener">
+        <div class="cert-card-header">
+          <div class="cert-card-issuer-wrap">
+            <div class="cert-card-icon"><i class="bi bi-bar-chart-fill"></i></div>
+            <span class="cert-card-issuer">Codebasics</span>
+          </div>
+          <span class="cert-card-num">05</span>
+        </div>
+        <div class="cert-card-title">Microsoft Power BI Data Analytics</div>
+        <div class="cert-card-desc">Advanced data visualization and BI using Power BI for interactive dashboards and actionable insights.</div>
+        <div class="cert-card-footer">
+          <div class="cert-card-tags">
+            <span class="cert-card-tag">Power BI</span>
+            <span class="cert-card-tag">Dashboards</span>
+          </div>
+          <div class="cert-card-arrow"><i class="bi bi-arrow-up-right"></i></div>
+        </div>
+      </a>
+
+      <!-- SET B — exact duplicate for seamless loop -->
+      <a class="cert-card" href="https://www.coursera.org/account/accomplishments/professional-cert/JPUG55Y3GZAS" target="_blank" rel="noopener">
+        <div class="cert-card-header">
+          <div class="cert-card-issuer-wrap">
+            <div class="cert-card-icon"><i class="bi bi-google"></i></div>
+            <span class="cert-card-issuer">Google · Coursera</span>
+          </div>
+          <span class="cert-card-num">01</span>
+        </div>
+        <div class="cert-card-title">Google Data Analytics Professional Certificate</div>
+        <div class="cert-card-desc">Comprehensive program covering data analysis, visualization, and insights for business decision-making.</div>
+        <div class="cert-card-footer">
+          <div class="cert-card-tags">
+            <span class="cert-card-tag">Data Analysis</span>
+            <span class="cert-card-tag">Visualization</span>
+          </div>
+          <div class="cert-card-arrow"><i class="bi bi-arrow-up-right"></i></div>
+        </div>
+      </a>
+
+      <a class="cert-card" href="https://www.linkedin.com/learning/certificates/b669334513c329a04528bb83f280f79d1892599b57aac79d7dcfb7fd03992d77" target="_blank" rel="noopener">
+        <div class="cert-card-header">
+          <div class="cert-card-issuer-wrap">
+            <div class="cert-card-icon"><i class="bi bi-microsoft"></i></div>
+            <span class="cert-card-issuer">Microsoft · LinkedIn</span>
+          </div>
+          <span class="cert-card-num">02</span>
+        </div>
+        <div class="cert-card-title">Business Analysis by Microsoft and LinkedIn</div>
+        <div class="cert-card-desc">Microsoft-validated skills in business process analysis, requirements management, and stakeholder collaboration.</div>
+        <div class="cert-card-footer">
+          <div class="cert-card-tags">
+            <span class="cert-card-tag">BRD / FSD</span>
+            <span class="cert-card-tag">Stakeholders</span>
+          </div>
+          <div class="cert-card-arrow"><i class="bi bi-arrow-up-right"></i></div>
+        </div>
+      </a>
+
+      <a class="cert-card" href="https://www.linkedin.com/learning/certificates/b828054f27da7a9b43747e5dacf14f9708d2ed421d3749466bc90c61933eb04a" target="_blank" rel="noopener">
+        <div class="cert-card-header">
+          <div class="cert-card-issuer-wrap">
+            <div class="cert-card-icon"><i class="bi bi-linkedin"></i></div>
+            <span class="cert-card-issuer">LinkedIn Learning</span>
+          </div>
+          <span class="cert-card-num">03</span>
+        </div>
+        <div class="cert-card-title">Requirements Elicitation and Analysis</div>
+        <div class="cert-card-desc">Advanced expertise in stakeholder needs identification, requirements documentation, and analysis techniques.</div>
+        <div class="cert-card-footer">
+          <div class="cert-card-tags">
+            <span class="cert-card-tag">Elicitation</span>
+            <span class="cert-card-tag">UAT</span>
+          </div>
+          <div class="cert-card-arrow"><i class="bi bi-arrow-up-right"></i></div>
+        </div>
+      </a>
+
+      <a class="cert-card" href="https://www.linkedin.com/learning/certificates/e29c230664b57c86c2795595cd269a65e001ab20943b1042c6b7b4923acba714" target="_blank" rel="noopener">
+        <div class="cert-card-header">
+          <div class="cert-card-issuer-wrap">
+            <div class="cert-card-icon"><i class="bi bi-linkedin"></i></div>
+            <span class="cert-card-issuer">LinkedIn Learning</span>
+          </div>
+          <span class="cert-card-num">04</span>
+        </div>
+        <div class="cert-card-title">Agile Requirements Foundations</div>
+        <div class="cert-card-desc">Specialised in Agile requirements gathering, user story creation, and iterative requirements management.</div>
+        <div class="cert-card-footer">
+          <div class="cert-card-tags">
+            <span class="cert-card-tag">Agile</span>
+            <span class="cert-card-tag">Scrum</span>
+          </div>
+          <div class="cert-card-arrow"><i class="bi bi-arrow-up-right"></i></div>
+        </div>
+      </a>
+
+      <a class="cert-card" href="https://codebasics.io/certificate/CB-49-342372" target="_blank" rel="noopener">
+        <div class="cert-card-header">
+          <div class="cert-card-issuer-wrap">
+            <div class="cert-card-icon"><i class="bi bi-bar-chart-fill"></i></div>
+            <span class="cert-card-issuer">Codebasics</span>
+          </div>
+          <span class="cert-card-num">05</span>
+        </div>
+        <div class="cert-card-title">Microsoft Power BI Data Analytics</div>
+        <div class="cert-card-desc">Advanced data visualization and BI using Power BI for interactive dashboards and actionable insights.</div>
+        <div class="cert-card-footer">
+          <div class="cert-card-tags">
+            <span class="cert-card-tag">Power BI</span>
+            <span class="cert-card-tag">Dashboards</span>
+          </div>
+          <div class="cert-card-arrow"><i class="bi bi-arrow-up-right"></i></div>
+        </div>
+      </a>
+
+    </div><!-- /row1 track -->
+  </div><!-- /outer -->
+
+  <div class="cert-hint" data-aos="fade-up" data-aos-delay="200">Hover any card to pause · Click to view certificate</div>
 </section>
 
 </main>
@@ -859,38 +1208,6 @@
       m.addEventListener('show.bs.modal',()=>{document.body.style.overflow='hidden';document.body.style.paddingRight='0';});
       m.addEventListener('hidden.bs.modal',()=>{document.body.style.overflow='';document.body.style.paddingRight='';});
     });
-
-    /* Certificates */
-    const clis=document.querySelectorAll('.cli');
-    const panels=document.querySelectorAll('.cert-panel');
-    const dotsWrap=document.getElementById('cDots');
-    const curEl=document.getElementById('cCur');
-    const prevBtn=document.getElementById('cPrev');
-    const nextBtn=document.getElementById('cNext');
-    const TOTAL=panels.length;
-    let active=0;
-
-    if(dotsWrap){
-      for(let i=0;i<TOTAL;i++){
-        const d=document.createElement('button');
-        d.className='cdot'+(i===0?' active':'');
-        d.setAttribute('aria-label','Certificate '+(i+1));
-        d.addEventListener('click',()=>go(i));
-        dotsWrap.appendChild(d);
-      }
-    }
-
-    function go(idx){
-      active=((idx%TOTAL)+TOTAL)%TOTAL;
-      clis.forEach((c,i)=>c.classList.toggle('active',i===active));
-      panels.forEach((p,i)=>p.classList.toggle('active',i===active));
-      if(curEl)curEl.textContent=String(active+1).padStart(2,'0');
-      document.querySelectorAll('.cdot').forEach((d,i)=>d.classList.toggle('active',i===active));
-    }
-
-    clis.forEach((c,i)=>c.addEventListener('click',()=>go(i)));
-    if(prevBtn)prevBtn.addEventListener('click',()=>go(active-1));
-    if(nextBtn)nextBtn.addEventListener('click',()=>go(active+1));
 
   });
 })();
