@@ -149,7 +149,7 @@
       background: var(--bg-3)
     }
 
-    /* ══ FIX 1: LOADER — proper centering on all screens ══ */
+    /* ══ LOADER ══ */
     #site-loader {
       position: fixed;
       top: 0;
@@ -195,7 +195,6 @@
       align-items: center;
       gap: 0;
       z-index: 2;
-      /* FIX: ensure scene itself doesn't overflow on small screens */
       width: 100%;
       max-width: 320px;
       padding: 0 20px;
@@ -350,7 +349,6 @@
       to { opacity: 1; transform: translateY(0) }
     }
 
-    /* ══ FIX 2 & 3: BOTTOM NAV — bigger tap targets, safe bottom spacing ══ */
     .bottom-nav {
       position: fixed;
       bottom: 20px;
@@ -1622,7 +1620,7 @@
 
     .cert-hint::after { background: linear-gradient(90deg, var(--border), transparent); }
 
-    /* ══ FIX 3: SCROLL TOP — positioned to never overlap nav on mobile ══ */
+    /* ══ Scroll Top ══ */
     #scroll-top {
       position: fixed;
       bottom: 22px;
@@ -1708,13 +1706,10 @@
       transition: width .15s linear;
     }
 
-    /* ══ FIX 2, 3, 4: MOBILE RESPONSIVE — 768px ══ */
     @media(max-width:768px) {
 
-      /* FIX 3: Scroll top raised so it never hides behind the nav */
       #scroll-top {
         right: 16px;
-        /* Nav height ~60px + 16px gap + 16px bottom = 92px */
         bottom: 92px;
         padding: 0 13px 0 10px;
         height: 38px;
@@ -1734,7 +1729,6 @@
 
       .section-title h2 { font-size: clamp(1.6rem, 5.5vw, 2.1rem) }
 
-      /* FIX 2: Bottom nav — bigger, more usable tap targets */
       .bottom-nav {
         width: calc(100% - 24px);
         left: 12px;
@@ -1752,7 +1746,6 @@
       }
 
       .bottom-nav-container a {
-        /* Minimum 44px tap target height per accessibility guidelines */
         font-size: .78rem;
         font-weight: 600;
         padding: 10px 12px;
@@ -1763,7 +1756,6 @@
         border-radius: 14px;
       }
 
-      /* FIX 4: Hero section — tighter, better mobile spacing */
       .hero-section {
         grid-template-columns: 1fr;
         min-height: 100svh;
@@ -1895,7 +1887,6 @@
       .container { padding-left: 14px; padding-right: 14px }
       .section-title h2 { font-size: clamp(1.5rem, 6vw, 1.9rem) }
 
-      /* FIX 3: Scroll top adjustment for smaller nav */
       #scroll-top {
         right: 12px;
         bottom: 88px;
@@ -1913,7 +1904,6 @@
 
       .btn-primary, .btn-outline { font-size: .82rem; padding: 11px 18px }
 
-      /* FIX 2: Nav icon+text on small screens — keep text but reduce padding */
       .bottom-nav {
         width: calc(100% - 20px);
         left: 10px;
@@ -1988,14 +1978,12 @@
       .hs-num { font-size: 1.25rem }
       .btn-primary, .btn-outline { font-size: .78rem; padding: 10px 14px }
 
-      /* FIX 2: Icon-only nav for very small screens */
       .bottom-nav { width: calc(100% - 12px); left: 6px; right: 6px }
       .bottom-nav-container { padding: 5px 4px; gap: 1px; border-radius: 14px; }
       .bottom-nav-container a span,
       .bottom-nav-container .cw i+span { display: none }
       .bottom-nav-container a { padding: 9px 5px; font-size: .6rem; min-height: 40px; }
 
-      /* FIX 3: Scroll top for very small screens */
       #scroll-top { right: 12px; bottom: 80px; }
 
       .tool-chip { width: 62px; padding: 12px 6px 8px }
