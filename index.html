@@ -350,10 +350,10 @@
 
     /* ABOUT */
     #about { background: var(--gh-canvas); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
     .about-grid > .gh-card { height: 100%; }
     .about-grid > div { display: flex; flex-direction: column; gap: 16px; }
-    .about-grid > div .gh-card { flex: 1; min-height: 0; }
+    .about-grid > div .gh-card { flex: none; }
 
     .gh-card {
       background: var(--gh-surface);
@@ -746,19 +746,6 @@
     #scroll-top.active { opacity: 1; visibility: visible; pointer-events: auto; }
     .st-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gh-green); }
 
-    /* FOOTER */
-    .gh-footer { border-top: 1px solid var(--gh-border); padding: 24px 0; background: var(--gh-canvas); }
-    .gh-footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-    .gh-footer-text { font-family: var(--mono); font-size: .75rem; color: var(--gh-muted2); }
-    .gh-footer-links { display: flex; gap: 16px; }
-    .gh-footer-links a { font-size: .78rem; color: var(--gh-muted); text-decoration: none; }
-    .gh-footer-links a:hover { color: var(--gh-blue); text-decoration: none; }
-
-    /* UTILS */
-    .mono { font-family: var(--mono); }
-    [data-aos] { opacity: 0; transform: translateY(20px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
-    [data-aos].aos-animate { opacity: 1; transform: none; }
-
     /* RESPONSIVE */
     @media(max-width:768px) {
       #hero { padding-top: 72px; padding-bottom: 40px; }
@@ -786,8 +773,6 @@
       .proj-card-v2.p1 .pcard-img { height: 180px; }
       .modal-proj-layout { grid-template-columns: 1fr; }
       .modal-iframe-wrap { padding-top: 70%; }
-      .gh-footer-inner { justify-content: center; text-align: center; flex-direction: column; }
-      #scroll-top { bottom: 16px; right: 16px; }
       .modal-title { font-size: .72rem !important; }
     }
 
@@ -884,7 +869,6 @@
         <div class="profile-links">
           <div class="profile-link"><i class="bi bi-briefcase-fill"></i> Business Analyst</div>
           <div class="profile-link"><i class="bi bi-geo-alt-fill"></i> Bhubaneswar, Odisha, IN</div>
-          <!-- FIX: Plain email text — not obfuscated, not encoded -->
           <a href="mailto:manmath.contact@gmail.com" class="profile-link"><i class="bi bi-envelope-fill"></i> manmath.contact@gmail.com</a>
           <div class="profile-link"><i class="bi bi-phone-fill"></i> +91 7008548402</div>
         </div>
@@ -905,17 +889,16 @@
           </div>
           <div class="readme-body">
             <h1 class="readme-h1">Hi, I'm Manmath <span class="wave">👋</span></h1>
-             <div class="readme-badges">
+            <div class="readme-badges">
               <span class="badge-gh badge-blue"><i class="bi bi-briefcase-fill"></i> Business Analyst</span>
               <span class="badge-gh badge-green"><i class="bi bi-database-fill"></i> Data Enthusiast</span>
               <span class="badge-gh badge-purple"><i class="bi bi-intersect"></i> Bridging Business &amp; Tech</span>
             </div>
             <p class="readme-p">
-              Turning complex business challenges into <strong>structured, actionable requirements</strong>.<br>
-              I specialize in <strong>requirement elicitation</strong>, <strong>UML/functional flows</strong>, <strong>wireframing</strong>, and <strong>UAT execution</strong> — bridging the gap between business stakeholders and technical delivery teams.
+              I bridge the gap between <strong>business stakeholders</strong> and <strong>technical teams</strong> — translating ambiguous requirements into precise, delivery-ready documentation. With <strong><span class="dynamic-exp"></span> years</strong> across web and mobile projects, I bring structure to complexity through <strong>BRDs, UML diagrams, functional flows</strong>, and <strong>UAT execution</strong> that actually sticks.
             </p>
             <div class="stat-cards-row">
-              <div class="stat-card"><div class="stat-num">2+</div><div class="stat-lbl">Years Exp.</div></div>
+              <div class="stat-card"><div class="stat-num dynamic-exp"></div><div class="stat-lbl">Years Exp.</div></div>
               <div class="stat-card"><div class="stat-num">10+</div><div class="stat-lbl">Projects</div></div>
               <div class="stat-card"><div class="stat-num">5</div><div class="stat-lbl">Certifications</div></div>
               <div class="stat-card"><div class="stat-num">30%</div><div class="stat-lbl">Efficiency ↑</div></div>
@@ -949,12 +932,12 @@
           <span class="badge-gh badge-green" style="font-size:.65rem;">● available</span>
         </div>
         <div class="gh-card-body">
-          <p class="about-text">Business Analyst with <strong>2+ years of experience</strong> across <strong>web and mobile application projects</strong>, delivering clear requirements, high-quality releases, and measurable business outcomes through structured analysis and stakeholder collaboration.</p>
+          <p class="about-text">Business Analyst with <strong><span class="dynamic-exp"></span> years of experience</strong> across <strong>web and mobile application projects</strong>, delivering clear requirements, high-quality releases, and measurable business outcomes through structured analysis and stakeholder collaboration.</p>
           <p class="about-text">I specialize in requirement elicitation, <code>UML</code> / functional flows, wireframes, and <code>UAT</code> execution. My data analysis skills in <code>Power BI</code>, <code>SQL</code>, and <code>Excel</code> complement core BA work by turning raw data into actionable insights.</p>
           <table class="info-table">
             <tr><td>name</td><td>Manmathnath Mahanta</td></tr>
             <tr><td>role</td><td>Business Analyst</td></tr>
-            <tr><td>experience</td><td>2+ Years</td></tr>
+            <tr><td>experience</td><td><span class="dynamic-exp"></span> Years</td></tr>
             <tr><td>location</td><td>Bhubaneswar, Odisha</td></tr>
             <tr><td>email</td><td><a href="mailto:manmath.contact@gmail.com" class="profile-link">manmath.contact@gmail.com</a></td></tr>
             <tr><td>phone</td><td>+91 7008548402</td></tr>
@@ -1379,19 +1362,6 @@
 
 </main>
 
-<!-- FOOTER -->
-<footer class="gh-footer">
-  <div class="gh-footer-inner">
-    <div class="gh-footer-text">© <span id="footer-year"></span> Manmathnath Mahanta · Built with <span style="color:var(--gh-red)">♥</span></div>
-    <div class="gh-footer-links">
-      <a href="mailto:manmath.contact@gmail.com" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
-      <a href="https://wa.me/917008548402" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a href="assets/Manmathnath Mahanta - Resume.pdf" download aria-label="Download Resume"><i class="bi bi-file-earmark-person"></i></a>
-    </div>
-  </div>
-</footer>
-
-<!-- FIX: Use javascript:void(0) to prevent page jump on click -->
 <a href="javascript:void(0)" id="scroll-top" aria-label="Back to top">
   <div class="st-dot"></div>
   <span class="mono">↑ top</span>
@@ -1659,176 +1629,179 @@
   </div>
 </div>
 
-<!-- FIX: Removed Cloudflare email-decode.min.js script — it was obfuscating the email address -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 (function() {
   'use strict';
 
-  /* Loader */
-  const loader = document.getElementById('site-loader');
+  /* ─── Dynamic experience calculator ─────────────────────────────────────
+     Counts from March 2023 (month index 2 = March).
+     Returns e.g. "2+", "2.5+", "3+" etc.
+  ──────────────────────────────────────────────────────────────────────── */
+  function calcExperience() {
+    var start = new Date(2023, 2, 1); // 1 March 2023
+    var now   = new Date();
+    var years  = now.getFullYear() - start.getFullYear();
+    var months = now.getMonth()    - start.getMonth();
+    if (months < 0) { years--; months += 12; }
+    var totalMonths = years * 12 + months;
+    if (totalMonths < 12) return totalMonths + '+ mo';
+    var remainder = totalMonths % 12;
+    return years + (remainder >= 6 ? '.5' : '') + '+';
+  }
+
+  /* Stamp value into every .dynamic-exp element */
+  function stampExp() {
+    var val = calcExperience();
+    document.querySelectorAll('.dynamic-exp').forEach(function(el) {
+      el.textContent = val;
+    });
+  }
+  stampExp();
+
+  /* ─── Loader ─────────────────────────────────────────────────────────── */
+  var loader = document.getElementById('site-loader');
   document.body.style.overflow = 'hidden';
   function hideLoader() { loader.classList.add('hidden'); document.body.style.overflow = ''; }
-  window.addEventListener('load', () => setTimeout(hideLoader, 2900));
+  window.addEventListener('load', function() { setTimeout(hideLoader, 2900); });
   setTimeout(hideLoader, 3400);
 
-  /* Contribution graph */
+  /* ─── Contribution graph ─────────────────────────────────────────────── */
   function buildContrib() {
-    const el = document.getElementById('contribStrip');
+    var el = document.getElementById('contribStrip');
     if (!el) return;
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
-    function rand(n) { const x = Math.sin(n + 1) * 43758.5453123; return x - Math.floor(x); }
-    const jan1 = new Date(today.getFullYear(), 0, 1);
-    const activityMap = {};
-    let totalContribs = 0;
-    const msPerDay = 86400000;
-    const totalDays = Math.floor((today - jan1) / msPerDay) + 1;
-    for (let i = 0; i < totalDays; i++) {
-      const d = new Date(jan1.getTime() + i * msPerDay);
-      const key = d.toISOString().slice(0, 10);
-      const r = rand(seed * 1000 + i);
-      let level = 0;
-      if (r > 0.40) {
-        if (r < 0.65) level = 1;
-        else if (r < 0.85) level = 2;
-        else if (r < 0.95) level = 3;
-        else level = 4;
-      }
-      const dow = d.getDay();
-      if ((dow === 0 || dow === 6) && level > 0) {
-        level = rand(seed * 1000 + i + 777) > 0.55 ? level : Math.max(0, level - 1);
-      }
-      activityMap[key] = level;
-      if (level > 0) totalContribs += level;
+    var today = new Date(); today.setHours(0,0,0,0);
+    var seed = today.getFullYear()*10000 + (today.getMonth()+1)*100 + today.getDate();
+    function rand(n){ var x=Math.sin(n+1)*43758.5453123; return x-Math.floor(x); }
+    var jan1 = new Date(today.getFullYear(),0,1);
+    var activityMap = {};
+    var totalContribs = 0;
+    var msPerDay = 86400000;
+    var totalDays = Math.floor((today-jan1)/msPerDay)+1;
+    for(var i=0;i<totalDays;i++){
+      var d=new Date(jan1.getTime()+i*msPerDay);
+      var key=d.toISOString().slice(0,10);
+      var r=rand(seed*1000+i);
+      var level=0;
+      if(r>0.40){ if(r<0.65)level=1; else if(r<0.85)level=2; else if(r<0.95)level=3; else level=4; }
+      var dow=d.getDay();
+      if((dow===0||dow===6)&&level>0){ level=rand(seed*1000+i+777)>0.55?level:Math.max(0,level-1); }
+      activityMap[key]=level;
+      if(level>0)totalContribs+=level;
     }
-    const startDate = new Date(jan1);
-    startDate.setDate(startDate.getDate() - startDate.getDay());
-    const COLS = Math.ceil((today - startDate) / msPerDay / 7) + 1;
-    const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    function fmtFull(d) { return MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear(); }
-    function fmtShort(d) { return MONTHS[d.getMonth()] + ' ' + d.getFullYear(); }
-    const ROWS = 7;
-    let monthRow = '';
-    let lastM = -1;
-    for (let c = 0; c < COLS; c++) {
-      const d = new Date(startDate);
-      d.setDate(d.getDate() + c * 7);
-      const m = d.getMonth();
-      if (m !== lastM) { monthRow += '<span style="position:absolute;left:' + (c * 14) + 'px">' + MONTHS[m] + '</span>'; lastM = m; }
+    var COLS=Math.ceil((today-jan1)/msPerDay/7)+1;
+    var MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    function fmtFull(d){ return MONTHS[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear(); }
+    function fmtShort(d){ return MONTHS[d.getMonth()]+' '+d.getFullYear(); }
+    var ROWS=7;
+    var monthRow='';
+    var lastM=-1;
+    for(var c=0;c<COLS;c++){
+      var md=new Date(jan1.getTime()+(c*7-jan1.getDay())*msPerDay);
+      if(md<jan1)continue;
+      var m=md.getMonth();
+      if(m!==lastM){ monthRow+='<span style="position:absolute;left:'+(c*14)+'px">'+MONTHS[m]+'</span>'; lastM=m; }
     }
-    let html = '<div class="contrib-label" style="margin-bottom:6px;align-items:center"><span><strong style="color:var(--gh-text)">' + totalContribs.toLocaleString() + '</strong><span style="color:var(--gh-muted)"> contributions in ' + today.getFullYear() + '</span></span><span style="color:var(--gh-muted2);font-size:.68rem">Jan 1 \u2013 ' + fmtShort(today) + '</span></div>';
-    html += '<div style="position:relative;height:14px;margin-bottom:5px;font-family:var(--mono);font-size:.62rem;color:var(--gh-muted2);overflow:hidden">' + monthRow + '</div>';
-    html += '<div class="contrib-graph">';
-    for (let c = 0; c < COLS; c++) {
-      html += '<div class="contrib-col">';
-      for (let r = 0; r < ROWS; r++) {
-        const d = new Date(startDate);
-        d.setDate(d.getDate() + c * 7 + r);
-        const key = d.toISOString().slice(0, 10);
-        const isFut = d > today;
-        const level = isFut ? 0 : (activityMap[key] || 0);
-        const tip = isFut ? 'No contributions yet' : (level > 0 ? level + ' contribution' + (level > 1 ? 's' : '') + ' on ' + fmtFull(d) : 'No contributions on ' + fmtFull(d));
-        const cls = level > 0 ? 'contrib-cell l' + level : 'contrib-cell';
-        const delay = Math.floor((c * ROWS + r) * 3);
-        const base = isFut ? '0.18' : '0';
-        html += '<div class="' + cls + '" title="' + tip + '" style="opacity:' + base + ';animation:_cellIn .22s ease ' + delay + 'ms forwards"></div>';
+    var html='<div class="contrib-label" style="margin-bottom:6px;align-items:center"><span><strong style="color:var(--gh-text)">'+totalContribs.toLocaleString()+'</strong><span style="color:var(--gh-muted)"> contributions in '+today.getFullYear()+'</span></span><span style="color:var(--gh-muted2);font-size:.68rem">Jan 1 \u2013 '+fmtShort(today)+'</span></div>';
+    html+='<div style="position:relative;height:14px;margin-bottom:5px;font-family:var(--mono);font-size:.62rem;color:var(--gh-muted2);overflow:hidden">'+monthRow+'</div>';
+    html+='<div class="contrib-graph">';
+    for(var c2=0;c2<COLS;c2++){
+      html+='<div class="contrib-col">';
+      for(var r2=0;r2<ROWS;r2++){
+        var dayIndex=c2*7+r2-jan1.getDay();
+        var cd=new Date(jan1.getTime()+dayIndex*msPerDay);
+        var ckey=cd.toISOString().slice(0,10);
+        var isFut=cd>today;
+        var isPast=dayIndex<0;
+        var clevel=(isFut||isPast)?0:(activityMap[ckey]||0);
+        var tip=isPast?'':isFut?'No contributions yet':(clevel>0?clevel+' contribution'+(clevel>1?'s':'')+' on '+fmtFull(cd):'No contributions on '+fmtFull(cd));
+        var cls=clevel>0?'contrib-cell l'+clevel:'contrib-cell';
+        var delay=Math.floor((c2*ROWS+r2)*3);
+        var base=(isFut||isPast)?'0.18':'0';
+        var invisible=isPast?'visibility:hidden;':'';
+        html+='<div class="'+cls+'" title="'+tip+'" style="'+invisible+'opacity:'+base+';animation:_cellIn .22s ease '+delay+'ms forwards"></div>';
       }
-      html += '</div>';
+      html+='</div>';
     }
-    html += '</div>';
-    html += '<div style="display:flex;align-items:center;gap:5px;margin-top:10px;font-family:var(--mono);font-size:.65rem;color:var(--gh-muted2)">Less<div style="width:10px;height:10px;border-radius:2px;background:var(--gh-border2)"></div><div style="width:10px;height:10px;border-radius:2px;background:#0e4429"></div><div style="width:10px;height:10px;border-radius:2px;background:#006d32"></div><div style="width:10px;height:10px;border-radius:2px;background:#26a641"></div><div style="width:10px;height:10px;border-radius:2px;background:#39d353"></div>More</div>';
-    el.innerHTML = html;
+    html+='</div>';
+    html+='<div style="display:flex;align-items:center;gap:5px;margin-top:10px;font-family:var(--mono);font-size:.65rem;color:var(--gh-muted2)">Less<div style="width:10px;height:10px;border-radius:2px;background:var(--gh-border2)"></div><div style="width:10px;height:10px;border-radius:2px;background:#0e4429"></div><div style="width:10px;height:10px;border-radius:2px;background:#006d32"></div><div style="width:10px;height:10px;border-radius:2px;background:#26a641"></div><div style="width:10px;height:10px;border-radius:2px;background:#39d353"></div>More</div>';
+    el.innerHTML=html;
   }
   buildContrib();
-  (function scheduleRebuild() {
-    const now = new Date();
-    const msUntilMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1) - now;
-    setTimeout(function() { buildContrib(); scheduleRebuild(); }, msUntilMidnight + 100);
+  (function scheduleRebuild(){
+    var now=new Date();
+    var msUntilMidnight=new Date(now.getFullYear(),now.getMonth(),now.getDate()+1)-now;
+    setTimeout(function(){ buildContrib(); scheduleRebuild(); }, msUntilMidnight+100);
   })();
 
-  /* AOS */
-  function initAOS() {
-    const items = document.querySelectorAll('[data-aos]');
-    const obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('aos-animate'); obs.unobserve(e.target); } });
-    }, { threshold: 0.08 });
-    items.forEach(function(el, i) { el.style.transitionDelay = (i % 4 * 80) + 'ms'; obs.observe(el); });
+  /* ─── AOS ────────────────────────────────────────────────────────────── */
+  function initAOS(){
+    var items=document.querySelectorAll('[data-aos]');
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('aos-animate'); obs.unobserve(e.target); } });
+    },{threshold:0.08});
+    items.forEach(function(el,i){ el.style.transitionDelay=(i%4*80)+'ms'; obs.observe(el); });
   }
   document.addEventListener('DOMContentLoaded', initAOS);
 
-  /* Skill bars */
-  const bObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) { if (e.isIntersecting) { e.target.style.width = e.target.dataset.width + '%'; bObs.unobserve(e.target); } });
-  }, { threshold: 0.4 });
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.skill-lang-fill').forEach(function(b) { bObs.observe(b); });
+  /* ─── Skill bars ─────────────────────────────────────────────────────── */
+  var bObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.style.width=e.target.dataset.width+'%'; bObs.unobserve(e.target); } });
+  },{threshold:0.4});
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('.skill-lang-fill').forEach(function(b){ bObs.observe(b); });
   });
 
-  /* Nav active */
-  document.addEventListener('DOMContentLoaded', function() {
-    const nls = document.querySelectorAll('.gh-topbar-nav a');
-    const secs = document.querySelectorAll('section[id]');
-    function uNav() {
-      let c = '';
-      const scrollBottom = window.scrollY + window.innerHeight;
-      const docHeight = document.documentElement.scrollHeight;
-      // If within 60px of page bottom, force-highlight the last section
-      if (scrollBottom >= docHeight - 60) {
-        c = secs[secs.length - 1].id;
-      } else {
-        secs.forEach(function(s) { if (window.scrollY >= s.offsetTop - 80) c = s.id; });
-      }
-      nls.forEach(function(a) { a.classList.toggle('active', a.getAttribute('href') === '#' + c); });
+  /* ─── Nav active ─────────────────────────────────────────────────────── */
+  document.addEventListener('DOMContentLoaded',function(){
+    var nls=document.querySelectorAll('.gh-topbar-nav a');
+    var secs=document.querySelectorAll('section[id]');
+    function uNav(){
+      var c='';
+      var scrollBottom=window.scrollY+window.innerHeight;
+      var docHeight=document.documentElement.scrollHeight;
+      if(scrollBottom>=docHeight-60){ c=secs[secs.length-1].id; }
+      else{ secs.forEach(function(s){ if(window.scrollY>=s.offsetTop-80)c=s.id; }); }
+      nls.forEach(function(a){ a.classList.toggle('active',a.getAttribute('href')==='#'+c); });
     }
-    window.addEventListener('scroll', uNav, { passive: true });
+    window.addEventListener('scroll',uNav,{passive:true});
     uNav();
   });
 
-  /* Footer year */
-  document.addEventListener('DOMContentLoaded', function() {
-    const el = document.getElementById('footer-year');
-    if (el) el.textContent = new Date().getFullYear();
+  /* ─── Scroll top ─────────────────────────────────────────────────────── */
+  document.addEventListener('DOMContentLoaded',function(){
+    var sb=document.getElementById('scroll-top');
+    window.addEventListener('scroll',function(){ sb.classList.toggle('active',window.scrollY>400); },{passive:true});
+    sb.addEventListener('click',function(e){ e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); });
   });
 
-  /* Scroll top */
-  document.addEventListener('DOMContentLoaded', function() {
-    const sb = document.getElementById('scroll-top');
-    window.addEventListener('scroll', function() { sb.classList.toggle('active', window.scrollY > 400); }, { passive: true });
-    sb.addEventListener('click', function(e) {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  });
-
-  /* Project filter tabs */
-  document.addEventListener('DOMContentLoaded', function() {
-    const tabs = document.querySelectorAll('.pf-tab');
-    const cards = document.querySelectorAll('.proj-card-v2');
-    tabs.forEach(function(tab) {
-      tab.addEventListener('click', function() {
-        tabs.forEach(function(t) { t.classList.remove('active'); });
+  /* ─── Project filter tabs ────────────────────────────────────────────── */
+  document.addEventListener('DOMContentLoaded',function(){
+    var tabs=document.querySelectorAll('.pf-tab');
+    var cards=document.querySelectorAll('.proj-card-v2');
+    tabs.forEach(function(tab){
+      tab.addEventListener('click',function(){
+        tabs.forEach(function(t){ t.classList.remove('active'); });
         tab.classList.add('active');
-        const filter = tab.dataset.filter;
-        cards.forEach(function(card) {
-          const tags = card.dataset.tags || '';
-          const show = filter === 'all' || tags.includes(filter);
-          card.style.opacity = show ? '1' : '0.3';
-          card.style.transform = show ? '' : 'scale(0.97)';
-          card.style.pointerEvents = show ? '' : 'none';
-          card.style.transition = 'opacity .3s, transform .3s';
+        var filter=tab.dataset.filter;
+        cards.forEach(function(card){
+          var tags=card.dataset.tags||'';
+          var show=filter==='all'||tags.includes(filter);
+          card.style.opacity=show?'1':'0.3';
+          card.style.transform=show?'':'scale(0.97)';
+          card.style.pointerEvents=show?'':'none';
+          card.style.transition='opacity .3s, transform .3s';
         });
       });
     });
   });
 
-  /* Modal cleanup — restore scroll after close */
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.modal').forEach(function(m) {
-      m.addEventListener('hidden.bs.modal', function() {
-        document.body.style.overflow = '';
-        document.body.style.paddingRight = '';
+  /* ─── Modal cleanup ──────────────────────────────────────────────────── */
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('.modal').forEach(function(m){
+      m.addEventListener('hidden.bs.modal',function(){
+        document.body.style.overflow='';
+        document.body.style.paddingRight='';
       });
     });
   });
