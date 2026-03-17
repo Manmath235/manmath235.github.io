@@ -793,6 +793,51 @@
         grid-template-areas: "p1 p1" "p2 p3" "p4 p5";
       }
     }
+    /* AI SUMMARY BUTTON */
+#ai-summary-btn {
+  position: fixed; bottom: 24px; left: 24px; z-index: 999;
+  display: flex; align-items: center; gap: 9px;
+  height: 40px; padding: 0 16px 0 12px;
+  background: linear-gradient(135deg, #10a37f 0%, #0d8f6f 100%);
+  border: 1px solid rgba(16,163,127,.45);
+  border-radius: 20px;
+  font-family: var(--mono); font-size: .72rem; font-weight: 600;
+  color: #fff; cursor: pointer; text-decoration: none;
+  box-shadow: 0 4px 20px rgba(16,163,127,.35);
+  transition: all .3s var(--ease);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transform: translateY(8px);
+}
+#ai-summary-btn.active {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateY(0);
+}
+#ai-summary-btn:hover {
+  background: linear-gradient(135deg, #0d8f6f 0%, #0a7a5e 100%);
+  box-shadow: 0 6px 28px rgba(16,163,127,.5);
+  color: #fff; text-decoration: none;
+  transform: translateY(-2px);
+}
+#ai-summary-btn:hover .ai-btn-icon { transform: rotate(-8deg) scale(1.15); }
+.ai-btn-icon {
+  font-size: .9rem; transition: transform .3s var(--ease);
+  display: flex; align-items: center;
+  flex-shrink: 0;
+}
+.ai-btn-label { line-height: 1; white-space: nowrap; }
+.ai-btn-pulse {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #fff; opacity: .85; flex-shrink: 0;
+  animation: aiBtnPulse 2s ease-in-out infinite;
+}
+@keyframes aiBtnPulse {
+  0%, 100% { transform: scale(1); opacity: .85; }
+  50% { transform: scale(1.5); opacity: .4; }
+}
+@media(max-width:480px) {
+  #ai-summary-btn .ai-btn-label { display: none; }
+  #ai-summary-btn { padding: 0 12px; }
+}
   </style>
 </head>
 <body>
@@ -938,7 +983,7 @@
             <tr><td>name</td><td>Manmathnath Mahanta</td></tr>
             <tr><td>role</td><td>Business Analyst</td></tr>
             <tr><td>experience</td><td><span class="dynamic-exp"></span> Years</td></tr>
-            <tr><td>location</td><td>Bhubaneswar, Odisha</td></tr>
+            <tr><td>location</td><td>Kolkata, West Bengal</td></tr>
             <tr><td>email</td><td><a href="mailto:manmath.contact@gmail.com" class="profile-link">manmath.contact@gmail.com</a></td></tr>
             <tr><td>phone</td><td>+91 7008548402</td></tr>
             <tr><td>tools</td><td>Power BI · SQL · Excel</td></tr>
@@ -1023,23 +1068,56 @@
 </section>
 
 <!-- EXPERIENCE -->
+<!-- EXPERIENCE -->
 <section id="resume">
   <div class="container">
     <div class="section-header" data-aos>
       <h2>Experience</h2>
       <div class="sh-line"></div>
-      <span class="sh-tag">3 commits</span>
+      <span class="sh-tag">4 commits</span>
     </div>
     <div class="timeline">
 
+      <!-- Tech Exactly — Current -->
       <div class="exp-window" data-aos>
         <div class="exp-titlebar">
           <div class="exp-titlebar-left">
             <i class="bi bi-file-earmark-code" style="color:var(--gh-muted2);font-size:.85rem;"></i>
-            <span class="exp-tab">business-analyst.md</span>
+            <span class="exp-tab">business-analyst-techexactly.md</span>
           </div>
           <div class="exp-titlebar-right">
-            <span class="exp-period-tag"><i class="bi bi-circle-fill" style="font-size:.5rem"></i> Jul 2024 – Present</span>
+            <span class="exp-period-tag"><i class="bi bi-circle-fill" style="font-size:.5rem"></i> Mar 2025 – Present</span>
+          </div>
+        </div>
+        <div class="exp-body2">
+          <div class="exp-company-line">
+            <i class="bi bi-building" style="color:var(--gh-muted2);font-size:.85rem;"></i>
+            <span class="exp-company2">Tech Exactly</span>
+          </div>
+          <div class="exp-role2">Business Analyst</div>
+          <ul class="diff-list">
+          <li class="diff-item"><span class="diff-prefix">+</span><span>Conducting structured <span class="hl">requirement elicitation sessions</span> with prospects, converting ambiguous business goals into precise, delivery-ready documentation.</span></li>
+          <li class="diff-item"><span class="diff-prefix">+</span><span>Producing <span class="hl">UML diagrams, wireframes, user stories, product roadmaps and SRS</span> with high turnaround accuracy — ensuring zero misalignment between client expectations and dev output.</span></li>
+          <li class="diff-item"><span class="diff-prefix">+</span><span>Functioning as <span class="hl">Product Owner</span> — managing backlog, facilitating scrum ceremonies, and keeping every sprint tightly aligned to agreed client goals.</span></li>
+          <li class="diff-item"><span class="diff-prefix">+</span><span>Owning end-to-end <span class="hl">UAT execution</span> — writing test scenarios, validating acceptance criteria, tracking defects, and driving stakeholder sign-off to clean releases.</span></li>
+          <li class="diff-item"><span class="diff-prefix">+</span><span>Preparing and presenting <span class="hl">detailed business proposals</span> to prospects, combining sharp analytical thinking with clear communication to build client confidence and close alignment fast.</span></li>
+          </ul>
+          <div class="exp-tags2">
+            <span class="exp-tag2">Product Owner</span><span class="exp-tag2">UML</span><span class="exp-tag2">Wireframing</span>
+            <span class="exp-tag2">SRS / BRD</span><span class="exp-tag2">UAT</span><span class="exp-tag2">Scrum</span><span class="exp-tag2">Mobile Apps</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sai Paramount -->
+      <div class="exp-window" data-aos>
+        <div class="exp-titlebar">
+          <div class="exp-titlebar-left">
+            <i class="bi bi-file-earmark-code" style="color:var(--gh-muted2);font-size:.85rem;"></i>
+            <span class="exp-tab">business-analyst-saiparamount.md</span>
+          </div>
+          <div class="exp-titlebar-right">
+            <span class="exp-period-tag" style="background:var(--gh-blue-dim);color:var(--gh-blue);border-color:var(--gh-blue-mid);">Jul 2024 – Mar 2025</span>
           </div>
         </div>
         <div class="exp-body2">
@@ -1061,6 +1139,7 @@
         </div>
       </div>
 
+      <!-- GEEMSCO -->
       <div class="exp-window" data-aos>
         <div class="exp-titlebar">
           <div class="exp-titlebar-left">
@@ -1089,6 +1168,7 @@
         </div>
       </div>
 
+      <!-- Afame Internship -->
       <div class="exp-window" data-aos>
         <div class="exp-titlebar">
           <div class="exp-titlebar-left">
@@ -1366,6 +1446,11 @@
   <div class="st-dot"></div>
   <span class="mono">↑ top</span>
 </a>
+<a id="ai-summary-btn" href="#" target="_blank" rel="noopener noreferrer" aria-label="Ask AI for a summary">
+  <span class="ai-btn-icon">✦</span>
+  <span class="ai-btn-label">Ask AI about me</span>
+  <span class="ai-btn-pulse"></span>
+</a>
 
 <!-- MODALS -->
 
@@ -1633,7 +1718,101 @@
 <script>
 (function() {
   'use strict';
+//* ─── AI Summary Button ──────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', function() {
+  var aiBtn = document.getElementById('ai-summary-btn');
 
+  function buildAIPrompt() {
+    // --- Experience (read dynamically from DOM) ---
+    var expText = '';
+    document.querySelectorAll('.exp-window').forEach(function(win, i) {
+      var role    = win.querySelector('.exp-role2')?.textContent.trim() || '';
+      var company = win.querySelector('.exp-company2')?.textContent.trim() || '';
+      var period  = win.querySelector('.exp-period-tag')?.textContent.trim() || '';
+      var bullets = [];
+      win.querySelectorAll('.diff-item').forEach(function(li) {
+        var text = li.querySelector('span:last-child')?.textContent.trim();
+        if (text) bullets.push('   - ' + text);
+      });
+      expText += (i + 1) + '. ' + role + ' — ' + company + ' (' + period + ')\n' + bullets.join('\n') + '\n\n';
+    });
+
+    // --- Skills (read dynamically from DOM) ---
+    var skillsText = '';
+    document.querySelectorAll('.skill-lang-item').forEach(function(item) {
+      var name = item.querySelector('.skill-lang-name')?.textContent.trim() || '';
+      var pct  = item.querySelector('.skill-lang-pct')?.textContent.trim() || '';
+      if (name && pct) skillsText += name + ' (' + pct + ') · ';
+    });
+    skillsText = skillsText.replace(/· $/, '');
+
+    // --- Projects (read dynamically from DOM) ---
+    var projectsText = '';
+    document.querySelectorAll('.proj-card-v2').forEach(function(card, i) {
+      var title = card.querySelector('.pcard-title')?.textContent.trim() || '';
+      var desc  = card.querySelector('.pcard-desc')?.textContent.trim() || '';
+      var pills = Array.from(card.querySelectorAll('.pcard-pill')).map(function(p) { return p.textContent.trim(); }).join(' + ');
+      if (title) projectsText += (i + 1) + '. ' + title + ' — ' + desc + (pills ? ' (' + pills + ')' : '') + '\n';
+    });
+
+    // --- Certifications (read dynamically from DOM) ---
+    var certsText = '';
+    var seen = {};
+    document.querySelectorAll('.cert-card-gh').forEach(function(card) {
+      var title   = card.querySelector('.cert-title')?.textContent.trim() || '';
+      var issuer  = card.querySelector('.cert-issuer')?.textContent.trim() || '';
+      if (title && !seen[title]) { seen[title] = true; certsText += '- ' + title + ' (' + issuer + ')\n'; }
+    });
+
+    // --- Tools (read dynamically from DOM) ---
+    var toolsText = Array.from(document.querySelectorAll('.tool-repo-name'))
+      .map(function(t) { return t.textContent.trim(); }).join(' · ');
+
+    // --- Competency tags (read dynamically from DOM) ---
+    var tagsText = Array.from(document.querySelectorAll('.gh-tag'))
+      .map(function(t) { return t.textContent.trim(); }).join(' · ');
+
+    // --- Dynamic experience value ---
+    var expVal = document.querySelector('.dynamic-exp')?.textContent.trim() || '2+';
+
+    // --- Build final prompt ---
+    return "You are a career coach. A recruiter just landed on the portfolio of Manmathnath Mahanta, a Business Analyst. " +
+  "Give them a razor-sharp candidate brief — bullet points only, no fluff, no long paragraphs.\n\n" +
+
+  "Here is his profile data:\n\n" +
+
+  "**Experience:** " + expVal + " years | Business Analyst\n" +
+  "**Location:** Kolkata, West Bengal\n" +
+  "**Contact:** manmath.contact@gmail.com | +91 7008548402\n\n" +
+
+  "**WORK EXPERIENCE:**\n" + expText +
+  "**CORE SKILLS:**\n" + skillsText + "\n\n" +
+  "**COMPETENCIES:**\n" + tagsText + "\n\n" +
+  "**TOOLS:** " + toolsText + "\n\n" +
+  "**KEY PROJECTS:**\n" + projectsText + "\n" +
+  "**CERTIFICATIONS:**\n" + certsText + "\n" +
+
+  "---\n\n" +
+  "Now write a **candidate brief** for an HR manager. Format it exactly like this:\n\n" +
+  "**⚡ Why He Stands Out** (3–4 bullets, each one punchy and specific)\n\n" +
+  "**🛠 What He Brings** (3–4 bullets covering skills, tools, and delivery impact)\n\n" +
+  "**📂 Proof of Work** (4–5 bullets, one per standout project with a concrete result)\n\n" +
+  "**✅ Bottom Line** (1 sentence max — should make the HR want to call him today)\n\n" +
+  "Rules: No intros. No filler sentences. Every bullet must contain a specific fact or number from his profile. Keep the whole thing under 200 words.";
+  }
+
+  // Build URL on click (so it always reads the latest DOM state)
+  aiBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    var url = "https://chatgpt.com/?q=" + encodeURIComponent(buildAIPrompt());
+    window.open(url, '_blank', 'noopener,noreferrer');
+  });
+
+  // Show after scroll
+  window.addEventListener('scroll', function() {
+    aiBtn.classList.toggle('active', window.scrollY > 400);
+  }, { passive: true });
+});
   /* ─── Dynamic experience calculator ─────────────────────────────────────
      Counts from March 2023 (month index 2 = March).
      Returns e.g. "2+", "2.5+", "3+" etc.
