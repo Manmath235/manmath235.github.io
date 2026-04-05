@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>E-Commerce Platform BRD | Manmathnath Mahanta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a0c10;
+  --ink2:#111318;
+  --ink3:#181c24;
+  --ink4:#1e2330;
+  --border:#252c3a;
+  --border2:#1c2230;
+  --fg:#c8d0dc;
+  --fg2:#8b97a8;
+  --fg3:#4e5a6a;
+  --gold:#c9922a;
+  --gold2:#e8b84b;
+  --gold-d:rgba(201,146,42,0.10);
+  --gold-m:rgba(201,146,42,0.28);
+  --gold-b:rgba(201,146,42,0.45);
+  --blue:#3d8ef0;
+  --blue-d:rgba(61,142,240,0.10);
+  --green:#2ea84a;
+  --green-d:rgba(46,168,74,0.10);
+  --red:#d94f4f;
+  --red-d:rgba(217,79,79,0.10);
+  --orange:#d97c2e;
+  --orange-d:rgba(217,124,46,0.10);
+  --purple:#8b6fe8;
+  --mono:'JetBrains Mono',monospace;
+  --display:'Sora',sans-serif;
+  --body:'IBM Plex Sans',sans-serif;
+  --r:5px;--rl:10px;--rxl:16px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:14px}
+body{background:var(--ink);color:var(--fg);font-family:var(--body);line-height:1.65;overflow-x:hidden}
+a{color:var(--gold2);text-decoration:none}
+a:hover{text-decoration:underline}
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+::-webkit-scrollbar-track{background:transparent}
+
+/* ── TOPBAR ── */
+.topbar{
+  position:sticky;top:0;z-index:200;
+  height:52px;background:rgba(10,12,16,.96);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(20px);
+  display:flex;align-items:center;padding:0 24px;gap:16px;
+}
+.back-btn{
+  display:flex;align-items:center;gap:7px;
+  font-family:var(--mono);font-size:.72rem;font-weight:500;
+  color:var(--fg2);padding:5px 12px;
+  border-radius:var(--r);background:var(--ink3);
+  border:1px solid var(--border);
+  transition:all .18s;text-decoration:none;
+  white-space:nowrap;flex-shrink:0;
+}
+.back-btn:hover{color:var(--fg);border-color:var(--gold-b);background:var(--gold-d);text-decoration:none}
+.topbar-crumb{
+  font-family:var(--mono);font-size:.75rem;color:var(--fg3);
+  flex:1;text-align:center;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+}
+.topbar-crumb .hl{color:var(--blue)}
+.topbar-crumb .fn{color:var(--fg)}
+.topbar-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.ver-chip{
+  font-family:var(--mono);font-size:.62rem;font-weight:600;
+  padding:3px 10px;border-radius:20px;
+  background:var(--green-d);color:var(--green);
+  border:1px solid rgba(46,168,74,.25);white-space:nowrap;
+}
+.conf-chip{
+  font-family:var(--mono);font-size:.62rem;font-weight:600;
+  padding:3px 10px;border-radius:20px;
+  background:var(--red-d);color:var(--red);
+  border:1px solid rgba(217,79,79,.25);white-space:nowrap;
+}
+
+/* ── LAYOUT ── */
+.layout{display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - 52px)}
+
+/* ── SIDEBAR ── */
+.sidebar{
+  background:var(--ink2);border-right:1px solid var(--border);
+  position:sticky;top:52px;height:calc(100vh - 52px);
+  overflow-y:auto;padding:20px 0;
+}
+.sb-doc-card{
+  margin:0 14px 20px;
+  background:var(--ink3);border:1px solid var(--border);
+  border-radius:var(--rl);padding:14px;
+  position:relative;overflow:hidden;
+}
+.sb-doc-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold));
+}
+.sb-doc-type{font-family:var(--mono);font-size:.6rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px}
+.sb-doc-title{font-family:var(--display);font-size:.82rem;font-weight:600;color:var(--fg);line-height:1.3;margin-bottom:10px}
+.sb-doc-id{font-family:var(--mono);font-size:.65rem;color:var(--fg3)}
+.sb-divider{height:1px;background:var(--border2);margin:8px 14px}
+.sb-label{font-family:var(--mono);font-size:.58rem;font-weight:700;color:var(--fg3);text-transform:uppercase;letter-spacing:.12em;padding:10px 16px 5px;display:block}
+.sb-link{
+  display:flex;align-items:center;gap:9px;
+  padding:7px 16px;font-family:var(--mono);font-size:.72rem;
+  color:var(--fg2);cursor:pointer;transition:all .15s;
+  border-left:2px solid transparent;
+  user-select:none;
+}
+.sb-link:hover{color:var(--fg);background:var(--ink3);border-left-color:var(--border)}
+.sb-link.active{color:var(--gold2);background:var(--gold-d);border-left-color:var(--gold)}
+.sb-link i{width:14px;font-size:.72rem;flex-shrink:0}
+.sb-link .sb-num{font-size:.6rem;color:var(--fg3);margin-left:auto;flex-shrink:0}
+.sb-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 14px 12px}
+.sb-stat{background:var(--ink3);border:1px solid var(--border);border-radius:var(--r);padding:10px;text-align:center}
+.sb-stat-n{font-family:var(--mono);font-size:1.05rem;font-weight:700;color:var(--gold2);line-height:1}
+.sb-stat-l{font-size:.6rem;color:var(--fg3);margin-top:3px;text-transform:uppercase;letter-spacing:.06em}
+
+/* ── MAIN ── */
+.main{padding:0;max-width:860px}
+
+/* ── COVER ── */
+.doc-cover{
+  padding:40px 40px 32px;
+  background:linear-gradient(160deg,var(--ink) 0%,var(--ink2) 50%,#0f1420 100%);
+  border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+  margin-bottom:0;
+}
+.doc-cover::before{
+  content:'BRD';
+  position:absolute;right:-10px;top:50%;transform:translateY(-50%);
+  font-family:var(--display);font-size:9rem;font-weight:800;
+  color:rgba(201,146,42,0.04);letter-spacing:-.05em;
+  pointer-events:none;user-select:none;line-height:1;
+}
+.cover-type-row{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.cover-type-badge{
+  font-family:var(--mono);font-size:.65rem;font-weight:700;
+  padding:4px 12px;border-radius:20px;
+  background:var(--gold-d);color:var(--gold2);
+  border:1px solid var(--gold-m);letter-spacing:.06em;text-transform:uppercase;
+}
+.cover-doc-id{font-family:var(--mono);font-size:.7rem;color:var(--fg3)}
+.cover-title{
+  font-family:var(--display);font-size:2.1rem;font-weight:800;
+  color:var(--fg);letter-spacing:-.03em;line-height:1.15;margin-bottom:6px;
+}
+.cover-title span{color:var(--gold2)}
+.cover-subtitle{font-size:.92rem;color:var(--fg2);margin-bottom:24px;font-style:italic}
+.cover-meta-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;
+}
+.cover-meta-cell{
+  background:rgba(255,255,255,.025);border:1px solid var(--border);
+  border-radius:var(--r);padding:10px 12px;
+}
+.cmc-label{font-family:var(--mono);font-size:.58rem;font-weight:600;color:var(--fg3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.cmc-val{font-size:.82rem;color:var(--fg);font-weight:500}
+.cmc-val.gold{color:var(--gold2);font-family:var(--mono)}
+.cmc-val.green{color:var(--green)}
+.cmc-val.red{color:var(--red)}
+
+/* ── SECTION ── */
+.doc-sec{padding:32px 40px;border-bottom:1px solid var(--border2);scroll-margin-top:60px}
+.doc-sec:last-child{border-bottom:none}
+.sec-header{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.sec-num{
+  font-family:var(--mono);font-size:.68rem;font-weight:700;
+  padding:3px 9px;border-radius:4px;
+  background:var(--gold-d);color:var(--gold2);border:1px solid var(--gold-m);
+  flex-shrink:0;
+}
+.sec-title{font-family:var(--display);font-size:1.1rem;font-weight:700;color:var(--fg);letter-spacing:-.02em}
+.sec-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+
+.subsec{margin-bottom:24px}
+.subsec-title{
+  font-family:var(--mono);font-size:.7rem;font-weight:600;color:var(--fg2);
+  text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+}
+.subsec-title::before{content:'§';color:var(--gold);font-size:.8rem}
+
+/* ── TABLES ── */
+.tbl-wrap{overflow-x:auto;border-radius:var(--rl);border:1px solid var(--border);margin-bottom:4px}
+table{width:100%;border-collapse:collapse;font-size:.8rem}
+thead tr{background:var(--ink3)}
+th{
+  font-family:var(--mono);font-size:.65rem;font-weight:600;color:var(--fg2);
+  padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);
+  text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;
+}
+td{padding:10px 14px;color:var(--fg2);border-bottom:1px solid var(--border2);vertical-align:top;line-height:1.5}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:rgba(255,255,255,.012)}
+td strong,td b{color:var(--fg)}
+.tid{font-family:var(--mono);font-size:.7rem;font-weight:600;color:var(--gold2);white-space:nowrap}
+.nfr{font-family:var(--mono);font-size:.7rem;font-weight:600;color:var(--blue);white-space:nowrap}
+.uc{font-family:var(--mono);font-size:.7rem;font-weight:600;color:var(--purple);white-space:nowrap}
+
+/* ── PRIORITY CHIPS ── */
+.ph{display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-size:.62rem;font-weight:600;padding:2px 8px;border-radius:20px;white-space:nowrap}
+.ph-h{background:var(--red-d);color:var(--red);border:1px solid rgba(217,79,79,.25)}
+.ph-m{background:var(--orange-d);color:var(--orange);border:1px solid rgba(217,124,46,.25)}
+.ph-l{background:var(--green-d);color:var(--green);border:1px solid rgba(46,168,74,.25)}
+.ph-c{background:rgba(139,111,232,.12);color:var(--purple);border:1px solid rgba(139,111,232,.25)}
+
+/* ── REQUIREMENT CARDS ── */
+.req-card{
+  background:var(--ink2);border:1px solid var(--border);
+  border-radius:var(--rl);margin-bottom:10px;overflow:hidden;
+  transition:border-color .15s,box-shadow .2s;
+}
+.req-card:hover{border-color:var(--gold-m);box-shadow:0 4px 20px rgba(201,146,42,.06)}
+.req-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:9px 14px;background:var(--ink3);border-bottom:1px solid var(--border2);
+  flex-wrap:wrap;gap:6px;
+}
+.req-id-badge{
+  font-family:var(--mono);font-size:.7rem;font-weight:700;
+  color:var(--gold2);display:flex;align-items:center;gap:6px;
+}
+.req-id-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold2);flex-shrink:0}
+.req-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.src-chip{font-family:var(--mono);font-size:.6rem;padding:2px 7px;border-radius:20px;background:var(--ink4);color:var(--fg3);border:1px solid var(--border)}
+.req-body{padding:10px 14px}
+.req-text{font-size:.83rem;color:var(--fg2);line-height:1.6;margin-bottom:8px}
+.req-tags{display:flex;flex-wrap:wrap;gap:4px}
+.req-tag{font-family:var(--mono);font-size:.6rem;padding:2px 7px;border-radius:20px;background:var(--gold-d);color:var(--gold);border:1px solid rgba(201,146,42,.2)}
+
+/* ── INFO ROWS ── */
+.info-block{background:var(--ink2);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:16px}
+.info-row{display:flex;border-bottom:1px solid var(--border2)}
+.info-row:last-child{border-bottom:none}
+.info-key{
+  font-family:var(--mono);font-size:.68rem;font-weight:600;color:var(--fg3);
+  padding:10px 14px;min-width:170px;flex-shrink:0;
+  background:var(--ink3);border-right:1px solid var(--border2);
+  display:flex;align-items:center;
+}
+.info-val{font-size:.82rem;color:var(--fg2);padding:10px 14px;line-height:1.55}
+.info-val strong{color:var(--fg)}
+
+/* ── PROCESS FLOW STEPS ── */
+.flow-step{
+  display:flex;gap:0;margin-bottom:2px;
+  border:1px solid var(--border);border-radius:var(--r);
+  overflow:hidden;background:var(--ink2);
+  transition:border-color .15s;
+}
+.flow-step:hover{border-color:var(--gold-m)}
+.fs-num{
+  width:44px;flex-shrink:0;
+  background:var(--ink3);border-right:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:.7rem;font-weight:700;color:var(--gold2);
+}
+.fs-actor{
+  width:100px;flex-shrink:0;
+  background:var(--ink3);border-right:1px solid var(--border2);
+  display:flex;align-items:center;padding:10px 10px;
+  font-family:var(--mono);font-size:.66rem;font-weight:600;color:var(--fg2);
+}
+.fs-action{flex:1;padding:10px 14px;font-size:.81rem;color:var(--fg2)}
+.fs-action strong{color:var(--fg)}
+.fs-response{width:240px;flex-shrink:0;padding:10px 14px;font-size:.78rem;color:var(--fg3);border-left:1px solid var(--border2);font-style:italic}
+
+/* ── RISK TABLE COLORS ── */
+.risk-h{color:var(--red);font-weight:600}
+.risk-m{color:var(--orange);font-weight:600}
+.risk-l{color:var(--green);font-weight:600}
+
+/* ── ASSUMPTION ROWS ── */
+.assump-row{
+  display:flex;gap:10px;padding:9px 14px;
+  background:var(--ink2);border:1px solid var(--border);
+  border-radius:var(--r);margin-bottom:6px;
+  font-size:.82rem;color:var(--fg2);line-height:1.5;
+  transition:border-color .15s;
+}
+.assump-row:hover{border-color:var(--gold-m)}
+.assump-arrow{color:var(--gold2);font-size:.8rem;flex-shrink:0;margin-top:1px}
+
+/* ── SIGN-OFF ── */
+.signoff-grid{
+  display:grid;grid-template-columns:1fr 1fr 160px 120px;
+  background:var(--ink2);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;
+}
+.so-row{display:contents}
+.so-cell{padding:10px 14px;font-size:.82rem;color:var(--fg2);border-bottom:1px solid var(--border2)}
+.so-row:last-child .so-cell{border-bottom:none}
+.so-head .so-cell{
+  background:var(--ink3);font-family:var(--mono);font-size:.62rem;
+  font-weight:700;color:var(--fg3);text-transform:uppercase;letter-spacing:.07em;
+}
+.sig-ok{font-family:var(--mono);font-size:.72rem;font-weight:700;color:var(--green);display:flex;align-items:center;gap:5px}
+.sig-blank{font-family:var(--mono);font-size:.7rem;color:var(--border);letter-spacing:.05em}
+
+/* ── UAT STATUS ── */
+.uat-pending{font-family:var(--mono);font-size:.65rem;font-weight:600;padding:2px 8px;border-radius:20px;background:var(--orange-d);color:var(--orange);border:1px solid rgba(217,124,46,.25)}
+
+/* ── GLOSSARY ── */
+.gloss-row{display:flex;gap:0;border-bottom:1px solid var(--border2)}
+.gloss-row:last-child{border-bottom:none}
+.gloss-term{font-family:var(--mono);font-size:.72rem;font-weight:700;color:var(--gold2);padding:10px 14px;min-width:100px;flex-shrink:0;background:var(--ink3);border-right:1px solid var(--border2)}
+.gloss-def{font-size:.8rem;color:var(--fg2);padding:10px 14px;line-height:1.5}
+
+/* ── FOOTER ── */
+.doc-footer{padding:24px 40px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-id{font-family:var(--mono);font-size:.65rem;color:var(--fg3)}
+.footer-tag{font-family:var(--mono);font-size:.65rem;color:var(--fg3);display:flex;align-items:center;gap:6px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:800px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .main{padding:0}
+  .doc-cover,.doc-sec{padding:20px 16px}
+  .cover-meta-grid{grid-template-columns:1fr 1fr}
+  .flow-step{flex-direction:column}
+  .fs-actor,.fs-response{width:100%;border-left:none;border-top:1px solid var(--border2)}
+  .signoff-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <a href="index.html" class="back-btn"><i class="bi bi-arrow-left"></i> Portfolio</a>
+  <div class="topbar-crumb">
+    <span class="hl">manmath235</span> / ecom-brd /
+    <span class="fn">BRD-ECOM-2025-001.html</span>
+  </div>
+  <div class="topbar-right">
+    <span class="ver-chip">v1.0 · Final</span>
+    <span class="conf-chip">Confidential</span>
+  </div>
+</div>
+
+<div class="layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sb-doc-card">
+    <div class="sb-doc-type">Business Requirements Document</div>
+    <div class="sb-doc-title">E-Commerce Platform — Full-Stack Retail Solution</div>
+    <div class="sb-doc-id">BRD-ECOM-2025-001 · v1.0 · June 2025</div>
+  </div>
+  <div class="sb-stats">
+    <div class="sb-stat"><div class="sb-stat-n">35</div><div class="sb-stat-l">Requirements</div></div>
+    <div class="sb-stat"><div class="sb-stat-n">7</div><div class="sb-stat-l">Modules</div></div>
+    <div class="sb-stat"><div class="sb-stat-n">10</div><div class="sb-stat-l">NFRs</div></div>
+    <div class="sb-stat"><div class="sb-stat-n">12</div><div class="sb-stat-l">Sections</div></div>
+  </div>
+  <div class="sb-divider"></div>
+  <span class="sb-label">Document Sections</span>
+  <div class="sb-link active" onclick="navTo('s1',this)"><i class="bi bi-file-earmark-text"></i> Document Control <span class="sb-num">§1</span></div>
+  <div class="sb-link" onclick="navTo('s2',this)"><i class="bi bi-briefcase"></i> Executive Summary <span class="sb-num">§2</span></div>
+  <div class="sb-link" onclick="navTo('s3',this)"><i class="bi bi-people"></i> Stakeholders <span class="sb-num">§3</span></div>
+  <div class="sb-link" onclick="navTo('s4',this)"><i class="bi bi-list-check"></i> Business Requirements <span class="sb-num">§4</span></div>
+  <div class="sb-link" onclick="navTo('s5',this)"><i class="bi bi-shield-check"></i> Non-Functional Req. <span class="sb-num">§5</span></div>
+  <div class="sb-link" onclick="navTo('s6',this)"><i class="bi bi-diagram-2"></i> Use Cases <span class="sb-num">§6</span></div>
+  <div class="sb-link" onclick="navTo('s7',this)"><i class="bi bi-arrow-right-circle"></i> Process Flow <span class="sb-num">§7</span></div>
+  <div class="sb-link" onclick="navTo('s8',this)"><i class="bi bi-exclamation-triangle"></i> Assumptions <span class="sb-num">§8</span></div>
+  <div class="sb-link" onclick="navTo('s9',this)"><i class="bi bi-graph-down-arrow"></i> Risk Register <span class="sb-num">§9</span></div>
+  <div class="sb-link" onclick="navTo('s10',this)"><i class="bi bi-clipboard-check"></i> UAT Criteria <span class="sb-num">§10</span></div>
+  <div class="sb-link" onclick="navTo('s11',this)"><i class="bi bi-book"></i> Glossary <span class="sb-num">§11</span></div>
+  <div class="sb-link" onclick="navTo('s12',this)"><i class="bi bi-pen"></i> Sign-Off <span class="sb-num">§12</span></div>
+  <div class="sb-divider"></div>
+  <span class="sb-label">Author</span>
+  <div style="padding:0 16px 8px;font-size:.78rem;color:var(--fg2)">Manmathnath Mahanta<br><span style="font-family:var(--mono);font-size:.65rem;color:var(--fg3)">Business Analyst · Tech Exactly</span></div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+<!-- COVER -->
+<div class="doc-cover" id="cover">
+  <div class="cover-type-row">
+    <span class="cover-type-badge">BRD</span>
+    <span class="cover-doc-id">BRD-ECOM-2025-001</span>
+  </div>
+  <div class="cover-title">E-Commerce <span>Platform</span></div>
+  <div class="cover-title" style="font-size:1.3rem;color:var(--fg2);font-weight:400;margin-top:2px;">Business Requirements Document</div>
+  <div class="cover-subtitle">Full-Stack Online Retail Solution · Multi-Vendor · End-to-End Order Management</div>
+  <div class="cover-meta-grid">
+    <div class="cover-meta-cell"><div class="cmc-label">Document ID</div><div class="cmc-val gold">BRD-ECOM-2025-001</div></div>
+    <div class="cover-meta-cell"><div class="cmc-label">Version</div><div class="cmc-val">1.0</div></div>
+    <div class="cover-meta-cell"><div class="cmc-label">Prepared By</div><div class="cmc-val">Manmathnath Mahanta</div></div>
+    <div class="cover-meta-cell"><div class="cmc-label">Role</div><div class="cmc-val">Business Analyst</div></div>
+    <div class="cover-meta-cell"><div class="cmc-label">Date</div><div class="cmc-val">June 2025</div></div>
+    <div class="cover-meta-cell"><div class="cmc-label">Status</div><div class="cmc-val green">● Final</div></div>
+    <div class="cover-meta-cell"><div class="cmc-label">Total Requirements</div><div class="cmc-val gold">35 across 7 modules</div></div>
+    <div class="cover-meta-cell"><div class="cmc-label">Confidentiality</div><div class="cmc-val red">Confidential</div></div>
+  </div>
+</div>
+
+<!-- §1 DOCUMENT CONTROL -->
+<section class="doc-sec" id="s1">
+  <div class="sec-header">
+    <span class="sec-num">§1</span>
+    <span class="sec-title">Document Control</span>
+    <div class="sec-line"></div>
+  </div>
+  <div class="subsec">
+    <div class="subsec-title">Revision History</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td class="tid">1.0</td><td>June 2025</td><td>Manmathnath Mahanta</td><td>Initial Draft</td></tr>
+        <tr><td class="tid">1.0 Final</td><td>June 2025</td><td>Manmathnath Mahanta</td><td>Final Version — Approved for Baseline</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="subsec">
+    <div class="subsec-title">Distribution List</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Stakeholder</th><th>Role</th><th>Department</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Project Sponsor</strong></td><td>Decision Maker</td><td>Executive Management</td></tr>
+        <tr><td><strong>Business Analyst</strong></td><td>Requirements Author</td><td>Business Analysis</td></tr>
+        <tr><td>Development Team</td><td>Technical Implementation</td><td>Engineering</td></tr>
+        <tr><td>QA Team</td><td>Testing &amp; Validation</td><td>Quality Assurance</td></tr>
+        <tr><td>UX/UI Designer</td><td>Prototyping &amp; Design</td><td>Product Design</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- §2 EXECUTIVE SUMMARY -->
+<section class="doc-sec" id="s2">
+  <div class="sec-header">
+    <span class="sec-num">§2</span>
+    <span class="sec-title">Executive Summary</span>
+    <div class="sec-line"></div>
+  </div>
+  <div class="subsec">
+    <div class="subsec-title">Project Overview</div>
+    <div class="info-block">
+      <div class="info-row"><div class="info-key">Project Name</div><div class="info-val"><strong>E-Commerce Platform — Full-Stack Online Retail Solution</strong></div></div>
+      <div class="info-row"><div class="info-key">Business Problem</div><div class="info-val">Retailers face significant challenges competing without a robust digital presence. Manual order management, fragmented inventory tracking, and poor mobile experience lead to revenue leakage and low customer retention.</div></div>
+      <div class="info-row"><div class="info-key">Proposed Solution</div><div class="info-val">Web-based, mobile-responsive e-commerce platform with a customer storefront, multi-payment gateway, vendor portal, admin dashboard with analytics, and a real-time notification engine.</div></div>
+      <div class="info-row"><div class="info-key">In Scope</div><div class="info-val">Customer registration · Product catalog &amp; search · Cart &amp; checkout · Payment gateway integration · Order management · Vendor onboarding portal · Admin panel · Email/SMS notifications · SEO optimization</div></div>
+      <div class="info-row"><div class="info-key">Out of Scope</div><div class="info-val">Logistics/delivery integration (Phase 2) · Native iOS/Android apps (Phase 2) · AI recommendation engine (Phase 3) · Multi-language support (Phase 2)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- §3 STAKEHOLDERS -->
+<section class="doc-sec" id="s3">
+  <div class="sec-header">
+    <span class="sec-num">§3</span>
+    <span class="sec-title">Stakeholder Analysis</span>
+    <div class="sec-line"></div>
+  </div>
+  <div class="subsec">
+    <div class="subsec-title">Stakeholder Register</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Stakeholder</th><th>Role</th><th>Key Interest</th><th>Influence</th><th>Engagement</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Project Sponsor</strong></td><td>Executive</td><td>ROI, brand growth</td><td><span class="ph ph-h">High</span></td><td>Consult</td></tr>
+        <tr><td><strong>Business Analyst</strong></td><td>BA</td><td>Requirements accuracy</td><td><span class="ph ph-h">High</span></td><td>Lead</td></tr>
+        <tr><td>End Customers</td><td>Primary Users</td><td>Shopping experience</td><td><span class="ph ph-h">High</span></td><td>Inform</td></tr>
+        <tr><td>Vendors / Sellers</td><td>Secondary Users</td><td>Sales &amp; operations</td><td><span class="ph ph-m">Medium</span></td><td>Consult</td></tr>
+        <tr><td>Development Team</td><td>Technical</td><td>Clear specs, feasibility</td><td><span class="ph ph-h">High</span></td><td>Collaborate</td></tr>
+        <tr><td>QA Team</td><td>Quality</td><td>Defect-free delivery</td><td><span class="ph ph-m">Medium</span></td><td>Collaborate</td></tr>
+        <tr><td>Marketing Team</td><td>Business</td><td>Promotions, SEO</td><td><span class="ph ph-m">Medium</span></td><td>Consult</td></tr>
+        <tr><td>Finance Team</td><td>Business</td><td>Payment accuracy</td><td><span class="ph ph-m">Medium</span></td><td>Inform</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="subsec">
+    <div class="subsec-title">RACI Matrix</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Activity</th><th>BA</th><th>Dev</th><th>QA</th><th>Sponsor</th><th>UX</th></tr></thead>
+      <tbody>
+        <tr><td>Requirements Elicitation</td><td><strong>R/A</strong></td><td>C</td><td>I</td><td>C</td><td>I</td></tr>
+        <tr><td>BRD Sign-off</td><td><strong>R</strong></td><td>I</td><td>I</td><td><strong>A</strong></td><td>I</td></tr>
+        <tr><td>UI/UX Design</td><td>C</td><td>C</td><td>I</td><td>I</td><td><strong>R/A</strong></td></tr>
+        <tr><td>Development</td><td>C</td><td><strong>R/A</strong></td><td>I</td><td>I</td><td>C</td></tr>
+        <tr><td>Testing &amp; UAT</td><td>C</td><td>R</td><td><strong>R/A</strong></td><td>I</td><td>I</td></tr>
+        <tr><td>Go-Live Approval</td><td>C</td><td>C</td><td>C</td><td><strong>A</strong></td><td>I</td></tr>
+      </tbody>
+    </table></div>
+    <div style="font-family:var(--mono);font-size:.65rem;color:var(--fg3);margin-top:6px;font-style:italic">R = Responsible &nbsp;·&nbsp; A = Accountable &nbsp;·&nbsp; C = Consulted &nbsp;·&nbsp; I = Informed</div>
+  </div>
+</section>
+
+<!-- §4 BUSINESS REQUIREMENTS -->
+<section class="doc-sec" id="s4">
+  <div class="sec-header">
+    <span class="sec-num">§4</span>
+    <span class="sec-title">Business Requirements</span>
+    <div class="sec-line"></div>
+  </div>
+
+  <!-- 4.1 Customer Management -->
+  <div class="subsec">
+    <div class="subsec-title">4.1 — Customer Management</div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-CM-001</span><div class="req-meta"><span class="src-chip">Source: Stakeholder</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">System shall allow customers to register using email or social login (Google, Facebook).</div><div class="req-tags"><span class="req-tag">Authentication</span><span class="req-tag">Registration</span><span class="req-tag">Social Login</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-CM-002</span><div class="req-meta"><span class="src-chip">Source: Security</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">System shall support secure login with OTP-based two-factor authentication.</div><div class="req-tags"><span class="req-tag">Security</span><span class="req-tag">2FA</span><span class="req-tag">OTP</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-CM-003</span><div class="req-meta"><span class="src-chip">Source: User Story</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">Customers shall manage their profile, saved addresses, and payment methods from the account dashboard.</div><div class="req-tags"><span class="req-tag">Profile</span><span class="req-tag">Account Dashboard</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-CM-004</span><div class="req-meta"><span class="src-chip">Source: User Story</span><span class="ph ph-m">Medium</span></div></div><div class="req-body"><div class="req-text">System shall maintain a purchase history accessible from the customer dashboard with order status and invoice links.</div><div class="req-tags"><span class="req-tag">Order History</span><span class="req-tag">Dashboard</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-CM-005</span><div class="req-meta"><span class="src-chip">Source: Business</span><span class="ph ph-m">Medium</span></div></div><div class="req-body"><div class="req-text">Customers shall receive email and SMS confirmation for all account-related activities including registration, login, and password changes.</div><div class="req-tags"><span class="req-tag">Notifications</span><span class="req-tag">Email</span><span class="req-tag">SMS</span></div></div></div>
+  </div>
+
+  <!-- 4.2 Product Catalog -->
+  <div class="subsec">
+    <div class="subsec-title">4.2 — Product Catalog Management</div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-PC-001</span><div class="req-meta"><span class="src-chip">Source: Business</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">System shall support hierarchical product categories and sub-categories with unlimited nesting depth.</div><div class="req-tags"><span class="req-tag">Catalog</span><span class="req-tag">Taxonomy</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-PC-002</span><div class="req-meta"><span class="src-chip">Source: Vendor</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">Each product listing shall support: title, description (rich text), up to 8 images, price, SKU, stock quantity, and weight/dimension fields.</div><div class="req-tags"><span class="req-tag">Product Data</span><span class="req-tag">SKU</span><span class="req-tag">Media</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-PC-003</span><div class="req-meta"><span class="src-chip">Source: User Story</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">Customers shall search products by keyword, category, brand, price range, and rating — with real-time filter application.</div><div class="req-tags"><span class="req-tag">Search</span><span class="req-tag">Filtering</span><span class="req-tag">UX</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-PC-004</span><div class="req-meta"><span class="src-chip">Source: User Story</span><span class="ph ph-m">Medium</span></div></div><div class="req-body"><div class="req-text">Product pages shall display average star rating, total review count, and seller information with trust indicators.</div><div class="req-tags"><span class="req-tag">Reviews</span><span class="req-tag">Ratings</span><span class="req-tag">Trust Signals</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-PC-005</span><div class="req-meta"><span class="src-chip">Source: Business</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">System shall support product variants (size, colour, weight) where each variant can have individual pricing and stock quantity.</div><div class="req-tags"><span class="req-tag">Variants</span><span class="req-tag">Pricing</span><span class="req-tag">Inventory</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-PC-006</span><div class="req-meta"><span class="src-chip">Source: User Story</span><span class="ph ph-m">Medium</span></div></div><div class="req-body"><div class="req-text">Out-of-stock products shall display a clear status indicator and a "Notify Me" option allowing customers to subscribe for restock alerts.</div><div class="req-tags"><span class="req-tag">Inventory</span><span class="req-tag">Notify Me</span><span class="req-tag">UX</span></div></div></div>
+  </div>
+
+  <!-- 4.3 Cart & Checkout -->
+  <div class="subsec">
+    <div class="subsec-title">4.3 — Shopping Cart &amp; Checkout</div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-SC-001</span><div class="req-meta"><span class="src-chip">Source: User Story</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">Customers shall add, update quantity, and remove items from the cart. Real-time price recalculation shall occur on each cart change.</div><div class="req-tags"><span class="req-tag">Cart</span><span class="req-tag">Real-time Pricing</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-SC-002</span><div class="req-meta"><span class="src-chip">Source: User Story</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">Cart contents shall persist across browser sessions for logged-in users and be synced across devices.</div><div class="req-tags"><span class="req-tag">Session Persistence</span><span class="req-tag">Cross-device</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-SC-003</span><div class="req-meta"><span class="src-chip">Source: Marketing</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">System shall validate and apply discount codes and promotional offers at checkout with real-time total recalculation.</div><div class="req-tags"><span class="req-tag">Promotions</span><span class="req-tag">Discount Codes</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-SC-004</span><div class="req-meta"><span class="src-chip">Source: User Story</span><span class="ph ph-m">Medium</span></div></div><div class="req-body"><div class="req-text">Checkout shall support guest checkout allowing order completion without mandatory account creation to reduce friction.</div><div class="req-tags"><span class="req-tag">Guest Checkout</span><span class="req-tag">Conversion</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-SC-005</span><div class="req-meta"><span class="src-chip">Source: Compliance</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">System shall display an itemized order summary including product subtotal, applicable taxes, shipping charges, and discount applied — before final payment confirmation.</div><div class="req-tags"><span class="req-tag">Transparency</span><span class="req-tag">Compliance</span><span class="req-tag">Order Summary</span></div></div></div>
+  </div>
+
+  <!-- 4.4 Payment -->
+  <div class="subsec">
+    <div class="subsec-title">4.4 — Payment Processing</div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-PAY-001</span><div class="req-meta"><span class="src-chip">Source: Business</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">System shall integrate with a minimum of two payment gateways (e.g., Razorpay, PayU) to ensure redundancy and avoid single points of failure.</div><div class="req-tags"><span class="req-tag">Payments</span><span class="req-tag">Redundancy</span><span class="req-tag">Razorpay</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-PAY-002</span><div class="req-meta"><span class="src-chip">Source: Business</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">System shall support payment via credit card, debit card, UPI, net banking, and digital wallets (Paytm, Amazon Pay, etc.).</div><div class="req-tags"><span class="req-tag">UPI</span><span class="req-tag">Cards</span><span class="req-tag">Net Banking</span><span class="req-tag">Wallets</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-PAY-003</span><div class="req-meta"><span class="src-chip">Source: Security</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">All payment transactions shall be encrypted using SSL/TLS protocols. No card data shall be stored on the platform's own servers.</div><div class="req-tags"><span class="req-tag">Security</span><span class="req-tag">SSL/TLS</span><span class="req-tag">PCI-DSS</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-PAY-004</span><div class="req-meta"><span class="src-chip">Source: Compliance</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">System shall auto-generate and email a detailed GST-compliant invoice to the customer upon successful payment.</div><div class="req-tags"><span class="req-tag">Invoice</span><span class="req-tag">GST</span><span class="req-tag">Compliance</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-PAY-005</span><div class="req-meta"><span class="src-chip">Source: Business</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">System shall support full and partial refunds for returned or cancelled orders, with refund credited to the original payment method or store wallet.</div><div class="req-tags"><span class="req-tag">Refunds</span><span class="req-tag">Returns</span><span class="req-tag">Cancellations</span></div></div></div>
+  </div>
+
+  <!-- 4.5 Order Management -->
+  <div class="subsec">
+    <div class="subsec-title">4.5 — Order Management</div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-OM-001</span><div class="req-meta"><span class="src-chip">Source: Business</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">System shall assign a unique, human-readable Order ID to every placed order, used for all tracking, support, and communication.</div><div class="req-tags"><span class="req-tag">Order Traceability</span><span class="req-tag">Order ID</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-OM-002</span><div class="req-meta"><span class="src-chip">Source: User Story</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">Customers shall track their order status in real-time from placement through packing, dispatch, and delivery — with timestamp at each stage.</div><div class="req-tags"><span class="req-tag">Order Tracking</span><span class="req-tag">Real-time</span><span class="req-tag">Status Updates</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-OM-003</span><div class="req-meta"><span class="src-chip">Source: Policy</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">System shall support order cancellation within a configurable window (default: before dispatch). Cancellations shall trigger automatic refund initiation.</div><div class="req-tags"><span class="req-tag">Cancellations</span><span class="req-tag">Policy</span><span class="req-tag">Refunds</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-OM-004</span><div class="req-meta"><span class="src-chip">Source: Policy</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">System shall manage a return and refund workflow with defined SLA timelines: pickup within 2 days, inspection within 3 days, refund within 5 days.</div><div class="req-tags"><span class="req-tag">Returns</span><span class="req-tag">SLA</span><span class="req-tag">Workflow</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-OM-005</span><div class="req-meta"><span class="src-chip">Source: Operations</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">Admin and relevant vendors shall receive instant push and email notifications for each new order placed on the platform.</div><div class="req-tags"><span class="req-tag">Notifications</span><span class="req-tag">Admin</span><span class="req-tag">Vendors</span></div></div></div>
+  </div>
+
+  <!-- 4.6 Vendor Portal -->
+  <div class="subsec">
+    <div class="subsec-title">4.6 — Vendor Portal</div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-VP-001</span><div class="req-meta"><span class="src-chip">Source: Business</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">Vendors shall register via a dedicated onboarding form, submit KYC documents (GST, PAN, bank details), and await admin verification before activation.</div><div class="req-tags"><span class="req-tag">Vendor Onboarding</span><span class="req-tag">KYC</span><span class="req-tag">GSTIN</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-VP-002</span><div class="req-meta"><span class="src-chip">Source: Vendor</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">Vendors shall have a seller dashboard to create, edit, activate, and deactivate product listings with bulk upload support via CSV.</div><div class="req-tags"><span class="req-tag">Seller Dashboard</span><span class="req-tag">Bulk Upload</span><span class="req-tag">Catalog</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-VP-003</span><div class="req-meta"><span class="src-chip">Source: Vendor</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">Vendors shall view orders for their products and update fulfilment status (Confirmed, Packed, Dispatched) with tracking information.</div><div class="req-tags"><span class="req-tag">Order Fulfilment</span><span class="req-tag">Tracking</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-VP-004</span><div class="req-meta"><span class="src-chip">Source: Business</span><span class="ph ph-m">Medium</span></div></div><div class="req-body"><div class="req-text">System shall provide vendors with a sales summary, payout report, and pending settlement view within their dashboard.</div><div class="req-tags"><span class="req-tag">Reporting</span><span class="req-tag">Payouts</span><span class="req-tag">Settlements</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-VP-005</span><div class="req-meta"><span class="src-chip">Source: Vendor</span><span class="ph ph-m">Medium</span></div></div><div class="req-body"><div class="req-text">Vendors shall configure their own shipping rates, delivery zones, and estimated delivery timelines per product category.</div><div class="req-tags"><span class="req-tag">Shipping</span><span class="req-tag">Delivery Zones</span></div></div></div>
+  </div>
+
+  <!-- 4.7 Admin Panel -->
+  <div class="subsec">
+    <div class="subsec-title">4.7 — Admin Panel</div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-ADM-001</span><div class="req-meta"><span class="src-chip">Source: Business</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">Admin shall have role-based access to manage users, vendors, product catalog, orders, returns, and platform configuration from a unified dashboard.</div><div class="req-tags"><span class="req-tag">Admin</span><span class="req-tag">RBAC</span><span class="req-tag">Unified Dashboard</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-ADM-002</span><div class="req-meta"><span class="src-chip">Source: Business</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">Admin shall review KYC documents and approve or reject vendor registrations, with automated email notification to vendors on each decision.</div><div class="req-tags"><span class="req-tag">Vendor Approval</span><span class="req-tag">KYC Review</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-ADM-003</span><div class="req-meta"><span class="src-chip">Source: Business</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">System shall provide admin with real-time analytics dashboards covering: GMV, daily orders, top products, vendor performance, and traffic sources.</div><div class="req-tags"><span class="req-tag">Analytics</span><span class="req-tag">GMV</span><span class="req-tag">BI Dashboard</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-ADM-004</span><div class="req-meta"><span class="src-chip">Source: Marketing</span><span class="ph ph-m">Medium</span></div></div><div class="req-body"><div class="req-text">Admin shall create and manage promotional campaigns, discount codes, and homepage banners — with configurable start/end dates and usage limits.</div><div class="req-tags"><span class="req-tag">Promotions</span><span class="req-tag">Banners</span><span class="req-tag">Campaigns</span></div></div></div>
+    <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-ADM-005</span><div class="req-meta"><span class="src-chip">Source: Business</span><span class="ph ph-m">Medium</span></div></div><div class="req-body"><div class="req-text">System shall auto-generate and email daily and weekly performance reports to admin with key metrics: orders, revenue, refunds, and new registrations.</div><div class="req-tags"><span class="req-tag">Scheduled Reports</span><span class="req-tag">Email</span><span class="req-tag">KPIs</span></div></div></div>
+  </div>
+</section>
+
+<!-- §5 NON-FUNCTIONAL REQUIREMENTS -->
+<section class="doc-sec" id="s5">
+  <div class="sec-header">
+    <span class="sec-num">§5</span>
+    <span class="sec-title">Non-Functional Requirements</span>
+    <div class="sec-line"></div>
+  </div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>NFR ID</th><th>Category</th><th>Requirement</th><th>Target</th></tr></thead>
+    <tbody>
+      <tr><td class="nfr">NFR-001</td><td>Performance</td><td>Product listing pages shall load within acceptable response time under normal load</td><td><strong>&lt; 3 seconds</strong></td></tr>
+      <tr><td class="nfr">NFR-002</td><td>Scalability</td><td>System shall handle simultaneous user sessions without performance degradation</td><td><strong>10,000+ concurrent users</strong></td></tr>
+      <tr><td class="nfr">NFR-003</td><td>Availability</td><td>Platform shall maintain high uptime with minimal planned maintenance windows</td><td><strong>99.9% monthly SLA</strong></td></tr>
+      <tr><td class="nfr">NFR-004</td><td>Security</td><td>All user PII and sensitive data at rest shall be encrypted</td><td><strong>AES-256</strong></td></tr>
+      <tr><td class="nfr">NFR-005</td><td>Security</td><td>Platform shall comply with payment card security standards for all transaction data</td><td><strong>PCI-DSS Level 1</strong></td></tr>
+      <tr><td class="nfr">NFR-006</td><td>Usability</td><td>Platform shall be fully responsive and functional across all device types and screen sizes</td><td><strong>Mobile · Tablet · Desktop</strong></td></tr>
+      <tr><td class="nfr">NFR-007</td><td>Maintainability</td><td>Codebase shall follow a modular architecture enabling independent module deployment</td><td><strong>MVC / Microservices</strong></td></tr>
+      <tr><td class="nfr">NFR-008</td><td>Compatibility</td><td>Platform shall function correctly on the latest two versions of all major browsers</td><td><strong>Chrome · Firefox · Safari · Edge</strong></td></tr>
+      <tr><td class="nfr">NFR-009</td><td>SEO</td><td>All product and category pages shall be server-rendered and conform to Core Web Vitals</td><td><strong>CWV Compliant</strong></td></tr>
+      <tr><td class="nfr">NFR-010</td><td>Accessibility</td><td>Platform shall conform to web accessibility guidelines for inclusive usability</td><td><strong>WCAG 2.1 Level AA</strong></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- §6 USE CASES -->
+<section class="doc-sec" id="s6">
+  <div class="sec-header">
+    <span class="sec-num">§6</span>
+    <span class="sec-title">Use Cases</span>
+    <div class="sec-line"></div>
+  </div>
+  <div class="subsec">
+    <div class="subsec-title">Use Case Summary</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>UC ID</th><th>Use Case</th><th>Primary Actor</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr><td class="uc">UC-001</td><td>Register / Login</td><td>Customer</td><td><span class="ph ph-h">High</span></td></tr>
+        <tr><td class="uc">UC-002</td><td>Browse &amp; Search Products</td><td>Customer</td><td><span class="ph ph-h">High</span></td></tr>
+        <tr><td class="uc">UC-003</td><td>Add to Cart &amp; Checkout</td><td>Customer</td><td><span class="ph ph-h">High</span></td></tr>
+        <tr><td class="uc">UC-004</td><td>Make Payment</td><td>Customer</td><td><span class="ph ph-h">High</span></td></tr>
+        <tr><td class="uc">UC-005</td><td>Track Order</td><td>Customer</td><td><span class="ph ph-h">High</span></td></tr>
+        <tr><td class="uc">UC-006</td><td>Submit Product Review</td><td>Customer</td><td><span class="ph ph-m">Medium</span></td></tr>
+        <tr><td class="uc">UC-007</td><td>Manage Wishlist</td><td>Customer</td><td><span class="ph ph-m">Medium</span></td></tr>
+        <tr><td class="uc">UC-008</td><td>Vendor Product Listing</td><td>Vendor</td><td><span class="ph ph-h">High</span></td></tr>
+        <tr><td class="uc">UC-009</td><td>Vendor Order Fulfilment</td><td>Vendor</td><td><span class="ph ph-h">High</span></td></tr>
+        <tr><td class="uc">UC-010</td><td>Admin User Management</td><td>Admin</td><td><span class="ph ph-h">High</span></td></tr>
+        <tr><td class="uc">UC-011</td><td>Admin Analytics Dashboard</td><td>Admin</td><td><span class="ph ph-h">High</span></td></tr>
+        <tr><td class="uc">UC-012</td><td>Apply Discount Code</td><td>Customer</td><td><span class="ph ph-m">Medium</span></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="subsec">
+    <div class="subsec-title">Detailed Use Case — UC-003: Add to Cart &amp; Checkout</div>
+    <div class="info-block">
+      <div class="info-row"><div class="info-key">Use Case ID</div><div class="info-val"><span class="uc">UC-003</span></div></div>
+      <div class="info-row"><div class="info-key">Use Case Name</div><div class="info-val"><strong>Add to Cart &amp; Checkout</strong></div></div>
+      <div class="info-row"><div class="info-key">Actor</div><div class="info-val">Customer (primary) · Payment Gateway (system)</div></div>
+      <div class="info-row"><div class="info-key">Pre-condition</div><div class="info-val">Customer is logged in or proceeding as guest. Product is in stock with sufficient inventory.</div></div>
+      <div class="info-row"><div class="info-key">Trigger</div><div class="info-val">Customer clicks the "Add to Cart" button on a product detail page.</div></div>
+      <div class="info-row"><div class="info-key">Main Flow</div><div class="info-val">1. Customer selects product variant (if applicable). &nbsp;2. Clicks Add to Cart — cart count updates in header. &nbsp;3. Customer navigates to cart and reviews items. &nbsp;4. Clicks Proceed to Checkout. &nbsp;5. Selects or enters delivery address. &nbsp;6. Selects preferred payment method. &nbsp;7. Reviews itemized order summary with taxes. &nbsp;8. Confirms order and completes payment. &nbsp;9. System creates order, deducts inventory, and sends confirmation via email + SMS.</div></div>
+      <div class="info-row"><div class="info-key">Alternate Flow</div><div class="info-val">If item is out of stock, "Add to Cart" is replaced with "Notify Me". Customer can subscribe for restock alerts.</div></div>
+      <div class="info-row"><div class="info-key">Exception Flow</div><div class="info-val">If payment fails, the order is not created. Customer is redirected to retry with an alternate payment method. Cart items are preserved.</div></div>
+      <div class="info-row"><div class="info-key">Post-condition</div><div class="info-val">Order created in system. Payment captured. Invoice emailed to customer. Vendor notified of new order. Inventory decremented.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- §7 PROCESS FLOW -->
+<section class="doc-sec" id="s7">
+  <div class="sec-header">
+    <span class="sec-num">§7</span>
+    <span class="sec-title">Functional Process Flow — Customer Order Lifecycle</span>
+    <div class="sec-line"></div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap">
+    <div style="font-family:var(--mono);font-size:.62rem;display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:var(--ink3);border:1px solid var(--border);display:inline-block"></span>Step Number</div>
+    <div style="font-family:var(--mono);font-size:.62rem;display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:var(--ink3);border:1px solid var(--border);display:inline-block"></span>Actor</div>
+    <div style="font-family:var(--mono);font-size:.62rem;display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:var(--ink);border:1px solid var(--border);display:inline-block"></span>Action</div>
+    <div style="font-family:var(--mono);font-size:.62rem;display:flex;align-items:center;gap:5px;color:var(--fg3)"><span style="width:10px;height:10px;border-radius:2px;background:transparent;border:1px solid var(--border);display:inline-block"></span>System Response (italic)</div>
+  </div>
+
+  <div class="flow-step"><div class="fs-num">01</div><div class="fs-actor">Customer</div><div class="fs-action"><strong>Visits platform</strong> and searches for a product using keyword or category navigation.</div><div class="fs-response">Displays ranked search results with filters, sorting options, and product thumbnails.</div></div>
+  <div class="flow-step"><div class="fs-num">02</div><div class="fs-actor">Customer</div><div class="fs-action">Selects a product and views the <strong>product detail page</strong>.</div><div class="fs-response">Loads product info, image gallery, ratings, stock status, and variant selector.</div></div>
+  <div class="flow-step"><div class="fs-num">03</div><div class="fs-actor">Customer</div><div class="fs-action">Clicks <strong>"Add to Cart"</strong> after selecting variant.</div><div class="fs-response">Adds item to cart. Updates cart count in header. Displays mini-cart confirmation.</div></div>
+  <div class="flow-step"><div class="fs-num">04</div><div class="fs-actor">Customer</div><div class="fs-action">Reviews cart contents and clicks <strong>"Proceed to Checkout"</strong>.</div><div class="fs-response">Prompts login or guest checkout option. Loads address selection or entry form.</div></div>
+  <div class="flow-step"><div class="fs-num">05</div><div class="fs-actor">Customer</div><div class="fs-action">Selects delivery address and <strong>preferred payment method</strong>.</div><div class="fs-response">Calculates real-time shipping cost and estimated delivery date. Loads payment gateway.</div></div>
+  <div class="flow-step"><div class="fs-num">06</div><div class="fs-actor">Customer</div><div class="fs-action">Reviews final order summary and <strong>confirms payment</strong>.</div><div class="fs-response">Processes payment via gateway. Creates order record. Deducts inventory. Sends confirmation email + SMS.</div></div>
+  <div class="flow-step"><div class="fs-num">07</div><div class="fs-actor">System</div><div class="fs-action"><strong>Notifies vendor</strong> of new order via dashboard alert and email.</div><div class="fs-response">Vendor receives new order notification with order ID, product list, and delivery address.</div></div>
+  <div class="flow-step"><div class="fs-num">08</div><div class="fs-actor">Vendor</div><div class="fs-action">Confirms, packs, and <strong>dispatches</strong> the order. Updates tracking information.</div><div class="fs-response">Order status updated to "Shipped". Customer notified with tracking link via SMS + email.</div></div>
+  <div class="flow-step"><div class="fs-num">09</div><div class="fs-actor">Customer</div><div class="fs-action">Tracks order through the <strong>order tracking page</strong>.</div><div class="fs-response">Real-time tracking status displayed. Push notification on each milestone update.</div></div>
+  <div class="flow-step"><div class="fs-num">10</div><div class="fs-actor">Logistics</div><div class="fs-action"><strong>Delivers</strong> the order to the customer's address.</div><div class="fs-response">Status updated to "Delivered". 7-day return window activated. Review prompt triggered after 24 hours.</div></div>
+</section>
+
+<!-- §8 ASSUMPTIONS -->
+<section class="doc-sec" id="s8">
+  <div class="sec-header">
+    <span class="sec-num">§8</span>
+    <span class="sec-title">Assumptions, Constraints &amp; Dependencies</span>
+    <div class="sec-line"></div>
+  </div>
+  <div class="subsec">
+    <div class="subsec-title">Assumptions</div>
+    <div class="assump-row"><span class="assump-arrow">→</span>The client has access to required API credentials for payment gateways (Razorpay / PayU) before development begins.</div>
+    <div class="assump-row"><span class="assump-arrow">→</span>All product images, descriptions, and content will be provided by onboarded vendors during the pre-launch seeding phase.</div>
+    <div class="assump-row"><span class="assump-arrow">→</span>The development team is proficient in the agreed technology stack. No additional upskilling time is factored into the timeline.</div>
+    <div class="assump-row"><span class="assump-arrow">→</span>Cloud hosting infrastructure (AWS / Azure / GCP) will be provisioned and managed by the development team.</div>
+    <div class="assump-row"><span class="assump-arrow">→</span>Browser compatibility is scoped to the last two major versions of Chrome, Firefox, Safari, and Edge only.</div>
+  </div>
+  <div class="subsec">
+    <div class="subsec-title">Dependencies</div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Dependency</th><th>Type</th><th>Owner</th><th>Impact if Delayed</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Payment Gateway API</strong></td><td>External</td><td>Razorpay / PayU</td><td>Checkout and payment flows cannot be built or tested</td></tr>
+        <tr><td><strong>SMS / Email Service</strong></td><td>External</td><td>Twilio / SendGrid</td><td>All customer and vendor notification features are blocked</td></tr>
+        <tr><td><strong>Cloud Infrastructure</strong></td><td>Internal</td><td>Dev Team</td><td>No staging or production deployment is possible</td></tr>
+        <tr><td><strong>UX Wireframes</strong></td><td>Internal</td><td>UX Designer</td><td>Frontend development cannot begin without approved wireframes</td></tr>
+        <tr><td><strong>Seed Product Data</strong></td><td>External</td><td>Vendor Partners</td><td>Platform catalog will be empty at launch — poor first impression</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<!-- §9 RISK REGISTER -->
+<section class="doc-sec" id="s9">
+  <div class="sec-header">
+    <span class="sec-num">§9</span>
+    <span class="sec-title">Risk Register</span>
+    <div class="sec-line"></div>
+  </div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Risk ID</th><th>Risk Description</th><th>Probability</th><th>Impact</th><th>Mitigation Strategy</th></tr></thead>
+    <tbody>
+      <tr><td class="tid">RSK-001</td><td>Payment gateway downtime affecting checkout completion</td><td class="risk-m">Medium</td><td class="risk-h">High</td><td>Integrate two gateways with auto-failover logic</td></tr>
+      <tr><td class="tid">RSK-002</td><td>Data breach or unauthorized access to customer PII</td><td class="risk-l">Low</td><td class="risk-h">High</td><td>SSL, 2FA enforcement, AES-256 encryption, regular pen-testing</td></tr>
+      <tr><td class="tid">RSK-003</td><td>Scope creep leading to timeline and budget overrun</td><td class="risk-h">High</td><td class="risk-m">Medium</td><td>Strict change control process; all changes require signed CRF</td></tr>
+      <tr><td class="tid">RSK-004</td><td>Poor mobile UX negatively impacting conversion rates</td><td class="risk-m">Medium</td><td class="risk-h">High</td><td>Mobile-first design approach; mandatory mobile UAT sign-off</td></tr>
+      <tr><td class="tid">RSK-005</td><td>Vendor onboarding delays resulting in thin catalog at launch</td><td class="risk-m">Medium</td><td class="risk-m">Medium</td><td>Pre-onboard at least 10 seed vendors during development phase</td></tr>
+      <tr><td class="tid">RSK-006</td><td>Performance degradation under peak traffic loads</td><td class="risk-m">Medium</td><td class="risk-h">High</td><td>Load testing before launch; auto-scaling infrastructure configured</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- §10 UAT -->
+<section class="doc-sec" id="s10">
+  <div class="sec-header">
+    <span class="sec-num">§10</span>
+    <span class="sec-title">UAT Acceptance Criteria</span>
+    <div class="sec-line"></div>
+  </div>
+  <div style="font-size:.82rem;color:var(--fg2);margin-bottom:16px;line-height:1.6;padding:12px 14px;background:var(--blue-d);border:1px solid rgba(61,142,240,.2);border-radius:var(--r);">
+    <strong style="color:var(--blue)">UAT Process:</strong> UAT will be conducted by the Business Analyst in collaboration with designated business users. Every requirement in this BRD must have a corresponding passing test case before go-live approval is granted. Any failing test triggers a defect log and re-test cycle.
+  </div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Test ID</th><th>Requirement Ref.</th><th>Test Scenario</th><th>Expected Result</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td class="tid">UAT-001</td><td>BR-CM-001</td><td>Register with valid email and strong password</td><td>Account created; verification email sent within 60 seconds</td><td><span class="uat-pending">Pending</span></td></tr>
+      <tr><td class="tid">UAT-002</td><td>BR-CM-002</td><td>Login and complete OTP-based two-factor authentication</td><td>OTP received on mobile; login successful after correct entry</td><td><span class="uat-pending">Pending</span></td></tr>
+      <tr><td class="tid">UAT-003</td><td>BR-SC-001</td><td>Add product to cart and update quantity to 3</td><td>Cart total recalculates correctly; updated quantity saved</td><td><span class="uat-pending">Pending</span></td></tr>
+      <tr><td class="tid">UAT-004</td><td>BR-PAY-001</td><td>Complete full checkout using UPI payment</td><td>Payment processed; order created; invoice emailed within 2 min</td><td><span class="uat-pending">Pending</span></td></tr>
+      <tr><td class="tid">UAT-005</td><td>BR-OM-002</td><td>Track order from placed to delivered status</td><td>Status timeline displayed accurately with correct timestamps</td><td><span class="uat-pending">Pending</span></td></tr>
+      <tr><td class="tid">UAT-006</td><td>BR-VP-002</td><td>Vendor creates a new product listing with 4 images</td><td>Product visible in catalog after admin approval; images display correctly</td><td><span class="uat-pending">Pending</span></td></tr>
+      <tr><td class="tid">UAT-007</td><td>NFR-001</td><td>Load product listing page under simulated normal traffic</td><td>Page loads within 3 seconds as per NFR target metric</td><td><span class="uat-pending">Pending</span></td></tr>
+      <tr><td class="tid">UAT-008</td><td>BR-SC-003</td><td>Apply valid discount code at checkout</td><td>Discount deducted correctly; order total recalculated</td><td><span class="uat-pending">Pending</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- §11 GLOSSARY -->
+<section class="doc-sec" id="s11">
+  <div class="sec-header">
+    <span class="sec-num">§11</span>
+    <span class="sec-title">Glossary</span>
+    <div class="sec-line"></div>
+  </div>
+  <div style="background:var(--ink2);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden">
+    <div class="gloss-row"><div class="gloss-term">BRD</div><div class="gloss-def">Business Requirements Document — a formal document describing business needs and approved solution scope.</div></div>
+    <div class="gloss-row"><div class="gloss-term">SKU</div><div class="gloss-def">Stock Keeping Unit — a unique alphanumeric identifier assigned to each distinct product variant.</div></div>
+    <div class="gloss-row"><div class="gloss-term">UAT</div><div class="gloss-def">User Acceptance Testing — validation testing conducted by end users to confirm requirements are correctly implemented.</div></div>
+    <div class="gloss-row"><div class="gloss-term">PCI-DSS</div><div class="gloss-def">Payment Card Industry Data Security Standard — mandatory security framework for all entities handling payment card data.</div></div>
+    <div class="gloss-row"><div class="gloss-term">KYC</div><div class="gloss-def">Know Your Customer — identity verification process required for vendor onboarding to comply with regulatory requirements.</div></div>
+    <div class="gloss-row"><div class="gloss-term">SLA</div><div class="gloss-def">Service Level Agreement — contractually defined performance metrics and response time commitments.</div></div>
+    <div class="gloss-row"><div class="gloss-term">UPI</div><div class="gloss-def">Unified Payments Interface — real-time interbank payment system developed and maintained by NPCI, India.</div></div>
+    <div class="gloss-row"><div class="gloss-term">WCAG</div><div class="gloss-def">Web Content Accessibility Guidelines — internationally recognized standards for making web content accessible to people with disabilities.</div></div>
+    <div class="gloss-row"><div class="gloss-term">RACI</div><div class="gloss-def">Responsible, Accountable, Consulted, Informed — a project responsibility assignment matrix.</div></div>
+    <div class="gloss-row"><div class="gloss-term">GMV</div><div class="gloss-def">Gross Merchandise Value — total value of merchandise sold through the platform before deductions.</div></div>
+    <div class="gloss-row"><div class="gloss-term">CRF</div><div class="gloss-def">Change Request Form — formal document used to propose, track, and approve changes to project scope.</div></div>
+  </div>
+</section>
+
+<!-- §12 SIGN-OFF -->
+<section class="doc-sec" id="s12">
+  <div class="sec-header">
+    <span class="sec-num">§12</span>
+    <span class="sec-title">Document Sign-Off</span>
+    <div class="sec-line"></div>
+  </div>
+  <div style="font-size:.82rem;color:var(--fg2);margin-bottom:20px;line-height:1.65;">
+    By signing below, stakeholders confirm they have reviewed this Business Requirements Document and approve it as the baseline for the E-Commerce Platform development project. Any future changes to this document must go through the formal change control process.
+  </div>
+  <div class="signoff-grid">
+    <div class="so-row so-head">
+      <div class="so-cell">Name</div>
+      <div class="so-cell">Role / Department</div>
+      <div class="so-cell">Signature</div>
+      <div class="so-cell">Date</div>
+    </div>
+    <div class="so-row">
+      <div class="so-cell" style="color:var(--fg);font-weight:600">Manmathnath Mahanta</div>
+      <div class="so-cell">Business Analyst · Tech Exactly</div>
+      <div class="so-cell"><span class="sig-ok"><i class="bi bi-check-circle-fill"></i> Approved</span></div>
+      <div class="so-cell" style="font-family:var(--mono);font-size:.72rem">June 2025</div>
+    </div>
+    <div class="so-row">
+      <div class="so-cell">Project Sponsor</div>
+      <div class="so-cell">Executive Management</div>
+      <div class="so-cell"><span class="sig-blank">__________________</span></div>
+      <div class="so-cell"><span class="sig-blank">__________</span></div>
+    </div>
+    <div class="so-row">
+      <div class="so-cell">Technical Lead</div>
+      <div class="so-cell">Engineering</div>
+      <div class="so-cell"><span class="sig-blank">__________________</span></div>
+      <div class="so-cell"><span class="sig-blank">__________</span></div>
+    </div>
+    <div class="so-row">
+      <div class="so-cell">QA Lead</div>
+      <div class="so-cell">Quality Assurance</div>
+      <div class="so-cell"><span class="sig-blank">__________________</span></div>
+      <div class="so-cell"><span class="sig-blank">__________</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <div class="footer-id">BRD-ECOM-2025-001 &nbsp;·&nbsp; v1.0 &nbsp;·&nbsp; June 2025 &nbsp;·&nbsp; Manmathnath Mahanta — Business Analyst</div>
+  <div class="footer-tag"><i class="bi bi-lock-fill" style="color:var(--red);font-size:.65rem"></i> Confidential</div>
+</div>
+
+</main>
+</div>
+
+<script>
+(function(){
+  function navTo(id, el){
+    var target = document.getElementById(id);
+    if(target){ target.scrollIntoView({behavior:'smooth',block:'start'}); }
+    document.querySelectorAll('.sb-link').forEach(function(l){ l.classList.remove('active'); });
+    if(el) el.classList.add('active');
+  }
+  window.navTo = navTo;
+
+  // Scroll spy
+  var sections = ['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12'];
+  var links = document.querySelectorAll('.sb-link');
+  window.addEventListener('scroll', function(){
+    var scrollPos = window.scrollY + 100;
+    var current = 's1';
+    sections.forEach(function(id){
+      var el = document.getElementById(id);
+      if(el && el.offsetTop <= scrollPos) current = id;
+    });
+    links.forEach(function(l){
+      var onclick = l.getAttribute('onclick') || '';
+      l.classList.toggle('active', onclick.indexOf("'"+current+"'") !== -1);
+    });
+  }, {passive:true});
+
+  // Stagger fade-in on load
+  document.querySelectorAll('.req-card,.flow-step,.info-block,.tbl-wrap').forEach(function(el,i){
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(8px)';
+    el.style.transition = 'opacity .3s ease, transform .3s ease';
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          setTimeout(function(){ el.style.opacity='1'; el.style.transform='none'; }, (i%6)*40);
+          obs.unobserve(el);
+        }
+      });
+    },{threshold:0.1});
+    obs.observe(el);
+  });
+})();
+</script>
+</body>
+</html>

@@ -32,11 +32,12 @@
       --gh-orange:     #f0883e;
       --gh-red:        #f85149;
       --gh-yellow:     #d29922;
-
+      --ba-gold:       #e3a346;
+      --ba-gold-dim:   rgba(227,163,70,0.12);
+      --ba-gold-mid:   rgba(227,163,70,0.35);
       --tl-red:    #ff5f57;
       --tl-yellow: #ffbd2e;
       --tl-green:  #28c840;
-
       --mono: 'JetBrains Mono', 'Fira Code', monospace;
       --sans: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       --r: 6px;
@@ -87,17 +88,9 @@
     .tl-r { background: var(--tl-red); }
     .tl-y { background: var(--tl-yellow); }
     .tl-g { background: var(--tl-green); }
-    .loader-titlebar span {
-      font-family: var(--mono); font-size: .72rem;
-      color: var(--gh-muted); margin-left: 8px;
-    }
+    .loader-titlebar span { font-family: var(--mono); font-size: .72rem; color: var(--gh-muted); margin-left: 8px; }
     .loader-body { padding: 24px 20px 20px; }
-    .loader-line {
-      font-family: var(--mono); font-size: .78rem;
-      color: var(--gh-muted); margin-bottom: 6px;
-      opacity: 0;
-      animation: lineFade .3s ease forwards;
-    }
+    .loader-line { font-family: var(--mono); font-size: .78rem; color: var(--gh-muted); margin-bottom: 6px; opacity: 0; animation: lineFade .3s ease forwards; }
     .loader-line .prompt { color: var(--gh-green); }
     .loader-line .cmd { color: var(--gh-text); }
     .loader-line .out { color: var(--gh-blue); }
@@ -122,226 +115,83 @@
       backdrop-filter: blur(20px);
       display: flex; align-items: center;
     }
-    .gh-topbar-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 24px;
-      width: 100%;
-      display: flex; align-items: center; gap: 16px;
-    }
-    .gh-logo {
-      display: flex; align-items: center; gap: 8px;
-      color: var(--gh-text); font-weight: 600; font-size: .88rem;
-    }
+    .gh-topbar-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; display: flex; align-items: center; gap: 16px; }
+    .gh-logo { display: flex; align-items: center; gap: 8px; color: var(--gh-text); font-weight: 600; font-size: .88rem; }
     .gh-logo i { font-size: 1.2rem; }
     .gh-topbar-nav { display: flex; align-items: center; gap: 4px; margin-left: 16px; }
-    .gh-topbar-nav a {
-      font-size: .82rem; font-weight: 500; color: var(--gh-muted);
-      padding: 6px 12px; border-radius: var(--r);
-      transition: color .2s, background .2s; text-decoration: none;
-    }
+    .gh-topbar-nav a { font-size: .82rem; font-weight: 500; color: var(--gh-muted); padding: 6px 12px; border-radius: var(--r); transition: color .2s, background .2s; text-decoration: none; }
     .gh-topbar-nav a:hover, .gh-topbar-nav a.active { color: var(--gh-text); background: var(--gh-surface3); }
-    .gh-topbar-cta {
-      margin-left: auto;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .btn-gh {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 5px 16px; border-radius: var(--r);
-      font-family: var(--sans); font-size: .82rem; font-weight: 600;
-      cursor: pointer; transition: all .2s; border: 1px solid;
-      text-decoration: none;
-    }
-    .btn-gh-primary {
-      background: var(--gh-green); color: #fff;
-      border-color: rgba(240,246,252,.1);
-    }
+    .gh-topbar-cta { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+    .btn-gh { display: inline-flex; align-items: center; gap: 6px; padding: 5px 16px; border-radius: var(--r); font-family: var(--sans); font-size: .82rem; font-weight: 600; cursor: pointer; transition: all .2s; border: 1px solid; text-decoration: none; }
+    .btn-gh-primary { background: var(--gh-green); color: #fff; border-color: rgba(240,246,252,.1); }
     .btn-gh-primary:hover { background: #2ea043; color: #fff; text-decoration: none; }
-    .btn-gh-secondary {
-      background: var(--gh-surface3); color: var(--gh-text);
-      border-color: var(--gh-border);
-    }
+    .btn-gh-secondary { background: var(--gh-surface3); color: var(--gh-text); border-color: var(--gh-border); }
     .btn-gh-secondary:hover { background: #30363d; color: var(--gh-text); text-decoration: none; }
+    .btn-gh-gold { background: var(--ba-gold-dim); color: var(--ba-gold); border-color: var(--ba-gold-mid); }
+    .btn-gh-gold:hover { background: var(--ba-gold); color: #0d1117; text-decoration: none; }
 
     /* SECTION HEADER */
-    .section-header {
-      display: flex; align-items: center; gap: 12px;
-      margin-bottom: 32px;
-    }
-    .section-header h2 {
-      font-family: var(--sans); font-size: 1.4rem; font-weight: 700;
-      color: var(--gh-text); letter-spacing: -.02em;
-    }
+    .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
+    .section-header h2 { font-family: var(--sans); font-size: 1.4rem; font-weight: 700; color: var(--gh-text); letter-spacing: -.02em; }
     .sh-line { flex: 1; height: 1px; background: var(--gh-border); }
-    .sh-tag {
-      font-family: var(--mono); font-size: .7rem; font-weight: 600;
-      color: var(--gh-green); background: var(--gh-green-dim);
-      border: 1px solid rgba(63,185,80,.25);
-      border-radius: 20px; padding: 2px 10px;
-    }
+    .sh-tag { font-family: var(--mono); font-size: .7rem; font-weight: 600; color: var(--gh-green); background: var(--gh-green-dim); border: 1px solid rgba(63,185,80,.25); border-radius: 20px; padding: 2px 10px; }
 
     /* HERO */
-    #hero {
-      padding-top: 96px; padding-bottom: 60px;
-      position: relative; overflow: hidden;
-    }
+    #hero { padding-top: 96px; padding-bottom: 60px; position: relative; overflow: hidden; }
     .hero-grid-bg {
       position: absolute; inset: 0; pointer-events: none;
-      background-image:
-        linear-gradient(rgba(88,166,255,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(88,166,255,.04) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(88,166,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(88,166,255,.04) 1px, transparent 1px);
       background-size: 48px 48px;
       mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 30%, transparent 100%);
     }
-    .hero-layout {
-      display: grid; grid-template-columns: auto 1fr;
-      gap: 40px; align-items: start;
-    }
-
-    .hero-profile {
-      display: flex; flex-direction: column; align-items: center;
-      gap: 16px; width: 220px;
-    }
-
+    .hero-layout { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: start; }
+    .hero-profile { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 220px; }
     .avatar-wrap { position: relative; width: 160px; height: 160px; }
-    .avatar-img {
-      width: 160px; height: 160px; border-radius: 50%;
-      background: var(--gh-surface2);
-      border: 2px solid var(--gh-border);
-      overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .avatar-status {
-      position: absolute; bottom: 8px; right: 8px;
-      width: 20px; height: 20px; border-radius: 50%;
-      background: var(--gh-green);
-      border: 3px solid var(--gh-canvas);
-    }
-
+    .avatar-img { width: 160px; height: 160px; border-radius: 50%; background: var(--gh-surface2); border: 2px solid var(--gh-border); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .avatar-status { position: absolute; bottom: 8px; right: 8px; width: 20px; height: 20px; border-radius: 50%; background: var(--gh-green); border: 3px solid var(--gh-canvas); }
     .profile-name { font-size: 1.4rem; font-weight: 700; color: var(--gh-text); text-align: center; line-height: 1.2; }
     .profile-handle { font-family: var(--mono); font-size: .82rem; color: var(--gh-muted); text-align: center; }
-    .profile-bio { font-size: .82rem; color: var(--gh-muted); text-align: center; line-height: 1.5; }
-
-    .profile-stats { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; font-size: .82rem; }
-    .pstat { display: flex; align-items: center; gap: 4px; color: var(--gh-muted); }
-    .pstat strong { color: var(--gh-text); font-weight: 600; }
-    .pstat i { font-size: .8rem; }
-
     .profile-links { width: 100%; display: flex; flex-direction: column; gap: 6px; }
-    .profile-link {
-      display: flex; align-items: center; gap: 8px;
-      font-size: .82rem; color: var(--gh-muted);
-      transition: color .2s; text-decoration: none;
-    }
+    .profile-link { display: flex; align-items: center; gap: 8px; font-size: .82rem; color: var(--gh-muted); transition: color .2s; text-decoration: none; }
     .profile-link:hover { color: var(--gh-text); text-decoration: none; }
     .profile-link i { width: 16px; text-align: center; font-size: .88rem; color: var(--gh-muted2); }
-
-    .hero-right { flex: 1; }
-
-    .readme-window {
-      background: var(--gh-surface);
-      border: 1px solid var(--gh-border);
-      border-radius: var(--r-lg);
-      overflow: hidden;
-    }
-    .readme-titlebar {
-      display: flex; align-items: center; justify-content: space-between;
-      background: var(--gh-surface2);
-      border-bottom: 1px solid var(--gh-border);
-      padding: 10px 16px;
-    }
+    .readme-window { background: var(--gh-surface); border: 1px solid var(--gh-border); border-radius: var(--r-lg); overflow: hidden; }
+    .readme-titlebar { display: flex; align-items: center; justify-content: space-between; background: var(--gh-surface2); border-bottom: 1px solid var(--gh-border); padding: 10px 16px; }
     .readme-titlebar-left { display: flex; align-items: center; gap: 8px; }
     .readme-fname { font-family: var(--mono); font-size: .78rem; color: var(--gh-muted); }
     .readme-fname .hl { color: var(--gh-blue); }
     .readme-actions { display: flex; align-items: center; gap: 8px; }
-    .readme-action-btn {
-      display: flex; align-items: center; gap: 4px;
-      font-size: .75rem; color: var(--gh-muted);
-      background: var(--gh-surface3); border: 1px solid var(--gh-border);
-      border-radius: var(--r); padding: 3px 10px; cursor: pointer;
-      transition: all .2s; text-decoration: none;
-    }
+    .readme-action-btn { display: flex; align-items: center; gap: 4px; font-size: .75rem; color: var(--gh-muted); background: var(--gh-surface3); border: 1px solid var(--gh-border); border-radius: var(--r); padding: 3px 10px; cursor: pointer; transition: all .2s; text-decoration: none; }
     .readme-action-btn:hover { color: var(--gh-text); border-color: var(--gh-blue); text-decoration: none; }
-
     .readme-body { padding: 32px 40px; }
-
-    .readme-h1 {
-      font-size: 2rem; font-weight: 800; color: var(--gh-text);
-      letter-spacing: -.03em; margin-bottom: 12px; line-height: 1.2;
-      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
-    }
+    .readme-h1 { font-size: 2rem; font-weight: 800; color: var(--gh-text); letter-spacing: -.03em; margin-bottom: 12px; line-height: 1.2; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
     .readme-h1 .wave { animation: wave 2.5s ease-in-out infinite; display: inline-block; transform-origin: 70% 70%; }
-    @keyframes wave {
-      0%,60%,100%{transform:rotate(0deg)}
-      10%,30%{transform:rotate(-10deg)}
-      20%{transform:rotate(12deg)}
-      40%{transform:rotate(9deg)}
-      50%{transform:rotate(-6deg)}
-    }
-
+    @keyframes wave { 0%,60%,100%{transform:rotate(0deg)} 10%,30%{transform:rotate(-10deg)} 20%{transform:rotate(12deg)} 40%{transform:rotate(9deg)} 50%{transform:rotate(-6deg)} }
     .readme-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
-    .badge-gh {
-      display: inline-flex; align-items: center; gap: 5px;
-      font-family: var(--mono); font-size: .7rem; font-weight: 600;
-      border-radius: 4px; padding: 3px 10px;
-    }
+    .badge-gh { display: inline-flex; align-items: center; gap: 5px; font-family: var(--mono); font-size: .7rem; font-weight: 600; border-radius: 4px; padding: 3px 10px; }
     .badge-blue { background: rgba(88,166,255,.15); color: var(--gh-blue); border: 1px solid rgba(88,166,255,.3); }
     .badge-green { background: var(--gh-green-dim); color: var(--gh-green); border: 1px solid rgba(63,185,80,.3); }
     .badge-purple { background: rgba(188,140,255,.12); color: var(--gh-purple); border: 1px solid rgba(188,140,255,.3); }
     .badge-orange { background: rgba(240,136,62,.12); color: var(--gh-orange); border: 1px solid rgba(240,136,62,.3); }
-
+    .badge-gold { background: var(--ba-gold-dim); color: var(--ba-gold); border: 1px solid var(--ba-gold-mid); }
     .readme-p { font-size: .9rem; color: var(--gh-muted); line-height: 1.75; margin-bottom: 24px; }
     .readme-p strong { color: var(--gh-text); }
-
-    .readme-h2 {
-      font-size: 1.15rem; font-weight: 700; color: var(--gh-text);
-      margin-bottom: 16px; padding-bottom: 8px;
-      border-bottom: 1px solid var(--gh-border);
-      display: flex; align-items: center; gap: 8px;
-    }
-
+    .readme-h2 { font-size: 1.15rem; font-weight: 700; color: var(--gh-text); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--gh-border); display: flex; align-items: center; gap: 8px; }
     .stat-cards-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
-
-    .stat-card {
-      background: var(--gh-surface2);
-      border: 1px solid var(--gh-border);
-      border-radius: var(--r);
-      padding: 16px 14px;
-      text-align: center;
-      transition: border-color .2s, transform .3s var(--ease);
-      position: relative; overflow: hidden;
-    }
+    .stat-card { background: var(--gh-surface2); border: 1px solid var(--gh-border); border-radius: var(--r); padding: 16px 14px; text-align: center; transition: border-color .2s, transform .3s var(--ease); position: relative; overflow: hidden; }
     .stat-card:hover { border-color: var(--gh-blue-mid); transform: translateY(-2px); }
-    .stat-card::after {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--gh-blue), var(--gh-purple));
-      opacity: 0; transition: opacity .3s;
-    }
+    .stat-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gh-blue), var(--gh-purple)); opacity: 0; transition: opacity .3s; }
     .stat-card:hover::after { opacity: 1; }
     .stat-num { font-family: var(--mono); font-size: 1.5rem; font-weight: 700; color: var(--gh-blue); line-height: 1; margin-bottom: 4px; }
     .stat-lbl { font-size: .68rem; font-weight: 600; color: var(--gh-muted); text-transform: uppercase; letter-spacing: .08em; }
-
     .readme-hero-cta { display: flex; gap: 10px; flex-wrap: wrap; }
 
     /* CONTRIBUTION GRAPH */
-    .contrib-strip {
-      background: var(--gh-surface);
-      border: 1px solid var(--gh-border);
-      border-radius: var(--r-lg);
-      padding: 16px 20px;
-      margin-bottom: 32px;
-    }
-    .contrib-label {
-      font-family: var(--mono); font-size: .72rem; color: var(--gh-muted);
-      margin-bottom: 10px; display: flex; justify-content: space-between;
-      flex-wrap: wrap; gap: 8px;
-    }
+    .contrib-strip { background: var(--gh-surface); border: 1px solid var(--gh-border); border-radius: var(--r-lg); padding: 16px 20px; margin-bottom: 32px; }
+    .contrib-label { font-family: var(--mono); font-size: .72rem; color: var(--gh-muted); margin-bottom: 10px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
     .contrib-graph { display: flex; gap: 3px; overflow: hidden; }
     .contrib-col { display: flex; flex-direction: column; gap: 3px; }
-    .contrib-cell {
-      width: 11px; height: 11px; border-radius: 2px;
-      background: var(--gh-border2);
-      transition: transform .15s;
-      cursor: default;
-    }
+    .contrib-cell { width: 11px; height: 11px; border-radius: 2px; background: var(--gh-border2); transition: transform .15s; cursor: default; }
     .contrib-cell:hover { transform: scale(1.3); }
     .contrib-cell.l1 { background: #0e4429; }
     .contrib-cell.l2 { background: #006d32; }
@@ -351,47 +201,22 @@
     /* ABOUT */
     #about { background: var(--gh-canvas); }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
-    .about-grid > .gh-card { height: 100%; }
     .about-grid > div { display: flex; flex-direction: column; gap: 16px; }
-    .about-grid > div .gh-card { flex: none; }
-
-    .gh-card {
-      background: var(--gh-surface);
-      border: 1px solid var(--gh-border);
-      border-radius: var(--r-lg);
-      overflow: hidden;
-      transition: border-color .2s, box-shadow .3s;
-    }
+    .gh-card { background: var(--gh-surface); border: 1px solid var(--gh-border); border-radius: var(--r-lg); overflow: hidden; transition: border-color .2s, box-shadow .3s; }
     .gh-card:hover { border-color: var(--gh-border); box-shadow: 0 8px 24px rgba(0,0,0,.3); }
-
-    .gh-card-header {
-      background: var(--gh-surface2);
-      border-bottom: 1px solid var(--gh-border);
-      padding: 10px 16px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
+    .gh-card-header { background: var(--gh-surface2); border-bottom: 1px solid var(--gh-border); padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; }
     .gh-card-header-left { display: flex; align-items: center; gap: 8px; }
     .gh-card-title { font-family: var(--mono); font-size: .75rem; color: var(--gh-muted); }
     .gh-card-body { padding: 20px; }
-
     .about-text { font-size: .88rem; color: var(--gh-muted); line-height: 1.75; margin-bottom: 16px; }
     .about-text strong { color: var(--gh-text); }
-    .about-text code {
-      font-family: var(--mono); font-size: .82em;
-      background: var(--gh-surface3); border: 1px solid var(--gh-border);
-      border-radius: 4px; padding: 1px 6px; color: var(--gh-blue);
-    }
-
+    .about-text code { font-family: var(--mono); font-size: .82em; background: var(--gh-surface3); border: 1px solid var(--gh-border); border-radius: 4px; padding: 1px 6px; color: var(--gh-blue); }
     .info-table { width: 100%; font-size: .84rem; border-collapse: collapse; }
     .info-table tr td { padding: 6px 0; vertical-align: top; }
-    .info-table tr td:first-child {
-      font-family: var(--mono); font-size: .78rem; color: var(--gh-muted2);
-      width: 110px; padding-right: 12px; white-space: nowrap;
-    }
+    .info-table tr td:first-child { font-family: var(--mono); font-size: .78rem; color: var(--gh-muted2); width: 110px; padding-right: 12px; white-space: nowrap; }
     .info-table tr td:last-child { color: var(--gh-text); }
     .info-table tr { border-bottom: 1px solid var(--gh-border2); }
     .info-table tr:last-child { border-bottom: none; }
-
     .skill-lang-row { display: flex; flex-direction: column; gap: 14px; }
     .skill-lang-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
     .skill-lang-name { display: flex; align-items: center; gap: 8px; font-size: .85rem; font-weight: 600; color: var(--gh-text); }
@@ -399,92 +224,38 @@
     .skill-lang-pct { font-family: var(--mono); font-size: .75rem; color: var(--gh-muted); }
     .skill-lang-bar { height: 6px; background: var(--gh-border2); border-radius: 6px; overflow: hidden; }
     .skill-lang-fill { height: 100%; border-radius: 6px; width: 0; transition: width 1.2s var(--ease); }
-
     .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
-    .gh-tag {
-      font-family: var(--mono); font-size: .72rem; font-weight: 500;
-      background: var(--gh-surface3); border: 1px solid var(--gh-border);
-      border-radius: 20px; padding: 4px 12px; color: var(--gh-muted);
-      cursor: default; transition: all .2s;
-    }
+    .gh-tag { font-family: var(--mono); font-size: .72rem; font-weight: 500; background: var(--gh-surface3); border: 1px solid var(--gh-border); border-radius: 20px; padding: 4px 12px; color: var(--gh-muted); cursor: default; transition: all .2s; }
     .gh-tag:hover { background: var(--gh-blue-dim); border-color: var(--gh-blue-mid); color: var(--gh-blue); }
-
     .file-icon { width: 14px; height: 14px; display: inline-flex; align-items: center; justify-content: center; color: var(--gh-muted2); font-size: .78rem; }
 
     /* EXPERIENCE */
     #resume { background: var(--gh-surface); border-top: 1px solid var(--gh-border); border-bottom: 1px solid var(--gh-border); }
     .timeline { display: flex; flex-direction: column; gap: 16px; }
-
-    .exp-window {
-      background: var(--gh-canvas);
-      border: 1px solid var(--gh-border);
-      border-radius: var(--r-lg);
-      overflow: hidden;
-      transition: border-color .2s, box-shadow .3s var(--ease), transform .3s var(--ease);
-    }
+    .exp-window { background: var(--gh-canvas); border: 1px solid var(--gh-border); border-radius: var(--r-lg); overflow: hidden; transition: border-color .2s, box-shadow .3s var(--ease), transform .3s var(--ease); }
     .exp-window:hover { border-color: var(--gh-blue-mid); box-shadow: 0 8px 32px rgba(88,166,255,.08); transform: translateY(-2px); }
-
-    .exp-titlebar {
-      display: flex; align-items: center; justify-content: space-between;
-      background: var(--gh-surface2);
-      border-bottom: 1px solid var(--gh-border);
-      padding: 10px 16px;
-      flex-wrap: wrap; gap: 8px;
-    }
+    .exp-titlebar { display: flex; align-items: center; justify-content: space-between; background: var(--gh-surface2); border-bottom: 1px solid var(--gh-border); padding: 10px 16px; flex-wrap: wrap; gap: 8px; }
     .exp-titlebar-left { display: flex; align-items: center; gap: 8px; }
     .exp-tab { font-family: var(--mono); font-size: .75rem; color: var(--gh-muted); border-bottom: 2px solid var(--gh-blue); padding-bottom: 4px; }
     .exp-titlebar-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-    .exp-period-tag {
-      font-family: var(--mono); font-size: .68rem; font-weight: 600;
-      background: var(--gh-green-dim); color: var(--gh-green);
-      border: 1px solid rgba(63,185,80,.25);
-      border-radius: 20px; padding: 2px 10px;
-    }
-    .exp-badge {
-      font-family: var(--mono); font-size: .68rem; font-weight: 600;
-      background: rgba(188,140,255,.12); color: var(--gh-purple);
-      border: 1px solid rgba(188,140,255,.3);
-      border-radius: 20px; padding: 2px 10px;
-    }
-
+    .exp-period-tag { font-family: var(--mono); font-size: .68rem; font-weight: 600; background: var(--gh-green-dim); color: var(--gh-green); border: 1px solid rgba(63,185,80,.25); border-radius: 20px; padding: 2px 10px; }
+    .exp-badge { font-family: var(--mono); font-size: .68rem; font-weight: 600; background: rgba(188,140,255,.12); color: var(--gh-purple); border: 1px solid rgba(188,140,255,.3); border-radius: 20px; padding: 2px 10px; }
     .exp-body2 { padding: 24px 28px; }
     .exp-company-line { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
     .exp-company2 { font-size: .8rem; color: var(--gh-muted); }
     .exp-role2 { font-size: 1.25rem; font-weight: 700; color: var(--gh-text); letter-spacing: -.02em; margin-bottom: 16px; }
-
     .diff-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .diff-item {
-      font-size: .87rem; color: var(--gh-muted);
-      line-height: 1.7;
-      display: flex; gap: 12px;
-      padding: 8px 10px;
-      border-radius: var(--r);
-      transition: background .2s;
-    }
+    .diff-item { font-size: .87rem; color: var(--gh-muted); line-height: 1.7; display: flex; gap: 12px; padding: 8px 10px; border-radius: var(--r); transition: background .2s; }
     .diff-item:hover { background: var(--gh-surface2); }
     .diff-prefix { font-family: var(--mono); font-size: .78rem; font-weight: 700; color: var(--gh-green); flex-shrink: 0; margin-top: 2px; }
     .diff-item .hl { color: var(--gh-text); font-weight: 600; }
-
     .exp-tags2 { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gh-border2); }
-    .exp-tag2 {
-      font-family: var(--mono); font-size: .68rem;
-      background: var(--gh-surface3); border: 1px solid var(--gh-border);
-      border-radius: 20px; padding: 2px 10px; color: var(--gh-muted);
-    }
+    .exp-tag2 { font-family: var(--mono); font-size: .68rem; background: var(--gh-surface3); border: 1px solid var(--gh-border); border-radius: 20px; padding: 2px 10px; color: var(--gh-muted); }
 
     /* TOOLS */
     #technical-skills { background: var(--gh-canvas); }
     .tools-repo-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-
-    .tool-repo {
-      background: var(--gh-surface);
-      border: 1px solid var(--gh-border);
-      border-radius: var(--r-lg);
-      padding: 18px;
-      display: flex; flex-direction: column; gap: 8px;
-      transition: border-color .2s, transform .3s var(--ease);
-      cursor: default;
-    }
+    .tool-repo { background: var(--gh-surface); border: 1px solid var(--gh-border); border-radius: var(--r-lg); padding: 18px; display: flex; flex-direction: column; gap: 8px; transition: border-color .2s, transform .3s var(--ease); cursor: default; }
     .tool-repo:hover { border-color: var(--gh-blue-mid); transform: translateY(-3px); }
     .tool-repo-top { display: flex; align-items: center; gap: 10px; }
     .tool-repo-icon { width: 32px; height: 32px; object-fit: contain; }
@@ -495,119 +266,154 @@
     .tool-repo-lang { display: flex; align-items: center; gap: 5px; }
     .lang-circle { width: 10px; height: 10px; border-radius: 50%; background: var(--gh-blue); flex-shrink: 0; }
 
-    /* PORTFOLIO */
-    #portfolio { background: var(--gh-surface); border-top: 1px solid var(--gh-border); border-bottom: 1px solid var(--gh-border); }
+    /* ═══════════════════════════════════════════
+       UNIFIED PROJECTS SECTION
+    ═══════════════════════════════════════════ */
+    #projects { background: var(--gh-surface); border-top: 1px solid var(--gh-border); border-bottom: 1px solid var(--gh-border); }
 
     .proj-filter-bar { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 28px; }
-    .pf-tab {
-      font-family: var(--mono); font-size: .72rem; font-weight: 600;
-      padding: 5px 14px; border-radius: 20px;
-      border: 1px solid var(--gh-border);
-      background: var(--gh-canvas); color: var(--gh-muted);
-      cursor: pointer; transition: all .2s;
-    }
+    .pf-tab { font-family: var(--mono); font-size: .72rem; font-weight: 600; padding: 5px 14px; border-radius: 20px; border: 1px solid var(--gh-border); background: var(--gh-canvas); color: var(--gh-muted); cursor: pointer; transition: all .2s; }
     .pf-tab.active, .pf-tab:hover { background: var(--gh-blue-dim); border-color: var(--gh-blue-mid); color: var(--gh-blue); }
+    .pf-tab[data-filter="ba"].active, .pf-tab[data-filter="ba"]:hover { background: var(--ba-gold-dim); border-color: var(--ba-gold-mid); color: var(--ba-gold); }
 
-    .projects-grid-v2 {
+    /* Grid: 3 cols, flexible */
+    .projects-unified-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto auto;
-      grid-template-areas:
-        "p1 p1 p2"
-        "p3 p4 p5";
       gap: 16px;
     }
 
-    .proj-card-v2 {
+    /* Base card */
+    .proj-card-uni {
       background: var(--gh-canvas);
       border: 1px solid var(--gh-border);
       border-radius: var(--r-lg);
       overflow: hidden;
-      display: flex; flex-direction: column;
-      transition: border-color .25s, transform .3s var(--ease), box-shadow .3s;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
       cursor: pointer;
+      transition: border-color .25s, transform .3s var(--ease), box-shadow .3s;
       position: relative;
     }
-    .proj-card-v2:hover { border-color: var(--gh-blue-mid); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.4); }
-    .proj-card-v2.p1 { grid-area: p1; }
-    .proj-card-v2.p2 { grid-area: p2; }
-    .proj-card-v2.p3 { grid-area: p3; }
-    .proj-card-v2.p4 { grid-area: p4; }
-    .proj-card-v2.p5 { grid-area: p5; }
+    .proj-card-uni:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.4);
+    }
 
-    .pcard-img { position: relative; overflow: hidden; height: 180px; }
-    .proj-card-v2.p1 .pcard-img { height: 220px; }
-    .pcard-img img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform .5s var(--ease), filter .3s;
-      filter: brightness(.7) saturate(1.1);
+    /* BA card specific accent */
+    .ba-proj { border-color: var(--gh-border); }
+    .ba-proj:hover { border-color: var(--ba-gold-mid); box-shadow: 0 12px 40px rgba(227,163,70,.1); }
+    .ba-proj::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--ba-gold), var(--gh-orange));
+      opacity: 0; transition: opacity .3s;
     }
-    .proj-card-v2:hover .pcard-img img { transform: scale(1.06); filter: brightness(.85) saturate(1.25); }
-    .pcard-img-overlay { position: absolute; inset: 0; background: linear-gradient(160deg, transparent 30%, rgba(13,17,23,.85) 100%); }
-    .pcard-img-badge { position: absolute; top: 12px; left: 12px; font-family: var(--mono); font-size: .63rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
-    .pcard-stack-pills { position: absolute; bottom: 12px; left: 12px; display: flex; gap: 5px; flex-wrap: wrap; }
-    .pcard-pill {
-      font-family: var(--mono); font-size: .6rem; font-weight: 600;
-      background: rgba(13,17,23,.85); color: var(--gh-muted);
-      border: 1px solid var(--gh-border);
-      border-radius: 20px; padding: 2px 8px;
-      backdrop-filter: blur(8px);
+    .ba-proj:hover::before { opacity: 1; }
+
+    /* Data card accent */
+    .data-proj:hover { border-color: var(--gh-blue-mid); }
+    .data-proj::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--gh-blue), var(--gh-purple));
+      opacity: 0; transition: opacity .3s;
     }
-    .pcard-view-overlay {
-      position: absolute; top: 12px; right: 12px;
-      width: 30px; height: 30px; border-radius: 50%;
-      background: rgba(13,17,23,.75); border: 1px solid var(--gh-border);
+    .data-proj:hover::before { opacity: 1; }
+
+    /* Card header row */
+    .pcard-uni-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px;
+      background: var(--gh-surface2);
+      border-bottom: 1px solid var(--gh-border);
+    }
+    .pcard-uni-type-row { display: flex; align-items: center; gap: 8px; }
+    .pcard-uni-badge {
+      font-family: var(--mono); font-size: .62rem; font-weight: 700;
+      padding: 2px 8px; border-radius: 20px;
+    }
+    .pcard-uni-num { font-family: var(--mono); font-size: .65rem; color: var(--gh-muted2); }
+    .pcard-uni-arrow { font-size: .85rem; color: var(--gh-muted2); transition: color .2s, transform .2s; }
+    .proj-card-uni:hover .pcard-uni-arrow { color: var(--gh-blue); transform: translate(2px, -2px); }
+    .ba-proj:hover .pcard-uni-arrow { color: var(--ba-gold); }
+
+    /* BA card icon area */
+    .pcard-uni-icon {
       display: flex; align-items: center; justify-content: center;
-      color: var(--gh-muted); font-size: .75rem;
-      backdrop-filter: blur(8px);
-      opacity: 0; transform: scale(.8);
-      transition: all .25s var(--ease);
+      height: 90px;
+      background: var(--gh-surface);
+      font-size: 2.2rem;
+      color: var(--ba-gold);
+      opacity: .7;
+      transition: opacity .3s, transform .3s var(--ease);
     }
-    .proj-card-v2:hover .pcard-view-overlay { opacity: 1; transform: scale(1); background: var(--gh-blue); color: #fff; border-color: var(--gh-blue); }
+    .ba-proj:hover .pcard-uni-icon { opacity: 1; transform: scale(1.08); }
 
-    .pcard-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
-    .pcard-meta { display: flex; align-items: center; justify-content: space-between; }
-    .pcard-number { font-family: var(--mono); font-size: .65rem; color: var(--gh-muted2); }
-    .pcard-type { font-family: var(--mono); font-size: .63rem; font-weight: 600; color: var(--gh-muted2); background: var(--gh-surface2); border: 1px solid var(--gh-border2); border-radius: 4px; padding: 1px 7px; }
-    .pcard-title { font-size: 1rem; font-weight: 700; color: var(--gh-text); letter-spacing: -.015em; line-height: 1.25; }
-    .pcard-desc { font-size: .78rem; color: var(--gh-muted); line-height: 1.55; flex: 1; }
-    .pcard-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid var(--gh-border2); margin-top: auto; }
-    .pcard-stat { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: .7rem; color: var(--gh-muted2); }
-    .pcard-stat-item { display: flex; align-items: center; gap: 4px; }
-    .pcard-open-btn {
-      display: flex; align-items: center; gap: 5px;
-      font-family: var(--mono); font-size: .7rem; font-weight: 600;
-      color: var(--gh-blue);
-      background: var(--gh-blue-dim); border: 1px solid var(--gh-blue-mid);
-      border-radius: var(--r); padding: 4px 12px;
-      transition: all .2s; text-decoration: none;
+    /* Data card image area */
+    .pcard-uni-img {
+      position: relative; height: 120px; overflow: hidden;
     }
-    .pcard-open-btn:hover { background: var(--gh-blue); color: #fff; text-decoration: none; }
+    .pcard-uni-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(.65) saturate(1.1);
+      transition: transform .5s var(--ease), filter .3s;
+    }
+    .data-proj:hover .pcard-uni-img img { transform: scale(1.06); filter: brightness(.8) saturate(1.3); }
+    .pcard-uni-img-overlay { position: absolute; inset: 0; background: linear-gradient(160deg, transparent 30%, rgba(13,17,23,.75) 100%); }
+
+    /* Card body */
+    .pcard-uni-title {
+      font-size: .95rem; font-weight: 700; color: var(--gh-text);
+      line-height: 1.3; padding: 14px 14px 6px;
+    }
+    .pcard-uni-desc {
+      font-size: .78rem; color: var(--gh-muted); line-height: 1.55;
+      padding: 0 14px 10px; flex: 1;
+    }
+    .pcard-uni-pills {
+      display: flex; flex-wrap: wrap; gap: 5px;
+      padding: 0 14px 12px;
+    }
+    .pcard-uni-pill {
+      font-family: var(--mono); font-size: .62rem;
+      background: var(--gh-surface3); border: 1px solid var(--gh-border);
+      border-radius: 20px; padding: 2px 8px; color: var(--gh-muted);
+    }
+
+    /* Card footer */
+    .pcard-uni-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px;
+      border-top: 1px solid var(--gh-border2);
+      margin-top: auto;
+    }
+    .pcard-uni-domain { font-family: var(--mono); font-size: .68rem; color: var(--gh-muted2); display: flex; align-items: center; gap: 5px; }
+    .pcard-uni-open {
+      font-family: var(--mono); font-size: .68rem; font-weight: 600;
+      color: var(--gh-blue); display: flex; align-items: center; gap: 4px;
+      transition: gap .2s;
+    }
+    .ba-proj .pcard-uni-open { color: var(--ba-gold); }
+    .proj-card-uni:hover .pcard-uni-open { gap: 7px; }
+
+    /* hidden state for filter */
+    .proj-card-uni.filtered-out {
+      opacity: .25;
+      transform: scale(.97);
+      pointer-events: none;
+      transition: opacity .3s, transform .3s;
+    }
 
     /* CERTIFICATES */
     #certificates { background: var(--gh-canvas); }
-    .cert-marquee-outer {
-      position: relative;
-      padding: 8px 0;
-      mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
-    }
-    .cert-marquee-inner {
-      overflow: hidden;
-    }
+    .cert-marquee-outer { position: relative; padding: 8px 0; mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%); -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%); }
+    .cert-marquee-inner { overflow: hidden; }
     .cert-marquee-track { display: flex; gap: 16px; width: max-content; animation: marqueeScroll 32s linear infinite; }
     .cert-marquee-outer:hover .cert-marquee-track { animation-play-state: paused; }
     @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    .cert-card-gh {
-      flex-shrink: 0; width: 300px;
-      background: var(--gh-surface);
-      border: 1px solid var(--gh-border);
-      border-radius: var(--r-lg);
-      overflow: hidden;
-      transition: border-color .2s, transform .3s var(--ease);
-      text-decoration: none; display: block; color: inherit;
-    }
+    .cert-card-gh { flex-shrink: 0; width: 300px; background: var(--gh-surface); border: 1px solid var(--gh-border); border-radius: var(--r-lg); overflow: hidden; transition: border-color .2s, transform .3s var(--ease); text-decoration: none; display: block; color: inherit; }
     .cert-card-gh:hover { border-color: var(--gh-blue-mid); transform: translateY(-3px); color: inherit; text-decoration: none; }
     .cert-card-header2 { background: var(--gh-surface2); border-bottom: 1px solid var(--gh-border); padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; }
     .cert-card-body2 { padding: 16px 14px; }
@@ -621,130 +427,51 @@
     .cert-card-gh:hover .cert-arrow2 { background: var(--gh-blue); color: #fff; transform: scale(1.1) rotate(45deg); }
 
     /* MODALS */
-    .modal-content {
-      background: var(--gh-surface) !important;
-      border: 1px solid var(--gh-border) !important;
-      border-radius: var(--r-lg) !important;
-      box-shadow: 0 32px 80px rgba(0,0,0,.7);
-    }
-    .modal-header {
-      background: var(--gh-surface2) !important;
-      border-bottom: 1px solid var(--gh-border) !important;
-      padding: 0 !important;
-      display: flex;
-      align-items: stretch;
-    }
-    .modal-titlebar {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 16px;
-    }
-    .modal-tl {
-      display: flex;
-      gap: 7px;
-      align-items: center;
-      flex-shrink: 0;
-    }
-    .modal-tl-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      cursor: default;
-      transition: filter .15s;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      border: none;
-      padding: 0;
-      outline: none;
-    }
+    .modal-content { background: var(--gh-surface) !important; border: 1px solid var(--gh-border) !important; border-radius: var(--r-lg) !important; box-shadow: 0 32px 80px rgba(0,0,0,.7); }
+    .modal-header { background: var(--gh-surface2) !important; border-bottom: 1px solid var(--gh-border) !important; padding: 0 !important; display: flex; align-items: stretch; }
+    .modal-titlebar { width: 100%; display: flex; align-items: center; gap: 12px; padding: 10px 16px; }
+    .modal-tl { display: flex; gap: 7px; align-items: center; flex-shrink: 0; }
+    .modal-tl-dot { width: 12px; height: 12px; border-radius: 50%; cursor: default; transition: filter .15s; position: relative; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: none; padding: 0; outline: none; }
     button.modal-tl-dot { cursor: pointer; }
-    button.modal-tl-dot.is-close::after {
-      content: '✕';
-      position: absolute;
-      font-size: 7px;
-      font-weight: 900;
-      color: rgba(0,0,0,0);
-      line-height: 1;
-      transition: color .15s;
-      font-family: var(--sans);
-    }
+    button.modal-tl-dot.is-close::after { content: '✕'; position: absolute; font-size: 7px; font-weight: 900; color: rgba(0,0,0,0); line-height: 1; transition: color .15s; font-family: var(--sans); }
     button.modal-tl-dot.is-close:hover::after { color: rgba(0,0,0,0.65); }
-    button.modal-tl-dot.is-close:hover,
-    .modal-tl-dot.is-yellow:hover,
-    .modal-tl-dot.is-green:hover { filter: brightness(0.88); }
-
-    .modal-title {
-      font-family: var(--mono) !important;
-      font-size: .8rem !important;
-      color: var(--gh-muted) !important;
-      font-weight: 500 !important;
-      flex: 1;
-      text-align: center;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
+    button.modal-tl-dot.is-close:hover, .modal-tl-dot.is-yellow:hover, .modal-tl-dot.is-green:hover { filter: brightness(0.88); }
+    .modal-title { font-family: var(--mono) !important; font-size: .8rem !important; color: var(--gh-muted) !important; font-weight: 500 !important; flex: 1; text-align: center; margin: 0 !important; padding: 0 !important; }
     .modal-title .hl { color: var(--gh-blue); }
     .modal-title .fn { color: var(--gh-text); }
-    .modal-tl-spacer {
-      width: calc(12px * 3 + 7px * 2);
-      flex-shrink: 0;
-    }
-    .modal-body {
-      padding: 24px !important;
-      background: var(--gh-surface);
-      max-height: calc(85vh - 52px);
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: var(--gh-border) transparent;
-    }
+    .modal-tl-spacer { width: calc(12px * 3 + 7px * 2); flex-shrink: 0; }
+    .modal-body { padding: 24px !important; background: var(--gh-surface); max-height: calc(85vh - 52px); overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--gh-border) transparent; }
     .modal-body::-webkit-scrollbar { width: 4px; }
     .modal-body::-webkit-scrollbar-thumb { background: var(--gh-border); border-radius: 2px; }
-
     .modal-proj-layout { display: grid; grid-template-columns: 1fr 260px; gap: 20px; margin-bottom: 20px; }
-    .modal-iframe-wrap {
-      position: relative; width: 100%; padding-top: 62%;
-      background: var(--gh-canvas); border: 1px solid var(--gh-border);
-      border-radius: var(--r); overflow: hidden;
-    }
+    .modal-iframe-wrap { position: relative; width: 100%; padding-top: 62%; background: var(--gh-canvas); border: 1px solid var(--gh-border); border-radius: var(--r); overflow: hidden; }
     .modal-iframe-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
-
     .modal-sidebar { display: flex; flex-direction: column; gap: 16px; }
     .ms-label { font-family: var(--mono); font-size: .7rem; color: var(--gh-muted2); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 8px; }
     .ms-tags { display: flex; gap: 6px; flex-wrap: wrap; }
     .ms-tag { font-family: var(--mono); font-size: .72rem; background: var(--gh-surface3); border: 1px solid var(--gh-border); border-radius: 20px; padding: 3px 10px; color: var(--gh-muted); }
-
     .modal-desc-section h6 { font-family: var(--mono); font-size: .75rem; color: var(--gh-muted2); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 12px; }
     .modal-diff { display: flex; flex-direction: column; gap: 4px; }
-    .modal-diff-line {
-      display: flex; gap: 10px; font-size: .84rem; color: var(--gh-muted);
-      line-height: 1.65; padding: 6px 10px; border-radius: var(--r);
-      transition: background .2s;
-    }
+    .modal-diff-line { display: flex; gap: 10px; font-size: .84rem; color: var(--gh-muted); line-height: 1.65; padding: 6px 10px; border-radius: var(--r); transition: background .2s; }
     .modal-diff-line:hover { background: var(--gh-surface2); }
     .mdl-prefix { font-family: var(--mono); color: var(--gh-green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
     .modal-diff-line strong { color: var(--gh-text); }
 
     /* SCROLL TOP */
-    #scroll-top {
-      position: fixed; bottom: 24px; right: 24px; z-index: 999;
-      display: flex; align-items: center; gap: 6px;
-      height: 36px; padding: 0 14px 0 10px;
-      background: var(--gh-surface2);
-      border: 1px solid var(--gh-border);
-      border-radius: var(--r);
-      font-family: var(--mono); font-size: .72rem; color: var(--gh-muted);
-      cursor: pointer; text-decoration: none;
-      opacity: 0; visibility: hidden; pointer-events: none;
-      transition: all .3s var(--ease);
-    }
+    #scroll-top { position: fixed; bottom: 24px; right: 24px; z-index: 999; display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 14px 0 10px; background: var(--gh-surface2); border: 1px solid var(--gh-border); border-radius: var(--r); font-family: var(--mono); font-size: .72rem; color: var(--gh-muted); cursor: pointer; text-decoration: none; opacity: 0; visibility: hidden; pointer-events: none; transition: all .3s var(--ease); }
     #scroll-top:hover { border-color: var(--gh-blue); color: var(--gh-text); text-decoration: none; }
     #scroll-top.active { opacity: 1; visibility: visible; pointer-events: auto; }
     .st-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gh-green); }
+
+    /* AI BUTTON */
+    #ai-summary-btn { position: fixed; bottom: 24px; left: 24px; z-index: 999; display: flex; align-items: center; gap: 9px; height: 40px; padding: 0 16px 0 12px; background: linear-gradient(135deg, #10a37f 0%, #0d8f6f 100%); border: 1px solid rgba(16,163,127,.45); border-radius: 20px; font-family: var(--mono); font-size: .72rem; font-weight: 600; color: #fff; cursor: pointer; text-decoration: none; box-shadow: 0 4px 20px rgba(16,163,127,.35); transition: all .3s var(--ease); opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(8px); }
+    #ai-summary-btn.active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
+    #ai-summary-btn:hover { background: linear-gradient(135deg, #0d8f6f 0%, #0a7a5e 100%); box-shadow: 0 6px 28px rgba(16,163,127,.5); color: #fff; text-decoration: none; transform: translateY(-2px); }
+    #ai-summary-btn:hover .ai-btn-icon { transform: rotate(-8deg) scale(1.15); }
+    .ai-btn-icon { font-size: .9rem; transition: transform .3s var(--ease); display: flex; align-items: center; flex-shrink: 0; }
+    .ai-btn-label { line-height: 1; white-space: nowrap; }
+    .ai-btn-pulse { width: 7px; height: 7px; border-radius: 50%; background: #fff; opacity: .85; flex-shrink: 0; animation: aiBtnPulse 2s ease-in-out infinite; }
+    @keyframes aiBtnPulse { 0%, 100% { transform: scale(1); opacity: .85; } 50% { transform: scale(1.5); opacity: .4; } }
 
     /* RESPONSIVE */
     @media(max-width:768px) {
@@ -757,87 +484,23 @@
       .hero-profile { width: 100%; align-items: center; }
       .avatar-wrap { width: 120px; height: 120px; }
       .avatar-img { width: 120px; height: 120px; }
-      .contrib-strip { padding: 12px 14px; }
-      .contrib-graph { overflow-x: auto; }
       .readme-body { padding: 20px 16px; }
       .readme-h1 { font-size: 1.5rem; }
       .stat-cards-row { grid-template-columns: repeat(2, 1fr); }
       .about-grid { grid-template-columns: 1fr; }
       .exp-body2 { padding: 16px; }
       .exp-role2 { font-size: 1.05rem; }
-      .exp-titlebar { padding: 8px 12px; }
-      .exp-tab { font-size: .68rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 160px; }
       .tools-repo-list { grid-template-columns: repeat(2, 1fr); }
-      .projects-grid-v2 { grid-template-columns: 1fr; grid-template-areas: "p1" "p2" "p3" "p4" "p5"; }
-      .pcard-img { height: 160px; }
-      .proj-card-v2.p1 .pcard-img { height: 180px; }
-      .modal-proj-layout { grid-template-columns: 1fr; }
-      .modal-iframe-wrap { padding-top: 70%; }
-      .modal-title { font-size: .72rem !important; }
+      .projects-unified-grid { grid-template-columns: 1fr; }
     }
-
     @media(max-width:480px) {
       .tools-repo-list { grid-template-columns: 1fr; }
       .readme-actions { display: none; }
-      .gh-topbar-cta .btn-gh-primary { padding: 5px 10px; font-size: .75rem; }
-      .gh-topbar-cta .btn-gh-primary span { display: none; }
-      .section-header h2 { font-size: 1.2rem; }
       .stat-cards-row { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-      .stat-num { font-size: 1.2rem; }
-      .modal-title .hl, .modal-title span:first-of-type { display: none; }
     }
-
     @media(min-width:769px) and (max-width:1024px) {
-      .projects-grid-v2 {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-areas: "p1 p1" "p2 p3" "p4 p5";
-      }
+      .projects-unified-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    /* AI SUMMARY BUTTON */
-#ai-summary-btn {
-  position: fixed; bottom: 24px; left: 24px; z-index: 999;
-  display: flex; align-items: center; gap: 9px;
-  height: 40px; padding: 0 16px 0 12px;
-  background: linear-gradient(135deg, #10a37f 0%, #0d8f6f 100%);
-  border: 1px solid rgba(16,163,127,.45);
-  border-radius: 20px;
-  font-family: var(--mono); font-size: .72rem; font-weight: 600;
-  color: #fff; cursor: pointer; text-decoration: none;
-  box-shadow: 0 4px 20px rgba(16,163,127,.35);
-  transition: all .3s var(--ease);
-  opacity: 0; visibility: hidden; pointer-events: none;
-  transform: translateY(8px);
-}
-#ai-summary-btn.active {
-  opacity: 1; visibility: visible; pointer-events: auto;
-  transform: translateY(0);
-}
-#ai-summary-btn:hover {
-  background: linear-gradient(135deg, #0d8f6f 0%, #0a7a5e 100%);
-  box-shadow: 0 6px 28px rgba(16,163,127,.5);
-  color: #fff; text-decoration: none;
-  transform: translateY(-2px);
-}
-#ai-summary-btn:hover .ai-btn-icon { transform: rotate(-8deg) scale(1.15); }
-.ai-btn-icon {
-  font-size: .9rem; transition: transform .3s var(--ease);
-  display: flex; align-items: center;
-  flex-shrink: 0;
-}
-.ai-btn-label { line-height: 1; white-space: nowrap; }
-.ai-btn-pulse {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: #fff; opacity: .85; flex-shrink: 0;
-  animation: aiBtnPulse 2s ease-in-out infinite;
-}
-@keyframes aiBtnPulse {
-  0%, 100% { transform: scale(1); opacity: .85; }
-  50% { transform: scale(1.5); opacity: .4; }
-}
-@media(max-width:480px) {
-  #ai-summary-btn .ai-btn-label { display: none; }
-  #ai-summary-btn { padding: 0 12px; }
-}
   </style>
 </head>
 <body>
@@ -847,9 +510,7 @@
   <div class="loader-window">
     <div class="loader-titlebar">
       <div style="display:flex;gap:6px">
-        <div class="tl tl-r"></div>
-        <div class="tl tl-y"></div>
-        <div class="tl tl-g"></div>
+        <div class="tl tl-r"></div><div class="tl tl-y"></div><div class="tl tl-g"></div>
       </div>
       <span>terminal — bash</span>
     </div>
@@ -875,7 +536,7 @@
       <a href="#hero" class="active">Overview</a>
       <a href="#about">About</a>
       <a href="#resume">Experience</a>
-      <a href="#portfolio">Projects</a>
+      <a href="#projects">Projects</a>
       <a href="#certificates">Certifications</a>
     </nav>
     <div class="gh-topbar-cta">
@@ -913,7 +574,7 @@
         </div>
         <div class="profile-links">
           <div class="profile-link"><i class="bi bi-briefcase-fill"></i> Business Analyst</div>
-          <div class="profile-link"><i class="bi bi-geo-alt-fill"></i> Kolkata, West Bengal, IN</div>
+          <div class="profile-link"><i class="bi bi-geo-alt-fill"></i> Bhubaneswar, Odisha, IN</div>
           <a href="mailto:manmath.contact@gmail.com" class="profile-link"><i class="bi bi-envelope-fill"></i> manmath.contact@gmail.com</a>
           <div class="profile-link"><i class="bi bi-phone-fill"></i> +91 7008548402</div>
         </div>
@@ -926,9 +587,7 @@
               <span class="readme-fname"><span class="hl">manmath235</span> / <span style="color:var(--gh-text)">README.md</span></span>
             </div>
             <div class="readme-actions">
-              <a href="assets/Manmathnath Mahanta - Resume.pdf" download class="readme-action-btn">
-                <i class="bi bi-download"></i> Raw
-              </a>
+              <a href="assets/Manmathnath Mahanta - Resume.pdf" download class="readme-action-btn"><i class="bi bi-download"></i> Raw</a>
               <span class="readme-action-btn"><i class="bi bi-pencil"></i> Edit</span>
             </div>
           </div>
@@ -944,12 +603,13 @@
             </p>
             <div class="stat-cards-row">
               <div class="stat-card"><div class="stat-num dynamic-exp"></div><div class="stat-lbl">Years Exp.</div></div>
-              <div class="stat-card"><div class="stat-num">10+</div><div class="stat-lbl">Projects</div></div>
+              <div class="stat-card"><div class="stat-num">8</div><div class="stat-lbl">Projects</div></div>
               <div class="stat-card"><div class="stat-num">5</div><div class="stat-lbl">Certifications</div></div>
               <div class="stat-card"><div class="stat-num">30%</div><div class="stat-lbl">Efficiency ↑</div></div>
             </div>
             <div class="readme-hero-cta">
-              <a href="#portfolio" class="btn-gh btn-gh-primary"><i class="bi bi-folder2-open"></i> View Projects</a>
+              <a href="#projects" class="btn-gh btn-gh-gold"><i class="bi bi-file-earmark-text-fill"></i> View BA Work</a>
+              <a href="#projects" class="btn-gh btn-gh-primary"><i class="bi bi-folder2-open"></i> All Projects</a>
               <a href="assets/Manmathnath Mahanta - Resume.pdf" download class="btn-gh btn-gh-secondary"><i class="bi bi-file-earmark-person"></i> Download CV</a>
             </div>
           </div>
@@ -983,7 +643,7 @@
             <tr><td>name</td><td>Manmathnath Mahanta</td></tr>
             <tr><td>role</td><td>Business Analyst</td></tr>
             <tr><td>experience</td><td><span class="dynamic-exp"></span> Years</td></tr>
-            <tr><td>location</td><td>Kolkata, West Bengal</td></tr>
+            <tr><td>location</td><td>Bhubaneswar, Odisha, IN</td></tr>
             <tr><td>email</td><td><a href="mailto:manmath.contact@gmail.com" class="profile-link">manmath.contact@gmail.com</a></td></tr>
             <tr><td>phone</td><td>+91 7008548402</td></tr>
             <tr><td>tools</td><td>Power BI · SQL · Excel</td></tr>
@@ -1001,38 +661,23 @@
           <div class="gh-card-body">
             <div class="skill-lang-row">
               <div class="skill-lang-item">
-                <div class="skill-lang-top">
-                  <div class="skill-lang-name"><div class="lang-dot" style="background:#58a6ff"></div> Business Analysis</div>
-                  <div class="skill-lang-pct">90%</div>
-                </div>
+                <div class="skill-lang-top"><div class="skill-lang-name"><div class="lang-dot" style="background:#58a6ff"></div> Business Analysis</div><div class="skill-lang-pct">90%</div></div>
                 <div class="skill-lang-bar"><div class="skill-lang-fill" data-width="90" style="background:#58a6ff"></div></div>
               </div>
               <div class="skill-lang-item">
-                <div class="skill-lang-top">
-                  <div class="skill-lang-name"><div class="lang-dot" style="background:#3fb950"></div> Requirement Gathering</div>
-                  <div class="skill-lang-pct">88%</div>
-                </div>
+                <div class="skill-lang-top"><div class="skill-lang-name"><div class="lang-dot" style="background:#3fb950"></div> Requirement Gathering</div><div class="skill-lang-pct">88%</div></div>
                 <div class="skill-lang-bar"><div class="skill-lang-fill" data-width="88" style="background:#3fb950"></div></div>
               </div>
               <div class="skill-lang-item">
-                <div class="skill-lang-top">
-                  <div class="skill-lang-name"><div class="lang-dot" style="background:#bc8cff"></div> UAT &amp; QA</div>
-                  <div class="skill-lang-pct">87%</div>
-                </div>
+                <div class="skill-lang-top"><div class="skill-lang-name"><div class="lang-dot" style="background:#bc8cff"></div> UAT &amp; QA</div><div class="skill-lang-pct">87%</div></div>
                 <div class="skill-lang-bar"><div class="skill-lang-fill" data-width="87" style="background:#bc8cff"></div></div>
               </div>
               <div class="skill-lang-item">
-                <div class="skill-lang-top">
-                  <div class="skill-lang-name"><div class="lang-dot" style="background:#f0883e"></div> Data Analysis</div>
-                  <div class="skill-lang-pct">83%</div>
-                </div>
+                <div class="skill-lang-top"><div class="skill-lang-name"><div class="lang-dot" style="background:#f0883e"></div> Data Analysis</div><div class="skill-lang-pct">83%</div></div>
                 <div class="skill-lang-bar"><div class="skill-lang-fill" data-width="83" style="background:#f0883e"></div></div>
               </div>
               <div class="skill-lang-item">
-                <div class="skill-lang-top">
-                  <div class="skill-lang-name"><div class="lang-dot" style="background:#d29922"></div> Agile / Scrum</div>
-                  <div class="skill-lang-pct">87%</div>
-                </div>
+                <div class="skill-lang-top"><div class="skill-lang-name"><div class="lang-dot" style="background:#d29922"></div> Agile / Scrum</div><div class="skill-lang-pct">87%</div></div>
                 <div class="skill-lang-bar"><div class="skill-lang-fill" data-width="87" style="background:#d29922"></div></div>
               </div>
             </div>
@@ -1068,7 +713,6 @@
 </section>
 
 <!-- EXPERIENCE -->
-<!-- EXPERIENCE -->
 <section id="resume">
   <div class="container">
     <div class="section-header" data-aos>
@@ -1078,7 +722,6 @@
     </div>
     <div class="timeline">
 
-      <!-- Tech Exactly — Current -->
       <div class="exp-window" data-aos>
         <div class="exp-titlebar">
           <div class="exp-titlebar-left">
@@ -1086,21 +729,19 @@
             <span class="exp-tab">business-analyst-techexactly.md</span>
           </div>
           <div class="exp-titlebar-right">
-            <span class="exp-period-tag"><i class="bi bi-circle-fill" style="font-size:.5rem"></i> Mar 2026 – Present</span>
+            <span class="exp-period-tag"><i class="bi bi-circle-fill" style="font-size:.5rem"></i> Mar 2025 – Present</span>
           </div>
         </div>
         <div class="exp-body2">
-          <div class="exp-company-line">
-            <i class="bi bi-building" style="color:var(--gh-muted2);font-size:.85rem;"></i>
-            <span class="exp-company2">Tech Exactly</span>
-          </div>
+          <div class="exp-company-line"><i class="bi bi-building" style="color:var(--gh-muted2);font-size:.85rem;"></i><span class="exp-company2">Tech Exactly</span></div>
           <div class="exp-role2">Business Analyst</div>
           <ul class="diff-list">
-          <li class="diff-item"><span class="diff-prefix">+</span><span>Conducting structured <span class="hl">requirement elicitation sessions</span> with prospects, converting ambiguous business goals into precise, delivery-ready documentation.</span></li>
-          <li class="diff-item"><span class="diff-prefix">+</span><span>Producing <span class="hl">UML diagrams, wireframes, user stories, product roadmaps and SRS</span> with high turnaround accuracy — ensuring zero misalignment between client expectations and dev output.</span></li>
-          <li class="diff-item"><span class="diff-prefix">+</span><span>Functioning as <span class="hl">Product Owner</span> — managing backlog, facilitating scrum ceremonies, and keeping every sprint tightly aligned to agreed client goals.</span></li>
-          <li class="diff-item"><span class="diff-prefix">+</span><span>Owning end-to-end <span class="hl">UAT execution</span> — writing test scenarios, validating acceptance criteria, tracking defects, and driving stakeholder sign-off to clean releases.</span></li>
-          <li class="diff-item"><span class="diff-prefix">+</span><span>Preparing and presenting <span class="hl">detailed business proposals</span> to prospects, combining sharp analytical thinking with clear communication to build client confidence and close alignment fast.</span></li>
+            <li class="diff-item"><span class="diff-prefix">+</span><span>Conducting structured <span class="hl">requirement elicitation sessions</span> with prospects, converting ambiguous business goals into precise, delivery-ready documentation.</span></li>
+            <li class="diff-item"><span class="diff-prefix">+</span><span>Producing <span class="hl">UML diagrams, wireframes, user stories, product roadmaps and SRS</span> with high turnaround accuracy — ensuring zero misalignment between client expectations and dev output.</span></li>
+            <li class="diff-item"><span class="diff-prefix">+</span><span>Functioning as <span class="hl">Product Owner</span> — managing backlog, facilitating scrum ceremonies, and keeping every sprint tightly aligned to agreed client goals.</span></li>
+            <li class="diff-item"><span class="diff-prefix">+</span><span>Owning end-to-end <span class="hl">UAT execution</span> — writing test scenarios, validating acceptance criteria, tracking defects, and driving stakeholder sign-off to clean releases.</span></li>
+            <li class="diff-item"><span class="diff-prefix">+</span><span>Preparing and presenting <span class="hl">detailed business proposals</span> to prospects, combining sharp analytical thinking with clear communication to build client confidence and close alignment fast.</span></li>
+            <li class="diff-item"><span class="diff-prefix">+</span><span>Generating rapid <span class="hl">UI prototypes</span> using Lovable to validate scope, support client demos, and reduce feedback cycles before development begins.</span></li>
           </ul>
           <div class="exp-tags2">
             <span class="exp-tag2">Product Owner</span><span class="exp-tag2">UML</span><span class="exp-tag2">Wireframing</span>
@@ -1109,7 +750,6 @@
         </div>
       </div>
 
-      <!-- Sai Paramount -->
       <div class="exp-window" data-aos>
         <div class="exp-titlebar">
           <div class="exp-titlebar-left">
@@ -1117,14 +757,11 @@
             <span class="exp-tab">business-analyst-saiparamount.md</span>
           </div>
           <div class="exp-titlebar-right">
-            <span class="exp-period-tag" style="background:var(--gh-blue-dim);color:var(--gh-blue);border-color:var(--gh-blue-mid);">Jul 2024 – Mar 2026</span>
+            <span class="exp-period-tag" style="background:var(--gh-blue-dim);color:var(--gh-blue);border-color:var(--gh-blue-mid);">Jul 2024 – Mar 2025</span>
           </div>
         </div>
         <div class="exp-body2">
-          <div class="exp-company-line">
-            <i class="bi bi-building" style="color:var(--gh-muted2);font-size:.85rem;"></i>
-            <span class="exp-company2">Sai Paramount IT Solutions Pvt. Ltd.</span>
-          </div>
+          <div class="exp-company-line"><i class="bi bi-building" style="color:var(--gh-muted2);font-size:.85rem;"></i><span class="exp-company2">Sai Paramount IT Solutions Pvt. Ltd.</span></div>
           <div class="exp-role2">Business Analyst</div>
           <ul class="diff-list">
             <li class="diff-item"><span class="diff-prefix">+</span><span>Collaborated with clients on <span class="hl">web and mobile application projects</span>, driving requirement elicitation and end-to-end functional analysis.</span></li>
@@ -1139,7 +776,6 @@
         </div>
       </div>
 
-      <!-- GEEMSCO -->
       <div class="exp-window" data-aos>
         <div class="exp-titlebar">
           <div class="exp-titlebar-left">
@@ -1151,10 +787,7 @@
           </div>
         </div>
         <div class="exp-body2">
-          <div class="exp-company-line">
-            <i class="bi bi-building" style="color:var(--gh-muted2);font-size:.85rem;"></i>
-            <span class="exp-company2">GEEMSCO Consultancy Solutions Pvt. Ltd.</span>
-          </div>
+          <div class="exp-company-line"><i class="bi bi-building" style="color:var(--gh-muted2);font-size:.85rem;"></i><span class="exp-company2">GEEMSCO Consultancy Solutions Pvt. Ltd.</span></div>
           <div class="exp-role2">Business Analyst</div>
           <ul class="diff-list">
             <li class="diff-item"><span class="diff-prefix">+</span><span>Supported <span class="hl">requirement gathering, structured documentation, and stakeholder coordination</span> across multiple IT initiatives, improving delivery predictability.</span></li>
@@ -1168,7 +801,6 @@
         </div>
       </div>
 
-      <!-- Afame Internship -->
       <div class="exp-window" data-aos>
         <div class="exp-titlebar">
           <div class="exp-titlebar-left">
@@ -1181,10 +813,7 @@
           </div>
         </div>
         <div class="exp-body2">
-          <div class="exp-company-line">
-            <i class="bi bi-building" style="color:var(--gh-muted2);font-size:.85rem;"></i>
-            <span class="exp-company2">Afame Technologies</span>
-          </div>
+          <div class="exp-company-line"><i class="bi bi-building" style="color:var(--gh-muted2);font-size:.85rem;"></i><span class="exp-company2">Afame Technologies</span></div>
           <div class="exp-role2">Data Analyst</div>
           <ul class="diff-list">
             <li class="diff-item"><span class="diff-prefix">+</span><span><span class="hl">Processed and cleaned over 10,000 data entries</span>, substantially improving dataset accuracy and downstream decision-making quality.</span></li>
@@ -1212,187 +841,284 @@
     </div>
     <div class="tools-repo-list">
       <div class="tool-repo" data-aos>
-        <div class="tool-repo-top">
-          <img src="assets/tools/excel.png" class="tool-repo-icon" alt="Excel" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="tool-icon-fallback" style="display:none">📊</div>
-          <div class="tool-repo-name">Excel</div>
-        </div>
+        <div class="tool-repo-top"><img src="assets/tools/excel.png" class="tool-repo-icon" alt="Excel" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tool-icon-fallback" style="display:none">📊</div><div class="tool-repo-name">Excel</div></div>
         <div class="tool-repo-desc">Data cleaning, pivot tables, advanced formulas &amp; reporting dashboards for business analysis</div>
         <div class="tool-repo-meta"><div class="tool-repo-lang"><div class="lang-circle" style="background:#3fb950"></div> Analytics</div></div>
       </div>
       <div class="tool-repo" data-aos>
-        <div class="tool-repo-top">
-          <img src="assets/tools/power-bi.png" class="tool-repo-icon" alt="Power BI" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="tool-icon-fallback" style="display:none">📈</div>
-          <div class="tool-repo-name">Power BI</div>
-        </div>
+        <div class="tool-repo-top"><img src="assets/tools/power-bi.png" class="tool-repo-icon" alt="Power BI" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tool-icon-fallback" style="display:none">📈</div><div class="tool-repo-name">Power BI</div></div>
         <div class="tool-repo-desc">Building interactive dashboards &amp; KPI reports to visualise business trends for stakeholders</div>
         <div class="tool-repo-meta"><div class="tool-repo-lang"><div class="lang-circle" style="background:#d29922"></div> BI</div></div>
       </div>
       <div class="tool-repo" data-aos>
-        <div class="tool-repo-top">
-          <img src="assets/tools/database.png" class="tool-repo-icon" alt="SQL" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="tool-icon-fallback" style="display:none">🗄️</div>
-          <div class="tool-repo-name">SQL</div>
-        </div>
+        <div class="tool-repo-top"><img src="assets/tools/database.png" class="tool-repo-icon" alt="SQL" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tool-icon-fallback" style="display:none">🗄️</div><div class="tool-repo-name">SQL</div></div>
         <div class="tool-repo-desc">Writing queries to extract, transform &amp; analyse data from relational databases for reporting</div>
         <div class="tool-repo-meta"><div class="tool-repo-lang"><div class="lang-circle" style="background:#58a6ff"></div> Database</div></div>
       </div>
       <div class="tool-repo" data-aos>
-        <div class="tool-repo-top">
-          <img src="assets/tools/clickup.png" class="tool-repo-icon" alt="ClickUp" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="tool-icon-fallback" style="display:none">✅</div>
-          <div class="tool-repo-name">ClickUp</div>
-        </div>
+        <div class="tool-repo-top"><img src="assets/tools/clickup.png" class="tool-repo-icon" alt="ClickUp" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tool-icon-fallback" style="display:none">✅</div><div class="tool-repo-name">ClickUp</div></div>
         <div class="tool-repo-desc">Managing project tasks, sprint backlogs &amp; tracking delivery milestones across BA projects</div>
         <div class="tool-repo-meta"><div class="tool-repo-lang"><div class="lang-circle" style="background:#bc8cff"></div> PM</div></div>
       </div>
       <div class="tool-repo" data-aos>
-        <div class="tool-repo-top">
-          <img src="assets/tools/postman.png" class="tool-repo-icon" alt="Postman" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="tool-icon-fallback" style="display:none">🔧</div>
-          <div class="tool-repo-name">Postman</div>
-        </div>
+        <div class="tool-repo-top"><img src="assets/tools/postman.png" class="tool-repo-icon" alt="Postman" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tool-icon-fallback" style="display:none">🔧</div><div class="tool-repo-name">Postman</div></div>
         <div class="tool-repo-desc">Testing &amp; validating REST APIs to verify functional requirements and support UAT sign-off</div>
         <div class="tool-repo-meta"><div class="tool-repo-lang"><div class="lang-circle" style="background:#f0883e"></div> API</div></div>
       </div>
       <div class="tool-repo" data-aos>
-        <div class="tool-repo-top">
-          <img src="assets/tools/lucidchart.png" class="tool-repo-icon" alt="LucidChart" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="tool-icon-fallback" style="display:none">📐</div>
-          <div class="tool-repo-name">LucidChart</div>
-        </div>
+        <div class="tool-repo-top"><img src="assets/tools/lucidchart.png" class="tool-repo-icon" alt="LucidChart" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tool-icon-fallback" style="display:none">📐</div><div class="tool-repo-name">LucidChart</div></div>
         <div class="tool-repo-desc">Creating UML diagrams, process flows &amp; swimlane charts to document and communicate business requirements</div>
         <div class="tool-repo-meta"><div class="tool-repo-lang"><div class="lang-circle" style="background:#58a6ff"></div> Diagramming</div></div>
       </div>
       <div class="tool-repo" data-aos>
-        <div class="tool-repo-top">
-          <img src="assets/tools/Notion.png" class="tool-repo-icon" alt="Notion" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="tool-icon-fallback" style="display:none">📝</div>
-          <div class="tool-repo-name">Notion</div>
-        </div>
+        <div class="tool-repo-top"><img src="assets/tools/Notion.png" class="tool-repo-icon" alt="Notion" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tool-icon-fallback" style="display:none">📝</div><div class="tool-repo-name">Notion</div></div>
         <div class="tool-repo-desc">Documenting BRDs, meeting notes &amp; requirement traceability matrices in a centralised workspace</div>
         <div class="tool-repo-meta"><div class="tool-repo-lang"><div class="lang-circle" style="background:#8b949e"></div> Docs</div></div>
       </div>
       <div class="tool-repo" data-aos>
-        <div class="tool-repo-top">
-          <img src="assets/tools/claude.png" class="tool-repo-icon" alt="Claude" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="tool-icon-fallback" style="display:none">🤖</div>
-          <div class="tool-repo-name">Claude</div>
-        </div>
+        <div class="tool-repo-top"><img src="assets/tools/claude.png" class="tool-repo-icon" alt="Claude" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tool-icon-fallback" style="display:none">🤖</div><div class="tool-repo-name">Claude</div></div>
         <div class="tool-repo-desc">Accelerating BA deliverables — drafting BRDs, user stories &amp; FRDs with AI-assisted requirements analysis</div>
-        <div class="tool-repo-meta"><div class="tool-repo-lang"><div class="lang-circle" style="background:#cc785c"></div> AI</div></div>
+        <div class="tool-repo-meta"><div class="tool-repo-lang"><div class="lang-circle" style="background:#bc8cff"></div> AI</div></div>
       </div>
       <div class="tool-repo" data-aos>
-        <div class="tool-repo-top">
-          <img src="assets/tools/lovable.png" class="tool-repo-icon" alt="Lovable" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="tool-icon-fallback" style="display:none">🚀</div>
-          <div class="tool-repo-name">Lovable</div>
-        </div>
+        <div class="tool-repo-top"><img src="assets/tools/lovable.png" class="tool-repo-icon" alt="Lovable" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tool-icon-fallback" style="display:none">🚀</div><div class="tool-repo-name">Lovable</div></div>
         <div class="tool-repo-desc">Generating rapid UI prototypes from requirements to validate scope &amp; support client demos</div>
-        <div class="tool-repo-meta"><div class="tool-repo-lang"><div class="lang-circle" style="background:#f778ba"></div> Prototyping</div></div>
+        <div class="tool-repo-meta"><div class="tool-repo-lang"><div class="lang-circle" style="background:#f0883e"></div> Prototyping</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PORTFOLIO -->
-<section id="portfolio">
+<!-- ═══════════════════════════════════════════
+     PROJECTS — Unified (BA Deliverables + Data)
+═══════════════════════════════════════════ -->
+<section id="projects">
   <div class="container">
     <div class="section-header" data-aos>
       <h2>Projects</h2>
       <div class="sh-line"></div>
-      <span class="sh-tag">5 repositories</span>
+      <span class="sh-tag">8 repositories</span>
     </div>
+
     <div class="proj-filter-bar" data-aos>
       <span class="pf-tab active" data-filter="all">All</span>
+      <span class="pf-tab" data-filter="ba">BA Deliverables</span>
       <span class="pf-tab" data-filter="powerbi">Power BI</span>
       <span class="pf-tab" data-filter="sql">SQL</span>
       <span class="pf-tab" data-filter="excel">Excel</span>
     </div>
-    <div class="projects-grid-v2">
-      <div class="proj-card-v2 p1" data-aos data-tags="powerbi,sql" data-bs-toggle="modal" data-bs-target="#pm1">
-        <div class="pcard-img">
+
+    <div class="projects-unified-grid" id="projectsGrid">
+
+      <!-- ── BA CARD 1: E-Commerce BRD ── -->
+      <div class="proj-card-uni ba-proj" data-tags="ba" onclick="window.location.href='brd-ecom.html'">
+        <div class="pcard-uni-header">
+          <div class="pcard-uni-type-row">
+            <span class="pcard-uni-badge badge-gold">BRD</span>
+            <span class="pcard-uni-num">01 / brd-ecom-2025-001</span>
+          </div>
+          <i class="bi bi-arrow-up-right-square pcard-uni-arrow"></i>
+        </div>
+        <div class="pcard-uni-icon">
+          <i class="bi bi-file-earmark-text-fill"></i>
+        </div>
+        <div class="pcard-uni-title">E-Commerce Platform BRD</div>
+        <div class="pcard-uni-desc">Full-stack online retail solution — 35 functional requirements across 7 modules with stakeholder register, RACI matrix, UAT criteria, risk register, and sign-off page.</div>
+        <div class="pcard-uni-pills">
+          <span class="pcard-uni-pill">35 Requirements</span>
+          <span class="pcard-uni-pill">7 Modules</span>
+          <span class="pcard-uni-pill">UAT Criteria</span>
+          <span class="pcard-uni-pill">Risk Register</span>
+        </div>
+        <div class="pcard-uni-footer">
+          <span class="pcard-uni-domain"><i class="bi bi-building"></i> E-Commerce</span>
+          <span class="pcard-uni-open">View Document <i class="bi bi-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <!-- ── BA CARD 2: Banking User Stories ── -->
+      <div class="proj-card-uni ba-proj" data-tags="ba" onclick="window.location.href='banking-user-stories.html'">
+        <div class="pcard-uni-header">
+          <div class="pcard-uni-type-row">
+            <span class="pcard-uni-badge badge-gold">User Stories</span>
+            <span class="pcard-uni-num">02 / usr-bank-2025-001</span>
+          </div>
+          <i class="bi bi-arrow-up-right-square pcard-uni-arrow"></i>
+        </div>
+        <div class="pcard-uni-icon">
+          <i class="bi bi-journal-text"></i>
+        </div>
+        <div class="pcard-uni-title">Banking Loan Origination — User Stories</div>
+        <div class="pcard-uni-desc">End-to-end loan lifecycle — 34 user stories across 10 modules, each with Priority, Story Points, Pre/Post conditions, Acceptance Criteria, and Edge Cases.</div>
+        <div class="pcard-uni-pills">
+          <span class="pcard-uni-pill">34 User Stories</span>
+          <span class="pcard-uni-pill">10 Modules</span>
+          <span class="pcard-uni-pill">Acceptance Criteria</span>
+          <span class="pcard-uni-pill">Edge Cases</span>
+        </div>
+        <div class="pcard-uni-footer">
+          <span class="pcard-uni-domain"><i class="bi bi-bank"></i> Banking & Finance</span>
+          <span class="pcard-uni-open">View Document <i class="bi bi-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <!-- ── BA CARD 3: AS-IS / TO-BE Process Map ── -->
+      <div class="proj-card-uni ba-proj" data-tags="ba" onclick="window.location.href='process-mapping.html'">
+        <div class="pcard-uni-header">
+          <div class="pcard-uni-type-row">
+            <span class="pcard-uni-badge badge-gold">Process Map</span>
+            <span class="pcard-uni-num">03 / pmp-emp-2025-001</span>
+          </div>
+          <i class="bi bi-arrow-up-right-square pcard-uni-arrow"></i>
+        </div>
+        <div class="pcard-uni-icon">
+          <i class="bi bi-diagram-3-fill"></i>
+        </div>
+        <div class="pcard-uni-title">Employee Onboarding — AS-IS vs TO-BE</div>
+        <div class="pcard-uni-desc">Full BPR analysis — 12 process steps across 3 phases, 8 identified gaps, quantitative metrics showing 65% time reduction & 80% HR effort cut, RACI and phased roadmap.</div>
+        <div class="pcard-uni-pills">
+          <span class="pcard-uni-pill">BPR Methodology</span>
+          <span class="pcard-uni-pill">8 Gaps</span>
+          <span class="pcard-uni-pill">Metrics</span>
+          <span class="pcard-uni-pill">Roadmap</span>
+        </div>
+        <div class="pcard-uni-footer">
+          <span class="pcard-uni-domain"><i class="bi bi-people-fill"></i> HR & Operations</span>
+          <span class="pcard-uni-open">View Process Flow <i class="bi bi-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <!-- ── DATA PROJECT 1: EV Market Analysis ── -->
+      <div class="proj-card-uni data-proj" data-tags="powerbi,sql" data-bs-toggle="modal" data-bs-target="#pm1">
+        <div class="pcard-uni-header">
+          <div class="pcard-uni-type-row">
+            <span class="pcard-uni-badge badge-blue">Power BI</span>
+            <span class="pcard-uni-num">04 / ev-market-analysis</span>
+          </div>
+          <i class="bi bi-arrow-up-right-square pcard-uni-arrow"></i>
+        </div>
+        <div class="pcard-uni-img">
           <img src="assets/projects/EV_Market_Analysis/EV_market_analysis.jpg" alt="EV Market Analysis" loading="lazy">
-          <div class="pcard-img-overlay"></div>
-          <span class="pcard-img-badge badge-gh badge-blue">Featured</span>
-          <div class="pcard-stack-pills"><span class="pcard-pill">Power BI</span><span class="pcard-pill">SQL</span></div>
+          <div class="pcard-uni-img-overlay"></div>
         </div>
-        <div class="pcard-body">
-          <div class="pcard-meta"><span class="pcard-number">01 / ev-market-analysis</span><span class="pcard-type">Data Analysis</span></div>
-          <div class="pcard-title">India EV Market Analysis 2022–2024</div>
-          <div class="pcard-desc">Strategic insights into India's EV market dynamics — brand benchmarking, regional growth patterns, seasonal trends, and a data-driven strategic roadmap for investment and infrastructure.</div>
-          <div class="pcard-footer">
-            <div class="pcard-stat"><span class="pcard-stat-item"><i class="bi bi-graph-up"></i> Market Growth</span><span class="pcard-stat-item"><i class="bi bi-geo-alt"></i> Regional</span></div>
-            <span class="pcard-open-btn"><i class="bi bi-arrow-up-right-square"></i> Open</span>
-          </div>
+        <div class="pcard-uni-title">India EV Market Analysis 2022–2024</div>
+        <div class="pcard-uni-desc">Strategic insights into India's EV market — brand benchmarking, regional growth patterns, seasonal trends, and a data-driven strategic roadmap for investment.</div>
+        <div class="pcard-uni-pills">
+          <span class="pcard-uni-pill">Power BI</span>
+          <span class="pcard-uni-pill">SQL</span>
+          <span class="pcard-uni-pill">Market Analysis</span>
+        </div>
+        <div class="pcard-uni-footer">
+          <span class="pcard-uni-domain"><i class="bi bi-ev-front-fill"></i> Automotive</span>
+          <span class="pcard-uni-open">View Dashboard <i class="bi bi-arrow-right"></i></span>
         </div>
       </div>
-      <div class="proj-card-v2 p2" data-aos data-tags="powerbi,excel" data-bs-toggle="modal" data-bs-target="#pm2">
-        <div class="pcard-img">
+
+      <!-- ── DATA PROJECT 2: Google Trend ── -->
+      <div class="proj-card-uni data-proj" data-tags="powerbi,excel" data-bs-toggle="modal" data-bs-target="#pm2">
+        <div class="pcard-uni-header">
+          <div class="pcard-uni-type-row">
+            <span class="pcard-uni-badge badge-blue">Power BI</span>
+            <span class="pcard-uni-num">05 / google-trend-analysis</span>
+          </div>
+          <i class="bi bi-arrow-up-right-square pcard-uni-arrow"></i>
+        </div>
+        <div class="pcard-uni-img">
           <img src="assets/projects/Google_Trend_Analysis/Google Trend Analysis Thumbnail.jpg" alt="Google Trend" loading="lazy">
-          <div class="pcard-img-overlay"></div>
-          <div class="pcard-stack-pills"><span class="pcard-pill">Power BI</span><span class="pcard-pill">Excel</span><span class="pcard-pill">APIs</span></div>
+          <div class="pcard-uni-img-overlay"></div>
         </div>
-        <div class="pcard-body">
-          <div class="pcard-meta"><span class="pcard-number">02 / google-trend-analysis</span><span class="pcard-type">Trend Analysis</span></div>
-          <div class="pcard-title">Google Trend Dashboard</div>
-          <div class="pcard-desc">Exploring trends and uncovering insights across 60+ countries for data-driven decisions.</div>
-          <div class="pcard-footer">
-            <div class="pcard-stat"><span class="pcard-stat-item"><i class="bi bi-globe"></i> 60+ Countries</span></div>
-            <span class="pcard-open-btn"><i class="bi bi-arrow-up-right-square"></i> Open</span>
-          </div>
+        <div class="pcard-uni-title">Google Trend Dashboard</div>
+        <div class="pcard-uni-desc">Exploring trends and uncovering insights across 60+ countries using Google Trends API and Power BI for data-driven strategic decisions.</div>
+        <div class="pcard-uni-pills">
+          <span class="pcard-uni-pill">Power BI</span>
+          <span class="pcard-uni-pill">Excel</span>
+          <span class="pcard-uni-pill">60+ Countries</span>
+        </div>
+        <div class="pcard-uni-footer">
+          <span class="pcard-uni-domain"><i class="bi bi-globe"></i> Trend Analysis</span>
+          <span class="pcard-uni-open">View Dashboard <i class="bi bi-arrow-right"></i></span>
         </div>
       </div>
-      <div class="proj-card-v2 p3" data-aos data-tags="powerbi,excel" data-bs-toggle="modal" data-bs-target="#pm3">
-        <div class="pcard-img">
+
+      <!-- ── DATA PROJECT 3: Rail Accident ── -->
+      <div class="proj-card-uni data-proj" data-tags="powerbi,excel" data-bs-toggle="modal" data-bs-target="#pm3">
+        <div class="pcard-uni-header">
+          <div class="pcard-uni-type-row">
+            <span class="pcard-uni-badge badge-blue">Power BI</span>
+            <span class="pcard-uni-num">06 / rail-accident-analysis</span>
+          </div>
+          <i class="bi bi-arrow-up-right-square pcard-uni-arrow"></i>
+        </div>
+        <div class="pcard-uni-img">
           <img src="assets/projects/Train Accident Analysis/Indian Rail Accident Analysis.jpg" alt="Rail" loading="lazy">
-          <div class="pcard-img-overlay"></div>
-          <div class="pcard-stack-pills"><span class="pcard-pill">Power BI</span><span class="pcard-pill">Excel</span></div>
+          <div class="pcard-uni-img-overlay"></div>
         </div>
-        <div class="pcard-body">
-          <div class="pcard-meta"><span class="pcard-number">03 / rail-accident-analysis</span><span class="pcard-type">Safety Analysis</span></div>
-          <div class="pcard-title">Indian Rail Accident Analysis</div>
-          <div class="pcard-desc">Safety pattern analysis across accident-prone routes using geographical data to guide infrastructure policy.</div>
-          <div class="pcard-footer">
-            <div class="pcard-stat"><span class="pcard-stat-item"><i class="bi bi-shield-check"></i> Safety</span></div>
-            <span class="pcard-open-btn"><i class="bi bi-arrow-up-right-square"></i> Open</span>
-          </div>
+        <div class="pcard-uni-title">Indian Rail Accident Analysis</div>
+        <div class="pcard-uni-desc">Safety pattern analysis across accident-prone routes using geographical data to guide infrastructure policy and maintenance protocols.</div>
+        <div class="pcard-uni-pills">
+          <span class="pcard-uni-pill">Power BI</span>
+          <span class="pcard-uni-pill">Excel</span>
+          <span class="pcard-uni-pill">Safety Analysis</span>
+        </div>
+        <div class="pcard-uni-footer">
+          <span class="pcard-uni-domain"><i class="bi bi-shield-check"></i> Public Safety</span>
+          <span class="pcard-uni-open">View Dashboard <i class="bi bi-arrow-right"></i></span>
         </div>
       </div>
-      <div class="proj-card-v2 p4" data-aos data-tags="powerbi,excel" data-bs-toggle="modal" data-bs-target="#pm4">
-        <div class="pcard-img">
+
+      <!-- ── DATA PROJECT 4: Customer Retention ── -->
+      <div class="proj-card-uni data-proj" data-tags="powerbi,excel" data-bs-toggle="modal" data-bs-target="#pm4">
+        <div class="pcard-uni-header">
+          <div class="pcard-uni-type-row">
+            <span class="pcard-uni-badge badge-blue">Power BI</span>
+            <span class="pcard-uni-num">07 / customer-retention</span>
+          </div>
+          <i class="bi bi-arrow-up-right-square pcard-uni-arrow"></i>
+        </div>
+        <div class="pcard-uni-img">
           <img src="assets/projects/Call_Center_Data_Analysis_details/Power BI Job Simulation on Forage.jpg" alt="Customer Retention" loading="lazy">
-          <div class="pcard-img-overlay"></div>
-          <div class="pcard-stack-pills"><span class="pcard-pill">Power BI</span><span class="pcard-pill">Excel</span></div>
+          <div class="pcard-uni-img-overlay"></div>
         </div>
-        <div class="pcard-body">
-          <div class="pcard-meta"><span class="pcard-number">04 / customer-retention</span><span class="pcard-type">CX Analysis</span></div>
-          <div class="pcard-title">Customer Retention &amp; Churn Analysis</div>
-          <div class="pcard-desc">26.54% churn reduction via segmentation and proactive engagement strategies.</div>
-          <div class="pcard-footer">
-            <div class="pcard-stat"><span class="pcard-stat-item"><i class="bi bi-arrow-down"></i> 26.54% Churn ↓</span></div>
-            <span class="pcard-open-btn"><i class="bi bi-arrow-up-right-square"></i> Open</span>
-          </div>
+        <div class="pcard-uni-title">Customer Retention &amp; Churn Analysis</div>
+        <div class="pcard-uni-desc">26.54% churn reduction via customer segmentation, call centre performance gaps, and proactive engagement strategies.</div>
+        <div class="pcard-uni-pills">
+          <span class="pcard-uni-pill">Power BI</span>
+          <span class="pcard-uni-pill">Excel</span>
+          <span class="pcard-uni-pill">26.54% Churn ↓</span>
+        </div>
+        <div class="pcard-uni-footer">
+          <span class="pcard-uni-domain"><i class="bi bi-people"></i> CX Analytics</span>
+          <span class="pcard-uni-open">View Dashboard <i class="bi bi-arrow-right"></i></span>
         </div>
       </div>
-      <div class="proj-card-v2 p5" data-aos data-tags="powerbi,sql" data-bs-toggle="modal" data-bs-target="#pm5">
-        <div class="pcard-img">
+
+      <!-- ── DATA PROJECT 5: AtliQ Hardware ── -->
+      <div class="proj-card-uni data-proj" data-tags="powerbi,sql" data-bs-toggle="modal" data-bs-target="#pm5">
+        <div class="pcard-uni-header">
+          <div class="pcard-uni-type-row">
+            <span class="pcard-uni-badge badge-blue">Power BI</span>
+            <span class="pcard-uni-num">08 / atliq-hardware-insights</span>
+          </div>
+          <i class="bi bi-arrow-up-right-square pcard-uni-arrow"></i>
+        </div>
+        <div class="pcard-uni-img">
           <img src="assets/projects/AtliQ Hardware Insights Report/AtliQ Hardware Insights Report.jpg" alt="AtliQ" loading="lazy">
-          <div class="pcard-img-overlay"></div>
-          <div class="pcard-stack-pills"><span class="pcard-pill">Power BI</span><span class="pcard-pill">SQL</span></div>
+          <div class="pcard-uni-img-overlay"></div>
         </div>
-        <div class="pcard-body">
-          <div class="pcard-meta"><span class="pcard-number">05 / atliq-hardware-insights</span><span class="pcard-type">Business Intelligence</span></div>
-          <div class="pcard-title">AtliQ Hardware Insights Report</div>
-          <div class="pcard-desc">In-depth sales and manufacturing analysis for key business and product performance insights — covering operational efficiency, market penetration, customer discounts, and product line optimization.</div>
-          <div class="pcard-footer">
-            <div class="pcard-stat"><span class="pcard-stat-item"><i class="bi bi-cpu"></i> Hardware</span><span class="pcard-stat-item"><i class="bi bi-bar-chart"></i> Sales + Mfg</span></div>
-            <span class="pcard-open-btn"><i class="bi bi-arrow-up-right-square"></i> Open</span>
-          </div>
+        <div class="pcard-uni-title">AtliQ Hardware Insights Report</div>
+        <div class="pcard-uni-desc">In-depth sales and manufacturing analysis — operational efficiency, market penetration, customer discount patterns, and product line optimization.</div>
+        <div class="pcard-uni-pills">
+          <span class="pcard-uni-pill">Power BI</span>
+          <span class="pcard-uni-pill">SQL</span>
+          <span class="pcard-uni-pill">Business Intelligence</span>
+        </div>
+        <div class="pcard-uni-footer">
+          <span class="pcard-uni-domain"><i class="bi bi-cpu"></i> Manufacturing</span>
+          <span class="pcard-uni-open">View Dashboard <i class="bi bi-arrow-right"></i></span>
         </div>
       </div>
-    </div>
+
+    </div><!-- /projects-unified-grid -->
   </div>
 </section>
 
@@ -1407,55 +1133,52 @@
   </div>
   <div class="cert-marquee-outer" style="padding:8px 0;">
     <div class="cert-marquee-inner">
-    <div class="cert-marquee-track" id="certTrack">
-      <!-- SET A -->
-      <a class="cert-card-gh" href="https://www.coursera.org/account/accomplishments/professional-cert/JPUG55Y3GZAS" target="_blank" rel="noopener noreferrer">
-        <div class="cert-card-header2"><i class="bi bi-patch-check-fill" style="color:var(--gh-green);font-size:.9rem;"></i><span class="badge-gh badge-green" style="font-size:.62rem;">Verified</span></div>
-        <div class="cert-card-body2"><div class="cert-issuer">Google · Coursera</div><div class="cert-title">Google Data Analytics Professional Certificate</div><div class="cert-desc">Comprehensive program covering data analysis, visualization, and insights for business decision-making.</div><div class="cert-footer2"><div class="cert-tags2"><span class="cert-tag2">Data Analysis</span><span class="cert-tag2">Visualization</span></div><div class="cert-arrow2"><i class="bi bi-box-arrow-up-right"></i></div></div></div>
-      </a>
-      <a class="cert-card-gh" href="https://www.linkedin.com/learning/certificates/b669334513c329a04528bb83f280f79d1892599b57aac79d7dcfb7fd03992d77" target="_blank" rel="noopener noreferrer">
-        <div class="cert-card-header2"><i class="bi bi-patch-check-fill" style="color:var(--gh-blue);font-size:.9rem;"></i><span class="badge-gh badge-blue" style="font-size:.62rem;">Verified</span></div>
-        <div class="cert-card-body2"><div class="cert-issuer">Microsoft · LinkedIn</div><div class="cert-title">Business Analysis by Microsoft and LinkedIn</div><div class="cert-desc">Microsoft-validated skills in business process analysis, requirements management, and stakeholder collaboration.</div><div class="cert-footer2"><div class="cert-tags2"><span class="cert-tag2">BRD / FSD</span><span class="cert-tag2">Stakeholders</span></div><div class="cert-arrow2"><i class="bi bi-box-arrow-up-right"></i></div></div></div>
-      </a>
-      <a class="cert-card-gh" href="https://www.linkedin.com/learning/certificates/b828054f27da7a9b43747e5dacf14f9708d2ed421d3749466bc90c61933eb04a" target="_blank" rel="noopener noreferrer">
-        <div class="cert-card-header2"><i class="bi bi-patch-check-fill" style="color:var(--gh-blue);font-size:.9rem;"></i><span class="badge-gh badge-blue" style="font-size:.62rem;">Verified</span></div>
-        <div class="cert-card-body2"><div class="cert-issuer">LinkedIn Learning</div><div class="cert-title">Requirements Elicitation and Analysis</div><div class="cert-desc">Advanced expertise in stakeholder needs identification, requirements documentation, and analysis techniques.</div><div class="cert-footer2"><div class="cert-tags2"><span class="cert-tag2">Elicitation</span><span class="cert-tag2">UAT</span></div><div class="cert-arrow2"><i class="bi bi-box-arrow-up-right"></i></div></div></div>
-      </a>
-      <a class="cert-card-gh" href="https://www.linkedin.com/learning/certificates/e29c230664b57c86c2795595cd269a65e001ab20943b1042c6b7b4923acba714" target="_blank" rel="noopener noreferrer">
-        <div class="cert-card-header2"><i class="bi bi-patch-check-fill" style="color:var(--gh-purple);font-size:.9rem;"></i><span class="badge-gh badge-purple" style="font-size:.62rem;">Verified</span></div>
-        <div class="cert-card-body2"><div class="cert-issuer">LinkedIn Learning</div><div class="cert-title">Agile Requirements Foundations</div><div class="cert-desc">Specialised in Agile requirements gathering, user story creation, and iterative requirements management.</div><div class="cert-footer2"><div class="cert-tags2"><span class="cert-tag2">Agile</span><span class="cert-tag2">Scrum</span></div><div class="cert-arrow2"><i class="bi bi-box-arrow-up-right"></i></div></div></div>
-      </a>
-      <a class="cert-card-gh" href="https://codebasics.io/certificate/CB-49-342372" target="_blank" rel="noopener noreferrer">
-        <div class="cert-card-header2"><i class="bi bi-patch-check-fill" style="color:var(--gh-orange);font-size:.9rem;"></i><span class="badge-gh badge-orange" style="font-size:.62rem;">Verified</span></div>
-        <div class="cert-card-body2"><div class="cert-issuer">Codebasics</div><div class="cert-title">Microsoft Power BI Data Analytics</div><div class="cert-desc">Advanced data visualization and BI using Power BI for interactive dashboards and actionable insights.</div><div class="cert-footer2"><div class="cert-tags2"><span class="cert-tag2">Power BI</span><span class="cert-tag2">Dashboards</span></div><div class="cert-arrow2"><i class="bi bi-box-arrow-up-right"></i></div></div></div>
-      </a>
-      <!-- SET B — duplicate for seamless loop -->
-      <a class="cert-card-gh" href="https://www.coursera.org/account/accomplishments/professional-cert/JPUG55Y3GZAS" target="_blank" rel="noopener noreferrer">
-        <div class="cert-card-header2"><i class="bi bi-patch-check-fill" style="color:var(--gh-green);font-size:.9rem;"></i><span class="badge-gh badge-green" style="font-size:.62rem;">Verified</span></div>
-        <div class="cert-card-body2"><div class="cert-issuer">Google · Coursera</div><div class="cert-title">Google Data Analytics Professional Certificate</div><div class="cert-desc">Comprehensive program covering data analysis, visualization, and insights for business decision-making.</div><div class="cert-footer2"><div class="cert-tags2"><span class="cert-tag2">Data Analysis</span><span class="cert-tag2">Visualization</span></div><div class="cert-arrow2"><i class="bi bi-box-arrow-up-right"></i></div></div></div>
-      </a>
-      <a class="cert-card-gh" href="https://www.linkedin.com/learning/certificates/b669334513c329a04528bb83f280f79d1892599b57aac79d7dcfb7fd03992d77" target="_blank" rel="noopener noreferrer">
-        <div class="cert-card-header2"><i class="bi bi-patch-check-fill" style="color:var(--gh-blue);font-size:.9rem;"></i><span class="badge-gh badge-blue" style="font-size:.62rem;">Verified</span></div>
-        <div class="cert-card-body2"><div class="cert-issuer">Microsoft · LinkedIn</div><div class="cert-title">Business Analysis by Microsoft and LinkedIn</div><div class="cert-desc">Microsoft-validated skills in business process analysis, requirements management, and stakeholder collaboration.</div><div class="cert-footer2"><div class="cert-tags2"><span class="cert-tag2">BRD / FSD</span><span class="cert-tag2">Stakeholders</span></div><div class="cert-arrow2"><i class="bi bi-box-arrow-up-right"></i></div></div></div>
-      </a>
-      <a class="cert-card-gh" href="https://www.linkedin.com/learning/certificates/b828054f27da7a9b43747e5dacf14f9708d2ed421d3749466bc90c61933eb04a" target="_blank" rel="noopener noreferrer">
-        <div class="cert-card-header2"><i class="bi bi-patch-check-fill" style="color:var(--gh-blue);font-size:.9rem;"></i><span class="badge-gh badge-blue" style="font-size:.62rem;">Verified</span></div>
-        <div class="cert-card-body2"><div class="cert-issuer">LinkedIn Learning</div><div class="cert-title">Requirements Elicitation and Analysis</div><div class="cert-desc">Advanced expertise in stakeholder needs identification, requirements documentation, and analysis techniques.</div><div class="cert-footer2"><div class="cert-tags2"><span class="cert-tag2">Elicitation</span><span class="cert-tag2">UAT</span></div><div class="cert-arrow2"><i class="bi bi-box-arrow-up-right"></i></div></div></div>
-      </a>
-      <a class="cert-card-gh" href="https://www.linkedin.com/learning/certificates/e29c230664b57c86c2795595cd269a65e001ab20943b1042c6b7b4923acba714" target="_blank" rel="noopener noreferrer">
-        <div class="cert-card-header2"><i class="bi bi-patch-check-fill" style="color:var(--gh-purple);font-size:.9rem;"></i><span class="badge-gh badge-purple" style="font-size:.62rem;">Verified</span></div>
-        <div class="cert-card-body2"><div class="cert-issuer">LinkedIn Learning</div><div class="cert-title">Agile Requirements Foundations</div><div class="cert-desc">Specialised in Agile requirements gathering, user story creation, and iterative requirements management.</div><div class="cert-footer2"><div class="cert-tags2"><span class="cert-tag2">Agile</span><span class="cert-tag2">Scrum</span></div><div class="cert-arrow2"><i class="bi bi-box-arrow-up-right"></i></div></div></div>
-      </a>
-      <a class="cert-card-gh" href="https://codebasics.io/certificate/CB-49-342372" target="_blank" rel="noopener noreferrer">
-        <div class="cert-card-header2"><i class="bi bi-patch-check-fill" style="color:var(--gh-orange);font-size:.9rem;"></i><span class="badge-gh badge-orange" style="font-size:.62rem;">Verified</span></div>
-        <div class="cert-card-body2"><div class="cert-issuer">Codebasics</div><div class="cert-title">Microsoft Power BI Data Analytics</div><div class="cert-desc">Advanced data visualization and BI using Power BI for interactive dashboards and actionable insights.</div><div class="cert-footer2"><div class="cert-tags2"><span class="cert-tag2">Power BI</span><span class="cert-tag2">Dashboards</span></div><div class="cert-arrow2"><i class="bi bi-box-arrow-up-right"></i></div></div></div>
-      </a>
-    </div><!-- /.cert-marquee-track -->
-    </div><!-- /.cert-marquee-inner -->
-  </div><!-- /.cert-marquee-outer -->
-  <div style="text-align:center;margin-top:12px;font-family:var(--mono);font-size:.7rem;color:var(--gh-muted2);">
-    Hover to pause · Click to view certificate
+      <div class="cert-marquee-track" id="certTrack">
+        <a class="cert-card-gh" href="https://www.coursera.org/account/accomplishments/professional-cert/JPUG55Y3GZAS" target="_blank" rel="noopener noreferrer">
+          <div class="cert-card-header2"><i class="bi bi-patch-check-fill" style="color:var(--gh-green);font-size:.9rem;"></i><span class="badge-gh badge-green" style="font-size:.62rem;">Verified</span></div>
+          <div class="cert-card-body2"><div class="cert-issuer">Google · Coursera</div><div class="cert-title">Google Data Analytics Professional Certificate</div><div class="cert-desc">Comprehensive program covering data analysis, visualization, and insights for business decision-making.</div><div class="cert-footer2"><div class="cert-tags2"><span class="cert-tag2">Data Analysis</span><span class="cert-tag2">Visualization</span></div><div class="cert-arrow2"><i class="bi bi-box-arrow-up-right"></i></div></div></div>
+        </a>
+        <a class="cert-card-gh" href="https://www.linkedin.com/learning/certificates/b669334513c329a04528bb83f280f79d1892599b57aac79d7dcfb7fd03992d77" target="_blank" rel="noopener noreferrer">
+          <div class="cert-card-header2"><i class="bi bi-patch-check-fill" style="color:var(--gh-blue);font-size:.9rem;"></i><span class="badge-gh badge-blue" style="font-size:.62rem;">Verified</span></div>
+          <div class="cert-card-body2"><div class="cert-issuer">Microsoft · LinkedIn</div><div class="cert-title">Business Analysis by Microsoft and LinkedIn</div><div class="cert-desc">Microsoft-validated skills in business process analysis, requirements management, and stakeholder collaboration.</div><div class="cert-footer2"><div class="cert-tags2"><span class="cert-tag2">BRD / FSD</span><span class="cert-tag2">Stakeholders</span></div><div class="cert-arrow2"><i class="bi bi-box-arrow-up-right"></i></div></div></div>
+        </a>
+        <a class="cert-card-gh" href="https://www.linkedin.com/learning/certificates/b828054f27da7a9b43747e5dacf14f9708d2ed421d3749466bc90c61933eb04a" target="_blank" rel="noopener noreferrer">
+          <div class="cert-card-header2"><i class="bi bi-patch-check-fill" style="color:var(--gh-blue);font-size:.9rem;"></i><span class="badge-gh badge-blue" style="font-size:.62rem;">Verified</span></div>
+          <div class="cert-card-body2"><div class="cert-issuer">LinkedIn Learning</div><div class="cert-title">Requirements Elicitation and Analysis</div><div class="cert-desc">Advanced expertise in stakeholder needs identification, requirements documentation, and analysis techniques.</div><div class="cert-footer2"><div class="cert-tags2"><span class="cert-tag2">Elicitation</span><span class="cert-tag2">UAT</span></div><div class="cert-arrow2"><i class="bi bi-box-arrow-up-right"></i></div></div></div>
+        </a>
+        <a class="cert-card-gh" href="https://www.linkedin.com/learning/certificates/e29c230664b57c86c2795595cd269a65e001ab20943b1042c6b7b4923acba714" target="_blank" rel="noopener noreferrer">
+          <div class="cert-card-header2"><i class="bi bi-patch-check-fill" style="color:var(--gh-purple);font-size:.9rem;"></i><span class="badge-gh badge-purple" style="font-size:.62rem;">Verified</span></div>
+          <div class="cert-card-body2"><div class="cert-issuer">LinkedIn Learning</div><div class="cert-title">Agile Requirements Foundations</div><div class="cert-desc">Specialised in Agile requirements gathering, user story creation, and iterative requirements management.</div><div class="cert-footer2"><div class="cert-tags2"><span class="cert-tag2">Agile</span><span class="cert-tag2">Scrum</span></div><div class="cert-arrow2"><i class="bi bi-box-arrow-up-right"></i></div></div></div>
+        </a>
+        <a class="cert-card-gh" href="https://codebasics.io/certificate/CB-49-342372" target="_blank" rel="noopener noreferrer">
+          <div class="cert-card-header2"><i class="bi bi-patch-check-fill" style="color:var(--gh-orange);font-size:.9rem;"></i><span class="badge-gh badge-orange" style="font-size:.62rem;">Verified</span></div>
+          <div class="cert-card-body2"><div class="cert-issuer">Codebasics</div><div class="cert-title">Microsoft Power BI Data Analytics</div><div class="cert-desc">Advanced data visualization and BI using Power BI for interactive dashboards and actionable insights.</div><div class="cert-footer2"><div class="cert-tags2"><span class="cert-tag2">Power BI</span><span class="cert-tag2">Dashboards</span></div><div class="cert-arrow2"><i class="bi bi-box-arrow-up-right"></i></div></div></div>
+        </a>
+        <!-- Duplicate for seamless loop -->
+        <a class="cert-card-gh" href="https://www.coursera.org/account/accomplishments/professional-cert/JPUG55Y3GZAS" target="_blank" rel="noopener noreferrer">
+          <div class="cert-card-header2"><i class="bi bi-patch-check-fill" style="color:var(--gh-green);font-size:.9rem;"></i><span class="badge-gh badge-green" style="font-size:.62rem;">Verified</span></div>
+          <div class="cert-card-body2"><div class="cert-issuer">Google · Coursera</div><div class="cert-title">Google Data Analytics Professional Certificate</div><div class="cert-desc">Comprehensive program covering data analysis, visualization, and insights for business decision-making.</div><div class="cert-footer2"><div class="cert-tags2"><span class="cert-tag2">Data Analysis</span><span class="cert-tag2">Visualization</span></div><div class="cert-arrow2"><i class="bi bi-box-arrow-up-right"></i></div></div></div>
+        </a>
+        <a class="cert-card-gh" href="https://www.linkedin.com/learning/certificates/b669334513c329a04528bb83f280f79d1892599b57aac79d7dcfb7fd03992d77" target="_blank" rel="noopener noreferrer">
+          <div class="cert-card-header2"><i class="bi bi-patch-check-fill" style="color:var(--gh-blue);font-size:.9rem;"></i><span class="badge-gh badge-blue" style="font-size:.62rem;">Verified</span></div>
+          <div class="cert-card-body2"><div class="cert-issuer">Microsoft · LinkedIn</div><div class="cert-title">Business Analysis by Microsoft and LinkedIn</div><div class="cert-desc">Microsoft-validated skills in business process analysis, requirements management, and stakeholder collaboration.</div><div class="cert-footer2"><div class="cert-tags2"><span class="cert-tag2">BRD / FSD</span><span class="cert-tag2">Stakeholders</span></div><div class="cert-arrow2"><i class="bi bi-box-arrow-up-right"></i></div></div></div>
+        </a>
+        <a class="cert-card-gh" href="https://www.linkedin.com/learning/certificates/b828054f27da7a9b43747e5dacf14f9708d2ed421d3749466bc90c61933eb04a" target="_blank" rel="noopener noreferrer">
+          <div class="cert-card-header2"><i class="bi bi-patch-check-fill" style="color:var(--gh-blue);font-size:.9rem;"></i><span class="badge-gh badge-blue" style="font-size:.62rem;">Verified</span></div>
+          <div class="cert-card-body2"><div class="cert-issuer">LinkedIn Learning</div><div class="cert-title">Requirements Elicitation and Analysis</div><div class="cert-desc">Advanced expertise in stakeholder needs identification, requirements documentation, and analysis techniques.</div><div class="cert-footer2"><div class="cert-tags2"><span class="cert-tag2">Elicitation</span><span class="cert-tag2">UAT</span></div><div class="cert-arrow2"><i class="bi bi-box-arrow-up-right"></i></div></div></div>
+        </a>
+        <a class="cert-card-gh" href="https://www.linkedin.com/learning/certificates/e29c230664b57c86c2795595cd269a65e001ab20943b1042c6b7b4923acba714" target="_blank" rel="noopener noreferrer">
+          <div class="cert-card-header2"><i class="bi bi-patch-check-fill" style="color:var(--gh-purple);font-size:.9rem;"></i><span class="badge-gh badge-purple" style="font-size:.62rem;">Verified</span></div>
+          <div class="cert-card-body2"><div class="cert-issuer">LinkedIn Learning</div><div class="cert-title">Agile Requirements Foundations</div><div class="cert-desc">Specialised in Agile requirements gathering, user story creation, and iterative requirements management.</div><div class="cert-footer2"><div class="cert-tags2"><span class="cert-tag2">Agile</span><span class="cert-tag2">Scrum</span></div><div class="cert-arrow2"><i class="bi bi-box-arrow-up-right"></i></div></div></div>
+        </a>
+        <a class="cert-card-gh" href="https://codebasics.io/certificate/CB-49-342372" target="_blank" rel="noopener noreferrer">
+          <div class="cert-card-header2"><i class="bi bi-patch-check-fill" style="color:var(--gh-orange);font-size:.9rem;"></i><span class="badge-gh badge-orange" style="font-size:.62rem;">Verified</span></div>
+          <div class="cert-card-body2"><div class="cert-issuer">Codebasics</div><div class="cert-title">Microsoft Power BI Data Analytics</div><div class="cert-desc">Advanced data visualization and BI using Power BI for interactive dashboards and actionable insights.</div><div class="cert-footer2"><div class="cert-tags2"><span class="cert-tag2">Power BI</span><span class="cert-tag2">Dashboards</span></div><div class="cert-arrow2"><i class="bi bi-box-arrow-up-right"></i></div></div></div>
+        </a>
+      </div>
+    </div>
   </div>
+  <div style="text-align:center;margin-top:12px;font-family:var(--mono);font-size:.7rem;color:var(--gh-muted2);">Hover to pause · Click to view certificate</div>
 </section>
 
 </main>
@@ -1470,263 +1193,84 @@
   <span class="ai-btn-pulse"></span>
 </a>
 
-<!-- MODALS -->
-
-<!-- PM1 — EV Market Analysis -->
-<div class="modal fade" id="pm1" tabindex="-1" aria-label="EV Market Analysis Project">
+<!-- DATA PROJECT MODALS (unchanged) -->
+<div class="modal fade" id="pm1" tabindex="-1">
   <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width:1050px">
     <div class="modal-content">
-      <div class="modal-header">
-        <div class="modal-titlebar">
-          <div class="modal-tl-spacer"></div>
-          <h5 class="modal-title">
-            <span class="hl">manmath235</span> / ev-market-analysis / <span class="fn">README.md</span>
-          </h5>
-          <div class="modal-tl">
-            <button class="modal-tl-dot is-close" style="background:var(--tl-red);" data-bs-dismiss="modal" aria-label="Close"></button>
-            <div class="modal-tl-dot is-yellow" style="background:var(--tl-yellow);"></div>
-            <div class="modal-tl-dot is-green" style="background:var(--tl-green);"></div>
-          </div>
-        </div>
-      </div>
+      <div class="modal-header"><div class="modal-titlebar"><div class="modal-tl-spacer"></div><h5 class="modal-title"><span class="hl">manmath235</span> / ev-market-analysis / <span class="fn">README.md</span></h5><div class="modal-tl"><button class="modal-tl-dot is-close" style="background:var(--tl-red);" data-bs-dismiss="modal"></button><div class="modal-tl-dot is-yellow" style="background:var(--tl-yellow);"></div><div class="modal-tl-dot is-green" style="background:var(--tl-green);"></div></div></div></div>
       <div class="modal-body">
         <div class="modal-proj-layout">
-          <div class="modal-iframe-wrap">
-            <iframe title="EV Market Analysis Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiM2ZhNTA4ZTItYzY5NS00YWQ0LWJhOTEtMDNmZDkwMWQyOGRkIiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" frameborder="0" allowFullScreen loading="lazy"></iframe>
-          </div>
-          <div class="modal-sidebar">
-            <div class="modal-sidebar-section">
-              <div class="ms-label">Download</div>
-              <a href="assets/projects/EV_Market_Analysis/EV_Market_Analysis_Report_2022_2024.pdf" class="btn-gh btn-gh-secondary" style="font-size:.78rem;width:100%;justify-content:center;"><i class="bi bi-download"></i> Report PDF</a>
-            </div>
-            <div class="modal-sidebar-section">
-              <div class="ms-label">Stack</div>
-              <div class="ms-tags"><span class="ms-tag">Power BI</span><span class="ms-tag">SQL</span></div>
-            </div>
-          </div>
+          <div class="modal-iframe-wrap"><iframe title="EV Market Analysis Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiM2ZhNTA4ZTItYzY5NS00YWQ0LWJhOTEtMDNmZDkwMWQyOGRkIiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" frameborder="0" allowFullScreen loading="lazy"></iframe></div>
+          <div class="modal-sidebar"><div class="modal-sidebar-section"><div class="ms-label">Download</div><a href="assets/projects/EV_Market_Analysis/EV_Market_Analysis_Report_2022_2024.pdf" class="btn-gh btn-gh-secondary" style="font-size:.78rem;width:100%;justify-content:center;"><i class="bi bi-download"></i> Report PDF</a></div><div class="modal-sidebar-section"><div class="ms-label">Stack</div><div class="ms-tags"><span class="ms-tag">Power BI</span><span class="ms-tag">SQL</span></div></div></div>
         </div>
-        <div class="modal-desc-section">
-          <h6># Project Highlights</h6>
-          <div class="modal-diff">
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Market Growth Analysis:</strong> Analyzed the Indian EV market (2022–2024) to identify growth trends, brand performance, and state-level adoption insights.</span></div>
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Regional Performance Insights:</strong> Focused on high-penetration and underperforming regions to understand geographical adoption patterns.</span></div>
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Brand Benchmarking:</strong> Conducted quarterly brand growth analysis and YoY performance comparisons.</span></div>
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Seasonal Trend Analysis:</strong> Examined temporal patterns and seasonal trends for optimal timing strategies.</span></div>
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Strategic Roadmap:</strong> Delivered insights and recommendations for product strategy, investment zones, and infrastructure partnerships.</span></div>
-          </div>
-        </div>
+        <div class="modal-desc-section"><h6># Project Highlights</h6><div class="modal-diff"><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Market Growth Analysis:</strong> Analyzed the Indian EV market (2022–2024) to identify growth trends, brand performance, and state-level adoption insights.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Regional Performance Insights:</strong> Focused on high-penetration and underperforming regions to understand geographical adoption patterns.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Brand Benchmarking:</strong> Conducted quarterly brand growth analysis and YoY performance comparisons.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Seasonal Trend Analysis:</strong> Examined temporal patterns and seasonal trends for optimal timing strategies.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Strategic Roadmap:</strong> Delivered insights and recommendations for product strategy, investment zones, and infrastructure partnerships.</span></div></div></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- PM2 — Google Trend Analysis -->
-<div class="modal fade" id="pm2" tabindex="-1" aria-label="Google Trend Analysis Project">
+<div class="modal fade" id="pm2" tabindex="-1">
   <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width:1050px">
     <div class="modal-content">
-      <div class="modal-header">
-        <div class="modal-titlebar">
-          <div class="modal-tl-spacer"></div>
-          <h5 class="modal-title">
-            <span class="hl">manmath235</span> / google-trend-analysis / <span class="fn">README.md</span>
-          </h5>
-          <div class="modal-tl">
-            <button class="modal-tl-dot is-close" style="background:var(--tl-red);" data-bs-dismiss="modal" aria-label="Close"></button>
-            <div class="modal-tl-dot is-yellow" style="background:var(--tl-yellow);"></div>
-            <div class="modal-tl-dot is-green" style="background:var(--tl-green);"></div>
-          </div>
-        </div>
-      </div>
+      <div class="modal-header"><div class="modal-titlebar"><div class="modal-tl-spacer"></div><h5 class="modal-title"><span class="hl">manmath235</span> / google-trend-analysis / <span class="fn">README.md</span></h5><div class="modal-tl"><button class="modal-tl-dot is-close" style="background:var(--tl-red);" data-bs-dismiss="modal"></button><div class="modal-tl-dot is-yellow" style="background:var(--tl-yellow);"></div><div class="modal-tl-dot is-green" style="background:var(--tl-green);"></div></div></div></div>
       <div class="modal-body">
         <div class="modal-proj-layout">
-          <div class="modal-iframe-wrap">
-            <iframe title="Google Trend Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiMTRjZTNkYmYtYjIzOC00Mjk3LWIzMWYtNjMxN2NhYTVmMzI2IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" frameborder="0" allowFullScreen loading="lazy"></iframe>
-          </div>
-          <div class="modal-sidebar">
-            <div class="modal-sidebar-section">
-              <div class="ms-label">Links</div>
-              <div style="display:flex;flex-direction:column;gap:8px;">
-                <a href="https://github.com/Manmath235/Google_Trend_Dashboard.git" class="btn-gh btn-gh-secondary" style="font-size:.78rem;justify-content:center;" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> GitHub</a>
-                <a href="assets/projects/Google_Trend_Analysis/Google Trend Report.pdf" class="btn-gh btn-gh-secondary" style="font-size:.78rem;justify-content:center;"><i class="bi bi-download"></i> Report PDF</a>
-              </div>
-            </div>
-            <div class="modal-sidebar-section">
-              <div class="ms-label">Stack</div>
-              <div class="ms-tags"><span class="ms-tag">Google APIs</span><span class="ms-tag">Power BI</span><span class="ms-tag">Excel</span></div>
-            </div>
-          </div>
+          <div class="modal-iframe-wrap"><iframe title="Google Trend Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiMTRjZTNkYmYtYjIzOC00Mjk3LWIzMWYtNjMxN2NhYTVmMzI2IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" frameborder="0" allowFullScreen loading="lazy"></iframe></div>
+          <div class="modal-sidebar"><div class="modal-sidebar-section"><div class="ms-label">Links</div><div style="display:flex;flex-direction:column;gap:8px;"><a href="https://github.com/Manmath235/Google_Trend_Dashboard.git" class="btn-gh btn-gh-secondary" style="font-size:.78rem;justify-content:center;" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> GitHub</a><a href="assets/projects/Google_Trend_Analysis/Google Trend Report.pdf" class="btn-gh btn-gh-secondary" style="font-size:.78rem;justify-content:center;"><i class="bi bi-download"></i> Report PDF</a></div></div><div class="modal-sidebar-section"><div class="ms-label">Stack</div><div class="ms-tags"><span class="ms-tag">Google APIs</span><span class="ms-tag">Power BI</span><span class="ms-tag">Excel</span></div></div></div>
         </div>
-        <div class="modal-desc-section">
-          <h6># Project Highlights</h6>
-          <div class="modal-diff">
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Insights &amp; Opportunity Identification:</strong> Leverages Google Trends to identify consumer interests, emerging trends, and market opportunities.</span></div>
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Benchmarking:</strong> Compares search popularity of relevant keywords and job roles against competitors.</span></div>
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Audience-Centric Content Strategy:</strong> Optimizes content strategy by understanding trending topics.</span></div>
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Regional Market Understanding:</strong> Provides insights into consumer search behaviors across 60+ countries.</span></div>
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Data-Driven Decision Making:</strong> Empowers forecasting and strategic planning through real-time trend visualizations.</span></div>
-          </div>
-        </div>
+        <div class="modal-desc-section"><h6># Project Highlights</h6><div class="modal-diff"><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Insights &amp; Opportunity Identification:</strong> Leverages Google Trends to identify consumer interests, emerging trends, and market opportunities.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Benchmarking:</strong> Compares search popularity of relevant keywords and job roles against competitors.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Regional Market Understanding:</strong> Provides insights into consumer search behaviors across 60+ countries.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Data-Driven Decision Making:</strong> Empowers forecasting and strategic planning through real-time trend visualizations.</span></div></div></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- PM3 — Indian Rail Accident Analysis -->
-<div class="modal fade" id="pm3" tabindex="-1" aria-label="Indian Rail Accident Analysis Project">
+<div class="modal fade" id="pm3" tabindex="-1">
   <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width:1050px">
     <div class="modal-content">
-      <div class="modal-header">
-        <div class="modal-titlebar">
-          <div class="modal-tl-spacer"></div>
-          <h5 class="modal-title">
-            <span class="hl">manmath235</span> / rail-accident-analysis / <span class="fn">README.md</span>
-          </h5>
-          <div class="modal-tl">
-            <button class="modal-tl-dot is-close" style="background:var(--tl-red);" data-bs-dismiss="modal" aria-label="Close"></button>
-            <div class="modal-tl-dot is-yellow" style="background:var(--tl-yellow);"></div>
-            <div class="modal-tl-dot is-green" style="background:var(--tl-green);"></div>
-          </div>
-        </div>
-      </div>
+      <div class="modal-header"><div class="modal-titlebar"><div class="modal-tl-spacer"></div><h5 class="modal-title"><span class="hl">manmath235</span> / rail-accident-analysis / <span class="fn">README.md</span></h5><div class="modal-tl"><button class="modal-tl-dot is-close" style="background:var(--tl-red);" data-bs-dismiss="modal"></button><div class="modal-tl-dot is-yellow" style="background:var(--tl-yellow);"></div><div class="modal-tl-dot is-green" style="background:var(--tl-green);"></div></div></div></div>
       <div class="modal-body">
         <div class="modal-proj-layout">
-          <div class="modal-iframe-wrap">
-            <iframe title="Rail Accident Analysis Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiMmZkNTgwODktNzAyMy00YmZlLTk5YzEtYTY4YWIwNmEwODI0IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" frameborder="0" allowFullScreen loading="lazy"></iframe>
-          </div>
-          <div class="modal-sidebar">
-            <div class="modal-sidebar-section">
-              <div class="ms-label">Download</div>
-              <a href="assets/projects/Train Accident Analysis/Indian Rail Accident Analysis Report.pdf" download class="btn-gh btn-gh-secondary" style="font-size:.78rem;width:100%;justify-content:center;"><i class="bi bi-download"></i> Report PDF</a>
-            </div>
-            <div class="modal-sidebar-section">
-              <div class="ms-label">Stack</div>
-              <div class="ms-tags"><span class="ms-tag">Power BI</span><span class="ms-tag">Excel</span></div>
-            </div>
-          </div>
+          <div class="modal-iframe-wrap"><iframe title="Rail Accident Analysis Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiMmZkNTgwODktNzAyMy00YmZlLTk5YzEtYTY4YWIwNmEwODI0IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" frameborder="0" allowFullScreen loading="lazy"></iframe></div>
+          <div class="modal-sidebar"><div class="modal-sidebar-section"><div class="ms-label">Download</div><a href="assets/projects/Train Accident Analysis/Indian Rail Accident Analysis Report.pdf" download class="btn-gh btn-gh-secondary" style="font-size:.78rem;width:100%;justify-content:center;"><i class="bi bi-download"></i> Report PDF</a></div><div class="modal-sidebar-section"><div class="ms-label">Stack</div><div class="ms-tags"><span class="ms-tag">Power BI</span><span class="ms-tag">Excel</span></div></div></div>
         </div>
-        <div class="modal-desc-section">
-          <h6># Project Highlights</h6>
-          <div class="modal-diff">
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>High-Risk Area Identification:</strong> Identified accident-prone routes through geographical analysis for targeted safety measures.</span></div>
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Accident Cause Prioritization:</strong> Highlighted top causes (derailments, collisions, sabotage) to guide safety initiatives.</span></div>
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Emergency Preparedness:</strong> Analyzed accident severity, casualties, and infrastructure damage patterns.</span></div>
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Maintenance Protocol Optimization:</strong> Improved inspection strategies based on historical accident trends.</span></div>
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Safety Regulation Guidance:</strong> Informed policy formulation through data-driven insights.</span></div>
-          </div>
-        </div>
+        <div class="modal-desc-section"><h6># Project Highlights</h6><div class="modal-diff"><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>High-Risk Area Identification:</strong> Identified accident-prone routes through geographical analysis for targeted safety measures.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Accident Cause Prioritization:</strong> Highlighted top causes (derailments, collisions, sabotage) to guide safety initiatives.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Emergency Preparedness:</strong> Analyzed accident severity, casualties, and infrastructure damage patterns.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Safety Regulation Guidance:</strong> Informed policy formulation through data-driven insights.</span></div></div></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- PM4 — Customer Retention -->
-<div class="modal fade" id="pm4" tabindex="-1" aria-label="Customer Retention and Churn Analysis Project">
+<div class="modal fade" id="pm4" tabindex="-1">
   <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width:1050px">
     <div class="modal-content">
-      <div class="modal-header">
-        <div class="modal-titlebar">
-          <div class="modal-tl-spacer"></div>
-          <h5 class="modal-title">
-            <span class="hl">manmath235</span> / customer-retention / <span class="fn">README.md</span>
-          </h5>
-          <div class="modal-tl">
-            <button class="modal-tl-dot is-close" style="background:var(--tl-red);" data-bs-dismiss="modal" aria-label="Close"></button>
-            <div class="modal-tl-dot is-yellow" style="background:var(--tl-yellow);"></div>
-            <div class="modal-tl-dot is-green" style="background:var(--tl-green);"></div>
-          </div>
-        </div>
-      </div>
+      <div class="modal-header"><div class="modal-titlebar"><div class="modal-tl-spacer"></div><h5 class="modal-title"><span class="hl">manmath235</span> / customer-retention / <span class="fn">README.md</span></h5><div class="modal-tl"><button class="modal-tl-dot is-close" style="background:var(--tl-red);" data-bs-dismiss="modal"></button><div class="modal-tl-dot is-yellow" style="background:var(--tl-yellow);"></div><div class="modal-tl-dot is-green" style="background:var(--tl-green);"></div></div></div></div>
       <div class="modal-body">
         <div class="modal-proj-layout">
-          <div class="modal-iframe-wrap">
-            <iframe title="Customer Retention Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiZmU5YzFlMGMtNDUxYy00OTcyLThjODktZDdlYjFkODJkMzc4IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" frameborder="0" allowFullScreen loading="lazy"></iframe>
-          </div>
-          <div class="modal-sidebar">
-            <div class="modal-sidebar-section">
-              <div class="ms-label">GitHub</div>
-              <a href="https://github.com/Manmath235/Call_Center_Trend_Analysis.git" class="btn-gh btn-gh-secondary" style="font-size:.78rem;width:100%;justify-content:center;" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> Repository</a>
-            </div>
-            <div class="modal-sidebar-section">
-              <div class="ms-label">Stack</div>
-              <div class="ms-tags"><span class="ms-tag">Power BI</span><span class="ms-tag">Excel</span></div>
-            </div>
-          </div>
+          <div class="modal-iframe-wrap"><iframe title="Customer Retention Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiZmU5YzFlMGMtNDUxYy00OTcyLThjODktZDdlYjFkODJkMzc4IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" frameborder="0" allowFullScreen loading="lazy"></iframe></div>
+          <div class="modal-sidebar"><div class="modal-sidebar-section"><div class="ms-label">GitHub</div><a href="https://github.com/Manmath235/Call_Center_Trend_Analysis.git" class="btn-gh btn-gh-secondary" style="font-size:.78rem;width:100%;justify-content:center;" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> Repository</a></div><div class="modal-sidebar-section"><div class="ms-label">Stack</div><div class="ms-tags"><span class="ms-tag">Power BI</span><span class="ms-tag">Excel</span></div></div></div>
         </div>
-        <div class="modal-desc-section">
-          <h6># Project Highlights</h6>
-          <div class="modal-diff">
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Churn Analysis:</strong> Achieved a 26.54% churn reduction through customer segmentation and proactive engagement strategies.</span></div>
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Call Centre Performance:</strong> Identified performance gaps leading to improved response time and resolution rate KPIs.</span></div>
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Personalised Customer Offers:</strong> Provided data-driven recommendations based on demographic and usage patterns.</span></div>
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Infrastructure Planning:</strong> Assessed internet service reliability impact on customer satisfaction.</span></div>
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Stakeholder Engagement:</strong> Tailored dashboards to business needs, fostering data-driven decision-making.</span></div>
-          </div>
-        </div>
+        <div class="modal-desc-section"><h6># Project Highlights</h6><div class="modal-diff"><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Churn Analysis:</strong> Achieved a 26.54% churn reduction through customer segmentation and proactive engagement strategies.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Call Centre Performance:</strong> Identified performance gaps leading to improved response time and resolution rate KPIs.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Personalised Customer Offers:</strong> Provided data-driven recommendations based on demographic and usage patterns.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Stakeholder Engagement:</strong> Tailored dashboards to business needs, fostering data-driven decision-making.</span></div></div></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- PM5 — AtliQ Hardware -->
-<div class="modal fade" id="pm5" tabindex="-1" aria-label="AtliQ Hardware Insights Project">
+<div class="modal fade" id="pm5" tabindex="-1">
   <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width:1050px">
     <div class="modal-content">
-      <div class="modal-header">
-        <div class="modal-titlebar">
-          <div class="modal-tl-spacer"></div>
-          <h5 class="modal-title">
-            <span class="hl">manmath235</span> / atliq-hardware-insights / <span class="fn">README.md</span>
-          </h5>
-          <div class="modal-tl">
-            <button class="modal-tl-dot is-close" style="background:var(--tl-red);" data-bs-dismiss="modal" aria-label="Close"></button>
-            <div class="modal-tl-dot is-yellow" style="background:var(--tl-yellow);"></div>
-            <div class="modal-tl-dot is-green" style="background:var(--tl-green);"></div>
-          </div>
-        </div>
-      </div>
+      <div class="modal-header"><div class="modal-titlebar"><div class="modal-tl-spacer"></div><h5 class="modal-title"><span class="hl">manmath235</span> / atliq-hardware-insights / <span class="fn">README.md</span></h5><div class="modal-tl"><button class="modal-tl-dot is-close" style="background:var(--tl-red);" data-bs-dismiss="modal"></button><div class="modal-tl-dot is-yellow" style="background:var(--tl-yellow);"></div><div class="modal-tl-dot is-green" style="background:var(--tl-green);"></div></div></div></div>
       <div class="modal-body">
         <div class="modal-proj-layout">
           <div class="modal-iframe-wrap" style="padding-top:56%;">
             <div id="dbc" class="carousel slide" data-bs-ride="carousel" style="position:absolute;inset:0;width:100%;height:100%;">
-              <div class="carousel-indicators">
-                <button type="button" data-bs-target="#dbc" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#dbc" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#dbc" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                <button type="button" data-bs-target="#dbc" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                <button type="button" data-bs-target="#dbc" data-bs-slide-to="4" aria-label="Slide 5"></button>
-              </div>
-              <div class="carousel-inner" style="height:100%;border-radius:4px;">
-                <div class="carousel-item active"><img src="assets/projects/AtliQ Hardware Insights Report/1.jpg" class="d-block w-100" alt="AtliQ Slide 1" style="height:100%;object-fit:cover;" loading="lazy"></div>
-                <div class="carousel-item"><img src="assets/projects/AtliQ Hardware Insights Report/2.jpg" class="d-block w-100" alt="AtliQ Slide 2" style="height:100%;object-fit:cover;" loading="lazy"></div>
-                <div class="carousel-item"><img src="assets/projects/AtliQ Hardware Insights Report/3.jpg" class="d-block w-100" alt="AtliQ Slide 3" style="height:100%;object-fit:cover;" loading="lazy"></div>
-                <div class="carousel-item"><img src="assets/projects/AtliQ Hardware Insights Report/4.jpg" class="d-block w-100" alt="AtliQ Slide 4" style="height:100%;object-fit:cover;" loading="lazy"></div>
-                <div class="carousel-item"><img src="assets/projects/AtliQ Hardware Insights Report/5.jpg" class="d-block w-100" alt="AtliQ Slide 5" style="height:100%;object-fit:cover;" loading="lazy"></div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#dbc" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
-              <button class="carousel-control-next" type="button" data-bs-target="#dbc" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>
+              <div class="carousel-indicators"><button type="button" data-bs-target="#dbc" data-bs-slide-to="0" class="active"></button><button type="button" data-bs-target="#dbc" data-bs-slide-to="1"></button><button type="button" data-bs-target="#dbc" data-bs-slide-to="2"></button><button type="button" data-bs-target="#dbc" data-bs-slide-to="3"></button><button type="button" data-bs-target="#dbc" data-bs-slide-to="4"></button></div>
+              <div class="carousel-inner" style="height:100%;border-radius:4px;"><div class="carousel-item active"><img src="assets/projects/AtliQ Hardware Insights Report/1.jpg" class="d-block w-100" alt="AtliQ Slide 1" style="height:100%;object-fit:cover;" loading="lazy"></div><div class="carousel-item"><img src="assets/projects/AtliQ Hardware Insights Report/2.jpg" class="d-block w-100" alt="AtliQ Slide 2" style="height:100%;object-fit:cover;" loading="lazy"></div><div class="carousel-item"><img src="assets/projects/AtliQ Hardware Insights Report/3.jpg" class="d-block w-100" alt="AtliQ Slide 3" style="height:100%;object-fit:cover;" loading="lazy"></div><div class="carousel-item"><img src="assets/projects/AtliQ Hardware Insights Report/4.jpg" class="d-block w-100" alt="AtliQ Slide 4" style="height:100%;object-fit:cover;" loading="lazy"></div><div class="carousel-item"><img src="assets/projects/AtliQ Hardware Insights Report/5.jpg" class="d-block w-100" alt="AtliQ Slide 5" style="height:100%;object-fit:cover;" loading="lazy"></div></div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#dbc" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+              <button class="carousel-control-next" type="button" data-bs-target="#dbc" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
             </div>
           </div>
-          <div class="modal-sidebar">
-            <div class="modal-sidebar-section">
-              <div class="ms-label">Download</div>
-              <a href="assets/projects/AtliQ Hardware Insights Report/Report.pdf" download class="btn-gh btn-gh-secondary" style="font-size:.78rem;width:100%;justify-content:center;"><i class="bi bi-download"></i> Report PDF</a>
-            </div>
-            <div class="modal-sidebar-section">
-              <div class="ms-label">Stack</div>
-              <div class="ms-tags"><span class="ms-tag">Power BI</span><span class="ms-tag">SQL</span></div>
-            </div>
-          </div>
+          <div class="modal-sidebar"><div class="modal-sidebar-section"><div class="ms-label">Download</div><a href="assets/projects/AtliQ Hardware Insights Report/Report.pdf" download class="btn-gh btn-gh-secondary" style="font-size:.78rem;width:100%;justify-content:center;"><i class="bi bi-download"></i> Report PDF</a></div><div class="modal-sidebar-section"><div class="ms-label">Stack</div><div class="ms-tags"><span class="ms-tag">Power BI</span><span class="ms-tag">SQL</span></div></div></div>
         </div>
-        <div class="modal-desc-section" style="margin-top:20px;">
-          <h6># Project Highlights</h6>
-          <div class="modal-diff">
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Data Analysis:</strong> In-depth analysis of sales and manufacturing data to uncover critical business insights.</span></div>
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Operational Efficiency:</strong> Identified cost reduction opportunities and optimized resource allocation.</span></div>
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Market Insights:</strong> Analysed market presence and sales trends for improved market penetration.</span></div>
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Customer Insights:</strong> Detailed reports on discount patterns and behaviors for targeted promotions.</span></div>
-            <div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Product Performance:</strong> Evaluated product demand and manufacturing costs to refine product lines.</span></div>
-          </div>
-        </div>
+        <div class="modal-desc-section" style="margin-top:20px;"><h6># Project Highlights</h6><div class="modal-diff"><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Data Analysis:</strong> In-depth analysis of sales and manufacturing data to uncover critical business insights.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Operational Efficiency:</strong> Identified cost reduction opportunities and optimized resource allocation.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Market Insights:</strong> Analysed market presence and sales trends for improved market penetration.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Customer Insights:</strong> Detailed reports on discount patterns and behaviors for targeted promotions.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Product Performance:</strong> Evaluated product demand and manufacturing costs to refine product lines.</span></div></div></div>
       </div>
     </div>
   </div>
@@ -1734,273 +1278,185 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-(function() {
+(function () {
   'use strict';
-//* ─── AI Summary Button ──────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', function() {
-  var aiBtn = document.getElementById('ai-summary-btn');
 
-  function buildAIPrompt() {
-    // --- Experience (read dynamically from DOM) ---
-    var expText = '';
-    document.querySelectorAll('.exp-window').forEach(function(win, i) {
-      var role    = win.querySelector('.exp-role2')?.textContent.trim() || '';
-      var company = win.querySelector('.exp-company2')?.textContent.trim() || '';
-      var period  = win.querySelector('.exp-period-tag')?.textContent.trim() || '';
-      var bullets = [];
-      win.querySelectorAll('.diff-item').forEach(function(li) {
-        var text = li.querySelector('span:last-child')?.textContent.trim();
-        if (text) bullets.push('   - ' + text);
-      });
-      expText += (i + 1) + '. ' + role + ' — ' + company + ' (' + period + ')\n' + bullets.join('\n') + '\n\n';
-    });
-
-    // --- Skills (read dynamically from DOM) ---
-    var skillsText = '';
-    document.querySelectorAll('.skill-lang-item').forEach(function(item) {
-      var name = item.querySelector('.skill-lang-name')?.textContent.trim() || '';
-      var pct  = item.querySelector('.skill-lang-pct')?.textContent.trim() || '';
-      if (name && pct) skillsText += name + ' (' + pct + ') · ';
-    });
-    skillsText = skillsText.replace(/· $/, '');
-
-    // --- Projects (read dynamically from DOM) ---
-    var projectsText = '';
-    document.querySelectorAll('.proj-card-v2').forEach(function(card, i) {
-      var title = card.querySelector('.pcard-title')?.textContent.trim() || '';
-      var desc  = card.querySelector('.pcard-desc')?.textContent.trim() || '';
-      var pills = Array.from(card.querySelectorAll('.pcard-pill')).map(function(p) { return p.textContent.trim(); }).join(' + ');
-      if (title) projectsText += (i + 1) + '. ' + title + ' — ' + desc + (pills ? ' (' + pills + ')' : '') + '\n';
-    });
-
-    // --- Certifications (read dynamically from DOM) ---
-    var certsText = '';
-    var seen = {};
-    document.querySelectorAll('.cert-card-gh').forEach(function(card) {
-      var title   = card.querySelector('.cert-title')?.textContent.trim() || '';
-      var issuer  = card.querySelector('.cert-issuer')?.textContent.trim() || '';
-      if (title && !seen[title]) { seen[title] = true; certsText += '- ' + title + ' (' + issuer + ')\n'; }
-    });
-
-    // --- Tools (read dynamically from DOM) ---
-    var toolsText = Array.from(document.querySelectorAll('.tool-repo-name'))
-      .map(function(t) { return t.textContent.trim(); }).join(' · ');
-
-    // --- Competency tags (read dynamically from DOM) ---
-    var tagsText = Array.from(document.querySelectorAll('.gh-tag'))
-      .map(function(t) { return t.textContent.trim(); }).join(' · ');
-
-    // --- Dynamic experience value ---
-    var expVal = document.querySelector('.dynamic-exp')?.textContent.trim() || '2+';
-
-    // --- Build final prompt ---
-    return "You are a career coach. A recruiter just landed on the portfolio of Manmathnath Mahanta, a Business Analyst. " +
-  "Give them a razor-sharp candidate brief — bullet points only, no fluff, no long paragraphs.\n\n" +
-
-  "Here is his profile data:\n\n" +
-
-  "**Experience:** " + expVal + " years | Business Analyst\n" +
-  "**Location:** Kolkata, West Bengal\n" +
-  "**Contact:** manmath.contact@gmail.com | +91 7008548402\n\n" +
-
-  "**WORK EXPERIENCE:**\n" + expText +
-  "**CORE SKILLS:**\n" + skillsText + "\n\n" +
-  "**COMPETENCIES:**\n" + tagsText + "\n\n" +
-  "**TOOLS:** " + toolsText + "\n\n" +
-  "**KEY PROJECTS:**\n" + projectsText + "\n" +
-  "**CERTIFICATIONS:**\n" + certsText + "\n" +
-
-  "---\n\n" +
-  "Now write a **candidate brief** for an HR manager. Format it exactly like this:\n\n" +
-  "**⚡ Why He Stands Out** (3–4 bullets, each one punchy and specific)\n\n" +
-  "**🛠 What He Brings** (3–4 bullets covering skills, tools, and delivery impact)\n\n" +
-  "**📂 Proof of Work** (4–5 bullets, one per standout project with a concrete result)\n\n" +
-  "**✅ Bottom Line** (1 sentence max — should make the HR want to call him today)\n\n" +
-  "Rules: No intros. No filler sentences. Every bullet must contain a specific fact or number from his profile. Keep the whole thing under 200 words.";
-  }
-
-  // Build URL on click (so it always reads the latest DOM state)
-  aiBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    var url = "https://chatgpt.com/?q=" + encodeURIComponent(buildAIPrompt());
-    window.open(url, '_blank', 'noopener,noreferrer');
-  });
-
-  // Show after scroll
-  window.addEventListener('scroll', function() {
-    aiBtn.classList.toggle('active', window.scrollY > 400);
-  }, { passive: true });
-});
-  /* ─── Dynamic experience calculator ─────────────────────────────────────
-     Counts from March 2023 (month index 2 = March).
-     Returns e.g. "2+", "2.5+", "3+" etc.
-  ──────────────────────────────────────────────────────────────────────── */
+  /* ── Dynamic experience calculator ── */
   function calcExperience() {
-    var start = new Date(2023, 2, 1); // 1 March 2023
-    var now   = new Date();
-    var years  = now.getFullYear() - start.getFullYear();
-    var months = now.getMonth()    - start.getMonth();
+    var start = new Date(2023, 2, 1);
+    var now = new Date();
+    var years = now.getFullYear() - start.getFullYear();
+    var months = now.getMonth() - start.getMonth();
     if (months < 0) { years--; months += 12; }
     var totalMonths = years * 12 + months;
     if (totalMonths < 12) return totalMonths + '+ mo';
     var remainder = totalMonths % 12;
     return years + (remainder >= 6 ? '.5' : '') + '+';
   }
-
-  /* Stamp value into every .dynamic-exp element */
   function stampExp() {
     var val = calcExperience();
-    document.querySelectorAll('.dynamic-exp').forEach(function(el) {
-      el.textContent = val;
-    });
+    document.querySelectorAll('.dynamic-exp').forEach(function (el) { el.textContent = val; });
   }
   stampExp();
 
-  /* ─── Loader ─────────────────────────────────────────────────────────── */
+  /* ── Loader ── */
   var loader = document.getElementById('site-loader');
   document.body.style.overflow = 'hidden';
   function hideLoader() { loader.classList.add('hidden'); document.body.style.overflow = ''; }
-  window.addEventListener('load', function() { setTimeout(hideLoader, 2900); });
+  window.addEventListener('load', function () { setTimeout(hideLoader, 2900); });
   setTimeout(hideLoader, 3400);
 
-  /* ─── Contribution graph ─────────────────────────────────────────────── */
+  /* ── Contribution graph ── */
   function buildContrib() {
     var el = document.getElementById('contribStrip');
     if (!el) return;
-    var today = new Date(); today.setHours(0,0,0,0);
-    var seed = today.getFullYear()*10000 + (today.getMonth()+1)*100 + today.getDate();
-    function rand(n){ var x=Math.sin(n+1)*43758.5453123; return x-Math.floor(x); }
-    var jan1 = new Date(today.getFullYear(),0,1);
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+    function rand(n) { var x = Math.sin(n + 1) * 43758.5453123; return x - Math.floor(x); }
+    var jan1 = new Date(today.getFullYear(), 0, 1);
     var activityMap = {};
     var totalContribs = 0;
     var msPerDay = 86400000;
-    var totalDays = Math.floor((today-jan1)/msPerDay)+1;
-    for(var i=0;i<totalDays;i++){
-      var d=new Date(jan1.getTime()+i*msPerDay);
-      var key=d.toISOString().slice(0,10);
-      var r=rand(seed*1000+i);
-      var level=0;
-      if(r>0.40){ if(r<0.65)level=1; else if(r<0.85)level=2; else if(r<0.95)level=3; else level=4; }
-      var dow=d.getDay();
-      if((dow===0||dow===6)&&level>0){ level=rand(seed*1000+i+777)>0.55?level:Math.max(0,level-1); }
-      activityMap[key]=level;
-      if(level>0)totalContribs+=level;
+    var totalDays = Math.floor((today - jan1) / msPerDay) + 1;
+    for (var i = 0; i < totalDays; i++) {
+      var d = new Date(jan1.getTime() + i * msPerDay);
+      var key = d.toISOString().slice(0, 10);
+      var r = rand(seed * 1000 + i);
+      var level = 0;
+      if (r > 0.40) { if (r < 0.65) level = 1; else if (r < 0.85) level = 2; else if (r < 0.95) level = 3; else level = 4; }
+      var dow = d.getDay();
+      if ((dow === 0 || dow === 6) && level > 0) { level = rand(seed * 1000 + i + 777) > 0.55 ? level : Math.max(0, level - 1); }
+      activityMap[key] = level;
+      if (level > 0) totalContribs += level;
     }
-    var COLS=Math.ceil((today-jan1)/msPerDay/7)+1;
-    var MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    function fmtFull(d){ return MONTHS[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear(); }
-    function fmtShort(d){ return MONTHS[d.getMonth()]+' '+d.getFullYear(); }
-    var ROWS=7;
-    var monthRow='';
-    var lastM=-1;
-    for(var c=0;c<COLS;c++){
-      var md=new Date(jan1.getTime()+(c*7-jan1.getDay())*msPerDay);
-      if(md<jan1)continue;
-      var m=md.getMonth();
-      if(m!==lastM){ monthRow+='<span style="position:absolute;left:'+(c*14)+'px">'+MONTHS[m]+'</span>'; lastM=m; }
+    var COLS = Math.ceil((today - jan1) / msPerDay / 7) + 1;
+    var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    function fmtFull(d) { return MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear(); }
+    function fmtShort(d) { return MONTHS[d.getMonth()] + ' ' + d.getFullYear(); }
+    var ROWS = 7;
+    var monthRow = '';
+    var lastM = -1;
+    for (var c = 0; c < COLS; c++) {
+      var md = new Date(jan1.getTime() + (c * 7 - jan1.getDay()) * msPerDay);
+      if (md < jan1) continue;
+      var m = md.getMonth();
+      if (m !== lastM) { monthRow += '<span style="position:absolute;left:' + (c * 14) + 'px">' + MONTHS[m] + '</span>'; lastM = m; }
     }
-    var html='<div class="contrib-label" style="margin-bottom:6px;align-items:center"><span><strong style="color:var(--gh-text)">'+totalContribs.toLocaleString()+'</strong><span style="color:var(--gh-muted)"> contributions in '+today.getFullYear()+'</span></span><span style="color:var(--gh-muted2);font-size:.68rem">Jan 1 \u2013 '+fmtShort(today)+'</span></div>';
-    html+='<div style="position:relative;height:14px;margin-bottom:5px;font-family:var(--mono);font-size:.62rem;color:var(--gh-muted2);overflow:hidden">'+monthRow+'</div>';
-    html+='<div class="contrib-graph">';
-    for(var c2=0;c2<COLS;c2++){
-      html+='<div class="contrib-col">';
-      for(var r2=0;r2<ROWS;r2++){
-        var dayIndex=c2*7+r2-jan1.getDay();
-        var cd=new Date(jan1.getTime()+dayIndex*msPerDay);
-        var ckey=cd.toISOString().slice(0,10);
-        var isFut=cd>today;
-        var isPast=dayIndex<0;
-        var clevel=(isFut||isPast)?0:(activityMap[ckey]||0);
-        var tip=isPast?'':isFut?'No contributions yet':(clevel>0?clevel+' contribution'+(clevel>1?'s':'')+' on '+fmtFull(cd):'No contributions on '+fmtFull(cd));
-        var cls=clevel>0?'contrib-cell l'+clevel:'contrib-cell';
-        var delay=Math.floor((c2*ROWS+r2)*3);
-        var base=(isFut||isPast)?'0.18':'0';
-        var invisible=isPast?'visibility:hidden;':'';
-        html+='<div class="'+cls+'" title="'+tip+'" style="'+invisible+'opacity:'+base+';animation:_cellIn .22s ease '+delay+'ms forwards"></div>';
+    var html = '<div class="contrib-label" style="margin-bottom:6px;align-items:center"><span><strong style="color:var(--gh-text)">' + totalContribs.toLocaleString() + '</strong><span style="color:var(--gh-muted)"> contributions in ' + today.getFullYear() + '</span></span><span style="color:var(--gh-muted2);font-size:.68rem">Jan 1 \u2013 ' + fmtShort(today) + '</span></div>';
+    html += '<div style="position:relative;height:14px;margin-bottom:5px;font-family:var(--mono);font-size:.62rem;color:var(--gh-muted2);overflow:hidden">' + monthRow + '</div>';
+    html += '<div class="contrib-graph">';
+    for (var c2 = 0; c2 < COLS; c2++) {
+      html += '<div class="contrib-col">';
+      for (var r2 = 0; r2 < ROWS; r2++) {
+        var dayIndex = c2 * 7 + r2 - jan1.getDay();
+        var cd = new Date(jan1.getTime() + dayIndex * msPerDay);
+        var ckey = cd.toISOString().slice(0, 10);
+        var isFut = cd > today;
+        var isPast = dayIndex < 0;
+        var clevel = (isFut || isPast) ? 0 : (activityMap[ckey] || 0);
+        var tip = isPast ? '' : isFut ? 'No contributions yet' : (clevel > 0 ? clevel + ' contribution' + (clevel > 1 ? 's' : '') + ' on ' + fmtFull(cd) : 'No contributions on ' + fmtFull(cd));
+        var cls = clevel > 0 ? 'contrib-cell l' + clevel : 'contrib-cell';
+        var delay = Math.floor((c2 * ROWS + r2) * 3);
+        var base = (isFut || isPast) ? '0.18' : '0';
+        var invisible = isPast ? 'visibility:hidden;' : '';
+        html += '<div class="' + cls + '" title="' + tip + '" style="' + invisible + 'opacity:' + base + ';animation:_cellIn .22s ease ' + delay + 'ms forwards"></div>';
       }
-      html+='</div>';
+      html += '</div>';
     }
-    html+='</div>';
-    html+='<div style="display:flex;align-items:center;gap:5px;margin-top:10px;font-family:var(--mono);font-size:.65rem;color:var(--gh-muted2)">Less<div style="width:10px;height:10px;border-radius:2px;background:var(--gh-border2)"></div><div style="width:10px;height:10px;border-radius:2px;background:#0e4429"></div><div style="width:10px;height:10px;border-radius:2px;background:#006d32"></div><div style="width:10px;height:10px;border-radius:2px;background:#26a641"></div><div style="width:10px;height:10px;border-radius:2px;background:#39d353"></div>More</div>';
-    el.innerHTML=html;
+    html += '</div>';
+    html += '<div style="display:flex;align-items:center;gap:5px;margin-top:10px;font-family:var(--mono);font-size:.65rem;color:var(--gh-muted2)">Less<div style="width:10px;height:10px;border-radius:2px;background:var(--gh-border2)"></div><div style="width:10px;height:10px;border-radius:2px;background:#0e4429"></div><div style="width:10px;height:10px;border-radius:2px;background:#006d32"></div><div style="width:10px;height:10px;border-radius:2px;background:#26a641"></div><div style="width:10px;height:10px;border-radius:2px;background:#39d353"></div>More</div>';
+    el.innerHTML = html;
   }
   buildContrib();
-  (function scheduleRebuild(){
-    var now=new Date();
-    var msUntilMidnight=new Date(now.getFullYear(),now.getMonth(),now.getDate()+1)-now;
-    setTimeout(function(){ buildContrib(); scheduleRebuild(); }, msUntilMidnight+100);
+  (function scheduleRebuild() {
+    var now = new Date();
+    var msUntilMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1) - now;
+    setTimeout(function () { buildContrib(); scheduleRebuild(); }, msUntilMidnight + 100);
   })();
 
-  /* ─── AOS ────────────────────────────────────────────────────────────── */
-  function initAOS(){
-    var items=document.querySelectorAll('[data-aos]');
-    var obs=new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('aos-animate'); obs.unobserve(e.target); } });
-    },{threshold:0.08});
-    items.forEach(function(el,i){ el.style.transitionDelay=(i%4*80)+'ms'; obs.observe(el); });
+  /* ── AOS ── */
+  function initAOS() {
+    var items = document.querySelectorAll('[data-aos]');
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('aos-animate'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    items.forEach(function (el, i) { el.style.transitionDelay = (i % 4 * 80) + 'ms'; obs.observe(el); });
   }
   document.addEventListener('DOMContentLoaded', initAOS);
 
-  /* ─── Skill bars ─────────────────────────────────────────────────────── */
-  var bObs=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting){ e.target.style.width=e.target.dataset.width+'%'; bObs.unobserve(e.target); } });
-  },{threshold:0.4});
-  document.addEventListener('DOMContentLoaded',function(){
-    document.querySelectorAll('.skill-lang-fill').forEach(function(b){ bObs.observe(b); });
+  /* ── Skill bars ── */
+  var bObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.style.width = e.target.dataset.width + '%'; bObs.unobserve(e.target); } });
+  }, { threshold: 0.4 });
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.skill-lang-fill').forEach(function (b) { bObs.observe(b); });
   });
 
-  /* ─── Nav active ─────────────────────────────────────────────────────── */
-  document.addEventListener('DOMContentLoaded',function(){
-    var nls=document.querySelectorAll('.gh-topbar-nav a');
-    var secs=document.querySelectorAll('section[id]');
-    function uNav(){
-      var c='';
-      var scrollBottom=window.scrollY+window.innerHeight;
-      var docHeight=document.documentElement.scrollHeight;
-      if(scrollBottom>=docHeight-60){ c=secs[secs.length-1].id; }
-      else{ secs.forEach(function(s){ if(window.scrollY>=s.offsetTop-80)c=s.id; }); }
-      nls.forEach(function(a){ a.classList.toggle('active',a.getAttribute('href')==='#'+c); });
+  /* ── Nav active ── */
+  document.addEventListener('DOMContentLoaded', function () {
+    var nls = document.querySelectorAll('.gh-topbar-nav a');
+    var secs = document.querySelectorAll('section[id]');
+    function uNav() {
+      var c = '';
+      var scrollBottom = window.scrollY + window.innerHeight;
+      var docHeight = document.documentElement.scrollHeight;
+      if (scrollBottom >= docHeight - 60) { c = secs[secs.length - 1].id; }
+      else { secs.forEach(function (s) { if (window.scrollY >= s.offsetTop - 80) c = s.id; }); }
+      nls.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + c); });
     }
-    window.addEventListener('scroll',uNav,{passive:true});
+    window.addEventListener('scroll', uNav, { passive: true });
     uNav();
   });
 
-  /* ─── Scroll top ─────────────────────────────────────────────────────── */
-  document.addEventListener('DOMContentLoaded',function(){
-    var sb=document.getElementById('scroll-top');
-    window.addEventListener('scroll',function(){ sb.classList.toggle('active',window.scrollY>400); },{passive:true});
-    sb.addEventListener('click',function(e){ e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); });
+  /* ── Scroll top ── */
+  document.addEventListener('DOMContentLoaded', function () {
+    var sb = document.getElementById('scroll-top');
+    window.addEventListener('scroll', function () { sb.classList.toggle('active', window.scrollY > 400); }, { passive: true });
+    sb.addEventListener('click', function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
   });
 
-  /* ─── Project filter tabs ────────────────────────────────────────────── */
-  document.addEventListener('DOMContentLoaded',function(){
-    var tabs=document.querySelectorAll('.pf-tab');
-    var cards=document.querySelectorAll('.proj-card-v2');
-    tabs.forEach(function(tab){
-      tab.addEventListener('click',function(){
-        tabs.forEach(function(t){ t.classList.remove('active'); });
+  /* ── Unified Project filter ── */
+  document.addEventListener('DOMContentLoaded', function () {
+    var tabs = document.querySelectorAll('.pf-tab');
+    var cards = document.querySelectorAll('.proj-card-uni');
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (t) { t.classList.remove('active'); });
         tab.classList.add('active');
-        var filter=tab.dataset.filter;
-        cards.forEach(function(card){
-          var tags=card.dataset.tags||'';
-          var show=filter==='all'||tags.includes(filter);
-          card.style.opacity=show?'1':'0.3';
-          card.style.transform=show?'':'scale(0.97)';
-          card.style.pointerEvents=show?'':'none';
-          card.style.transition='opacity .3s, transform .3s';
+        var filter = tab.dataset.filter;
+        cards.forEach(function (card) {
+          var tags = card.dataset.tags || '';
+          var show = filter === 'all' || tags.includes(filter);
+          card.classList.toggle('filtered-out', !show);
         });
       });
     });
   });
 
-  /* ─── Modal cleanup ──────────────────────────────────────────────────── */
-  document.addEventListener('DOMContentLoaded',function(){
-    document.querySelectorAll('.modal').forEach(function(m){
-      m.addEventListener('hidden.bs.modal',function(){
-        document.body.style.overflow='';
-        document.body.style.paddingRight='';
+  /* ── Modal cleanup ── */
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.modal').forEach(function (m) {
+      m.addEventListener('hidden.bs.modal', function () {
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
       });
     });
+  });
+
+  /* ── AI Summary Button ── */
+  document.addEventListener('DOMContentLoaded', function () {
+    var aiBtn = document.getElementById('ai-summary-btn');
+    function buildAIPrompt() {
+      var expVal = document.querySelector('.dynamic-exp') ? document.querySelector('.dynamic-exp').textContent.trim() : '2+';
+      return "You are a career coach. A recruiter just landed on Manmathnath Mahanta's portfolio — Business Analyst with " + expVal + " years of experience in Bhubaneswar, India. Give a razor-sharp candidate brief in bullet points only.\n\nKey facts:\n- Core skills: BRD/FSD, UML, User Stories, Process Mapping, UAT, Agile/Scrum\n- Tools: Power BI, SQL, Excel, ClickUp, Postman, LucidChart, Notion, Claude, Lovable\n- Experience: Tech Exactly (Mar 2025–Present), Sai Paramount IT (Jul 2024–Mar 2025), GEEMSCO (Mar 2023–Jul 2024)\n- Achieved ~30% efficiency improvement at Sai Paramount\n- BA Deliverables: E-Commerce BRD (35 requirements, 7 modules), Banking Loan User Stories (34 stories, 10 modules), Employee Onboarding Process Map (BPR, 65% time reduction)\n- Data Projects: India EV Market Analysis, Google Trend Dashboard, Rail Accident Analysis, Customer Churn (26.54% reduction), AtliQ Hardware BI\n- Certifications: Google Data Analytics, Microsoft Business Analysis, Requirements Elicitation, Agile Requirements, Power BI\n\nFormat:\n**⚡ Why He Stands Out** (3-4 bullets)\n**🛠 What He Brings** (3-4 bullets)\n**📂 Proof of Work** (4-5 bullets with specific results)\n**✅ Bottom Line** (1 sentence)\n\nRules: No intros. Every bullet must have a specific fact or number. Under 200 words total.";
+    }
+    aiBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.open("https://chatgpt.com/?q=" + encodeURIComponent(buildAIPrompt()), '_blank', 'noopener,noreferrer');
+    });
+    window.addEventListener('scroll', function () {
+      aiBtn.classList.toggle('active', window.scrollY > 400);
+    }, { passive: true });
   });
 
 })();

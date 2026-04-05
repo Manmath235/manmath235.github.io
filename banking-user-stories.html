@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banking Loan Origination System — User Stories</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-base: #080c10;
+    --bg-surface: #0e1420;
+    --bg-card: #121922;
+    --bg-card-hover: #161f2b;
+    --bg-elevated: #1a2535;
+    --border: rgba(99,140,200,0.12);
+    --border-bright: rgba(99,140,200,0.25);
+    --accent-blue: #3a8ff5;
+    --accent-cyan: #00d4e8;
+    --accent-gold: #f0b429;
+    --accent-green: #22c77a;
+    --accent-red: #ff5b5b;
+    --accent-purple: #a78bfa;
+    --text-primary: #e8edf5;
+    --text-secondary: #8fa0b8;
+    --text-muted: #4d607a;
+    --tag-high-bg: rgba(34,199,122,0.12);
+    --tag-high-txt: #22c77a;
+    --tag-medium-bg: rgba(240,180,41,0.12);
+    --tag-medium-txt: #f0b429;
+    --tag-low-bg: rgba(99,140,200,0.1);
+    --tag-low-txt: #6398d4;
+    --glow-blue: 0 0 40px rgba(58,143,245,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-base);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+    font-size: 14px;
+  }
+
+  /* ── BACKGROUND TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 10% 0%, rgba(58,143,245,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 90% 100%, rgba(0,212,232,0.04) 0%, transparent 60%);
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ── SIDEBAR NAV ── */
+  .sidebar {
+    position: fixed; left: 0; top: 0; bottom: 0;
+    width: 260px;
+    background: var(--bg-surface);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    z-index: 100;
+    display: flex; flex-direction: column;
+    padding: 28px 0 28px;
+  }
+
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-track { background: transparent; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
+
+  .sidebar-brand {
+    padding: 0 24px 28px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 20px;
+  }
+
+  .sidebar-brand .logo-mark {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .logo-icon {
+    width: 34px; height: 34px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 14px; color: #fff;
+    flex-shrink: 0;
+  }
+
+  .brand-text { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; color: var(--text-primary); line-height: 1.3; }
+  .brand-sub { font-size: 10px; color: var(--text-muted); font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+
+  .doc-meta-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(58,143,245,0.08); border: 1px solid rgba(58,143,245,0.2);
+    border-radius: 20px; padding: 3px 10px;
+    font-size: 10px; color: var(--accent-blue); font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .nav-section-label {
+    padding: 0 20px 6px;
+    font-size: 9px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .nav-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 7px 20px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.15s;
+    border-left: 2px solid transparent;
+    cursor: pointer;
+  }
+
+  .nav-item:hover { color: var(--text-primary); background: rgba(58,143,245,0.05); border-left-color: var(--accent-blue); }
+  .nav-item.active { color: var(--accent-blue); background: rgba(58,143,245,0.08); border-left-color: var(--accent-blue); }
+
+  .nav-module-badge {
+    width: 18px; height: 18px; border-radius: 4px;
+    background: var(--bg-elevated); color: var(--accent-cyan);
+    font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .nav-spacer { height: 16px; }
+
+  .nav-progress {
+    margin: 20px 20px 0;
+    padding: 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .nav-progress-label { font-size: 10px; color: var(--text-muted); margin-bottom: 8px; font-family: 'IBM Plex Mono', monospace; }
+  .progress-bar-wrap { background: var(--bg-elevated); border-radius: 4px; height: 4px; margin-bottom: 6px; }
+  .progress-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan)); }
+  .progress-stats { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-muted); }
+  .progress-stats span { color: var(--text-secondary); font-weight: 600; }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    margin-left: 260px;
+    min-height: 100vh;
+    position: relative; z-index: 1;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 64px 60px 48px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(58,143,245,0.04) 0%, transparent 100%);
+    position: relative; overflow: hidden;
+  }
+
+  .hero::after {
+    content: 'BLOS';
+    position: absolute; right: 40px; bottom: -20px;
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 120px;
+    color: rgba(58,143,245,0.04); letter-spacing: -0.04em;
+    user-select: none; line-height: 1;
+  }
+
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+  }
+
+  .eyebrow-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 12px; border-radius: 20px;
+    font-size: 11px; font-family: 'IBM Plex Mono', monospace;
+    border: 1px solid; font-weight: 500;
+  }
+  .eyebrow-tag.confidential { background: rgba(255,91,91,0.08); border-color: rgba(255,91,91,0.2); color: var(--accent-red); }
+  .eyebrow-tag.final { background: rgba(34,199,122,0.08); border-color: rgba(34,199,122,0.2); color: var(--accent-green); }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: 38px; line-height: 1.12; letter-spacing: -0.02em;
+    color: var(--text-primary); margin-bottom: 12px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+
+  .hero-sub { font-size: 15px; color: var(--text-secondary); max-width: 580px; margin-bottom: 32px; }
+
+  .hero-stats {
+    display: flex; gap: 0; border: 1px solid var(--border); border-radius: 12px;
+    overflow: hidden; max-width: 680px; background: var(--bg-card);
+  }
+
+  .hero-stat {
+    flex: 1; padding: 16px 20px; border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .hero-stat:last-child { border-right: none; }
+  .hero-stat-val {
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 26px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    line-height: 1;
+  }
+  .hero-stat-lbl { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+  /* ── META TABLE ── */
+  .meta-section { padding: 40px 60px; border-bottom: 1px solid var(--border); }
+
+  .section-heading {
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px;
+    color: var(--text-primary); margin-bottom: 24px;
+  }
+
+  .section-heading .icon-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent-blue);
+    box-shadow: 0 0 8px var(--accent-blue);
+  }
+
+  .meta-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: var(--border); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+  }
+
+  .meta-cell {
+    background: var(--bg-card); padding: 18px 20px;
+  }
+  .meta-cell-label { font-size: 10px; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; font-family: 'IBM Plex Mono', monospace; }
+  .meta-cell-value { font-size: 14px; color: var(--text-primary); font-weight: 600; }
+
+  /* ── CONTENT SECTIONS ── */
+  .content-section { padding: 48px 60px; border-bottom: 1px solid var(--border); }
+
+  /* ── ROLES TABLE ── */
+  .data-table {
+    width: 100%; border-collapse: collapse;
+    border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+  }
+
+  .data-table th {
+    background: var(--bg-elevated); padding: 12px 16px;
+    text-align: left; font-size: 10px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); font-family: 'IBM Plex Mono', monospace;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .data-table td {
+    padding: 13px 16px; border-bottom: 1px solid var(--border);
+    font-size: 13px; color: var(--text-secondary); vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .data-table tr:last-child td { border-bottom: none; }
+
+  .data-table tr:hover td { background: rgba(58,143,245,0.04); color: var(--text-primary); }
+
+  .role-name {
+    font-weight: 600; color: var(--text-primary); font-size: 13px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .role-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+  .module-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .module-tag {
+    padding: 2px 8px; border-radius: 4px;
+    font-size: 10px; font-family: 'IBM Plex Mono', monospace;
+    background: var(--bg-elevated); color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+
+  /* ── MODULE SUMMARY ── */
+  .module-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+  }
+
+  .module-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 20px;
+    display: flex; align-items: center; gap: 16px;
+    transition: all 0.2s;
+  }
+
+  .module-card:hover {
+    border-color: var(--border-bright);
+    background: var(--bg-card-hover);
+    box-shadow: var(--glow-blue);
+    transform: translateY(-1px);
+  }
+
+  .module-num {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500;
+    color: var(--accent-blue); background: rgba(58,143,245,0.1);
+    border: 1px solid rgba(58,143,245,0.2);
+    width: 36px; height: 36px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .module-info { flex: 1; min-width: 0; }
+  .module-name { font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+  .module-meta { display: flex; gap: 12px; align-items: center; }
+  .module-stories-badge {
+    font-size: 10px; font-family: 'IBM Plex Mono', monospace;
+    color: var(--accent-cyan); background: rgba(0,212,232,0.08);
+    padding: 1px 7px; border-radius: 4px; border: 1px solid rgba(0,212,232,0.15);
+  }
+
+  /* ── CONVENTIONS ── */
+  .conventions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+  .conv-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px;
+  }
+
+  .conv-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .conv-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+  .conv-title { font-size: 13px; font-weight: 700; color: var(--text-primary); font-family: 'Syne', sans-serif; }
+
+  .story-format-box {
+    background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px;
+    font-style: italic; color: var(--text-secondary); font-size: 13px;
+    line-height: 2;
+  }
+
+  .story-format-box strong { color: var(--accent-cyan); font-style: normal; }
+
+  .priority-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .priority-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 12px; border-radius: 8px; border: 1px solid transparent;
+  }
+
+  .priority-badge {
+    padding: 2px 10px; border-radius: 20px; font-size: 10px; font-weight: 600;
+    font-family: 'IBM Plex Mono', monospace; white-space: nowrap; flex-shrink: 0;
+  }
+
+  .ph { background: var(--tag-high-bg); color: var(--tag-high-txt); border: 1px solid rgba(34,199,122,0.2); }
+  .pm { background: var(--tag-medium-bg); color: var(--tag-medium-txt); border: 1px solid rgba(240,180,41,0.2); }
+  .pl { background: var(--tag-low-bg); color: var(--tag-low-txt); border: 1px solid rgba(99,140,200,0.15); }
+
+  .priority-item .ph-bg { background: rgba(34,199,122,0.04); border-color: rgba(34,199,122,0.1); }
+  .priority-item .pm-bg { background: rgba(240,180,41,0.04); border-color: rgba(240,180,41,0.1); }
+
+  .priority-desc { font-size: 12px; color: var(--text-secondary); }
+
+  .points-list { display: flex; flex-direction: column; gap: 8px; }
+
+  .point-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 8px 12px; background: var(--bg-elevated); border-radius: 8px;
+  }
+
+  .point-val {
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px;
+    color: var(--accent-gold); width: 28px; text-align: right; flex-shrink: 0;
+  }
+
+  .point-meta { flex: 1; min-width: 0; }
+  .point-complexity { font-size: 12px; font-weight: 600; color: var(--text-primary); }
+  .point-effort { font-size: 11px; color: var(--text-muted); font-family: 'IBM Plex Mono', monospace; }
+
+  /* ── STORIES SECTION ── */
+  .stories-section { padding: 48px 60px; }
+
+  .module-block { margin-bottom: 56px; }
+
+  .module-header {
+    display: flex; align-items: center; gap: 16px;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, rgba(58,143,245,0.08) 0%, transparent 60%);
+    border: 1px solid var(--border-bright); border-radius: 14px;
+    margin-bottom: 20px;
+    position: relative; overflow: hidden;
+  }
+
+  .module-header::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: linear-gradient(180deg, var(--accent-blue), var(--accent-cyan));
+  }
+
+  .mh-num {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 500;
+    color: var(--accent-blue); letter-spacing: 0.05em;
+  }
+
+  .mh-title {
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 18px;
+    color: var(--text-primary); flex: 1;
+  }
+
+  .mh-count {
+    font-size: 11px; color: var(--text-muted); font-family: 'IBM Plex Mono', monospace;
+    background: var(--bg-elevated); padding: 4px 10px; border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+
+  .story-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 14px; margin-bottom: 16px;
+    overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .story-card:hover { border-color: var(--border-bright); box-shadow: var(--glow-blue); }
+
+  .story-header {
+    display: flex; align-items: center; gap: 0;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer; user-select: none;
+  }
+
+  .story-id {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500;
+    color: var(--accent-cyan); background: rgba(0,212,232,0.08);
+    padding: 3px 9px; border-radius: 6px; border: 1px solid rgba(0,212,232,0.15);
+    margin-right: 12px; white-space: nowrap;
+  }
+
+  .story-title {
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px;
+    color: var(--text-primary); flex: 1; min-width: 0;
+  }
+
+  .story-badges { display: flex; align-items: center; gap: 8px; margin-left: 12px; flex-shrink: 0; }
+
+  .pts-badge {
+    display: flex; align-items: center; gap: 4px;
+    padding: 3px 9px; border-radius: 6px;
+    background: rgba(240,180,41,0.08); border: 1px solid rgba(240,180,41,0.2);
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--accent-gold);
+  }
+
+  .chevron {
+    width: 20px; height: 20px; color: var(--text-muted);
+    transition: transform 0.2s; margin-left: 8px; flex-shrink: 0;
+  }
+
+  .story-card.open .chevron { transform: rotate(180deg); }
+
+  .story-body {
+    display: none; padding: 0;
+  }
+
+  .story-card.open .story-body { display: block; }
+
+  .story-user-statement {
+    margin: 20px 20px 0;
+    padding: 16px 18px;
+    background: rgba(58,143,245,0.05); border: 1px solid rgba(58,143,245,0.15);
+    border-radius: 10px; border-left: 3px solid var(--accent-blue);
+    font-size: 13px; color: var(--text-secondary); line-height: 1.7;
+  }
+
+  .story-user-statement strong { color: var(--accent-blue); }
+  .story-user-statement em { color: var(--text-primary); font-style: normal; font-weight: 500; }
+
+  .story-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    padding: 16px 20px 0;
+  }
+
+  .story-field {
+    background: var(--bg-elevated); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 16px;
+  }
+
+  .field-label {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace;
+    display: flex; align-items: center; gap: 6px;
+  }
+
+  .field-label svg { opacity: 0.7; }
+
+  .condition-list { display: flex; flex-direction: column; gap: 6px; }
+
+  .cond-item {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: 12px; color: var(--text-secondary); line-height: 1.5;
+  }
+
+  .cond-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    margin-top: 6px; flex-shrink: 0;
+  }
+  .cond-pre .cond-dot { background: var(--accent-blue); }
+  .cond-post .cond-dot { background: var(--accent-green); }
+
+  .criteria-list { display: flex; flex-direction: column; gap: 8px; }
+
+  .criterion {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 12px; color: var(--text-secondary); line-height: 1.5;
+    padding: 8px 10px; background: rgba(34,199,122,0.04);
+    border-radius: 7px; border: 1px solid rgba(34,199,122,0.08);
+  }
+
+  .criterion-num {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600;
+    color: var(--accent-green); min-width: 20px;
+  }
+
+  .edge-cases-section {
+    margin: 16px 20px 20px;
+    padding: 16px;
+    background: rgba(167,139,250,0.04); border: 1px solid rgba(167,139,250,0.12);
+    border-radius: 10px;
+  }
+
+  .edge-label {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent-purple); margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace;
+    display: flex; align-items: center; gap: 6px;
+  }
+
+  .edge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+  .edge-item {
+    background: var(--bg-elevated); border: 1px solid rgba(167,139,250,0.1);
+    border-radius: 8px; padding: 10px 12px;
+    font-size: 11px; color: var(--text-secondary); line-height: 1.5;
+  }
+
+  /* ── SUMMARY TABLE ── */
+  .summary-table-wrap { overflow-x: auto; }
+
+  .summary-tbl {
+    width: 100%; border-collapse: collapse;
+    border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+    font-size: 12px;
+  }
+
+  .summary-tbl thead { background: var(--bg-elevated); }
+  .summary-tbl th {
+    padding: 11px 14px; text-align: left;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-muted); font-family: 'IBM Plex Mono', monospace;
+    border-bottom: 1px solid var(--border-bright);
+  }
+
+  .summary-tbl td {
+    padding: 10px 14px; border-bottom: 1px solid var(--border);
+    color: var(--text-secondary); vertical-align: middle;
+  }
+
+  .summary-tbl tr:last-child td { border-bottom: none; }
+  .summary-tbl tr:hover td { background: rgba(58,143,245,0.04); }
+
+  .story-id-cell {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500;
+    color: var(--accent-cyan);
+  }
+
+  .pts-chip {
+    display: inline-flex; padding: 2px 8px; border-radius: 4px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600;
+    background: rgba(240,180,41,0.08); color: var(--accent-gold);
+    border: 1px solid rgba(240,180,41,0.2);
+  }
+
+  /* ── SPRINT PLAN ── */
+  .sprint-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+
+  .sprint-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px; position: relative; overflow: hidden; transition: all 0.2s;
+  }
+
+  .sprint-card:hover { border-color: var(--border-bright); transform: translateY(-2px); box-shadow: var(--glow-blue); }
+
+  .sprint-num {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--text-muted);
+    margin-bottom: 6px; letter-spacing: 0.08em;
+  }
+
+  .sprint-points {
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 28px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    line-height: 1; margin-bottom: 4px;
+  }
+
+  .sprint-pts-label { font-size: 10px; color: var(--text-muted); margin-bottom: 12px; }
+  .sprint-focus { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+
+  .sprint-stories {
+    display: flex; flex-wrap: wrap; gap: 4px; margin-top: 12px;
+  }
+
+  .sprint-story-tag {
+    padding: 1px 6px; border-radius: 4px;
+    background: var(--bg-elevated); color: var(--text-muted);
+    font-size: 9px; font-family: 'IBM Plex Mono', monospace;
+    border: 1px solid var(--border);
+  }
+
+  /* ── GLOSSARY ── */
+  .glossary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+  .gloss-item {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 16px; display: flex; gap: 12px;
+  }
+
+  .gloss-term {
+    font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600;
+    color: var(--accent-gold); min-width: 60px;
+  }
+
+  .gloss-def { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* ── SIGN-OFF ── */
+  .signoff-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+
+  .signoff-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px;
+  }
+
+  .signoff-role { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; font-family: 'IBM Plex Mono', monospace; }
+  .signoff-name { font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+  .signoff-sub { font-size: 11px; color: var(--text-muted); }
+
+  .signoff-status {
+    display: inline-flex; align-items: center; gap: 5px;
+    margin-top: 10px; padding: 3px 10px; border-radius: 20px;
+    font-size: 10px; font-weight: 600; font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .status-approved { background: var(--tag-high-bg); color: var(--tag-high-txt); border: 1px solid rgba(34,199,122,0.2); }
+  .status-pending { background: rgba(58,143,245,0.08); color: var(--text-muted); border: 1px solid var(--border); }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-left: 0;
+    padding: 24px 60px;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--bg-surface);
+  }
+
+  .footer-doc-id { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--text-muted); }
+  .footer-copy { font-size: 11px; color: var(--text-muted); }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg-base); }
+  ::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 3px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1100px) {
+    .sidebar { width: 220px; }
+    .main { margin-left: 220px; }
+    .hero, .content-section, .meta-section, .stories-section { padding-left: 36px; padding-right: 36px; }
+    .sprint-grid { grid-template-columns: repeat(3, 1fr); }
+    .story-grid { grid-template-columns: 1fr; }
+    .edge-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 820px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; }
+    .hero, .content-section, .meta-section, .stories-section { padding-left: 24px; padding-right: 24px; }
+    .module-grid, .glossary-grid, .signoff-grid { grid-template-columns: 1fr; }
+    .sprint-grid { grid-template-columns: repeat(2, 1fr); }
+    .conventions-grid { grid-template-columns: 1fr; }
+    .meta-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-stats { flex-wrap: wrap; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeSlide { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .module-block { animation: fadeSlide 0.4s ease both; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════ SIDEBAR ══════════════════════ -->
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <div class="logo-mark">
+      <div class="logo-icon">BL</div>
+      <div>
+        <div class="brand-text">Banking Loan<br>Origination System</div>
+      </div>
+    </div>
+    <div class="doc-meta-pill">
+      <svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>
+      USR-BANK-2025-001
+    </div>
+  </div>
+
+  <div class="nav-section-label">Document</div>
+  <a href="#overview" class="nav-item">
+    <div class="nav-module-badge">Ov</div> Overview
+  </a>
+  <a href="#roles" class="nav-item">
+    <div class="nav-module-badge">Ro</div> User Roles
+  </a>
+  <a href="#modules" class="nav-item">
+    <div class="nav-module-badge">Mo</div> Module Summary
+  </a>
+  <a href="#conventions" class="nav-item">
+    <div class="nav-module-badge">Cv</div> Conventions
+  </a>
+
+  <div class="nav-spacer"></div>
+  <div class="nav-section-label">User Stories</div>
+  <a href="#m1" class="nav-item"><div class="nav-module-badge">M1</div> Registration & KYC</a>
+  <a href="#m2" class="nav-item"><div class="nav-module-badge">M2</div> Loan Application</a>
+  <a href="#m3" class="nav-item"><div class="nav-module-badge">M3</div> Credit Assessment</a>
+  <a href="#m4" class="nav-item"><div class="nav-module-badge">M4</div> Approval Workflow</a>
+  <a href="#m5" class="nav-item"><div class="nav-module-badge">M5</div> Document & Legal</a>
+  <a href="#m6" class="nav-item"><div class="nav-module-badge">M6</div> Disbursement</a>
+  <a href="#m7" class="nav-item"><div class="nav-module-badge">M7</div> Repayment & EMI</a>
+  <a href="#m8" class="nav-item"><div class="nav-module-badge">M8</div> Notifications</a>
+  <a href="#m9" class="nav-item"><div class="nav-module-badge">M9</div> Admin & Reporting</a>
+  <a href="#m10" class="nav-item"><div class="nav-module-badge">M10</div> System Admin</a>
+
+  <div class="nav-spacer"></div>
+  <div class="nav-section-label">Reference</div>
+  <a href="#summary" class="nav-item"><div class="nav-module-badge">Su</div> Summary Table</a>
+  <a href="#sprints" class="nav-item"><div class="nav-module-badge">Sp</div> Sprint Plan</a>
+  <a href="#glossary" class="nav-item"><div class="nav-module-badge">Gl</div> Glossary</a>
+  <a href="#signoff" class="nav-item"><div class="nav-module-badge">So</div> Sign-Off</a>
+
+  <div class="nav-progress">
+    <div class="nav-progress-label">// Sprint Coverage</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:100%"></div></div>
+    <div class="progress-stats"><span>34</span> stories across <span>5</span> sprints</div>
+  </div>
+</nav>
+
+<!-- ══════════════════════ MAIN ══════════════════════ -->
+<main class="main">
+
+  <!-- HERO -->
+  <section class="hero" id="overview">
+    <div class="hero-eyebrow">
+      <span class="eyebrow-tag confidential">🔒 CONFIDENTIAL</span>
+      <span class="eyebrow-tag final">✓ FINAL</span>
+    </div>
+    <h1>Banking Loan<br><em>Origination System</em></h1>
+    <p class="hero-sub">User Stories Document — End-to-end loan lifecycle covering 34 stories across 10 modules, prepared for the Agile development team.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-val">34</div><div class="hero-stat-lbl">User Stories</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">10</div><div class="hero-stat-lbl">Modules</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">5</div><div class="hero-stat-lbl">Sprint Cycles</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">182</div><div class="hero-stat-lbl">Story Points</div></div>
+    </div>
+  </section>
+
+  <!-- META -->
+  <section class="meta-section">
+    <div class="section-heading"><div class="icon-dot"></div> Document Metadata</div>
+    <div class="meta-grid">
+      <div class="meta-cell"><div class="meta-cell-label">Document ID</div><div class="meta-cell-value" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--accent-cyan)">USR-BANK-2025-001</div></div>
+      <div class="meta-cell"><div class="meta-cell-label">Version</div><div class="meta-cell-value">1.0</div></div>
+      <div class="meta-cell"><div class="meta-cell-label">Prepared By</div><div class="meta-cell-value">Manmathnath Mahanta</div></div>
+      <div class="meta-cell"><div class="meta-cell-label">Role</div><div class="meta-cell-value">Business Analyst</div></div>
+      <div class="meta-cell"><div class="meta-cell-label">Date</div><div class="meta-cell-value">June 2025</div></div>
+      <div class="meta-cell"><div class="meta-cell-label">Status</div><div class="meta-cell-value"><span class="priority-badge ph">Final</span></div></div>
+      <div class="meta-cell"><div class="meta-cell-label">Total Stories</div><div class="meta-cell-value" style="color:var(--accent-gold);font-family:'Syne',sans-serif;font-size:20px;font-weight:800">34</div></div>
+      <div class="meta-cell"><div class="meta-cell-label">Modules</div><div class="meta-cell-value" style="color:var(--accent-gold);font-family:'Syne',sans-serif;font-size:20px;font-weight:800">10</div></div>
+    </div>
+  </section>
+
+  <!-- PURPOSE -->
+  <section class="content-section">
+    <div class="section-heading"><div class="icon-dot"></div> Purpose & System Overview</div>
+    <p style="font-size:13px;color:var(--text-secondary);max-width:780px;line-height:1.8;margin-bottom:16px">
+      This document contains the complete set of User Stories for the Banking Loan Origination System (BLOS). It serves as the primary requirements reference for the development team, QA team, and product stakeholders throughout the Agile development lifecycle.
+    </p>
+    <p style="font-size:13px;color:var(--text-secondary);max-width:780px;line-height:1.8">
+      BLOS automates the end-to-end loan lifecycle — from customer registration and KYC through credit assessment, approval workflow, legal verification, disbursement, and repayment management. The system supports multiple user roles including applicants, loan officers, credit analysts, branch managers, and administrators.
+    </p>
+  </section>
+
+  <!-- ROLES -->
+  <section class="content-section" id="roles">
+    <div class="section-heading"><div class="icon-dot"></div> User Roles</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>Description</th>
+          <th>Primary Modules</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#3a8ff5"></div>Loan Applicant</div></td><td>Customer applying for a loan product</td><td><div class="module-tags"><span class="module-tag">Registration</span><span class="module-tag">KYC</span><span class="module-tag">Application</span><span class="module-tag">Repayment</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#22c77a"></div>Loan Officer</div></td><td>Bank staff reviewing and processing applications</td><td><div class="module-tags"><span class="module-tag">Review</span><span class="module-tag">Approval</span><span class="module-tag">Disbursement</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#f0b429"></div>Credit Analyst</div></td><td>Specialist assessing applicant credit risk</td><td><div class="module-tags"><span class="module-tag">Credit Assessment</span><span class="module-tag">Risk Scoring</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#a78bfa"></div>Branch Manager</div></td><td>Manages team workload and monitors pipeline</td><td><div class="module-tags"><span class="module-tag">Approval Workflow</span><span class="module-tag">Admin</span><span class="module-tag">Reporting</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#00d4e8"></div>Credit Committee</div></td><td>Senior body approving high-value loan applications</td><td><div class="module-tags"><span class="module-tag">Approval Workflow</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#ff5b5b"></div>Legal Officer</div></td><td>Conducts legal and technical property verification</td><td><div class="module-tags"><span class="module-tag">Document Collection</span><span class="module-tag">Legal</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#f0b429"></div>Product Admin</div></td><td>Configures loan products, rates, and fee structures</td><td><div class="module-tags"><span class="module-tag">System Administration</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#3a8ff5"></div>System Admin</div></td><td>Manages user roles, workflows, and system rules</td><td><div class="module-tags"><span class="module-tag">System Administration</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#22c77a"></div>Compliance Officer</div></td><td>Monitors audit trails and regulatory compliance</td><td><div class="module-tags"><span class="module-tag">Admin & Reporting</span></div></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- MODULE SUMMARY -->
+  <section class="content-section" id="modules">
+    <div class="section-heading"><div class="icon-dot"></div> Module Summary</div>
+    <div class="module-grid">
+      <div class="module-card"><div class="module-num">M1</div><div class="module-info"><div class="module-name">Customer Registration & KYC</div><div class="module-meta"><span class="module-stories-badge">4 stories</span><span class="priority-badge ph">High</span></div></div></div>
+      <div class="module-card"><div class="module-num">M2</div><div class="module-info"><div class="module-name">Loan Application</div><div class="module-meta"><span class="module-stories-badge">4 stories</span><span class="priority-badge ph">High</span></div></div></div>
+      <div class="module-card"><div class="module-num">M3</div><div class="module-info"><div class="module-name">Credit Assessment & Eligibility</div><div class="module-meta"><span class="module-stories-badge">4 stories</span><span class="priority-badge ph">High</span></div></div></div>
+      <div class="module-card"><div class="module-num">M4</div><div class="module-info"><div class="module-name">Loan Approval Workflow</div><div class="module-meta"><span class="module-stories-badge">4 stories</span><span class="priority-badge ph">High</span></div></div></div>
+      <div class="module-card"><div class="module-num">M5</div><div class="module-info"><div class="module-name">Document Collection & Legal</div><div class="module-meta"><span class="module-stories-badge">3 stories</span><span class="priority-badge ph">High</span></div></div></div>
+      <div class="module-card"><div class="module-num">M6</div><div class="module-info"><div class="module-name">Loan Disbursement</div><div class="module-meta"><span class="module-stories-badge">3 stories</span><span class="priority-badge ph">High</span></div></div></div>
+      <div class="module-card"><div class="module-num">M7</div><div class="module-info"><div class="module-name">Repayment & EMI Management</div><div class="module-meta"><span class="module-stories-badge">3 stories</span><span class="priority-badge ph">High</span></div></div></div>
+      <div class="module-card"><div class="module-num">M8</div><div class="module-info"><div class="module-name">Notifications & Communication</div><div class="module-meta"><span class="module-stories-badge">3 stories</span><span class="priority-badge ph">High</span></div></div></div>
+      <div class="module-card"><div class="module-num">M9</div><div class="module-info"><div class="module-name">Admin & Reporting</div><div class="module-meta"><span class="module-stories-badge">3 stories</span><span class="priority-badge ph">High</span></div></div></div>
+      <div class="module-card"><div class="module-num">M10</div><div class="module-info"><div class="module-name">System Administration</div><div class="module-meta"><span class="module-stories-badge">3 stories</span><span class="priority-badge ph">High</span></div></div></div>
+    </div>
+  </section>
+
+  <!-- CONVENTIONS -->
+  <section class="content-section" id="conventions">
+    <div class="section-heading"><div class="icon-dot"></div> Story Conventions</div>
+    <div class="conventions-grid">
+      <div class="conv-card">
+        <div class="conv-header">
+          <div class="conv-icon" style="background:rgba(58,143,245,0.1)">📝</div>
+          <div class="conv-title">Standard Format</div>
+        </div>
+        <div class="story-format-box">
+          <strong>As a</strong> [user role],<br>
+          <strong>I want to</strong> [goal / action],<br>
+          <em>So that [benefit / business value].</em>
+        </div>
+      </div>
+      <div class="conv-card">
+        <div class="conv-header">
+          <div class="conv-icon" style="background:rgba(34,199,122,0.1)">🎯</div>
+          <div class="conv-title">Priority Definitions</div>
+        </div>
+        <div class="priority-list">
+          <div class="priority-item"><span class="priority-badge ph">High</span><div class="priority-desc">Must-have for MVP launch. Core business functionality is blocked without this story.</div></div>
+          <div class="priority-item"><span class="priority-badge pm">Medium</span><div class="priority-desc">Important but can be deferred to Sprint 2 or 3 without blocking the critical path.</div></div>
+          <div class="priority-item"><span class="priority-badge pl">Low</span><div class="priority-desc">Nice-to-have enhancement. Suitable for backlog and future release planning.</div></div>
+        </div>
+      </div>
+      <div class="conv-card">
+        <div class="conv-header">
+          <div class="conv-icon" style="background:rgba(240,180,41,0.1)">⚡</div>
+          <div class="conv-title">Story Points Reference</div>
+        </div>
+        <div class="points-list">
+          <div class="point-row"><div class="point-val">3</div><div class="point-meta"><div class="point-complexity">Small</div><div class="point-effort">0.5 – 1 day</div></div></div>
+          <div class="point-row"><div class="point-val">5</div><div class="point-meta"><div class="point-complexity">Medium</div><div class="point-effort">1 – 2 days</div></div></div>
+          <div class="point-row"><div class="point-val">8</div><div class="point-meta"><div class="point-complexity">Large</div><div class="point-effort">3 – 5 days</div></div></div>
+          <div class="point-row"><div class="point-val">13</div><div class="point-meta"><div class="point-complexity">Very Large — Split before sprint</div><div class="point-effort">5+ days</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ USER STORIES ═══════ -->
+  <section class="stories-section" id="stories">
+    <div class="section-heading" style="margin-bottom:32px"><div class="icon-dot"></div> User Stories</div>
+
+    <!-- MODULE 1 -->
+    <div class="module-block" id="m1">
+      <div class="module-header">
+        <div><div class="mh-num">MODULE 01</div><div class="mh-title">Customer Registration & KYC</div></div>
+        <div class="mh-count">4 stories · 21 pts</div>
+      </div>
+
+      <!-- US-001 -->
+      <div class="story-card" onclick="toggleStory(this)">
+        <div class="story-header">
+          <span class="story-id">US-001</span>
+          <span class="story-title">New Customer Registration</span>
+          <div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 5 pts</span></div>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="story-body">
+          <div class="story-user-statement">As a <strong>new loan applicant</strong>, I want to <em>register on the banking portal using my email and mobile number</em>, so that I can access loan application services.</div>
+          <div class="story-grid">
+            <div class="story-field">
+              <div class="field-label">Pre-conditions</div>
+              <div class="condition-list cond-pre">
+                <div class="cond-item"><div class="cond-dot"></div>User has a valid email address and active mobile number</div>
+                <div class="cond-item"><div class="cond-dot"></div>Bank portal is accessible and registration page is live</div>
+                <div class="cond-item"><div class="cond-dot"></div>No existing account linked to the same email or mobile</div>
+              </div>
+            </div>
+            <div class="story-field">
+              <div class="field-label">Post-conditions</div>
+              <div class="condition-list cond-post">
+                <div class="cond-item"><div class="cond-dot"></div>New user account created and stored in the system</div>
+                <div class="cond-item"><div class="cond-dot"></div>Welcome email sent to registered email address</div>
+                <div class="cond-item"><div class="cond-dot"></div>User redirected to dashboard or KYC initiation page</div>
+              </div>
+            </div>
+            <div class="story-field" style="grid-column:1/-1">
+              <div class="field-label">Acceptance Criteria</div>
+              <div class="criteria-list">
+                <div class="criterion"><span class="criterion-num">AC1</span>System validates email format and mobile number uniqueness</div>
+                <div class="criterion"><span class="criterion-num">AC2</span>OTP sent to mobile within 30 seconds</div>
+                <div class="criterion"><span class="criterion-num">AC3</span>Account created upon successful OTP verification</div>
+                <div class="criterion"><span class="criterion-num">AC4</span>Confirmation email sent to registered email address</div>
+              </div>
+            </div>
+          </div>
+          <div class="edge-cases-section">
+            <div class="edge-label">⚠ Edge Cases</div>
+            <div class="edge-grid">
+              <div class="edge-item">Mobile number already registered — show error and suggest login</div>
+              <div class="edge-item">OTP not received within 30 seconds — provide resend OTP option</div>
+              <div class="edge-item">User submits form with invalid email format — inline validation error</div>
+              <div class="edge-item">User attempts to register with a disposable or temporary email address</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- US-002 -->
+      <div class="story-card" onclick="toggleStory(this)">
+        <div class="story-header">
+          <span class="story-id">US-002</span>
+          <span class="story-title">Aadhaar-Based eKYC</span>
+          <div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 8 pts</span></div>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="story-body">
+          <div class="story-user-statement">As a <strong>loan applicant</strong>, I want to <em>complete KYC verification using my Aadhaar number</em>, so that my identity is verified digitally without visiting a branch.</div>
+          <div class="story-grid">
+            <div class="story-field">
+              <div class="field-label">Pre-conditions</div>
+              <div class="condition-list cond-pre">
+                <div class="cond-item"><div class="cond-dot"></div>Applicant has a registered account and is logged in</div>
+                <div class="cond-item"><div class="cond-dot"></div>Aadhaar number is linked to a valid active mobile number</div>
+                <div class="cond-item"><div class="cond-dot"></div>UIDAI API integration is active and available</div>
+              </div>
+            </div>
+            <div class="story-field">
+              <div class="field-label">Post-conditions</div>
+              <div class="condition-list cond-post">
+                <div class="cond-item"><div class="cond-dot"></div>KYC status updated to Verified in applicant profile</div>
+                <div class="cond-item"><div class="cond-dot"></div>Aadhaar verification record stored with timestamp</div>
+                <div class="cond-item"><div class="cond-dot"></div>Applicant unlocked to proceed with loan application</div>
+              </div>
+            </div>
+            <div class="story-field" style="grid-column:1/-1">
+              <div class="field-label">Acceptance Criteria</div>
+              <div class="criteria-list">
+                <div class="criterion"><span class="criterion-num">AC1</span>Aadhaar number validated against UIDAI database</div>
+                <div class="criterion"><span class="criterion-num">AC2</span>OTP sent to Aadhaar-linked mobile</div>
+                <div class="criterion"><span class="criterion-num">AC3</span>KYC status updated to Verified on successful authentication</div>
+                <div class="criterion"><span class="criterion-num">AC4</span>Account locked after 3 consecutive failed attempts</div>
+              </div>
+            </div>
+          </div>
+          <div class="edge-cases-section">
+            <div class="edge-label">⚠ Edge Cases</div>
+            <div class="edge-grid">
+              <div class="edge-item">Aadhaar number does not match UIDAI database — show specific error</div>
+              <div class="edge-item">Mobile number not linked to Aadhaar — prompt to update at UIDAI portal</div>
+              <div class="edge-item">Account locked after 3 consecutive failed OTP attempts — show unlock instructions</div>
+              <div class="edge-item">UIDAI API timeout — display system unavailability with retry option</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- US-003 -->
+      <div class="story-card" onclick="toggleStory(this)">
+        <div class="story-header">
+          <span class="story-id">US-003</span>
+          <span class="story-title">Document Upload for KYC</span>
+          <div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 5 pts</span></div>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="story-body">
+          <div class="story-user-statement">As a <strong>loan applicant</strong>, I want to <em>upload identity and address proof documents during KYC</em>, so that the bank can verify my credentials for loan processing.</div>
+          <div class="story-grid">
+            <div class="story-field">
+              <div class="field-label">Pre-conditions</div>
+              <div class="condition-list cond-pre">
+                <div class="cond-item"><div class="cond-dot"></div>Applicant is logged in and KYC is in Pending or Incomplete status</div>
+                <div class="cond-item"><div class="cond-dot"></div>Document upload section is accessible on the KYC page</div>
+                <div class="cond-item"><div class="cond-dot"></div>Supported file formats and size limits are displayed</div>
+              </div>
+            </div>
+            <div class="story-field">
+              <div class="field-label">Post-conditions</div>
+              <div class="condition-list cond-post">
+                <div class="cond-item"><div class="cond-dot"></div>Documents stored securely in the document vault</div>
+                <div class="cond-item"><div class="cond-dot"></div>Documents tagged to applicant profile with upload timestamp</div>
+                <div class="cond-item"><div class="cond-dot"></div>Applicant KYC status updated to Under Review</div>
+              </div>
+            </div>
+            <div class="story-field" style="grid-column:1/-1">
+              <div class="field-label">Acceptance Criteria</div>
+              <div class="criteria-list">
+                <div class="criterion"><span class="criterion-num">AC1</span>System accepts PDF, JPG, PNG formats up to 5MB per document</div>
+                <div class="criterion"><span class="criterion-num">AC2</span>Documents tagged to applicant profile with upload timestamp</div>
+                <div class="criterion"><span class="criterion-num">AC3</span>Upload confirmation shown with document preview</div>
+                <div class="criterion"><span class="criterion-num">AC4</span>Re-upload allowed if document is rejected by officer</div>
+              </div>
+            </div>
+          </div>
+          <div class="edge-cases-section">
+            <div class="edge-label">⚠ Edge Cases</div>
+            <div class="edge-grid">
+              <div class="edge-item">File size exceeds 5MB limit — show error with size reduction guidance</div>
+              <div class="edge-item">Unsupported file format uploaded — show accepted format list</div>
+              <div class="edge-item">Document appears blurry or unreadable — officer can flag for re-upload</div>
+              <div class="edge-item">Applicant uploads the wrong document type against a field</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- US-004 -->
+      <div class="story-card" onclick="toggleStory(this)">
+        <div class="story-header">
+          <span class="story-id">US-004</span>
+          <span class="story-title">KYC Status Tracking</span>
+          <div class="story-badges"><span class="priority-badge pm">Medium</span><span class="pts-badge">⚡ 3 pts</span></div>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="story-body">
+          <div class="story-user-statement">As a <strong>loan applicant</strong>, I want to <em>view real-time status of my KYC verification</em>, so that I know what actions are pending on my end.</div>
+          <div class="story-grid">
+            <div class="story-field">
+              <div class="field-label">Pre-conditions</div>
+              <div class="condition-list cond-pre">
+                <div class="cond-item"><div class="cond-dot"></div>Applicant has submitted KYC documents</div>
+                <div class="cond-item"><div class="cond-dot"></div>Applicant is logged in to the portal</div>
+              </div>
+            </div>
+            <div class="story-field">
+              <div class="field-label">Post-conditions</div>
+              <div class="condition-list cond-post">
+                <div class="cond-item"><div class="cond-dot"></div>Applicant views current KYC status on dashboard</div>
+                <div class="cond-item"><div class="cond-dot"></div>Pending action items are clearly listed if status is Rejected</div>
+              </div>
+            </div>
+            <div class="story-field" style="grid-column:1/-1">
+              <div class="field-label">Acceptance Criteria</div>
+              <div class="criteria-list">
+                <div class="criterion"><span class="criterion-num">AC1</span>Status displays: Pending, Under Review, Verified, Rejected</div>
+                <div class="criterion"><span class="criterion-num">AC2</span>Rejection reason shown with resubmission option</div>
+                <div class="criterion"><span class="criterion-num">AC3</span>Email and SMS notification triggered on every status change</div>
+              </div>
+            </div>
+          </div>
+          <div class="edge-cases-section">
+            <div class="edge-label">⚠ Edge Cases</div>
+            <div class="edge-grid">
+              <div class="edge-item">Status stuck in Under Review beyond SLA — escalation alert shown to applicant</div>
+              <div class="edge-item">KYC rejected with no reason provided — system flags for supervisor review</div>
+              <div class="edge-item">Applicant resubmits documents after rejection but status does not update — trigger manual check alert</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /Module 1 -->
+
+    <!-- MODULE 2 -->
+    <div class="module-block" id="m2">
+      <div class="module-header">
+        <div><div class="mh-num">MODULE 02</div><div class="mh-title">Loan Application</div></div>
+        <div class="mh-count">4 stories · 19 pts</div>
+      </div>
+
+      <div class="story-card" onclick="toggleStory(this)">
+        <div class="story-header"><span class="story-id">US-005</span><span class="story-title">Loan Product Selection</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 3 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="story-body">
+          <div class="story-user-statement">As a <strong>loan applicant</strong>, I want to <em>browse and select from available loan products (Home, Personal, Auto, Business)</em>, so that I can choose the loan type that best suits my financial need.</div>
+          <div class="story-grid">
+            <div class="story-field"><div class="field-label">Pre-conditions</div><div class="condition-list cond-pre"><div class="cond-item"><div class="cond-dot"></div>KYC is verified and applicant is eligible to apply</div><div class="cond-item"><div class="cond-dot"></div>Active loan products are configured in the system</div><div class="cond-item"><div class="cond-dot"></div>Applicant is logged in to the portal</div></div></div>
+            <div class="story-field"><div class="field-label">Post-conditions</div><div class="condition-list cond-post"><div class="cond-item"><div class="cond-dot"></div>Selected loan product is saved to the in-progress application</div><div class="cond-item"><div class="cond-dot"></div>Applicant redirected to application form pre-loaded with selected product</div></div></div>
+            <div class="story-field" style="grid-column:1/-1"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>All active loan products shown with key parameters</div><div class="criterion"><span class="criterion-num">AC2</span>Eligibility criteria visible before starting application</div><div class="criterion"><span class="criterion-num">AC3</span>Compare feature supports up to 3 products side-by-side</div></div></div>
+          </div>
+          <div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">No loan products currently active — show maintenance message</div><div class="edge-item">Applicant selects a product they are ineligible for — show eligibility mismatch message</div><div class="edge-item">Applicant changes product selection midway — confirm change and reset form fields</div></div></div>
+        </div>
+      </div>
+
+      <div class="story-card" onclick="toggleStory(this)">
+        <div class="story-header"><span class="story-id">US-006</span><span class="story-title">Loan Application Form Submission</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 8 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="story-body">
+          <div class="story-user-statement">As a <strong>loan applicant</strong>, I want to <em>fill and submit a loan application with personal, employment, and financial details</em>, so that my application is formally initiated for processing.</div>
+          <div class="story-grid">
+            <div class="story-field"><div class="field-label">Pre-conditions</div><div class="condition-list cond-pre"><div class="cond-item"><div class="cond-dot"></div>KYC is verified</div><div class="cond-item"><div class="cond-dot"></div>Applicant has selected a loan product</div><div class="cond-item"><div class="cond-dot"></div>Applicant is logged in with an active session</div></div></div>
+            <div class="story-field"><div class="field-label">Post-conditions</div><div class="condition-list cond-post"><div class="cond-item"><div class="cond-dot"></div>Application record created with Submitted status</div><div class="cond-item"><div class="cond-dot"></div>Unique Application Reference Number generated</div><div class="cond-item"><div class="cond-dot"></div>Application assigned to unassigned queue for loan officer</div></div></div>
+            <div class="story-field" style="grid-column:1/-1"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>All mandatory fields validated before submission</div><div class="criterion"><span class="criterion-num">AC2</span>Application auto-saved as draft every 5 minutes</div><div class="criterion"><span class="criterion-num">AC3</span>Unique Application Reference Number generated on submission</div><div class="criterion"><span class="criterion-num">AC4</span>Confirmation SMS and email sent to applicant immediately</div></div></div>
+          </div>
+          <div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Session timeout during form filling — draft saved, applicant prompted to resume</div><div class="edge-item">Mandatory field left blank — inline field-level validation shown</div><div class="edge-item">Applicant submits duplicate application within 30 days — warning shown</div><div class="edge-item">Income figures inconsistent with uploaded documents — flag for officer review</div></div></div>
+        </div>
+      </div>
+
+      <div class="story-card" onclick="toggleStory(this)">
+        <div class="story-header"><span class="story-id">US-007</span><span class="story-title">Co-Applicant Addition</span><div class="story-badges"><span class="priority-badge pm">Medium</span><span class="pts-badge">⚡ 5 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="story-body">
+          <div class="story-user-statement">As a <strong>primary loan applicant</strong>, I want to <em>add a co-applicant to my loan application</em>, so that loan eligibility can be calculated on combined income.</div>
+          <div class="story-grid">
+            <div class="story-field"><div class="field-label">Pre-conditions</div><div class="condition-list cond-pre"><div class="cond-item"><div class="cond-dot"></div>Primary applicant has an in-progress loan application</div><div class="cond-item"><div class="cond-dot"></div>Co-applicant has a valid mobile number or email</div><div class="cond-item"><div class="cond-dot"></div>Loan product supports co-applicant additions</div></div></div>
+            <div class="story-field"><div class="field-label">Post-conditions</div><div class="condition-list cond-post"><div class="cond-item"><div class="cond-dot"></div>Co-applicant record linked to the primary application</div><div class="cond-item"><div class="cond-dot"></div>Combined income reflected in updated eligibility calculation</div><div class="cond-item"><div class="cond-dot"></div>Co-applicant receives separate KYC initiation link</div></div></div>
+            <div class="story-field" style="grid-column:1/-1"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Co-applicant details captured with separate KYC flow</div><div class="criterion"><span class="criterion-num">AC2</span>Co-applicant receives digital consent notification</div><div class="criterion"><span class="criterion-num">AC3</span>Combined income reflected in eligibility calculation</div></div></div>
+          </div>
+          <div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Co-applicant mobile same as primary — show validation error</div><div class="edge-item">Co-applicant does not complete consent within 48 hours — send reminder or allow removal</div><div class="edge-item">Co-applicant has existing loan default — flag for credit analyst review</div></div></div>
+        </div>
+      </div>
+
+      <div class="story-card" onclick="toggleStory(this)">
+        <div class="story-header"><span class="story-id">US-008</span><span class="story-title">EMI Calculator</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 3 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="story-body">
+          <div class="story-user-statement">As a <strong>loan applicant</strong>, I want to <em>use an EMI calculator to select desired loan amount and tenure</em>, so that I can make an informed decision before submitting my application.</div>
+          <div class="story-grid">
+            <div class="story-field"><div class="field-label">Pre-conditions</div><div class="condition-list cond-pre"><div class="cond-item"><div class="cond-dot"></div>Loan product is selected with a defined interest rate configured</div><div class="cond-item"><div class="cond-dot"></div>Calculator is accessible from both product page and application form</div></div></div>
+            <div class="story-field"><div class="field-label">Post-conditions</div><div class="condition-list cond-post"><div class="cond-item"><div class="cond-dot"></div>EMI, total interest, and total repayment amount displayed</div><div class="cond-item"><div class="cond-dot"></div>Applicant can transfer selected values directly into application form</div></div></div>
+            <div class="story-field" style="grid-column:1/-1"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>EMI calculated in real-time based on amount, tenure, and interest rate</div><div class="criterion"><span class="criterion-num">AC2</span>Displays total interest payable and total repayment amount</div><div class="criterion"><span class="criterion-num">AC3</span>Selected values pre-populate the loan application form</div></div></div>
+          </div>
+          <div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Loan amount below minimum — show minimum limit</div><div class="edge-item">Tenure beyond maximum allowed — cap at maximum and notify</div><div class="edge-item">Interest rate changes after EMI calculated — recalculate and refresh</div><div class="edge-item">Zero or negative values entered — validation error shown</div></div></div>
+        </div>
+      </div>
+    </div><!-- /Module 2 -->
+
+    <!-- MODULE 3 -->
+    <div class="module-block" id="m3">
+      <div class="module-header">
+        <div><div class="mh-num">MODULE 03</div><div class="mh-title">Credit Assessment & Eligibility</div></div>
+        <div class="mh-count">4 stories · 26 pts</div>
+      </div>
+      <div class="story-card" onclick="toggleStory(this)">
+        <div class="story-header"><span class="story-id">US-009</span><span class="story-title">Credit Bureau Score Check</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 8 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="story-body">
+          <div class="story-user-statement">As a <strong>loan officer</strong>, I want to <em>trigger an automated credit score check for the applicant</em>, so that I can assess creditworthiness without manual bureau queries.</div>
+          <div class="story-grid">
+            <div class="story-field"><div class="field-label">Pre-conditions</div><div class="condition-list cond-pre"><div class="cond-item"><div class="cond-dot"></div>Loan application submitted and in Under Review status</div><div class="cond-item"><div class="cond-dot"></div>Applicant KYC is verified and PAN number is available</div><div class="cond-item"><div class="cond-dot"></div>CIBIL or Experian API credentials are active and integrated</div></div></div>
+            <div class="story-field"><div class="field-label">Post-conditions</div><div class="condition-list cond-post"><div class="cond-item"><div class="cond-dot"></div>Credit score fetched and stored against the application record</div><div class="cond-item"><div class="cond-dot"></div>Application automatically flagged if score is below threshold</div><div class="cond-item"><div class="cond-dot"></div>Credit bureau check timestamp logged for audit trail</div></div></div>
+            <div class="story-field" style="grid-column:1/-1"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>CIBIL/Experian API called automatically on application submission</div><div class="criterion"><span class="criterion-num">AC2</span>Credit score fetched within 60 seconds</div><div class="criterion"><span class="criterion-num">AC3</span>Score stored against application with timestamp</div><div class="criterion"><span class="criterion-num">AC4</span>Application flagged if score is below policy threshold (e.g., less than 650)</div></div></div>
+          </div>
+          <div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Bureau API unavailable — retry after 15 minutes, alert officer if still failing</div><div class="edge-item">Applicant has no credit history — score returned as -1 or NH, flag for manual assessment</div><div class="edge-item">Multiple applications for same PAN — consolidate and flag for deduplication</div><div class="edge-item">Score significantly different from applicant's declared score — flag for discrepancy review</div></div></div>
+        </div>
+      </div>
+      <div class="story-card" onclick="toggleStory(this)">
+        <div class="story-header"><span class="story-id">US-010</span><span class="story-title">Income & DTI Assessment</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 5 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="story-body">
+          <div class="story-user-statement">As a <strong>credit analyst</strong>, I want to <em>view applicant income documents and calculate debt-to-income ratio</em>, so that I can make an accurate credit decision.</div>
+          <div class="story-grid">
+            <div class="story-field"><div class="field-label">Pre-conditions</div><div class="condition-list cond-pre"><div class="cond-item"><div class="cond-dot"></div>Income documents (salary slips, ITR, bank statements) uploaded</div><div class="cond-item"><div class="cond-dot"></div>Application is assigned to a credit analyst</div></div></div>
+            <div class="story-field"><div class="field-label">Post-conditions</div><div class="condition-list cond-post"><div class="cond-item"><div class="cond-dot"></div>DTI ratio calculated and stored against application</div><div class="cond-item"><div class="cond-dot"></div>Assessment record created with analyst ID and timestamp</div><div class="cond-item"><div class="cond-dot"></div>Application status updated to Assessment Complete</div></div></div>
+            <div class="story-field" style="grid-column:1/-1"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>System extracts income data from uploaded salary slips and ITR documents</div><div class="criterion"><span class="criterion-num">AC2</span>Debt-to-income ratio calculated automatically</div><div class="criterion"><span class="criterion-num">AC3</span>Alert raised if DTI exceeds policy threshold (greater than 50%)</div></div></div>
+          </div>
+          <div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Salary slip for different employer than declared — flag for clarification</div><div class="edge-item">ITR income significantly lower than declared salary — trigger discrepancy alert</div><div class="edge-item">Self-employed with irregular income — DTI calculated using 2-year average</div><div class="edge-item">All income documents missing — application held and applicant notified</div></div></div>
+        </div>
+      </div>
+      <div class="story-card" onclick="toggleStory(this)">
+        <div class="story-header"><span class="story-id">US-011</span><span class="story-title">Eligibility Calculation</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 5 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="story-body">
+          <div class="story-user-statement">As a <strong>loan applicant</strong>, I want to <em>view my loan eligibility amount based on income and credit profile</em>, so that I know the maximum loan I qualify for before applying.</div>
+          <div class="story-grid">
+            <div class="story-field"><div class="field-label">Pre-conditions</div><div class="condition-list cond-pre"><div class="cond-item"><div class="cond-dot"></div>KYC is verified</div><div class="cond-item"><div class="cond-dot"></div>Income and employment details entered in the application</div><div class="cond-item"><div class="cond-dot"></div>Credit score check has been completed</div></div></div>
+            <div class="story-field"><div class="field-label">Post-conditions</div><div class="condition-list cond-post"><div class="cond-item"><div class="cond-dot"></div>Eligible loan range displayed on applicant dashboard</div><div class="cond-item"><div class="cond-dot"></div>Ineligible applicants shown actionable improvement recommendations</div></div></div>
+            <div class="story-field" style="grid-column:1/-1"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Eligibility calculated using income, obligations, and credit score</div><div class="criterion"><span class="criterion-num">AC2</span>Result displayed as eligible loan range with min and max amounts</div><div class="criterion"><span class="criterion-num">AC3</span>Ineligible applicants shown decline reason and improvement tips</div></div></div>
+          </div>
+          <div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Eligibility calculation engine unavailable — show cached estimate with disclaimer</div><div class="edge-item">Applicant income changes after initial eligibility check — recalculate on resubmission</div><div class="edge-item">Eligibility returns zero due to high obligations — show breakdown of deductions</div><div class="edge-item">Result significantly below requested amount — proactively offer lower loan suggestion</div></div></div>
+        </div>
+      </div>
+      <div class="story-card" onclick="toggleStory(this)">
+        <div class="story-header"><span class="story-id">US-012</span><span class="story-title">Risk Scoring & Grade Assignment</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 8 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="story-body">
+          <div class="story-user-statement">As a <strong>credit analyst</strong>, I want to <em>view an automated risk grade for each application</em>, so that I can prioritize and process applications by risk level.</div>
+          <div class="story-grid">
+            <div class="story-field"><div class="field-label">Pre-conditions</div><div class="condition-list cond-pre"><div class="cond-item"><div class="cond-dot"></div>Credit score check and income assessment completed</div><div class="cond-item"><div class="cond-dot"></div>Risk scoring model is configured and active</div><div class="cond-item"><div class="cond-dot"></div>Application is in Assessment stage</div></div></div>
+            <div class="story-field"><div class="field-label">Post-conditions</div><div class="condition-list cond-post"><div class="cond-item"><div class="cond-dot"></div>Risk grade (A/B/C/D) assigned and stored against application</div><div class="cond-item"><div class="cond-dot"></div>High-risk (C/D) applications auto-routed to senior analyst queue</div><div class="cond-item"><div class="cond-dot"></div>Risk grade visible to all authorized reviewers on dashboard</div></div></div>
+            <div class="story-field" style="grid-column:1/-1"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Risk grade assigned as A/B/C/D based on credit and financial profile</div><div class="criterion"><span class="criterion-num">AC2</span>Grade visible on application dashboard for all reviewers</div><div class="criterion"><span class="criterion-num">AC3</span>High-risk applications (grade C/D) auto-routed to senior analyst</div></div></div>
+          </div>
+          <div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Risk model returns inconclusive grade due to data gaps — flag for manual override</div><div class="edge-item">Risk grade changes after additional documents submitted — trigger reassessment</div><div class="edge-item">Senior analyst unavailable for C/D grade — auto-notify branch manager</div><div class="edge-item">Risk score contradicts credit bureau score — flag for dual review</div></div></div>
+        </div>
+      </div>
+    </div><!-- /Module 3 -->
+
+    <!-- MODULE 4 -->
+    <div class="module-block" id="m4">
+      <div class="module-header"><div><div class="mh-num">MODULE 04</div><div class="mh-title">Loan Approval Workflow</div></div><div class="mh-count">4 stories · 21 pts</div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-013</span><span class="story-title">Application Assignment to Loan Officer</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 3 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>branch manager</strong>, I want to <em>assign submitted loan applications to available loan officers</em>, so that workload is distributed fairly and processing begins without delay.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Applications visible in unassigned queue with submission timestamp</div><div class="criterion"><span class="criterion-num">AC2</span>Manual and auto-assignment modes both supported</div><div class="criterion"><span class="criterion-num">AC3</span>Officer notified via in-app notification and email on assignment</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">All officers at maximum capacity — alert manager with workload dashboard</div><div class="edge-item">Application assigned to officer who is on leave — auto-reassign or notify manager</div><div class="edge-item">Same application accidentally assigned to two officers — system prevents duplicate</div><div class="edge-item">Officer rejects assignment due to conflict of interest — reassignment triggered</div></div></div></div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-014</span><span class="story-title">Loan Officer Review & Recommendation</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 5 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>loan officer</strong>, I want to <em>review application details and submit recommendation (Approve, Reject, or Refer)</em>, so that the credit committee has my input for final decision.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Officer views all documents, credit score, and eligibility data</div><div class="criterion"><span class="criterion-num">AC2</span>Comments field is mandatory for Reject and Refer decisions</div><div class="criterion"><span class="criterion-num">AC3</span>Recommendation submitted with timestamp and officer ID logged</div><div class="criterion"><span class="criterion-num">AC4</span>SLA breach alert triggered if review not completed within 2 business days</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Officer submits recommendation without mandatory comments for rejection — block submission</div><div class="edge-item">Application SLA breached before officer submits review — breach logged and manager alerted</div><div class="edge-item">Officer attempts to approve application outside their authority limit — escalation triggered</div><div class="edge-item">Documents added by applicant after assignment — officer alerted</div></div></div></div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-015</span><span class="story-title">Credit Committee Approval</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 8 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>credit committee member</strong>, I want to <em>review escalated and high-value applications and provide final approval</em>, so that loans above threshold limits are sanctioned with proper oversight.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Applications above defined threshold auto-escalated to committee queue</div><div class="criterion"><span class="criterion-num">AC2</span>Minimum 2 approver quorum enforced before decision is recorded</div><div class="criterion"><span class="criterion-num">AC3</span>Decision logged with individual member approvals and timestamps</div><div class="criterion"><span class="criterion-num">AC4</span>Applicant notified within 24 hours of committee decision</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Committee quorum not met within SLA — escalate to branch head for override</div><div class="edge-item">Split decision among committee members — highest authority member's decision prevails</div><div class="edge-item">Application details change after committee review begins — restart review cycle</div><div class="edge-item">Committee member has declared conflict of interest — recuse and replace with alternate</div></div></div></div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-016</span><span class="story-title">Sanction Letter Generation</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 5 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>loan officer</strong>, I want to <em>generate a sanction letter upon loan approval</em>, so that the applicant receives official confirmation of approved loan terms.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Sanction letter auto-populated with approved amount, interest rate, and tenure</div><div class="criterion"><span class="criterion-num">AC2</span>Generated as PDF and sent to applicant via email</div><div class="criterion"><span class="criterion-num">AC3</span>Applicant must digitally acknowledge receipt of sanction letter</div><div class="criterion"><span class="criterion-num">AC4</span>Letter stored in document repository against application ID</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Email delivery fails — letter available on portal with re-send option</div><div class="edge-item">Applicant disputes sanction terms — escalation workflow triggered with notes</div><div class="edge-item">Letter generated with incorrect terms — cancel and regenerate with audit trail</div><div class="edge-item">Applicant does not acknowledge receipt within 7 days — automated reminder sent daily</div></div></div></div></div>
+    </div>
+
+    <!-- MODULE 5 -->
+    <div class="module-block" id="m5">
+      <div class="module-header"><div><div class="mh-num">MODULE 05</div><div class="mh-title">Document Collection & Legal</div></div><div class="mh-count">3 stories · 19 pts</div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-017</span><span class="story-title">Post-Sanction Document Checklist</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 3 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>loan applicant</strong>, I want to <em>view a checklist of all documents required after sanction</em>, so that I can submit all required documents without confusion or delay.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Checklist auto-generated based on loan type and applicant profile</div><div class="criterion"><span class="criterion-num">AC2</span>Pending items highlighted in red, submitted items marked in green</div><div class="criterion"><span class="criterion-num">AC3</span>System sends automated reminder if documents not submitted within 3 days</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Applicant submits incorrect document — item remains Pending with rejection note</div><div class="edge-item">Checklist item not applicable for applicant's profile — allow officer to mark as Waived</div><div class="edge-item">Checklist complete but one document under review — partial completion shown clearly</div><div class="edge-item">Bank updates checklist requirements after applicant has already submitted — notify applicant of new items</div></div></div></div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-018</span><span class="story-title">Legal & Technical Verification</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 8 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>legal officer</strong>, I want to <em>initiate and track legal and technical verification for property-backed loans</em>, so that the bank's security interest is adequately protected.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Verification tasks assigned to empanelled agencies from system</div><div class="criterion"><span class="criterion-num">AC2</span>Status tracked at stages: Initiated, In Progress, Completed</div><div class="criterion"><span class="criterion-num">AC3</span>Agency uploads verification report against loan application ID</div><div class="criterion"><span class="criterion-num">AC4</span>Critical red flags auto-flagged for immediate officer review</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Legal agency finds title dispute — application placed on hold with alert</div><div class="edge-item">Technical valuation significantly below sanction amount — trigger re-appraisal</div><div class="edge-item">Agency submits report past SLA deadline — escalation to legal officer and branch manager</div><div class="edge-item">Property documents found to be forged — immediate rejection and fraud alert raised</div></div></div></div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-019</span><span class="story-title">Loan Agreement E-Sign</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 8 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>loan applicant</strong>, I want to <em>review and digitally sign the loan agreement online</em>, so that the loan is legally executed without requiring a branch visit.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Agreement auto-generated with all approved and agreed terms</div><div class="criterion"><span class="criterion-num">AC2</span>Applicant receives agreement via email and portal dashboard</div><div class="criterion"><span class="criterion-num">AC3</span>E-Sign completed via Aadhaar OTP or Digital Signature Certificate</div><div class="criterion"><span class="criterion-num">AC4</span>Signed agreement stored with timestamp in secure document vault</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Aadhaar OTP fails repeatedly — offer DSC-based signing as alternative</div><div class="edge-item">Applicant disputes a clause — escalation to legal officer before signing is allowed</div><div class="edge-item">Agreement contains a data error — regenerate and re-initiate signing flow</div><div class="edge-item">E-sign service provider unavailable — show scheduled maintenance window with retry time</div></div></div></div></div>
+    </div>
+
+    <!-- MODULES 6-10 (condensed) -->
+    <div class="module-block" id="m6">
+      <div class="module-header"><div><div class="mh-num">MODULE 06</div><div class="mh-title">Loan Disbursement</div></div><div class="mh-count">3 stories · 18 pts</div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-020</span><span class="story-title">Disbursement Request Initiation</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 5 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>loan officer</strong>, I want to <em>initiate a disbursement request after all pre-disbursement conditions are met</em>, so that the loan amount is released to the applicant without manual delays.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>All pre-disbursement checklist items must be marked complete before initiating</div><div class="criterion"><span class="criterion-num">AC2</span>Disbursement mode selectable: NEFT, RTGS, or direct account credit</div><div class="criterion"><span class="criterion-num">AC3</span>Four-eye check required — second officer approval is mandatory</div><div class="criterion"><span class="criterion-num">AC4</span>Request logged with initiator ID and timestamp for audit trail</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Pre-disbursement item incomplete — system blocks initiation and highlights pending item</div><div class="edge-item">Second approver unavailable — alert manager to assign alternate approver</div><div class="edge-item">Duplicate disbursement request submitted — system detects and blocks with warning</div><div class="edge-item">Disbursement amount does not match sanctioned amount — mismatch error raised</div></div></div></div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-021</span><span class="story-title">Disbursement to Applicant Account</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 5 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As an <strong>applicant</strong>, I want to <em>receive the sanctioned loan amount in my designated bank account</em>, so that I can use the funds for my intended purpose without branch visits.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Account number validated via penny drop verification before disbursement</div><div class="criterion"><span class="criterion-num">AC2</span>Funds credited within 1 business day of disbursement approval</div><div class="criterion"><span class="criterion-num">AC3</span>SMS and email notification sent with transaction reference number</div><div class="criterion"><span class="criterion-num">AC4</span>Disbursement status updated to Completed in loan management system</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Penny drop validation fails — request applicant to resubmit verified account details</div><div class="edge-item">Bank transfer fails — retry once, then alert officer manually</div><div class="edge-item">Amount credited less than sanctioned due to fee deduction — show clear breakup</div><div class="edge-item">Applicant's account is frozen — disbursement held with resolution steps</div></div></div></div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-022</span><span class="story-title">Partial Disbursement (Construction Loans)</span><div class="story-badges"><span class="priority-badge pm">Medium</span><span class="pts-badge">⚡ 8 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>loan officer</strong>, I want to <em>disburse loan amount in tranches aligned to construction progress milestones</em>, so that disbursement is milestone-linked, reducing the bank's exposure risk.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Tranche disbursement schedule defined and locked at sanction stage</div><div class="criterion"><span class="criterion-num">AC2</span>Each tranche release requires an approved site inspection report</div><div class="criterion"><span class="criterion-num">AC3</span>Running tranche ledger with disbursed and outstanding amounts visible</div><div class="criterion"><span class="criterion-num">AC4</span>Applicant notified with confirmation on each tranche disbursement</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Site inspection shows construction below required milestone — tranche withheld</div><div class="edge-item">Applicant requests advance release before milestone achieved — requires senior approval</div><div class="edge-item">Last tranche differs from schedule due to rounding — auto-adjust with audit note</div><div class="edge-item">Construction project abandoned — all future tranches blocked and restructuring initiated</div></div></div></div></div>
+    </div>
+
+    <div class="module-block" id="m7">
+      <div class="module-header"><div><div class="mh-num">MODULE 07</div><div class="mh-title">Repayment & EMI Management</div></div><div class="mh-count">3 stories · 13 pts</div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-023</span><span class="story-title">EMI Schedule Generation</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 3 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>loan applicant</strong>, I want to <em>view a complete EMI repayment schedule immediately after disbursement</em>, so that I can plan my monthly finances and never miss a payment date.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Schedule shows EMI date, principal component, interest component, and closing balance for every month</div><div class="criterion"><span class="criterion-num">AC2</span>Full schedule downloadable as formatted PDF</div><div class="criterion"><span class="criterion-num">AC3</span>Schedule automatically recalculated on any prepayment or interest rate change</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Variable interest rate changes mid-tenure — schedule recalculated and applicant notified</div><div class="edge-item">Prepayment made — schedule recalculated based on revised outstanding principal</div><div class="edge-item">Moratorium period granted — schedule adjusted with deferred start date</div><div class="edge-item">Loan tenure extended due to restructuring — full new schedule generated</div></div></div></div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-024</span><span class="story-title">Auto-Debit / NACH Setup</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 5 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>loan applicant</strong>, I want to <em>set up an auto-debit mandate (NACH) for automatic monthly EMI payments</em>, so that my EMIs are paid on time without requiring any manual action.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>NACH mandate form auto-generated with pre-filled applicant and loan details</div><div class="criterion"><span class="criterion-num">AC2</span>E-mandate registration supported via net banking integration</div><div class="criterion"><span class="criterion-num">AC3</span>Mandate activation confirmation received before first EMI due date</div><div class="criterion"><span class="criterion-num">AC4</span>Failed NACH debit triggers immediate SMS and email alert to applicant</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">NACH registration rejected by applicant's bank — notify applicant to set up manual payment</div><div class="edge-item">First debit fails due to insufficient funds — late payment fee applied and applicant alerted</div><div class="edge-item">Applicant cancels mandate mid-tenure — flag account for manual payment monitoring</div><div class="edge-item">Bank account linked to NACH is closed — trigger mandate cancellation and re-registration request</div></div></div></div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-025</span><span class="story-title">Prepayment / Foreclosure Request</span><div class="story-badges"><span class="priority-badge pm">Medium</span><span class="pts-badge">⚡ 5 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>loan applicant</strong>, I want to <em>submit a loan prepayment or full foreclosure request through the portal</em>, so that I can reduce my total interest burden or close my loan ahead of schedule.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Applicable prepayment charges calculated and shown before applicant confirmation</div><div class="criterion"><span class="criterion-num">AC2</span>Part-prepayment allows applicant to choose reduction in EMI or remaining tenure</div><div class="criterion"><span class="criterion-num">AC3</span>Foreclosure statement generated showing outstanding principal and charges</div><div class="criterion"><span class="criterion-num">AC4</span>Official confirmation letter issued to applicant after foreclosure is processed</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Prepayment request submitted during NACH debit cycle — hold request until current EMI is processed</div><div class="edge-item">Foreclosure amount calculated incorrectly — recalculate and notify before confirmation</div><div class="edge-item">Applicant initiates foreclosure but funds are insufficient — request fails with retry option</div><div class="edge-item">Property mortgage release needed post-foreclosure — trigger separate legal documentation workflow</div></div></div></div></div>
+    </div>
+
+    <div class="module-block" id="m8">
+      <div class="module-header"><div><div class="mh-num">MODULE 08</div><div class="mh-title">Notifications & Communication</div></div><div class="mh-count">3 stories · 9 pts</div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-026</span><span class="story-title">Application Status Notifications</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 3 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>loan applicant</strong>, I want to <em>receive real-time notifications at every stage of my loan application journey</em>, so that I am always informed about my application status without needing to call the bank.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Notifications sent via SMS, email, and in-app push on every stage change</div><div class="criterion"><span class="criterion-num">AC2</span>Triggered at stages: Submitted, Under Review, Approved, Rejected, Disbursed</div><div class="criterion"><span class="criterion-num">AC3</span>Full notification history available in applicant dashboard</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">SMS delivery fails due to network issue — retry up to 3 times before marking as Failed</div><div class="edge-item">Applicant opted out of email but not SMS — send SMS only</div><div class="edge-item">Bulk status updates processed simultaneously — batch notifications sent without duplication</div></div></div></div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-027</span><span class="story-title">EMI Due Date Reminders</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 3 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>loan applicant</strong>, I want to <em>receive advance reminders before my EMI due date each month</em>, so that I can ensure sufficient funds are available and avoid late payment penalties.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Reminder sent 7 days before and again 1 day before due date</div><div class="criterion"><span class="criterion-num">AC2</span>Notification channels: SMS and email both triggered</div><div class="criterion"><span class="criterion-num">AC3</span>Overdue EMI triggers immediate notification within 24 hours of missed payment</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">EMI due date falls on a bank holiday — reminder sent 2 days before instead of 1</div><div class="edge-item">Applicant changes registered mobile number — reminders sent to new number immediately</div><div class="edge-item">Multiple loans active for same applicant — separate reminder per loan account</div><div class="edge-item">EMI already paid early — suppress due date reminder to avoid confusion</div></div></div></div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-028</span><span class="story-title">Officer SLA Breach Alerts</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 3 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>branch manager</strong>, I want to <em>receive automated alerts when loan applications breach their defined processing SLA</em>, so that I can intervene early and prevent avoidable processing delays.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>SLA thresholds defined per stage: KYC review 2 days, Officer review 2 days, Final approval 3 days</div><div class="criterion"><span class="criterion-num">AC2</span>Alert sent to assigned officer and branch manager on SLA breach</div><div class="criterion"><span class="criterion-num">AC3</span>All breached applications highlighted distinctly on the manager dashboard</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Officer on approved leave — SLA clock paused and application reassigned automatically</div><div class="edge-item">SLA configuration updated mid-cycle — new SLA applies only to new applications</div><div class="edge-item">Multiple applications breach SLA simultaneously — individual alerts sent per application</div><div class="edge-item">Branch manager also on leave — alerts escalated to regional manager</div></div></div></div></div>
+    </div>
+
+    <div class="module-block" id="m9">
+      <div class="module-header"><div><div class="mh-num">MODULE 09</div><div class="mh-title">Admin & Reporting</div></div><div class="mh-count">3 stories · 15 pts</div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-029</span><span class="story-title">Loan Application Dashboard (Admin)</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 5 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>branch manager</strong>, I want to <em>view a real-time dashboard showing all loan applications grouped by status, type, and officer</em>, so that I can monitor pipeline health and team performance at a glance.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Dashboard shows: total applications, pending review, approved, rejected, and disbursed</div><div class="criterion"><span class="criterion-num">AC2</span>Filters available for date range, loan type, assigned officer, and branch</div><div class="criterion"><span class="criterion-num">AC3</span>Dashboard data refreshes automatically every 5 minutes</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Dashboard data source unavailable — show last cached snapshot with timestamp disclaimer</div><div class="edge-item">Branch manager has access to multiple branches — show aggregated and filterable view</div><div class="edge-item">Very large number of applications cause slow load — show loading indicator with partial data</div><div class="edge-item">Dashboard shows zero applications — show empty state message with guidance</div></div></div></div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-030</span><span class="story-title">Loan Portfolio Report</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 5 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>credit manager</strong>, I want to <em>generate a detailed monthly loan portfolio report covering disbursement and repayment performance</em>, so that I can present accurate data to leadership for informed business decisions.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Report includes: total disbursed amount, NPA rate, collection efficiency, and product-wise split</div><div class="criterion"><span class="criterion-num">AC2</span>Exportable in both PDF and Excel formats</div><div class="criterion"><span class="criterion-num">AC3</span>Report auto-generated and emailed on the last business day of each month</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Data for specific loan type incomplete — partial report generated with data gap noted</div><div class="edge-item">Report generation fails mid-process — auto-retry once, then alert system admin</div><div class="edge-item">Credit manager requests report for period with no disbursements — generate report showing zero values</div><div class="edge-item">Report contains PII — ensure access is restricted to authorized roles only</div></div></div></div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-031</span><span class="story-title">Audit Trail Logging</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 5 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>compliance officer</strong>, I want to <em>view a complete and tamper-proof audit trail of all actions taken on every loan application</em>, so that the bank can demonstrate full process compliance during audits.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Every action logged with user ID, role, timestamp, and action description</div><div class="criterion"><span class="criterion-num">AC2</span>Audit log is read-only — cannot be edited, deleted, or altered by any user</div><div class="criterion"><span class="criterion-num">AC3</span>Log is exportable in structured format for regulatory and compliance reporting</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Audit log for specific application is extremely large — paginate results with search and filter</div><div class="edge-item">System clock discrepancy causes timestamps to appear out of sequence — flag and alert system admin</div><div class="edge-item">Export service is down — provide retry option</div><div class="edge-item">Log entry references a deactivated user account — show user ID with Deactivated label</div></div></div></div></div>
+    </div>
+
+    <div class="module-block" id="m10">
+      <div class="module-header"><div><div class="mh-num">MODULE 10</div><div class="mh-title">System Administration</div></div><div class="mh-count">3 stories · 18 pts</div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-032</span><span class="story-title">User Role & Permission Management</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 5 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>system administrator</strong>, I want to <em>create and manage user roles with granular module-level permissions</em>, so that each system user can only access the functions and data relevant to their role.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Defined roles: Applicant, Loan Officer, Credit Analyst, Branch Manager, Product Admin, System Admin</div><div class="criterion"><span class="criterion-num">AC2</span>Permissions configurable per role at the individual module level</div><div class="criterion"><span class="criterion-num">AC3</span>Permission changes take effect immediately without system restart</div><div class="criterion"><span class="criterion-num">AC4</span>Complete audit log maintained for all role and permission changes</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Admin accidentally assigns lower-privilege role to senior officer — require confirmation before applying</div><div class="edge-item">Two admins attempt to modify the same role simultaneously — last-write-wins with conflict alert</div><div class="edge-item">Role deletion attempted while users are assigned to it — block deletion until all users reassigned</div><div class="edge-item">New module added — default permissions for existing roles must be explicitly configured</div></div></div></div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-033</span><span class="story-title">Interest Rate & Product Configuration</span><div class="story-badges"><span class="priority-badge ph">High</span><span class="pts-badge">⚡ 5 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>product admin</strong>, I want to <em>configure loan product parameters including interest rates, processing fees, and product terms</em>, so that the system reflects the latest bank offerings without a code deployment.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Interest rate changes applied from a specified future effective date</div><div class="criterion"><span class="criterion-num">AC2</span>Historical rates archived and used for correct calculation of older loan agreements</div><div class="criterion"><span class="criterion-num">AC3</span>All product parameter changes require dual approval via checker-maker control</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">Admin attempts to set effective date in the past — block with validation error</div><div class="edge-item">Checker rejects proposed configuration — workflow returns to maker with rejection comments</div><div class="edge-item">Active in-progress applications at time of rate change — use rate locked at application submission date</div><div class="edge-item">Configuration error discovered after go-live — provide rollback to previous approved configuration</div></div></div></div></div>
+      <div class="story-card" onclick="toggleStory(this)"><div class="story-header"><span class="story-id">US-034</span><span class="story-title">Workflow Rule Configuration</span><div class="story-badges"><span class="priority-badge pm">Medium</span><span class="pts-badge">⚡ 8 pts</span></div><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="story-body"><div class="story-user-statement">As a <strong>system administrator</strong>, I want to <em>define and modify loan approval workflow rules including escalation thresholds and routing logic</em>, so that the system automatically enforces updated credit and approval policy.</div><div class="story-grid"><div class="story-field"><div class="field-label">Acceptance Criteria</div><div class="criteria-list"><div class="criterion"><span class="criterion-num">AC1</span>Escalation threshold amounts configurable per loan type and applicant segment</div><div class="criterion"><span class="criterion-num">AC2</span>Workflow rule changes go live only after approval from an authorized role</div><div class="criterion"><span class="criterion-num">AC3</span>All workflow rule versions maintained with change history and full audit trail</div></div></div></div><div class="edge-cases-section"><div class="edge-label">⚠ Edge Cases</div><div class="edge-grid"><div class="edge-item">New rule conflicts with an existing active rule — conflict detection alert shown before saving</div><div class="edge-item">Workflow rule change affects applications already in progress — apply only to new applications</div><div class="edge-item">Admin configures a rule that creates an infinite escalation loop — loop detection blocks save</div><div class="edge-item">Workflow configuration service is down — admin alerted and changes queued for processing on recovery</div></div></div></div></div>
+    </div>
+  </section>
+
+  <!-- SUMMARY TABLE -->
+  <section class="content-section" id="summary">
+    <div class="section-heading"><div class="icon-dot"></div> User Stories Summary Table</div>
+    <div class="summary-table-wrap">
+      <table class="summary-tbl">
+        <thead><tr><th>Story ID</th><th>Module</th><th>Title</th><th>Role</th><th>Priority</th><th>Points</th></tr></thead>
+        <tbody>
+          <tr><td class="story-id-cell">US-001</td><td>Module 1</td><td>New Customer Registration</td><td>Applicant</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">5</span></td></tr>
+          <tr><td class="story-id-cell">US-002</td><td>Module 1</td><td>Aadhaar-Based eKYC</td><td>Applicant</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">8</span></td></tr>
+          <tr><td class="story-id-cell">US-003</td><td>Module 1</td><td>Document Upload for KYC</td><td>Applicant</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">5</span></td></tr>
+          <tr><td class="story-id-cell">US-004</td><td>Module 1</td><td>KYC Status Tracking</td><td>Applicant</td><td><span class="priority-badge pm">Medium</span></td><td><span class="pts-chip">3</span></td></tr>
+          <tr><td class="story-id-cell">US-005</td><td>Module 2</td><td>Loan Product Selection</td><td>Applicant</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">3</span></td></tr>
+          <tr><td class="story-id-cell">US-006</td><td>Module 2</td><td>Loan Application Submission</td><td>Applicant</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">8</span></td></tr>
+          <tr><td class="story-id-cell">US-007</td><td>Module 2</td><td>Co-Applicant Addition</td><td>Applicant</td><td><span class="priority-badge pm">Medium</span></td><td><span class="pts-chip">5</span></td></tr>
+          <tr><td class="story-id-cell">US-008</td><td>Module 2</td><td>EMI Calculator</td><td>Applicant</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">3</span></td></tr>
+          <tr><td class="story-id-cell">US-009</td><td>Module 3</td><td>Credit Bureau Score Check</td><td>Loan Officer</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">8</span></td></tr>
+          <tr><td class="story-id-cell">US-010</td><td>Module 3</td><td>Income & DTI Assessment</td><td>Credit Analyst</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">5</span></td></tr>
+          <tr><td class="story-id-cell">US-011</td><td>Module 3</td><td>Eligibility Calculation</td><td>Applicant</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">5</span></td></tr>
+          <tr><td class="story-id-cell">US-012</td><td>Module 3</td><td>Risk Scoring & Grade Assignment</td><td>Credit Analyst</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">8</span></td></tr>
+          <tr><td class="story-id-cell">US-013</td><td>Module 4</td><td>Application Assignment</td><td>Branch Manager</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">3</span></td></tr>
+          <tr><td class="story-id-cell">US-014</td><td>Module 4</td><td>Officer Review & Recommendation</td><td>Loan Officer</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">5</span></td></tr>
+          <tr><td class="story-id-cell">US-015</td><td>Module 4</td><td>Credit Committee Approval</td><td>Committee Member</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">8</span></td></tr>
+          <tr><td class="story-id-cell">US-016</td><td>Module 4</td><td>Sanction Letter Generation</td><td>Loan Officer</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">5</span></td></tr>
+          <tr><td class="story-id-cell">US-017</td><td>Module 5</td><td>Post-Sanction Document Checklist</td><td>Applicant</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">3</span></td></tr>
+          <tr><td class="story-id-cell">US-018</td><td>Module 5</td><td>Legal & Technical Verification</td><td>Legal Officer</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">8</span></td></tr>
+          <tr><td class="story-id-cell">US-019</td><td>Module 5</td><td>Loan Agreement E-Sign</td><td>Applicant</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">8</span></td></tr>
+          <tr><td class="story-id-cell">US-020</td><td>Module 6</td><td>Disbursement Request Initiation</td><td>Loan Officer</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">5</span></td></tr>
+          <tr><td class="story-id-cell">US-021</td><td>Module 6</td><td>Disbursement to Applicant Account</td><td>Applicant</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">5</span></td></tr>
+          <tr><td class="story-id-cell">US-022</td><td>Module 6</td><td>Partial Disbursement</td><td>Loan Officer</td><td><span class="priority-badge pm">Medium</span></td><td><span class="pts-chip">8</span></td></tr>
+          <tr><td class="story-id-cell">US-023</td><td>Module 7</td><td>EMI Schedule Generation</td><td>Applicant</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">3</span></td></tr>
+          <tr><td class="story-id-cell">US-024</td><td>Module 7</td><td>Auto-Debit / NACH Setup</td><td>Applicant</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">5</span></td></tr>
+          <tr><td class="story-id-cell">US-025</td><td>Module 7</td><td>Prepayment / Foreclosure Request</td><td>Applicant</td><td><span class="priority-badge pm">Medium</span></td><td><span class="pts-chip">5</span></td></tr>
+          <tr><td class="story-id-cell">US-026</td><td>Module 8</td><td>Application Status Notifications</td><td>Applicant</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">3</span></td></tr>
+          <tr><td class="story-id-cell">US-027</td><td>Module 8</td><td>EMI Due Date Reminders</td><td>Applicant</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">3</span></td></tr>
+          <tr><td class="story-id-cell">US-028</td><td>Module 8</td><td>Officer SLA Breach Alerts</td><td>Branch Manager</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">3</span></td></tr>
+          <tr><td class="story-id-cell">US-029</td><td>Module 9</td><td>Loan Application Dashboard</td><td>Branch Manager</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">5</span></td></tr>
+          <tr><td class="story-id-cell">US-030</td><td>Module 9</td><td>Loan Portfolio Report</td><td>Credit Manager</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">5</span></td></tr>
+          <tr><td class="story-id-cell">US-031</td><td>Module 9</td><td>Audit Trail Logging</td><td>Compliance Officer</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">5</span></td></tr>
+          <tr><td class="story-id-cell">US-032</td><td>Module 10</td><td>User Role & Permission Management</td><td>System Admin</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">5</span></td></tr>
+          <tr><td class="story-id-cell">US-033</td><td>Module 10</td><td>Interest Rate & Product Configuration</td><td>Product Admin</td><td><span class="priority-badge ph">High</span></td><td><span class="pts-chip">5</span></td></tr>
+          <tr><td class="story-id-cell">US-034</td><td>Module 10</td><td>Workflow Rule Configuration</td><td>System Admin</td><td><span class="priority-badge pm">Medium</span></td><td><span class="pts-chip">8</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SPRINT PLAN -->
+  <section class="content-section" id="sprints">
+    <div class="section-heading"><div class="icon-dot"></div> Suggested Sprint Plan</div>
+    <div class="sprint-grid">
+      <div class="sprint-card"><div class="sprint-num">// SPRINT 01</div><div class="sprint-points">40</div><div class="sprint-pts-label">Story Points</div><div class="sprint-focus">Customer Registration, KYC, and Loan Application</div><div class="sprint-stories"><span class="sprint-story-tag">US-001</span><span class="sprint-story-tag">US-002</span><span class="sprint-story-tag">US-003</span><span class="sprint-story-tag">US-004</span><span class="sprint-story-tag">US-005</span><span class="sprint-story-tag">US-006</span><span class="sprint-story-tag">US-007</span><span class="sprint-story-tag">US-008</span></div></div>
+      <div class="sprint-card"><div class="sprint-num">// SPRINT 02</div><div class="sprint-points">50</div><div class="sprint-pts-label">Story Points</div><div class="sprint-focus">Credit Assessment and Loan Approval Workflow</div><div class="sprint-stories"><span class="sprint-story-tag">US-009</span><span class="sprint-story-tag">US-010</span><span class="sprint-story-tag">US-011</span><span class="sprint-story-tag">US-012</span><span class="sprint-story-tag">US-013</span><span class="sprint-story-tag">US-014</span><span class="sprint-story-tag">US-015</span><span class="sprint-story-tag">US-016</span></div></div>
+      <div class="sprint-card"><div class="sprint-num">// SPRINT 03</div><div class="sprint-points">37</div><div class="sprint-pts-label">Story Points</div><div class="sprint-focus">Document Collection, Legal Verification, and Disbursement</div><div class="sprint-stories"><span class="sprint-story-tag">US-017</span><span class="sprint-story-tag">US-018</span><span class="sprint-story-tag">US-019</span><span class="sprint-story-tag">US-020</span><span class="sprint-story-tag">US-021</span><span class="sprint-story-tag">US-022</span></div></div>
+      <div class="sprint-card"><div class="sprint-num">// SPRINT 04</div><div class="sprint-points">22</div><div class="sprint-pts-label">Story Points</div><div class="sprint-focus">Repayment Management, EMI, and Notifications</div><div class="sprint-stories"><span class="sprint-story-tag">US-023</span><span class="sprint-story-tag">US-024</span><span class="sprint-story-tag">US-025</span><span class="sprint-story-tag">US-026</span><span class="sprint-story-tag">US-027</span><span class="sprint-story-tag">US-028</span></div></div>
+      <div class="sprint-card"><div class="sprint-num">// SPRINT 05</div><div class="sprint-points">33</div><div class="sprint-pts-label">Story Points</div><div class="sprint-focus">Admin Dashboard, Reporting, and System Configuration</div><div class="sprint-stories"><span class="sprint-story-tag">US-029</span><span class="sprint-story-tag">US-030</span><span class="sprint-story-tag">US-031</span><span class="sprint-story-tag">US-032</span><span class="sprint-story-tag">US-033</span><span class="sprint-story-tag">US-034</span></div></div>
+    </div>
+  </section>
+
+  <!-- GLOSSARY -->
+  <section class="content-section" id="glossary">
+    <div class="section-heading"><div class="icon-dot"></div> Glossary</div>
+    <div class="glossary-grid">
+      <div class="gloss-item"><div class="gloss-term">KYC</div><div class="gloss-def">Know Your Customer — mandatory identity verification process regulated by RBI.</div></div>
+      <div class="gloss-item"><div class="gloss-term">CIBIL</div><div class="gloss-def">Credit Information Bureau India Ltd — India's primary credit score provider.</div></div>
+      <div class="gloss-item"><div class="gloss-term">DTI</div><div class="gloss-def">Debt-to-Income Ratio — total monthly obligations divided by gross monthly income.</div></div>
+      <div class="gloss-item"><div class="gloss-term">NACH</div><div class="gloss-def">National Automated Clearing House — RBI's system for recurring auto-debit mandates.</div></div>
+      <div class="gloss-item"><div class="gloss-term">NEFT</div><div class="gloss-def">National Electronic Funds Transfer — standard interbank fund transfer system.</div></div>
+      <div class="gloss-item"><div class="gloss-term">RTGS</div><div class="gloss-def">Real-Time Gross Settlement — high-value, same-day instant fund transfer system.</div></div>
+      <div class="gloss-item"><div class="gloss-term">NPA</div><div class="gloss-def">Non-Performing Asset — loan account overdue by more than 90 days.</div></div>
+      <div class="gloss-item"><div class="gloss-term">DSC</div><div class="gloss-def">Digital Signature Certificate — cryptographic token used for legally binding e-signatures.</div></div>
+      <div class="gloss-item"><div class="gloss-term">EMI</div><div class="gloss-def">Equated Monthly Instalment — fixed monthly loan repayment amount.</div></div>
+      <div class="gloss-item"><div class="gloss-term">SLA</div><div class="gloss-def">Service Level Agreement — defined maximum turnaround time for each processing step.</div></div>
+    </div>
+  </section>
+
+  <!-- SIGN-OFF -->
+  <section class="content-section" id="signoff">
+    <div class="section-heading"><div class="icon-dot"></div> Document Sign-Off</div>
+    <div class="signoff-grid">
+      <div class="signoff-card"><div class="signoff-role">Business Analyst</div><div class="signoff-name">Manmathnath Mahanta</div><div class="signoff-sub">June 2025</div><div class="signoff-status status-approved">✓ Approved</div></div>
+      <div class="signoff-card"><div class="signoff-role">Product Management</div><div class="signoff-name">Product Owner</div><div class="signoff-sub">Pending signature</div><div class="signoff-status status-pending">Pending</div></div>
+      <div class="signoff-card"><div class="signoff-role">Engineering</div><div class="signoff-name">Tech Lead</div><div class="signoff-sub">Pending signature</div><div class="signoff-status status-pending">Pending</div></div>
+      <div class="signoff-card"><div class="signoff-role">Quality Assurance</div><div class="signoff-name">QA Lead</div><div class="signoff-sub">Pending signature</div><div class="signoff-status status-pending">Pending</div></div>
+    </div>
+    <p style="margin-top:24px;font-size:12px;color:var(--text-muted);font-style:italic;font-family:'IBM Plex Mono',monospace">— End of Document — USR-BANK-2025-001 v1.0 — CONFIDENTIAL —</p>
+  </section>
+
+  <footer>
+    <div class="footer-doc-id">USR-BANK-2025-001 · v1.0 · Banking Loan Origination System</div>
+    <div class="footer-copy">34 User Stories · 10 Modules · 5 Sprints</div>
+  </footer>
+
+</main>
+
+<script>
+function toggleStory(card) {
+  card.classList.toggle('open');
+}
+
+// Active nav highlighting on scroll
+const sections = document.querySelectorAll('[id]');
+const navItems = document.querySelectorAll('.nav-item');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === '#' + entry.target.id) {
+          item.classList.add('active');
+        }
+      });
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
