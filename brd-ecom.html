@@ -37,10 +37,12 @@
   --display:'Sora',sans-serif;
   --body:'IBM Plex Sans',sans-serif;
   --r:5px;--rl:10px;--rxl:16px;
+  --sidebar-w:260px;
+  --topbar-h:52px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:14px}
-body{background:var(--ink);color:var(--fg);font-family:var(--body);line-height:1.65;overflow-x:hidden}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--ink);color:var(--fg);font-family:var(--body);line-height:1.65;overflow-x:hidden;width:100%}
 a{color:var(--gold2);text-decoration:none}
 a:hover{text-decoration:underline}
 ::-webkit-scrollbar{width:4px;height:4px}
@@ -50,7 +52,9 @@ a:hover{text-decoration:underline}
 /* ── TOPBAR ── */
 .topbar{
   position:sticky;top:0;z-index:200;
-  height:52px;background:rgba(10,12,16,.96);
+  height:var(--topbar-h);
+  width:100%;
+  background:rgba(10,12,16,.96);
   border-bottom:1px solid var(--border);
   backdrop-filter:blur(20px);
   display:flex;align-items:center;padding:0 24px;gap:16px;
@@ -85,14 +89,24 @@ a:hover{text-decoration:underline}
   border:1px solid rgba(217,79,79,.25);white-space:nowrap;
 }
 
-/* ── LAYOUT ── */
-.layout{display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - 52px)}
+/* ── LAYOUT — fills 100% of viewport ── */
+.layout{
+  display:flex;
+  width:100%;
+  min-height:calc(100vh - var(--topbar-h));
+}
 
 /* ── SIDEBAR ── */
 .sidebar{
-  background:var(--ink2);border-right:1px solid var(--border);
-  position:sticky;top:52px;height:calc(100vh - 52px);
-  overflow-y:auto;padding:20px 0;
+  width:var(--sidebar-w);
+  flex-shrink:0;
+  background:var(--ink2);
+  border-right:1px solid var(--border);
+  position:sticky;
+  top:var(--topbar-h);
+  height:calc(100vh - var(--topbar-h));
+  overflow-y:auto;
+  padding:20px 0;
 }
 .sb-doc-card{
   margin:0 14px 20px;
@@ -125,8 +139,12 @@ a:hover{text-decoration:underline}
 .sb-stat-n{font-family:var(--mono);font-size:1.05rem;font-weight:700;color:var(--gold2);line-height:1}
 .sb-stat-l{font-size:.6rem;color:var(--fg3);margin-top:3px;text-transform:uppercase;letter-spacing:.06em}
 
-/* ── MAIN ── */
-.main{padding:0;max-width:860px}
+/* ── MAIN — takes all remaining width ── */
+.main{
+  flex:1;
+  min-width:0; /* prevent flex blowout */
+  overflow-x:hidden;
+}
 
 /* ── COVER ── */
 .doc-cover{
@@ -134,7 +152,6 @@ a:hover{text-decoration:underline}
   background:linear-gradient(160deg,var(--ink) 0%,var(--ink2) 50%,#0f1420 100%);
   border-bottom:1px solid var(--border);
   position:relative;overflow:hidden;
-  margin-bottom:0;
 }
 .doc-cover::before{
   content:'BRD';
@@ -245,11 +262,11 @@ td strong,td b{color:var(--fg)}
 .info-row:last-child{border-bottom:none}
 .info-key{
   font-family:var(--mono);font-size:.68rem;font-weight:600;color:var(--fg3);
-  padding:10px 14px;min-width:170px;flex-shrink:0;
+  padding:10px 14px;min-width:160px;width:160px;flex-shrink:0;
   background:var(--ink3);border-right:1px solid var(--border2);
-  display:flex;align-items:center;
+  display:flex;align-items:flex-start;padding-top:12px;
 }
-.info-val{font-size:.82rem;color:var(--fg2);padding:10px 14px;line-height:1.55}
+.info-val{font-size:.82rem;color:var(--fg2);padding:10px 14px;line-height:1.55;flex:1;min-width:0}
 .info-val strong{color:var(--fg)}
 
 /* ── PROCESS FLOW STEPS ── */
@@ -265,16 +282,17 @@ td strong,td b{color:var(--fg)}
   background:var(--ink3);border-right:1px solid var(--border2);
   display:flex;align-items:center;justify-content:center;
   font-family:var(--mono);font-size:.7rem;font-weight:700;color:var(--gold2);
+  padding:10px 0;
 }
 .fs-actor{
-  width:100px;flex-shrink:0;
+  width:90px;flex-shrink:0;
   background:var(--ink3);border-right:1px solid var(--border2);
-  display:flex;align-items:center;padding:10px 10px;
+  display:flex;align-items:center;padding:10px;
   font-family:var(--mono);font-size:.66rem;font-weight:600;color:var(--fg2);
 }
-.fs-action{flex:1;padding:10px 14px;font-size:.81rem;color:var(--fg2)}
+.fs-action{flex:1;padding:10px 14px;font-size:.81rem;color:var(--fg2);min-width:0}
 .fs-action strong{color:var(--fg)}
-.fs-response{width:240px;flex-shrink:0;padding:10px 14px;font-size:.78rem;color:var(--fg3);border-left:1px solid var(--border2);font-style:italic}
+.fs-response{width:220px;flex-shrink:0;padding:10px 14px;font-size:.78rem;color:var(--fg3);border-left:1px solid var(--border2);font-style:italic}
 
 /* ── RISK TABLE COLORS ── */
 .risk-h{color:var(--red);font-weight:600}
@@ -290,7 +308,7 @@ td strong,td b{color:var(--fg)}
   transition:border-color .15s;
 }
 .assump-row:hover{border-color:var(--gold-m)}
-.assump-arrow{color:var(--gold2);font-size:.8rem;flex-shrink:0;margin-top:1px}
+.assump-arrow{color:var(--gold2);font-size:.8rem;flex-shrink:0;margin-top:2px}
 
 /* ── SIGN-OFF ── */
 .signoff-grid{
@@ -313,24 +331,124 @@ td strong,td b{color:var(--fg)}
 /* ── GLOSSARY ── */
 .gloss-row{display:flex;gap:0;border-bottom:1px solid var(--border2)}
 .gloss-row:last-child{border-bottom:none}
-.gloss-term{font-family:var(--mono);font-size:.72rem;font-weight:700;color:var(--gold2);padding:10px 14px;min-width:100px;flex-shrink:0;background:var(--ink3);border-right:1px solid var(--border2)}
-.gloss-def{font-size:.8rem;color:var(--fg2);padding:10px 14px;line-height:1.5}
+.gloss-term{font-family:var(--mono);font-size:.72rem;font-weight:700;color:var(--gold2);padding:10px 14px;min-width:100px;width:100px;flex-shrink:0;background:var(--ink3);border-right:1px solid var(--border2)}
+.gloss-def{font-size:.8rem;color:var(--fg2);padding:10px 14px;line-height:1.5;flex:1}
 
 /* ── FOOTER ── */
 .doc-footer{padding:24px 40px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .footer-id{font-family:var(--mono);font-size:.65rem;color:var(--fg3)}
 .footer-tag{font-family:var(--mono);font-size:.65rem;color:var(--fg3);display:flex;align-items:center;gap:6px}
 
+/* ── MOBILE SIDEBAR TOGGLE ── */
+.sidebar-toggle{
+  display:none;
+  align-items:center;justify-content:center;
+  width:34px;height:34px;
+  background:var(--ink3);border:1px solid var(--border);
+  border-radius:var(--r);color:var(--fg2);
+  cursor:pointer;flex-shrink:0;transition:all .18s;
+}
+.sidebar-toggle:hover{color:var(--fg);border-color:var(--gold-b);background:var(--gold-d)}
+
+/* Mobile sidebar overlay */
+.sidebar-overlay{
+  display:none;
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.6);
+  z-index:150;
+  backdrop-filter:blur(2px);
+}
+.sidebar-overlay.open{display:block}
+
 /* ── RESPONSIVE ── */
-@media(max-width:800px){
-  .layout{grid-template-columns:1fr}
-  .sidebar{display:none}
-  .main{padding:0}
-  .doc-cover,.doc-sec{padding:20px 16px}
-  .cover-meta-grid{grid-template-columns:1fr 1fr}
+
+/* Large screens — sidebar always visible */
+@media(min-width:1025px){
+  .sidebar{display:block !important}
+}
+
+/* Tablet — narrow sidebar */
+@media(max-width:1024px) and (min-width:769px){
+  :root{--sidebar-w:220px}
+  .doc-cover,.doc-sec{padding:28px 28px}
+  .cover-meta-grid{grid-template-columns:repeat(2,1fr)}
+  .cover-title{font-size:1.7rem}
+  .fs-response{width:170px}
+  .signoff-grid{grid-template-columns:1fr 1fr 130px 100px}
+}
+
+/* Mobile — sidebar slides in as drawer */
+@media(max-width:768px){
+  :root{--topbar-h:48px}
+
+  .topbar{padding:0 12px;gap:10px}
+  .topbar-crumb{font-size:.62rem}
+  .conf-chip{display:none}
+
+  .sidebar-toggle{display:flex}
+
+  .layout{display:block}
+
+  .sidebar{
+    position:fixed;
+    top:0;left:0;
+    width:280px;
+    height:100vh;
+    z-index:160;
+    transform:translateX(-100%);
+    transition:transform .25s ease;
+    padding-top:calc(var(--topbar-h) + 12px);
+    box-shadow:4px 0 24px rgba(0,0,0,.4);
+  }
+  .sidebar.open{transform:translateX(0)}
+
+  .main{width:100%}
+
+  .doc-cover{padding:20px 16px 24px}
+  .doc-cover::before{font-size:5rem;right:-5px}
+  .cover-title{font-size:1.4rem}
+  .cover-subtitle{font-size:.8rem}
+  .cover-meta-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .cmc-val{font-size:.76rem}
+
+  .doc-sec{padding:20px 16px}
+  .sec-title{font-size:.95rem}
+
   .flow-step{flex-direction:column}
-  .fs-actor,.fs-response{width:100%;border-left:none;border-top:1px solid var(--border2)}
+  .fs-num{
+    width:100%;height:32px;
+    border-right:none;border-bottom:1px solid var(--border2);
+    justify-content:flex-start;padding:0 14px;
+  }
+  .fs-actor{
+    width:100%;border-right:none;border-bottom:1px solid var(--border2);
+    padding:8px 14px;
+  }
+  .fs-response{
+    width:100%;border-left:none;border-top:1px solid var(--border2);
+  }
+
   .signoff-grid{grid-template-columns:1fr 1fr}
+  .so-row .so-cell:nth-child(3),.so-row .so-cell:nth-child(4){display:none}
+  .so-head .so-cell:nth-child(3),.so-head .so-cell:nth-child(4){display:none}
+
+  .info-key{min-width:110px;width:110px;font-size:.62rem}
+
+  .doc-footer{padding:16px;flex-direction:column;align-items:flex-start;gap:8px}
+
+  table{font-size:.75rem}
+  th{font-size:.6rem;padding:8px 10px}
+  td{padding:8px 10px}
+}
+
+/* Very small phones */
+@media(max-width:400px){
+  .cover-meta-grid{grid-template-columns:1fr}
+  .topbar-crumb{display:none}
+  .info-row{flex-direction:column}
+  .info-key{width:100%;border-right:none;border-bottom:1px solid var(--border2);padding:8px 14px}
+  .gloss-row{flex-direction:column}
+  .gloss-term{width:100%;border-right:none;border-bottom:1px solid var(--border2)}
 }
 </style>
 </head>
@@ -338,7 +456,11 @@ td strong,td b{color:var(--fg)}
 
 <!-- TOPBAR -->
 <div class="topbar">
-  <a href="index.html" class="back-btn"><i class="bi bi-arrow-left"></i> Portfolio</a>
+  <!-- Mobile hamburger -->
+  <div class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">
+    <i class="bi bi-list" style="font-size:1.1rem"></i>
+  </div>
+  <a href="index.html" class="back-btn"><i class="bi bi-arrow-left"></i> <span class="back-label">Portfolio</span></a>
   <div class="topbar-crumb">
     <span class="hl">manmath235</span> / ecom-brd /
     <span class="fn">BRD-ECOM-2025-001.html</span>
@@ -349,10 +471,13 @@ td strong,td b{color:var(--fg)}
   </div>
 </div>
 
+<!-- Sidebar overlay (mobile) -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
 <div class="layout">
 
 <!-- SIDEBAR -->
-<aside class="sidebar">
+<aside class="sidebar" id="sidebar">
   <div class="sb-doc-card">
     <div class="sb-doc-type">Business Requirements Document</div>
     <div class="sb-doc-title">E-Commerce Platform — Full-Stack Retail Solution</div>
@@ -506,7 +631,6 @@ td strong,td b{color:var(--fg)}
     <div class="sec-line"></div>
   </div>
 
-  <!-- 4.1 Customer Management -->
   <div class="subsec">
     <div class="subsec-title">4.1 — Customer Management</div>
     <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-CM-001</span><div class="req-meta"><span class="src-chip">Source: Stakeholder</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">System shall allow customers to register using email or social login (Google, Facebook).</div><div class="req-tags"><span class="req-tag">Authentication</span><span class="req-tag">Registration</span><span class="req-tag">Social Login</span></div></div></div>
@@ -516,7 +640,6 @@ td strong,td b{color:var(--fg)}
     <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-CM-005</span><div class="req-meta"><span class="src-chip">Source: Business</span><span class="ph ph-m">Medium</span></div></div><div class="req-body"><div class="req-text">Customers shall receive email and SMS confirmation for all account-related activities including registration, login, and password changes.</div><div class="req-tags"><span class="req-tag">Notifications</span><span class="req-tag">Email</span><span class="req-tag">SMS</span></div></div></div>
   </div>
 
-  <!-- 4.2 Product Catalog -->
   <div class="subsec">
     <div class="subsec-title">4.2 — Product Catalog Management</div>
     <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-PC-001</span><div class="req-meta"><span class="src-chip">Source: Business</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">System shall support hierarchical product categories and sub-categories with unlimited nesting depth.</div><div class="req-tags"><span class="req-tag">Catalog</span><span class="req-tag">Taxonomy</span></div></div></div>
@@ -527,7 +650,6 @@ td strong,td b{color:var(--fg)}
     <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-PC-006</span><div class="req-meta"><span class="src-chip">Source: User Story</span><span class="ph ph-m">Medium</span></div></div><div class="req-body"><div class="req-text">Out-of-stock products shall display a clear status indicator and a "Notify Me" option allowing customers to subscribe for restock alerts.</div><div class="req-tags"><span class="req-tag">Inventory</span><span class="req-tag">Notify Me</span><span class="req-tag">UX</span></div></div></div>
   </div>
 
-  <!-- 4.3 Cart & Checkout -->
   <div class="subsec">
     <div class="subsec-title">4.3 — Shopping Cart &amp; Checkout</div>
     <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-SC-001</span><div class="req-meta"><span class="src-chip">Source: User Story</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">Customers shall add, update quantity, and remove items from the cart. Real-time price recalculation shall occur on each cart change.</div><div class="req-tags"><span class="req-tag">Cart</span><span class="req-tag">Real-time Pricing</span></div></div></div>
@@ -537,7 +659,6 @@ td strong,td b{color:var(--fg)}
     <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-SC-005</span><div class="req-meta"><span class="src-chip">Source: Compliance</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">System shall display an itemized order summary including product subtotal, applicable taxes, shipping charges, and discount applied — before final payment confirmation.</div><div class="req-tags"><span class="req-tag">Transparency</span><span class="req-tag">Compliance</span><span class="req-tag">Order Summary</span></div></div></div>
   </div>
 
-  <!-- 4.4 Payment -->
   <div class="subsec">
     <div class="subsec-title">4.4 — Payment Processing</div>
     <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-PAY-001</span><div class="req-meta"><span class="src-chip">Source: Business</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">System shall integrate with a minimum of two payment gateways (e.g., Razorpay, PayU) to ensure redundancy and avoid single points of failure.</div><div class="req-tags"><span class="req-tag">Payments</span><span class="req-tag">Redundancy</span><span class="req-tag">Razorpay</span></div></div></div>
@@ -547,7 +668,6 @@ td strong,td b{color:var(--fg)}
     <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-PAY-005</span><div class="req-meta"><span class="src-chip">Source: Business</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">System shall support full and partial refunds for returned or cancelled orders, with refund credited to the original payment method or store wallet.</div><div class="req-tags"><span class="req-tag">Refunds</span><span class="req-tag">Returns</span><span class="req-tag">Cancellations</span></div></div></div>
   </div>
 
-  <!-- 4.5 Order Management -->
   <div class="subsec">
     <div class="subsec-title">4.5 — Order Management</div>
     <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-OM-001</span><div class="req-meta"><span class="src-chip">Source: Business</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">System shall assign a unique, human-readable Order ID to every placed order, used for all tracking, support, and communication.</div><div class="req-tags"><span class="req-tag">Order Traceability</span><span class="req-tag">Order ID</span></div></div></div>
@@ -557,7 +677,6 @@ td strong,td b{color:var(--fg)}
     <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-OM-005</span><div class="req-meta"><span class="src-chip">Source: Operations</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">Admin and relevant vendors shall receive instant push and email notifications for each new order placed on the platform.</div><div class="req-tags"><span class="req-tag">Notifications</span><span class="req-tag">Admin</span><span class="req-tag">Vendors</span></div></div></div>
   </div>
 
-  <!-- 4.6 Vendor Portal -->
   <div class="subsec">
     <div class="subsec-title">4.6 — Vendor Portal</div>
     <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-VP-001</span><div class="req-meta"><span class="src-chip">Source: Business</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">Vendors shall register via a dedicated onboarding form, submit KYC documents (GST, PAN, bank details), and await admin verification before activation.</div><div class="req-tags"><span class="req-tag">Vendor Onboarding</span><span class="req-tag">KYC</span><span class="req-tag">GSTIN</span></div></div></div>
@@ -567,7 +686,6 @@ td strong,td b{color:var(--fg)}
     <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-VP-005</span><div class="req-meta"><span class="src-chip">Source: Vendor</span><span class="ph ph-m">Medium</span></div></div><div class="req-body"><div class="req-text">Vendors shall configure their own shipping rates, delivery zones, and estimated delivery timelines per product category.</div><div class="req-tags"><span class="req-tag">Shipping</span><span class="req-tag">Delivery Zones</span></div></div></div>
   </div>
 
-  <!-- 4.7 Admin Panel -->
   <div class="subsec">
     <div class="subsec-title">4.7 — Admin Panel</div>
     <div class="req-card"><div class="req-head"><span class="req-id-badge">BR-ADM-001</span><div class="req-meta"><span class="src-chip">Source: Business</span><span class="ph ph-h">High</span></div></div><div class="req-body"><div class="req-text">Admin shall have role-based access to manage users, vendors, product catalog, orders, returns, and platform configuration from a unified dashboard.</div><div class="req-tags"><span class="req-tag">Admin</span><span class="req-tag">RBAC</span><span class="req-tag">Unified Dashboard</span></div></div></div>
@@ -652,13 +770,6 @@ td strong,td b{color:var(--fg)}
     <span class="sec-title">Functional Process Flow — Customer Order Lifecycle</span>
     <div class="sec-line"></div>
   </div>
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap">
-    <div style="font-family:var(--mono);font-size:.62rem;display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:var(--ink3);border:1px solid var(--border);display:inline-block"></span>Step Number</div>
-    <div style="font-family:var(--mono);font-size:.62rem;display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:var(--ink3);border:1px solid var(--border);display:inline-block"></span>Actor</div>
-    <div style="font-family:var(--mono);font-size:.62rem;display:flex;align-items:center;gap:5px"><span style="width:10px;height:10px;border-radius:2px;background:var(--ink);border:1px solid var(--border);display:inline-block"></span>Action</div>
-    <div style="font-family:var(--mono);font-size:.62rem;display:flex;align-items:center;gap:5px;color:var(--fg3)"><span style="width:10px;height:10px;border-radius:2px;background:transparent;border:1px solid var(--border);display:inline-block"></span>System Response (italic)</div>
-  </div>
-
   <div class="flow-step"><div class="fs-num">01</div><div class="fs-actor">Customer</div><div class="fs-action"><strong>Visits platform</strong> and searches for a product using keyword or category navigation.</div><div class="fs-response">Displays ranked search results with filters, sorting options, and product thumbnails.</div></div>
   <div class="flow-step"><div class="fs-num">02</div><div class="fs-actor">Customer</div><div class="fs-action">Selects a product and views the <strong>product detail page</strong>.</div><div class="fs-response">Loads product info, image gallery, ratings, stock status, and variant selector.</div></div>
   <div class="flow-step"><div class="fs-num">03</div><div class="fs-actor">Customer</div><div class="fs-action">Clicks <strong>"Add to Cart"</strong> after selecting variant.</div><div class="fs-response">Adds item to cart. Updates cart count in header. Displays mini-cart confirmation.</div></div>
@@ -823,11 +934,33 @@ td strong,td b{color:var(--fg)}
 
 <script>
 (function(){
+  // Sidebar toggle (mobile)
+  function toggleSidebar(){
+    var sb = document.getElementById('sidebar');
+    var ov = document.getElementById('sidebarOverlay');
+    var tog = document.getElementById('sidebarToggle');
+    var open = sb.classList.toggle('open');
+    ov.classList.toggle('open', open);
+    tog.innerHTML = open
+      ? '<i class="bi bi-x" style="font-size:1.1rem"></i>'
+      : '<i class="bi bi-list" style="font-size:1.1rem"></i>';
+  }
+  function closeSidebar(){
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('open');
+    document.getElementById('sidebarToggle').innerHTML = '<i class="bi bi-list" style="font-size:1.1rem"></i>';
+  }
+  window.toggleSidebar = toggleSidebar;
+  window.closeSidebar = closeSidebar;
+
+  // Nav + close on mobile
   function navTo(id, el){
     var target = document.getElementById(id);
     if(target){ target.scrollIntoView({behavior:'smooth',block:'start'}); }
     document.querySelectorAll('.sb-link').forEach(function(l){ l.classList.remove('active'); });
     if(el) el.classList.add('active');
+    // Close sidebar on mobile after navigation
+    if(window.innerWidth <= 768) closeSidebar();
   }
   window.navTo = navTo;
 
@@ -847,7 +980,7 @@ td strong,td b{color:var(--fg)}
     });
   }, {passive:true});
 
-  // Stagger fade-in on load
+  // Stagger fade-in
   document.querySelectorAll('.req-card,.flow-step,.info-block,.tbl-wrap').forEach(function(el,i){
     el.style.opacity = '0';
     el.style.transform = 'translateY(8px)';
