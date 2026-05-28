@@ -1,770 +1,542 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manmathnath Mahanta — Business Analyst</title>
-  <meta name="description" content="Business Analyst with 2+ years of experience bridging business needs and technical delivery.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    :root {
-      --bg:       #080810;
-      --bg2:      #0d0d1a;
-      --bg3:      #12121f;
-      --surface:  #14141e;
-      --surface2: #1a1a28;
-      --border:   rgba(255,255,255,0.07);
-      --border2:  rgba(255,255,255,0.12);
-      --text:     #f0f0ff;
-      --muted:    #7b7b9a;
-      --muted2:   #4a4a6a;
-      --accent:   #6c63ff;
-      --accent2:  #a78bfa;
-      --gold:     #f5c842;
-      --gold2:    #e8a820;
-      --cyan:     #22d3ee;
-      --green:    #34d399;
-      --pink:     #f472b6;
-      --mono: 'JetBrains Mono', monospace;
-      --sans: 'Inter', sans-serif;
-      --display: 'Syne', sans-serif;
-      --ease: cubic-bezier(0.16, 1, 0.3, 1);
-      --ease2: cubic-bezier(0.4, 0, 0.2, 1);
-      --r: 8px;
-      --r-lg: 16px;
-      --r-xl: 24px;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manmathnath Mahanta — Business Analyst</title>
+<meta name="description" content="Business Analyst bridging business needs and technical delivery — BRDs, UML, user stories, UAT, Power BI. Kolkata, India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<style>
+:root{
+  --paper:#f3f2ec;
+  --paper2:#fbfaf6;
+  --ink:#22262c;
+  --ink2:#565d67;
+  --ink3:#8a919b;
+  --line:#e2dfd4;
+  --line2:#d3cfc2;
+  --grid:rgba(34,38,44,0.055);
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      font-size: 15px;
-      line-height: 1.65;
-      overflow-x: hidden;
-      cursor: none;
-    }
-    a { color: var(--accent2); text-decoration: none; transition: color .2s; }
-    a:hover { color: #fff; }
-    img { max-width: 100%; display: block; }
-    section { padding: 100px 0; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  /* desaturated "designer" sticky palette */
+  --amber:#f4dca0;  --amber-d:#b78f3f;
+  --sage:#d2ddc6;   --sage-d:#6f8a64;
+  --blue:#c2d6e0;   --blue-d:#3f7794;
+  --clay:#eecabb;   --clay-d:#bd7e60;
+  --lilac:#d8d2e6;  --lilac-d:#7e74a8;
+  --mint:#c9e1d6;   --mint-d:#4f9079;
 
-    /* ── CUSTOM CURSOR ── */
-    #cursor {
-      position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99999;
-      mix-blend-mode: difference;
-    }
-    #cursor-dot {
-      width: 8px; height: 8px; background: #fff; border-radius: 50%;
-      position: absolute; transform: translate(-50%, -50%);
-      transition: transform 0.1s var(--ease);
-    }
-    #cursor-ring {
-      width: 40px; height: 40px; border: 1.5px solid rgba(255,255,255,0.6);
-      border-radius: 50%; position: absolute;
-      transform: translate(-50%, -50%);
-      transition: width 0.3s var(--ease), height 0.3s var(--ease), border-color 0.3s;
-    }
-    body.cursor-hover #cursor-ring {
-      width: 64px; height: 64px;
-      border-color: rgba(108, 99, 255, 0.8);
-    }
-    body.cursor-hover #cursor-dot { transform: translate(-50%, -50%) scale(0.3); }
+  /* marker accents */
+  --m-ink:#262b31;
+  --m-blue:#2f6fa6;
+  --m-coral:#d9694f;
+  --m-amber:#c9962f;
 
-    /* ── NOISE TEXTURE ── */
-    body::before {
-      content: '';
-      position: fixed; inset: 0; pointer-events: none; z-index: 9998;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-      opacity: 0.4;
-    }
+  --display:'Bricolage Grotesque',sans-serif;
+  --body:'Hanken Grotesk',sans-serif;
+  --hand:'Caveat',cursive;
+  --e:cubic-bezier(.2,.7,.2,1);
+  --eb:cubic-bezier(.34,1.4,.5,1);
+  --sh-sm:0 1px 1px rgba(40,35,20,.05), 0 4px 10px -5px rgba(40,35,20,.18);
+  --sh-md:0 2px 2px rgba(40,35,20,.05), 0 14px 26px -12px rgba(40,35,20,.28);
+  --sh-lg:0 3px 4px rgba(40,35,20,.06), 0 26px 50px -18px rgba(40,35,20,.34);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);
+  color:var(--ink);
+  font-size:16px;
+  line-height:1.65;
+  background-color:var(--paper);
+  background-image:radial-gradient(var(--grid) 1.5px, transparent 1.6px);
+  background-size:24px 24px;
+  background-position:-12px -12px;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+/* soft board ambiance */
+body::before{
+  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(60% 50% at 15% 8%, rgba(244,220,160,.22), transparent 60%),
+    radial-gradient(50% 45% at 90% 20%, rgba(194,214,224,.20), transparent 60%),
+    radial-gradient(55% 50% at 80% 95%, rgba(210,221,198,.22), transparent 60%);
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+a{color:inherit;text-decoration:none}
+section{padding:96px 0;position:relative}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+::selection{background:var(--amber);color:var(--ink)}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:var(--paper)}
+::-webkit-scrollbar-thumb{background:var(--line2);border-radius:20px;border:3px solid var(--paper)}
+::-webkit-scrollbar-thumb:hover{background:#bdb8a8}
 
-    /* ── GRADIENT ORBS ── */
-    .orb {
-      position: fixed; pointer-events: none; z-index: 0; border-radius: 50%;
-      filter: blur(80px);
-    }
-    .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(108,99,255,0.15), transparent 70%); top: -200px; left: -200px; }
-    .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(34,211,238,0.08), transparent 70%); top: 40%; right: -150px; }
-    .orb-3 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(167,139,250,0.1), transparent 70%); bottom: -100px; left: 30%; }
+/* ── typography helpers ── */
+.hand{font-family:var(--hand);font-weight:600;color:var(--m-coral);line-height:1}
+.mono-num{font-variant-numeric:tabular-nums}
+.swipe{
+  background:linear-gradient(104deg, transparent .3%, var(--amber) 1.2%, var(--amber) 98.5%, transparent 99.5%);
+  background-repeat:no-repeat;background-size:100% 48%;background-position:0 82%;
+  padding:0 .06em;border-radius:2px;
+}
+.swipe.blue{background-image:linear-gradient(104deg,transparent .3%,var(--blue) 1.2%,var(--blue) 98.5%,transparent 99.5%)}
+.swipe.sage{background-image:linear-gradient(104deg,transparent .3%,var(--sage) 1.2%,var(--sage) 98.5%,transparent 99.5%)}
 
-    /* ── LOADER ── */
-    #site-loader {
-      position: fixed; inset: 0; background: var(--bg);
-      z-index: 99999; display: flex; align-items: center; justify-content: center;
-      transition: opacity 0.8s var(--ease), visibility 0.8s;
-    }
-    #site-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-    .loader-inner { text-align: center; }
-    .loader-name {
-      font-family: var(--display); font-size: 2.5rem; font-weight: 800;
-      color: var(--text); letter-spacing: -0.04em;
-      overflow: hidden;
-    }
-    .loader-name-chars span {
-      display: inline-block; opacity: 0;
-      transform: translateY(40px);
-      animation: charIn 0.5s var(--ease) forwards;
-    }
-    .loader-role {
-      font-family: var(--mono); font-size: 0.78rem; color: var(--muted);
-      letter-spacing: 0.25em; text-transform: uppercase; margin-top: 12px;
-      opacity: 0; animation: fadeInUp 0.5s 1.2s var(--ease) forwards;
-    }
-    .loader-bar {
-      width: 200px; height: 1px; background: var(--border2); margin: 24px auto 0;
-      overflow: hidden; opacity: 0; animation: fadeInUp 0.3s 0.8s var(--ease) forwards;
-    }
-    .loader-bar-fill {
-      height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2));
-      width: 0; animation: lFill 1.2s 0.9s var(--ease) forwards;
-    }
-    @keyframes charIn { to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-    @keyframes lFill { to { width: 100%; } }
+/* ── eyebrow / section heads ── */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--hand);font-size:1.45rem;color:var(--m-blue);
+  transform:rotate(-1.5deg);margin-bottom:6px;
+}
+.eyebrow i{font-size:1rem;transform:rotate(2deg)}
+.shead{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(2.2rem,4.4vw,3.4rem);line-height:1.02;letter-spacing:-.02em;
+  color:var(--ink);margin-bottom:14px;
+}
+.shead u{text-decoration:none;position:relative;white-space:nowrap}
+.shead u::after{
+  content:'';position:absolute;left:-2px;right:-2px;bottom:-6px;height:9px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M2 7 C 50 2, 150 11, 198 5' stroke='%23d9694f' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat;
+  background-size:100% 100%;
+}
+.sub{color:var(--ink2);max-width:560px;font-size:1.02rem}
 
-    /* ── NAVBAR ── */
-    .topbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      padding: 20px 0;
-      transition: padding 0.4s var(--ease), background 0.4s;
-    }
-    .topbar.scrolled {
-      padding: 12px 0;
-      background: rgba(8, 8, 16, 0.85);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
-    .topbar-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; gap: 24px; }
-    .topbar-logo {
-      font-family: var(--display); font-size: 1.1rem; font-weight: 800;
-      color: var(--text); letter-spacing: -0.03em; text-decoration: none;
-      flex-shrink: 0;
-    }
-    .topbar-logo span { color: var(--accent2); }
-    .topbar-nav { display: flex; align-items: center; gap: 2px; margin-left: auto; }
-    .topbar-nav a {
-      font-size: 0.82rem; font-weight: 500; color: var(--muted);
-      padding: 6px 14px; border-radius: 100px;
-      transition: color 0.2s, background 0.2s; text-decoration: none;
-    }
-    .topbar-nav a:hover, .topbar-nav a.active { color: var(--text); background: var(--surface2); }
-    .topbar-cta { display: flex; align-items: center; gap: 10px; margin-left: 16px; }
-    .btn { display: inline-flex; align-items: center; gap: 7px; padding: 8px 20px; border-radius: 100px; font-family: var(--sans); font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.25s var(--ease); border: 1px solid; text-decoration: none; white-space: nowrap; }
-    .btn-outline { background: transparent; color: var(--text); border-color: var(--border2); }
-    .btn-outline:hover { background: var(--surface2); color: var(--text); border-color: var(--border2); text-decoration: none; }
-    .btn-primary { background: var(--accent); color: #fff; border-color: transparent; box-shadow: 0 0 30px rgba(108,99,255,0.3); }
-    .btn-primary:hover { background: #7c75ff; color: #fff; box-shadow: 0 0 40px rgba(108,99,255,0.5); text-decoration: none; transform: translateY(-1px); }
-    .btn-gold { background: var(--gold); color: #0a0a14; border-color: transparent; }
-    .btn-gold:hover { background: #ffd060; color: #0a0a14; text-decoration: none; transform: translateY(-1px); }
+/* ── sticky note ── */
+.sticky{
+  position:relative;background:var(--amber);
+  padding:22px 22px 20px;border-radius:3px;
+  box-shadow:var(--sh-sm);
+  transition:transform .35s var(--eb), box-shadow .35s var(--e);
+}
+.sticky::after{ /* subtle paper sheen */
+  content:'';position:absolute;inset:0;border-radius:3px;pointer-events:none;
+  background:linear-gradient(135deg, rgba(255,255,255,.35), transparent 42%);
+}
+.sticky:hover{box-shadow:var(--sh-md)}
+.s-amber{background:var(--amber)} .s-sage{background:var(--sage)}
+.s-blue{background:var(--blue)} .s-clay{background:var(--clay)}
+.s-lilac{background:var(--lilac)} .s-mint{background:var(--mint)}
+.rot-l{transform:rotate(-1.6deg)} .rot-r{transform:rotate(1.4deg)}
+.rot-l2{transform:rotate(-.8deg)} .rot-r2{transform:rotate(.9deg)}
+.sticky.rot-l:hover,.sticky.rot-r:hover,.sticky.rot-l2:hover,.sticky.rot-r2:hover{transform:rotate(0) translateY(-4px)}
+/* tape */
+.tape{
+  position:absolute;top:-11px;left:50%;width:78px;height:22px;
+  transform:translateX(-50%) rotate(-2.4deg);
+  background:rgba(255,255,255,.42);
+  border-left:1px solid rgba(0,0,0,.04);border-right:1px solid rgba(0,0,0,.04);
+  box-shadow:0 2px 5px rgba(0,0,0,.06);
+  backdrop-filter:blur(1px);
+}
+.tape.r{transform:translateX(-50%) rotate(2.8deg)}
+/* pin */
+.pin{
+  position:absolute;top:-9px;left:50%;transform:translateX(-50%);
+  width:16px;height:16px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #fff 0 12%, var(--m-coral) 18% 70%, #a8412e 100%);
+  box-shadow:0 4px 7px rgba(0,0,0,.28);z-index:3;
+}
+.pin.blue{background:radial-gradient(circle at 35% 30%, #fff 0 12%, var(--m-blue) 18% 70%, #1f4d75 100%)}
+.pin.amber{background:radial-gradient(circle at 35% 30%, #fff 0 12%, var(--m-amber) 18% 70%, #8a6618 100%)}
 
-    /* ── SECTION HEADER ── */
-    .sh { margin-bottom: 60px; }
-    .sh-eyebrow { font-family: var(--mono); font-size: 0.72rem; color: var(--accent2); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-    .sh-eyebrow::before { content: '//'; opacity: 0.5; }
-    .sh-title { font-family: var(--display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: var(--text); letter-spacing: -0.04em; line-height: 1.1; }
-    .sh-title em { font-style: normal; color: var(--accent2); }
-    .sh-line { width: 40px; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 2px; margin-top: 16px; }
+/* ── board card (index card / white) ── */
+.bcard{
+  position:relative;background:var(--paper2);
+  border:1px solid var(--line);border-radius:10px;
+  box-shadow:var(--sh-sm);
+  transition:transform .4s var(--e), box-shadow .4s var(--e), border-color .4s;
+}
+.bcard:hover{transform:translateY(-5px);box-shadow:var(--sh-md);border-color:var(--line2)}
 
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh; display: flex; align-items: center;
-      padding-top: 100px; padding-bottom: 60px; position: relative;
-    }
-    .hero-canvas {
-      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
-    }
-    .hero-grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(108,99,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(108,99,255,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 80% 80% at 50% 20%, black 0%, transparent 80%);
-    }
+/* ── buttons ── */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;cursor:pointer;
+  font-family:var(--body);font-weight:600;font-size:.92rem;
+  padding:12px 22px;border-radius:9px;border:1.5px solid var(--ink);
+  background:var(--ink);color:var(--paper2);
+  transition:transform .25s var(--eb), box-shadow .25s var(--e), background .25s;
+  white-space:nowrap;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px -8px rgba(34,38,44,.5)}
+.btn:active{transform:translateY(0)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:rgba(34,38,44,.05);box-shadow:none}
+.btn.amber{background:var(--m-amber);border-color:var(--m-amber);color:#231a05}
+.btn.amber:hover{box-shadow:0 10px 22px -8px rgba(201,150,47,.65)}
+.btn.wa{background:#1faa55;border-color:#1faa55;color:#fff}
+.btn.wa:hover{box-shadow:0 10px 22px -8px rgba(31,170,85,.6)}
+.btn.sm{padding:9px 16px;font-size:.84rem;border-radius:8px}
 
-    /* Floating 3D geometry */
-    .geo {
-      position: absolute; pointer-events: none;
-      animation: float linear infinite;
-    }
-    @keyframes float {
-      0% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-30px) rotate(180deg); }
-      100% { transform: translateY(0) rotate(360deg); }
-    }
+/* ── chips ── */
+.chip{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.78rem;font-weight:600;color:var(--ink2);
+  padding:5px 12px;border-radius:7px;background:var(--paper2);
+  border:1px solid var(--line);transition:all .2s var(--e);
+}
+.chip:hover{transform:translateY(-2px);color:var(--ink);border-color:var(--line2)}
+.chip i{color:var(--m-blue)}
 
-    .hero-inner { position: relative; z-index: 1; width: 100%; }
-    .hero-layout { display: grid; grid-template-columns: 1fr 420px; gap: 80px; align-items: center; }
+/* ══════ TOOLBAR / NAV ══════ */
+.bar{position:fixed;top:18px;left:0;right:0;z-index:900;display:flex;justify-content:center;pointer-events:none}
+.bar-inner{
+  pointer-events:auto;display:flex;align-items:center;gap:6px;
+  background:rgba(251,250,246,.82);backdrop-filter:blur(14px);
+  border:1px solid var(--line2);border-radius:16px;
+  padding:9px 12px;box-shadow:var(--sh-md);
+  max-width:calc(100vw - 32px);
+}
+.brand{font-family:var(--display);font-weight:700;font-size:1.15rem;letter-spacing:-.02em;padding:0 10px 0 6px;display:flex;align-items:center;gap:7px}
+.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--m-coral);box-shadow:0 0 0 3px rgba(217,105,79,.2)}
+.bar-links{display:flex;gap:2px}
+.bar-links a{
+  font-size:.86rem;font-weight:600;color:var(--ink2);padding:8px 13px;border-radius:9px;
+  transition:all .2s var(--e);
+}
+.bar-links a:hover{color:var(--ink);background:rgba(34,38,44,.05)}
+.bar-links a.on{color:var(--ink);background:#fff;box-shadow:var(--sh-sm)}
+.bar .btn{margin-left:6px}
+.bar-burger{display:none;background:none;border:none;font-size:1.4rem;color:var(--ink);padding:6px 8px;cursor:pointer}
+.mnav{position:fixed;inset:0;z-index:899;background:rgba(243,242,236,.97);backdrop-filter:blur(8px);
+  display:none;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.mnav.open{display:flex}
+.mnav a{font-family:var(--display);font-weight:600;font-size:1.6rem;color:var(--ink);padding:10px}
 
-    .hero-eyebrow {
-      font-family: var(--mono); font-size: 0.78rem; color: var(--green); letter-spacing: 0.15em; text-transform: uppercase;
-      display: flex; align-items: center; gap: 10px; margin-bottom: 24px;
-    }
-    .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--green); }
-    .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: livePulse 2s infinite; display: inline-block; }
-    @keyframes livePulse { 0%,100%{box-shadow:0 0 0 0 rgba(52,211,153,0.5)} 50%{box-shadow:0 0 0 6px rgba(52,211,153,0)} }
+/* ══════ HERO ══════ */
+#hero{padding-top:150px;padding-bottom:60px;min-height:100vh;display:flex;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center;width:100%}
+.avail{
+  display:inline-flex;align-items:center;gap:9px;font-size:.8rem;font-weight:600;
+  color:var(--mint-d);background:#fff;border:1px solid var(--line);
+  padding:7px 14px;border-radius:30px;box-shadow:var(--sh-sm);margin-bottom:26px;
+}
+.avail .led{width:8px;height:8px;border-radius:50%;background:#2faa6e;box-shadow:0 0 0 0 rgba(47,170,110,.5);animation:led 2.4s infinite}
+@keyframes led{0%{box-shadow:0 0 0 0 rgba(47,170,110,.5)}70%{box-shadow:0 0 0 8px rgba(47,170,110,0)}100%{box-shadow:0 0 0 0 rgba(47,170,110,0)}}
+.h1{font-family:var(--display);font-weight:800;font-size:clamp(2.7rem,6vw,5rem);line-height:.98;letter-spacing:-.03em;color:var(--ink)}
+.h1 .nm{color:var(--m-coral)}
+.h-role{font-family:var(--hand);font-size:clamp(1.8rem,3.6vw,2.6rem);color:var(--m-blue);transform:rotate(-1.5deg);display:inline-block;margin-top:4px}
+.h-desc{color:var(--ink2);font-size:1.06rem;max-width:520px;margin:24px 0 30px}
+.h-desc b{color:var(--ink);font-weight:700}
+.h-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.h-stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:46px}
+.stat{padding:14px 16px 12px;min-width:96px;text-align:left;border-radius:4px}
+.stat .v{font-family:var(--display);font-weight:700;font-size:1.9rem;line-height:1;color:var(--ink)}
+.stat .v sup{font-size:.9rem;color:var(--m-amber)}
+.stat .l{font-size:.72rem;font-weight:600;letter-spacing:.02em;color:var(--ink2);margin-top:6px;text-transform:uppercase}
 
-    .hero-h1 {
-      font-family: var(--display); font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 800;
-      line-height: 1.0; letter-spacing: -0.05em; color: var(--text);
-      margin-bottom: 28px;
-    }
-    .hero-h1 .line { display: block; overflow: hidden; }
-    .hero-h1 .line span { display: block; transform: translateY(100%); animation: lineUp 0.9s var(--ease) forwards; }
-    .hero-h1 .line:nth-child(1) span { animation-delay: 0.1s; }
-    .hero-h1 .line:nth-child(2) span { animation-delay: 0.22s; color: var(--accent2); }
-    .hero-h1 .line:nth-child(3) span { animation-delay: 0.34s; color: var(--muted); font-size: 0.55em; letter-spacing: -0.02em; }
-    @keyframes lineUp { to { transform: translateY(0); } }
+/* profile pinned card */
+.profile-wrap{position:relative;display:flex;justify-content:center}
+.profile{
+  position:relative;width:330px;max-width:100%;background:var(--paper2);
+  border:1px solid var(--line);border-radius:14px;box-shadow:var(--sh-lg);
+  padding:26px 24px 22px;transform:rotate(1.6deg);
+  transition:transform .5s var(--eb);
+}
+.profile:hover{transform:rotate(0)}
+.profile .ph{
+  width:96px;height:96px;border-radius:14px;object-fit:cover;display:block;margin:0 auto 14px;
+  border:3px solid #fff;box-shadow:var(--sh-sm);background:var(--blue);
+}
+.profile .ph-fallback{display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:2rem;color:var(--blue-d)}
+.profile .pn{font-family:var(--display);font-weight:700;font-size:1.3rem;text-align:center;letter-spacing:-.01em}
+.profile .pr{text-align:center;font-size:.82rem;color:var(--ink2);font-weight:600;margin-top:2px;margin-bottom:16px}
+.profile .prow{display:flex;align-items:center;gap:11px;font-size:.86rem;color:var(--ink2);padding:7px 0;border-top:1px dashed var(--line2)}
+.profile .prow i{color:var(--m-blue);width:16px;text-align:center}
+.profile .prow a:hover{color:var(--ink)}
+.profile .ptags{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0}
+.ptag{font-size:.7rem;font-weight:700;padding:4px 9px;border-radius:6px;color:var(--ink)}
+.profile .pcta{margin-top:6px}
+.profile .pcta .btn{width:100%;justify-content:center}
 
-    .hero-desc { font-size: 1.05rem; color: var(--muted); line-height: 1.8; max-width: 520px; margin-bottom: 36px; opacity: 0; animation: fadeInUp 0.7s 0.6s var(--ease) forwards; }
-    .hero-desc strong { color: var(--text); font-weight: 600; }
+/* decorative figma-style cursors */
+.fcur{position:absolute;z-index:4;pointer-events:none;display:flex;align-items:flex-start;gap:0;animation:bobf 6s ease-in-out infinite}
+.fcur svg{filter:drop-shadow(0 3px 4px rgba(0,0,0,.18))}
+.fcur .tag{font-family:var(--body);font-size:.66rem;font-weight:700;color:#fff;padding:3px 8px;border-radius:8px 8px 8px 2px;margin-top:14px;white-space:nowrap}
+.fcur.c1{top:6%;left:-2%} .fcur.c1 .tag{background:var(--m-blue)}
+.fcur.c2{bottom:2%;right:-1%;animation-delay:-3s} .fcur.c2 .tag{background:var(--m-coral)}
+@keyframes bobf{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 
-    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; opacity: 0; animation: fadeInUp 0.7s 0.75s var(--ease) forwards; }
+/* ══════ ABOUT ══════ */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start;margin-top:36px}
+.note-lg{padding:30px 30px 26px}
+.note-lg p{font-size:1rem;color:#3c424b;margin-bottom:14px}
+.note-lg p:last-child{margin-bottom:0}
+.note-lg b{color:var(--ink);font-weight:700}
+.note-lg code{font-family:var(--body);font-weight:700;background:rgba(255,255,255,.55);padding:1px 7px;border-radius:5px;font-size:.92em}
+.note-h{font-family:var(--hand);font-size:1.5rem;color:var(--ink);transform:rotate(-1deg);display:inline-block;margin-bottom:8px}
+.skills{display:flex;flex-direction:column;gap:16px;margin-top:6px}
+.skill .stop{display:flex;justify-content:space-between;font-size:.86rem;font-weight:600;margin-bottom:6px}
+.skill .stop .pc{color:var(--ink2)}
+.track{height:9px;background:rgba(255,255,255,.6);border-radius:20px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.06)}
+.fill{height:100%;width:0;border-radius:20px;transition:width 1.3s var(--e)}
+.cloud{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
 
-    .hero-stats { display: flex; gap: 32px; margin-top: 52px; padding-top: 32px; border-top: 1px solid var(--border); opacity: 0; animation: fadeInUp 0.7s 0.9s var(--ease) forwards; }
-    .hero-stat-num { font-family: var(--display); font-size: 2.2rem; font-weight: 800; color: var(--text); line-height: 1; letter-spacing: -0.04em; }
-    .hero-stat-num span { color: var(--accent2); }
-    .hero-stat-lbl { font-size: 0.76rem; color: var(--muted); margin-top: 4px; }
+/* ══════ PROCESS FLOW ══════ */
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:40px;position:relative}
+.step{position:relative;padding:22px 18px 18px}
+.step .sn{font-family:var(--display);font-weight:700;font-size:.8rem;color:var(--ink2);display:flex;align-items:center;gap:7px;margin-bottom:10px}
+.step .sn .ic{width:30px;height:30px;border-radius:8px;background:rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--ink)}
+.step h4{font-family:var(--display);font-weight:700;font-size:1.18rem;margin-bottom:7px;letter-spacing:-.01em}
+.step p{font-size:.85rem;color:#3f454e;line-height:1.5}
+.step .arr{position:absolute;right:-16px;top:46px;z-index:5;color:var(--line2);font-size:1.3rem}
+.step:last-child .arr{display:none}
 
-    /* ── HERO CARD / 3D PROFILE ── */
-    .hero-card-wrap {
-      perspective: 1000px;
-      opacity: 0; animation: fadeInUp 0.9s 0.5s var(--ease) forwards;
-    }
-    .hero-card {
-      background: var(--surface);
-      border: 1px solid var(--border2);
-      border-radius: var(--r-xl);
-      padding: 32px;
-      transform-style: preserve-3d;
-      transition: transform 0.1s ease;
-      position: relative; overflow: hidden;
-    }
-    .hero-card::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(108,99,255,0.08) 0%, transparent 60%);
-      border-radius: var(--r-xl);
-      pointer-events: none;
-    }
-    .hero-card-glow {
-      position: absolute; top: -80px; right: -80px;
-      width: 250px; height: 250px;
-      background: radial-gradient(circle, rgba(108,99,255,0.2), transparent 70%);
-      pointer-events: none;
-    }
-    .hero-avatar {
-      width: 120px; height: 120px; border-radius: 50%;
-      border: 2px solid var(--border2); margin: 0 auto 20px; overflow: hidden;
-      position: relative;
-    }
-    .hero-avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .hero-avatar-status {
-      position: absolute; bottom: 4px; right: 4px;
-      width: 18px; height: 18px; background: var(--green);
-      border: 3px solid var(--surface); border-radius: 50%;
-    }
-    .hero-card-name { font-family: var(--display); font-size: 1.3rem; font-weight: 800; text-align: center; letter-spacing: -0.03em; margin-bottom: 4px; }
-    .hero-card-role { font-size: 0.82rem; color: var(--muted); text-align: center; margin-bottom: 20px; }
-    .hero-card-divider { height: 1px; background: var(--border); margin: 20px 0; }
-    .hero-card-info { display: flex; flex-direction: column; gap: 10px; }
-    .hero-card-info-item { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; color: var(--muted); }
-    .hero-card-info-item i { width: 16px; text-align: center; color: var(--accent2); font-size: 0.82rem; }
-    .hero-card-info-item a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .hero-card-info-item a:hover { color: var(--text); }
-    .hero-card-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 20px; }
-    .hbadge {
-      font-family: var(--mono); font-size: 0.66rem; font-weight: 600;
-      padding: 3px 10px; border-radius: 100px; border: 1px solid;
-    }
-    .hb-blue { background: rgba(108,99,255,0.12); color: var(--accent2); border-color: rgba(108,99,255,0.3); }
-    .hb-green { background: rgba(52,211,153,0.1); color: var(--green); border-color: rgba(52,211,153,0.3); }
-    .hb-gold { background: rgba(245,200,66,0.1); color: var(--gold); border-color: rgba(245,200,66,0.3); }
+/* ══════ EXPERIENCE ══════ */
+.tl{position:relative;margin-top:40px;padding-left:34px}
+.tl::before{content:'';position:absolute;left:7px;top:6px;bottom:6px;width:3px;border-radius:3px;
+  background:repeating-linear-gradient(var(--line2) 0 7px, transparent 7px 14px)}
+.exp{position:relative;margin-bottom:20px}
+.exp::before{content:'';position:absolute;left:-34px;top:24px;width:17px;height:17px;border-radius:50%;
+  background:var(--paper2);border:3px solid var(--m-coral);box-shadow:var(--sh-sm)}
+.exp.now::before{border-color:#2faa6e}
+.exp .ecard{padding:24px 26px}
+.exp-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+.exp-co{font-size:.84rem;font-weight:700;color:var(--m-blue);display:flex;align-items:center;gap:7px}
+.exp-date{font-size:.74rem;font-weight:700;color:var(--ink2);background:var(--paper);border:1px solid var(--line);padding:4px 11px;border-radius:20px}
+.exp-date.now{color:var(--mint-d);background:#eaf6ef;border-color:#cfe8da}
+.exp-role{font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:-.01em;margin-bottom:14px}
+.exp ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.exp li{display:flex;gap:11px;font-size:.92rem;color:#3c424b;line-height:1.55}
+.exp li .b{color:var(--m-amber);font-weight:800;flex-shrink:0}
+.exp li b{color:var(--ink);font-weight:700}
+.exp .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;padding-top:15px;border-top:1px dashed var(--line2)}
 
-    /* ── ABOUT ── */
-    #about { background: var(--bg); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-    .glass-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--r-xl);
-      overflow: hidden;
-      transition: border-color 0.3s, box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
-    }
-    .glass-card:hover {
-      border-color: rgba(108,99,255,0.3);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(108,99,255,0.1);
-      transform: translateY(-4px);
-    }
-    .gc-header {
-      background: var(--surface2); border-bottom: 1px solid var(--border);
-      padding: 12px 20px; display: flex; align-items: center; justify-content: space-between;
-    }
-    .gc-header-left { display: flex; align-items: center; gap: 10px; }
-    .gc-title { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
-    .gc-dot { width: 8px; height: 8px; border-radius: 50%; }
-    .gc-body { padding: 24px; }
-    .about-text { font-size: 0.9rem; color: var(--muted); line-height: 1.8; margin-bottom: 18px; }
-    .about-text strong { color: var(--text); }
-    .about-text code { font-family: var(--mono); font-size: 0.85em; background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 2px 7px; color: var(--accent2); }
-    .info-row { display: flex; gap: 16px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.84rem; }
-    .info-row:last-child { border-bottom: none; }
-    .info-key { font-family: var(--mono); font-size: 0.75rem; color: var(--muted2); width: 100px; flex-shrink: 0; margin-top: 1px; }
-    .info-val { color: var(--text); }
+/* ══════ TOOLS ══════ */
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.tool{padding:20px 20px 18px}
+.tool .th{display:flex;align-items:center;gap:13px;margin-bottom:10px}
+.tool .ti{width:46px;height:46px;border-radius:11px;background:rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;box-shadow:var(--sh-sm)}
+.tool .ti img{width:30px;height:30px;object-fit:contain}
+.tool .tn{font-family:var(--display);font-weight:700;font-size:1.18rem;letter-spacing:-.01em}
+.tool .tcat{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink2);margin-top:1px}
+.tool .td{font-size:.85rem;color:#3f454e;line-height:1.5}
 
-    /* Skills bars */
-    .skill-row { margin-bottom: 16px; }
-    .skill-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px; }
-    .skill-name { font-size: 0.84rem; font-weight: 600; color: var(--text); display: flex; align-items: center; gap: 8px; }
-    .skill-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-    .skill-pct { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
-    .skill-bar { height: 4px; background: var(--surface2); border-radius: 4px; overflow: hidden; }
-    .skill-fill { height: 100%; border-radius: 4px; width: 0; transition: width 1.4s var(--ease); }
+/* ══════ PROJECTS ══════ */
+.filters{display:flex;gap:7px;flex-wrap:wrap;margin-top:34px;margin-bottom:34px}
+.f{font-family:var(--body);font-size:.84rem;font-weight:600;color:var(--ink2);
+  padding:8px 16px;border-radius:9px;border:1px solid var(--line);background:var(--paper2);cursor:pointer;transition:all .2s var(--e)}
+.f:hover{border-color:var(--line2);color:var(--ink)}
+.f.on{background:var(--ink);color:var(--paper2);border-color:var(--ink)}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.proj{cursor:pointer;display:flex;flex-direction:column;overflow:hidden;padding:0}
+.proj .ptop{display:flex;align-items:center;justify-content:space-between;padding:15px 16px 0}
+.badge{font-size:.68rem;font-weight:800;letter-spacing:.03em;padding:4px 10px;border-radius:6px;color:var(--ink)}
+.b-ba{background:var(--amber)} .b-bi{background:var(--blue)} .b-sql{background:var(--lilac)}
+.proj .pn-num{font-family:var(--display);font-weight:700;font-size:.8rem;color:var(--ink3)}
+.proj .pthumb{height:130px;margin:13px 16px 0;border-radius:9px;overflow:hidden;border:1px solid var(--line);background:var(--paper)}
+.proj .pthumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--e)}
+.proj:hover .pthumb img{transform:scale(1.06)}
+.proj .picon{height:130px;margin:13px 16px 0;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:2.6rem;border:1px solid var(--line)}
+.pic-ba{background:linear-gradient(135deg,#faf0d4,#f4dca0)}
+.proj .pbody{padding:14px 16px 0;flex:1}
+.proj h3{font-family:var(--display);font-weight:700;font-size:1.12rem;line-height:1.2;letter-spacing:-.01em;margin-bottom:7px}
+.proj .pd{font-size:.84rem;color:#454b54;line-height:1.5;margin-bottom:12px}
+.proj .ppills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.ppill{font-size:.7rem;font-weight:600;color:var(--ink2);background:var(--paper);border:1px solid var(--line);padding:3px 9px;border-radius:6px}
+.proj .pfoot{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;margin-top:auto;border-top:1px dashed var(--line2)}
+.proj .pdom{font-size:.74rem;font-weight:600;color:var(--ink2);display:flex;align-items:center;gap:6px}
+.proj .pcta{font-size:.78rem;font-weight:700;color:var(--m-coral);display:flex;align-items:center;gap:6px;transition:gap .2s}
+.proj:hover .pcta{gap:10px}
+.proj.out{opacity:.25;filter:grayscale(.6);transform:scale(.97);pointer-events:none;transition:all .3s}
 
-    /* Tag cloud */
-    .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tag {
-      font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
-      background: var(--surface2); border: 1px solid var(--border);
-      border-radius: 100px; padding: 5px 14px; color: var(--muted);
-      cursor: default; transition: all 0.2s;
-    }
-    .tag:hover { background: rgba(108,99,255,0.1); border-color: rgba(108,99,255,0.35); color: var(--accent2); }
+/* ══════ CERTS ══════ */
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+.cert{padding:20px 20px 18px;display:block}
+.cert .ctop{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}
+.cert .verified{font-size:.68rem;font-weight:700;color:var(--mint-d);display:flex;align-items:center;gap:5px;background:#eaf6ef;padding:4px 9px;border-radius:6px;border:1px solid #cfe8da}
+.cert .ci{font-size:.74rem;font-weight:700;color:var(--ink2);margin-bottom:5px}
+.cert .ct{font-family:var(--display);font-weight:700;font-size:1.04rem;line-height:1.25;letter-spacing:-.01em;margin-bottom:8px}
+.cert .cd{font-size:.82rem;color:#454b54;line-height:1.5;margin-bottom:13px}
+.cert .cfoot{display:flex;align-items:center;justify-content:space-between}
+.cert .ctags{display:flex;gap:5px;flex-wrap:wrap}
+.cert .clink{width:30px;height:30px;border-radius:8px;background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--m-blue);transition:all .25s var(--e)}
+.cert:hover .clink{background:var(--m-blue);color:#fff;border-color:var(--m-blue);transform:rotate(45deg)}
 
-    /* ── EXPERIENCE ── */
-    #resume { background: var(--bg2); }
-    .timeline { display: flex; flex-direction: column; gap: 20px; }
-    .exp-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r-xl); overflow: hidden;
-      transition: border-color 0.3s, box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
-      position: relative;
-    }
-    .exp-card::before {
-      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
-      background: linear-gradient(180deg, var(--accent), var(--accent2));
-      opacity: 0; transition: opacity 0.3s;
-    }
-    .exp-card:hover { border-color: rgba(108,99,255,0.25); box-shadow: 0 16px 50px rgba(0,0,0,0.35); transform: translateY(-3px); }
-    .exp-card:hover::before { opacity: 1; }
-    .exp-header {
-      display: flex; align-items: center; justify-content: space-between;
-      background: var(--surface2); border-bottom: 1px solid var(--border);
-      padding: 12px 24px; flex-wrap: wrap; gap: 8px;
-    }
-    .exp-header-left { display: flex; align-items: center; gap: 10px; }
-    .exp-file { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
-    .exp-period {
-      font-family: var(--mono); font-size: 0.7rem; font-weight: 600;
-      padding: 3px 12px; border-radius: 100px;
-      background: rgba(52,211,153,0.1); color: var(--green); border: 1px solid rgba(52,211,153,0.25);
-    }
-    .exp-period.past { background: rgba(108,99,255,0.1); color: var(--accent2); border-color: rgba(108,99,255,0.25); }
-    .exp-period.intern { background: rgba(167,139,250,0.1); color: var(--accent2); border-color: rgba(167,139,250,0.25); }
-    .exp-body { padding: 28px 32px; }
-    .exp-company { font-size: 0.8rem; color: var(--muted); display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
-    .exp-role { font-family: var(--display); font-size: 1.5rem; font-weight: 800; color: var(--text); letter-spacing: -0.04em; margin-bottom: 20px; }
-    .diff-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-    .diff-item { font-size: 0.88rem; color: var(--muted); line-height: 1.75; display: flex; gap: 14px; padding: 8px 12px; border-radius: var(--r); transition: background 0.2s; }
-    .diff-item:hover { background: var(--surface2); }
-    .diff-plus { font-family: var(--mono); font-size: 0.8rem; font-weight: 700; color: var(--green); flex-shrink: 0; margin-top: 2px; }
-    .diff-item .hl { color: var(--text); font-weight: 600; }
-    .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); }
-    .exp-tag { font-family: var(--mono); font-size: 0.68rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 100px; padding: 3px 12px; color: var(--muted); }
+/* ══════ CONTACT ══════ */
+#contact .ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:24px}
+.ct-big{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,5vw,3.8rem);line-height:1;letter-spacing:-.03em;margin-bottom:18px}
+.ct-links{display:flex;flex-direction:column;gap:11px;margin-top:26px}
+.cl{display:flex;align-items:center;gap:14px;background:var(--paper2);border:1px solid var(--line);
+  border-radius:11px;padding:15px 18px;font-weight:600;font-size:.92rem;box-shadow:var(--sh-sm);transition:all .3s var(--e)}
+.cl:hover{transform:translateX(4px);border-color:var(--line2)}
+.cl i{color:var(--m-blue);font-size:1.15rem;width:22px;text-align:center}
+.ct-card{padding:30px}
+.ct-card .ctas{display:flex;flex-direction:column;gap:11px;margin-bottom:22px}
+.ct-card .ctas .btn{justify-content:center}
+.ct-note{font-size:.82rem;color:var(--ink2);line-height:1.7}
+.ct-note .ok{color:var(--mint-d);font-weight:700}
 
-    /* ── TOOLS ── */
-    #technical-skills { background: var(--bg); }
-    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
-    .tool-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r-lg); padding: 20px;
-      display: flex; flex-direction: column; gap: 10px;
-      transition: border-color 0.3s, transform 0.4s var(--ease), box-shadow 0.4s;
-      cursor: default;
-    }
-    .tool-card:hover { border-color: rgba(108,99,255,0.35); transform: translateY(-4px) scale(1.02); box-shadow: 0 12px 40px rgba(0,0,0,0.35); }
-    .tool-card-top { display: flex; align-items: center; gap: 12px; }
-    .tool-icon { width: 34px; height: 34px; object-fit: contain; }
-    .tool-icon-fb { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
-    .tool-name { font-weight: 700; font-size: 0.92rem; color: var(--accent2); }
-    .tool-desc { font-size: 0.76rem; color: var(--muted); line-height: 1.5; flex: 1; }
-    .tool-meta { display: flex; align-items: center; gap: 6px; font-size: 0.72rem; color: var(--muted2); }
-    .tool-lang-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+footer{padding:30px 0 40px;text-align:center;color:var(--ink3);font-size:.82rem;font-weight:600}
+footer .hand{display:inline-block;color:var(--m-coral);transform:rotate(-2deg);font-size:1.1rem}
 
-    /* ── PROJECTS ── */
-    #projects { background: var(--bg2); }
-    .proj-filters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 32px; }
-    .pf-btn {
-      font-family: var(--mono); font-size: 0.72rem; font-weight: 600;
-      padding: 6px 16px; border-radius: 100px;
-      border: 1px solid var(--border); background: transparent; color: var(--muted);
-      cursor: pointer; transition: all 0.2s;
-    }
-    .pf-btn.active, .pf-btn:hover { background: rgba(108,99,255,0.12); border-color: rgba(108,99,255,0.35); color: var(--accent2); }
-    .pf-btn[data-filter="ba"].active, .pf-btn[data-filter="ba"]:hover { background: rgba(245,200,66,0.1); border-color: rgba(245,200,66,0.35); color: var(--gold); }
+/* floating actions */
+.fab{position:fixed;z-index:800;display:flex;align-items:center;gap:8px;border-radius:11px;
+  padding:11px 16px;font-weight:600;font-size:.82rem;cursor:pointer;box-shadow:var(--sh-md);
+  opacity:0;visibility:hidden;transform:translateY(10px);transition:all .35s var(--eb)}
+.fab.show{opacity:1;visibility:visible;transform:none}
+#askai{left:24px;bottom:24px;background:var(--paper2);border:1px solid var(--line2);color:var(--ink)}
+#askai:hover{border-color:var(--m-amber)}
+#askai .d{width:7px;height:7px;border-radius:50%;background:var(--m-amber);animation:led 2.4s infinite}
+#totop{right:24px;bottom:24px;width:46px;height:46px;justify-content:center;padding:0;background:var(--ink);color:var(--paper2);font-size:1.1rem}
 
-    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .proj-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r-xl); overflow: hidden;
-      display: flex; flex-direction: column;
-      cursor: pointer;
-      transition: border-color 0.3s, transform 0.4s var(--ease), box-shadow 0.4s;
-      position: relative;
-    }
-    .proj-card::after {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      opacity: 0; transition: opacity 0.3s;
-    }
-    .proj-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.45); }
-    .proj-card:hover::after { opacity: 1; }
-    .proj-card.ba-card::after { background: linear-gradient(90deg, var(--gold), var(--gold2)); }
-    .proj-card.ba-card:hover { border-color: rgba(245,200,66,0.3); }
-    .proj-card.data-card:hover { border-color: rgba(108,99,255,0.3); }
+/* reveal */
+[data-rv]{opacity:0;transform:translateY(26px);transition:opacity .8s var(--e),transform .8s var(--e)}
+[data-rv].in{opacity:1;transform:none}
 
-    .pc-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 16px; background: var(--surface2); border-bottom: 1px solid var(--border);
-    }
-    .pc-badge {
-      font-family: var(--mono); font-size: 0.65rem; font-weight: 700;
-      padding: 3px 10px; border-radius: 100px;
-    }
-    .pc-badge-gold { background: rgba(245,200,66,0.12); color: var(--gold); border: 1px solid rgba(245,200,66,0.3); }
-    .pc-badge-blue { background: rgba(108,99,255,0.12); color: var(--accent2); border: 1px solid rgba(108,99,255,0.3); }
-    .pc-num { font-family: var(--mono); font-size: 0.65rem; color: var(--muted2); }
-    .pc-arrow { color: var(--muted2); transition: color 0.2s, transform 0.2s; }
-    .proj-card:hover .pc-arrow { color: var(--accent2); transform: translate(2px, -2px); }
-    .ba-card:hover .pc-arrow { color: var(--gold); }
+/* ══════ MODAL ══════ */
+.ovl{position:fixed;inset:0;z-index:1000;background:rgba(40,38,30,.5);backdrop-filter:blur(5px);
+  display:none;align-items:center;justify-content:center;padding:24px}
+.ovl.open{display:flex;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.sheet{background:var(--paper2);border:1px solid var(--line2);border-radius:16px;max-width:1000px;width:100%;
+  max-height:88vh;overflow:hidden;box-shadow:var(--sh-lg);display:flex;flex-direction:column;animation:pop .3s var(--eb)}
+@keyframes pop{from{transform:scale(.96) translateY(10px)}to{transform:none}}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--line)}
+.sheet-head .st{font-family:var(--display);font-weight:700;font-size:1.1rem;letter-spacing:-.01em}
+.sheet-head .x{background:var(--paper);border:1px solid var(--line);width:34px;height:34px;border-radius:9px;cursor:pointer;font-size:1.1rem;color:var(--ink2);display:flex;align-items:center;justify-content:center}
+.sheet-head .x:hover{background:#fff;color:var(--ink)}
+.sheet-body{padding:22px;overflow-y:auto}
+.sheet-layout{display:grid;grid-template-columns:1fr 230px;gap:20px}
+.frame{position:relative;width:100%;padding-top:62%;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper)}
+.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.side{display:flex;flex-direction:column;gap:16px}
+.side .sl{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink2);margin-bottom:8px}
+.side .stack{display:flex;flex-wrap:wrap;gap:6px}
+.high{margin-top:20px}
+.high .hh{font-family:var(--hand);font-size:1.4rem;color:var(--ink);margin-bottom:8px}
+.high .hl{display:flex;gap:10px;font-size:.88rem;color:#3c424b;line-height:1.55;padding:6px 0}
+.high .hl .b{color:var(--m-amber);font-weight:800}
+.high .hl b{color:var(--ink)}
 
-    .pc-icon { height: 90px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; background: var(--surface2); opacity: 0.7; transition: opacity 0.3s, transform 0.4s var(--ease); }
-    .ba-card:hover .pc-icon { opacity: 1; transform: scale(1.1); }
-    .pc-img { height: 120px; overflow: hidden; }
-    .pc-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6) saturate(1.1); transition: transform 0.5s var(--ease), filter 0.3s; }
-    .data-card:hover .pc-img img { transform: scale(1.07); filter: brightness(0.75) saturate(1.3); }
-    .pc-img-overlay { position: absolute; inset: 0; background: linear-gradient(160deg, transparent 30%, rgba(8,8,16,0.75) 100%); }
-    .pc-title { font-family: var(--display); font-size: 0.95rem; font-weight: 800; color: var(--text); letter-spacing: -0.02em; padding: 14px 16px 6px; line-height: 1.3; }
-    .pc-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.55; padding: 0 16px 12px; flex: 1; }
-    .pc-pills { display: flex; flex-wrap: wrap; gap: 5px; padding: 0 16px 14px; }
-    .pc-pill { font-family: var(--mono); font-size: 0.62rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 100px; padding: 2px 9px; color: var(--muted); }
-    .pc-footer { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-top: 1px solid var(--border); margin-top: auto; }
-    .pc-domain { font-family: var(--mono); font-size: 0.68rem; color: var(--muted2); display: flex; align-items: center; gap: 5px; }
-    .pc-cta { font-family: var(--mono); font-size: 0.68rem; font-weight: 600; color: var(--accent2); display: flex; align-items: center; gap: 4px; transition: gap 0.2s; }
-    .ba-card .pc-cta { color: var(--gold); }
-    .proj-card:hover .pc-cta { gap: 8px; }
-    .proj-card.filtered-out { opacity: 0.2; transform: scale(0.96); pointer-events: none; transition: opacity 0.3s, transform 0.3s; }
-
-    /* ── CERTIFICATIONS ── */
-    #certificates { background: var(--bg); }
-    .cert-marquee-outer {
-      mask-image: linear-gradient(90deg, transparent 0%, black 7%, black 93%, transparent 100%);
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 7%, black 93%, transparent 100%);
-      overflow: hidden; padding: 8px 0;
-    }
-    .cert-track { display: flex; gap: 18px; width: max-content; animation: marquee 32s linear infinite; }
-    .cert-marquee-outer:hover .cert-track { animation-play-state: paused; }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .cert-card {
-      flex-shrink: 0; width: 300px; background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r-lg); overflow: hidden; transition: border-color 0.25s, transform 0.3s var(--ease);
-      text-decoration: none; display: block; color: inherit;
-    }
-    .cert-card:hover { border-color: rgba(108,99,255,0.35); transform: translateY(-3px); color: inherit; text-decoration: none; }
-    .cert-card-header { background: var(--surface2); border-bottom: 1px solid var(--border); padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; }
-    .cert-card-body { padding: 16px 14px; }
-    .cert-issuer { font-family: var(--mono); font-size: 0.68rem; color: var(--muted2); margin-bottom: 6px; }
-    .cert-title { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 6px; line-height: 1.3; }
-    .cert-desc { font-size: 0.75rem; color: var(--muted); line-height: 1.5; margin-bottom: 12px; }
-    .cert-footer { display: flex; align-items: center; justify-content: space-between; }
-    .cert-tags { display: flex; gap: 5px; flex-wrap: wrap; }
-    .cert-tag { font-family: var(--mono); font-size: 0.63rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 100px; padding: 2px 8px; color: var(--muted); }
-    .cert-arrow { width: 26px; height: 26px; border-radius: 50%; background: rgba(108,99,255,0.1); border: 1px solid rgba(108,99,255,0.3); display: flex; align-items: center; justify-content: center; color: var(--accent2); font-size: 0.72rem; transition: all 0.2s; }
-    .cert-card:hover .cert-arrow { background: var(--accent); color: #fff; border-color: var(--accent); transform: rotate(45deg) scale(1.1); }
-
-    /* ── MODALS ── */
-    .modal-content { background: var(--surface) !important; border: 1px solid var(--border2) !important; border-radius: var(--r-xl) !important; box-shadow: 0 32px 100px rgba(0,0,0,0.8); }
-    .modal-header { background: var(--surface2) !important; border-bottom: 1px solid var(--border) !important; padding: 0 !important; }
-    .modal-titlebar { width: 100%; display: flex; align-items: center; gap: 12px; padding: 12px 20px; }
-    .modal-tl { display: flex; gap: 7px; align-items: center; flex-shrink: 0; }
-    .modal-tl-dot { width: 12px; height: 12px; border-radius: 50%; cursor: default; transition: filter 0.15s; position: relative; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: none; padding: 0; outline: none; }
-    button.modal-tl-dot { cursor: pointer; }
-    button.modal-tl-dot.is-close::after { content: '✕'; position: absolute; font-size: 7px; font-weight: 900; color: rgba(0,0,0,0); line-height: 1; transition: color 0.15s; }
-    button.modal-tl-dot.is-close:hover::after { color: rgba(0,0,0,0.65); }
-    .modal-tl-dot:hover { filter: brightness(0.85); }
-    .modal-title { font-family: var(--mono) !important; font-size: 0.8rem !important; color: var(--muted) !important; font-weight: 500 !important; flex: 1; text-align: center; margin: 0 !important; padding: 0 !important; }
-    .modal-title .hl { color: var(--accent2); }
-    .modal-title .fn { color: var(--text); }
-    .modal-tl-spacer { width: calc(12px * 3 + 7px * 2); flex-shrink: 0; }
-    .modal-body { padding: 24px !important; background: var(--surface); max-height: calc(85vh - 52px); overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--border2) transparent; }
-    .modal-body::-webkit-scrollbar { width: 4px; }
-    .modal-body::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
-    .modal-proj-layout { display: grid; grid-template-columns: 1fr 260px; gap: 20px; margin-bottom: 20px; }
-    .modal-iframe-wrap { position: relative; width: 100%; padding-top: 62%; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
-    .modal-iframe-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
-    .modal-sidebar { display: flex; flex-direction: column; gap: 16px; }
-    .ms-label { font-family: var(--mono); font-size: 0.7rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
-    .ms-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-    .ms-tag { font-family: var(--mono); font-size: 0.72rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 100px; padding: 3px 10px; color: var(--muted); }
-    .modal-desc-section h6 { font-family: var(--mono); font-size: 0.75rem; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
-    .modal-diff { display: flex; flex-direction: column; gap: 4px; }
-    .modal-diff-line { display: flex; gap: 10px; font-size: 0.84rem; color: var(--muted); line-height: 1.65; padding: 6px 10px; border-radius: var(--r); transition: background 0.2s; }
-    .modal-diff-line:hover { background: var(--surface2); }
-    .mdl-prefix { font-family: var(--mono); color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-    .modal-diff-line strong { color: var(--text); }
-
-    /* ── SCROLL TOP ── */
-    #scroll-top {
-      position: fixed; bottom: 28px; right: 28px; z-index: 999;
-      width: 48px; height: 48px; border-radius: 50%;
-      background: var(--surface); border: 1px solid var(--border2);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--muted); font-size: 1rem; cursor: pointer; text-decoration: none;
-      opacity: 0; visibility: hidden; pointer-events: none;
-      transition: all 0.3s var(--ease);
-    }
-    #scroll-top:hover { background: var(--accent); border-color: var(--accent); color: #fff; transform: translateY(-3px); text-decoration: none; }
-    #scroll-top.active { opacity: 1; visibility: visible; pointer-events: auto; }
-
-    /* ── AI BUTTON ── */
-    #ai-btn {
-      position: fixed; bottom: 28px; left: 28px; z-index: 999;
-      display: flex; align-items: center; gap: 9px;
-      height: 44px; padding: 0 18px 0 14px;
-      background: linear-gradient(135deg, #10a37f 0%, #0d8f6f 100%);
-      border: 1px solid rgba(16,163,127,0.45); border-radius: 100px;
-      font-family: var(--mono); font-size: 0.72rem; font-weight: 600; color: #fff;
-      cursor: pointer; text-decoration: none;
-      box-shadow: 0 4px 24px rgba(16,163,127,0.35);
-      transition: all 0.3s var(--ease);
-      opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(8px);
-    }
-    #ai-btn.active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
-    #ai-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(16,163,127,0.5); color: #fff; text-decoration: none; }
-    .ai-pulse { width: 7px; height: 7px; border-radius: 50%; background: #fff; opacity: 0.85; flex-shrink: 0; animation: aiPulse 2s ease-in-out infinite; }
-    @keyframes aiPulse { 0%,100%{transform:scale(1);opacity:.85} 50%{transform:scale(1.5);opacity:.3} }
-
-    /* ── AOS ── */
-    [data-aos] { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
-    [data-aos].aos-animate { opacity: 1; transform: none; }
-
-    /* ── RESPONSIVE ── */
-    @media(max-width:768px) {
-      #hero { padding-top: 80px; padding-bottom: 48px; }
-      section { padding: 64px 0; }
-      .container { padding: 0 20px; }
-      .topbar-nav { display: none; }
-      .topbar-cta .btn-outline { display: none; }
-      .hero-layout { grid-template-columns: 1fr; gap: 40px; }
-      .hero-h1 { font-size: clamp(2.2rem, 8vw, 3.5rem); }
-      .hero-card-wrap { order: -1; max-width: 340px; margin: 0 auto; }
-      .hero-stats { gap: 20px; }
-      .about-grid { grid-template-columns: 1fr; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-      .tools-grid { grid-template-columns: repeat(2, 1fr); }
-      body { cursor: auto; }
-      #cursor { display: none; }
-    }
-    @media(max-width:480px) {
-      .tools-grid { grid-template-columns: 1fr; }
-      .modal-proj-layout { grid-template-columns: 1fr; }
-    }
-    @media(min-width:769px) and (max-width:1024px) {
-      .projects-grid { grid-template-columns: repeat(2, 1fr); }
-      .hero-layout { grid-template-columns: 1fr 360px; gap: 48px; }
-    }
-  </style>
+/* ══════ RESPONSIVE ══════ */
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .profile-wrap{order:-1}
+  .about-grid{grid-template-columns:1fr}
+  .flow{grid-template-columns:repeat(2,1fr)}
+  .step .arr{display:none}
+  .tools{grid-template-columns:repeat(2,1fr)}
+  .pgrid,.cgrid{grid-template-columns:repeat(2,1fr)}
+  #contact .ct-grid{grid-template-columns:1fr;gap:28px}
+  .sheet-layout{grid-template-columns:1fr}
+}
+@media(max-width:680px){
+  .wrap{padding:0 20px}
+  section{padding:72px 0}
+  .bar-links,.bar .btn{display:none}
+  .bar-burger{display:block}
+  .flow,.tools,.pgrid,.cgrid{grid-template-columns:1fr}
+  .h-stats{gap:10px}
+  .stat{min-width:0;flex:1 1 40%}
+}
+</style>
 </head>
 <body>
 
-<!-- CURSOR -->
-<div id="cursor"><div id="cursor-dot"></div><div id="cursor-ring"></div></div>
-
-<!-- BACKGROUND ORBS -->
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
-
-<!-- LOADER -->
-<div id="site-loader">
-  <div class="loader-inner">
-    <div class="loader-name">
-      <div class="loader-name-chars" id="loaderChars"></div>
-    </div>
-    <div class="loader-role">Business Analyst · Bridging Business &amp; Tech</div>
-    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+<!-- TOOLBAR -->
+<div class="bar">
+  <div class="bar-inner">
+    <a href="#hero" class="brand"><span class="dot"></span>Manmath</a>
+    <nav class="bar-links">
+      <a href="#hero" class="on">Board</a>
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Work</a>
+      <a href="#certs">Certificate</a>
+    </nav>
+    <a href="https://wa.me/917008548402" target="_blank" rel="noopener" class="btn amber sm"><i class="bi bi-whatsapp"></i> Hire me</a>
+    <button class="bar-burger" id="burger" aria-label="Menu"><i class="bi bi-list"></i></button>
   </div>
 </div>
+<div class="mnav" id="mnav">
+  <a href="#about">About</a><a href="#process">Process</a><a href="#experience">Experience</a>
+  <a href="#projects">Work</a><a href="#certs">Certificate</a><a href="#contact">Contact</a>
+  <a href="https://wa.me/917008548402" target="_blank" rel="noopener" class="btn amber" style="margin-top:14px">Hire me</a>
+</div>
 
-<!-- NAVBAR -->
-<header class="topbar" id="topbar">
-  <div class="topbar-inner">
-    <a href="#hero" class="topbar-logo">MnM<span>.</span></a>
-    <nav class="topbar-nav">
-      <a href="#hero" class="active">Overview</a>
-      <a href="#about">About</a>
-      <a href="#resume">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#certificates">Certs</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="topbar-cta">
-      <a href="assets/Manmathnath Mahanta - Resume.pdf" download class="btn btn-outline"><i class="bi bi-download"></i> Resume</a>
-      <a href="https://wa.me/917008548402" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="bi bi-chat-dots-fill"></i> Hire Me</a>
-    </div>
-  </div>
-</header>
-
-<main>
-
-<!-- ══ HERO ══ -->
+<!-- HERO -->
 <section id="hero">
-  <div class="hero-canvas">
-    <div class="hero-grid"></div>
-    <!-- Floating 3D shapes -->
-    <svg class="geo" style="width:60px;height:60px;top:15%;left:8%;opacity:0.15;animation-duration:12s" viewBox="0 0 60 60" fill="none"><polygon points="30,5 55,50 5,50" stroke="#6c63ff" stroke-width="1.5"/></svg>
-    <svg class="geo" style="width:40px;height:40px;top:65%;left:5%;opacity:0.1;animation-duration:9s;animation-delay:-3s" viewBox="0 0 40 40" fill="none"><rect x="5" y="5" width="30" height="30" stroke="#22d3ee" stroke-width="1.5" rx="4"/></svg>
-    <svg class="geo" style="width:50px;height:50px;top:20%;right:10%;opacity:0.12;animation-duration:15s;animation-delay:-5s" viewBox="0 0 50 50" fill="none"><circle cx="25" cy="25" r="20" stroke="#a78bfa" stroke-width="1.5"/></svg>
-    <svg class="geo" style="width:35px;height:35px;top:75%;right:12%;opacity:0.1;animation-duration:11s;animation-delay:-2s" viewBox="0 0 35 35" fill="none"><polygon points="17.5,2 33,32 2,32" stroke="#f5c842" stroke-width="1.5"/></svg>
-    <svg class="geo" style="width:25px;height:25px;top:45%;left:15%;opacity:0.12;animation-duration:8s;animation-delay:-6s" viewBox="0 0 25 25" fill="none"><rect x="3" y="3" width="19" height="19" stroke="#34d399" stroke-width="1.5" transform="rotate(45 12.5 12.5)"/></svg>
-    <svg class="geo" style="width:45px;height:45px;bottom:25%;right:20%;opacity:0.1;animation-duration:14s;animation-delay:-4s" viewBox="0 0 45 45" fill="none"><circle cx="22.5" cy="22.5" r="18" stroke="#6c63ff" stroke-width="1" stroke-dasharray="4 3"/></svg>
-  </div>
-  <div class="container">
-    <div class="hero-inner">
-      <div class="hero-layout">
-        <div class="hero-left">
-          <div class="hero-eyebrow"><span class="live-dot"></span> Available for opportunities</div>
-          <h1 class="hero-h1">
-            <span class="line"><span>Hi, I'm</span></span>
-            <span class="line"><span>Manmath.</span></span>
-            <span class="line"><span>Business Analyst</span></span>
-          </h1>
-          <p class="hero-desc">
-            I bridge the gap between <strong>business stakeholders</strong> and <strong>technical teams</strong> — translating ambiguous requirements into precise, delivery-ready documentation. <strong><span class="dynamic-exp"></span> years</strong> delivering BRDs, UML diagrams, and UAT frameworks that actually stick.
-          </p>
-          <div class="hero-cta">
-            <a href="#projects" class="btn btn-primary"><i class="bi bi-folder2-open"></i> View Projects</a>
-            <a href="assets/Manmathnath Mahanta - Resume.pdf" download class="btn btn-outline"><i class="bi bi-file-earmark-person"></i> Download CV</a>
-          </div>
-          <div class="hero-stats">
-            <div>
-              <div class="hero-stat-num"><span class="dynamic-exp"></span></div>
-              <div class="hero-stat-lbl">Years Exp.</div>
-            </div>
-            <div>
-              <div class="hero-stat-num">8</div>
-              <div class="hero-stat-lbl">Projects</div>
-            </div>
-            <div>
-              <div class="hero-stat-num">5</div>
-              <div class="hero-stat-lbl">Certifications</div>
-            </div>
-            <div>
-              <div class="hero-stat-num">30<span>%</span></div>
-              <div class="hero-stat-lbl">Efficiency ↑</div>
-            </div>
-          </div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-left" data-rv>
+        <span class="avail"><span class="led"></span> Available for opportunities</span>
+        <h1 class="h1">Hi, I'm <span class="nm">Manmath</span>.<br><span class="h-role">a Business Analyst</span></h1>
+        <p class="h-desc">I sit between <b>business stakeholders</b> and <b>technical teams</b> — turning fuzzy, half-formed ideas into <span class="swipe">clear, delivery-ready plans</span>. BRDs, UML, user stories and UAT that actually hold up in the build.</p>
+        <div class="h-ctas">
+          <a href="#projects" class="btn"><i class="bi bi-grid-1x2"></i> View the board</a>
+          <a href="assets/Manmathnath Mahanta - Resume.pdf" download class="btn ghost"><i class="bi bi-download"></i> Download CV</a>
         </div>
-        <div class="hero-card-wrap" id="heroCard3D">
-          <div class="hero-card" id="heroCard">
-            <div class="hero-card-glow"></div>
-            <div class="hero-avatar">
-              <img src="assets/img/Profile Image.png" alt="Manmathnath Mahanta" onerror="this.style.display='none'">
-              <div class="hero-avatar-status" title="Available"></div>
-            </div>
-            <div class="hero-card-name">Manmathnath Mahanta</div>
-            <div class="hero-card-role">Business Analyst · Kolkata, IN</div>
-            <div class="hero-card-divider"></div>
-            <div class="hero-card-info">
-              <div class="hero-card-info-item"><i class="bi bi-briefcase-fill"></i> Business Analyst</div>
-              <div class="hero-card-info-item"><i class="bi bi-geo-alt-fill"></i> Kolkata, West Bengal, IN</div>
-              <div class="hero-card-info-item"><i class="bi bi-envelope-fill"></i> <a href="mailto:manmath.contact@gmail.com">manmath.contact@gmail.com</a></div>
-              <div class="hero-card-info-item"><i class="bi bi-phone-fill"></i> +91 7008548402</div>
-            </div>
-            <div class="hero-card-badges">
-              <span class="hbadge hb-blue">BRD / FSD</span>
-              <span class="hbadge hb-blue">UML</span>
-              <span class="hbadge hb-green">Power BI</span>
-              <span class="hbadge hb-gold">Agile / Scrum</span>
-              <span class="hbadge hb-blue">UAT</span>
-            </div>
-            <div style="margin-top:20px;">
-              <a href="https://wa.me/917008548402" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width:100%;justify-content:center;"><i class="fab fa-whatsapp"></i> WhatsApp Me</a>
-            </div>
+        <div class="h-stats">
+          <div class="stat sticky s-amber rot-l2"><div class="v"><span class="dexp"></span></div><div class="l">Years exp.</div></div>
+          <div class="stat sticky s-blue rot-r2"><div class="v">8</div><div class="l">Projects</div></div>
+          <div class="stat sticky s-sage rot-l2"><div class="v">5</div><div class="l">Certifications</div></div>
+          <div class="stat sticky s-clay rot-r2"><div class="v">30<sup>%</sup></div><div class="l">Efficiency ↑</div></div>
+        </div>
+      </div>
+
+      <div class="profile-wrap" data-rv>
+        <div class="fcur c1"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2f6fa6"><path d="M4 2l16 7-7 2-2 7z"/></svg><span class="tag">Stakeholders</span></div>
+        <div class="fcur c2"><svg width="22" height="22" viewBox="0 0 24 24" fill="#d9694f"><path d="M4 2l16 7-7 2-2 7z"/></svg><span class="tag">Dev Team</span></div>
+        <div class="profile">
+          <span class="pin"></span>
+          <img src="assets/img/Profile Image.png" alt="Manmathnath Mahanta" class="ph" onerror="this.outerHTML='<div class=\'ph ph-fallback\'>MM</div>'">
+          <div class="pn">Manmathnath Mahanta</div>
+          <div class="pr">Business Analyst · Kolkata, IN</div>
+          <div class="prow"><i class="bi bi-briefcase"></i> Business Analyst</div>
+          <div class="prow"><i class="bi bi-geo-alt"></i> Kolkata, West Bengal, IN</div>
+          <div class="prow"><i class="bi bi-envelope"></i> <a href="mailto:manmath.contact@gmail.com">manmath.contact@gmail.com</a></div>
+          <div class="prow"><i class="bi bi-telephone"></i> +91 7008548402</div>
+          <div class="ptags">
+            <span class="ptag s-amber">BRD / FSD</span><span class="ptag s-blue">UML</span>
+            <span class="ptag s-sage">Power BI</span><span class="ptag s-clay">Agile</span><span class="ptag s-lilac">UAT</span>
           </div>
+          <div class="pcta"><a href="https://wa.me/917008548402" target="_blank" rel="noopener" class="btn wa"><i class="bi bi-whatsapp"></i> WhatsApp me</a></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ ABOUT ══ -->
+<!-- ABOUT -->
 <section id="about">
-  <div class="container">
-    <div class="sh" data-aos>
-      <div class="sh-eyebrow">About me</div>
-      <h2 class="sh-title">Who <em>I am</em></h2>
-      <div class="sh-line"></div>
+  <div class="wrap">
+    <div data-rv>
+      <span class="eyebrow"><i class="bi bi-pencil"></i> a quick intro</span>
+      <h2 class="shead">Who <u>I am</u></h2>
+      <p class="sub">A few sticky notes on how I think and what I bring to a team.</p>
     </div>
     <div class="about-grid">
-      <div class="glass-card" data-aos>
-        <div class="gc-header">
-          <div class="gc-header-left">
-            <div class="gc-dot" style="background:#34d399"></div>
-            <span class="gc-title">about.md</span>
-          </div>
-          <span class="hbadge hb-green" style="font-size:0.62rem">● available</span>
-        </div>
-        <div class="gc-body">
-          <p class="about-text">Business Analyst with <strong><span class="dynamic-exp"></span> years of experience</strong> across <strong>web and mobile application projects</strong>, delivering clear requirements, high-quality releases, and measurable business outcomes through structured analysis and stakeholder collaboration.</p>
-          <p class="about-text">I specialize in requirement elicitation, <code>UML</code> / functional flows, wireframes, and <code>UAT</code> execution. My data analysis skills in <code>Power BI</code>, <code>SQL</code>, and <code>Excel</code> complement core BA work by turning raw data into actionable insights.</p>
-          <div style="margin-top:8px;">
-            <div class="info-row"><span class="info-key">name</span><span class="info-val">Manmathnath Mahanta</span></div>
-            <div class="info-row"><span class="info-key">role</span><span class="info-val">Business Analyst</span></div>
-            <div class="info-row"><span class="info-key">experience</span><span class="info-val"><span class="dynamic-exp"></span> Years</span></div>
-            <div class="info-row"><span class="info-key">location</span><span class="info-val">Kolkata, West Bengal, IN</span></div>
-            <div class="info-row"><span class="info-key">email</span><span class="info-val"><a href="mailto:manmath.contact@gmail.com" style="color:var(--accent2)">manmath.contact@gmail.com</a></span></div>
-            <div class="info-row"><span class="info-key">tools</span><span class="info-val">Power BI · SQL · Excel</span></div>
-          </div>
-        </div>
+      <div class="sticky s-amber note-lg rot-l2" data-rv>
+        <span class="note-h">about.md</span>
+        <p>Business Analyst with <b><span class="dexp"></span> years</b> across <b>web & mobile application projects</b> — delivering clear requirements, clean releases, and measurable outcomes through structured analysis and stakeholder collaboration.</p>
+        <p>I specialise in requirement elicitation, <code>UML</code> & functional flows, wireframes, and <code>UAT</code>. My data skills in <code>Power BI</code>, <code>SQL</code> and <code>Excel</code> turn raw numbers into decisions people can act on.</p>
       </div>
-      <div style="display:flex;flex-direction:column;gap:20px;">
-        <div class="glass-card" data-aos>
-          <div class="gc-header">
-            <div class="gc-header-left">
-              <div class="gc-dot" style="background:#6c63ff"></div>
-              <span class="gc-title">skills.json</span>
-            </div>
-          </div>
-          <div class="gc-body">
-            <div class="skill-row"><div class="skill-top"><div class="skill-name"><div class="skill-dot" style="background:#6c63ff"></div>Business Analysis</div><div class="skill-pct">90%</div></div><div class="skill-bar"><div class="skill-fill" data-width="90" style="background:linear-gradient(90deg,#6c63ff,#a78bfa)"></div></div></div>
-            <div class="skill-row"><div class="skill-top"><div class="skill-name"><div class="skill-dot" style="background:#34d399"></div>Requirement Gathering</div><div class="skill-pct">88%</div></div><div class="skill-bar"><div class="skill-fill" data-width="88" style="background:linear-gradient(90deg,#34d399,#6ee7b7)"></div></div></div>
-            <div class="skill-row"><div class="skill-top"><div class="skill-name"><div class="skill-dot" style="background:#a78bfa"></div>UAT &amp; QA</div><div class="skill-pct">87%</div></div><div class="skill-bar"><div class="skill-fill" data-width="87" style="background:linear-gradient(90deg,#a78bfa,#c4b5fd)"></div></div></div>
-            <div class="skill-row"><div class="skill-top"><div class="skill-name"><div class="skill-dot" style="background:#22d3ee"></div>Data Analysis</div><div class="skill-pct">83%</div></div><div class="skill-bar"><div class="skill-fill" data-width="83" style="background:linear-gradient(90deg,#22d3ee,#67e8f9)"></div></div></div>
-            <div class="skill-row"><div class="skill-top"><div class="skill-name"><div class="skill-dot" style="background:#f5c842"></div>Agile / Scrum</div><div class="skill-pct">87%</div></div><div class="skill-bar"><div class="skill-fill" data-width="87" style="background:linear-gradient(90deg,#f5c842,#fde68a)"></div></div></div>
+      <div style="display:flex;flex-direction:column;gap:24px" data-rv>
+        <div class="bcard" style="padding:24px 26px">
+          <span class="note-h" style="color:var(--m-blue)">skills</span>
+          <div class="skills">
+            <div class="skill"><div class="stop"><span>Business Analysis</span><span class="pc">90%</span></div><div class="track"><div class="fill" data-w="90" style="background:var(--amber-d)"></div></div></div>
+            <div class="skill"><div class="stop"><span>Requirement Gathering</span><span class="pc">88%</span></div><div class="track"><div class="fill" data-w="88" style="background:var(--sage-d)"></div></div></div>
+            <div class="skill"><div class="stop"><span>UAT &amp; QA</span><span class="pc">87%</span></div><div class="track"><div class="fill" data-w="87" style="background:var(--lilac-d)"></div></div></div>
+            <div class="skill"><div class="stop"><span>Data Analysis</span><span class="pc">83%</span></div><div class="track"><div class="fill" data-w="83" style="background:var(--blue-d)"></div></div></div>
+            <div class="skill"><div class="stop"><span>Agile / Scrum</span><span class="pc">87%</span></div><div class="track"><div class="fill" data-w="87" style="background:var(--clay-d)"></div></div></div>
           </div>
         </div>
-        <div class="glass-card" data-aos>
-          <div class="gc-header">
-            <div class="gc-header-left">
-              <div class="gc-dot" style="background:#f5c842"></div>
-              <span class="gc-title">competencies.txt</span>
-            </div>
-          </div>
-          <div class="gc-body">
-            <div class="tag-cloud">
-              <span class="tag">Requirement Elicitation</span><span class="tag">BRD / FSD</span><span class="tag">UML Diagrams</span><span class="tag">Wireframing</span><span class="tag">UAT</span><span class="tag">Agile / Scrum</span><span class="tag">Data Analysis</span><span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">Process Mapping</span><span class="tag">Stakeholder Mgmt</span><span class="tag">Sprint Planning</span>
-            </div>
+        <div class="bcard" style="padding:22px 26px 24px">
+          <span class="note-h" style="color:var(--m-coral)">competencies</span>
+          <div class="cloud">
+            <span class="chip">Requirement Elicitation</span><span class="chip">BRD / FSD</span><span class="chip">UML Diagrams</span>
+            <span class="chip">Wireframing</span><span class="chip">UAT</span><span class="chip">Agile / Scrum</span>
+            <span class="chip">Data Analysis</span><span class="chip">Power BI</span><span class="chip">SQL</span>
+            <span class="chip">Process Mapping</span><span class="chip">Stakeholder Mgmt</span><span class="chip">Sprint Planning</span>
           </div>
         </div>
       </div>
@@ -772,517 +544,305 @@
   </div>
 </section>
 
-<!-- ══ EXPERIENCE ══ -->
-<section id="resume">
-  <div class="container">
-    <div class="sh" data-aos>
-      <div class="sh-eyebrow">Experience</div>
-      <h2 class="sh-title">Where I've <em>worked</em></h2>
-      <div class="sh-line"></div>
+<!-- PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <div data-rv>
+      <span class="eyebrow"><i class="bi bi-arrow-right-circle"></i> how I work</span>
+      <h2 class="shead">From mess to <u>shippable</u></h2>
+      <p class="sub">My way of moving a project from a vague ask to a clean release.</p>
     </div>
-    <div class="timeline">
+    <div class="flow">
+      <div class="step sticky s-amber rot-l2" data-rv><div class="sn"><span class="ic"><i class="bi bi-search"></i></span> 01</div><h4>Discover</h4><p>Elicit goals from stakeholders through interviews, workshops & JAD sessions.</p><span class="arr"><i class="bi bi-arrow-right"></i></span></div>
+      <div class="step sticky s-blue rot-r2" data-rv><div class="sn"><span class="ic"><i class="bi bi-diagram-3"></i></span> 02</div><h4>Analyse</h4><p>Map AS-IS, find the gaps, model TO-BE with UML & process flows.</p><span class="arr"><i class="bi bi-arrow-right"></i></span></div>
+      <div class="step sticky s-sage rot-l2" data-rv><div class="sn"><span class="ic"><i class="bi bi-file-earmark-text"></i></span> 03</div><h4>Document</h4><p>BRD / FSD, user stories, acceptance criteria & wireframes the team can build from.</p><span class="arr"><i class="bi bi-arrow-right"></i></span></div>
+      <div class="step sticky s-lilac rot-r2" data-rv><div class="sn"><span class="ic"><i class="bi bi-check2-square"></i></span> 04</div><h4>Validate</h4><p>Write UAT scenarios, track defects, drive stakeholder sign-off.</p><span class="arr"><i class="bi bi-arrow-right"></i></span></div>
+      <div class="step sticky s-clay rot-l2" data-rv><div class="sn"><span class="ic"><i class="bi bi-rocket-takeoff"></i></span> 05</div><h4>Deliver</h4><p>Clean releases, backlog grooming & sprints aligned to agreed goals.</p></div>
+    </div>
+  </div>
+</section>
 
-      <div class="exp-card" data-aos>
-        <div class="exp-header">
-          <div class="exp-header-left"><i class="bi bi-file-earmark-code" style="color:var(--muted2);font-size:0.85rem"></i><span class="exp-file">business-analyst-techexactly.md</span></div>
-          <span class="exp-period"><i class="bi bi-circle-fill" style="font-size:0.45rem"></i> Mar 2025 – Present</span>
-        </div>
-        <div class="exp-body">
-          <div class="exp-company"><i class="bi bi-building"></i> Tech Exactly</div>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div data-rv>
+      <span class="eyebrow"><i class="bi bi-clock-history"></i> the timeline</span>
+      <h2 class="shead">Where I've <u>worked</u></h2>
+    </div>
+    <div class="tl">
+      <div class="exp now" data-rv>
+        <div class="bcard ecard">
+          <div class="exp-top"><span class="exp-co"><i class="bi bi-building"></i> Tech Exactly</span><span class="exp-date now">Mar 2026 – Present</span></div>
           <div class="exp-role">Business Analyst</div>
-          <ul class="diff-list">
-            <li class="diff-item"><span class="diff-plus">+</span><span>Conducting structured <span class="hl">requirement elicitation sessions</span> with prospects, converting ambiguous business goals into precise, delivery-ready documentation.</span></li>
-            <li class="diff-item"><span class="diff-plus">+</span><span>Producing <span class="hl">UML diagrams, wireframes, user stories, product roadmaps and SRS</span> with high turnaround accuracy — ensuring zero misalignment between client expectations and dev output.</span></li>
-            <li class="diff-item"><span class="diff-plus">+</span><span>Functioning as <span class="hl">Product Owner</span> — managing backlog, facilitating scrum ceremonies, and keeping every sprint tightly aligned to agreed client goals.</span></li>
-            <li class="diff-item"><span class="diff-plus">+</span><span>Owning end-to-end <span class="hl">UAT execution</span> — writing test scenarios, validating acceptance criteria, tracking defects, and driving stakeholder sign-off to clean releases.</span></li>
-            <li class="diff-item"><span class="diff-plus">+</span><span>Generating rapid <span class="hl">UI prototypes</span> using Lovable to validate scope, support client demos, and reduce feedback cycles before development begins.</span></li>
+          <ul>
+            <li><span class="b">+</span><span>Run structured <b>requirement elicitation</b> sessions with prospects, converting ambiguous business goals into precise, delivery-ready documentation.</span></li>
+            <li><span class="b">+</span><span>Produce <b>UML diagrams, wireframes, user stories, roadmaps and SRS</b> with high accuracy — keeping client expectations and dev output in lockstep.</span></li>
+            <li><span class="b">+</span><span>Act as <b>Product Owner</b> — managing backlog, facilitating scrum ceremonies, keeping every sprint aligned to agreed goals.</span></li>
+            <li><span class="b">+</span><span>Own end-to-end <b>UAT execution</b> — test scenarios, acceptance criteria, defect tracking and stakeholder sign-off to clean releases.</span></li>
+            <li><span class="b">+</span><span>Build rapid <b>UI prototypes</b> in Lovable to validate scope and shorten feedback cycles before development.</span></li>
           </ul>
-          <div class="exp-tags"><span class="exp-tag">Product Owner</span><span class="exp-tag">UML</span><span class="exp-tag">Wireframing</span><span class="exp-tag">SRS / BRD</span><span class="exp-tag">UAT</span><span class="exp-tag">Scrum</span><span class="exp-tag">Mobile Apps</span></div>
+          <div class="chips"><span class="chip">Product Owner</span><span class="chip">UML</span><span class="chip">Wireframing</span><span class="chip">SRS / BRD</span><span class="chip">UAT</span><span class="chip">Scrum</span></div>
         </div>
       </div>
-
-      <div class="exp-card" data-aos>
-        <div class="exp-header">
-          <div class="exp-header-left"><i class="bi bi-file-earmark-code" style="color:var(--muted2);font-size:0.85rem"></i><span class="exp-file">business-analyst-saiparamount.md</span></div>
-          <span class="exp-period past">Jul 2024 – Mar 2025</span>
-        </div>
-        <div class="exp-body">
-          <div class="exp-company"><i class="bi bi-building"></i> Sai Paramount IT Solutions Pvt. Ltd.</div>
+      <div class="exp" data-rv>
+        <div class="bcard ecard">
+          <div class="exp-top"><span class="exp-co"><i class="bi bi-building"></i> Sai Paramount IT Solutions Pvt. Ltd.</span><span class="exp-date">Jul 2024 – Mar 2026</span></div>
           <div class="exp-role">Business Analyst</div>
-          <ul class="diff-list">
-            <li class="diff-item"><span class="diff-plus">+</span><span>Collaborated with clients on <span class="hl">web and mobile application projects</span>, driving requirement elicitation and end-to-end functional analysis.</span></li>
-            <li class="diff-item"><span class="diff-plus">+</span><span>Produced comprehensive <span class="hl">BRD/FSD documents, user stories, UML diagrams, functional flow charts, and wireframes</span> to align business and technical teams.</span></li>
-            <li class="diff-item"><span class="diff-plus">+</span><span>Contributed to a measured <span class="hl">~30% improvement in operational efficiency</span> by significantly reducing requirement ambiguity and rework cycles.</span></li>
+          <ul>
+            <li><span class="b">+</span><span>Drove requirement elicitation and end-to-end functional analysis across <b>web and mobile application projects</b>.</span></li>
+            <li><span class="b">+</span><span>Produced <b>BRD/FSD, user stories, UML diagrams, functional flows and wireframes</b> to align business and technical teams.</span></li>
+            <li><span class="b">+</span><span>Contributed to a measured <b>~30% improvement in operational efficiency</b> by cutting requirement ambiguity and rework.</span></li>
           </ul>
-          <div class="exp-tags"><span class="exp-tag">BRD / FSD</span><span class="exp-tag">UML</span><span class="exp-tag">Wireframing</span><span class="exp-tag">UAT</span><span class="exp-tag">Stakeholder Management</span><span class="exp-tag">Agile</span></div>
+          <div class="chips"><span class="chip">BRD / FSD</span><span class="chip">UML</span><span class="chip">Wireframing</span><span class="chip">UAT</span><span class="chip">Stakeholder Mgmt</span><span class="chip">Agile</span></div>
         </div>
       </div>
-
-      <div class="exp-card" data-aos>
-        <div class="exp-header">
-          <div class="exp-header-left"><i class="bi bi-file-earmark-code" style="color:var(--muted2);font-size:0.85rem"></i><span class="exp-file">business-analyst-geemsco.md</span></div>
-          <span class="exp-period past">Mar 2023 – Jul 2024</span>
-        </div>
-        <div class="exp-body">
-          <div class="exp-company"><i class="bi bi-building"></i> GEEMSCO Consultancy Solutions Pvt. Ltd.</div>
+      <div class="exp" data-rv>
+        <div class="bcard ecard">
+          <div class="exp-top"><span class="exp-co"><i class="bi bi-building"></i> GEEMSCO Consultancy Solutions Pvt. Ltd.</span><span class="exp-date">Mar 2023 – Jul 2024</span></div>
           <div class="exp-role">Business Analyst</div>
-          <ul class="diff-list">
-            <li class="diff-item"><span class="diff-plus">+</span><span>Supported <span class="hl">requirement gathering, structured documentation, and stakeholder coordination</span> across multiple IT initiatives, improving delivery predictability.</span></li>
-            <li class="diff-item"><span class="diff-plus">+</span><span>Applied <span class="hl">SQL and Excel</span> for data analysis, generating reports that directly informed business planning and operational decisions.</span></li>
-            <li class="diff-item"><span class="diff-plus">+</span><span>Facilitated <span class="hl">UAT planning sessions, defect tracking, and release coordination</span>, contributing to smoother product go-lives.</span></li>
+          <ul>
+            <li><span class="b">+</span><span>Supported <b>requirement gathering, documentation and stakeholder coordination</b> across multiple IT initiatives.</span></li>
+            <li><span class="b">+</span><span>Applied <b>SQL and Excel</b> for data analysis, generating reports that informed business planning and operational decisions.</span></li>
+            <li><span class="b">+</span><span>Facilitated <b>UAT planning, defect tracking and release coordination</b> for smoother go-lives.</span></li>
           </ul>
-          <div class="exp-tags"><span class="exp-tag">Requirement Gathering</span><span class="exp-tag">SQL</span><span class="exp-tag">Excel</span><span class="exp-tag">UAT Planning</span><span class="exp-tag">Defect Tracking</span></div>
+          <div class="chips"><span class="chip">Requirement Gathering</span><span class="chip">SQL</span><span class="chip">Excel</span><span class="chip">UAT Planning</span><span class="chip">Defect Tracking</span></div>
         </div>
       </div>
-
-      <div class="exp-card" data-aos>
-        <div class="exp-header">
-          <div class="exp-header-left"><i class="bi bi-file-earmark-code" style="color:var(--muted2);font-size:0.85rem"></i><span class="exp-file">data-analyst-intern.md</span></div>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span class="hbadge hb-blue" style="font-size:0.65rem">Internship</span>
-            <span class="exp-period intern">Apr 2023 – May 2023</span>
-          </div>
-        </div>
-        <div class="exp-body">
-          <div class="exp-company"><i class="bi bi-building"></i> Afame Technologies</div>
+      <div class="exp" data-rv>
+        <div class="bcard ecard">
+          <div class="exp-top"><span class="exp-co"><i class="bi bi-building"></i> Afame Technologies · Internship</span><span class="exp-date">Apr 2023 – May 2023</span></div>
           <div class="exp-role">Data Analyst</div>
-          <ul class="diff-list">
-            <li class="diff-item"><span class="diff-plus">+</span><span><span class="hl">Processed and cleaned over 10,000 data entries</span>, substantially improving dataset accuracy and downstream decision-making quality.</span></li>
-            <li class="diff-item"><span class="diff-plus">+</span><span>Designed an interactive <span class="hl">Power BI dashboard</span> analysing 3 years of sales data, enabling leadership to identify trends at a glance.</span></li>
-            <li class="diff-item"><span class="diff-plus">+</span><span>Collaborated with HR to generate <span class="hl">20+ structured performance reports</span>, setting a higher standard for reporting clarity.</span></li>
+          <ul>
+            <li><span class="b">+</span><span><b>Processed and cleaned 10,000+ data entries</b>, improving dataset accuracy and downstream decisions.</span></li>
+            <li><span class="b">+</span><span>Designed an interactive <b>Power BI dashboard</b> over 3 years of sales data for at-a-glance trends.</span></li>
+            <li><span class="b">+</span><span>Built <b>20+ structured performance reports</b> with HR, raising the bar for reporting clarity.</span></li>
           </ul>
-          <div class="exp-tags"><span class="exp-tag">Power BI</span><span class="exp-tag">Data Cleaning</span><span class="exp-tag">Excel</span><span class="exp-tag">Dashboards</span><span class="exp-tag">Reporting</span></div>
+          <div class="chips"><span class="chip">Power BI</span><span class="chip">Data Cleaning</span><span class="chip">Excel</span><span class="chip">Dashboards</span><span class="chip">Reporting</span></div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ══ TOOLS ══ -->
-<section id="technical-skills">
-  <div class="container">
-    <div class="sh" data-aos>
-      <div class="sh-eyebrow">Technical Skills</div>
-      <h2 class="sh-title">Tools &amp; <em>Tech</em></h2>
-      <div class="sh-line"></div>
+<!-- TOOLS -->
+<section id="tools">
+  <div class="wrap">
+    <div data-rv>
+      <span class="eyebrow"><i class="bi bi-tools"></i> the toolkit</span>
+      <h2 class="shead">Tools I <u>reach for</u></h2>
     </div>
-    <div class="tools-grid">
-      <div class="tool-card" data-aos><div class="tool-card-top"><img src="assets/tools/excel.png" class="tool-icon" alt="Excel" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tool-icon-fb" style="display:none">📊</div><div class="tool-name">Excel</div></div><div class="tool-desc">Data cleaning, pivot tables, advanced formulas &amp; reporting dashboards</div><div class="tool-meta"><div class="tool-lang-dot" style="background:#34d399"></div> Analytics</div></div>
-      <div class="tool-card" data-aos><div class="tool-card-top"><img src="assets/tools/power-bi.png" class="tool-icon" alt="Power BI" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tool-icon-fb" style="display:none">📈</div><div class="tool-name">Power BI</div></div><div class="tool-desc">Interactive dashboards &amp; KPI reports to visualise business trends</div><div class="tool-meta"><div class="tool-lang-dot" style="background:#f5c842"></div> BI</div></div>
-      <div class="tool-card" data-aos><div class="tool-card-top"><img src="assets/tools/database.png" class="tool-icon" alt="SQL" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tool-icon-fb" style="display:none">🗄️</div><div class="tool-name">SQL</div></div><div class="tool-desc">Writing queries to extract, transform &amp; analyse data from relational databases</div><div class="tool-meta"><div class="tool-lang-dot" style="background:#6c63ff"></div> Database</div></div>
-      <div class="tool-card" data-aos><div class="tool-card-top"><img src="assets/tools/clickup.png" class="tool-icon" alt="ClickUp" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tool-icon-fb" style="display:none">✅</div><div class="tool-name">ClickUp</div></div><div class="tool-desc">Managing project tasks, sprint backlogs &amp; delivery milestones</div><div class="tool-meta"><div class="tool-lang-dot" style="background:#a78bfa"></div> PM</div></div>
-      <div class="tool-card" data-aos><div class="tool-card-top"><img src="assets/tools/postman.png" class="tool-icon" alt="Postman" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tool-icon-fb" style="display:none">🔧</div><div class="tool-name">Postman</div></div><div class="tool-desc">Testing &amp; validating REST APIs to verify functional requirements</div><div class="tool-meta"><div class="tool-lang-dot" style="background:#f472b6"></div> API</div></div>
-      <div class="tool-card" data-aos><div class="tool-card-top"><img src="assets/tools/lucidchart.png" class="tool-icon" alt="LucidChart" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tool-icon-fb" style="display:none">📐</div><div class="tool-name">LucidChart</div></div><div class="tool-desc">UML diagrams, process flows &amp; swimlane charts for BA documentation</div><div class="tool-meta"><div class="tool-lang-dot" style="background:#22d3ee"></div> Diagramming</div></div>
-      <div class="tool-card" data-aos><div class="tool-card-top"><img src="assets/tools/Notion.png" class="tool-icon" alt="Notion" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tool-icon-fb" style="display:none">📝</div><div class="tool-name">Notion</div></div><div class="tool-desc">Documenting BRDs, meeting notes &amp; requirement traceability matrices</div><div class="tool-meta"><div class="tool-lang-dot" style="background:#8b8b9e"></div> Docs</div></div>
-      <div class="tool-card" data-aos><div class="tool-card-top"><img src="assets/tools/claude.png" class="tool-icon" alt="Claude" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tool-icon-fb" style="display:none">🤖</div><div class="tool-name">Claude</div></div><div class="tool-desc">Accelerating BA deliverables — drafting BRDs, user stories &amp; FRDs with AI assistance</div><div class="tool-meta"><div class="tool-lang-dot" style="background:#a78bfa"></div> AI</div></div>
-      <div class="tool-card" data-aos><div class="tool-card-top"><img src="assets/tools/lovable.png" class="tool-icon" alt="Lovable" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="tool-icon-fb" style="display:none">🚀</div><div class="tool-name">Lovable</div></div><div class="tool-desc">Generating rapid UI prototypes to validate scope &amp; support client demos</div><div class="tool-meta"><div class="tool-lang-dot" style="background:#f472b6"></div> Prototyping</div></div>
+    <div class="tools">
+      <div class="bcard tool" data-rv><div class="th"><span class="ti"><img src="assets/tools/excel.png" alt="Excel" onerror="this.replaceWith(document.createTextNode('📊'))"></span><div><div class="tn">Excel</div><div class="tcat">Analytics</div></div></div><div class="td">Data cleaning, pivot tables, advanced formulas & reporting dashboards.</div></div>
+      <div class="bcard tool" data-rv><div class="th"><span class="ti"><img src="assets/tools/power-bi.png" alt="Power BI" onerror="this.replaceWith(document.createTextNode('📈'))"></span><div><div class="tn">Power BI</div><div class="tcat">BI</div></div></div><div class="td">Interactive dashboards & KPI reports that visualise business trends.</div></div>
+      <div class="bcard tool" data-rv><div class="th"><span class="ti"><img src="assets/tools/database.png" alt="SQL" onerror="this.replaceWith(document.createTextNode('🗄️'))"></span><div><div class="tn">SQL</div><div class="tcat">Database</div></div></div><div class="td">Querying, transforming & analysing data from relational databases.</div></div>
+      <div class="bcard tool" data-rv><div class="th"><span class="ti"><img src="assets/tools/clickup.png" alt="ClickUp" onerror="this.replaceWith(document.createTextNode('✅'))"></span><div><div class="tn">ClickUp</div><div class="tcat">PM</div></div></div><div class="td">Managing tasks, sprint backlogs & delivery milestones.</div></div>
+      <div class="bcard tool" data-rv><div class="th"><span class="ti"><img src="assets/tools/postman.png" alt="Postman" onerror="this.replaceWith(document.createTextNode('🔧'))"></span><div><div class="tn">Postman</div><div class="tcat">API</div></div></div><div class="td">Testing & validating REST APIs against functional requirements.</div></div>
+      <div class="bcard tool" data-rv><div class="th"><span class="ti"><img src="assets/tools/lucidchart.png" alt="LucidChart" onerror="this.replaceWith(document.createTextNode('📐'))"></span><div><div class="tn">LucidChart</div><div class="tcat">Diagramming</div></div></div><div class="td">UML diagrams, process flows & swimlane charts for BA docs.</div></div>
+      <div class="bcard tool" data-rv><div class="th"><span class="ti"><img src="assets/tools/Notion.png" alt="Notion" onerror="this.replaceWith(document.createTextNode('📝'))"></span><div><div class="tn">Notion</div><div class="tcat">Docs</div></div></div><div class="td">BRDs, meeting notes & requirement traceability matrices.</div></div>
+      <div class="bcard tool" data-rv><div class="th"><span class="ti"><img src="assets/tools/claude.png" alt="Claude" onerror="this.replaceWith(document.createTextNode('🤖'))"></span><div><div class="tn">Claude</div><div class="tcat">AI</div></div></div><div class="td">Accelerating deliverables — drafting BRDs, user stories & FRDs.</div></div>
+      <div class="bcard tool" data-rv><div class="th"><span class="ti"><img src="assets/tools/lovable.png" alt="Lovable" onerror="this.replaceWith(document.createTextNode('🚀'))"></span><div><div class="tn">Lovable</div><div class="tcat">Prototyping</div></div></div><div class="td">Rapid UI prototypes to validate scope & support client demos.</div></div>
     </div>
   </div>
 </section>
 
-<!-- ══ PROJECTS ══ -->
+<!-- PROJECTS -->
 <section id="projects">
-  <div class="container">
-    <div class="sh" data-aos>
-      <div class="sh-eyebrow">Work</div>
-      <h2 class="sh-title">Featured <em>Projects</em></h2>
-      <div class="sh-line"></div>
+  <div class="wrap">
+    <div data-rv>
+      <span class="eyebrow"><i class="bi bi-pin-angle"></i> pinned to the board</span>
+      <h2 class="shead">Selected <u>work</u></h2>
+      <p class="sub">BA deliverables and analytics dashboards. Tap any card to open it.</p>
     </div>
-    <div class="proj-filters" data-aos>
-      <span class="pf-btn active" data-filter="all">All</span>
-      <span class="pf-btn" data-filter="ba">BA Deliverables</span>
-      <span class="pf-btn" data-filter="powerbi">Power BI</span>
-      <span class="pf-btn" data-filter="sql">SQL</span>
-      <span class="pf-btn" data-filter="excel">Excel</span>
-    </div>
-    <div class="projects-grid" id="projectsGrid">
+    <div class="pgrid" id="pgrid">
 
-      <div class="proj-card ba-card" data-tags="ba" onclick="window.location.href='brd-ecom.html'">
-        <div class="pc-header"><div style="display:flex;align-items:center;gap:8px"><span class="pc-badge pc-badge-gold">BRD</span><span class="pc-num">01 / brd-ecom-2025-001</span></div><i class="bi bi-arrow-up-right-square pc-arrow"></i></div>
-        <div class="pc-icon" style="color:var(--gold)"><i class="bi bi-file-earmark-text-fill"></i></div>
-        <div class="pc-title">E-Commerce Platform BRD</div>
-        <div class="pc-desc">Full-stack online retail solution — 35 functional requirements across 7 modules with stakeholder register, RACI matrix, UAT criteria, and risk register.</div>
-        <div class="pc-pills"><span class="pc-pill">35 Requirements</span><span class="pc-pill">7 Modules</span><span class="pc-pill">UAT Criteria</span><span class="pc-pill">Risk Register</span></div>
-        <div class="pc-footer"><span class="pc-domain"><i class="bi bi-building"></i> E-Commerce</span><span class="pc-cta">View Document <i class="bi bi-arrow-right"></i></span></div>
+      <div class="bcard proj" data-t="ba" onclick="location.href='brd-ecom.html'" data-rv>
+        <span class="pin amber"></span>
+        <div class="ptop"><span class="badge b-ba">BRD</span><span class="pn-num">01</span></div>
+        <div class="picon pic-ba">📄</div>
+        <div class="pbody"><h3>E-Commerce Platform BRD</h3><p class="pd">Full-stack online retail solution — 35 functional requirements across 7 modules with stakeholder register, RACI matrix, UAT criteria & risk register.</p>
+        <div class="ppills"><span class="ppill">35 Requirements</span><span class="ppill">7 Modules</span><span class="ppill">Risk Register</span></div></div>
+        <div class="pfoot"><span class="pdom"><i class="bi bi-bag"></i> E-Commerce</span><span class="pcta">Open doc <i class="bi bi-arrow-right"></i></span></div>
       </div>
 
-      <div class="proj-card ba-card" data-tags="ba" onclick="window.location.href='banking-user-stories.html'">
-        <div class="pc-header"><div style="display:flex;align-items:center;gap:8px"><span class="pc-badge pc-badge-gold">User Stories</span><span class="pc-num">02 / usr-bank-2025-001</span></div><i class="bi bi-arrow-up-right-square pc-arrow"></i></div>
-        <div class="pc-icon" style="color:var(--gold)"><i class="bi bi-journal-text"></i></div>
-        <div class="pc-title">Banking Loan Origination — User Stories</div>
-        <div class="pc-desc">End-to-end loan lifecycle — 34 user stories across 10 modules, each with Priority, Story Points, Pre/Post conditions, Acceptance Criteria, and Edge Cases.</div>
-        <div class="pc-pills"><span class="pc-pill">34 User Stories</span><span class="pc-pill">10 Modules</span><span class="pc-pill">Acceptance Criteria</span><span class="pc-pill">Edge Cases</span></div>
-        <div class="pc-footer"><span class="pc-domain"><i class="bi bi-bank"></i> Banking &amp; Finance</span><span class="pc-cta">View Document <i class="bi bi-arrow-right"></i></span></div>
+      <div class="bcard proj" data-t="ba" onclick="location.href='banking-user-stories.html'" data-rv>
+        <span class="pin amber"></span>
+        <div class="ptop"><span class="badge b-ba">User Stories</span><span class="pn-num">02</span></div>
+        <div class="picon pic-ba">📋</div>
+        <div class="pbody"><h3>Banking Loan Origination</h3><p class="pd">End-to-end loan lifecycle — 34 user stories across 10 modules, each with priority, story points, pre/post conditions, acceptance criteria & edge cases.</p>
+        <div class="ppills"><span class="ppill">34 User Stories</span><span class="ppill">10 Modules</span><span class="ppill">Acceptance Criteria</span></div></div>
+        <div class="pfoot"><span class="pdom"><i class="bi bi-bank"></i> Banking</span><span class="pcta">Open doc <i class="bi bi-arrow-right"></i></span></div>
       </div>
 
-      <div class="proj-card ba-card" data-tags="ba" onclick="window.location.href='process-mapping.html'">
-        <div class="pc-header"><div style="display:flex;align-items:center;gap:8px"><span class="pc-badge pc-badge-gold">Process Map</span><span class="pc-num">03 / pmp-emp-2025-001</span></div><i class="bi bi-arrow-up-right-square pc-arrow"></i></div>
-        <div class="pc-icon" style="color:var(--gold)"><i class="bi bi-diagram-3-fill"></i></div>
-        <div class="pc-title">Employee Onboarding — AS-IS vs TO-BE</div>
-        <div class="pc-desc">Full BPR analysis — 12 process steps, 8 identified gaps, quantitative metrics showing 65% time reduction &amp; 80% HR effort cut, RACI and phased roadmap.</div>
-        <div class="pc-pills"><span class="pc-pill">BPR Methodology</span><span class="pc-pill">8 Gaps</span><span class="pc-pill">Metrics</span><span class="pc-pill">Roadmap</span></div>
-        <div class="pc-footer"><span class="pc-domain"><i class="bi bi-people-fill"></i> HR &amp; Operations</span><span class="pc-cta">View Process Flow <i class="bi bi-arrow-right"></i></span></div>
+      <div class="bcard proj" data-t="ba" onclick="location.href='process-mapping.html'" data-rv>
+        <span class="pin amber"></span>
+        <div class="ptop"><span class="badge b-ba">Process Map</span><span class="pn-num">03</span></div>
+        <div class="picon pic-ba">🔀</div>
+        <div class="pbody"><h3>Employee Onboarding · AS-IS vs TO-BE</h3><p class="pd">Full BPR analysis — 12 process steps, 8 gaps, metrics showing 65% time reduction & 80% HR effort cut, RACI and a phased roadmap.</p>
+        <div class="ppills"><span class="ppill">BPR Method</span><span class="ppill">8 Gaps</span><span class="ppill">Roadmap</span></div></div>
+        <div class="pfoot"><span class="pdom"><i class="bi bi-people"></i> HR &amp; Ops</span><span class="pcta">Open flow <i class="bi bi-arrow-right"></i></span></div>
       </div>
 
-      <div class="proj-card data-card" data-tags="powerbi,sql" data-bs-toggle="modal" data-bs-target="#pm1">
-        <div class="pc-header"><div style="display:flex;align-items:center;gap:8px"><span class="pc-badge pc-badge-blue">Power BI</span><span class="pc-num">04 / ev-market-analysis</span></div><i class="bi bi-arrow-up-right-square pc-arrow"></i></div>
-        <div class="pc-img" style="position:relative"><img src="assets\projects\EV_Market_Analysis\EV_market_analysis.jpg" alt="EV Analysis" loading="lazy"><div class="pc-img-overlay"></div></div>
-        <div class="pc-title">India EV Market Analysis</div>
-        <div class="pc-desc">Analysed the Indian EV market (2022–2024) — growth trends, brand performance, state-level adoption, seasonal patterns, and strategic roadmap.</div>
-        <div class="pc-pills"><span class="pc-pill">Power BI</span><span class="pc-pill">SQL</span><span class="pc-pill">Market Analysis</span></div>
-        <div class="pc-footer"><span class="pc-domain"><i class="bi bi-lightning-charge"></i> Automotive</span><span class="pc-cta">View Dashboard <i class="bi bi-arrow-right"></i></span></div>
+      <div class="bcard proj" data-t="powerbi,sql" data-modal="m1" data-rv>
+        <span class="pin blue"></span>
+        <div class="ptop"><span class="badge b-bi">Power BI</span><span class="pn-num">04</span></div>
+        <div class="pthumb"><img src="assets/projects/EV_Market_Analysis/EV_market_analysis.jpg" alt="EV Analysis" loading="lazy" onerror="this.closest('.pthumb').className='picon pic-ba';this.replaceWith(document.createTextNode('⚡'))"></div>
+        <div class="pbody"><h3>India EV Market Analysis</h3><p class="pd">Indian EV market (2022–2024) — growth trends, brand performance, state-level adoption, seasonal patterns and a strategic roadmap.</p>
+        <div class="ppills"><span class="ppill">Power BI</span><span class="ppill">SQL</span><span class="ppill">Market Analysis</span></div></div>
+        <div class="pfoot"><span class="pdom"><i class="bi bi-lightning-charge"></i> Automotive</span><span class="pcta">View dashboard <i class="bi bi-arrow-right"></i></span></div>
       </div>
 
-      <div class="proj-card data-card" data-tags="powerbi,excel" data-bs-toggle="modal" data-bs-target="#pm2">
-        <div class="pc-header"><div style="display:flex;align-items:center;gap:8px"><span class="pc-badge pc-badge-blue">Power BI</span><span class="pc-num">05 / google-trend-analysis</span></div><i class="bi bi-arrow-up-right-square pc-arrow"></i></div>
-        <div class="pc-img" style="position:relative"><img src="assets\projects\Google_Trend_Analysis\Google Trend Analysis Thumbnail.jpg" alt="Google Trend" loading="lazy"><div class="pc-img-overlay"></div></div>
-        <div class="pc-title">Google Trend Dashboard</div>
-        <div class="pc-desc">Leverages Google Trends to identify consumer interests, emerging opportunities, and search behaviour patterns across 60+ countries.</div>
-        <div class="pc-pills"><span class="pc-pill">Google APIs</span><span class="pc-pill">Power BI</span><span class="pc-pill">Excel</span></div>
-        <div class="pc-footer"><span class="pc-domain"><i class="bi bi-graph-up"></i> Market Research</span><span class="pc-cta">View Dashboard <i class="bi bi-arrow-right"></i></span></div>
+      <div class="bcard proj" data-t="powerbi,excel" data-modal="m2" data-rv>
+        <span class="pin blue"></span>
+        <div class="ptop"><span class="badge b-bi">Power BI</span><span class="pn-num">05</span></div>
+        <div class="pthumb"><img src="assets/projects/Google_Trend_Analysis/Google Trend Analysis Thumbnail.jpg" alt="Google Trend" loading="lazy" onerror="this.closest('.pthumb').className='picon pic-ba';this.replaceWith(document.createTextNode('🔎'))"></div>
+        <div class="pbody"><h3>Google Trend Dashboard</h3><p class="pd">Uses Google Trends to surface consumer interests, emerging opportunities and search behaviour across 60+ countries.</p>
+        <div class="ppills"><span class="ppill">Google APIs</span><span class="ppill">Power BI</span><span class="ppill">Excel</span></div></div>
+        <div class="pfoot"><span class="pdom"><i class="bi bi-graph-up"></i> Market Research</span><span class="pcta">View dashboard <i class="bi bi-arrow-right"></i></span></div>
       </div>
 
-      <div class="proj-card data-card" data-tags="powerbi,excel" data-bs-toggle="modal" data-bs-target="#pm3">
-        <div class="pc-header"><div style="display:flex;align-items:center;gap:8px"><span class="pc-badge pc-badge-blue">Power BI</span><span class="pc-num">06 / rail-accident-analysis</span></div><i class="bi bi-arrow-up-right-square pc-arrow"></i></div>
-        <div class="pc-img" style="position:relative"><img src="assets\projects\Train Accident Analysis\Indian Rail Accident Analysis.jpg" alt="Rail Analysis" loading="lazy"><div class="pc-img-overlay"></div></div>
-        <div class="pc-title">Rail Accident Analysis</div>
-        <div class="pc-desc">Identified accident-prone routes, top causes (derailments, collisions), and safety patterns to guide policy formulation and emergency preparedness.</div>
-        <div class="pc-pills"><span class="pc-pill">Power BI</span><span class="pc-pill">Excel</span><span class="pc-pill">Safety Analytics</span></div>
-        <div class="pc-footer"><span class="pc-domain"><i class="bi bi-train-front"></i> Transport &amp; Safety</span><span class="pc-cta">View Dashboard <i class="bi bi-arrow-right"></i></span></div>
+      <div class="bcard proj" data-t="powerbi,excel" data-modal="m3" data-rv>
+        <span class="pin blue"></span>
+        <div class="ptop"><span class="badge b-bi">Power BI</span><span class="pn-num">06</span></div>
+        <div class="pthumb"><img src="assets/projects/Train Accident Analysis/Indian Rail Accident Analysis.jpg" alt="Rail Analysis" loading="lazy" onerror="this.closest('.pthumb').className='picon pic-ba';this.replaceWith(document.createTextNode('🚆'))"></div>
+        <div class="pbody"><h3>Rail Accident Analysis</h3><p class="pd">Identified accident-prone routes, top causes and safety patterns to guide policy formulation and emergency preparedness.</p>
+        <div class="ppills"><span class="ppill">Power BI</span><span class="ppill">Excel</span><span class="ppill">Safety Analytics</span></div></div>
+        <div class="pfoot"><span class="pdom"><i class="bi bi-train-front"></i> Transport</span><span class="pcta">View dashboard <i class="bi bi-arrow-right"></i></span></div>
       </div>
 
-      <div class="proj-card data-card" data-tags="powerbi,excel" data-bs-toggle="modal" data-bs-target="#pm4">
-        <div class="pc-header"><div style="display:flex;align-items:center;gap:8px"><span class="pc-badge pc-badge-blue">Power BI</span><span class="pc-num">07 / customer-retention</span></div><i class="bi bi-arrow-up-right-square pc-arrow"></i></div>
-        <div class="pc-img" style="position:relative"><img src="assets\projects\Call_Center_Data_Analysis_details\Power BI Job Simulation on Forage.jpg" alt="Customer Retention" loading="lazy"><div class="pc-img-overlay"></div></div>
-        <div class="pc-title">Customer Retention Dashboard</div>
-        <div class="pc-desc">Achieved 26.54% churn reduction through customer segmentation, engagement strategies, and data-driven personalised offer recommendations.</div>
-        <div class="pc-pills"><span class="pc-pill">Power BI</span><span class="pc-pill">Excel</span><span class="pc-pill">26.54% Churn ↓</span></div>
-        <div class="pc-footer"><span class="pc-domain"><i class="bi bi-people"></i> CX Analytics</span><span class="pc-cta">View Dashboard <i class="bi bi-arrow-right"></i></span></div>
+      <div class="bcard proj" data-t="powerbi,excel" data-modal="m4" data-rv>
+        <span class="pin blue"></span>
+        <div class="ptop"><span class="badge b-bi">Power BI</span><span class="pn-num">07</span></div>
+        <div class="pthumb"><img src="assets/projects/Call_Center_Data_Analysis_details/Power BI Job Simulation on Forage.jpg" alt="Customer Retention" loading="lazy" onerror="this.closest('.pthumb').className='picon pic-ba';this.replaceWith(document.createTextNode('📞'))"></div>
+        <div class="pbody"><h3>Customer Retention Dashboard</h3><p class="pd">Achieved 26.54% churn reduction through segmentation, engagement strategies and data-driven personalised offers.</p>
+        <div class="ppills"><span class="ppill">Power BI</span><span class="ppill">Excel</span><span class="ppill">26.54% Churn ↓</span></div></div>
+        <div class="pfoot"><span class="pdom"><i class="bi bi-people"></i> CX Analytics</span><span class="pcta">View dashboard <i class="bi bi-arrow-right"></i></span></div>
       </div>
 
-      <div class="proj-card data-card" data-tags="powerbi,sql" data-bs-toggle="modal" data-bs-target="#pm5">
-        <div class="pc-header"><div style="display:flex;align-items:center;gap:8px"><span class="pc-badge pc-badge-blue">Power BI</span><span class="pc-num">08 / atliq-hardware-insights</span></div><i class="bi bi-arrow-up-right-square pc-arrow"></i></div>
-        <div class="pc-img" style="position:relative"><img src="assets/projects/AtliQ Hardware Insights Report/AtliQ Hardware Insights Report.jpg" alt="AtliQ" loading="lazy"><div class="pc-img-overlay"></div></div>
-        <div class="pc-title">AtliQ Hardware Insights Report</div>
-        <div class="pc-desc">In-depth sales and manufacturing analysis — operational efficiency, market penetration, customer discount patterns, and product line optimization.</div>
-        <div class="pc-pills"><span class="pc-pill">Power BI</span><span class="pc-pill">SQL</span><span class="pc-pill">Business Intelligence</span></div>
-        <div class="pc-footer"><span class="pc-domain"><i class="bi bi-cpu"></i> Manufacturing</span><span class="pc-cta">View Dashboard <i class="bi bi-arrow-right"></i></span></div>
+      <div class="bcard proj" data-t="powerbi,sql" data-modal="m5" data-rv>
+        <span class="pin blue"></span>
+        <div class="ptop"><span class="badge b-bi">Power BI</span><span class="pn-num">08</span></div>
+        <div class="pthumb"><img src="assets/projects/AtliQ Hardware Insights Report/AtliQ Hardware Insights Report.jpg" alt="AtliQ" loading="lazy" onerror="this.closest('.pthumb').className='picon pic-ba';this.replaceWith(document.createTextNode('🖥️'))"></div>
+        <div class="pbody"><h3>AtliQ Hardware Insights</h3><p class="pd">In-depth sales & manufacturing analysis — operational efficiency, market penetration, discount patterns and product-line optimisation.</p>
+        <div class="ppills"><span class="ppill">Power BI</span><span class="ppill">SQL</span><span class="ppill">BI</span></div></div>
+        <div class="pfoot"><span class="pdom"><i class="bi bi-cpu"></i> Manufacturing</span><span class="pcta">View dashboard <i class="bi bi-arrow-right"></i></span></div>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ══ CERTIFICATIONS ══ -->
-<section id="certificates">
-  <div class="container">
-    <div class="sh" data-aos>
-      <div class="sh-eyebrow">Credentials</div>
-      <h2 class="sh-title">My <em>Certifications</em></h2>
-      <div class="sh-line"></div>
+<!-- CERTS -->
+<section id="certs">
+  <div class="wrap">
+    <div data-rv>
+      <span class="eyebrow"><i class="bi bi-patch-check"></i> verified</span>
+      <h2 class="shead">My <u>certifications</u></h2>
+    </div>
+    <div class="cgrid">
+      <a class="bcard cert" href="https://www.coursera.org/account/accomplishments/professional-cert/JPUG55Y3GZAS" target="_blank" rel="noopener" data-rv><div class="ctop"><span class="verified"><i class="bi bi-patch-check-fill"></i> Verified</span></div><div class="ci">Google · Coursera</div><div class="ct">Google Data Analytics Professional Certificate</div><div class="cd">Data analysis, visualization and insights for business decision-making.</div><div class="cfoot"><div class="ctags"><span class="ppill">Data Analysis</span><span class="ppill">Viz</span></div><span class="clink"><i class="bi bi-arrow-up-right"></i></span></div></a>
+      <a class="bcard cert" href="https://www.linkedin.com/learning/certificates/b669334513c329a04528bb83f280f79d1892599b57aac79d7dcfb7fd03992d77" target="_blank" rel="noopener" data-rv><div class="ctop"><span class="verified"><i class="bi bi-patch-check-fill"></i> Verified</span></div><div class="ci">Microsoft · LinkedIn</div><div class="ct">Business Analysis by Microsoft &amp; LinkedIn</div><div class="cd">Business process analysis, requirements management and stakeholder collaboration.</div><div class="cfoot"><div class="ctags"><span class="ppill">BRD / FSD</span><span class="ppill">Stakeholders</span></div><span class="clink"><i class="bi bi-arrow-up-right"></i></span></div></a>
+      <a class="bcard cert" href="https://www.linkedin.com/learning/certificates/b828054f27da7a9b43747e5dacf14f9708d2ed421d3749466bc90c61933eb04a" target="_blank" rel="noopener" data-rv><div class="ctop"><span class="verified"><i class="bi bi-patch-check-fill"></i> Verified</span></div><div class="ci">LinkedIn Learning</div><div class="ct">Requirements Elicitation &amp; Analysis</div><div class="cd">Stakeholder needs identification, requirements documentation and analysis techniques.</div><div class="cfoot"><div class="ctags"><span class="ppill">Elicitation</span><span class="ppill">UAT</span></div><span class="clink"><i class="bi bi-arrow-up-right"></i></span></div></a>
+      <a class="bcard cert" href="https://www.linkedin.com/learning/certificates/e29c230664b57c86c2795595cd269a65e001ab20943b1042c6b7b4923acba714" target="_blank" rel="noopener" data-rv><div class="ctop"><span class="verified"><i class="bi bi-patch-check-fill"></i> Verified</span></div><div class="ci">LinkedIn Learning</div><div class="ct">Agile Requirements Foundations</div><div class="cd">Agile requirements gathering, user story creation and iterative management.</div><div class="cfoot"><div class="ctags"><span class="ppill">Agile</span><span class="ppill">Scrum</span></div><span class="clink"><i class="bi bi-arrow-up-right"></i></span></div></a>
+      <a class="bcard cert" href="https://codebasics.io/certificate/CB-49-342372" target="_blank" rel="noopener" data-rv><div class="ctop"><span class="verified"><i class="bi bi-patch-check-fill"></i> Verified</span></div><div class="ci">Codebasics</div><div class="ct">Microsoft Power BI Data Analytics</div><div class="cd">Advanced data visualization and BI using Power BI for interactive dashboards.</div><div class="cfoot"><div class="ctags"><span class="ppill">Power BI</span><span class="ppill">Dashboards</span></div><span class="clink"><i class="bi bi-arrow-up-right"></i></span></div></a>
     </div>
   </div>
-  <div class="cert-marquee-outer">
-    <div class="cert-track">
-      <a class="cert-card" href="https://www.coursera.org/account/accomplishments/professional-cert/JPUG55Y3GZAS" target="_blank" rel="noopener noreferrer"><div class="cert-card-header"><i class="bi bi-patch-check-fill" style="color:var(--green);font-size:0.9rem"></i><span class="hbadge hb-green" style="font-size:0.62rem">Verified</span></div><div class="cert-card-body"><div class="cert-issuer">Google · Coursera</div><div class="cert-title">Google Data Analytics Professional Certificate</div><div class="cert-desc">Comprehensive program covering data analysis, visualization, and insights for business decision-making.</div><div class="cert-footer"><div class="cert-tags"><span class="cert-tag">Data Analysis</span><span class="cert-tag">Visualization</span></div><div class="cert-arrow"><i class="bi bi-box-arrow-up-right"></i></div></div></div></a>
-      <a class="cert-card" href="https://www.linkedin.com/learning/certificates/b669334513c329a04528bb83f280f79d1892599b57aac79d7dcfb7fd03992d77" target="_blank" rel="noopener noreferrer"><div class="cert-card-header"><i class="bi bi-patch-check-fill" style="color:var(--accent2);font-size:0.9rem"></i><span class="hbadge hb-blue" style="font-size:0.62rem">Verified</span></div><div class="cert-card-body"><div class="cert-issuer">Microsoft · LinkedIn</div><div class="cert-title">Business Analysis by Microsoft and LinkedIn</div><div class="cert-desc">Microsoft-validated skills in business process analysis, requirements management, and stakeholder collaboration.</div><div class="cert-footer"><div class="cert-tags"><span class="cert-tag">BRD / FSD</span><span class="cert-tag">Stakeholders</span></div><div class="cert-arrow"><i class="bi bi-box-arrow-up-right"></i></div></div></div></a>
-      <a class="cert-card" href="https://www.linkedin.com/learning/certificates/b828054f27da7a9b43747e5dacf14f9708d2ed421d3749466bc90c61933eb04a" target="_blank" rel="noopener noreferrer"><div class="cert-card-header"><i class="bi bi-patch-check-fill" style="color:var(--accent2);font-size:0.9rem"></i><span class="hbadge hb-blue" style="font-size:0.62rem">Verified</span></div><div class="cert-card-body"><div class="cert-issuer">LinkedIn Learning</div><div class="cert-title">Requirements Elicitation and Analysis</div><div class="cert-desc">Advanced expertise in stakeholder needs identification, requirements documentation, and analysis techniques.</div><div class="cert-footer"><div class="cert-tags"><span class="cert-tag">Elicitation</span><span class="cert-tag">UAT</span></div><div class="cert-arrow"><i class="bi bi-box-arrow-up-right"></i></div></div></div></a>
-      <a class="cert-card" href="https://www.linkedin.com/learning/certificates/e29c230664b57c86c2795595cd269a65e001ab20943b1042c6b7b4923acba714" target="_blank" rel="noopener noreferrer"><div class="cert-card-header"><i class="bi bi-patch-check-fill" style="color:var(--accent2);font-size:0.9rem"></i><span class="hbadge hb-blue" style="font-size:0.62rem">Verified</span></div><div class="cert-card-body"><div class="cert-issuer">LinkedIn Learning</div><div class="cert-title">Agile Requirements Foundations</div><div class="cert-desc">Specialised in Agile requirements gathering, user story creation, and iterative requirements management.</div><div class="cert-footer"><div class="cert-tags"><span class="cert-tag">Agile</span><span class="cert-tag">Scrum</span></div><div class="cert-arrow"><i class="bi bi-box-arrow-up-right"></i></div></div></div></a>
-      <a class="cert-card" href="https://codebasics.io/certificate/CB-49-342372" target="_blank" rel="noopener noreferrer"><div class="cert-card-header"><i class="bi bi-patch-check-fill" style="color:var(--gold);font-size:0.9rem"></i><span class="hbadge hb-gold" style="font-size:0.62rem">Verified</span></div><div class="cert-card-body"><div class="cert-issuer">Codebasics</div><div class="cert-title">Microsoft Power BI Data Analytics</div><div class="cert-desc">Advanced data visualization and BI using Power BI for interactive dashboards and actionable insights.</div><div class="cert-footer"><div class="cert-tags"><span class="cert-tag">Power BI</span><span class="cert-tag">Dashboards</span></div><div class="cert-arrow"><i class="bi bi-box-arrow-up-right"></i></div></div></div></a>
-      <!-- Duplicated for seamless loop -->
-      <a class="cert-card" href="https://www.coursera.org/account/accomplishments/professional-cert/JPUG55Y3GZAS" target="_blank" rel="noopener noreferrer"><div class="cert-card-header"><i class="bi bi-patch-check-fill" style="color:var(--green);font-size:0.9rem"></i><span class="hbadge hb-green" style="font-size:0.62rem">Verified</span></div><div class="cert-card-body"><div class="cert-issuer">Google · Coursera</div><div class="cert-title">Google Data Analytics Professional Certificate</div><div class="cert-desc">Comprehensive program covering data analysis, visualization, and insights for business decision-making.</div><div class="cert-footer"><div class="cert-tags"><span class="cert-tag">Data Analysis</span><span class="cert-tag">Visualization</span></div><div class="cert-arrow"><i class="bi bi-box-arrow-up-right"></i></div></div></div></a>
-      <a class="cert-card" href="https://www.linkedin.com/learning/certificates/b669334513c329a04528bb83f280f79d1892599b57aac79d7dcfb7fd03992d77" target="_blank" rel="noopener noreferrer"><div class="cert-card-header"><i class="bi bi-patch-check-fill" style="color:var(--accent2);font-size:0.9rem"></i><span class="hbadge hb-blue" style="font-size:0.62rem">Verified</span></div><div class="cert-card-body"><div class="cert-issuer">Microsoft · LinkedIn</div><div class="cert-title">Business Analysis by Microsoft and LinkedIn</div><div class="cert-desc">Microsoft-validated skills in business process analysis, requirements management, and stakeholder collaboration.</div><div class="cert-footer"><div class="cert-tags"><span class="cert-tag">BRD / FSD</span><span class="cert-tag">Stakeholders</span></div><div class="cert-arrow"><i class="bi bi-box-arrow-up-right"></i></div></div></div></a>
-      <a class="cert-card" href="https://www.linkedin.com/learning/certificates/b828054f27da7a9b43747e5dacf14f9708d2ed421d3749466bc90c61933eb04a" target="_blank" rel="noopener noreferrer"><div class="cert-card-header"><i class="bi bi-patch-check-fill" style="color:var(--accent2);font-size:0.9rem"></i><span class="hbadge hb-blue" style="font-size:0.62rem">Verified</span></div><div class="cert-card-body"><div class="cert-issuer">LinkedIn Learning</div><div class="cert-title">Requirements Elicitation and Analysis</div><div class="cert-desc">Advanced expertise in stakeholder needs identification, requirements documentation, and analysis techniques.</div><div class="cert-footer"><div class="cert-tags"><span class="cert-tag">Elicitation</span><span class="cert-tag">UAT</span></div><div class="cert-arrow"><i class="bi bi-box-arrow-up-right"></i></div></div></div></a>
-      <a class="cert-card" href="https://www.linkedin.com/learning/certificates/e29c230664b57c86c2795595cd269a65e001ab20943b1042c6b7b4923acba714" target="_blank" rel="noopener noreferrer"><div class="cert-card-header"><i class="bi bi-patch-check-fill" style="color:var(--accent2);font-size:0.9rem"></i><span class="hbadge hb-blue" style="font-size:0.62rem">Verified</span></div><div class="cert-card-body"><div class="cert-issuer">LinkedIn Learning</div><div class="cert-title">Agile Requirements Foundations</div><div class="cert-desc">Specialised in Agile requirements gathering, user story creation, and iterative requirements management.</div><div class="cert-footer"><div class="cert-tags"><span class="cert-tag">Agile</span><span class="cert-tag">Scrum</span></div><div class="cert-arrow"><i class="bi bi-box-arrow-up-right"></i></div></div></div></a>
-      <a class="cert-card" href="https://codebasics.io/certificate/CB-49-342372" target="_blank" rel="noopener noreferrer"><div class="cert-card-header"><i class="bi bi-patch-check-fill" style="color:var(--gold);font-size:0.9rem"></i><span class="hbadge hb-gold" style="font-size:0.62rem">Verified</span></div><div class="cert-card-body"><div class="cert-issuer">Codebasics</div><div class="cert-title">Microsoft Power BI Data Analytics</div><div class="cert-desc">Advanced data visualization and BI using Power BI for interactive dashboards and actionable insights.</div><div class="cert-footer"><div class="cert-tags"><span class="cert-tag">Power BI</span><span class="cert-tag">Dashboards</span></div><div class="cert-arrow"><i class="bi bi-box-arrow-up-right"></i></div></div></div></a>
-    </div>
-  </div>
-  <p style="text-align:center;margin-top:16px;font-family:var(--mono);font-size:0.7rem;color:var(--muted2)">Hover to pause · Click to verify</p>
 </section>
 
-</main>
-
-<!-- FLOATING BUTTONS -->
-<a href="javascript:void(0)" id="scroll-top" aria-label="Back to top"><i class="bi bi-arrow-up"></i></a>
-<a id="ai-btn" href="#" target="_blank" rel="noopener noreferrer" aria-label="Ask AI for summary">
-  <span style="font-size:0.9rem">✦</span>
-  <span>Ask AI about me</span>
-  <span class="ai-pulse"></span>
-</a>
+<!-- floating actions -->
+<button class="fab" id="askai"><span class="d"></span> Ask AI about me</button>
+<button class="fab" id="totop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
 
 <!-- MODALS -->
-<div class="modal fade" id="pm1" tabindex="-1"><div class="modal-dialog modal-xl modal-dialog-centered" style="max-width:1050px"><div class="modal-content"><div class="modal-header"><div class="modal-titlebar"><div class="modal-tl-spacer"></div><h5 class="modal-title"><span class="hl">manmath235</span> / ev-market-analysis / <span class="fn">README.md</span></h5><div class="modal-tl"><button class="modal-tl-dot is-close" style="background:#ff5f57" data-bs-dismiss="modal"></div></div></div><div class="modal-body"><div class="modal-proj-layout"><div class="modal-iframe-wrap"><iframe title="EV Market Analysis" src="https://app.powerbi.com/view?r=eyJrIjoiM2ZhNTA4ZTItYzY5NS00YWQ0LWJhOTEtMDNmZDkwMWQyOGRkIiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" frameborder="0" allowFullScreen loading="lazy"></iframe></div><div class="modal-sidebar"><div><div class="ms-label">Download</div><a href="assets/projects/EV_Market_Analysis/EV_Market_Analysis_Report_2022_2024.pdf" class="btn btn-outline" style="font-size:0.78rem;width:100%;justify-content:center"><i class="bi bi-download"></i> Report PDF</a></div><div><div class="ms-label">Stack</div><div class="ms-tags"><span class="ms-tag">Power BI</span><span class="ms-tag">SQL</span></div></div></div></div><div class="modal-desc-section" style="margin-top:20px"><h6># Project Highlights</h6><div class="modal-diff"><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Market Growth Analysis:</strong> Analyzed the Indian EV market (2022–2024) to identify growth trends, brand performance, and state-level adoption insights.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Regional Performance Insights:</strong> Focused on high-penetration and underperforming regions to understand geographical adoption patterns.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Brand Benchmarking:</strong> Conducted quarterly brand growth analysis and YoY performance comparisons.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Strategic Roadmap:</strong> Delivered insights and recommendations for product strategy, investment zones, and infrastructure partnerships.</span></div></div></div></div></div></div></div>
+<div class="ovl" id="m1"><div class="sheet"><div class="sheet-head"><span class="st">India EV Market Analysis</span><button class="x" data-close><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div class="frame"><iframe title="EV Market Analysis" src="https://app.powerbi.com/view?r=eyJrIjoiM2ZhNTA4ZTItYzY5NS00YWQ0LWJhOTEtMDNmZDkwMWQyOGRkIiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" allowfullscreen loading="lazy"></iframe></div><div class="side"><div><div class="sl">Download</div><a href="assets/projects/EV_Market_Analysis/EV_Market_Analysis_Report_2022_2024.pdf" class="btn ghost sm" style="width:100%;justify-content:center"><i class="bi bi-download"></i> Report PDF</a></div><div><div class="sl">Stack</div><div class="stack"><span class="ppill">Power BI</span><span class="ppill">SQL</span></div></div></div></div><div class="high"><div class="hh">Highlights</div><div class="hl"><span class="b">+</span><span><b>Market growth:</b> analysed the Indian EV market (2022–2024) for growth trends, brand performance and state-level adoption.</span></div><div class="hl"><span class="b">+</span><span><b>Regional insight:</b> compared high-penetration and underperforming regions to map adoption patterns.</span></div><div class="hl"><span class="b">+</span><span><b>Roadmap:</b> recommendations for product strategy, investment zones and infrastructure partnerships.</span></div></div></div></div></div>
 
-<div class="modal fade" id="pm2" tabindex="-1"><div class="modal-dialog modal-xl modal-dialog-centered" style="max-width:1050px"><div class="modal-content"><div class="modal-header"><div class="modal-titlebar"><div class="modal-tl-spacer"></div><h5 class="modal-title"><span class="hl">manmath235</span> / google-trend-analysis / <span class="fn">README.md</span></h5><div class="modal-tl"><button class="modal-tl-dot is-close" style="background:#ff5f57" data-bs-dismiss="modal"></button></div></div></div><div class="modal-body"><div class="modal-proj-layout"><div class="modal-iframe-wrap"><iframe title="Google Trend Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiMTRjZTNkYmYtYjIzOC00Mjk3LWIzMWYtNjMxN2NhYTVmMzI2IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" frameborder="0" allowFullScreen loading="lazy"></iframe></div><div class="modal-sidebar"><div><div class="ms-label">Links</div><div style="display:flex;flex-direction:column;gap:8px"><a href="https://github.com/Manmath235/Google_Trend_Dashboard.git" class="btn btn-outline" style="font-size:0.78rem;justify-content:center" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> GitHub</a><a href="assets/projects/Google_Trend_Analysis/Google Trend Report.pdf" class="btn btn-outline" style="font-size:0.78rem;justify-content:center"><i class="bi bi-download"></i> Report PDF</a></div></div><div><div class="ms-label">Stack</div><div class="ms-tags"><span class="ms-tag">Google APIs</span><span class="ms-tag">Power BI</span><span class="ms-tag">Excel</span></div></div></div></div><div class="modal-desc-section" style="margin-top:20px"><h6># Project Highlights</h6><div class="modal-diff"><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Insights &amp; Opportunity Identification:</strong> Leverages Google Trends to identify consumer interests, emerging trends, and market opportunities.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Regional Market Understanding:</strong> Provides insights into consumer search behaviors across 60+ countries.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Data-Driven Decision Making:</strong> Empowers forecasting and strategic planning through real-time trend visualizations.</span></div></div></div></div></div></div></div>
+<div class="ovl" id="m2"><div class="sheet"><div class="sheet-head"><span class="st">Google Trend Dashboard</span><button class="x" data-close><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div class="frame"><iframe title="Google Trend Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiMTRjZTNkYmYtYjIzOC00Mjk3LWIzMWYtNjMxN2NhYTVmMzI2IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" allowfullscreen loading="lazy"></iframe></div><div class="side"><div><div class="sl">Links</div><div style="display:flex;flex-direction:column;gap:8px"><a href="https://github.com/Manmath235/Google_Trend_Dashboard.git" target="_blank" rel="noopener" class="btn ghost sm" style="width:100%;justify-content:center"><i class="bi bi-github"></i> GitHub</a><a href="assets/projects/Google_Trend_Analysis/Google Trend Report.pdf" class="btn ghost sm" style="width:100%;justify-content:center"><i class="bi bi-download"></i> Report PDF</a></div></div><div><div class="sl">Stack</div><div class="stack"><span class="ppill">Google APIs</span><span class="ppill">Power BI</span><span class="ppill">Excel</span></div></div></div></div><div class="high"><div class="hh">Highlights</div><div class="hl"><span class="b">+</span><span><b>Opportunity spotting:</b> uses Google Trends to identify consumer interests and emerging market opportunities.</span></div><div class="hl"><span class="b">+</span><span><b>Regional behaviour:</b> insight into search behaviours across 60+ countries.</span></div><div class="hl"><span class="b">+</span><span><b>Decisions:</b> real-time trend visualisations to support forecasting and planning.</span></div></div></div></div></div>
 
-<div class="modal fade" id="pm3" tabindex="-1"><div class="modal-dialog modal-xl modal-dialog-centered" style="max-width:1050px"><div class="modal-content"><div class="modal-header"><div class="modal-titlebar"><div class="modal-tl-spacer"></div><h5 class="modal-title"><span class="hl">manmath235</span> / rail-accident-analysis / <span class="fn">README.md</span></h5><div class="modal-tl"><button class="modal-tl-dot is-close" style="background:#ff5f57" data-bs-dismiss="modal"></button></div></div></div><div class="modal-body"><div class="modal-proj-layout"><div class="modal-iframe-wrap"><iframe title="Rail Accident Analysis" src="https://app.powerbi.com/view?r=eyJrIjoiMmZkNTgwODktNzAyMy00YmZlLTk5YzEtYTY4YWIwNmEwODI0IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" frameborder="0" allowFullScreen loading="lazy"></iframe></div><div class="modal-sidebar"><div><div class="ms-label">Download</div><a href="assets/projects/Train Accident Analysis/Indian Rail Accident Analysis Report.pdf" download class="btn btn-outline" style="font-size:0.78rem;width:100%;justify-content:center"><i class="bi bi-download"></i> Report PDF</a></div><div><div class="ms-label">Stack</div><div class="ms-tags"><span class="ms-tag">Power BI</span><span class="ms-tag">Excel</span></div></div></div></div><div class="modal-desc-section" style="margin-top:20px"><h6># Project Highlights</h6><div class="modal-diff"><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>High-Risk Area Identification:</strong> Identified accident-prone routes through geographical analysis for targeted safety measures.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Accident Cause Prioritization:</strong> Highlighted top causes (derailments, collisions, sabotage) to guide safety initiatives.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Safety Regulation Guidance:</strong> Informed policy formulation through data-driven insights.</span></div></div></div></div></div></div></div>
+<div class="ovl" id="m3"><div class="sheet"><div class="sheet-head"><span class="st">Rail Accident Analysis</span><button class="x" data-close><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div class="frame"><iframe title="Rail Accident Analysis" src="https://app.powerbi.com/view?r=eyJrIjoiMmZkNTgwODktNzAyMy00YmZlLTk5YzEtYTY4YWIwNmEwODI0IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" allowfullscreen loading="lazy"></iframe></div><div class="side"><div><div class="sl">Download</div><a href="assets/projects/Train Accident Analysis/Indian Rail Accident Analysis Report.pdf" download class="btn ghost sm" style="width:100%;justify-content:center"><i class="bi bi-download"></i> Report PDF</a></div><div><div class="sl">Stack</div><div class="stack"><span class="ppill">Power BI</span><span class="ppill">Excel</span></div></div></div></div><div class="high"><div class="hh">Highlights</div><div class="hl"><span class="b">+</span><span><b>High-risk routes:</b> identified accident-prone routes through geographical analysis.</span></div><div class="hl"><span class="b">+</span><span><b>Cause priority:</b> highlighted top causes to guide safety initiatives.</span></div><div class="hl"><span class="b">+</span><span><b>Policy guidance:</b> informed regulation through data-driven insight.</span></div></div></div></div></div>
 
-<div class="modal fade" id="pm4" tabindex="-1"><div class="modal-dialog modal-xl modal-dialog-centered" style="max-width:1050px"><div class="modal-content"><div class="modal-header"><div class="modal-titlebar"><div class="modal-tl-spacer"></div><h5 class="modal-title"><span class="hl">manmath235</span> / customer-retention / <span class="fn">README.md</span></h5><div class="modal-tl"><button class="modal-tl-dot is-close" style="background:#ff5f57" data-bs-dismiss="modal"></button></div></div></div><div class="modal-body"><div class="modal-proj-layout"><div class="modal-iframe-wrap"><iframe title="Customer Retention Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiZmU5YzFlMGMtNDUxYy00OTcyLThjODktZDdlYjFkODJkMzc4IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" frameborder="0" allowFullScreen loading="lazy"></iframe></div><div class="modal-sidebar"><div><div class="ms-label">GitHub</div><a href="https://github.com/Manmath235/Call_Center_Trend_Analysis.git" class="btn btn-outline" style="font-size:0.78rem;width:100%;justify-content:center" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> Repository</a></div><div><div class="ms-label">Stack</div><div class="ms-tags"><span class="ms-tag">Power BI</span><span class="ms-tag">Excel</span></div></div></div></div><div class="modal-desc-section" style="margin-top:20px"><h6># Project Highlights</h6><div class="modal-diff"><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Churn Analysis:</strong> Achieved a 26.54% churn reduction through customer segmentation and proactive engagement strategies.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Call Centre Performance:</strong> Identified performance gaps leading to improved response time and resolution rate KPIs.</span></div><div class="modal-diff-line"><span class="mdl-prefix">+</span><span><strong>Personalised Customer Offers:</strong> Data-driven recommendations based on demographic and usage patterns.</span></div></div></div></div></div></div></div>
+<div class="ovl" id="m4"><div class="sheet"><div class="sheet-head"><span class="st">Customer Retention Dashboard</span><button class="x" data-close><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div class="frame"><iframe title="Customer Retention Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiZmU5YzFlMGMtNDUxYy00OTcyLThjODktZDdlYjFkODJkMzc4IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" allowfullscreen loading="lazy"></iframe></div><div class="side"><div><div class="sl">GitHub</div><a href="https://github.com/Manmath235/Call_Center_Trend_Analysis.git" target="_blank" rel="noopener" class="btn ghost sm" style="width:100%;justify-content:center"><i class="bi bi-github"></i> Repository</a></div><div><div class="sl">Stack</div><div class="stack"><span class="ppill">Power BI</span><span class="ppill">Excel</span></div></div></div></div><div class="high"><div class="hh">Highlights</div><div class="hl"><span class="b">+</span><span><b>Churn analysis:</b> 26.54% churn reduction via segmentation and proactive engagement.</span></div><div class="hl"><span class="b">+</span><span><b>Call-centre performance:</b> closed gaps to improve response time and resolution KPIs.</span></div><div class="hl"><span class="b">+</span><span><b>Personalised offers:</b> recommendations from demographic and usage patterns.</span></div></div></div></div></div>
 
-<div class="modal fade" id="pm5" tabindex="-1">
-  <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width:1050px">
-    <div class="modal-content">
-      
-      <div class="modal-header">
-        <div class="modal-titlebar">
-          <div class="modal-tl-spacer"></div>
-          <h5 class="modal-title">
-            <span class="hl">manmath235</span> / atliq-hardware-insights / 
-            <span class="fn">README.md</span>
-          </h5>
-          <div class="modal-tl">
-            <button class="modal-tl-dot is-close" style="background:#ff5f57" data-bs-dismiss="modal"></button>
-          </div>
-        </div>
-      </div>
+<div class="ovl" id="m5"><div class="sheet"><div class="sheet-head"><span class="st">AtliQ Hardware Insights</span><button class="x" data-close><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div class="frame" style="padding-top:56%"><iframe title="AtliQ Hardware Insights" src="https://www.canva.com/design/DAGIRr-6J_w/r9hmDWSWTQBC9AZQL4wG-Q/view?embed&embed_host=share" allowfullscreen loading="lazy"></iframe></div><div class="side"><div><div class="sl">Download</div><a href="assets/projects/AtliQ Hardware Insights Report/Report.pdf" download class="btn ghost sm" style="width:100%;justify-content:center"><i class="bi bi-download"></i> Report PDF</a></div><div><div class="sl">Stack</div><div class="stack"><span class="ppill">Power BI</span><span class="ppill">SQL</span></div></div></div></div><div class="high"><div class="hh">Highlights</div><div class="hl"><span class="b">+</span><span><b>Analysis:</b> deep dive into sales and manufacturing data for critical insights.</span></div><div class="hl"><span class="b">+</span><span><b>Efficiency:</b> identified cost-reduction opportunities and resource optimisation.</span></div><div class="hl"><span class="b">+</span><span><b>Customers:</b> discount-pattern reports for targeted promotions.</span></div></div></div></div></div>
 
-      <div class="modal-body">
-        <div class="modal-proj-layout">
-
-          <!-- ✅ CANVA EMBED REPLACES CAROUSEL -->
-          <div class="modal-iframe-wrap" style="padding-top:56%; position:relative;">
-            <div style="position:absolute; top:0; left:0; width:100%; height:100%;
-              box-shadow: 0 2px 8px rgba(63,69,81,0.16);
-              border-radius: 8px; overflow: hidden;">
-              
-              <iframe 
-                loading="lazy"
-                src="https://www.canva.com/design/DAGIRr-6J_w/r9hmDWSWTQBC9AZQL4wG-Q/view?embed&embed_host=share"
-                style="width:100%; height:100%; border:none;"
-                allowfullscreen>
-              </iframe>
-
-            </div>
-          </div>
-
-          <div class="modal-sidebar">
-            <div>
-              <div class="ms-label">Download</div>
-              <a href="assets/projects/AtliQ Hardware Insights Report/Report.pdf" download class="btn btn-outline" style="font-size:0.78rem;width:100%;justify-content:center">
-                <i class="bi bi-download"></i> Report PDF
-              </a>
-            </div>
-
-            <div>
-              <div class="ms-label">Stack</div>
-              <div class="ms-tags">
-                <span class="ms-tag">Power BI</span>
-                <span class="ms-tag">SQL</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="modal-desc-section" style="margin-top:20px">
-          <h6># Project Highlights</h6>
-          <div class="modal-diff">
-            <div class="modal-diff-line">
-              <span class="mdl-prefix">+</span>
-              <span><strong>Data Analysis:</strong> In-depth analysis of sales and manufacturing data to uncover critical business insights.</span>
-            </div>
-            <div class="modal-diff-line">
-              <span class="mdl-prefix">+</span>
-              <span><strong>Operational Efficiency:</strong> Identified cost reduction opportunities and optimized resource allocation.</span>
-            </div>
-            <div class="modal-diff-line">
-              <span class="mdl-prefix">+</span>
-              <span><strong>Customer Insights:</strong> Detailed reports on discount patterns and behaviors for targeted promotions.</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-(function () {
-  'use strict';
+(function(){
+'use strict';
 
-  /* ── Dynamic experience ── */
-  function calcExp() {
-    var start = new Date(2023, 2, 1), now = new Date();
-    var y = now.getFullYear() - start.getFullYear();
-    var m = now.getMonth() - start.getMonth();
-    if (m < 0) { y--; m += 12; }
-    var total = y * 12 + m;
-    if (total < 12) return total + '+ mo';
-    var rem = total % 12;
-    return y + (rem >= 6 ? '.5' : '') + '+';
-  }
-  document.querySelectorAll('.dynamic-exp').forEach(function(el) { el.textContent = calcExp(); });
+/* experience calc (since Mar 2023) */
+function calcExp(){
+  var s=new Date(2023,2,1), n=new Date();
+  var y=n.getFullYear()-s.getFullYear(), m=n.getMonth()-s.getMonth();
+  if(m<0){y--;m+=12;}
+  var tot=y*12+m; if(tot<12) return tot+'+ mo';
+  return y+((tot%12)>=6?'.5':'')+'+';
+}
+document.querySelectorAll('.dexp').forEach(function(e){e.textContent=calcExp();});
 
-  /* ── Loader ── */
-  var loaderChars = document.getElementById('loaderChars');
-  var name = 'Manmath.';
-  name.split('').forEach(function(c, i) {
-    var s = document.createElement('span');
-    s.textContent = c === ' ' ? '\u00A0' : c;
-    s.style.animationDelay = (i * 0.06 + 0.1) + 's';
-    loaderChars.appendChild(s);
-  });
-  var loader = document.getElementById('site-loader');
-  document.body.style.overflow = 'hidden';
-  function hideLoader() { loader.classList.add('hidden'); document.body.style.overflow = ''; }
-  window.addEventListener('load', function() { setTimeout(hideLoader, 2800); });
-  setTimeout(hideLoader, 3300);
+/* burger menu */
+var burger=document.getElementById('burger'), mnav=document.getElementById('mnav');
+burger.addEventListener('click',function(){mnav.classList.toggle('open');});
+mnav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mnav.classList.remove('open');});});
 
-  /* ── Custom Cursor ── */
-  var cursorDot = document.getElementById('cursor-dot');
-  var cursorRing = document.getElementById('cursor-ring');
-  var mouseX = 0, mouseY = 0;
-  var ringX = 0, ringY = 0;
+/* reveal on scroll */
+var rio=new IntersectionObserver(function(en){
+  en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); rio.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('[data-rv]').forEach(function(el,i){
+  el.style.transitionDelay=(i%4*60)+'ms'; rio.observe(el);
+});
 
-  document.addEventListener('mousemove', function(e) {
-    mouseX = e.clientX; mouseY = e.clientY;
-    cursorDot.style.left = mouseX + 'px';
-    cursorDot.style.top = mouseY + 'px';
-  });
+/* skill bars */
+var sio=new IntersectionObserver(function(en){
+  en.forEach(function(e){ if(e.isIntersecting){ e.target.style.width=e.target.dataset.w+'%'; sio.unobserve(e.target);} });
+},{threshold:.5});
+document.querySelectorAll('.fill').forEach(function(b){sio.observe(b);});
 
-  function animateRing() {
-    ringX += (mouseX - ringX) * 0.12;
-    ringY += (mouseY - ringY) * 0.12;
-    cursorRing.style.left = ringX + 'px';
-    cursorRing.style.top = ringY + 'px';
-    requestAnimationFrame(animateRing);
-  }
-  animateRing();
-
-  document.querySelectorAll('a, button, .tool-card, .proj-card, .cert-card, .glass-card, .exp-card, .pf-btn').forEach(function(el) {
-    el.addEventListener('mouseenter', function() { document.body.classList.add('cursor-hover'); });
-    el.addEventListener('mouseleave', function() { document.body.classList.remove('cursor-hover'); });
-  });
-
-  /* ── 3D Card Tilt ── */
-  var card3D = document.getElementById('heroCard3D');
-  var heroCard = document.getElementById('heroCard');
-  if (card3D && heroCard) {
-    card3D.addEventListener('mousemove', function(e) {
-      var rect = card3D.getBoundingClientRect();
-      var x = (e.clientX - rect.left) / rect.width - 0.5;
-      var y = (e.clientY - rect.top) / rect.height - 0.5;
-      heroCard.style.transform = 'rotateY(' + (x * 18) + 'deg) rotateX(' + (-y * 18) + 'deg) translateZ(10px)';
-    });
-    card3D.addEventListener('mouseleave', function() {
-      heroCard.style.transform = 'rotateY(0) rotateX(0) translateZ(0)';
+/* count up stats */
+(function(){
+  var done=false;
+  var io=new IntersectionObserver(function(en){
+    en.forEach(function(e){ if(e.isIntersecting && !done){ done=true; run(); io.disconnect(); } });
+  },{threshold:.3});
+  var host=document.querySelector('.h-stats'); if(host) io.observe(host);
+  function run(){
+    document.querySelectorAll('.h-stats .v').forEach(function(el){
+      if(el.querySelector('.dexp')) return;
+      var m=el.textContent.match(/(\d+)/); if(!m) return;
+      var target=+m[1], sup=el.querySelector('sup')?el.querySelector('sup').outerHTML:'', t0=null, dur=1200;
+      function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1); var v=Math.round(target*(1-Math.pow(1-p,3)));
+        el.innerHTML=v+sup; if(p<1) requestAnimationFrame(step); else el.innerHTML=target+sup; }
+      requestAnimationFrame(step);
     });
   }
+})();
 
-  /* ── Parallax Orbs ── */
-  document.addEventListener('mousemove', function(e) {
-    var x = (e.clientX / window.innerWidth - 0.5) * 30;
-    var y = (e.clientY / window.innerHeight - 0.5) * 30;
-    document.querySelector('.orb-1').style.transform = 'translate(' + x * 0.5 + 'px,' + y * 0.5 + 'px)';
-    document.querySelector('.orb-2').style.transform = 'translate(' + (-x * 0.3) + 'px,' + (-y * 0.3) + 'px)';
-    document.querySelector('.orb-3').style.transform = 'translate(' + (x * 0.4) + 'px,' + (y * 0.4) + 'px)';
-  });
+/* nav active state */
+var links=document.querySelectorAll('.bar-links a'), secs=document.querySelectorAll('section[id]');
+function navActive(){ var cur=''; secs.forEach(function(s){ if(scrollY>=s.offsetTop-120) cur=s.id; });
+  links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href')==='#'+cur); }); }
+addEventListener('scroll',navActive,{passive:true}); navActive();
 
-  /* ── 3D Magnetic Effect on floating shapes ── */
-  document.querySelectorAll('.geo').forEach(function(el) {
-    el.addEventListener('mousemove', function(e) {
-      var rect = el.getBoundingClientRect();
-      var x = (e.clientX - rect.left - rect.width/2) * 0.3;
-      var y = (e.clientY - rect.top - rect.height/2) * 0.3;
-      el.style.transform = 'translate(' + x + 'px,' + y + 'px)';
-    });
-    el.addEventListener('mouseleave', function() {
-      el.style.transform = '';
-    });
-  });
+/* modals */
+function openM(id){ var o=document.getElementById(id); if(!o)return; o.classList.add('open'); document.body.style.overflow='hidden'; }
+function closeM(o){ o.classList.remove('open'); document.body.style.overflow=''; }
+document.querySelectorAll('[data-modal]').forEach(function(c){
+  c.addEventListener('click',function(){ openM(c.dataset.modal); });
+});
+document.querySelectorAll('.ovl').forEach(function(o){
+  o.addEventListener('click',function(e){ if(e.target===o || e.target.closest('[data-close]')) closeM(o); });
+});
+addEventListener('keydown',function(e){ if(e.key==='Escape'){ document.querySelectorAll('.ovl.open').forEach(closeM); } });
 
-  /* ── Topbar scroll ── */
-  var topbar = document.getElementById('topbar');
-  window.addEventListener('scroll', function() {
-    topbar.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
-
-  /* ── AOS ── */
-  var aosObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('aos-animate'); aosObs.unobserve(e.target); } });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('[data-aos]').forEach(function(el, i) {
-    el.style.transitionDelay = (i % 4 * 80) + 'ms';
-    aosObs.observe(el);
-  });
-
-  /* ── Skill bars ── */
-  var sbObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) { if (e.isIntersecting) { e.target.style.width = e.target.dataset.width + '%'; sbObs.unobserve(e.target); } });
-  }, { threshold: 0.4 });
-  document.querySelectorAll('.skill-fill').forEach(function(b) { sbObs.observe(b); });
-
-  /* ── Nav active ── */
-  var navLinks = document.querySelectorAll('.topbar-nav a');
-  var sections = document.querySelectorAll('section[id]');
-  function updateNav() {
-    var cur = '';
-    var scrollBottom = window.scrollY + window.innerHeight;
-    if (scrollBottom >= document.documentElement.scrollHeight - 60) {
-      cur = sections[sections.length - 1].id;
-    } else {
-      sections.forEach(function(s) { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
-    }
-    navLinks.forEach(function(a) { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
-  }
-  window.addEventListener('scroll', updateNav, { passive: true });
-  updateNav();
-
-  /* ── Scroll top ── */
-  var scrollBtn = document.getElementById('scroll-top');
-  window.addEventListener('scroll', function() { scrollBtn.classList.toggle('active', window.scrollY > 400); }, { passive: true });
-  scrollBtn.addEventListener('click', function(e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
-
-  /* ── AI Button ── */
-  var aiBtn = document.getElementById('ai-btn');
-  function buildPrompt() {
-    var exp = document.querySelector('.dynamic-exp') ? document.querySelector('.dynamic-exp').textContent.trim() : '2+';
-    return "You are a career coach. A recruiter just landed on Manmathnath Mahanta's portfolio — Business Analyst with " + exp + " years of experience in Kolkata, India. Give a razor-sharp candidate brief in bullet points only.\n\nKey facts:\n- Core skills: BRD/FSD, UML, User Stories, Process Mapping, UAT, Agile/Scrum\n- Tools: Power BI, SQL, Excel, ClickUp, Postman, LucidChart, Notion, Claude, Lovable\n- Experience: Tech Exactly (Mar 2025–Present), Sai Paramount IT (Jul 2024–Mar 2025), GEEMSCO (Mar 2023–Jul 2024)\n- Achieved ~30% efficiency improvement at Sai Paramount\n\nFormat:\n**⚡ Why He Stands Out** (3-4 bullets)\n**🛠 What He Brings** (3-4 bullets)\n**📂 Proof of Work** (4-5 bullets with specific results)\n**✅ Bottom Line** (1 sentence)\n\nRules: No intros. Every bullet must have a specific fact or number. Under 200 words total.";
-  }
-  aiBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    window.open('https://chatgpt.com/?q=' + encodeURIComponent(buildPrompt()), '_blank', 'noopener,noreferrer');
-  });
-  window.addEventListener('scroll', function() { aiBtn.classList.toggle('active', window.scrollY > 400); }, { passive: true });
-
-  /* ── Project filter ── */
-  var pfBtns = document.querySelectorAll('.pf-btn');
-  var projCards = document.querySelectorAll('.proj-card');
-  pfBtns.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      pfBtns.forEach(function(b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      var f = btn.dataset.filter;
-      projCards.forEach(function(c) {
-        var tags = c.dataset.tags || '';
-        c.classList.toggle('filtered-out', f !== 'all' && !tags.includes(f));
-      });
-    });
-  });
-
-  /* ── Modal cleanup ── */
-  document.querySelectorAll('.modal').forEach(function(m) {
-    m.addEventListener('hidden.bs.modal', function() {
-      document.body.style.overflow = '';
-      document.body.style.paddingRight = '';
-    });
-  });
-
-  /* ── Magnetic hover on cards ── */
-  document.querySelectorAll('.tool-card, .proj-card').forEach(function(card) {
-    card.addEventListener('mousemove', function(e) {
-      var rect = card.getBoundingClientRect();
-      var x = (e.clientX - rect.left - rect.width / 2) * 0.06;
-      var y = (e.clientY - rect.top - rect.height / 2) * 0.06;
-      card.style.transform = 'translateY(-4px) translate(' + x + 'px,' + y + 'px) scale(1.01)';
-    });
-    card.addEventListener('mouseleave', function() {
-      card.style.transform = '';
-    });
-  });
+/* floating actions */
+var totop=document.getElementById('totop'), askai=document.getElementById('askai');
+totop.addEventListener('click',function(){ scrollTo({top:0,behavior:'smooth'}); });
+addEventListener('scroll',function(){
+  var on=scrollY>500; totop.classList.toggle('show',on); askai.classList.toggle('show',on);
+},{passive:true});
+askai.addEventListener('click',function(){
+  var exp=calcExp();
+  var p="You are a career coach. A recruiter just landed on Manmathnath Mahanta's portfolio — Business Analyst with "+exp+" years of experience in Kolkata, India. Give a razor-sharp candidate brief in bullet points only.\n\nKey facts:\n- Core skills: BRD/FSD, UML, User Stories, Process Mapping, UAT, Agile/Scrum\n- Tools: Power BI, SQL, Excel, ClickUp, Postman, LucidChart, Notion, Claude, Lovable\n- Experience: Tech Exactly (Mar 2025-Present), Sai Paramount IT (Jul 2024-Mar 2025), GEEMSCO (Mar 2023-Jul 2024)\n- Achieved ~30% efficiency improvement at Sai Paramount\n\nFormat:\n**Why He Stands Out** (3-4 bullets)\n**What He Brings** (3-4 bullets)\n**Proof of Work** (4-5 bullets with specific results)\n**Bottom Line** (1 sentence)\n\nRules: No intros. Every bullet must have a specific fact or number. Under 200 words total.";
+  window.open('https://chatgpt.com/?q='+encodeURIComponent(p),'_blank','noopener');
+});
 
 })();
 </script>

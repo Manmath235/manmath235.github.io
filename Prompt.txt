@@ -1,0 +1,185 @@
+I am giving you my existing portfolio HTML, CSS, and JS files. 
+Read the code completely — all content, structure, assets, links, 
+classes, and IDs come from there. Do NOT change any text, links, 
+images, or data. Only transform the visual experience into a 
+fully 3D, immersive, smooth portfolio.
+
+Here is exactly what to do to each element:
+
+════════════════════════════════════════
+GLOBAL / FULL PAGE
+════════════════════════════════════════
+
+- Add a persistent Three.js canvas fixed behind the entire page.
+  It renders a slow-drifting 3D star-particle field (2000 particles).
+  Particles respond to mouse movement with subtle parallax depth.
+  On mobile, reduce to 500 particles.
+
+- Add a glowing scroll-progress bar at the very top of the page
+  (thin line, 2px, accent color, width grows as user scrolls).
+
+- Add a custom cursor: small filled dot + larger outer ring that 
+  follows with slight lag. On hover over buttons/links, the ring 
+  expands and glows.
+
+- All section entrances: elements slide + fade in using 
+  IntersectionObserver when they enter the viewport.
+  Use CSS transitions (transform + opacity) only — no libraries needed.
+
+- Wrap the whole page in a CSS perspective container so scrolling 
+  through sections feels like moving through 3D depth, not a flat page.
+
+════════════════════════════════════════
+NAVBAR
+════════════════════════════════════════
+
+- Apply glassmorphism: background becomes backdrop-filter blur (16px),
+  semi-transparent dark background, subtle bottom border glow.
+- On scroll down: navbar height shrinks smoothly, blur increases.
+- Active nav link gets a glowing underline that slides between links.
+- The "MnM." logo gets a slow color-cycle glow animation.
+
+════════════════════════════════════════
+HERO SECTION
+════════════════════════════════════════
+
+- The background is the Three.js canvas (already full page).
+- Add a rotating 3D wireframe icosahedron (Three.js) floating 
+  near the hero — not over the text, slightly to the left/behind.
+- The heading text ("Hi, I'm Manmath") animates in letter by letter 
+  with a staggered fade + translateY on page load.
+- The subtitle and buttons fade in sequentially after the heading.
+- The 4 stats (Years / Projects / Certifications / Efficiency) 
+  each count up from 0 to their value when the page loads.
+- Both CTA buttons get a 3D press effect on click (scale down + 
+  shadow shift, like a physical button being pressed).
+- The profile image card floats with a slow continuous 
+  translateY oscillation (up-down, 3s loop).
+
+════════════════════════════════════════
+HERO PROFILE CARD (right side card)
+════════════════════════════════════════
+
+- The entire card gets a 3D mouse-tracking tilt effect: 
+  as the mouse moves over it, it rotates on X and Y axis 
+  (max ±12 degrees). Use CSS perspective + rotateX/rotateY 
+  via JS mousemove listener.
+- A holographic shimmer gradient layer sits on top of the card 
+  at low opacity and moves with the mouse (like a foil trading card).
+- The skill tags (BRD/FSD, UML, Power BI etc.) inside the card 
+  float in with staggered animation on load.
+- The profile image ring border rotates continuously 
+  (CSS animation, slow 8s spin).
+
+════════════════════════════════════════
+ABOUT SECTION
+════════════════════════════════════════
+
+- The about.md / terminal-style card on the left: add a blinking 
+  cursor at the end of the last line. Text appears to type itself 
+  in when scrolled into view (typewriter effect, JS).
+- The skills.json progress bars: bars are invisible on page load. 
+  When scrolled into view, they fill from 0% to their value with 
+  a glowing shimmer sweep animation.
+- The competency tags (Requirement Elicitation, BRD/FSD etc.): 
+  each tag floats in from below with staggered delays.
+- The info fields (name, role, location etc.) reveal one by one 
+  top to bottom when section enters viewport.
+
+════════════════════════════════════════
+EXPERIENCE TIMELINE
+════════════════════════════════════════
+
+- The vertical center line: on scroll, it draws itself downward 
+  (SVG stroke-dashoffset animation or a CSS height grow from 0).
+- Each timeline card (Tech Exactly, Sai Paramount, GEEMSCO, Afame):
+  alternating left/right cards slide in from their respective side 
+  (translateX) when scrolled into view.
+- Each card has the 3D mouse tilt effect (same as profile card, 
+  but lighter — max ±6 degrees).
+- The glowing dot on the timeline for each entry pulses 
+  (scale + opacity keyframe loop).
+- The tech badge tags inside each card micro-bounce on hover 
+  (translateY -3px + glow).
+
+════════════════════════════════════════
+TECHNICAL SKILLS / TOOLS GRID
+════════════════════════════════════════
+
+- Each tool card (Excel, Power BI, SQL, ClickUp, Postman, 
+  LucidChart, Notion, Claude, Lovable):
+  on hover, the card lifts forward (translateZ / translateY -8px),
+  a glowing border appears, and the icon scales up to 1.2x.
+- Cards entrance: staggered zoom-in from below (scale 0.8 → 1.0, 
+  opacity 0 → 1) as the grid scrolls into view.
+
+════════════════════════════════════════
+PROJECTS SECTION
+════════════════════════════════════════
+
+- Each project card does a true CSS 3D flip on hover:
+  Front face shows the project thumbnail + title + tags (as now).
+  Back face shows the description + view link + stack badges.
+  Use CSS transform-style: preserve-3d + rotateY(180deg).
+- The filter tabs (All / BA Deliverables / Power BI / SQL / Excel):
+  the active tab indicator is a glowing pill that slides 
+  horizontally to the active tab (CSS left transition).
+  When filter changes, cards that hide scale down + fade out,
+  cards that show scale up + fade in.
+- The BA Deliverable cards (no image) get a code-terminal 
+  aesthetic: dark background, monospace font for the ID 
+  (BRD01, User Stories02 etc.), glowing top border.
+
+════════════════════════════════════════
+CERTIFICATIONS CAROUSEL
+════════════════════════════════════════
+
+- The carousel scrolls horizontally and auto-plays.
+- Each cert card: on hover, it lifts (translateY -6px), the 
+  "Verified" badge glows, and the border becomes accent-colored.
+- The card that is currently centered/active scales slightly 
+  larger than its neighbors (scale 1.05 vs 1.0).
+- Pause auto-play on hover (already in existing code — keep it).
+
+════════════════════════════════════════
+CONTACT SECTION
+════════════════════════════════════════
+
+- The WhatsApp button pulses with a soft glow animation 
+  (box-shadow scale loop).
+- Contact detail rows (email, phone, location) slide in from 
+  the left with staggered delays when section enters view.
+- The section background gets a subtle animated gradient 
+  orb floating behind the content (CSS radial-gradient blob, 
+  slow drift keyframe).
+
+════════════════════════════════════════
+AI CHAT BUTTON (bottom right)
+════════════════════════════════════════
+
+- The "✦ Ask AI about me" button: add a continuous rotating 
+  glow ring around it (conic-gradient, CSS animation).
+- On hover: button scales up 1.1x and the ring spins faster.
+
+════════════════════════════════════════
+PROJECT DETAIL MODALS / DRAWERS
+════════════════════════════════════════
+
+- When a modal/drawer opens, it slides up from the bottom 
+  with a spring-like overshoot (CSS cubic-bezier).
+- The overlay backdrop blurs the page behind it 
+  (backdrop-filter: blur).
+- The close button rotates 90deg on hover.
+
+════════════════════════════════════════
+RULES
+════════════════════════════════════════
+
+- Use only vanilla JS + CSS. Three.js via CDN for the canvas only.
+- All animations use transform and opacity — nothing that 
+  triggers layout reflow.
+- On mobile (< 768px): disable tilt effects, reduce particles 
+  to 500, keep all content fully readable.
+- Keep every existing asset path, href, ID, class name, and 
+  text exactly as-is. Only add new CSS classes and JS — 
+  do not rewrite the HTML structure.
