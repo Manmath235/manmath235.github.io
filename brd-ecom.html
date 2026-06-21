@@ -4,38 +4,35 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>E-Commerce Platform BRD | Manmathnath Mahanta</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
 <style>
 :root{
-  --ink:#0a0c10;
-  --ink2:#111318;
-  --ink3:#181c24;
-  --ink4:#1e2330;
-  --border:#252c3a;
-  --border2:#1c2230;
-  --fg:#c8d0dc;
-  --fg2:#8b97a8;
-  --fg3:#4e5a6a;
-  --gold:#c9922a;
-  --gold2:#e8b84b;
-  --gold-d:rgba(201,146,42,0.10);
-  --gold-m:rgba(201,146,42,0.28);
-  --gold-b:rgba(201,146,42,0.45);
-  --blue:#3d8ef0;
-  --blue-d:rgba(61,142,240,0.10);
-  --green:#2ea84a;
-  --green-d:rgba(46,168,74,0.10);
-  --red:#d94f4f;
-  --red-d:rgba(217,79,79,0.10);
-  --orange:#d97c2e;
-  --orange-d:rgba(217,124,46,0.10);
-  --purple:#8b6fe8;
-  --mono:'JetBrains Mono',monospace;
-  --display:'Sora',sans-serif;
-  --body:'IBM Plex Sans',sans-serif;
+  --ink:#0d1117;
+  --ink2:#010409;
+  --ink3:#161b22;
+  --ink4:#21262d;
+  --border:#30363d;
+  --border2:#21262d;
+  --fg:#e6edf3;
+  --fg2:#8b949e;
+  --fg3:#6e7681;
+  --gold:#388bfd;
+  --gold2:#58a6ff;
+  --gold-d:rgba(56,139,253,0.10);
+  --gold-m:rgba(56,139,253,0.28);
+  --gold-b:rgba(56,139,253,0.45);
+  --blue:#58a6ff;
+  --blue-d:rgba(56,139,253,0.10);
+  --green:#3fb950;
+  --green-d:rgba(63,185,80,0.10);
+  --red:#f85149;
+  --red-d:rgba(248,81,73,0.10);
+  --orange:#d29922;
+  --orange-d:rgba(210,153,34,0.10);
+  --purple:#bc8cff;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --display:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  --body:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
   --r:5px;--rl:10px;--rxl:16px;
   --sidebar-w:260px;
   --topbar-h:52px;
@@ -80,13 +77,13 @@ a:hover{text-decoration:underline}
   font-family:var(--mono);font-size:.62rem;font-weight:600;
   padding:3px 10px;border-radius:20px;
   background:var(--green-d);color:var(--green);
-  border:1px solid rgba(46,168,74,.25);white-space:nowrap;
+  border:1px solid rgba(63,185,80,.25);white-space:nowrap;
 }
 .conf-chip{
   font-family:var(--mono);font-size:.62rem;font-weight:600;
   padding:3px 10px;border-radius:20px;
   background:var(--red-d);color:var(--red);
-  border:1px solid rgba(217,79,79,.25);white-space:nowrap;
+  border:1px solid rgba(248,81,73,.25);white-space:nowrap;
 }
 
 /* ── LAYOUT — fills 100% of viewport ── */
@@ -149,7 +146,7 @@ a:hover{text-decoration:underline}
 /* ── COVER ── */
 .doc-cover{
   padding:40px 40px 32px;
-  background:linear-gradient(160deg,var(--ink) 0%,var(--ink2) 50%,#0f1420 100%);
+  background:linear-gradient(160deg,var(--ink) 0%,var(--ink2) 50%,#161b22 100%);
   border-bottom:1px solid var(--border);
   position:relative;overflow:hidden;
 }
@@ -157,7 +154,7 @@ a:hover{text-decoration:underline}
   content:'BRD';
   position:absolute;right:-10px;top:50%;transform:translateY(-50%);
   font-family:var(--display);font-size:9rem;font-weight:800;
-  color:rgba(201,146,42,0.04);letter-spacing:-.05em;
+  color:rgba(56,139,253,0.04);letter-spacing:-.05em;
   pointer-events:none;user-select:none;line-height:1;
 }
 .cover-type-row{display:flex;align-items:center;gap:10px;margin-bottom:16px}
@@ -227,10 +224,10 @@ td strong,td b{color:var(--fg)}
 
 /* ── PRIORITY CHIPS ── */
 .ph{display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-size:.62rem;font-weight:600;padding:2px 8px;border-radius:20px;white-space:nowrap}
-.ph-h{background:var(--red-d);color:var(--red);border:1px solid rgba(217,79,79,.25)}
-.ph-m{background:var(--orange-d);color:var(--orange);border:1px solid rgba(217,124,46,.25)}
-.ph-l{background:var(--green-d);color:var(--green);border:1px solid rgba(46,168,74,.25)}
-.ph-c{background:rgba(139,111,232,.12);color:var(--purple);border:1px solid rgba(139,111,232,.25)}
+.ph-h{background:var(--red-d);color:var(--red);border:1px solid rgba(248,81,73,.25)}
+.ph-m{background:var(--orange-d);color:var(--orange);border:1px solid rgba(210,153,34,.25)}
+.ph-l{background:var(--green-d);color:var(--green);border:1px solid rgba(63,185,80,.25)}
+.ph-c{background:rgba(188,140,255,.12);color:var(--purple);border:1px solid rgba(188,140,255,.25)}
 
 /* ── REQUIREMENT CARDS ── */
 .req-card{
@@ -238,7 +235,7 @@ td strong,td b{color:var(--fg)}
   border-radius:var(--rl);margin-bottom:10px;overflow:hidden;
   transition:border-color .15s,box-shadow .2s;
 }
-.req-card:hover{border-color:var(--gold-m);box-shadow:0 4px 20px rgba(201,146,42,.06)}
+.req-card:hover{border-color:var(--gold-m);box-shadow:0 4px 20px rgba(56,139,253,.06)}
 .req-head{
   display:flex;align-items:center;justify-content:space-between;
   padding:9px 14px;background:var(--ink3);border-bottom:1px solid var(--border2);
@@ -254,7 +251,7 @@ td strong,td b{color:var(--fg)}
 .req-body{padding:10px 14px}
 .req-text{font-size:.83rem;color:var(--fg2);line-height:1.6;margin-bottom:8px}
 .req-tags{display:flex;flex-wrap:wrap;gap:4px}
-.req-tag{font-family:var(--mono);font-size:.6rem;padding:2px 7px;border-radius:20px;background:var(--gold-d);color:var(--gold);border:1px solid rgba(201,146,42,.2)}
+.req-tag{font-family:var(--mono);font-size:.6rem;padding:2px 7px;border-radius:20px;background:var(--gold-d);color:var(--gold);border:1px solid rgba(56,139,253,.2)}
 
 /* ── INFO ROWS ── */
 .info-block{background:var(--ink2);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:16px}
@@ -326,7 +323,7 @@ td strong,td b{color:var(--fg)}
 .sig-blank{font-family:var(--mono);font-size:.7rem;color:var(--border);letter-spacing:.05em}
 
 /* ── UAT STATUS ── */
-.uat-pending{font-family:var(--mono);font-size:.65rem;font-weight:600;padding:2px 8px;border-radius:20px;background:var(--orange-d);color:var(--orange);border:1px solid rgba(217,124,46,.25)}
+.uat-pending{font-family:var(--mono);font-size:.65rem;font-weight:600;padding:2px 8px;border-radius:20px;background:var(--orange-d);color:var(--orange);border:1px solid rgba(210,153,34,.25)}
 
 /* ── GLOSSARY ── */
 .gloss-row{display:flex;gap:0;border-bottom:1px solid var(--border2)}
@@ -839,7 +836,7 @@ td strong,td b{color:var(--fg)}
     <span class="sec-title">UAT Acceptance Criteria</span>
     <div class="sec-line"></div>
   </div>
-  <div style="font-size:.82rem;color:var(--fg2);margin-bottom:16px;line-height:1.6;padding:12px 14px;background:var(--blue-d);border:1px solid rgba(61,142,240,.2);border-radius:var(--r);">
+  <div style="font-size:.82rem;color:var(--fg2);margin-bottom:16px;line-height:1.6;padding:12px 14px;background:var(--blue-d);border:1px solid rgba(56,139,253,.2);border-radius:var(--r);">
     <strong style="color:var(--blue)">UAT Process:</strong> UAT will be conducted by the Business Analyst in collaboration with designated business users. Every requirement in this BRD must have a corresponding passing test case before go-live approval is granted. Any failing test triggers a defect log and re-test cycle.
   </div>
   <div class="tbl-wrap"><table>

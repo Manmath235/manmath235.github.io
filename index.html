@@ -1,961 +1,593 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manmathnath Mahanta — Business Analyst</title>
-<meta name="description" content="Business Analyst turning ambiguous business goals into delivery-ready plans — BRDs, UML, user stories, UAT and Power BI dashboards. Kolkata, India.">
-<meta name="theme-color" content="#070B14">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<title>Manmathnath Mahanta · Business Analyst</title>
+<meta name="description" content="Manmathnath Mahanta — Business Analyst. I turn ambiguous business needs into shipped product and prove the impact with data.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <style>
 :root{
-  /* ── structure ── */
-  --bg:#04060C;
-  --bg-2:#080B14;
-  --panel:#0C1322;
-  --panel-2:#111A2E;
-  --panel-hi:#16223A;
-  --line:rgba(255,255,255,.075);
-  --line-2:rgba(255,255,255,.13);
-  --grid:rgba(255,255,255,.022);
-
-  --ink:#EAF0FB;
-  --ink-2:#9AA7BD;
-  --ink-3:#5C6A82;
-
-  /* ── BI data palette (categorical, considered) ── */
-  --cyan:#27DEF0;   --cyan-2:#0AAFC6;
-  --violet:#8E7CFF; --violet-2:#6B5BE6;
-  --mint:#2BE6AD;   --mint-2:#13B585;
-  --amber:#FFC24B;  --amber-2:#E0992A;
-  --rose:#FF6F8E;   --rose-2:#E24E70;
-
-  --grad: linear-gradient(110deg,var(--cyan),#79ecf7);
-  --grad-soft: linear-gradient(110deg,rgba(39,222,240,.18),rgba(39,222,240,.07));
-
-  /* ── type ── */
-  --display:'Space Grotesk',sans-serif;
-  --body:'Inter',sans-serif;
-  --mono:'JetBrains Mono',ui-monospace,monospace;
-
-  --e:cubic-bezier(.22,.7,.2,1);
-  --eb:cubic-bezier(.34,1.3,.5,1);
-
-  --sh-sm:0 1px 2px rgba(0,0,0,.4), 0 6px 16px -10px rgba(0,0,0,.7);
-  --sh-md:0 2px 6px rgba(0,0,0,.45), 0 18px 40px -16px rgba(0,0,0,.8);
-  --sh-lg:0 4px 10px rgba(0,0,0,.5), 0 36px 70px -24px rgba(0,0,0,.85);
-  --glow-cyan:0 0 0 1px rgba(39,222,240,.4), 0 14px 40px -12px rgba(39,222,240,.45);
-
-  --r:16px; --r-sm:11px; --r-lg:22px;
-  --maxw:1240px;
+  --bg:#0d1117; --bg-inset:#010409; --card:#161b22; --card-2:#1c2128;
+  --border:#30363d; --border-muted:#21262d;
+  --text:#e6edf3; --text-2:#c9d1d9; --muted:#8b949e; --subtle:#6e7681;
+  --link:#58a6ff; --green:#238636; --green-2:#2ea043; --green-fg:#3fb950;
+  --c0:#161b22; --c1:#0e4429; --c2:#006d32; --c3:#26a641; --c4:#39d353;
+  --r:6px; --r-lg:12px;
+  --ui:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{
-  font-family:var(--body);
-  color:var(--ink);
-  font-size:16px;
-  line-height:1.65;
-  background:var(--bg);
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-}
-/* ambient aurora + technical grid */
-.atmos{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden}
-.atmos::before{
-  content:'';position:absolute;inset:-20%;
-  background:
-    radial-gradient(40% 32% at 12% 8%, rgba(39,222,240,.10), transparent 60%),
-    radial-gradient(36% 32% at 86% 14%, rgba(39,222,240,.07), transparent 62%),
-    radial-gradient(42% 36% at 80% 84%, rgba(39,222,240,.05), transparent 64%);
-  animation:drift 40s ease-in-out infinite alternate;
-  filter:blur(10px);
-}
-@keyframes drift{0%{transform:translate3d(0,0,0) scale(1)}100%{transform:translate3d(-2.5%,2%,0) scale(1.06)}}
-.atmos::after{ /* fine dashboard grid */
-  content:'';position:absolute;inset:0;
-  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
-  background-size:46px 46px;
-  -webkit-mask-image:radial-gradient(120% 90% at 50% 0%, #000 55%, transparent 100%);
-          mask-image:radial-gradient(120% 90% at 50% 0%, #000 55%, transparent 100%);
-}
-/* cinematic film grain */
-.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:160px 160px}
-@media (prefers-reduced-motion:reduce){
-  *{animation-duration:.001ms!important;transition-duration:.001ms!important;animation-iteration-count:1!important}
-  html{scroll-behavior:auto}
-  .atmos::before{animation:none}
-}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-::selection{background:rgba(39,222,240,.28);color:#fff}
-::-webkit-scrollbar{width:11px;height:11px}
-::-webkit-scrollbar-track{background:var(--bg-2)}
-::-webkit-scrollbar-thumb{background:#1d2942;border-radius:20px;border:3px solid var(--bg-2)}
-::-webkit-scrollbar-thumb:hover{background:#2a3a5c}
-:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:4px}
-
-.section{padding:120px 0;position:relative}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 36px}
-
-/* ════════ TYPE HELPERS ════════ */
-.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
-.kicker{
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:var(--mono);font-size:.74rem;font-weight:500;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--cyan);
-}
-.kicker .ix{color:var(--ink-3)}
-.kicker::before{content:'';width:26px;height:1px;background:linear-gradient(90deg,var(--cyan),transparent)}
-.grad-txt{
-  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
-}
-.shead{
-  font-family:var(--display);font-weight:600;
-  font-size:clamp(2.1rem,4.6vw,3.5rem);line-height:1.04;letter-spacing:-.03em;
-  color:var(--ink);margin:16px 0 14px;
-}
-.sub{color:var(--ink-2);max-width:560px;font-size:1.04rem;line-height:1.6}
-.shead-row{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
-
-/* ════════ PRIMITIVES ════════ */
-.glass{
-  position:relative;background:
-    linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.012)),
-    var(--panel);
-  border:1px solid var(--line);border-radius:var(--r);
-  box-shadow:var(--sh-sm);
-  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
-}
-.glass::after{ /* top sheen */
-  content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;
-  background:linear-gradient(180deg,rgba(255,255,255,.06),transparent 28%);
-  opacity:.7;
-}
-.lift{transition:transform .45s var(--e),box-shadow .45s var(--e),border-color .45s var(--e)}
-.lift:hover{transform:translateY(-6px);box-shadow:var(--sh-md);border-color:var(--line-2)}
-
-/* glow-border on hover (BI accent) */
-.gbord{position:relative}
-.gbord::before{
-  content:'';position:absolute;inset:-1px;border-radius:inherit;padding:1px;
-  background:var(--grad);
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-          mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;mask-composite:exclude;
-  opacity:0;transition:opacity .4s var(--e);pointer-events:none;
-}
-.gbord:hover::before{opacity:.9}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--ui);font-size:14px;line-height:1.5;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+img{display:block;max-width:100%}
+::selection{background:rgba(56,139,253,.4)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+section{scroll-margin-top:78px}
 
 /* buttons */
-.btn{
-  display:inline-flex;align-items:center;gap:9px;cursor:pointer;
-  font-family:var(--body);font-weight:600;font-size:.92rem;
-  padding:13px 22px;border-radius:11px;border:1px solid transparent;
-  color:#04121b;background:var(--cyan);
-  transition:transform .25s var(--eb),box-shadow .3s var(--e),background .3s,filter .3s;
-  white-space:nowrap;
-}
-.btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px -10px rgba(39,222,240,.6);filter:brightness(1.05)}
-.btn:active{transform:translateY(0)}
-.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line-2)}
-.btn.ghost:hover{background:rgba(255,255,255,.05);box-shadow:none;border-color:var(--cyan)}
-.btn.wa{background:#21c463;color:#03130a}
-.btn.wa:hover{box-shadow:0 12px 30px -10px rgba(33,196,99,.6)}
-.btn.sm{padding:9px 15px;font-size:.83rem;border-radius:9px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--ui);
+  font-size:14px;font-weight:600;padding:8px 16px;border-radius:var(--r);border:1px solid var(--border);
+  background:var(--card-2);color:var(--text);cursor:pointer;transition:background .15s,border-color .15s;white-space:nowrap}
+.btn:hover{background:#262c36;border-color:var(--subtle);text-decoration:none}
+.btn.green{background:var(--green);border-color:rgba(240,246,252,.1);color:#fff}
+.btn.green:hover{background:var(--green-2)}
+.btn.sm{padding:5px 12px;font-size:13px}
+.btn.ghost{background:transparent}
+.btn.ghost:hover{background:var(--card-2)}
+.btn.block{width:100%}
 
-/* chips & pills */
-.chip{
-  display:inline-flex;align-items:center;gap:7px;
-  font-size:.78rem;font-weight:500;color:var(--ink-2);
-  padding:6px 13px;border-radius:9px;background:rgba(255,255,255,.03);
-  border:1px solid var(--line);transition:all .25s var(--e);
-}
-.chip:hover{color:var(--ink);border-color:var(--line-2);background:rgba(255,255,255,.06)}
-.chip i{color:var(--cyan);font-size:.85em}
-.pill{
-  font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.04em;
-  color:var(--ink-2);background:rgba(255,255,255,.04);border:1px solid var(--line);
-  padding:4px 9px;border-radius:7px;
-}
+/* top nav */
+.nav{position:sticky;top:0;z-index:80;background:rgba(13,17,23,.85);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border)}
+.nav-in{max-width:1280px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;gap:18px}
+.nav-brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;color:var(--text)}
+.nav-brand:hover{text-decoration:none}
+.nav-brand .av{width:26px;height:26px;border-radius:50%;object-fit:cover;border:1px solid var(--border);background:var(--card-2)}
+.nav-brand .sl{color:var(--subtle);font-weight:400}
+.nav-brand .pg{color:var(--muted)}
+.nav-links{display:flex;gap:2px;margin-left:8px;flex:1}
+.nav-links a{font-size:14px;color:var(--text-2);padding:7px 12px;border-radius:var(--r);font-weight:500}
+.nav-links a:hover{background:var(--card-2);color:var(--text);text-decoration:none}
+.nav-cta{display:flex;align-items:center;gap:8px}
+.burger{display:none;background:none;border:1px solid var(--border);color:var(--text);width:38px;height:34px;border-radius:var(--r);cursor:pointer;font-size:18px}
 
-/* delta badge */
-.delta{font-family:var(--mono);font-size:.7rem;font-weight:700;display:inline-flex;align-items:center;gap:3px;
-  padding:2px 7px;border-radius:6px}
-.delta.up{color:var(--mint);background:rgba(43,230,173,.1)}
-.delta.neu{color:var(--cyan);background:rgba(39,222,240,.1)}
+/* profile layout */
+.profile{display:grid;grid-template-columns:296px 1fr;gap:28px;padding:28px 0 60px;align-items:start}
+.side{position:relative}
+aside.side{position:sticky;top:76px}
+.side-block{margin-top:18px;padding-top:18px;border-top:1px solid var(--border)}
+.side-block-t{font-size:14px;font-weight:600;color:var(--text);margin-bottom:12px}
+.focus{display:flex;flex-wrap:wrap;gap:6px}
+.topic{font-size:12px;color:var(--link);background:rgba(56,139,253,.1);border-radius:2em;padding:1px 10px;line-height:20px}
+.avatar{position:relative;width:100%;max-width:280px;aspect-ratio:1;border-radius:50%;overflow:hidden;
+  border:1px solid var(--border);background:var(--card-2);margin-bottom:16px}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
+.avatar-fb{display:none;position:absolute;inset:0;align-items:center;justify-content:center;
+  font-weight:700;font-size:4.5rem;color:var(--green-fg)}
+.id-name{font-size:26px;font-weight:600;line-height:1.25;letter-spacing:-.01em}
+.id-user{font-size:20px;font-weight:300;color:var(--muted);margin-bottom:14px}
+.id-bio{font-size:15px;color:var(--text-2);margin-bottom:16px;line-height:1.55}
+.side-actions{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.status-pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--green-fg);
+  background:rgba(35,134,54,.12);border:1px solid rgba(63,185,80,.3);padding:5px 12px;border-radius:30px;
+  margin-bottom:18px;font-weight:500}
+.status-pill .dot{width:8px;height:8px;border-radius:50%;background:var(--green-fg);box-shadow:0 0 8px var(--green-fg)}
+.meta-list{display:flex;flex-direction:column;gap:9px;font-size:14px;color:var(--text-2);
+  padding-top:18px;border-top:1px solid var(--border)}
+.meta-list li{display:flex;align-items:center;gap:10px;list-style:none}
+.meta-list i{color:var(--muted);font-size:16px;width:16px;text-align:center;flex-shrink:0}
+.meta-list a{color:var(--text-2)}
+.meta-list a:hover{color:var(--link)}
+.side-stats{display:flex;gap:6px;flex-wrap:wrap;margin-top:18px;padding-top:18px;border-top:1px solid var(--border)}
+.side-stats .ss{flex:1;min-width:70px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:10px 8px;text-align:center}
+.side-stats .ssv{font-size:17px;font-weight:700;color:var(--text);display:block}
+.side-stats .ssl{font-size:11px;color:var(--muted);letter-spacing:.02em}
 
-/* ════════ NAV + PROGRESS + DOTS ════════ */
-#progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:1000;background:var(--grad);box-shadow:0 0 12px rgba(39,222,240,.7)}
-.bar{position:fixed;top:16px;left:0;right:0;z-index:900;display:flex;justify-content:center;pointer-events:none;padding:0 16px}
-.bar-inner{
-  pointer-events:auto;display:flex;align-items:center;gap:4px;
-  background:rgba(10,15,28,.72);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
-  border:1px solid var(--line-2);border-radius:16px;
-  padding:8px 10px;box-shadow:var(--sh-md);max-width:calc(100vw - 32px);
-}
-.brand{font-family:var(--display);font-weight:600;font-size:1.08rem;letter-spacing:-.02em;padding:0 12px 0 8px;display:flex;align-items:center;gap:9px}
-.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 3px rgba(39,222,240,.18),0 0 12px var(--cyan)}
-.bar-links{display:flex;gap:2px}
-.bar-links a{font-size:.85rem;font-weight:500;color:var(--ink-2);padding:8px 13px;border-radius:9px;transition:all .2s var(--e)}
-.bar-links a:hover{color:var(--ink);background:rgba(255,255,255,.05)}
-.bar-links a.on{color:var(--ink);background:rgba(39,222,240,.12);box-shadow:inset 0 0 0 1px rgba(39,222,240,.25)}
-.bar .btn{margin-left:6px}
-.bar-burger{display:none;background:none;border:none;font-size:1.45rem;color:var(--ink);padding:4px 8px;cursor:pointer}
+/* main column */
+.main{min-width:0;display:flex;flex-direction:column;gap:28px}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;font-size:14px;font-weight:600;color:var(--text-2)}
+.sec-head .ic{color:var(--muted);font-size:16px}
+.sec-head .ct{font-size:12px;color:var(--muted);border:1px solid var(--border);
+  border-radius:30px;padding:1px 8px;font-weight:500}
+.sec-head .rule{flex:1;height:1px;background:var(--border)}
 
-.mnav{position:fixed;inset:0;z-index:899;background:rgba(7,11,20,.97);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
-  display:none;flex-direction:column;align-items:center;justify-content:center;gap:6px}
-.mnav.open{display:flex}
-.mnav a{font-family:var(--display);font-weight:500;font-size:1.7rem;color:var(--ink);padding:10px}
-.mnav a.cta{margin-top:18px}
+/* readme card */
+.readme{border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;background:var(--bg)}
+.readme-bar{display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--card);
+  border-bottom:1px solid var(--border);font-size:13px;color:var(--text-2)}
+.readme-bar i{color:var(--muted)}
+.readme-bar .fn{font-weight:500}
+.readme-body{padding:28px 32px}
+.readme-body h1{font-size:27px;font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:14px}
+.readme-body h1 .wave{color:var(--green-fg)}
+.readme-body p{color:var(--text-2);margin-bottom:16px;font-size:15.5px;line-height:1.65}
+.readme-body p b{color:var(--text);font-weight:600}
+.readme-body .hl{color:var(--green-fg);font-weight:600}
+.readme-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0}
+.rs{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 14px;text-align:center}
+.rsv{font-size:22px;font-weight:700;color:var(--green-fg);display:block;line-height:1;letter-spacing:-.02em}
+.rsl{font-size:12.5px;color:var(--muted);margin-top:7px;display:block}
+.readme-body h3{font-size:15px;font-weight:700;color:var(--text);margin:24px 0 12px;display:flex;align-items:center;gap:9px}
+.readme-body h3::before{content:'';width:3px;height:15px;background:var(--green-fg);border-radius:2px}
+.bring{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:8px}
+.bring li{display:flex;gap:11px;font-size:15px;color:var(--text-2);line-height:1.55}
+.bring li i{color:var(--green-fg);font-size:15px;margin-top:3px;flex-shrink:0}
+.bring li b{color:var(--text);font-weight:600}
+.readme-note{margin-top:20px;padding:14px 16px;border-radius:var(--r);background:rgba(56,139,253,.08);
+  border:1px solid rgba(56,139,253,.3);font-size:14.5px;color:var(--text-2);display:flex;gap:11px;align-items:flex-start}
+.readme-note i{color:var(--link);font-size:16px;margin-top:2px}
 
-/* right-side section dots */
-.dots{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:850;display:flex;flex-direction:column;gap:14px}
-.dots button{position:relative;width:9px;height:9px;border-radius:50%;border:0;cursor:pointer;padding:0;
-  background:#2a3a58;transition:all .3s var(--e)}
-.dots button:hover{background:var(--ink-2)}
-.dots button.on{background:var(--cyan);box-shadow:0 0 10px var(--cyan);transform:scale(1.25)}
-.dots button .lab{position:absolute;right:20px;top:50%;transform:translateY(-50%) translateX(6px);
-  font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);
-  background:rgba(10,15,28,.9);border:1px solid var(--line);padding:4px 9px;border-radius:7px;white-space:nowrap;
-  opacity:0;pointer-events:none;transition:all .25s var(--e)}
-.dots button:hover .lab{opacity:1;transform:translateY(-50%) translateX(0)}
+/* pinned / repo cards */
+.repos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.repo{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r);padding:16px;cursor:pointer;transition:border-color .15s,background .15s;height:100%}
+.repo:hover{border-color:var(--subtle);text-decoration:none}
+.repo-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}
+.repo-name{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--link);min-width:0}
+.repo-name i{color:var(--muted);font-size:15px;flex-shrink:0}
+.repo-name span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.repo-vis{font-size:11px;color:var(--muted);border:1px solid var(--border);border-radius:30px;padding:0 7px;font-weight:500;flex-shrink:0}
+.repo-desc{font-size:13.5px;color:var(--muted);line-height:1.5;margin-bottom:16px;flex:1}
+.repo-meta{display:flex;align-items:center;gap:16px;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
+.repo-meta .lang{display:flex;align-items:center;gap:6px}
+.repo-meta .dot{width:11px;height:11px;border-radius:50%}
+.repo-meta .rstat{display:flex;align-items:center;gap:5px}
+.repo-meta .rstat i{font-size:13px}
+.repo-meta .open{margin-left:auto;color:var(--green-fg);font-weight:600;transition:gap .15s}
+.repo:hover .open{gap:8px}
 
-/* ════════ HERO ════════ */
-#hero{padding-top:104px;padding-bottom:52px;min-height:100vh;min-height:100svh;display:flex;align-items:safe center}
-.hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:46px;align-items:center;width:100%}
-.status{display:inline-flex;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap}
-.avail{display:inline-flex;align-items:center;gap:9px;font-size:.8rem;font-weight:600;color:var(--mint);
-  background:rgba(43,230,173,.07);border:1px solid rgba(43,230,173,.25);padding:7px 14px;border-radius:30px}
-.avail .led{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 rgba(43,230,173,.55);animation:led 2.4s infinite}
-@keyframes led{0%{box-shadow:0 0 0 0 rgba(43,230,173,.55)}70%{box-shadow:0 0 0 8px rgba(43,230,173,0)}100%{box-shadow:0 0 0 0 rgba(43,230,173,0)}}
-.loc{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
-.h1{font-family:var(--display);font-weight:600;font-size:clamp(2.6rem,5.4vw,4.4rem);line-height:1.0;letter-spacing:-.035em;color:var(--ink)}
-.h-role{margin-top:12px;font-family:var(--mono);font-weight:500;font-size:clamp(.95rem,1.6vw,1.1rem);letter-spacing:.04em;color:var(--ink-2);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.h-role .bar-acc{height:1px;width:38px;background:var(--grad)}
-.h-role b{color:var(--cyan);font-weight:700}
-.h-desc{color:var(--ink-2);font-size:1.04rem;max-width:520px;margin:18px 0 22px;line-height:1.65}
-.h-desc b{color:var(--ink);font-weight:600}
-.h-desc .hl{color:var(--cyan);font-weight:600}
-.h-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
-.h-ctas{display:flex;gap:12px;flex-wrap:wrap}
+/* contribution graph */
+.contrib{border:1px solid var(--border);border-radius:var(--r-lg);background:var(--bg);overflow:hidden}
+.contrib-bar{padding:14px 18px;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-2);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.contrib-bar b{color:var(--text);font-weight:600}
+.contrib-bar .yr{font-size:12px;color:var(--muted)}
+.contrib-body{padding:18px;overflow-x:auto}
+.cal{--cell:11px;--gap:3px;display:inline-block;min-width:100%}
+.cal-months{display:flex;margin-left:30px;margin-bottom:5px;height:14px}
+.cal-months span{width:calc(var(--cell) + var(--gap));font-size:10px;color:var(--muted);white-space:nowrap;overflow:visible;flex-shrink:0}
+.cal-body{display:flex;gap:6px}
+.cal-days{display:flex;flex-direction:column;width:24px;flex-shrink:0}
+.cal-days span{height:calc(var(--cell) + var(--gap));font-size:9px;color:var(--muted);line-height:var(--cell)}
+.cal-grid{display:flex;gap:var(--gap)}
+.cal-col{display:flex;flex-direction:column;gap:var(--gap)}
+.cell{width:var(--cell);height:var(--cell);border-radius:2px;background:var(--c0);outline:1px solid rgba(255,255,255,.025);outline-offset:-1px}
+.cell.l1{background:var(--c1)} .cell.l2{background:var(--c2)} .cell.l3{background:var(--c3)} .cell.l4{background:var(--c4)}
+.contrib-foot{display:flex;align-items:center;justify-content:flex-end;gap:7px;padding:0 18px 16px;font-size:11px;color:var(--muted)}
+.legend{display:flex;align-items:center;gap:3px}
+.legend .cell{outline:none}
 
-/* the SIGNATURE: hero portrait */
-.h-lede{color:var(--ink-2);font-size:clamp(1.02rem,1.5vw,1.14rem);max-width:480px;margin:18px 0 20px;line-height:1.6}
-.h-lede b{color:var(--ink);font-weight:600}
-.h-lede .hl{color:var(--cyan);font-weight:600}
-.hero-left .kicker{gap:9px}
-.hero-left .kicker::before{display:none}
-.kicker .av-dot{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 7px var(--mint);flex-shrink:0}
-.h-role .sep{color:var(--ink-3)}
-.h-meta{display:flex;flex-wrap:wrap;align-items:center;gap:9px 22px;margin:0 0 28px;font-family:var(--mono);font-size:.82rem;letter-spacing:.02em;color:var(--ink-3)}
-.h-meta span{display:inline-flex;align-items:center;gap:7px;position:relative}
-.h-meta span + span::before{content:'';position:absolute;left:-12px;top:50%;transform:translateY(-50%);width:4px;height:4px;border-radius:50%;background:var(--line-2)}
-.h-meta b{font-family:var(--display);font-weight:700;font-size:1.04rem;color:var(--ink);letter-spacing:-.01em}
+/* skills */
+.skills{border:1px solid var(--border);border-radius:var(--r-lg);background:var(--card);padding:22px 24px}
+.skill{margin-bottom:16px}
+.skill:last-child{margin-bottom:0}
+.skill-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;font-size:14px}
+.skill-top .sn{font-weight:500;color:var(--text-2)}
+.skill-top .sp{font-size:12.5px;color:var(--green-fg);font-weight:500}
+.bar{height:8px;background:var(--bg-inset);border-radius:30px;overflow:hidden;border:1px solid var(--border-muted)}
+.bar i{display:block;height:100%;width:0;border-radius:30px;
+  background:linear-gradient(90deg,var(--green),var(--green-fg));transition:width 1.1s cubic-bezier(.16,1,.3,1)}
 
-.hero-portrait{display:flex;justify-content:flex-end;align-items:center}
-.portrait-wrap{position:relative;margin-left:auto;max-width:100%}
-.portrait-wrap::before{content:'';position:absolute;inset:-30px;border-radius:42px;z-index:0;
-  background:radial-gradient(55% 55% at 70% 18%,rgba(39,222,240,.15),transparent 60%),
-             radial-gradient(60% 55% at 22% 92%,rgba(39,222,240,.07),transparent 62%);
-  filter:blur(34px)}
-.portrait{position:relative;z-index:1;height:clamp(360px,56vh,540px);aspect-ratio:4/5;border-radius:26px;overflow:hidden;
-  border:1px solid rgba(255,255,255,.12);background:linear-gradient(160deg,var(--panel-2),var(--bg-2));
-  box-shadow:0 44px 90px -34px rgba(0,0,0,.85)}
-.portrait img{width:100%;height:100%;object-fit:cover;object-position:center 18%;filter:contrast(1.03) saturate(1.04)}
-.portrait::after{content:'';position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg,transparent 48%,rgba(4,6,12,.62))}
-.pfallback{display:none;position:absolute;inset:0;align-items:center;justify-content:center;
-  font-family:var(--display);font-weight:700;font-size:5.5rem;letter-spacing:-.02em;color:var(--cyan)}
-.p-badge{position:absolute;z-index:4;top:18px;left:-16px;display:inline-flex;align-items:center;gap:8px;
-  font-size:.77rem;font-weight:600;color:var(--mint);background:rgba(8,11,20,.74);backdrop-filter:blur(10px);
-  border:1px solid rgba(43,230,173,.3);padding:8px 14px;border-radius:30px;box-shadow:0 12px 30px -12px rgba(0,0,0,.65)}
-.p-badge .led{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 rgba(43,230,173,.55);animation:led 2.4s infinite}
-.p-stats{position:absolute;z-index:4;left:50%;transform:translateX(-50%);bottom:-20px;display:flex;
-  background:rgba(8,11,20,.82);backdrop-filter:blur(12px);border:1px solid var(--line-2);border-radius:16px;
-  box-shadow:0 22px 50px -18px rgba(0,0,0,.7);overflow:hidden}
-.p-stats .ps{padding:12px 20px;display:flex;flex-direction:column;align-items:center;gap:3px}
-.p-stats .ps + .ps{border-left:1px solid var(--line)}
-.p-stats .psv{font-family:var(--display);font-weight:700;font-size:1.45rem;line-height:1;letter-spacing:-.02em;color:var(--ink)}
-.p-stats .psl{font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+/* tools */
+.tools{display:flex;flex-wrap:wrap;gap:9px}
+.tool{display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--border);
+  border-radius:30px;padding:7px 14px 7px 8px;font-size:13.5px;color:var(--text-2);transition:border-color .15s}
+.tool:hover{border-color:var(--subtle)}
+.tool .ti{width:24px;height:24px;border-radius:5px;display:flex;align-items:center;justify-content:center;
+  background:var(--bg-inset);font-size:13px;overflow:hidden;flex-shrink:0}
+.tool .ti img{width:16px;height:16px;object-fit:contain}
+.tool b{font-weight:500;color:var(--text)}
+.tool .tc{color:var(--muted);font-size:11px}
 
-/* ════════ ABOUT + SKILLS ════════ */
-.about-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:24px;align-items:stretch;margin-top:46px}
-.about-card{padding:32px 34px;display:flex;flex-direction:column;justify-content:center}
-.about-card .tag{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px;display:inline-flex;align-items:center;gap:9px}
-.about-card .tag::before{content:'';width:18px;height:1px;background:var(--cyan);opacity:.6}
-.comp-band{margin-top:24px}
-.about-card p{font-size:1.02rem;color:var(--ink-2);margin-bottom:16px;line-height:1.72}
-.about-card p:last-child{margin-bottom:0}
-.about-card b{color:var(--ink);font-weight:600}
-.about-card code{font-family:var(--mono);font-size:.86em;color:var(--cyan);background:rgba(39,222,240,.08);padding:2px 7px;border-radius:6px;border:1px solid rgba(39,222,240,.16)}
-.skstack{display:flex;flex-direction:column;gap:22px}
-.panel-pad{padding:26px 28px}
-.panel-h{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:20px;display:flex;align-items:center;justify-content:space-between}
-.panel-h .pdot{display:flex;gap:5px}
-.panel-h .pdot span{width:7px;height:7px;border-radius:50%}
-.skills{display:flex;flex-direction:column;gap:17px}
-.skill .stop{display:flex;justify-content:space-between;align-items:baseline;font-size:.9rem;font-weight:500;margin-bottom:8px}
-.skill .stop .nm{color:var(--ink)}
-.skill .stop .pc{font-family:var(--mono);font-size:.82rem;color:var(--ink-2)}
-.track{height:7px;background:rgba(255,255,255,.05);border-radius:20px;overflow:hidden;position:relative}
-.fill{height:100%;width:0;border-radius:20px;transition:width 1.4s var(--e);position:relative;overflow:hidden}
-.fill::after{content:'';position:absolute;right:0;top:0;bottom:0;width:24px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5))}
-.cloud{display:flex;flex-wrap:wrap;gap:8px}
-.tiers{display:flex;flex-direction:column;gap:18px}
-.tier{display:grid;grid-template-columns:84px 1fr;gap:14px;align-items:start}
-.tier .tl{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);padding-top:8px}
-.tier .chips{display:flex;flex-wrap:wrap;gap:7px}
+/* experience accordion */
+.xp{display:flex;flex-direction:column;gap:12px}
+.xp-item{border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;background:var(--card);transition:border-color .2s}
+.xp-item.open{border-color:var(--subtle)}
+.xp-head{width:100%;text-align:left;background:none;border:0;cursor:pointer;color:inherit;font-family:inherit;
+  padding:16px 18px;display:flex;align-items:center;gap:14px}
+.xp-head:hover{background:var(--card-2)}
+.xp-logo{width:40px;height:40px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  background:var(--bg-inset);border:1px solid var(--border);color:var(--green-fg);font-size:18px}
+.xp-meta{flex:1;min-width:0}
+.xp-role{font-size:15px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.xp-now{font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--green-fg);background:rgba(35,134,54,.14);border:1px solid rgba(63,185,80,.3);padding:2px 7px;border-radius:30px}
+.xp-co{font-size:13px;color:var(--muted);margin-top:2px}
+.xp-co .date{font-size:12px}
+.xp-chev{flex-shrink:0;color:var(--muted);font-size:14px;transition:transform .3s}
+.xp-item.open .xp-chev{transform:rotate(180deg);color:var(--green-fg)}
+.xp-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.xp-item.open .xp-body{grid-template-rows:1fr}
+.xp-body-in{overflow:hidden;min-height:0}
+.xp-body ul{list-style:none;padding:2px 18px 18px 72px;display:flex;flex-direction:column;gap:9px}
+.xp-body li{display:flex;gap:10px;font-size:14px;color:var(--text-2);line-height:1.55}
+.xp-body li i{color:var(--green-fg);font-size:13px;margin-top:4px;flex-shrink:0}
+.xp-body li b{color:var(--text);font-weight:600}
 
-/* ════════ PROCESS PIPELINE ════════ */
-.pipe{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:48px;position:relative}
-.stp{padding:24px 20px 20px;border-radius:var(--r);position:relative;overflow:hidden}
-.stp::before{content:'';position:absolute;left:0;top:0;height:3px;width:100%;background:var(--accent,var(--cyan));opacity:.85}
-.stp .sn{font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.06em;color:var(--ink-3);display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.stp .ic{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;
-  background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--accent,var(--cyan))}
-.stp h4{font-family:var(--display);font-weight:600;font-size:1.18rem;letter-spacing:-.01em;margin-bottom:8px;color:var(--ink)}
-.stp p{font-size:.86rem;color:var(--ink-2);line-height:1.55}
-.stp .arr{position:absolute;right:-16px;top:50%;transform:translateY(-50%);z-index:5;color:var(--line-2);font-size:1rem;background:var(--bg);padding:3px;border-radius:50%}
-.stp:last-child .arr{display:none}
+/* certs */
+.certs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cert{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px;transition:border-color .15s}
+.cert:hover{border-color:var(--subtle);text-decoration:none}
+.cert-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
+.cert-iss{font-size:11.5px;color:var(--muted);letter-spacing:.02em}
+.cert-vf{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--green-fg);font-weight:500}
+.cert h4{font-size:15px;font-weight:600;color:var(--text);line-height:1.3;margin-bottom:7px}
+.cert p{font-size:13px;color:var(--muted);line-height:1.5;flex:1;margin-bottom:14px}
+.cert-foot{display:flex;align-items:center;justify-content:space-between;font-size:13px}
+.cert-tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:12px;color:var(--link);background:rgba(56,139,253,.1);border:1px solid transparent;border-radius:2em;padding:0 10px;line-height:22px}
+.cert-foot .go{color:var(--link)}
 
-/* ════════ EXPERIENCE (accordion) ════════ */
-.tl{position:relative;margin-top:48px;padding-left:38px}
-.tl::before{content:'';position:absolute;left:9px;top:8px;bottom:8px;width:2px;
-  background:linear-gradient(180deg,var(--cyan),rgba(39,222,240,.3) 55%,transparent)}
-.exp{position:relative;margin-bottom:16px}
-.exp::before{content:'';position:absolute;left:-37px;top:30px;width:18px;height:18px;border-radius:50%;z-index:2;
-  background:var(--bg);border:2px solid var(--cyan);box-shadow:0 0 0 4px rgba(39,222,240,.12);transition:border-color .3s}
-.exp.now::before{border-color:var(--mint);box-shadow:0 0 0 4px rgba(43,230,173,.14),0 0 14px rgba(43,230,173,.5)}
-.ecard{padding:0;overflow:hidden;transition:border-color .35s var(--e)}
-.exp.open .ecard{border-color:var(--line-2)}
-.exp-head{width:100%;text-align:left;background:none;border:0;cursor:pointer;font-family:inherit;color:inherit;
-  padding:22px 26px;display:flex;align-items:center;gap:18px;transition:background .25s}
-.exp-head:hover{background:rgba(255,255,255,.025)}
-.exp-headmain{flex:1;min-width:0}
-.exp-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px}
-.exp-co{font-size:.84rem;font-weight:600;color:var(--cyan);display:flex;align-items:center;gap:8px}
-.exp-now-tag{font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mint);background:rgba(43,230,173,.08);border:1px solid rgba(43,230,173,.25);padding:3px 8px;border-radius:20px;display:inline-flex;align-items:center;gap:5px}
-.exp-now-tag .d{width:5px;height:5px;border-radius:50%;background:var(--mint);box-shadow:0 0 7px var(--mint)}
-.exp-date{font-family:var(--mono);font-size:.7rem;font-weight:500;letter-spacing:.04em;color:var(--ink-2);background:rgba(255,255,255,.03);border:1px solid var(--line);padding:4px 11px;border-radius:20px}
-.exp-date.now{color:var(--mint);background:rgba(43,230,173,.08);border-color:rgba(43,230,173,.25)}
-.exp-role{font-family:var(--display);font-weight:600;font-size:1.3rem;letter-spacing:-.01em;color:var(--ink)}
-.exp-chev{flex-shrink:0;width:34px;height:34px;border-radius:9px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink-2);font-size:.9rem;
-  transition:transform .4s var(--e),color .3s,border-color .3s,background .3s}
-.exp-head:hover .exp-chev{color:var(--cyan);border-color:var(--line-2)}
-.exp.open .exp-chev{transform:rotate(180deg);color:var(--cyan);border-color:rgba(39,222,240,.4);background:rgba(39,222,240,.08)}
-.exp-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--e)}
-.exp.open .exp-body{grid-template-rows:1fr}
-.exp-bodyinner{overflow:hidden;min-height:0}
-.exp-bodypad{padding:2px 26px 24px}
-.exp ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-.exp li{display:flex;gap:11px;font-size:.93rem;color:var(--ink-2);line-height:1.55}
-.exp li .b{color:var(--cyan);font-weight:700;flex-shrink:0}
-.exp li b{color:var(--ink);font-weight:600}
-.exp .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+/* footer */
+footer{border-top:1px solid var(--border);margin-top:50px;padding:26px 0;background:var(--bg-inset)}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-size:13px;color:var(--muted)}
+.foot b{color:var(--text-2);font-weight:500}
+.foot-links{display:flex;gap:6px}
+.foot-links a{width:36px;height:36px;border-radius:var(--r);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;color:var(--text-2);font-size:16px;transition:all .15s}
+.foot-links a:hover{color:var(--green-fg);border-color:var(--subtle);background:var(--card);text-decoration:none}
 
-/* ════════ TOOLS ════════ */
-.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
-.tool{padding:22px 22px 20px}
-.tool .th{display:flex;align-items:center;gap:14px;margin-bottom:12px}
-.tool .ti{width:50px;height:50px;border-radius:13px;background:rgba(255,255,255,.04);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem}
-.tool .ti img{width:30px;height:30px;object-fit:contain}
-.tool .tn{font-family:var(--display);font-weight:600;font-size:1.14rem;letter-spacing:-.01em;color:var(--ink)}
-.tool .tcat{font-family:var(--mono);font-size:.62rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--cyan);margin-top:2px}
-.tool .td{font-size:.86rem;color:var(--ink-2);line-height:1.55}
+/* ask AI fab */
+.askai{position:fixed;right:20px;bottom:20px;z-index:70;display:inline-flex;align-items:center;gap:9px;
+  background:var(--card);border:1px solid var(--border);color:var(--text);font-size:13.5px;font-weight:600;
+  padding:10px 16px;border-radius:30px;cursor:pointer;box-shadow:0 8px 28px rgba(1,4,9,.6);transition:border-color .15s}
+.askai:hover{border-color:var(--green-fg)}
+.askai .d{width:8px;height:8px;border-radius:50%;background:var(--green-fg);box-shadow:0 0 8px var(--green-fg)}
 
-/* ════════ PROJECTS — horizontal pinned gallery ════════ */
-.hpin{position:relative}
-.hpin-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
-.htrack{display:flex;align-items:stretch;gap:26px;will-change:transform;
-  padding-left:max(36px,calc((100vw - 1240px)/2 + 36px));padding-right:14vw}
-.hpanel{flex:0 0 auto;display:flex;align-items:center}
-.hfx{width:100%;will-change:transform,opacity}
-.hpanel .proj{width:432px;max-width:84vw;height:min(70vh,624px)}
-.hpanel.hintro{width:min(560px,86vw)}
-.hintro-in{padding-right:18px}
-.hintro h2{font-family:var(--display);font-weight:600;font-size:clamp(2.4rem,5vw,4rem);line-height:1.02;letter-spacing:-.03em;margin:16px 0 18px;color:var(--ink)}
-.hintro p{color:var(--ink-2);font-size:1.04rem;line-height:1.65;max-width:430px;margin-bottom:24px}
-.hmeta{display:flex;align-items:center;gap:18px;font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;color:var(--ink-3);flex-wrap:wrap}
-.hmeta .lg{display:flex;align-items:center;gap:16px}
-.hmeta .lg span{display:inline-flex;align-items:center;gap:7px}
-.hmeta .lg i{width:7px;height:7px;border-radius:50%;display:inline-block}
-.hmeta .lg .live{background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
-.hmeta .lg .doc{background:var(--amber)}
-.hcue{display:inline-flex;align-items:center;gap:11px;margin-top:28px;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan)}
-.hcue .ln{width:48px;height:1px;background:rgba(39,222,240,.4);position:relative;overflow:hidden}
-.hcue .ln::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,var(--cyan),transparent);animation:cue 1.8s linear infinite}
-@keyframes cue{0%{transform:translateX(-100%)}100%{transform:translateX(120%)}}
-.hbar{position:absolute;left:0;bottom:0;height:2px;width:100%;background:rgba(255,255,255,.05);z-index:6}
-.hbar .fillx{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),#79ecf7)}
-.hcount{position:absolute;bottom:20px;right:max(36px,calc((100vw - 1240px)/2 + 36px));z-index:6;
-  font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--ink-3)}
-.hcount b{color:var(--cyan)}
-
-/* operational project card */
-.proj{position:relative;display:flex;flex-direction:column;cursor:pointer;overflow:hidden;border-radius:var(--r);height:100%;
-  transition:border-color .4s var(--e)}
-.proj:hover{border-color:var(--line-2)}
-.paccent{position:absolute;top:0;left:0;right:0;height:2px;z-index:5;background:linear-gradient(90deg,var(--cyan),#79ecf7)}
-.proj[data-t="ba"] .paccent{background:linear-gradient(90deg,var(--amber),var(--amber-2))}
-.pstat{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:18px 20px 13px}
-.badge{font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:7px;display:inline-flex;align-items:center;gap:6px}
-.b-ba{color:var(--amber);background:rgba(255,194,75,.1);border:1px solid rgba(255,194,75,.22)}
-.b-bi{color:var(--cyan);background:rgba(39,222,240,.1);border:1px solid rgba(39,222,240,.22)}
-.pright{display:flex;align-items:center;gap:10px}
-.pid{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;color:var(--ink-3)}
-.pstatus{font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:20px;border:1px solid var(--line)}
-.pstatus .d{width:6px;height:6px;border-radius:50%}
-.pstatus.live{color:var(--cyan);background:rgba(39,222,240,.07);border-color:rgba(39,222,240,.22)}
-.pstatus.live .d{background:var(--cyan);box-shadow:0 0 7px var(--cyan)}
-.pstatus.doc{color:var(--amber);background:rgba(255,194,75,.07);border-color:rgba(255,194,75,.22)}
-.pstatus.doc .d{background:var(--amber)}
-.pthumb{margin:0 20px;border-radius:11px;overflow:hidden;border:1px solid var(--line);background:var(--bg-2);position:relative;height:184px;flex-shrink:0}
-.pthumb img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--e),opacity .5s;opacity:.9}
-.proj:hover .pthumb img{transform:scale(1.06);opacity:1}
-.pthumb::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(4,6,12,.5));opacity:0;transition:opacity .4s}
-.proj:hover .pthumb::after{opacity:1}
-.picon{margin:0 20px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:3rem;border:1px solid var(--line);height:184px;flex-shrink:0;background:linear-gradient(135deg,rgba(255,194,75,.12),rgba(255,194,75,.03))}
-.pbody{padding:16px 20px 0;flex:1;min-height:0}
-.proj h3{font-family:var(--display);font-weight:600;font-size:1.2rem;line-height:1.22;letter-spacing:-.01em;margin-bottom:9px;color:var(--ink)}
-.proj .pd{font-size:.85rem;color:var(--ink-2);line-height:1.55;margin-bottom:16px}
-.pspec{display:flex;flex-wrap:wrap;gap:8px}
-.pk{display:flex;flex-direction:column;gap:3px;padding:8px 11px;border-radius:9px;background:rgba(255,255,255,.025);border:1px solid var(--line)}
-.pk .kk{font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
-.pk .kv{font-family:var(--mono);font-size:.78rem;font-weight:700;color:var(--ink);white-space:nowrap}
-.pk.hot .kv{color:var(--mint)}
-.pfoot{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;margin-top:auto;border-top:1px solid var(--line)}
-.pdom{font-size:.74rem;font-weight:500;color:var(--ink-2);display:flex;align-items:center;gap:7px}
-.pdom i{color:var(--cyan)}
-.pcta{font-family:var(--mono);font-size:.74rem;font-weight:500;color:var(--cyan);display:flex;align-items:center;gap:6px;transition:gap .25s}
-.proj:hover .pcta{gap:11px}
-
-/* native fallback (small screens / reduced motion) */
-.hpin.nopin{height:auto!important}
-.hpin.nopin .hpin-sticky{position:static;height:auto;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding:6px 0 24px}
-.hpin.nopin .htrack{transform:none!important;padding-right:20px}
-.hpin.nopin .hpanel{scroll-snap-align:center}
-.hpin.nopin .hpanel .proj{height:auto}
-.hpin.nopin .hfx{transform:none!important;opacity:1!important}
-.hpin.nopin .hbar,.hpin.nopin .hcount{display:none}
-
-/* ════════ IMPACT BAND ════════ */
-.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:46px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:rgba(255,255,255,.015)}
-.imp{padding:32px 30px;position:relative}
-.imp + .imp{border-left:1px solid var(--line)}
-.imp .ik{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:20px;display:block}
-.imp .iv{font-family:var(--display);font-weight:600;font-size:clamp(2rem,3.3vw,2.7rem);line-height:1;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums}
-.imp .iv sup{font-size:.46em;font-weight:500;color:var(--cyan);vertical-align:super;margin-left:1px}
-.imp .il{font-size:.85rem;color:var(--ink-2);margin-top:15px;line-height:1.5}
-.iv sup{color:var(--cyan)}
-
-/* ════════ CERTS ════════ */
-.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
-.cert{padding:24px;display:flex;flex-direction:column}
-.cert .ctop{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.cert .verified{font-family:var(--mono);font-size:.64rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--mint);display:flex;align-items:center;gap:6px;background:rgba(43,230,173,.08);padding:4px 9px;border-radius:7px;border:1px solid rgba(43,230,173,.2)}
-.cert .ci{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--cyan);margin-bottom:7px}
-.cert .ct{font-family:var(--display);font-weight:600;font-size:1.06rem;line-height:1.3;letter-spacing:-.01em;margin-bottom:10px;color:var(--ink)}
-.cert .cd{font-size:.84rem;color:var(--ink-2);line-height:1.55;margin-bottom:16px;flex:1}
-.cert .cfoot{display:flex;align-items:center;justify-content:space-between}
-.cert .ctags{display:flex;gap:6px;flex-wrap:wrap}
-.cert .clink{width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--cyan);transition:all .3s var(--e);flex-shrink:0}
-.cert:hover .clink{background:var(--cyan);color:#04121b;border-color:var(--cyan);transform:rotate(45deg)}
-
-/* ════════ CONTACT ════════ */
-.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin-top:36px}
-.ct-big{font-family:var(--display);font-weight:600;font-size:clamp(2.3rem,5vw,3.6rem);line-height:1.04;letter-spacing:-.03em;margin-bottom:18px;color:var(--ink)}
-.ct-p{color:var(--ink-2);font-size:1.04rem;line-height:1.7;max-width:460px}
-.ct-links{display:flex;flex-direction:column;gap:11px}
-.cl{display:flex;align-items:center;gap:15px;border-radius:13px;padding:16px 18px;font-weight:500;font-size:.92rem;transition:all .3s var(--e)}
-.cl:hover{transform:translateX(5px);border-color:var(--line-2)}
-.cl .ico{width:40px;height:40px;border-radius:11px;background:rgba(255,255,255,.04);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--cyan);font-size:1.15rem;flex-shrink:0}
-.cl .cmeta{display:flex;flex-direction:column;min-width:0}
-.cl .ck{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
-.cl .cv{color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ct-card{padding:32px}
-.ct-card .ctas{display:flex;flex-direction:column;gap:11px;margin-bottom:22px}
-.ct-card .ctas .btn{justify-content:center;width:100%}
-.ct-note{font-family:var(--mono);font-size:.76rem;color:var(--ink-2);line-height:1.7;letter-spacing:.02em}
-.ct-note .ok{color:var(--mint)}
-
-footer{padding:30px 0;border-top:1px solid var(--line)}
-.foot{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;color:var(--ink-3);font-family:var(--mono);font-size:.74rem;letter-spacing:.03em}
-.foot b{color:var(--ink-2);font-weight:500}
-.foot-links{display:flex;gap:8px}
-.foot-links a{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink-2);font-size:1rem;transition:all .25s var(--e)}
-.foot-links a:hover{color:var(--cyan);border-color:rgba(39,222,240,.4);background:rgba(39,222,240,.06);transform:translateY(-2px)}
-
-/* floating actions */
-.fab{position:fixed;z-index:800;display:inline-flex;align-items:center;gap:8px;border-radius:12px;
-  padding:11px 16px;font-weight:500;font-size:.82rem;cursor:pointer;box-shadow:var(--sh-md);
-  opacity:0;visibility:hidden;transform:translateY(12px);transition:all .35s var(--eb);border:1px solid var(--line-2)}
-.fab.show{opacity:1;visibility:visible;transform:none}
-#askai{left:24px;bottom:24px;background:rgba(13,20,36,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:var(--ink)}
-#askai:hover{border-color:var(--cyan);color:var(--cyan)}
-#askai .d{width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 8px var(--amber);animation:led 2.4s infinite}
-#totop{right:24px;bottom:24px;width:46px;height:46px;justify-content:center;padding:0;background:var(--cyan);color:#04121b;font-size:1.1rem;border-color:transparent}
-#totop:hover{filter:brightness(1.08)}
+/* modals */
+.ovl{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;
+  background:rgba(1,4,9,.82);backdrop-filter:blur(4px);opacity:0;visibility:hidden;transition:opacity .2s}
+.ovl.open{opacity:1;visibility:visible}
+.sheet{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);width:min(1080px,100%);
+  max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 70px rgba(1,4,9,.8)}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border)}
+.sheet-head .st{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--text)}
+.sheet-head .st i{color:var(--green-fg)}
+.sheet-head .x{background:var(--card-2);border:1px solid var(--border);color:var(--text-2);width:32px;height:32px;border-radius:var(--r);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center}
+.sheet-head .x:hover{background:#262c36;color:var(--text)}
+.sheet-body{padding:18px;overflow-y:auto}
+.sheet-layout{display:grid;grid-template-columns:1fr 240px;gap:16px;margin-bottom:16px}
+.frame{position:relative;padding-top:62%;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);background:var(--bg-inset)}
+.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.side .sl{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.side > div{margin-bottom:16px}
+.lk{display:flex;flex-direction:column;gap:8px}
+.stack{display:flex;flex-wrap:wrap;gap:6px}
+.pill{font-size:12px;color:var(--text-2);background:var(--bg-inset);border:1px solid var(--border);border-radius:30px;padding:3px 11px}
+.high{border-top:1px solid var(--border);padding-top:16px}
+.hh{font-size:13px;font-weight:600;color:var(--text);margin-bottom:12px}
+.hl{display:flex;gap:10px;font-size:14px;color:var(--text-2);line-height:1.55;margin-bottom:10px}
+.hl .b{color:var(--green-fg);font-weight:700;flex-shrink:0}
+.hl b{color:var(--text);font-weight:600}
 
 /* reveal */
-[data-rv]{opacity:0;transform:translateY(30px);filter:blur(6px);transition:opacity .85s var(--e),transform .85s var(--e),filter .85s var(--e)}
-[data-rv].in{opacity:1;transform:none;filter:none}
+[data-rv]{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+[data-rv].in{opacity:1;transform:none}
 
-/* ════════ MODAL ════════ */
-.ovl{position:fixed;inset:0;z-index:1001;background:rgba(4,7,14,.72);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);
-  display:none;align-items:center;justify-content:center;padding:24px}
-.ovl.open{display:flex;animation:fadeIn .25s ease}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.sheet{background:var(--panel);border:1px solid var(--line-2);border-radius:var(--r-lg);max-width:1020px;width:100%;
-  max-height:88vh;overflow:hidden;box-shadow:var(--sh-lg);display:flex;flex-direction:column;animation:pop .3s var(--eb)}
-@keyframes pop{from{transform:scale(.96) translateY(12px);opacity:.6}to{transform:none;opacity:1}}
-.sheet-head{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--line)}
-.sheet-head .st{font-family:var(--display);font-weight:600;font-size:1.12rem;letter-spacing:-.01em;display:flex;align-items:center;gap:11px}
-.sheet-head .st .bi{color:var(--cyan)}
-.sheet-head .x{background:rgba(255,255,255,.04);border:1px solid var(--line);width:36px;height:36px;border-radius:10px;cursor:pointer;font-size:1.05rem;color:var(--ink-2);display:flex;align-items:center;justify-content:center;transition:all .25s}
-.sheet-head .x:hover{background:rgba(255,111,142,.12);color:var(--rose);border-color:rgba(255,111,142,.3)}
-.sheet-body{padding:24px;overflow-y:auto}
-.sheet-layout{display:grid;grid-template-columns:1fr 240px;gap:22px}
-.frame{position:relative;width:100%;padding-top:62%;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg-2)}
-.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
-.side{display:flex;flex-direction:column;gap:18px}
-.side .sl{font-family:var(--mono);font-size:.66rem;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3);margin-bottom:10px}
-.side .stack{display:flex;flex-wrap:wrap;gap:6px}
-.side .lk{display:flex;flex-direction:column;gap:8px}
-.high{margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
-.high .hh{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px}
-.high .hl{display:flex;gap:11px;font-size:.9rem;color:var(--ink-2);line-height:1.55;padding:6px 0}
-.high .hl .b{color:var(--cyan);font-weight:700}
-.high .hl b{color:var(--ink);font-weight:600}
-
-/* ════════ RESPONSIVE ════════ */
-@media(max-width:1080px){
-  .dots{display:none}
-}
+/* responsive */
 @media(max-width:960px){
-  .section{padding:92px 0}
-  .hero-grid{grid-template-columns:1fr;gap:44px}
-  .hero-portrait{order:-1;justify-content:center}
-  .portrait-wrap{margin:0 auto}
-  .about-grid{grid-template-columns:1fr}
-  .pipe{grid-template-columns:repeat(2,1fr)}
-  .stp .arr{display:none}
-  .tools{grid-template-columns:repeat(2,1fr)}
-  .impact-grid{grid-template-columns:repeat(2,1fr)}
-  .cgrid{grid-template-columns:repeat(2,1fr)}
+  .profile{grid-template-columns:1fr;gap:24px}
+  aside.side{position:static}
+  .nav-links{display:none}
+}
+@media(max-width:760px){
+  .repos,.certs{grid-template-columns:1fr}
+  .readme-stats{grid-template-columns:repeat(2,1fr)}
   .sheet-layout{grid-template-columns:1fr}
+  .burger{display:block}
+  .nav-cta .btn-hire{display:none}
+  .nav-links.show{display:flex;position:absolute;top:60px;left:0;right:0;flex-direction:column;
+    background:var(--bg);border-bottom:1px solid var(--border);padding:10px 18px;gap:2px}
+  .avatar{max-width:200px;margin-left:auto;margin-right:auto}
+  .id-name,.id-user,.id-bio{text-align:center}
+  .status-pill{display:flex;width:fit-content;margin-left:auto;margin-right:auto}
+  .readme-body{padding:22px 20px}
 }
-@media(max-width:900px){
-  /* projects: native horizontal swipe, no scroll-jacking */
-  .hpin{height:auto!important}
-  .hpin-sticky{position:static;height:auto;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding:6px 0 24px}
-  .htrack{transform:none!important;padding-left:20px;padding-right:20px;gap:18px}
-  .hpanel{scroll-snap-align:center}
-  .hpanel .proj{width:80vw;max-width:360px;height:auto}
-  .hfx{transform:none!important;opacity:1!important}
-  .hbar,.hcount{display:none}
-}
-@media(max-width:640px){
-  .wrap{padding:0 20px}
-  #hero{padding-top:96px}
-  .section{padding:74px 0}
-  .bar-links,.bar .btn{display:none}
-  .bar-burger{display:block}
-  .pipe,.tools,.cgrid,.impact-grid{grid-template-columns:1fr}
-  .tier{grid-template-columns:1fr;gap:6px}
-  .impact-grid .imp + .imp{border-left:0;border-top:1px solid var(--line)}
-  .p-badge{left:8px}
-  .p-stats .ps{padding:11px 16px}
-  #askai .lbl{display:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  [data-rv]{opacity:1;transform:none;transition:none}
+  .bar i{transition:none}
 }
 </style>
 </head>
 <body>
-<div class="atmos" aria-hidden="true"></div>
-<div class="grain" aria-hidden="true"></div>
-<div id="progress"></div>
 
-<!-- ════ NAV ════ -->
-<div class="bar">
-  <div class="bar-inner">
-    <a href="#hero" class="brand"><span class="dot"></span>Manmath</a>
-    <nav class="bar-links">
-      <a href="#hero" class="on">Overview</a>
-      <a href="#about">Profile</a>
-      <a href="#process">Process</a>
+<header class="nav">
+  <div class="nav-in">
+    <a href="#top" class="nav-brand">
+      <img src="assets/img/Profile Image.png" alt="" class="av" onerror="this.style.visibility='hidden'">
+      <span class="pg">manmath</span><span class="sl">/</span><span>portfolio</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#readme">README</a>
+      <a href="#projects">Projects</a>
+      <a href="#contributions">Activity</a>
+      <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
-      <a href="#projects">Work</a>
-      <a href="#certs">Certificates</a>
+      <a href="#certs">Certifications</a>
     </nav>
-    <a href="https://wa.me/917008548402" target="_blank" rel="noopener" class="btn sm"><i class="bi bi-whatsapp"></i> Hire me</a>
-    <button class="bar-burger" id="burger" aria-label="Menu"><i class="bi bi-list"></i></button>
+    <div class="nav-cta">
+      <a href="https://wa.me/917008548402" target="_blank" rel="noopener" class="btn green sm btn-hire"><i class="bi bi-whatsapp"></i> Hire me</a>
+      <button class="burger" id="burger" aria-label="Menu"><i class="bi bi-list"></i></button>
+    </div>
+  </div>
+</header>
+
+<a id="top"></a>
+<div class="wrap">
+  <div class="profile">
+
+    <aside class="side">
+      <div class="avatar">
+        <img src="assets/img/Profile Image.png" alt="Manmathnath Mahanta" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <span class="avatar-fb">MM</span>
+      </div>
+      <h1 class="id-name">Manmathnath Mahanta</h1>
+      <div class="id-user">@Manmath235</div>
+      <p class="id-bio">Business Analyst who turns ambiguous business needs into shipped product — and proves the impact with data.</p>
+      <div class="side-actions">
+        <a href="https://wa.me/917008548402" target="_blank" rel="noopener" class="btn green block"><i class="bi bi-whatsapp"></i> Hire me</a>
+        <a href="assets/Manmathnath Mahanta - Resume.pdf" download class="btn block"><i class="bi bi-download"></i> Download CV</a>
+      </div>
+      <span class="status-pill"><span class="dot"></span> Available for work</span>
+      <ul class="meta-list">
+        <li><i class="bi bi-briefcase"></i> Business Analyst</li>
+        <li><i class="bi bi-geo-alt"></i> Kolkata, India · UTC+5:30</li>
+        <li><i class="bi bi-envelope"></i> <a href="mailto:manmath.contact@gmail.com">manmath.contact@gmail.com</a></li>
+        <li><i class="bi bi-github"></i> <a href="https://github.com/Manmath235" target="_blank" rel="noopener">github.com/Manmath235</a></li>
+      </ul>
+      <div class="side-stats">
+        <div class="ss"><span class="ssv" id="yrsStat">3+</span><span class="ssl">years</span></div>
+        <div class="ss"><span class="ssv">20+</span><span class="ssl">projects</span></div>
+        <div class="ss"><span class="ssv">5</span><span class="ssl">certs</span></div>
+      </div>
+      <div class="side-block">
+        <div class="side-block-t">Focus areas</div>
+        <div class="focus">
+          <span class="topic">Requirements Engineering</span>
+          <span class="topic">Agile / Scrum</span>
+          <span class="topic">User Stories</span>
+          <span class="topic">UAT</span>
+          <span class="topic">Process Mapping</span>
+          <span class="topic">Power BI</span>
+          <span class="topic">Stakeholder Mgmt</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+
+      <section id="contributions" data-rv>
+        <div class="sec-head"><i class="bi bi-grid-3x3 ic"></i> Activity<span class="rule"></span></div>
+        <div class="contrib">
+          <div class="contrib-bar"><span><b id="contribCount">0</b> contributions this year</span><span class="yr" id="contribYear"></span></div>
+          <div class="contrib-body">
+            <div class="cal">
+              <div class="cal-months" id="calMonths"></div>
+              <div class="cal-body">
+                <div class="cal-days"><span></span><span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span><span></span></div>
+                <div class="cal-grid" id="calGrid"></div>
+              </div>
+            </div>
+          </div>
+          <div class="contrib-foot">
+            <span>Less</span>
+            <span class="legend"><span class="cell"></span><span class="cell l1"></span><span class="cell l2"></span><span class="cell l3"></span><span class="cell l4"></span></span>
+            <span>More</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="readme" data-rv>
+        <div class="readme">
+          <div class="readme-bar"><i class="bi bi-file-earmark-text"></i> <span class="fn">README.md</span></div>
+          <div class="readme-body">
+            <h1>I make sure teams build the <span class="wave">right thing.</span></h1>
+            <p>I'm a Business Analyst working at the seam between business and engineering. I run discovery, turn ambiguous goals into precise <b>BRDs, user stories and UAT</b>, and own the backlog as Product Owner — then I measure what actually ships.</p>
+            <p>The results matter more than the documents:</p>
+            <div class="readme-stats">
+              <div class="rs"><span class="rsv">~30%</span><span class="rsl">less rework</span></div>
+              <div class="rs"><span class="rsv">26.54%</span><span class="rsl">lower churn</span></div>
+              <div class="rs"><span class="rsv">10,000+</span><span class="rsl">records analysed</span></div>
+              <div class="rs"><span class="rsv">20+</span><span class="rsl">projects delivered</span></div>
+            </div>
+            <h3>What I bring</h3>
+            <ul class="bring">
+              <li><i class="bi bi-dot"></i><span><b>Requirements with no loose ends</b> — interviews, workshops and JAD turned into BRD/FSD and user stories with airtight acceptance criteria.</span></li>
+              <li><i class="bi bi-dot"></i><span><b>Delivery ownership</b> — Agile/Scrum, backlog grooming, UAT and stakeholder sign-off, all the way to a clean release.</span></li>
+              <li><i class="bi bi-dot"></i><span><b>Proof in data</b> — Power BI, SQL and Excel to validate decisions and show impact, not just opinions.</span></li>
+              <li><i class="bi bi-dot"></i><span><b>Alignment across teams</b> — UML and process maps that get business and engineering reading from the same page.</span></li>
+            </ul>
+            <div class="readme-note"><i class="bi bi-info-circle"></i><span>Currently open to Business Analyst roles where I can own outcomes end to end — ideally with a team building at scale.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" data-rv>
+        <div class="sec-head"><i class="bi bi-pin-angle ic"></i> Pinned <span class="ct">8</span><span class="rule"></span></div>
+        <div class="repos">
+          <div class="repo" data-modal="m1" role="button" tabindex="0">
+            <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-code"></i><span>india-ev-market-analysis</span></span><span class="repo-vis">Public</span></div>
+            <p class="repo-desc">Power BI study of India's EV market (2022–24): growth, brand share, state-level adoption and a go-to-market roadmap.</p>
+            <div class="repo-meta"><span class="lang"><span class="dot" style="background:#F2C811"></span> Power BI</span><span class="rstat"><i class="bi bi-broadcast-pin"></i> Live dashboard</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+          </div>
+          <div class="repo" data-modal="m4" role="button" tabindex="0">
+            <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-code"></i><span>customer-retention-dashboard</span></span><span class="repo-vis">Public</span></div>
+            <p class="repo-desc">Segmentation and engagement model that cut customer churn by 26.54%, with call-centre KPI analysis.</p>
+            <div class="repo-meta"><span class="lang"><span class="dot" style="background:#F2C811"></span> Power BI</span><span class="rstat"><i class="bi bi-graph-down-arrow"></i> 26.54% churn</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+          </div>
+          <div class="repo" data-modal="m2" role="button" tabindex="0">
+            <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-code"></i><span>google-trends-dashboard</span></span><span class="repo-vis">Public</span></div>
+            <p class="repo-desc">Consumer-interest and opportunity dashboard mined from Google Trends across 60+ countries.</p>
+            <div class="repo-meta"><span class="lang"><span class="dot" style="background:#F2C811"></span> Power BI</span><span class="rstat"><i class="bi bi-globe"></i> 60+ countries</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+          </div>
+          <div class="repo" data-modal="m5" role="button" tabindex="0">
+            <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-code"></i><span>atliq-hardware-insights</span></span><span class="repo-vis">Public</span></div>
+            <p class="repo-desc">Sales &amp; manufacturing insights: operational efficiency, market penetration and discount-pattern analysis.</p>
+            <div class="repo-meta"><span class="lang"><span class="dot" style="background:#F2C811"></span> Power BI</span><span class="rstat"><i class="bi bi-cpu"></i> Sales + Ops</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+          </div>
+          <div class="repo" data-modal="m3" role="button" tabindex="0">
+            <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-code"></i><span>rail-accident-analysis</span></span><span class="repo-vis">Public</span></div>
+            <p class="repo-desc">Pinpointed high-risk routes and root causes to steer rail-safety policy and emergency preparedness.</p>
+            <div class="repo-meta"><span class="lang"><span class="dot" style="background:#F2C811"></span> Power BI</span><span class="rstat"><i class="bi bi-shield-check"></i> Safety analytics</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+          </div>
+          <a class="repo" href="brd-ecom.html">
+            <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-text"></i><span>ecommerce-platform-brd</span></span><span class="repo-vis">Public</span></div>
+            <p class="repo-desc">Full BRD for a retail platform: 35 requirements across 7 modules, stakeholder register, RACI and a risk register.</p>
+            <div class="repo-meta"><span class="lang"><span class="dot" style="background:#58a6ff"></span> Markdown</span><span class="rstat"><i class="bi bi-list-check"></i> 35 requirements</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+          </a>
+          <a class="repo" href="banking-user-stories.html">
+            <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-text"></i><span>banking-loan-origination</span></span><span class="repo-vis">Public</span></div>
+            <p class="repo-desc">End-to-end loan lifecycle: 34 user stories across 10 modules with acceptance criteria and edge cases.</p>
+            <div class="repo-meta"><span class="lang"><span class="dot" style="background:#58a6ff"></span> Markdown</span><span class="rstat"><i class="bi bi-card-checklist"></i> 34 user stories</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+          </a>
+          <a class="repo" href="process-mapping.html">
+            <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-text"></i><span>employee-onboarding-bpr</span></span><span class="repo-vis">Public</span></div>
+            <p class="repo-desc">AS-IS → TO-BE redesign of employee onboarding: 65% faster and 80% less manual effort.</p>
+            <div class="repo-meta"><span class="lang"><span class="dot" style="background:#58a6ff"></span> Markdown</span><span class="rstat"><i class="bi bi-diagram-2"></i> 65% faster</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+          </a>
+        </div>
+      </section>
+
+      <section id="skills" data-rv>
+        <div class="sec-head"><i class="bi bi-bar-chart ic"></i> Skills<span class="rule"></span></div>
+        <div class="skills">
+          <div class="skill"><div class="skill-top"><span class="sn">Business Analysis</span><span class="sp">92%</span></div><div class="bar"><i data-w="92"></i></div></div>
+          <div class="skill"><div class="skill-top"><span class="sn">Requirements &amp; Documentation (BRD / FSD / SRS)</span><span class="sp">90%</span></div><div class="bar"><i data-w="90"></i></div></div>
+          <div class="skill"><div class="skill-top"><span class="sn">Agile / Scrum &amp; Backlog Ownership</span><span class="sp">88%</span></div><div class="bar"><i data-w="88"></i></div></div>
+          <div class="skill"><div class="skill-top"><span class="sn">UAT &amp; Quality Assurance</span><span class="sp">87%</span></div><div class="bar"><i data-w="87"></i></div></div>
+          <div class="skill"><div class="skill-top"><span class="sn">Process Mapping &amp; UML</span><span class="sp">86%</span></div><div class="bar"><i data-w="86"></i></div></div>
+          <div class="skill"><div class="skill-top"><span class="sn">Data Analysis (Power BI / SQL)</span><span class="sp">84%</span></div><div class="bar"><i data-w="84"></i></div></div>
+        </div>
+        <div class="sec-head" style="margin-top:24px"><i class="bi bi-tools ic"></i> Tools &amp; platforms<span class="rule"></span></div>
+        <div class="tools">
+          <span class="tool"><span class="ti"><img src="assets/tools/excel.png" alt="" onerror="this.replaceWith(document.createTextNode('📊'))"></span><b>Excel</b><span class="tc">Analytics</span></span>
+          <span class="tool"><span class="ti"><img src="assets/tools/power-bi.png" alt="" onerror="this.replaceWith(document.createTextNode('📈'))"></span><b>Power BI</b><span class="tc">BI</span></span>
+          <span class="tool"><span class="ti"><img src="assets/tools/database.png" alt="" onerror="this.replaceWith(document.createTextNode('🗄️'))"></span><b>SQL</b><span class="tc">Database</span></span>
+          <span class="tool"><span class="ti"><img src="assets/tools/clickup.png" alt="" onerror="this.replaceWith(document.createTextNode('✅'))"></span><b>ClickUp</b><span class="tc">PM</span></span>
+          <span class="tool"><span class="ti"><img src="assets/tools/postman.png" alt="" onerror="this.replaceWith(document.createTextNode('📮'))"></span><b>Postman</b><span class="tc">API</span></span>
+          <span class="tool"><span class="ti"><img src="assets/tools/lucidchart.png" alt="" onerror="this.replaceWith(document.createTextNode('🧩'))"></span><b>LucidChart</b><span class="tc">Diagrams</span></span>
+          <span class="tool"><span class="ti"><img src="assets/tools/Notion.png" alt="" onerror="this.replaceWith(document.createTextNode('📝'))"></span><b>Notion</b><span class="tc">Docs</span></span>
+          <span class="tool"><span class="ti"><img src="assets/tools/claude.png" alt="" onerror="this.replaceWith(document.createTextNode('🤖'))"></span><b>Claude</b><span class="tc">AI</span></span>
+          <span class="tool"><span class="ti"><img src="assets/tools/lovable.png" alt="" onerror="this.replaceWith(document.createTextNode('💜'))"></span><b>Lovable</b><span class="tc">Prototyping</span></span>
+        </div>
+      </section>
+
+      <section id="experience" data-rv>
+        <div class="sec-head"><i class="bi bi-clock-history ic"></i> Experience<span class="rule"></span></div>
+        <div class="xp">
+          <div class="xp-item open">
+            <button class="xp-head" aria-expanded="true">
+              <span class="xp-logo"><i class="bi bi-building"></i></span>
+              <span class="xp-meta">
+                <span class="xp-role">Business Analyst <span class="xp-now">Current</span></span>
+                <span class="xp-co">Tech Exactly · <span class="date">Mar 2026 — Present</span></span>
+              </span>
+              <span class="xp-chev"><i class="bi bi-chevron-down"></i></span>
+            </button>
+            <div class="xp-body"><div class="xp-body-in"><ul>
+              <li><i class="bi bi-dot"></i><span>Own discovery and requirements end to end — turning prospect conversations into <b>BRDs, UML, user stories and SRS</b> engineering builds from without rework.</span></li>
+              <li><i class="bi bi-dot"></i><span>Act as <b>Product Owner</b>: groom the backlog, run sprint ceremonies, and tie every release to a business outcome.</span></li>
+              <li><i class="bi bi-dot"></i><span>Drive <b>UAT</b> — test scenarios, acceptance criteria, defect tracking and stakeholder sign-off — for clean, predictable launches.</span></li>
+              <li><i class="bi bi-dot"></i><span>Prototype in <b>Lovable</b> to validate scope early and shorten feedback loops before a line of code is written.</span></li>
+            </ul></div></div>
+          </div>
+          <div class="xp-item">
+            <button class="xp-head" aria-expanded="false">
+              <span class="xp-logo"><i class="bi bi-building"></i></span>
+              <span class="xp-meta">
+                <span class="xp-role">Business Analyst</span>
+                <span class="xp-co">Sai Paramount IT Solutions · <span class="date">Jul 2024 — Mar 2026</span></span>
+              </span>
+              <span class="xp-chev"><i class="bi bi-chevron-down"></i></span>
+            </button>
+            <div class="xp-body"><div class="xp-body-in"><ul>
+              <li><i class="bi bi-dot"></i><span>Led requirements and functional analysis across <b>web and mobile builds</b>, producing BRD/FSD, user stories, UML and wireframes that aligned business and engineering.</span></li>
+              <li><i class="bi bi-dot"></i><span>Cut requirement ambiguity and rework enough to lift delivery <b>efficiency by ~30%</b>.</span></li>
+              <li><i class="bi bi-dot"></i><span>Ran UAT and stakeholder sign-off to keep releases on schedule.</span></li>
+            </ul></div></div>
+          </div>
+          <div class="xp-item">
+            <button class="xp-head" aria-expanded="false">
+              <span class="xp-logo"><i class="bi bi-building"></i></span>
+              <span class="xp-meta">
+                <span class="xp-role">Business Analyst</span>
+                <span class="xp-co">GEEMSCO Consultancy Solutions · <span class="date">Mar 2023 — Jul 2024</span></span>
+              </span>
+              <span class="xp-chev"><i class="bi bi-chevron-down"></i></span>
+            </button>
+            <div class="xp-body"><div class="xp-body-in"><ul>
+              <li><i class="bi bi-dot"></i><span>Owned <b>requirement gathering, documentation and stakeholder coordination</b> across multiple IT initiatives.</span></li>
+              <li><i class="bi bi-dot"></i><span>Used <b>SQL and Excel</b> to turn raw data into reports that informed planning and operational decisions.</span></li>
+              <li><i class="bi bi-dot"></i><span>Coordinated UAT, defect tracking and releases for smoother go-lives.</span></li>
+            </ul></div></div>
+          </div>
+          <div class="xp-item">
+            <button class="xp-head" aria-expanded="false">
+              <span class="xp-logo"><i class="bi bi-mortarboard"></i></span>
+              <span class="xp-meta">
+                <span class="xp-role">Data Analyst · Internship</span>
+                <span class="xp-co">Afame Technologies · <span class="date">Apr 2023 — May 2023</span></span>
+              </span>
+              <span class="xp-chev"><i class="bi bi-chevron-down"></i></span>
+            </button>
+            <div class="xp-body"><div class="xp-body-in"><ul>
+              <li><i class="bi bi-dot"></i><span><b>Cleaned and processed 10,000+ records</b>, lifting dataset accuracy and downstream decisions.</span></li>
+              <li><i class="bi bi-dot"></i><span>Built an interactive <b>Power BI dashboard</b> over three years of sales data.</span></li>
+              <li><i class="bi bi-dot"></i><span>Produced <b>20+ structured performance reports</b> with HR.</span></li>
+            </ul></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="certs" data-rv>
+        <div class="sec-head"><i class="bi bi-patch-check ic"></i> Certifications <span class="ct">5</span><span class="rule"></span></div>
+        <div class="certs">
+          <a class="cert" href="https://www.coursera.org/account/accomplishments/professional-cert/JPUG55Y3GZAS" target="_blank" rel="noopener">
+            <div class="cert-top"><span class="cert-iss">Google · Coursera</span><span class="cert-vf"><i class="bi bi-patch-check-fill"></i> Verified</span></div>
+            <h4>Google Data Analytics Professional Certificate</h4>
+            <p>Data analysis, visualisation and insight for business decision-making.</p>
+            <div class="cert-foot"><div class="cert-tags"><span class="tag">Data Analysis</span><span class="tag">Viz</span></div><span class="go"><i class="bi bi-arrow-up-right"></i></span></div>
+          </a>
+          <a class="cert" href="https://www.linkedin.com/learning/certificates/b669334513c329a04528bb83f280f79d1892599b57aac79d7dcfb7fd03992d77" target="_blank" rel="noopener">
+            <div class="cert-top"><span class="cert-iss">Microsoft · LinkedIn</span><span class="cert-vf"><i class="bi bi-patch-check-fill"></i> Verified</span></div>
+            <h4>Business Analysis by Microsoft &amp; LinkedIn</h4>
+            <p>Business process analysis, requirements management and stakeholder collaboration.</p>
+            <div class="cert-foot"><div class="cert-tags"><span class="tag">BRD / FSD</span><span class="tag">Stakeholders</span></div><span class="go"><i class="bi bi-arrow-up-right"></i></span></div>
+          </a>
+          <a class="cert" href="https://www.linkedin.com/learning/certificates/b828054f27da7a9b43747e5dacf14f9708d2ed421d3749466bc90c61933eb04a" target="_blank" rel="noopener">
+            <div class="cert-top"><span class="cert-iss">LinkedIn Learning</span><span class="cert-vf"><i class="bi bi-patch-check-fill"></i> Verified</span></div>
+            <h4>Requirements Elicitation &amp; Analysis</h4>
+            <p>Stakeholder needs identification, requirements documentation and analysis techniques.</p>
+            <div class="cert-foot"><div class="cert-tags"><span class="tag">Elicitation</span><span class="tag">UAT</span></div><span class="go"><i class="bi bi-arrow-up-right"></i></span></div>
+          </a>
+          <a class="cert" href="https://www.linkedin.com/learning/certificates/e29c230664b57c86c2795595cd269a65e001ab20943b1042c6b7b4923acba714" target="_blank" rel="noopener">
+            <div class="cert-top"><span class="cert-iss">LinkedIn Learning</span><span class="cert-vf"><i class="bi bi-patch-check-fill"></i> Verified</span></div>
+            <h4>Agile Requirements Foundations</h4>
+            <p>Agile requirements gathering, user-story creation and iterative management.</p>
+            <div class="cert-foot"><div class="cert-tags"><span class="tag">Agile</span><span class="tag">Scrum</span></div><span class="go"><i class="bi bi-arrow-up-right"></i></span></div>
+          </a>
+          <a class="cert" href="https://codebasics.io/certificate/CB-49-342372" target="_blank" rel="noopener">
+            <div class="cert-top"><span class="cert-iss">Codebasics</span><span class="cert-vf"><i class="bi bi-patch-check-fill"></i> Verified</span></div>
+            <h4>Microsoft Power BI Data Analytics</h4>
+            <p>Advanced data visualisation and BI using Power BI for interactive dashboards.</p>
+            <div class="cert-foot"><div class="cert-tags"><span class="tag">Power BI</span><span class="tag">Dashboards</span></div><span class="go"><i class="bi bi-arrow-up-right"></i></span></div>
+          </a>
+        </div>
+      </section>
+
+    </main>
   </div>
 </div>
-<div class="mnav" id="mnav">
-  <a href="#about">Profile</a><a href="#process">Process</a><a href="#experience">Experience</a>
-  <a href="#projects">Work</a><a href="#certs">Certificates</a>
-  <a href="https://wa.me/917008548402" target="_blank" rel="noopener" class="btn cta">Hire me</a>
-</div>
-
-<!-- right section dots -->
-<div class="dots" id="dots" aria-hidden="true"></div>
-
-<!-- ════ HERO ════ -->
-<section id="hero">
-  <div class="wrap">
-    <div class="hero-grid">
-      <div class="hero-left" data-rv>
-        <span class="kicker"><span class="av-dot"></span> Available for work · Kolkata, IN</span>
-        <h1 class="h1">Manmathnath<br>Mahanta</h1>
-        <div class="h-role"><span class="bar-acc"></span> Business Analyst <span class="sep">//</span> <b>business&nbsp;⇄&nbsp;technical</b></div>
-        <p class="h-lede">I translate ambiguous business <b>requirements</b> into <span class="hl">precise, build-ready specifications</span> — BRDs, UML, user stories and UAT that delivery teams can execute with confidence.</p>
-        <div class="h-meta">
-          <span><b class="dexp">3+</b> yrs experience</span>
-          <span><b>20+</b> projects</span>
-          <span><b>5</b> certifications</span>
-        </div>
-        <div class="h-ctas">
-          <a href="#projects" class="btn cta"><i class="bi bi-grid-1x2"></i> Explore the work</a>
-          <a href="assets/Manmathnath Mahanta - Resume.pdf" download class="btn ghost"><i class="bi bi-download"></i> Download CV</a>
-        </div>
-      </div>
-
-      <div class="hero-portrait" data-rv>
-        <div class="portrait-wrap">
-          <div class="portrait">
-            <img src="assets/img/Profile Image.png" alt="Manmathnath Mahanta" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="pfallback">MM</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════ ABOUT + SKILLS ════ -->
-<section id="about" class="section">
-  <div class="wrap">
-    <div data-rv>
-      <span class="kicker"><span class="ix">02</span> The analyst behind the insights</span>
-      <h2 class="shead">Who <span class="grad-txt">I am</span></h2>
-      <p class="sub">A short read on how I think, the skills I lean on, and what I bring to a delivery team.</p>
-    </div>
-    <div class="about-grid">
-      <div class="glass lift about-card" data-rv>
-        <span class="tag">about.md</span>
-        <p>Business Analyst with <b><span class="dexp">3+</span> years</b> across <b>web &amp; mobile application projects</b> — delivering clear requirements, clean releases and measurable outcomes through structured analysis and stakeholder collaboration.</p>
-        <p>I specialise in requirement elicitation, <code>UML</code> &amp; functional flows, wireframes and <code>UAT</code>. My data skills in <code>Power BI</code>, <code>SQL</code> and <code>Excel</code> turn raw numbers into decisions people can act on.</p>
-      </div>
-      <div class="glass lift panel-pad" data-rv>
-        <div class="panel-h">Skills</div>
-        <div class="tiers">
-          <div class="tier">
-            <span class="tl">Expert</span>
-            <div class="chips"><span class="chip">Business Analysis</span><span class="chip">Requirement Elicitation</span><span class="chip">BRD / FSD / SRS</span><span class="chip">UAT &amp; QA</span></div>
-          </div>
-          <div class="tier">
-            <span class="tl">Advanced</span>
-            <div class="chips"><span class="chip">Agile / Scrum</span><span class="chip">UML &amp; Process Mapping</span><span class="chip">Wireframing</span><span class="chip">Stakeholder Mgmt</span></div>
-          </div>
-          <div class="tier">
-            <span class="tl">Proficient</span>
-            <div class="chips"><span class="chip">Data Analysis</span><span class="chip">Power BI</span><span class="chip">SQL</span><span class="chip">Excel</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════ PROCESS ════ -->
-<section id="process" class="section">
-  <div class="wrap">
-    <div data-rv>
-      <span class="kicker"><span class="ix">03</span> How I work</span>
-      <h2 class="shead">From mess to <span class="grad-txt">shippable</span></h2>
-      <p class="sub">My pipeline for moving a project from a vague ask to a clean, signed-off release.</p>
-    </div>
-    <div class="pipe">
-      <div class="glass lift stp" style="--accent:var(--cyan)" data-rv><div class="sn">PHASE 01 <span class="ic"><i class="bi bi-search"></i></span></div><h4>Discover</h4><p>Elicit goals from stakeholders through interviews, workshops &amp; JAD sessions.</p><span class="arr"><i class="bi bi-arrow-right"></i></span></div>
-      <div class="glass lift stp" style="--accent:var(--cyan)" data-rv><div class="sn">PHASE 02 <span class="ic"><i class="bi bi-diagram-3"></i></span></div><h4>Analyse</h4><p>Map AS-IS, find the gaps, model TO-BE with UML &amp; process flows.</p><span class="arr"><i class="bi bi-arrow-right"></i></span></div>
-      <div class="glass lift stp" style="--accent:var(--cyan)" data-rv><div class="sn">PHASE 03 <span class="ic"><i class="bi bi-file-earmark-text"></i></span></div><h4>Document</h4><p>BRD / FSD, user stories, acceptance criteria &amp; wireframes the team can build from.</p><span class="arr"><i class="bi bi-arrow-right"></i></span></div>
-      <div class="glass lift stp" style="--accent:var(--cyan)" data-rv><div class="sn">PHASE 04 <span class="ic"><i class="bi bi-check2-square"></i></span></div><h4>Validate</h4><p>Write UAT scenarios, track defects, drive stakeholder sign-off.</p><span class="arr"><i class="bi bi-arrow-right"></i></span></div>
-      <div class="glass lift stp" style="--accent:var(--cyan)" data-rv><div class="sn">PHASE 05 <span class="ic"><i class="bi bi-rocket-takeoff"></i></span></div><h4>Deliver</h4><p>Clean releases, backlog grooming &amp; sprints aligned to agreed goals.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ════ EXPERIENCE ════ -->
-<section id="experience" class="section">
-  <div class="wrap">
-    <div data-rv>
-      <span class="kicker"><span class="ix">04</span> The timeline</span>
-      <h2 class="shead">Where I've <span class="grad-txt">worked</span></h2>
-    </div>
-    <div class="tl">
-      <div class="exp now open" data-rv>
-        <div class="glass ecard">
-          <button class="exp-head" aria-expanded="true">
-            <div class="exp-headmain">
-              <div class="exp-top"><span class="exp-co"><i class="bi bi-building"></i> Tech Exactly</span><span class="exp-now-tag"><span class="d"></span> Current</span><span class="exp-date now">Mar 2026 — Present</span></div>
-              <div class="exp-role">Business Analyst</div>
-            </div>
-            <span class="exp-chev"><i class="bi bi-chevron-down"></i></span>
-          </button>
-          <div class="exp-body"><div class="exp-bodyinner"><div class="exp-bodypad">
-            <ul>
-              <li><span class="b">+</span><span>Run structured <b>requirement elicitation</b> sessions with prospects, converting ambiguous business goals into precise, delivery-ready documentation.</span></li>
-              <li><span class="b">+</span><span>Produce <b>UML diagrams, wireframes, user stories, roadmaps and SRS</b> with high accuracy — keeping client expectations and dev output in lockstep.</span></li>
-              <li><span class="b">+</span><span>Act as <b>Product Owner</b> — managing backlog, facilitating scrum ceremonies, keeping every sprint aligned to agreed goals.</span></li>
-              <li><span class="b">+</span><span>Own end-to-end <b>UAT execution</b> — test scenarios, acceptance criteria, defect tracking and stakeholder sign-off to clean releases.</span></li>
-              <li><span class="b">+</span><span>Build rapid <b>UI prototypes</b> in Lovable to validate scope and shorten feedback cycles before development.</span></li>
-            </ul>
-            <div class="chips"><span class="chip">Product Owner</span><span class="chip">UML</span><span class="chip">Wireframing</span><span class="chip">SRS / BRD</span><span class="chip">UAT</span><span class="chip">Scrum</span></div>
-          </div></div></div>
-        </div>
-      </div>
-      <div class="exp" data-rv>
-        <div class="glass ecard">
-          <button class="exp-head" aria-expanded="false">
-            <div class="exp-headmain">
-              <div class="exp-top"><span class="exp-co"><i class="bi bi-building"></i> Sai Paramount IT Solutions Pvt. Ltd.</span><span class="exp-date">Jul 2024 — Mar 2026</span></div>
-              <div class="exp-role">Business Analyst</div>
-            </div>
-            <span class="exp-chev"><i class="bi bi-chevron-down"></i></span>
-          </button>
-          <div class="exp-body"><div class="exp-bodyinner"><div class="exp-bodypad">
-            <ul>
-              <li><span class="b">+</span><span>Drove requirement elicitation and end-to-end functional analysis across <b>web and mobile application projects</b>.</span></li>
-              <li><span class="b">+</span><span>Produced <b>BRD/FSD, user stories, UML diagrams, functional flows and wireframes</b> to align business and technical teams.</span></li>
-              <li><span class="b">+</span><span>Contributed to a measured <b>~30% improvement in operational efficiency</b> by cutting requirement ambiguity and rework.</span></li>
-            </ul>
-            <div class="chips"><span class="chip">BRD / FSD</span><span class="chip">UML</span><span class="chip">Wireframing</span><span class="chip">UAT</span><span class="chip">Stakeholder Mgmt</span><span class="chip">Agile</span></div>
-          </div></div></div>
-        </div>
-      </div>
-      <div class="exp" data-rv>
-        <div class="glass ecard">
-          <button class="exp-head" aria-expanded="false">
-            <div class="exp-headmain">
-              <div class="exp-top"><span class="exp-co"><i class="bi bi-building"></i> GEEMSCO Consultancy Solutions Pvt. Ltd.</span><span class="exp-date">Mar 2023 — Jul 2024</span></div>
-              <div class="exp-role">Business Analyst</div>
-            </div>
-            <span class="exp-chev"><i class="bi bi-chevron-down"></i></span>
-          </button>
-          <div class="exp-body"><div class="exp-bodyinner"><div class="exp-bodypad">
-            <ul>
-              <li><span class="b">+</span><span>Supported <b>requirement gathering, documentation and stakeholder coordination</b> across multiple IT initiatives.</span></li>
-              <li><span class="b">+</span><span>Applied <b>SQL and Excel</b> for data analysis, generating reports that informed business planning and operational decisions.</span></li>
-              <li><span class="b">+</span><span>Facilitated <b>UAT planning, defect tracking and release coordination</b> for smoother go-lives.</span></li>
-            </ul>
-            <div class="chips"><span class="chip">Requirement Gathering</span><span class="chip">SQL</span><span class="chip">Excel</span><span class="chip">UAT Planning</span><span class="chip">Defect Tracking</span></div>
-          </div></div></div>
-        </div>
-      </div>
-      <div class="exp" data-rv>
-        <div class="glass ecard">
-          <button class="exp-head" aria-expanded="false">
-            <div class="exp-headmain">
-              <div class="exp-top"><span class="exp-co"><i class="bi bi-building"></i> Afame Technologies · Internship</span><span class="exp-date">Apr 2023 — May 2023</span></div>
-              <div class="exp-role">Data Analyst</div>
-            </div>
-            <span class="exp-chev"><i class="bi bi-chevron-down"></i></span>
-          </button>
-          <div class="exp-body"><div class="exp-bodyinner"><div class="exp-bodypad">
-            <ul>
-              <li><span class="b">+</span><span><b>Processed and cleaned 10,000+ data entries</b>, improving dataset accuracy and downstream decisions.</span></li>
-              <li><span class="b">+</span><span>Designed an interactive <b>Power BI dashboard</b> over 3 years of sales data for at-a-glance trends.</span></li>
-              <li><span class="b">+</span><span>Built <b>20+ structured performance reports</b> with HR, raising the bar for reporting clarity.</span></li>
-            </ul>
-            <div class="chips"><span class="chip">Power BI</span><span class="chip">Data Cleaning</span><span class="chip">Excel</span><span class="chip">Dashboards</span><span class="chip">Reporting</span></div>
-          </div></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════ TOOLS ════ -->
-<section id="tools" class="section">
-  <div class="wrap">
-    <div data-rv>
-      <span class="kicker"><span class="ix">05</span> The toolkit</span>
-      <h2 class="shead">Tools I <span class="grad-txt">reach for</span></h2>
-    </div>
-    <div class="tools">
-      <div class="glass lift tool" data-rv><div class="th"><span class="ti"><img src="assets/tools/excel.png" alt="Excel" onerror="this.replaceWith(document.createTextNode('📊'))"></span><div><div class="tn">Excel</div><div class="tcat">Analytics</div></div></div><div class="td">Data cleaning, pivot tables, advanced formulas &amp; reporting dashboards.</div></div>
-      <div class="glass lift tool" data-rv><div class="th"><span class="ti"><img src="assets/tools/power-bi.png" alt="Power BI" onerror="this.replaceWith(document.createTextNode('📈'))"></span><div><div class="tn">Power BI</div><div class="tcat">BI</div></div></div><div class="td">Interactive dashboards &amp; KPI reports that visualise business trends.</div></div>
-      <div class="glass lift tool" data-rv><div class="th"><span class="ti"><img src="assets/tools/database.png" alt="SQL" onerror="this.replaceWith(document.createTextNode('🗄️'))"></span><div><div class="tn">SQL</div><div class="tcat">Database</div></div></div><div class="td">Querying, transforming &amp; analysing data from relational databases.</div></div>
-      <div class="glass lift tool" data-rv><div class="th"><span class="ti"><img src="assets/tools/clickup.png" alt="ClickUp" onerror="this.replaceWith(document.createTextNode('✅'))"></span><div><div class="tn">ClickUp</div><div class="tcat">PM</div></div></div><div class="td">Managing tasks, sprint backlogs &amp; delivery milestones.</div></div>
-      <div class="glass lift tool" data-rv><div class="th"><span class="ti"><img src="assets/tools/postman.png" alt="Postman" onerror="this.replaceWith(document.createTextNode('🔧'))"></span><div><div class="tn">Postman</div><div class="tcat">API</div></div></div><div class="td">Testing &amp; validating REST APIs against functional requirements.</div></div>
-      <div class="glass lift tool" data-rv><div class="th"><span class="ti"><img src="assets/tools/lucidchart.png" alt="LucidChart" onerror="this.replaceWith(document.createTextNode('📐'))"></span><div><div class="tn">LucidChart</div><div class="tcat">Diagramming</div></div></div><div class="td">UML diagrams, process flows &amp; swimlane charts for BA docs.</div></div>
-      <div class="glass lift tool" data-rv><div class="th"><span class="ti"><img src="assets/tools/Notion.png" alt="Notion" onerror="this.replaceWith(document.createTextNode('📝'))"></span><div><div class="tn">Notion</div><div class="tcat">Docs</div></div></div><div class="td">BRDs, meeting notes &amp; requirement traceability matrices.</div></div>
-      <div class="glass lift tool" data-rv><div class="th"><span class="ti"><img src="assets/tools/claude.png" alt="Claude" onerror="this.replaceWith(document.createTextNode('🤖'))"></span><div><div class="tn">Claude</div><div class="tcat">AI</div></div></div><div class="td">Accelerating deliverables — drafting BRDs, user stories &amp; FRDs.</div></div>
-      <div class="glass lift tool" data-rv><div class="th"><span class="ti"><img src="assets/tools/lovable.png" alt="Lovable" onerror="this.replaceWith(document.createTextNode('🚀'))"></span><div><div class="tn">Lovable</div><div class="tcat">Prototyping</div></div></div><div class="td">Rapid UI prototypes to validate scope &amp; support client demos.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ════ PROJECTS ════ -->
-<section id="projects" class="hpin">
-  <div class="hpin-sticky">
-    <div class="htrack" id="htrack">
-
-      <div class="hpanel hintro" data-rv>
-        <div class="hfx"><div class="hintro-in">
-          <span class="kicker"><span class="ix">06</span> Selected work</span>
-          <h2>The board.<br><span class="grad-txt">8 projects.</span></h2>
-          <p>A selection of the projects I've built end-to-end on my own — part of 20+ delivered across my roles. Open any card to dive in.</p>
-          <div class="hmeta"><span class="lg"><span><i class="live"></i> 5 live dashboards</span><span><i class="doc"></i> 3 documents</span></span></div>
-          <div class="hcue"><span class="ln"></span> Scroll to slide →</div>
-        </div></div>
-      </div>
-
-      <div class="hpanel"><div class="hfx">
-        <div class="glass gbord proj" data-t="powerbi,sql" data-modal="m1">
-          <span class="paccent"></span>
-          <div class="pstat"><span class="badge b-bi"><i class="bi bi-bar-chart-line"></i> Power BI</span><span class="pright"><span class="pid">PRJ-01</span><span class="pstatus live"><span class="d"></span> Live</span></span></div>
-          <div class="pthumb"><img src="assets/projects/EV_Market_Analysis/EV_market_analysis.jpg" alt="EV Analysis" loading="lazy" onerror="this.closest('.pthumb').className='picon';this.replaceWith(document.createTextNode('⚡'))"></div>
-          <div class="pbody"><h3>India EV Market Analysis</h3><p class="pd">Indian EV market (2022–2024) — growth trends, brand performance, state-level adoption and a strategic roadmap.</p>
-            <div class="pspec"><div class="pk"><span class="kk">Window</span><span class="kv">2022–24</span></div><div class="pk"><span class="kk">Market</span><span class="kv">India EV</span></div><div class="pk"><span class="kk">Stack</span><span class="kv">PBI · SQL</span></div></div>
-          </div>
-          <div class="pfoot"><span class="pdom"><i class="bi bi-lightning-charge"></i> Automotive</span><span class="pcta">View dashboard <i class="bi bi-arrow-right"></i></span></div>
-        </div>
-      </div></div>
-
-      <div class="hpanel"><div class="hfx">
-        <div class="glass gbord proj" data-t="powerbi,excel" data-modal="m2">
-          <span class="paccent"></span>
-          <div class="pstat"><span class="badge b-bi"><i class="bi bi-bar-chart-line"></i> Power BI</span><span class="pright"><span class="pid">PRJ-02</span><span class="pstatus live"><span class="d"></span> Live</span></span></div>
-          <div class="pthumb"><img src="assets/projects/Google_Trend_Analysis/Google Trend Analysis Thumbnail.jpg" alt="Google Trend" loading="lazy" onerror="this.closest('.pthumb').className='picon';this.replaceWith(document.createTextNode('🔎'))"></div>
-          <div class="pbody"><h3>Google Trend Dashboard</h3><p class="pd">Surfaces consumer interests, emerging opportunities and search behaviour across 60+ countries from Google Trends.</p>
-            <div class="pspec"><div class="pk"><span class="kk">Reach</span><span class="kv">60+ ctry</span></div><div class="pk"><span class="kk">Source</span><span class="kv">Google</span></div><div class="pk"><span class="kk">Stack</span><span class="kv">PBI · XLS</span></div></div>
-          </div>
-          <div class="pfoot"><span class="pdom"><i class="bi bi-graph-up"></i> Market Research</span><span class="pcta">View dashboard <i class="bi bi-arrow-right"></i></span></div>
-        </div>
-      </div></div>
-
-      <div class="hpanel"><div class="hfx">
-        <div class="glass gbord proj" data-t="powerbi,excel" data-modal="m3">
-          <span class="paccent"></span>
-          <div class="pstat"><span class="badge b-bi"><i class="bi bi-bar-chart-line"></i> Power BI</span><span class="pright"><span class="pid">PRJ-03</span><span class="pstatus live"><span class="d"></span> Live</span></span></div>
-          <div class="pthumb"><img src="assets/projects/Train Accident Analysis/Indian Rail Accident Analysis.jpg" alt="Rail Analysis" loading="lazy" onerror="this.closest('.pthumb').className='picon';this.replaceWith(document.createTextNode('🚆'))"></div>
-          <div class="pbody"><h3>Rail Accident Analysis</h3><p class="pd">Identified accident-prone routes, top causes and safety patterns to guide policy and emergency preparedness.</p>
-            <div class="pspec"><div class="pk"><span class="kk">Domain</span><span class="kv">Rail safety</span></div><div class="pk"><span class="kk">Output</span><span class="kv">Hotspots</span></div><div class="pk"><span class="kk">Stack</span><span class="kv">PBI · XLS</span></div></div>
-          </div>
-          <div class="pfoot"><span class="pdom"><i class="bi bi-train-front"></i> Transport</span><span class="pcta">View dashboard <i class="bi bi-arrow-right"></i></span></div>
-        </div>
-      </div></div>
-
-      <div class="hpanel"><div class="hfx">
-        <div class="glass gbord proj" data-t="powerbi,excel" data-modal="m4">
-          <span class="paccent"></span>
-          <div class="pstat"><span class="badge b-bi"><i class="bi bi-bar-chart-line"></i> Power BI</span><span class="pright"><span class="pid">PRJ-04</span><span class="pstatus live"><span class="d"></span> Live</span></span></div>
-          <div class="pthumb"><img src="assets/projects/Call_Center_Data_Analysis_details/Power BI Job Simulation on Forage.jpg" alt="Customer Retention" loading="lazy" onerror="this.closest('.pthumb').className='picon';this.replaceWith(document.createTextNode('📞'))"></div>
-          <div class="pbody"><h3>Customer Retention Dashboard</h3><p class="pd">Cut churn through segmentation, engagement strategies and data-driven personalised offers.</p>
-            <div class="pspec"><div class="pk hot"><span class="kk">Churn</span><span class="kv">↓ 26.54%</span></div><div class="pk"><span class="kk">Lever</span><span class="kv">Segments</span></div><div class="pk"><span class="kk">Stack</span><span class="kv">PBI · XLS</span></div></div>
-          </div>
-          <div class="pfoot"><span class="pdom"><i class="bi bi-people"></i> CX Analytics</span><span class="pcta">View dashboard <i class="bi bi-arrow-right"></i></span></div>
-        </div>
-      </div></div>
-
-      <div class="hpanel"><div class="hfx">
-        <div class="glass gbord proj" data-t="powerbi,sql" data-modal="m5">
-          <span class="paccent"></span>
-          <div class="pstat"><span class="badge b-bi"><i class="bi bi-bar-chart-line"></i> Power BI</span><span class="pright"><span class="pid">PRJ-05</span><span class="pstatus live"><span class="d"></span> Live</span></span></div>
-          <div class="pthumb"><img src="assets/projects/AtliQ Hardware Insights Report/AtliQ Hardware Insights Report.jpg" alt="AtliQ" loading="lazy" onerror="this.closest('.pthumb').className='picon';this.replaceWith(document.createTextNode('🖥️'))"></div>
-          <div class="pbody"><h3>AtliQ Hardware Insights</h3><p class="pd">Sales &amp; manufacturing analysis — operational efficiency, market penetration, discount patterns and product-line optimisation.</p>
-            <div class="pspec"><div class="pk"><span class="kk">Domain</span><span class="kv">Hardware</span></div><div class="pk"><span class="kk">Focus</span><span class="kv">Sales+Ops</span></div><div class="pk"><span class="kk">Stack</span><span class="kv">PBI · SQL</span></div></div>
-          </div>
-          <div class="pfoot"><span class="pdom"><i class="bi bi-cpu"></i> Manufacturing</span><span class="pcta">View dashboard <i class="bi bi-arrow-right"></i></span></div>
-        </div>
-      </div></div>
-
-      <div class="hpanel"><div class="hfx">
-        <div class="glass gbord proj" data-t="ba" onclick="location.href='brd-ecom.html'">
-          <span class="paccent"></span>
-          <div class="pstat"><span class="badge b-ba"><i class="bi bi-file-earmark-text"></i> BRD</span><span class="pright"><span class="pid">PRJ-06</span><span class="pstatus doc"><span class="d"></span> Doc</span></span></div>
-          <div class="picon">📄</div>
-          <div class="pbody"><h3>E-Commerce Platform BRD</h3><p class="pd">Full-stack online retail solution — functional requirements across 7 modules with stakeholder register, RACI &amp; risk register.</p>
-            <div class="pspec"><div class="pk"><span class="kk">Reqs</span><span class="kv">35</span></div><div class="pk"><span class="kk">Modules</span><span class="kv">7</span></div><div class="pk"><span class="kk">Risk reg</span><span class="kv">✓</span></div></div>
-          </div>
-          <div class="pfoot"><span class="pdom"><i class="bi bi-bag"></i> E-Commerce</span><span class="pcta">Open doc <i class="bi bi-arrow-right"></i></span></div>
-        </div>
-      </div></div>
-
-      <div class="hpanel"><div class="hfx">
-        <div class="glass gbord proj" data-t="ba" onclick="location.href='banking-user-stories.html'">
-          <span class="paccent"></span>
-          <div class="pstat"><span class="badge b-ba"><i class="bi bi-list-check"></i> User Stories</span><span class="pright"><span class="pid">PRJ-07</span><span class="pstatus doc"><span class="d"></span> Doc</span></span></div>
-          <div class="picon">📋</div>
-          <div class="pbody"><h3>Banking Loan Origination</h3><p class="pd">End-to-end loan lifecycle — user stories with priority, story points, pre/post conditions, acceptance criteria &amp; edge cases.</p>
-            <div class="pspec"><div class="pk"><span class="kk">Stories</span><span class="kv">34</span></div><div class="pk"><span class="kk">Modules</span><span class="kv">10</span></div><div class="pk"><span class="kk">AC</span><span class="kv">✓</span></div></div>
-          </div>
-          <div class="pfoot"><span class="pdom"><i class="bi bi-bank"></i> Banking</span><span class="pcta">Open doc <i class="bi bi-arrow-right"></i></span></div>
-        </div>
-      </div></div>
-
-      <div class="hpanel"><div class="hfx">
-        <div class="glass gbord proj" data-t="ba" onclick="location.href='process-mapping.html'">
-          <span class="paccent"></span>
-          <div class="pstat"><span class="badge b-ba"><i class="bi bi-diagram-2"></i> Process Map</span><span class="pright"><span class="pid">PRJ-08</span><span class="pstatus doc"><span class="d"></span> Doc</span></span></div>
-          <div class="picon">🔀</div>
-          <div class="pbody"><h3>Employee Onboarding · AS-IS vs TO-BE</h3><p class="pd">Full BPR analysis — 12 process steps, gaps mapped, a phased roadmap and a RACI for the redesigned flow.</p>
-            <div class="pspec"><div class="pk hot"><span class="kk">Time</span><span class="kv">↓ 65%</span></div><div class="pk"><span class="kk">Effort</span><span class="kv">↓ 80%</span></div><div class="pk"><span class="kk">Gaps</span><span class="kv">8</span></div></div>
-          </div>
-          <div class="pfoot"><span class="pdom"><i class="bi bi-people"></i> HR &amp; Ops</span><span class="pcta">Open flow <i class="bi bi-arrow-right"></i></span></div>
-        </div>
-      </div></div>
-
-    </div>
-    <div class="hbar"><div class="fillx" id="hfill"></div></div>
-    <div class="hcount" id="hcount"><b>01</b> / 08</div>
-  </div>
-</section>
-
-<!-- ════ IMPACT ════ -->
-<section id="impact" class="section">
-  <div class="wrap">
-    <div data-rv>
-      <span class="kicker"><span class="ix">07</span> Measured outcomes</span>
-      <h2 class="shead">Impact, <span class="grad-txt">by the numbers</span></h2>
-      <p class="sub">A few results from the work — the kind of movement stakeholders actually feel.</p>
-    </div>
-    <div class="impact-grid" data-rv>
-      <div class="imp"><span class="ik">Efficiency</span><div class="iv">~30<sup>%</sup></div><div class="il">Operational efficiency gained by cutting requirement ambiguity &amp; rework at Sai Paramount.</div></div>
-      <div class="imp"><span class="ik">Retention</span><div class="iv">26.54<sup>%</sup></div><div class="il">Customer churn reduced through segmentation &amp; targeted engagement.</div></div>
-      <div class="imp"><span class="ik">Data</span><div class="iv">10,000<sup>+</sup></div><div class="il">Data entries cleaned &amp; processed, lifting dataset accuracy.</div></div>
-      <div class="imp"><span class="ik">Reporting</span><div class="iv">20<sup>+</sup></div><div class="il">Structured performance reports built to sharpen reporting clarity.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ════ CERTS ════ -->
-<section id="certs" class="section">
-  <div class="wrap">
-    <div data-rv>
-      <span class="kicker"><span class="ix">08</span> Verified</span>
-      <h2 class="shead">My <span class="grad-txt">certifications</span></h2>
-    </div>
-    <div class="cgrid">
-      <a class="glass lift cert" href="https://www.coursera.org/account/accomplishments/professional-cert/JPUG55Y3GZAS" target="_blank" rel="noopener" data-rv><div class="ctop"><span class="verified"><i class="bi bi-patch-check-fill"></i> Verified</span></div><div class="ci">Google · Coursera</div><div class="ct">Google Data Analytics Professional Certificate</div><div class="cd">Data analysis, visualization and insights for business decision-making.</div><div class="cfoot"><div class="ctags"><span class="pill">Data Analysis</span><span class="pill">Viz</span></div><span class="clink"><i class="bi bi-arrow-up-right"></i></span></div></a>
-      <a class="glass lift cert" href="https://www.linkedin.com/learning/certificates/b669334513c329a04528bb83f280f79d1892599b57aac79d7dcfb7fd03992d77" target="_blank" rel="noopener" data-rv><div class="ctop"><span class="verified"><i class="bi bi-patch-check-fill"></i> Verified</span></div><div class="ci">Microsoft · LinkedIn</div><div class="ct">Business Analysis by Microsoft &amp; LinkedIn</div><div class="cd">Business process analysis, requirements management and stakeholder collaboration.</div><div class="cfoot"><div class="ctags"><span class="pill">BRD / FSD</span><span class="pill">Stakeholders</span></div><span class="clink"><i class="bi bi-arrow-up-right"></i></span></div></a>
-      <a class="glass lift cert" href="https://www.linkedin.com/learning/certificates/b828054f27da7a9b43747e5dacf14f9708d2ed421d3749466bc90c61933eb04a" target="_blank" rel="noopener" data-rv><div class="ctop"><span class="verified"><i class="bi bi-patch-check-fill"></i> Verified</span></div><div class="ci">LinkedIn Learning</div><div class="ct">Requirements Elicitation &amp; Analysis</div><div class="cd">Stakeholder needs identification, requirements documentation and analysis techniques.</div><div class="cfoot"><div class="ctags"><span class="pill">Elicitation</span><span class="pill">UAT</span></div><span class="clink"><i class="bi bi-arrow-up-right"></i></span></div></a>
-      <a class="glass lift cert" href="https://www.linkedin.com/learning/certificates/e29c230664b57c86c2795595cd269a65e001ab20943b1042c6b7b4923acba714" target="_blank" rel="noopener" data-rv><div class="ctop"><span class="verified"><i class="bi bi-patch-check-fill"></i> Verified</span></div><div class="ci">LinkedIn Learning</div><div class="ct">Agile Requirements Foundations</div><div class="cd">Agile requirements gathering, user story creation and iterative management.</div><div class="cfoot"><div class="ctags"><span class="pill">Agile</span><span class="pill">Scrum</span></div><span class="clink"><i class="bi bi-arrow-up-right"></i></span></div></a>
-      <a class="glass lift cert" href="https://codebasics.io/certificate/CB-49-342372" target="_blank" rel="noopener" data-rv><div class="ctop"><span class="verified"><i class="bi bi-patch-check-fill"></i> Verified</span></div><div class="ci">Codebasics</div><div class="ct">Microsoft Power BI Data Analytics</div><div class="cd">Advanced data visualization and BI using Power BI for interactive dashboards.</div><div class="cfoot"><div class="ctags"><span class="pill">Power BI</span><span class="pill">Dashboards</span></div><span class="clink"><i class="bi bi-arrow-up-right"></i></span></div></a>
-    </div>
-  </div>
-</section>
 
 <footer>
   <div class="wrap foot">
-    <span>© 2026 <b>Manmathnath Mahanta</b> · Business Analyst · Kolkata, IN</span>
+    <span>© <span id="yr"></span> <b>Manmathnath Mahanta</b> · Business Analyst · Kolkata, IN</span>
     <span class="foot-links">
       <a href="mailto:manmath.contact@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
       <a href="tel:+917008548402" aria-label="Phone"><i class="bi bi-telephone"></i></a>
@@ -966,208 +598,146 @@ footer{padding:30px 0;border-top:1px solid var(--line)}
   </div>
 </footer>
 
-<!-- floating actions -->
-<button class="fab" id="askai"><span class="d"></span> <span class="lbl">Ask AI about me</span></button>
-<button class="fab" id="totop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+<button class="askai" id="askai"><span class="d"></span> Ask AI about me</button>
 
-<!-- ════ MODALS ════ -->
 <div class="ovl" id="m1"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-bar-chart-line"></i> India EV Market Analysis</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div class="frame"><iframe title="EV Market Analysis" src="https://app.powerbi.com/view?r=eyJrIjoiM2ZhNTA4ZTItYzY5NS00YWQ0LWJhOTEtMDNmZDkwMWQyOGRkIiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" allowfullscreen loading="lazy"></iframe></div><div class="side"><div><div class="sl">Download</div><a href="assets/projects/EV_Market_Analysis/EV_Market_Analysis_Report_2022_2024.pdf" class="btn ghost sm" style="width:100%;justify-content:center"><i class="bi bi-download"></i> Report PDF</a></div><div><div class="sl">Stack</div><div class="stack"><span class="pill">Power BI</span><span class="pill">SQL</span></div></div></div></div><div class="high"><div class="hh">Highlights</div><div class="hl"><span class="b">+</span><span><b>Market growth:</b> analysed the Indian EV market (2022–2024) for growth trends, brand performance and state-level adoption.</span></div><div class="hl"><span class="b">+</span><span><b>Regional insight:</b> compared high-penetration and underperforming regions to map adoption patterns.</span></div><div class="hl"><span class="b">+</span><span><b>Roadmap:</b> recommendations for product strategy, investment zones and infrastructure partnerships.</span></div></div></div></div></div>
-
 <div class="ovl" id="m2"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-bar-chart-line"></i> Google Trend Dashboard</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div class="frame"><iframe title="Google Trend Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiMTRjZTNkYmYtYjIzOC00Mjk3LWIzMWYtNjMxN2NhYTVmMzI2IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" allowfullscreen loading="lazy"></iframe></div><div class="side"><div><div class="sl">Links</div><div class="lk"><a href="https://github.com/Manmath235/Google_Trend_Dashboard.git" target="_blank" rel="noopener" class="btn ghost sm" style="width:100%;justify-content:center"><i class="bi bi-github"></i> GitHub</a><a href="assets/projects/Google_Trend_Analysis/Google Trend Report.pdf" class="btn ghost sm" style="width:100%;justify-content:center"><i class="bi bi-download"></i> Report PDF</a></div></div><div><div class="sl">Stack</div><div class="stack"><span class="pill">Google APIs</span><span class="pill">Power BI</span><span class="pill">Excel</span></div></div></div></div><div class="high"><div class="hh">Highlights</div><div class="hl"><span class="b">+</span><span><b>Opportunity spotting:</b> uses Google Trends to identify consumer interests and emerging market opportunities.</span></div><div class="hl"><span class="b">+</span><span><b>Regional behaviour:</b> insight into search behaviours across 60+ countries.</span></div><div class="hl"><span class="b">+</span><span><b>Decisions:</b> real-time trend visualisations to support forecasting and planning.</span></div></div></div></div></div>
-
 <div class="ovl" id="m3"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-bar-chart-line"></i> Rail Accident Analysis</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div class="frame"><iframe title="Rail Accident Analysis" src="https://app.powerbi.com/view?r=eyJrIjoiMmZkNTgwODktNzAyMy00YmZlLTk5YzEtYTY4YWIwNmEwODI0IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" allowfullscreen loading="lazy"></iframe></div><div class="side"><div><div class="sl">Download</div><a href="assets/projects/Train Accident Analysis/Indian Rail Accident Analysis Report.pdf" download class="btn ghost sm" style="width:100%;justify-content:center"><i class="bi bi-download"></i> Report PDF</a></div><div><div class="sl">Stack</div><div class="stack"><span class="pill">Power BI</span><span class="pill">Excel</span></div></div></div></div><div class="high"><div class="hh">Highlights</div><div class="hl"><span class="b">+</span><span><b>High-risk routes:</b> identified accident-prone routes through geographical analysis.</span></div><div class="hl"><span class="b">+</span><span><b>Cause priority:</b> highlighted top causes to guide safety initiatives.</span></div><div class="hl"><span class="b">+</span><span><b>Policy guidance:</b> informed regulation through data-driven insight.</span></div></div></div></div></div>
-
 <div class="ovl" id="m4"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-bar-chart-line"></i> Customer Retention Dashboard</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div class="frame"><iframe title="Customer Retention Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiZmU5YzFlMGMtNDUxYy00OTcyLThjODktZDdlYjFkODJkMzc4IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" allowfullscreen loading="lazy"></iframe></div><div class="side"><div><div class="sl">GitHub</div><a href="https://github.com/Manmath235/Call_Center_Trend_Analysis.git" target="_blank" rel="noopener" class="btn ghost sm" style="width:100%;justify-content:center"><i class="bi bi-github"></i> Repository</a></div><div><div class="sl">Stack</div><div class="stack"><span class="pill">Power BI</span><span class="pill">Excel</span></div></div></div></div><div class="high"><div class="hh">Highlights</div><div class="hl"><span class="b">+</span><span><b>Churn analysis:</b> 26.54% churn reduction via segmentation and proactive engagement.</span></div><div class="hl"><span class="b">+</span><span><b>Call-centre performance:</b> closed gaps to improve response time and resolution KPIs.</span></div><div class="hl"><span class="b">+</span><span><b>Personalised offers:</b> recommendations from demographic and usage patterns.</span></div></div></div></div></div>
-
 <div class="ovl" id="m5"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-bar-chart-line"></i> AtliQ Hardware Insights</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div class="frame" style="padding-top:56%"><iframe title="AtliQ Hardware Insights" src="https://www.canva.com/design/DAGIRr-6J_w/r9hmDWSWTQBC9AZQL4wG-Q/view?embed&embed_host=share" allowfullscreen loading="lazy"></iframe></div><div class="side"><div><div class="sl">Download</div><a href="assets/projects/AtliQ Hardware Insights Report/Report.pdf" download class="btn ghost sm" style="width:100%;justify-content:center"><i class="bi bi-download"></i> Report PDF</a></div><div><div class="sl">Stack</div><div class="stack"><span class="pill">Power BI</span><span class="pill">SQL</span></div></div></div></div><div class="high"><div class="hh">Highlights</div><div class="hl"><span class="b">+</span><span><b>Analysis:</b> deep dive into sales and manufacturing data for critical insights.</span></div><div class="hl"><span class="b">+</span><span><b>Efficiency:</b> identified cost-reduction opportunities and resource optimisation.</span></div><div class="hl"><span class="b">+</span><span><b>Customers:</b> discount-pattern reports for targeted promotions.</span></div></div></div></div></div>
 
 <script>
 (function(){
-'use strict';
-var RM = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  "use strict";
+  var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var year = new Date().getFullYear();
+  var yrEl = document.getElementById('yr'); if(yrEl) yrEl.textContent = year;
+  var cyEl = document.getElementById('contribYear'); if(cyEl) cyEl.textContent = year;
 
-/* ── experience calc (since Mar 2023) ── */
-function calcExp(){
-  var s=new Date(2023,2,1), n=new Date();
-  var y=n.getFullYear()-s.getFullYear(), m=n.getMonth()-s.getMonth();
-  if(m<0){y--;m+=12;}
-  var tot=y*12+m; if(tot<12) return tot+'+ mo';
-  return y+((tot%12)>=6?'.5':'')+'+';
-}
-document.querySelectorAll('.dexp').forEach(function(e){e.textContent=calcExp();});
+  function calcExp(){
+    var start = new Date(2023, 2, 1);
+    var y = (Date.now() - start.getTime()) / (365.25 * 24 * 3600 * 1000);
+    return Math.max(1, Math.floor(y)) + '+';
+  }
+  var ys = document.getElementById('yrsStat'); if(ys) ys.textContent = calcExp();
 
-/* ── burger menu ── */
-var burger=document.getElementById('burger'), mnav=document.getElementById('mnav');
-burger.addEventListener('click',function(){mnav.classList.toggle('open');});
-mnav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mnav.classList.remove('open');});});
+  var burger = document.getElementById('burger'), navLinks = document.getElementById('navLinks');
+  if(burger && navLinks){
+    burger.addEventListener('click', function(){ navLinks.classList.toggle('show'); });
+    navLinks.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ navLinks.classList.remove('show'); }); });
+  }
 
-/* ── reveal on scroll (stagger within section) ── */
-var rio=new IntersectionObserver(function(en){
-  en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); rio.unobserve(e.target);} });
-},{threshold:.1, rootMargin:'0px 0px -8% 0px'});
-document.querySelectorAll('section').forEach(function(sec){
-  sec.querySelectorAll('[data-rv]').forEach(function(el,i){
-    el.style.transitionDelay=(Math.min(i,6)*70)+'ms'; rio.observe(el);
+  if('IntersectionObserver' in window && !RM){
+    var rio = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); rio.unobserve(e.target); } });
+    }, {threshold:0.08, rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('[data-rv]').forEach(function(el){ rio.observe(el); });
+  } else {
+    document.querySelectorAll('[data-rv]').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  function fillBars(){ document.querySelectorAll('.bar i').forEach(function(b){ b.style.width = (b.getAttribute('data-w') || 0) + '%'; }); }
+  if('IntersectionObserver' in window){
+    var sk = document.getElementById('skills');
+    if(sk){
+      var sio = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ fillBars(); sio.disconnect(); } }); }, {threshold:0.2});
+      sio.observe(sk);
+    } else { fillBars(); }
+  } else { fillBars(); }
+
+  document.querySelectorAll('.xp-head').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.xp-item');
+      var open = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
   });
-});
 
-/* ── skill meters ── */
-var sio=new IntersectionObserver(function(en){
-  en.forEach(function(e){ if(e.isIntersecting){ e.target.style.width=e.target.dataset.w+'%'; sio.unobserve(e.target);} });
-},{threshold:.4});
-document.querySelectorAll('.fill').forEach(function(b){sio.observe(b);});
-
-/* ── count-up (KPIs + impact) ── */
-function countUp(el){
-  var target=parseFloat(el.dataset.count), dec=parseInt(el.dataset.dec||'0',10);
-  var sup=el.querySelector('sup')?el.querySelector('sup').outerHTML:'';
-  if(RM){ el.innerHTML=fmt(target,dec)+sup; return; }
-  var t0=null, dur=1500;
-  function fmt(v,d){ var n=d?v.toFixed(d):Math.round(v); return Number(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}); }
-  function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1); var e=1-Math.pow(1-p,3);
-    el.innerHTML=fmt(target*e,dec)+sup; if(p<1) requestAnimationFrame(step); else el.innerHTML=fmt(target,dec)+sup; }
-  requestAnimationFrame(step);
-}
-function fmt(v,d){ var n=d?v.toFixed(d):Math.round(v); return Number(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}); }
-var cio=new IntersectionObserver(function(en){
-  en.forEach(function(e){ if(e.isIntersecting){ countUp(e.target); cio.unobserve(e.target);} });
-},{threshold:.5});
-document.querySelectorAll('[data-count]').forEach(function(el){cio.observe(el);});
-
-/* ── sparkline draw ── */
-(function(){
-  var sp=document.getElementById('spark'); if(!sp) return;
-  var ln=sp.querySelector('.ln');
-  try{ var len=ln.getTotalLength(); ln.style.setProperty('--len', len); }catch(e){ ln.style.setProperty('--len', 400); }
-  var o=new IntersectionObserver(function(en){
-    en.forEach(function(e){ if(e.isIntersecting){ sp.classList.add('draw'); o.disconnect(); } });
-  },{threshold:.4});
-  o.observe(sp);
-})();
-
-/* ── scroll progress ── */
-var prog=document.getElementById('progress');
-function onScrollProg(){
-  var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
-  var max=h.scrollHeight-h.clientHeight; prog.style.width=(max>0?(sc/max*100):0)+'%';
-}
-addEventListener('scroll',onScrollProg,{passive:true}); onScrollProg();
-
-/* ── nav + dot nav ── */
-var secMap=[['hero','Overview'],['about','Profile'],['process','Process'],['experience','Experience'],['tools','Toolkit'],['projects','Work'],['impact','Impact'],['certs','Certificates']];
-var dotsHost=document.getElementById('dots');
-secMap.forEach(function(s){
-  var b=document.createElement('button'); b.dataset.target=s[0];
-  b.innerHTML='<span class="lab">'+s[1]+'</span>';
-  b.addEventListener('click',function(){ var el=document.getElementById(s[0]); if(el) el.scrollIntoView({behavior:RM?'auto':'smooth'}); });
-  dotsHost.appendChild(b);
-});
-var dotBtns=dotsHost.querySelectorAll('button');
-var navLinks=document.querySelectorAll('.bar-links a'), secs=document.querySelectorAll('section[id]');
-function navActive(){
-  var cur=''; secs.forEach(function(s){ if(scrollY>=s.offsetTop-140) cur=s.id; });
-  navLinks.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href')==='#'+cur); });
-  dotBtns.forEach(function(b){ b.classList.toggle('on', b.dataset.target===cur); });
-}
-addEventListener('scroll',navActive,{passive:true}); navActive();
-
-/* ── experience accordion ── */
-document.querySelectorAll('.exp .exp-head').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    var exp=btn.closest('.exp');
-    var open=exp.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open?'true':'false');
+  function openModal(id){ var m = document.getElementById(id); if(m){ m.classList.add('open'); document.body.style.overflow = 'hidden'; } }
+  function closeAll(){ document.querySelectorAll('.ovl.open').forEach(function(o){ o.classList.remove('open'); }); document.body.style.overflow = ''; }
+  document.querySelectorAll('[data-modal]').forEach(function(c){
+    c.addEventListener('click', function(){ openModal(c.getAttribute('data-modal')); });
+    c.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openModal(c.getAttribute('data-modal')); } });
   });
-});
+  document.querySelectorAll('.ovl').forEach(function(o){
+    o.addEventListener('click', function(e){ if(e.target === o || (e.target.closest && e.target.closest('[data-close]'))){ closeAll(); } });
+  });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeAll(); });
 
-/* ── horizontal pinned projects gallery ── */
-(function(){
-  var sec=document.getElementById('projects');
-  var track=document.getElementById('htrack');
-  var fill=document.getElementById('hfill');
-  var hcount=document.getElementById('hcount');
-  if(!sec||!track) return;
-  var panels=Array.prototype.slice.call(track.querySelectorAll('.hpanel'));
-  var mqSmall=window.matchMedia('(max-width:900px)');
-  var extra=0, start=0, curX=0, targetX=0, raf=0, running=false;
+  var askai = document.getElementById('askai');
+  if(askai){
+    askai.addEventListener('click', function(){
+      var exp = calcExp();
+      var p = "You are a recruiter's assistant. Give a sharp candidate brief on Manmathnath Mahanta, a Business Analyst (" + exp + " years, Kolkata, India) targeting MNC roles.\n\nFacts:\n- Bridges business and engineering: requirement elicitation, BRD/FSD, user stories, UML, process mapping, UAT, Agile/Scrum, Product Owner.\n- Analytics: Power BI, SQL, Excel.\n- Impact: ~30% efficiency gain at Sai Paramount; 26.54% churn reduction; 10,000+ records cleaned; 20+ projects delivered; 20+ reports.\n- Experience: Tech Exactly (Mar 2026-Present), Sai Paramount IT (Jul 2024-Mar 2026), GEEMSCO (Mar 2023-Jul 2024), Afame internship (2023).\n\nWrite: Why he stands out (3-4 bullets), What he brings (3-4 bullets), Proof of work (4-5 bullets with numbers), Bottom line (1 sentence). Every bullet has a specific fact. Under 200 words.";
+      window.open('https://chatgpt.com/?q=' + encodeURIComponent(p), '_blank');
+    });
+  }
 
-  function isNative(){ return RM || mqSmall.matches; }
-  function pad2(n){ n=String(n); return n.length<2?('0'+n):n; }
-
-  function measure(){
-    if(isNative()){
-      sec.classList.add('nopin'); sec.style.height='';
-      track.style.transform='';
-      panels.forEach(function(p){ var fx=p.firstElementChild; if(fx){fx.style.transform='';fx.style.opacity='';} });
-      running=false; if(raf){cancelAnimationFrame(raf);raf=0;}
-      return;
+  function rnd(seed){ var x = Math.sin(seed * 99991.7) * 10000; return x - Math.floor(x); }
+  function buildContrib(){
+    var grid = document.getElementById('calGrid'), months = document.getElementById('calMonths'), countEl = document.getElementById('contribCount');
+    if(!grid) return;
+    var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var now = new Date();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var yStart = new Date(year, 0, 1);
+    var yEnd = new Date(year, 11, 31);
+    var cur = new Date(yStart);
+    cur.setDate(cur.getDate() - cur.getDay());
+    var total = 0, weeks = [];
+    while(cur <= yEnd){
+      var col = [];
+      for(var d = 0; d < 7; d++){
+        var inYear = cur.getFullYear() === year;
+        var future = cur > today;
+        var count = 0, level = 0, firstOfMonth = (cur.getDate() === 1 && inYear);
+        if(inYear && !future){
+          var doy = Math.floor((cur - yStart) / 86400000);
+          var prog = doy / 364;
+          var wd = cur.getDay();
+          var weekend = (wd === 0 || wd === 6) ? 0.4 : 1;
+          var base = rnd(doy + 1);
+          var score = base * weekend * (0.3 + 0.9 * prog);
+          if(rnd(doy * 1.7 + 5) > 0.85){ score += 0.45; }
+          count = Math.round(score * 8);
+          if(count < 0){ count = 0; }
+          level = count === 0 ? 0 : count < 2 ? 1 : count < 4 ? 2 : count < 6 ? 3 : 4;
+          total += count;
+        }
+        col.push({date:new Date(cur), level:level, count:count, future:future, inYear:inYear, firstOfMonth:firstOfMonth});
+        cur.setDate(cur.getDate() + 1);
+      }
+      weeks.push(col);
     }
-    sec.classList.remove('nopin');
-    var trackBox=track.getBoundingClientRect();
-    var lastBox=panels[panels.length-1].getBoundingClientRect();
-    var contentRight=lastBox.right - trackBox.left;
-    var endGutter=Math.max(36,(window.innerWidth-1240)/2+36);
-    extra=Math.max(0, contentRight + endGutter - window.innerWidth);
-    sec.style.height=(window.innerHeight + extra)+'px';
-    start=sec.offsetTop;
-    onScroll();
-    if(!running){ running=true; raf=requestAnimationFrame(loop); }
-  }
-  function onScroll(){
-    if(!running) return;
-    var sc=Math.min(Math.max(window.scrollY - start, 0), extra);
-    targetX=-sc;
-    if(fill) fill.style.width=(extra>0 ? (sc/extra*100) : 0)+'%';
-  }
-  function loop(){
-    if(!running) return;
-    curX += (targetX - curX) * 0.13;
-    if(Math.abs(targetX - curX) < 0.3) curX=targetX;
-    track.style.transform='translate3d('+curX+'px,0,0)';
-    var vw=window.innerWidth, center=vw/2, best=0, bestD=1e9;
-    for(var i=0;i<panels.length;i++){
-      var r=panels[i].getBoundingClientRect();
-      var pc=r.left + r.width/2;
-      var d=Math.abs(pc - center);
-      var n=Math.min(d/(vw*0.62), 1);
-      var fx=panels[i].firstElementChild;
-      if(fx){ fx.style.opacity=(1 - n*0.55).toFixed(3); fx.style.transform='scale('+(1 - n*0.05).toFixed(3)+')'; }
-      if(d<bestD){ bestD=d; best=i; }
+    var gFrag = document.createDocumentFragment();
+    var mFrag = document.createDocumentFragment();
+    weeks.forEach(function(col){
+      var c = document.createElement('div'); c.className = 'cal-col';
+      var label = '';
+      col.forEach(function(day){
+        var cell = document.createElement('div');
+        cell.className = 'cell' + (day.level ? ' l' + day.level : '');
+        if(day.inYear && !day.future){
+          var ds = day.date.toLocaleDateString('en-GB', {day:'numeric', month:'short'});
+          cell.title = (day.count === 0 ? 'No contributions' : day.count + (day.count === 1 ? ' contribution' : ' contributions')) + ' on ' + ds;
+        }
+        if(day.firstOfMonth){ label = MONTHS[day.date.getMonth()]; }
+        c.appendChild(cell);
+      });
+      gFrag.appendChild(c);
+      var ms = document.createElement('span'); ms.textContent = label; mFrag.appendChild(ms);
+    });
+    grid.appendChild(gFrag);
+    if(months){ months.appendChild(mFrag); }
+    if(countEl){
+      if(RM){ countEl.textContent = total; }
+      else {
+        var n = 0, step = Math.max(1, Math.round(total / 40));
+        var t = setInterval(function(){ n += step; if(n >= total){ n = total; clearInterval(t); } countEl.textContent = n; }, 24);
+      }
     }
-    if(hcount){ var total=panels.length-1; var idx=Math.min(Math.max(best,1),total); hcount.innerHTML='<b>'+pad2(idx)+'</b> / '+pad2(total); }
-    raf=requestAnimationFrame(loop);
   }
-  addEventListener('scroll',function(){ onScroll(); start=sec.offsetTop; },{passive:true});
-  addEventListener('resize',measure);
-  if(mqSmall.addEventListener) mqSmall.addEventListener('change',measure);
-  measure();
-  setTimeout(measure,300);
-  window.addEventListener('load',measure);
-})();
-
-/* ── modals ── */
-function openM(id){ var o=document.getElementById(id); if(!o)return; o.classList.add('open'); document.body.style.overflow='hidden'; }
-function closeM(o){ o.classList.remove('open'); document.body.style.overflow=''; }
-document.querySelectorAll('[data-modal]').forEach(function(c){
-  c.addEventListener('click',function(){ openM(c.dataset.modal); });
-});
-document.querySelectorAll('.ovl').forEach(function(o){
-  o.addEventListener('click',function(e){ if(e.target===o || e.target.closest('[data-close]')) closeM(o); });
-});
-addEventListener('keydown',function(e){ if(e.key==='Escape'){ document.querySelectorAll('.ovl.open').forEach(closeM); } });
-
-/* ── floating actions ── */
-var totop=document.getElementById('totop'), askai=document.getElementById('askai');
-totop.addEventListener('click',function(){ scrollTo({top:0,behavior:RM?'auto':'smooth'}); });
-addEventListener('scroll',function(){
-  var on=scrollY>600; totop.classList.toggle('show',on); askai.classList.toggle('show',on);
-},{passive:true});
-askai.addEventListener('click',function(){
-  var exp=calcExp();
-  var p="You are a career coach. A recruiter just landed on Manmathnath Mahanta's portfolio — Business Analyst with "+exp+" years of experience in Kolkata, India. Give a razor-sharp candidate brief in bullet points only.\n\nKey facts:\n- Core skills: BRD/FSD, UML, User Stories, Process Mapping, UAT, Agile/Scrum\n- Tools: Power BI, SQL, Excel, ClickUp, Postman, LucidChart, Notion, Claude, Lovable\n- Experience: Tech Exactly (Mar 2026-Present), Sai Paramount IT (Jul 2024-Mar 2026), GEEMSCO (Mar 2023-Jul 2024), Afame Technologies internship (2023)\n- Achieved ~30% efficiency improvement at Sai Paramount; 26.54% churn reduction on a retention dashboard; cleaned 10,000+ data entries; built 20+ performance reports\n\nFormat:\n**Why He Stands Out** (3-4 bullets)\n**What He Brings** (3-4 bullets)\n**Proof of Work** (4-5 bullets with specific results)\n**Bottom Line** (1 sentence)\n\nRules: No intros. Every bullet must have a specific fact or number. Under 200 words total.";
-  window.open('https://chatgpt.com/?q='+encodeURIComponent(p),'_blank','noopener');
-});
-
+  buildContrib();
 })();
 </script>
 </body>
