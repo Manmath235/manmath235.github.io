@@ -141,6 +141,50 @@ aside.side{position:sticky;top:76px}
 .repo-meta .open{margin-left:auto;color:var(--green-fg);font-weight:600;transition:gap .15s}
 .repo:hover .open{gap:8px}
 
+/* project filter + groups */
+.proj-filter{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+.pf-btn{font-family:var(--ui);font-size:13px;font-weight:500;color:var(--text-2);background:var(--card-2);
+  border:1px solid var(--border);border-radius:30px;padding:6px 14px;cursor:pointer;display:inline-flex;
+  align-items:center;gap:7px;transition:background .15s,border-color .15s,color .15s}
+.pf-btn:hover{background:#262c36;border-color:var(--subtle);color:var(--text)}
+.pf-btn .pf-c{font-size:11px;color:var(--muted);background:var(--bg-inset);border-radius:30px;padding:0 7px;line-height:17px}
+.pf-btn.active{color:#fff;background:var(--green);border-color:rgba(240,246,252,.1)}
+.pf-btn.active .pf-c{color:#fff;background:rgba(255,255,255,.18)}
+.proj-group{margin-bottom:26px}
+.proj-group:last-child{margin-bottom:0}
+.proj-group[hidden]{display:none}
+.proj-group-h{display:flex;align-items:center;gap:9px;margin-bottom:14px;font-size:13px;font-weight:600;color:var(--text-2)}
+.proj-group-h i{color:var(--green-fg);font-size:15px}
+.proj-group-h .pgc{font-size:11px;color:var(--muted);border:1px solid var(--border);border-radius:30px;padding:1px 8px;font-weight:500}
+.proj-group-h .pg-rule{flex:1;height:1px;background:var(--border-muted)}
+
+/* client repo badges */
+.repo-vis.client{color:var(--green-fg);border-color:rgba(63,185,80,.35);background:rgba(35,134,54,.12)}
+.repo-vis.flagship{color:#d29922;border-color:rgba(210,153,34,.35);background:rgba(210,153,34,.1)}
+.repo-meta .rstat.geo{color:var(--link)}
+
+/* client modal hero (replaces iframe for confidential work) */
+.cproj-hero{position:relative;border-radius:var(--r);border:1px solid var(--border);overflow:hidden;
+  background:radial-gradient(120% 140% at 0% 0%,rgba(35,134,54,.22),transparent 55%),
+  radial-gradient(120% 140% at 100% 100%,rgba(56,139,253,.16),transparent 55%),var(--bg-inset);
+  padding:26px 24px;display:flex;flex-direction:column;gap:14px;min-height:208px;justify-content:center}
+.cproj-hero .ch-domain{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;font-size:11px;
+  letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--green-fg);
+  background:rgba(35,134,54,.14);border:1px solid rgba(63,185,80,.3);padding:4px 11px;border-radius:30px}
+.cproj-hero h2{font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.15;color:var(--text)}
+.cproj-hero p{font-size:14px;color:var(--text-2);line-height:1.6;max-width:60ch}
+.cproj-hero .ch-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px}
+.cproj-hero .ch-metric{position:absolute;top:18px;right:20px;text-align:right}
+.cproj-hero .ch-metric .v{display:block;font-size:22px;font-weight:800;color:var(--green-fg);line-height:1;letter-spacing:-.02em}
+.cproj-hero .ch-metric .l{font-size:10.5px;color:var(--muted);letter-spacing:.03em;text-transform:uppercase}
+.conf-note{display:flex;align-items:flex-start;gap:9px;font-size:12.5px;color:var(--muted);
+  background:var(--bg-inset);border:1px solid var(--border);border-radius:var(--r);padding:10px 12px}
+.conf-note i{color:var(--subtle);font-size:14px;margin-top:1px;flex-shrink:0}
+.ctx{display:flex;flex-direction:column;gap:9px}
+.ctx .row{display:flex;justify-content:space-between;gap:10px;font-size:13px}
+.ctx .row .k{color:var(--muted)}
+.ctx .row .val{color:var(--text-2);font-weight:500;text-align:right}
+
 /* contribution graph */
 .contrib{border:1px solid var(--border);border-radius:var(--r-lg);background:var(--bg);overflow:hidden}
 .contrib-bar{padding:14px 18px;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-2);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
@@ -350,12 +394,13 @@ footer{border-top:1px solid var(--border);margin-top:50px;padding:26px 0;backgro
         <div class="side-block-t">Focus areas</div>
         <div class="focus">
           <span class="topic">Requirements Engineering</span>
+          <span class="topic">Product Ownership</span>
           <span class="topic">Agile / Scrum</span>
           <span class="topic">User Stories</span>
           <span class="topic">UAT</span>
           <span class="topic">Process Mapping</span>
+          <span class="topic">International Clients</span>
           <span class="topic">Power BI</span>
-          <span class="topic">Stakeholder Mgmt</span>
         </div>
       </div>
     </aside>
@@ -388,69 +433,110 @@ footer{border-top:1px solid var(--border);margin-top:50px;padding:26px 0;backgro
           <div class="readme-bar"><i class="bi bi-file-earmark-text"></i> <span class="fn">README.md</span></div>
           <div class="readme-body">
             <h1>I make sure teams build the <span class="wave">right thing.</span></h1>
-            <p>I'm a Business Analyst working at the seam between business and engineering. I run discovery, turn ambiguous goals into precise <b>BRDs, user stories and UAT</b>, and own the backlog as Product Owner — then I measure what actually ships.</p>
-            <p>The results matter more than the documents:</p>
-            <div class="readme-stats">
-              <div class="rs"><span class="rsv">~30%</span><span class="rsl">less rework</span></div>
-              <div class="rs"><span class="rsv">26.54%</span><span class="rsl">lower churn</span></div>
-              <div class="rs"><span class="rsv">10,000+</span><span class="rsl">records analysed</span></div>
-              <div class="rs"><span class="rsv">20+</span><span class="rsl">projects delivered</span></div>
-            </div>
+            <p>I'm a Business Analyst working at the seam between business and engineering. Right now I'm the <b>sole BA on four concurrent product builds</b> at Tech Exactly, working directly with clients across the <b>UAE, KSA and Ireland</b> — owning each from discovery and BRD/FSD/SRS through to UAT sign-off as Product Owner.</p>
             <h3>What I bring</h3>
             <ul class="bring">
-              <li><i class="bi bi-dot"></i><span><b>Requirements with no loose ends</b> — interviews, workshops and JAD turned into BRD/FSD and user stories with airtight acceptance criteria.</span></li>
-              <li><i class="bi bi-dot"></i><span><b>Delivery ownership</b> — Agile/Scrum, backlog grooming, UAT and stakeholder sign-off, all the way to a clean release.</span></li>
+              <li><i class="bi bi-dot"></i><span><b>Requirements with no loose ends</b> — discovery, interviews and workshops turned into BRD/FSD/SRS, UML and user stories with airtight acceptance criteria.</span></li>
+              <li><i class="bi bi-dot"></i><span><b>End-to-end delivery ownership</b> — Product Owner across multiple live products: backlog, sprint ceremonies, UAT and client sign-off, all the way to a clean release.</span></li>
+              <li><i class="bi bi-dot"></i><span><b>International client engagement</b> — translating ambiguous briefs from clients in the UAE, KSA and Ireland into delivery-ready scope for cross-functional teams.</span></li>
               <li><i class="bi bi-dot"></i><span><b>Proof in data</b> — Power BI, SQL and Excel to validate decisions and show impact, not just opinions.</span></li>
-              <li><i class="bi bi-dot"></i><span><b>Alignment across teams</b> — UML and process maps that get business and engineering reading from the same page.</span></li>
             </ul>
-            <div class="readme-note"><i class="bi bi-info-circle"></i><span>Currently open to Business Analyst roles where I can own outcomes end to end — ideally with a team building at scale.</span></div>
+            <div class="readme-note"><i class="bi bi-info-circle"></i><span>Open to Business Analyst / Product Owner roles where I can own outcomes end to end — ideally with a team shipping products at scale.</span></div>
           </div>
         </div>
       </section>
 
       <section id="projects" data-rv>
-        <div class="sec-head"><i class="bi bi-pin-angle ic"></i> Pinned <span class="ct">8</span><span class="rule"></span></div>
-        <div class="repos">
-          <div class="repo" data-modal="m1" role="button" tabindex="0">
-            <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-code"></i><span>india-ev-market-analysis</span></span><span class="repo-vis">Public</span></div>
-            <p class="repo-desc">Power BI study of India's EV market (2022–24): growth, brand share, state-level adoption and a go-to-market roadmap.</p>
-            <div class="repo-meta"><span class="lang"><span class="dot" style="background:#F2C811"></span> Power BI</span><span class="rstat"><i class="bi bi-broadcast-pin"></i> Live dashboard</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+        <div class="sec-head"><i class="bi bi-folder2-open ic"></i> Projects <span class="ct">13</span><span class="rule"></span></div>
+
+        <div class="proj-filter" id="projFilter">
+          <button class="pf-btn active" data-filter="all" aria-pressed="true">All <span class="pf-c">13</span></button>
+          <button class="pf-btn" data-filter="client" aria-pressed="false"><i class="bi bi-briefcase"></i> Client Work <span class="pf-c">5</span></button>
+          <button class="pf-btn" data-filter="data" aria-pressed="false"><i class="bi bi-bar-chart"></i> Data &amp; BI <span class="pf-c">5</span></button>
+          <button class="pf-btn" data-filter="ba" aria-pressed="false"><i class="bi bi-file-earmark-text"></i> BA Artifacts <span class="pf-c">3</span></button>
+        </div>
+
+        <div class="proj-group" data-group="client">
+          <div class="proj-group-h"><i class="bi bi-briefcase"></i> Client Work <span class="pgc">5</span><span class="pg-rule"></span></div>
+          <div class="repos">
+            <div class="repo" data-modal="m6" role="button" tabindex="0">
+              <div class="repo-top"><span class="repo-name"><i class="bi bi-coin"></i><span>bbps-fintech-platform</span></span><span class="repo-vis flagship">Flagship</span></div>
+              <p class="repo-desc">BBPS-integrated bill-payment &amp; fintech platform — 10+ payment categories and a first-of-its-kind real-time rent payment via Credit Card over IMPS.</p>
+              <div class="repo-meta"><span class="lang"><span class="dot" style="background:#2ea043"></span> Fintech SaaS</span><span class="rstat"><i class="bi bi-graph-up-arrow"></i> ₹4,000Cr+ in 5 mo</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+            </div>
+            <div class="repo" data-modal="m7" role="button" tabindex="0">
+              <div class="repo-top"><span class="repo-name"><i class="bi bi-heart-pulse"></i><span>dalilok-mental-health-ai</span></span><span class="repo-vis client">UAE client</span></div>
+              <p class="repo-desc">AI-powered mental-health support app (iOS &amp; Android) for the UAE — 24/7 AI assistance in Arabic &amp; English within a clinician-approved safety boundary.</p>
+              <div class="repo-meta"><span class="lang"><span class="dot" style="background:#3fb950"></span> Healthcare SaaS</span><span class="rstat geo"><i class="bi bi-geo-alt"></i> UAE</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+            </div>
+            <div class="repo" data-modal="m8" role="button" tabindex="0">
+              <div class="repo-top"><span class="repo-name"><i class="bi bi-shield-check"></i><span>galway-safe-app</span></span><span class="repo-vis client">IE client</span></div>
+              <p class="repo-desc">Passive night-safety app commissioned by the Western Region Drug &amp; Alcohol Task Force — geofenced monitoring that alerts ICE contacts without the user asking for help.</p>
+              <div class="repo-meta"><span class="lang"><span class="dot" style="background:#3fb950"></span> Public Safety</span><span class="rstat geo"><i class="bi bi-geo-alt"></i> Ireland</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+            </div>
+            <div class="repo" data-modal="m9" role="button" tabindex="0">
+              <div class="repo-top"><span class="repo-name"><i class="bi bi-recycle"></i><span>wasteops-platform</span></span><span class="repo-vis client">KSA client</span></div>
+              <p class="repo-desc">Multi-tenant waste-management SaaS digitising every bin service across industrial sites — GPS-validated mobile app plus a web admin panel with audit-grade records.</p>
+              <div class="repo-meta"><span class="lang"><span class="dot" style="background:#3fb950"></span> Industrial SaaS</span><span class="rstat geo"><i class="bi bi-geo-alt"></i> KSA</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+            </div>
+            <div class="repo" data-modal="m10" role="button" tabindex="0">
+              <div class="repo-top"><span class="repo-name"><i class="bi bi-flag"></i><span>e2p-event-comms-app</span></span><span class="repo-vis client">Client</span></div>
+              <p class="repo-desc">Event-communication app (iOS &amp; Android) replacing WhatsApp/email for E2P Group across racing, training and corporate driving events, with a full event-lifecycle admin panel.</p>
+              <div class="repo-meta"><span class="lang"><span class="dot" style="background:#3fb950"></span> Event SaaS</span><span class="rstat"><i class="bi bi-people"></i> Role-based access</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+            </div>
           </div>
-          <div class="repo" data-modal="m4" role="button" tabindex="0">
-            <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-code"></i><span>customer-retention-dashboard</span></span><span class="repo-vis">Public</span></div>
-            <p class="repo-desc">Segmentation and engagement model that cut customer churn by 26.54%, with call-centre KPI analysis.</p>
-            <div class="repo-meta"><span class="lang"><span class="dot" style="background:#F2C811"></span> Power BI</span><span class="rstat"><i class="bi bi-graph-down-arrow"></i> 26.54% churn</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+        </div>
+
+        <div class="proj-group" data-group="data">
+          <div class="proj-group-h"><i class="bi bi-bar-chart"></i> Data &amp; BI <span class="pgc">5</span><span class="pg-rule"></span></div>
+          <div class="repos">
+            <div class="repo" data-modal="m1" role="button" tabindex="0">
+              <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-code"></i><span>india-ev-market-analysis</span></span><span class="repo-vis">Public</span></div>
+              <p class="repo-desc">Power BI study of India's EV market (2022–24): growth, brand share, state-level adoption and a go-to-market roadmap.</p>
+              <div class="repo-meta"><span class="lang"><span class="dot" style="background:#F2C811"></span> Power BI</span><span class="rstat"><i class="bi bi-broadcast-pin"></i> Live dashboard</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+            </div>
+            <div class="repo" data-modal="m4" role="button" tabindex="0">
+              <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-code"></i><span>customer-retention-dashboard</span></span><span class="repo-vis">Public</span></div>
+              <p class="repo-desc">Segmentation and engagement model that cut customer churn by 26.54%, with call-centre KPI analysis.</p>
+              <div class="repo-meta"><span class="lang"><span class="dot" style="background:#F2C811"></span> Power BI</span><span class="rstat"><i class="bi bi-graph-down-arrow"></i> 26.54% churn</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+            </div>
+            <div class="repo" data-modal="m2" role="button" tabindex="0">
+              <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-code"></i><span>google-trends-dashboard</span></span><span class="repo-vis">Public</span></div>
+              <p class="repo-desc">Consumer-interest and opportunity dashboard mined from Google Trends across 60+ countries.</p>
+              <div class="repo-meta"><span class="lang"><span class="dot" style="background:#F2C811"></span> Power BI</span><span class="rstat"><i class="bi bi-globe"></i> 60+ countries</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+            </div>
+            <div class="repo" data-modal="m5" role="button" tabindex="0">
+              <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-code"></i><span>atliq-hardware-insights</span></span><span class="repo-vis">Public</span></div>
+              <p class="repo-desc">Sales &amp; manufacturing insights: operational efficiency, market penetration and discount-pattern analysis.</p>
+              <div class="repo-meta"><span class="lang"><span class="dot" style="background:#F2C811"></span> Power BI</span><span class="rstat"><i class="bi bi-cpu"></i> Sales + Ops</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+            </div>
+            <div class="repo" data-modal="m3" role="button" tabindex="0">
+              <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-code"></i><span>rail-accident-analysis</span></span><span class="repo-vis">Public</span></div>
+              <p class="repo-desc">Pinpointed high-risk routes and root causes to steer rail-safety policy and emergency preparedness.</p>
+              <div class="repo-meta"><span class="lang"><span class="dot" style="background:#F2C811"></span> Power BI</span><span class="rstat"><i class="bi bi-shield-check"></i> Safety analytics</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+            </div>
           </div>
-          <div class="repo" data-modal="m2" role="button" tabindex="0">
-            <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-code"></i><span>google-trends-dashboard</span></span><span class="repo-vis">Public</span></div>
-            <p class="repo-desc">Consumer-interest and opportunity dashboard mined from Google Trends across 60+ countries.</p>
-            <div class="repo-meta"><span class="lang"><span class="dot" style="background:#F2C811"></span> Power BI</span><span class="rstat"><i class="bi bi-globe"></i> 60+ countries</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+        </div>
+
+        <div class="proj-group" data-group="ba">
+          <div class="proj-group-h"><i class="bi bi-file-earmark-text"></i> BA Artifacts <span class="pgc">3</span><span class="pg-rule"></span></div>
+          <div class="repos">
+            <a class="repo" href="brd-ecom.html">
+              <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-text"></i><span>ecommerce-platform-brd</span></span><span class="repo-vis">Public</span></div>
+              <p class="repo-desc">Full BRD for a retail platform: 35 requirements across 7 modules, stakeholder register, RACI and a risk register.</p>
+              <div class="repo-meta"><span class="lang"><span class="dot" style="background:#58a6ff"></span> Markdown</span><span class="rstat"><i class="bi bi-list-check"></i> 35 requirements</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+            </a>
+            <a class="repo" href="banking-user-stories.html">
+              <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-text"></i><span>banking-loan-origination</span></span><span class="repo-vis">Public</span></div>
+              <p class="repo-desc">End-to-end loan lifecycle: 34 user stories across 10 modules with acceptance criteria and edge cases.</p>
+              <div class="repo-meta"><span class="lang"><span class="dot" style="background:#58a6ff"></span> Markdown</span><span class="rstat"><i class="bi bi-card-checklist"></i> 34 user stories</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+            </a>
+            <a class="repo" href="process-mapping.html">
+              <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-text"></i><span>employee-onboarding-bpr</span></span><span class="repo-vis">Public</span></div>
+              <p class="repo-desc">AS-IS → TO-BE redesign of employee onboarding: 65% faster and 80% less manual effort.</p>
+              <div class="repo-meta"><span class="lang"><span class="dot" style="background:#58a6ff"></span> Markdown</span><span class="rstat"><i class="bi bi-diagram-2"></i> 65% faster</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
+            </a>
           </div>
-          <div class="repo" data-modal="m5" role="button" tabindex="0">
-            <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-code"></i><span>atliq-hardware-insights</span></span><span class="repo-vis">Public</span></div>
-            <p class="repo-desc">Sales &amp; manufacturing insights: operational efficiency, market penetration and discount-pattern analysis.</p>
-            <div class="repo-meta"><span class="lang"><span class="dot" style="background:#F2C811"></span> Power BI</span><span class="rstat"><i class="bi bi-cpu"></i> Sales + Ops</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
-          </div>
-          <div class="repo" data-modal="m3" role="button" tabindex="0">
-            <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-code"></i><span>rail-accident-analysis</span></span><span class="repo-vis">Public</span></div>
-            <p class="repo-desc">Pinpointed high-risk routes and root causes to steer rail-safety policy and emergency preparedness.</p>
-            <div class="repo-meta"><span class="lang"><span class="dot" style="background:#F2C811"></span> Power BI</span><span class="rstat"><i class="bi bi-shield-check"></i> Safety analytics</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
-          </div>
-          <a class="repo" href="brd-ecom.html">
-            <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-text"></i><span>ecommerce-platform-brd</span></span><span class="repo-vis">Public</span></div>
-            <p class="repo-desc">Full BRD for a retail platform: 35 requirements across 7 modules, stakeholder register, RACI and a risk register.</p>
-            <div class="repo-meta"><span class="lang"><span class="dot" style="background:#58a6ff"></span> Markdown</span><span class="rstat"><i class="bi bi-list-check"></i> 35 requirements</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
-          </a>
-          <a class="repo" href="banking-user-stories.html">
-            <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-text"></i><span>banking-loan-origination</span></span><span class="repo-vis">Public</span></div>
-            <p class="repo-desc">End-to-end loan lifecycle: 34 user stories across 10 modules with acceptance criteria and edge cases.</p>
-            <div class="repo-meta"><span class="lang"><span class="dot" style="background:#58a6ff"></span> Markdown</span><span class="rstat"><i class="bi bi-card-checklist"></i> 34 user stories</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
-          </a>
-          <a class="repo" href="process-mapping.html">
-            <div class="repo-top"><span class="repo-name"><i class="bi bi-journal-text"></i><span>employee-onboarding-bpr</span></span><span class="repo-vis">Public</span></div>
-            <p class="repo-desc">AS-IS → TO-BE redesign of employee onboarding: 65% faster and 80% less manual effort.</p>
-            <div class="repo-meta"><span class="lang"><span class="dot" style="background:#58a6ff"></span> Markdown</span><span class="rstat"><i class="bi bi-diagram-2"></i> 65% faster</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
-          </a>
         </div>
       </section>
 
@@ -491,10 +577,10 @@ footer{border-top:1px solid var(--border);margin-top:50px;padding:26px 0;backgro
               <span class="xp-chev"><i class="bi bi-chevron-down"></i></span>
             </button>
             <div class="xp-body"><div class="xp-body-in"><ul>
-              <li><i class="bi bi-dot"></i><span>Own discovery and requirements end to end — turning prospect conversations into <b>BRDs, UML, user stories and SRS</b> engineering builds from without rework.</span></li>
-              <li><i class="bi bi-dot"></i><span>Act as <b>Product Owner</b>: groom the backlog, run sprint ceremonies, and tie every release to a business outcome.</span></li>
-              <li><i class="bi bi-dot"></i><span>Drive <b>UAT</b> — test scenarios, acceptance criteria, defect tracking and stakeholder sign-off — for clean, predictable launches.</span></li>
-              <li><i class="bi bi-dot"></i><span>Prototype in <b>Lovable</b> to validate scope early and shorten feedback loops before a line of code is written.</span></li>
+              <li><i class="bi bi-dot"></i><span>Sole BA across <b>four concurrent product builds</b> — each with its own frontend, backend and QA — for international clients in the <b>UAE, KSA and Ireland</b>, owning every project from discovery through to UAT sign-off.</span></li>
+              <li><i class="bi bi-dot"></i><span>Translate ambiguous client briefs into delivery-ready <b>BRDs, FSDs, SRS, UML and wireframes</b>, with zero misalignment between client expectations and what engineering builds.</span></li>
+              <li><i class="bi bi-dot"></i><span>Act as <b>Product Owner</b>: maintain backlogs, run sprint planning and retrospectives, and keep every sprint tied to agreed client goals.</span></li>
+              <li><i class="bi bi-dot"></i><span>Lead all <b>UAT</b> — test scenarios, acceptance criteria, defect resolution with QA/dev and formal client sign-off — and prepare business proposals and product roadmaps for prospects.</span></li>
             </ul></div></div>
           </div>
           <div class="xp-item">
@@ -507,9 +593,10 @@ footer{border-top:1px solid var(--border);margin-top:50px;padding:26px 0;backgro
               <span class="xp-chev"><i class="bi bi-chevron-down"></i></span>
             </button>
             <div class="xp-body"><div class="xp-body-in"><ul>
-              <li><i class="bi bi-dot"></i><span>Led requirements and functional analysis across <b>web and mobile builds</b>, producing BRD/FSD, user stories, UML and wireframes that aligned business and engineering.</span></li>
-              <li><i class="bi bi-dot"></i><span>Cut requirement ambiguity and rework enough to lift delivery <b>efficiency by ~30%</b>.</span></li>
-              <li><i class="bi bi-dot"></i><span>Ran UAT and stakeholder sign-off to keep releases on schedule.</span></li>
+              <li><i class="bi bi-dot"></i><span>Led requirements and functional analysis across <b>web and mobile builds</b> — BRD/FSD, user stories, UML and wireframes that aligned business and engineering.</span></li>
+              <li><i class="bi bi-dot"></i><span><b>Flagship — BBPS fintech platform:</b> owned requirements for 10+ payment categories and a first-of-its-kind real-time rent payment over IMPS; the platform scaled to <b>₹4,000 Cr+ across 6 lakh+ transactions</b> within five months of go-live.</span></li>
+              <li><i class="bi bi-dot"></i><span>Drove documentation and coordination improvements that lifted delivery <b>efficiency by ~30%</b>, with shorter UAT cycles and fewer production defects.</span></li>
+              <li><i class="bi bi-dot"></i><span>Ran UAT and stakeholder sign-off, handling escalations and change management across concurrent engagements.</span></li>
             </ul></div></div>
           </div>
           <div class="xp-item">
@@ -527,26 +614,20 @@ footer{border-top:1px solid var(--border);margin-top:50px;padding:26px 0;backgro
               <li><i class="bi bi-dot"></i><span>Coordinated UAT, defect tracking and releases for smoother go-lives.</span></li>
             </ul></div></div>
           </div>
-          <div class="xp-item">
-            <button class="xp-head" aria-expanded="false">
-              <span class="xp-logo"><i class="bi bi-mortarboard"></i></span>
-              <span class="xp-meta">
-                <span class="xp-role">Data Analyst · Internship</span>
-                <span class="xp-co">Afame Technologies · <span class="date">Apr 2023 — May 2023</span></span>
-              </span>
-              <span class="xp-chev"><i class="bi bi-chevron-down"></i></span>
-            </button>
-            <div class="xp-body"><div class="xp-body-in"><ul>
-              <li><i class="bi bi-dot"></i><span><b>Cleaned and processed 10,000+ records</b>, lifting dataset accuracy and downstream decisions.</span></li>
-              <li><i class="bi bi-dot"></i><span>Built an interactive <b>Power BI dashboard</b> over three years of sales data.</span></li>
-              <li><i class="bi bi-dot"></i><span>Produced <b>20+ structured performance reports</b> with HR.</span></li>
-            </ul></div></div>
-          </div>
         </div>
       </section>
 
       <section id="certs" data-rv>
-        <div class="sec-head"><i class="bi bi-patch-check ic"></i> Certifications <span class="ct">5</span><span class="rule"></span></div>
+        <div class="sec-head"><i class="bi bi-patch-check ic"></i> Education &amp; Certifications <span class="ct">5</span><span class="rule"></span></div>
+        <div class="proj-group-h" style="margin-bottom:14px"><i class="bi bi-mortarboard"></i> Education<span class="pg-rule"></span></div>
+        <div style="display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px 18px;margin-bottom:22px">
+          <span class="xp-logo"><i class="bi bi-mortarboard"></i></span>
+          <span style="min-width:0">
+            <span style="display:block;font-size:15px;font-weight:600;color:var(--text)">B.Sc. (Science)</span>
+            <span style="display:block;font-size:13px;color:var(--muted);margin-top:2px">North Odisha University, Barbil · 2022</span>
+          </span>
+        </div>
+        <div class="proj-group-h" style="margin-bottom:14px"><i class="bi bi-patch-check"></i> Certifications<span class="pg-rule"></span></div>
         <div class="certs">
           <a class="cert" href="https://www.coursera.org/account/accomplishments/professional-cert/JPUG55Y3GZAS" target="_blank" rel="noopener">
             <div class="cert-top"><span class="cert-iss">Google · Coursera</span><span class="cert-vf"><i class="bi bi-patch-check-fill"></i> Verified</span></div>
@@ -606,6 +687,16 @@ footer{border-top:1px solid var(--border);margin-top:50px;padding:26px 0;backgro
 <div class="ovl" id="m4"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-bar-chart-line"></i> Customer Retention Dashboard</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div class="frame"><iframe title="Customer Retention Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiZmU5YzFlMGMtNDUxYy00OTcyLThjODktZDdlYjFkODJkMzc4IiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9" allowfullscreen loading="lazy"></iframe></div><div class="side"><div><div class="sl">GitHub</div><a href="https://github.com/Manmath235/Call_Center_Trend_Analysis.git" target="_blank" rel="noopener" class="btn ghost sm" style="width:100%;justify-content:center"><i class="bi bi-github"></i> Repository</a></div><div><div class="sl">Stack</div><div class="stack"><span class="pill">Power BI</span><span class="pill">Excel</span></div></div></div></div><div class="high"><div class="hh">Highlights</div><div class="hl"><span class="b">+</span><span><b>Churn analysis:</b> 26.54% churn reduction via segmentation and proactive engagement.</span></div><div class="hl"><span class="b">+</span><span><b>Call-centre performance:</b> closed gaps to improve response time and resolution KPIs.</span></div><div class="hl"><span class="b">+</span><span><b>Personalised offers:</b> recommendations from demographic and usage patterns.</span></div></div></div></div></div>
 <div class="ovl" id="m5"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-bar-chart-line"></i> AtliQ Hardware Insights</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div class="frame" style="padding-top:56%"><iframe title="AtliQ Hardware Insights" src="https://www.canva.com/design/DAGIRr-6J_w/r9hmDWSWTQBC9AZQL4wG-Q/view?embed&embed_host=share" allowfullscreen loading="lazy"></iframe></div><div class="side"><div><div class="sl">Download</div><a href="assets/projects/AtliQ Hardware Insights Report/Report.pdf" download class="btn ghost sm" style="width:100%;justify-content:center"><i class="bi bi-download"></i> Report PDF</a></div><div><div class="sl">Stack</div><div class="stack"><span class="pill">Power BI</span><span class="pill">SQL</span></div></div></div></div><div class="high"><div class="hh">Highlights</div><div class="hl"><span class="b">+</span><span><b>Analysis:</b> deep dive into sales and manufacturing data for critical insights.</span></div><div class="hl"><span class="b">+</span><span><b>Efficiency:</b> identified cost-reduction opportunities and resource optimisation.</span></div><div class="hl"><span class="b">+</span><span><b>Customers:</b> discount-pattern reports for targeted promotions.</span></div></div></div></div></div>
 
+<div class="ovl" id="m6"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-coin"></i> BBPS Fintech Platform</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div><div class="cproj-hero"><div class="ch-metric"><span class="v">₹4,000Cr+</span><span class="l">in 5 months</span></div><span class="ch-domain"><i class="bi bi-coin"></i> Fintech SaaS · Flagship</span><h2>BBPS-Integrated Bill Payment &amp; Fintech Platform</h2><p>Full-stack bill-payment platform integrated with the Bharat Bill Payment System, supporting 10+ payment categories plus a first-of-its-kind real-time rent payment via Credit Card over IMPS — scaled to 6&nbsp;lakh+ transactions within five months of go-live.</p><div class="ch-tags"><span class="pill">BBPS</span><span class="pill">IMPS</span><span class="pill">RBI compliance</span><span class="pill">Rewards engine</span></div></div></div><div class="side"><div><div class="sl">Context</div><div class="ctx"><div class="row"><span class="k">Employer</span><span class="val">Sai Paramount IT</span></div><div class="row"><span class="k">Domain</span><span class="val">Fintech SaaS</span></div><div class="row"><span class="k">Role</span><span class="val">Business Analyst</span></div><div class="row"><span class="k">Scale</span><span class="val">6 lakh+ txns</span></div></div></div><div><div class="sl">Deliverables</div><div class="stack"><span class="pill">BRD / FSD</span><span class="pill">User Stories</span><span class="pill">Txn Flows</span><span class="pill">UML</span></div></div><div class="conf-note"><i class="bi bi-lock"></i><span>Client product — live preview isn't publicly shareable.</span></div></div></div><div class="high"><div class="hh">What I owned</div><div class="hl"><span class="b">+</span><span><b>10+ payment categories:</b> gathered requirements and defined end-to-end transaction flows for electricity, mobile recharge, DTH, FASTag, LPG, insurance and loan repayments.</span></div><div class="hl"><span class="b">+</span><span><b>First-of-its-kind feature:</b> analysed and specified real-time rent payment via Credit Card over IMPS, opening a new user segment.</span></div><div class="hl"><span class="b">+</span><span><b>Rewards engine:</b> translated incentive models into precise requirements for an instant cashback &amp; referral system driving acquisition and retention.</span></div><div class="hl"><span class="b">+</span><span><b>Compliance:</b> worked with dev, QA and compliance to meet RBI regulations and BBPS standards — encryption, privacy and secure gateway integration.</span></div></div></div></div></div>
+
+<div class="ovl" id="m7"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-heart-pulse"></i> Dalilok — Mental Health AI</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div><div class="cproj-hero"><div class="ch-metric"><span class="v">24/7</span><span class="l">AI support</span></div><span class="ch-domain"><i class="bi bi-heart-pulse"></i> Healthcare SaaS · UAE</span><h2>AI-Powered Mental Health Support App</h2><p>iOS &amp; Android app for the UAE market providing round-the-clock AI-assisted support in Arabic and English, bridging the gap between clinical sessions — operating entirely within a clinician-approved knowledge base for clinical safety.</p><div class="ch-tags"><span class="pill">Arabic + English</span><span class="pill">Crisis safety</span><span class="pill">RevenueCat</span></div></div></div><div class="side"><div><div class="sl">Context</div><div class="ctx"><div class="row"><span class="k">Employer</span><span class="val">Tech Exactly</span></div><div class="row"><span class="k">Domain</span><span class="val">Healthcare SaaS</span></div><div class="row"><span class="k">Region</span><span class="val">UAE</span></div><div class="row"><span class="k">Role</span><span class="val">BA / Product Owner</span></div></div></div><div><div class="sl">Deliverables</div><div class="stack"><span class="pill">BRD / FSD / SRS</span><span class="pill">User Stories</span><span class="pill">UML</span></div></div><div class="conf-note"><i class="bi bi-lock"></i><span>Client product — live preview isn't publicly shareable.</span></div></div></div><div class="high"><div class="hh">What I owned</div><div class="hl"><span class="b">+</span><span><b>Four access tiers:</b> elicited requirements for Guest, Free, Basic and Premium tiers with differentiated features — AI voice calls, mood tracking, journaling, assessments and doctor VoIP.</span></div><div class="hl"><span class="b">+</span><span><b>Crisis safety:</b> defined an always-visible Kill Switch and bilingual crisis-keyword detection triggering emergency redirection across the app and a WhatsApp bot.</span></div><div class="hl"><span class="b">+</span><span><b>Clinical guardrails:</b> specified AI knowledge-base boundaries and escalation rules so responses stay clinician-approved, redirecting out-of-scope queries to booking.</span></div><div class="hl"><span class="b">+</span><span><b>Billing &amp; admin:</b> documented subscriptions via RevenueCat plus admin tooling for doctor management, chat monitoring and payment audit logs.</span></div></div></div></div></div>
+
+<div class="ovl" id="m8"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-shield-check"></i> Galway Safe App</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div><div class="cproj-hero"><div class="ch-metric"><span class="v">8</span><span class="l">danger zones</span></div><span class="ch-domain"><i class="bi bi-shield-check"></i> Public Safety · Ireland</span><h2>Passive Night-Safety Application</h2><p>Commissioned by the Western Region Drug &amp; Alcohol Task Force, Galway. Silently monitors vulnerable users' locations at night and alerts emergency contacts if they may be at risk — without the user having to ask for help.</p><div class="ch-tags"><span class="pill">Geofencing</span><span class="pill">Privacy-first</span><span class="pill">On-device only</span></div></div></div><div class="side"><div><div class="sl">Context</div><div class="ctx"><div class="row"><span class="k">Employer</span><span class="val">Tech Exactly</span></div><div class="row"><span class="k">Client</span><span class="val">WRDATF, Galway</span></div><div class="row"><span class="k">Domain</span><span class="val">Public Safety</span></div><div class="row"><span class="k">Region</span><span class="val">Ireland</span></div></div></div><div><div class="sl">Deliverables</div><div class="stack"><span class="pill">BRD / FSD</span><span class="pill">User Stories</span><span class="pill">Process Maps</span></div></div><div class="conf-note"><i class="bi bi-lock"></i><span>Client product — live preview isn't publicly shareable.</span></div></div></div><div class="high"><div class="hh">What I owned</div><div class="hl"><span class="b">+</span><span><b>Geofence &amp; alert logic:</b> 8 pre-defined danger zones monitored 00:00–05:55, a 5-minute dwell trigger generating a check-in prompt, and automated SMS to ICE contacts if unanswered.</span></div><div class="hl"><span class="b">+</span><span><b>Privacy-first architecture:</b> all data stored on-device only — no backend, no login, no external database — for a vulnerable population.</span></div><div class="hl"><span class="b">+</span><span><b>Three-state response:</b> specified a Fine / Need to Talk / Emergency flow with pre-dialled Samaritans and 999 escalation, functioning as a passive safety net with no user action required.</span></div></div></div></div></div>
+
+<div class="ovl" id="m9"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-recycle"></i> WasteOps</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div><div class="cproj-hero"><div class="ch-metric"><span class="v">300–500</span><span class="l">assets tracked</span></div><span class="ch-domain"><i class="bi bi-recycle"></i> Industrial SaaS · KSA</span><h2>Digital Waste-Management Platform</h2><p>Multi-tenant SaaS that digitises and tracks every bin service across large industrial sites in Saudi Arabia, replacing paper-based processes. Phase&nbsp;1 targets 3–5 projects, 300–500 assets and 20–30 field workers, with architecture built to scale internationally.</p><div class="ch-tags"><span class="pill">Multi-tenant</span><span class="pill">GPS + QR</span><span class="pill">Audit trail</span></div></div></div><div class="side"><div><div class="sl">Context</div><div class="ctx"><div class="row"><span class="k">Employer</span><span class="val">Tech Exactly</span></div><div class="row"><span class="k">Domain</span><span class="val">Industrial SaaS</span></div><div class="row"><span class="k">Region</span><span class="val">KSA</span></div><div class="row"><span class="k">Role</span><span class="val">BA / Product Owner</span></div></div></div><div><div class="sl">Deliverables</div><div class="stack"><span class="pill">BRD / FSD / SRS</span><span class="pill">User Stories</span><span class="pill">Process Maps</span></div></div><div class="conf-note"><i class="bi bi-lock"></i><span>Client product — live preview isn't publicly shareable.</span></div></div></div><div class="high"><div class="hh">What I owned</div><div class="hl"><span class="b">+</span><span><b>Two-surface product:</b> defined end-to-end requirements for a field-worker mobile app (GPS validation, QR scanning, photo evidence) and a web admin panel for supervisors, PMs and EHS teams.</span></div><div class="hl"><span class="b">+</span><span><b>Audit-grade compliance:</b> authored requirements where each bin service generates an immutable record with GPS coordinates, timestamped photos and cryptographic hash chaining for legal defensibility.</span></div><div class="hl"><span class="b">+</span><span><b>Lifecycle mapping:</b> mapped tenant onboarding, scheduling, route assignment, task execution, CAPA, incident reporting and compliance reporting into structured user stories and flows.</span></div></div></div></div></div>
+
+<div class="ovl" id="m10"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-flag"></i> E2P Event Comms App</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div><div class="cproj-hero"><div class="ch-metric"><span class="v">4</span><span class="l">user roles</span></div><span class="ch-domain"><i class="bi bi-flag"></i> Event Management SaaS</span><h2>Motorsports Event Communication App</h2><p>Mobile app replacing WhatsApp and email as the primary channel between E2P Group and participants across racing, training and corporate driving events, with a web admin panel managing the full event lifecycle.</p><div class="ch-tags"><span class="pill">Role-based access</span><span class="pill">5-tab interface</span><span class="pill">Data governance</span></div></div></div><div class="side"><div><div class="sl">Context</div><div class="ctx"><div class="row"><span class="k">Employer</span><span class="val">Tech Exactly</span></div><div class="row"><span class="k">Domain</span><span class="val">Event SaaS</span></div><div class="row"><span class="k">Platform</span><span class="val">iOS &amp; Android</span></div><div class="row"><span class="k">Role</span><span class="val">BA / Product Owner</span></div></div></div><div><div class="sl">Deliverables</div><div class="stack"><span class="pill">BRD / FSD</span><span class="pill">User Stories</span><span class="pill">UML</span><span class="pill">Wireframes</span></div></div><div class="conf-note"><i class="bi bi-lock"></i><span>Client product — live preview isn't publicly shareable.</span></div></div></div><div class="high"><div class="hh">What I owned</div><div class="hl"><span class="b">+</span><span><b>Access control:</b> defined role-based assignments (Piloto, Staff, Staff Técnico, Instructor), admin-controlled onboarding and event-type rules (public, approval-gated, invite-only corporate).</span></div><div class="hl"><span class="b">+</span><span><b>Five-tab interface:</b> specified Overview, Checklist, Notices, Messages and Media Gallery, plus admin capabilities across the lifecycle from Draft to Completed/Cancelled.</span></div><div class="hl"><span class="b">+</span><span><b>Data governance:</b> documented retention and privacy rules — all event data permanently deleted two months post-completion, aligned to the client's policy.</span></div></div></div></div></div>
+
 <script>
 (function(){
   "use strict";
@@ -653,6 +744,24 @@ footer{border-top:1px solid var(--border);margin-top:50px;padding:26px 0;backgro
     });
   });
 
+  var projFilter = document.getElementById('projFilter');
+  if(projFilter){
+    var groups = document.querySelectorAll('.proj-group');
+    projFilter.querySelectorAll('.pf-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var f = btn.getAttribute('data-filter');
+        projFilter.querySelectorAll('.pf-btn').forEach(function(b){
+          var on = b === btn;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        groups.forEach(function(g){
+          g.hidden = !(f === 'all' || g.getAttribute('data-group') === f);
+        });
+      });
+    });
+  }
+
   function openModal(id){ var m = document.getElementById(id); if(m){ m.classList.add('open'); document.body.style.overflow = 'hidden'; } }
   function closeAll(){ document.querySelectorAll('.ovl.open').forEach(function(o){ o.classList.remove('open'); }); document.body.style.overflow = ''; }
   document.querySelectorAll('[data-modal]').forEach(function(c){
@@ -668,7 +777,7 @@ footer{border-top:1px solid var(--border);margin-top:50px;padding:26px 0;backgro
   if(askai){
     askai.addEventListener('click', function(){
       var exp = calcExp();
-      var p = "You are a recruiter's assistant. Give a sharp candidate brief on Manmathnath Mahanta, a Business Analyst (" + exp + " years, Kolkata, India) targeting MNC roles.\n\nFacts:\n- Bridges business and engineering: requirement elicitation, BRD/FSD, user stories, UML, process mapping, UAT, Agile/Scrum, Product Owner.\n- Analytics: Power BI, SQL, Excel.\n- Impact: ~30% efficiency gain at Sai Paramount; 26.54% churn reduction; 10,000+ records cleaned; 20+ projects delivered; 20+ reports.\n- Experience: Tech Exactly (Mar 2026-Present), Sai Paramount IT (Jul 2024-Mar 2026), GEEMSCO (Mar 2023-Jul 2024), Afame internship (2023).\n\nWrite: Why he stands out (3-4 bullets), What he brings (3-4 bullets), Proof of work (4-5 bullets with numbers), Bottom line (1 sentence). Every bullet has a specific fact. Under 200 words.";
+      var p = "You are a recruiter's assistant. Give a sharp candidate brief on Manmathnath Mahanta, a Business Analyst (" + exp + " years, Kolkata, India) targeting MNC and product roles.\n\nFacts:\n- Bridges business and engineering: requirement elicitation, BRD/FSD/SRS, user stories, UML, process mapping, UAT, Agile/Scrum, Product Owner.\n- Currently sole BA on four concurrent product builds at Tech Exactly, working directly with international clients in the UAE, KSA and Ireland.\n- Client products: Dalilok (AI mental-health app, UAE healthcare, crisis-safety design), Galway Safe (passive public-safety app, Ireland), WasteOps (multi-tenant industrial waste SaaS, KSA), E2P (motorsports event-comms app).\n- Flagship at Sai Paramount: BBPS-integrated fintech platform, 10+ payment categories and first-of-its-kind real-time rent payment over IMPS; scaled to Rs 4,000 Cr+ across 6 lakh+ transactions in 5 months.\n- Impact: ~30% efficiency gain at Sai Paramount; 26.54% churn reduction (analytics project).\n- Analytics: Power BI, SQL, Excel.\n- Experience: Tech Exactly (Mar 2026-Present), Sai Paramount IT (Jul 2024-Mar 2026), GEEMSCO (Mar 2023-Jul 2024).\n\nWrite: Why he stands out (3-4 bullets), What he brings (3-4 bullets), Proof of work (4-5 bullets with numbers), Bottom line (1 sentence). Every bullet has a specific fact. Under 200 words.";
       window.open('https://chatgpt.com/?q=' + encodeURIComponent(p), '_blank');
     });
   }
