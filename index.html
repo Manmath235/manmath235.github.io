@@ -108,6 +108,11 @@ section{position:relative;scroll-margin-top:96px}
 .burger{display:none;background:transparent;border:1px solid var(--border);color:var(--text);
   width:40px;height:40px;border-radius:999px;cursor:pointer;font-size:18px}
 
+/* ================= 3D SCROLL SCENE (WebGL) ================= */
+#webgl-bg{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;display:block;
+  background:var(--bg)}
+@media(max-width:820px){ #webgl-bg{opacity:.7} }
+
 /* ================= HERO ================= */
 #hero{height:340vh}
 .hero-stage{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;
@@ -511,6 +516,9 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
 </head>
 <body>
 
+<!-- ===================== 3D SCROLL SCENE ===================== -->
+<canvas id="webgl-bg" aria-hidden="true"></canvas>
+
 <!-- ===================== FLOATING NAV ===================== -->
 <div class="nav" id="nav">
   <div class="nav-in">
@@ -518,6 +526,7 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
     <nav class="nav-links" id="navLinks">
       <a href="#work">Work</a>
       <a href="#experience">Experience</a>
+      <a href="#credentials">Credentials</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -588,12 +597,13 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
 
       <div class="approach" data-rv>
         <h2>I make sure teams build the <em>right thing.</em></h2>
-        <p>I'm a Business Analyst working at the seam between business and engineering. Right now I'm the <b>sole BA on four concurrent product builds</b> at Tech Exactly, working directly with clients across the <b>UAE, KSA and Ireland</b> — owning each from discovery and BRD/FSD/SRS through to UAT sign-off as Product Owner.</p>
+        <p>I'm a Business Analyst / Product Owner with <b>3+ years across FinTech, Healthcare AI, Industrial Operations, SaaS and Public Safety</b>. Right now I'm the <b>sole BA across multiple concurrent product builds</b> at Tech Exactly, working directly with clients across the <b>UAE, KSA and Ireland</b> — owning each from discovery and BRD/FSD/SRS through to UAT sign-off as Product Owner.</p>
         <p>The results matter more than the documents:</p>
         <ul class="bring">
           <li><i class="bi bi-check-circle"></i><span><b>Requirements with no loose ends</b> — discovery, interviews and workshops turned into BRD/FSD/SRS, UML and user stories with airtight acceptance criteria.</span></li>
           <li><i class="bi bi-check-circle"></i><span><b>End-to-end delivery ownership</b> — Product Owner across multiple live products: backlog, sprint ceremonies, UAT and client sign-off, all the way to a clean release.</span></li>
           <li><i class="bi bi-check-circle"></i><span><b>International client engagement</b> — translating ambiguous briefs from clients in the UAE, KSA and Ireland into delivery-ready scope for cross-functional teams.</span></li>
+          <li><i class="bi bi-check-circle"></i><span><b>AI-accelerated delivery</b> — using AI-assisted tools to speed up documentation, validation and requirement analysis without cutting corners.</span></li>
           <li><i class="bi bi-check-circle"></i><span><b>Proof in data</b> — Power BI, SQL and Excel to validate decisions and show impact, not just opinions.</span></li>
         </ul>
         <div class="approach-note"><i class="bi bi-info-circle"></i><span>Open to Business Analyst / Product Owner roles where I can own outcomes end to end — ideally with a team shipping products at scale.</span></div>
@@ -658,18 +668,18 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
           <div class="pcard-meta"><span class="cat"><span class="d" style="background:#4F8CFF"></span> Fintech SaaS</span><span class="stat"><i class="bi bi-graph-up-arrow"></i> ₹4,000Cr+ in 5 mo</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
         </div>
         <div class="pcard" data-modal="m7" role="button" tabindex="0">
-          <div class="pcard-top"><span class="pcard-name"><span class="ic"><i class="bi bi-heart-pulse"></i></span><span class="nm">dalilok-mental-health-ai</span></span><span class="pcard-badge">Client</span></div>
+          <div class="pcard-top"><span class="pcard-name"><span class="ic"><i class="bi bi-heart-pulse"></i></span><span class="nm">dailok-mental-health-ai</span></span><span class="pcard-badge">Client</span></div>
           <p class="pcard-desc">AI-powered mental-health support app (iOS &amp; Android) — 24/7 AI assistance in Arabic &amp; English within a clinician-approved safety boundary.</p>
           <div class="pcard-meta"><span class="cat"><span class="d" style="background:#6BA6FF"></span> Healthcare SaaS</span><span class="stat"><i class="bi bi-translate"></i> Arabic + English AI</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
         </div>
         <div class="pcard" data-modal="m8" role="button" tabindex="0">
           <div class="pcard-top"><span class="pcard-name"><span class="ic"><i class="bi bi-shield-check"></i></span><span class="nm">galway-safe-app</span></span><span class="pcard-badge">Client</span></div>
-          <p class="pcard-desc">Passive night-safety app commissioned by the Western Region Drug &amp; Alcohol Task Force — geofenced monitoring that alerts ICE contacts without the user asking for help.</p>
+          <p class="pcard-desc">Passive, privacy-first safety app commissioned by the Western Region Drug &amp; Alcohol Task Force, Galway — geofenced monitoring with automated SMS alerts and zero required user action.</p>
           <div class="pcard-meta"><span class="cat"><span class="d" style="background:#8A6CFF"></span> Public Safety</span><span class="stat"><i class="bi bi-shield-lock"></i> Privacy-first</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
         </div>
         <div class="pcard" data-modal="m9" role="button" tabindex="0">
           <div class="pcard-top"><span class="pcard-name"><span class="ic"><i class="bi bi-recycle"></i></span><span class="nm">wasteops-platform</span></span><span class="pcard-badge">Client</span></div>
-          <p class="pcard-desc">Multi-tenant waste-management SaaS digitising every bin service across industrial sites — GPS-validated mobile app plus a web admin panel with audit-grade records.</p>
+          <p class="pcard-desc">Multi-tenant waste-management SaaS digitising every bin service across industrial sites — GPS validation, QR scanning and photo-evidenced records replacing paper-based processes.</p>
           <div class="pcard-meta"><span class="cat"><span class="d" style="background:#6BA6FF"></span> Industrial SaaS</span><span class="stat"><i class="bi bi-fingerprint"></i> Audit-grade trail</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
         </div>
         <div class="pcard" data-modal="m10" role="button" tabindex="0">
@@ -775,6 +785,10 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
       <span class="tool"><span class="ti"><img src="assets/tools/excel.png" alt="" onerror="this.replaceWith(document.createTextNode('📊'))"></span><b>Excel</b><span class="tc">Analytics</span></span>
       <span class="tool"><span class="ti"><img src="assets/tools/power-bi.png" alt="" onerror="this.replaceWith(document.createTextNode('📈'))"></span><b>Power BI</b><span class="tc">BI</span></span>
       <span class="tool"><span class="ti"><img src="assets/tools/database.png" alt="" onerror="this.replaceWith(document.createTextNode('🗄️'))"></span><b>SQL</b><span class="tc">Database</span></span>
+      <span class="tool"><span class="ti"><img src="assets/tools/jira.png" alt="" onerror="this.replaceWith(document.createTextNode('🧭'))"></span><b>JIRA</b><span class="tc">PM</span></span>
+      <span class="tool"><span class="ti"><img src="assets/tools/confluence.png" alt="" onerror="this.replaceWith(document.createTextNode('📘'))"></span><b>Confluence</b><span class="tc">Docs</span></span>
+      <span class="tool"><span class="ti"><img src="assets/tools/figma.png" alt="" onerror="this.replaceWith(document.createTextNode('🎨'))"></span><b>Figma</b><span class="tc">Wireframing</span></span>
+      <span class="tool"><span class="ti"><img src="assets/tools/ms-office.png" alt="" onerror="this.replaceWith(document.createTextNode('🗂️'))"></span><b>MS Office Suite</b><span class="tc">Docs</span></span>
       <span class="tool"><span class="ti"><img src="assets/tools/clickup.png" alt="" onerror="this.replaceWith(document.createTextNode('✅'))"></span><b>ClickUp</b><span class="tc">PM</span></span>
       <span class="tool"><span class="ti"><img src="assets/tools/postman.png" alt="" onerror="this.replaceWith(document.createTextNode('📮'))"></span><b>Postman</b><span class="tc">API</span></span>
       <span class="tool"><span class="ti"><img src="assets/tools/lucidchart.png" alt="" onerror="this.replaceWith(document.createTextNode('🧩'))"></span><b>LucidChart</b><span class="tc">Diagrams</span></span>
@@ -805,10 +819,10 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
             <span class="xp-date">Mar 2026 — Present</span>
           </div>
           <ul>
-            <li><i class="bi bi-dot"></i><span>Managing <b>multiple concurrent product projects</b> owning the full delivery lifecycle from requirement elicitation through to client UAT sign-off.</span></li>
-            <li><i class="bi bi-dot"></i><span>Translate ambiguous client briefs into structured <b>BRDs, FSDs, SRS documents, UML diagrams, wireframes, and product roadmaps</b> ensuring zero misalignment between client expectations and development output across all active projects.</span></li>
-            <li><i class="bi bi-dot"></i><span>Function as <b>Product Owner</b> managing backlogs, facilitating sprint ceremonies, writing and prioritising user stories, and keeping every sprint aligned to agreed client goals in Agile/Scrum environments.</span></li>
-            <li><i class="bi bi-dot"></i><span>Engage directly with <b>international clients</b> and end users for discovery and feedback, then translate inputs for dev teams eliminating interpretation gaps at both ends of the delivery chain.</span></li>
+            <li><i class="bi bi-dot"></i><span>Own <b>end-to-end delivery</b> across multiple concurrent product projects, from requirement elicitation through client UAT sign-off.</span></li>
+            <li><i class="bi bi-dot"></i><span>Translate ambiguous client briefs into structured <b>BRDs, FSDs, SRS documents, UML diagrams, wireframes, and product roadmaps</b>, maintaining zero misalignment between client expectations and development output across all active projects.</span></li>
+            <li><i class="bi bi-dot"></i><span>Act as <b>Product Owner</b>: manage and prioritise product backlogs, facilitate sprint ceremonies, write and prioritise user stories, and keep every sprint aligned to agreed client goals across Agile/Scrum environments.</span></li>
+            <li><i class="bi bi-dot"></i><span>Engage directly with <b>international clients</b> and end users for discovery and feedback, translating inputs into development-ready requirements and closing interpretation gaps at both ends of the delivery chain.</span></li>
           </ul>
         </div>
       </div>
@@ -824,9 +838,9 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
             <span class="xp-date">Jul 2024 — Mar 2026</span>
           </div>
           <ul>
-            <li><i class="bi bi-dot"></i><span>Led BA delivery on a <b>BBPS-integrated bill payment platform</b> defining end-to-end transaction flows for <b>10+ payment categories</b> and ensuring full RBI regulatory and BBPS compliance throughout the build.</span></li>
-            <li><i class="bi bi-dot"></i><span>Defined requirements for a <b>first-of-its-kind real-time rent payment</b> feature via Credit Card using IMPS, eliminating delays from traditional payment methods and expanding the platform&#x2019;s addressable user base.</span></li>
-            <li><i class="bi bi-dot"></i><span>Drove process improvements in requirement documentation and delivery coordination and contributing to shorter UAT cycles, reduced rework, and fewer production defects, resulting in approximately <b>30% improvement in operational efficiency</b>.</span></li>
+            <li><i class="bi bi-dot"></i><span>Led BA delivery on a <b>BBPS-integrated bill payment platform</b>, defining end-to-end transaction flows for <b>10+ payment categories</b> and ensuring full RBI and BBPS regulatory compliance throughout the build.</span></li>
+            <li><i class="bi bi-dot"></i><span>Defined requirements for a <b>first-of-its-kind real-time rent payment</b> feature via credit card using IMPS, removing delays inherent to traditional payment methods and expanding the platform&#x2019;s addressable user base.</span></li>
+            <li><i class="bi bi-dot"></i><span>Drove process improvements in requirement documentation and delivery coordination, shortening UAT cycles and reducing rework and production defects, delivering approximately <b>30% improvement in operational efficiency</b>.</span></li>
           </ul>
         </div>
       </div>
@@ -851,10 +865,71 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
   </div>
 </section>
 
+<!-- ===================== CREDENTIALS ===================== -->
+<section id="credentials" class="block">
+  <div class="wrap">
+    <div class="block-head" data-rv>
+      <span class="eyebrow">06 / Credentials</span>
+      <h2 class="sec-title" style="margin-top:16px">Grounded in continuous learning.</h2>
+      <p class="sec-lead">Formal education paired with hands-on certifications across business analysis, data and Agile delivery.</p>
+    </div>
+    <div class="certs" data-rv>
+      <div class="cert">
+        <div class="cert-top"><span class="cert-iss">Lovely Professional University · Online</span><span class="cert-vf"><i class="bi bi-mortarboard"></i> Ongoing</span></div>
+        <h4>MBA — Business Analysis</h4>
+        <p>March 2026 — Present</p>
+        <div class="cert-tags"><span class="cert-tag">MBA</span><span class="cert-tag">Business Analysis</span></div>
+      </div>
+      <div class="cert">
+        <div class="cert-top"><span class="cert-iss">North Odisha University, Barbil</span><span class="cert-vf"><i class="bi bi-mortarboard"></i> 2022</span></div>
+        <h4>B.Sc.</h4>
+        <p>Undergraduate degree.</p>
+        <div class="cert-tags"><span class="cert-tag">Bachelor's</span></div>
+      </div>
+      <div class="cert">
+        <div class="cert-top"><span class="cert-iss">Microsoft</span><span class="cert-vf"><i class="bi bi-patch-check"></i> Certified</span></div>
+        <h4>Business Analysis</h4>
+        <p>Core BA fundamentals and practice.</p>
+        <div class="cert-tags"><span class="cert-tag">Business Analysis</span></div>
+      </div>
+      <div class="cert">
+        <div class="cert-top"><span class="cert-iss">Google</span><span class="cert-vf"><i class="bi bi-patch-check"></i> Certified</span></div>
+        <h4>Data Analytics Professional Certificate</h4>
+        <p>End-to-end data analytics workflow and tooling.</p>
+        <div class="cert-tags"><span class="cert-tag">Data Analytics</span></div>
+      </div>
+      <div class="cert">
+        <div class="cert-top"><span class="cert-iss">CodeBasics</span><span class="cert-vf"><i class="bi bi-patch-check"></i> Certified</span></div>
+        <h4>Power BI Data Analytics 2.0</h4>
+        <p>Dashboarding, DAX and data modelling in Power BI.</p>
+        <div class="cert-tags"><span class="cert-tag">Power BI</span></div>
+      </div>
+      <div class="cert">
+        <div class="cert-top"><span class="cert-iss">CodeBasics</span><span class="cert-vf"><i class="bi bi-patch-check"></i> Certified</span></div>
+        <h4>SQL Beginner to Advanced</h4>
+        <p>Joins, CTEs and window functions.</p>
+        <div class="cert-tags"><span class="cert-tag">SQL</span></div>
+      </div>
+      <div class="cert">
+        <div class="cert-top"><span class="cert-iss">LinkedIn Learning</span><span class="cert-vf"><i class="bi bi-patch-check"></i> Certified</span></div>
+        <h4>Agile Requirements</h4>
+        <p>Requirements practice within Agile delivery teams.</p>
+        <div class="cert-tags"><span class="cert-tag">Agile</span></div>
+      </div>
+      <div class="cert">
+        <div class="cert-top"><span class="cert-iss">CodeBasics</span><span class="cert-vf"><i class="bi bi-patch-check"></i> Certified</span></div>
+        <h4>Excel Beginner to Advanced</h4>
+        <p>Advanced formulas, modelling and reporting in Excel.</p>
+        <div class="cert-tags"><span class="cert-tag">Excel</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== CONTACT ===================== -->
 <section id="contact">
   <div class="wrap" data-rv>
-    <span class="eyebrow" style="justify-content:center">06 / Contact</span>
+    <span class="eyebrow" style="justify-content:center">07 / Contact</span>
     <h2 class="contact-big">Let's build the <em>right thing.</em></h2>
     <p class="contact-sub">Open to Business Analyst / Product Owner roles where I can own outcomes end to end — ideally with a team shipping products at scale.</p>
     <div class="contact-name">Manmathnath Mahanta · <b>Business Analyst</b> · Available for work</div>
@@ -893,15 +968,15 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
 
 <div class="ovl" id="m5"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-bar-chart-line"></i> AtliQ Hardware Insights</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div class="frame" style="padding-top:56%"><iframe title="AtliQ Hardware Insights" src="https://www.canva.com/design/DAGIRr-6J_w/r9hmDWSWTQBC9AZQL4wG-Q/view?embed&embed_host=share" allowfullscreen loading="lazy"></iframe></div><div class="m-side"><div><div class="sl">Download</div><a href="assets/projects/AtliQ Hardware Insights Report/Report.pdf" download class="btn ghost sm" style="width:100%"><i class="bi bi-download"></i> Report PDF</a></div><div><div class="sl">Stack</div><div class="stack"><span class="pill">Power BI</span><span class="pill">SQL</span></div></div></div></div><div class="high"><div class="hh">Highlights</div><div class="hl"><span class="b">+</span><span><b>Analysis:</b> deep dive into sales and manufacturing data for critical insights.</span></div><div class="hl"><span class="b">+</span><span><b>Efficiency:</b> identified cost-reduction opportunities and resource optimisation.</span></div><div class="hl"><span class="b">+</span><span><b>Customers:</b> discount-pattern reports for targeted promotions.</span></div></div></div></div></div>
 
-<div class="ovl" id="m6"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-coin"></i> BBPS Fintech Platform</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div><div class="cproj-hero"><div class="ch-metric"><span class="v">₹4,000Cr+</span><span class="l">in 5 months</span></div><span class="ch-domain"><i class="bi bi-coin"></i> Fintech SaaS</span><h2>BBPS-Integrated Bill Payment &amp; Fintech Platform</h2><p>Full-stack bill-payment platform integrated with the Bharat Bill Payment System, supporting 10+ payment categories plus a first-of-its-kind real-time rent payment via Credit Card over IMPS — scaled to 6&nbsp;lakh+ transactions within five months of go-live.</p><div class="ch-tags"><span class="pill">BBPS</span><span class="pill">IMPS</span><span class="pill">RBI compliance</span><span class="pill">Rewards engine</span></div></div></div><div class="m-side"><div><div class="sl">Context</div><div class="ctx"><div class="row"><span class="k">Employer</span><span class="val">Sai Paramount IT</span></div><div class="row"><span class="k">Domain</span><span class="val">Fintech SaaS</span></div><div class="row"><span class="k">Role</span><span class="val">Business Analyst</span></div><div class="row"><span class="k">Scale</span><span class="val">6 lakh+ txns</span></div></div></div><div><div class="sl">Deliverables</div><div class="stack"><span class="pill">BRD / FSD</span><span class="pill">User Stories</span><span class="pill">Txn Flows</span><span class="pill">UML</span></div></div></div></div><div class="high"><div class="hh">What I owned</div><div class="hl"><span class="b">+</span><span><b>10+ payment categories:</b> gathered requirements and defined end-to-end transaction flows for electricity, mobile recharge, DTH, FASTag, LPG, insurance and loan repayments.</span></div><div class="hl"><span class="b">+</span><span><b>First-of-its-kind feature:</b> analysed and specified real-time rent payment via Credit Card over IMPS, opening a new user segment.</span></div><div class="hl"><span class="b">+</span><span><b>Rewards engine:</b> translated incentive models into precise requirements for an instant cashback &amp; referral system driving acquisition and retention.</span></div><div class="hl"><span class="b">+</span><span><b>Compliance:</b> worked with dev, QA and compliance to meet RBI regulations and BBPS standards — encryption, privacy and secure gateway integration.</span></div></div></div></div></div>
+<div class="ovl" id="m6"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-coin"></i> BBPS Fintech Platform</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div><div class="cproj-hero"><div class="ch-metric"><span class="v">₹4,000Cr+</span><span class="l">in 5 months</span></div><span class="ch-domain"><i class="bi bi-coin"></i> Fintech SaaS</span><h2>BBPS-Integrated Bill Payment &amp; Fintech Platform</h2><p>Gathered and documented requirements for a BBPS-integrated bill payment platform covering electricity, mobile, DTH, FASTag, LPG, insurance and loan repayments — plus a first-of-its-kind real-time rent payment via credit card over IMPS.</p><div class="ch-tags"><span class="pill">BBPS</span><span class="pill">IMPS</span><span class="pill">RBI compliance</span><span class="pill">Rewards engine</span></div></div></div><div class="m-side"><div><div class="sl">Context</div><div class="ctx"><div class="row"><span class="k">Employer</span><span class="val">Sai Paramount IT</span></div><div class="row"><span class="k">Domain</span><span class="val">Fintech SaaS</span></div><div class="row"><span class="k">Role</span><span class="val">Business Analyst</span></div><div class="row"><span class="k">Scale</span><span class="val">6 lakh+ txns</span></div></div></div><div><div class="sl">Deliverables</div><div class="stack"><span class="pill">BRD / FSD</span><span class="pill">User Stories</span><span class="pill">Txn Flows</span><span class="pill">UML</span></div></div></div></div><div class="high"><div class="hh">Project breakdown</div><div class="hl"><span class="b">+</span><span><b>Business Problem:</b> bill payments across 10+ categories were fragmented across channels, requiring a unified, RBI/BBPS-compliant platform.</span></div><div class="hl"><span class="b">+</span><span><b>Solution:</b> gathered and documented requirements for a BBPS-integrated bill payment platform covering electricity, mobile, DTH, FASTag, LPG, insurance and loan repayments.</span></div><div class="hl"><span class="b">+</span><span><b>My Role:</b> led business analysis end-to-end — requirement elicitation, functional specification, and cross-team compliance coordination.</span></div><div class="hl"><span class="b">+</span><span><b>Discovery:</b> coordinated with development, QA and compliance teams to define RBI- and BBPS-compliant transaction flows, data encryption, and secure payment gateway requirements.</span></div><div class="hl"><span class="b">+</span><span><b>Business Value:</b> enabled processing of 6 lakh+ transactions worth ₹4,000 crore within 5 months of go-live.</span></div><div class="hl"><span class="b">+</span><span><b>Scale:</b> 10+ payment categories nationwide; ₹4,000 crore processed in 5 months.</span></div><div class="hl"><span class="b">+</span><span><b>Technology Exposure:</b> IMPS-based real-time payments, credit-card rent payment feature, cashback/referral rewards engine, secure payment gateway integration, RBI/BBPS-compliant encryption standards.</span></div></div></div></div></div>
 
-<div class="ovl" id="m7"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-heart-pulse"></i> Dalilok — Mental Health AI</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div><div class="cproj-hero"><div class="ch-metric"><span class="v">24/7</span><span class="l">AI support</span></div><span class="ch-domain"><i class="bi bi-heart-pulse"></i> Healthcare SaaS</span><h2>AI-Powered Mental Health Support App</h2><p>iOS &amp; Android app for the UAE market providing round-the-clock AI-assisted support in Arabic and English, bridging the gap between clinical sessions — operating entirely within a clinician-approved knowledge base for clinical safety.</p><div class="ch-tags"><span class="pill">Arabic + English</span><span class="pill">Crisis safety</span><span class="pill">RevenueCat</span></div></div></div><div class="m-side"><div><div class="sl">Context</div><div class="ctx"><div class="row"><span class="k">Employer</span><span class="val">Tech Exactly</span></div><div class="row"><span class="k">Domain</span><span class="val">Healthcare SaaS</span></div><div class="row"><span class="k">Region</span><span class="val">UAE</span></div><div class="row"><span class="k">Role</span><span class="val">BA / Product Owner</span></div></div></div><div><div class="sl">Deliverables</div><div class="stack"><span class="pill">BRD / FSD / SRS</span><span class="pill">User Stories</span><span class="pill">UML</span></div></div></div></div><div class="high"><div class="hh">What I owned</div><div class="hl"><span class="b">+</span><span><b>Four access tiers:</b> elicited requirements for Guest, Free, Basic and Premium tiers with differentiated features — AI voice calls, mood tracking, journaling, assessments and doctor VoIP.</span></div><div class="hl"><span class="b">+</span><span><b>Crisis safety:</b> defined an always-visible Kill Switch and bilingual crisis-keyword detection triggering emergency redirection across the app and a WhatsApp bot.</span></div><div class="hl"><span class="b">+</span><span><b>Clinical guardrails:</b> specified AI knowledge-base boundaries and escalation rules so responses stay clinician-approved, redirecting out-of-scope queries to booking.</span></div><div class="hl"><span class="b">+</span><span><b>Billing &amp; admin:</b> documented subscriptions via RevenueCat plus admin tooling for doctor management, chat monitoring and payment audit logs.</span></div></div></div></div></div>
+<div class="ovl" id="m7"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-heart-pulse"></i> Dailok — Mental Health AI</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div><div class="cproj-hero"><div class="ch-metric"><span class="v">24/7</span><span class="l">AI support</span></div><span class="ch-domain"><i class="bi bi-heart-pulse"></i> Healthcare SaaS</span><h2>AI-Powered Mental Health Support App</h2><p>Elicited and documented requirements for a clinician-controlled AI support app (iOS &amp; Android) delivering 24/7 assistance in Arabic and English, entirely within a doctor-approved knowledge base for clinical safety.</p><div class="ch-tags"><span class="pill">Arabic + English</span><span class="pill">Crisis safety</span><span class="pill">RevenueCat</span></div></div></div><div class="m-side"><div><div class="sl">Context</div><div class="ctx"><div class="row"><span class="k">Employer</span><span class="val">Tech Exactly</span></div><div class="row"><span class="k">Domain</span><span class="val">Healthcare SaaS</span></div><div class="row"><span class="k">Region</span><span class="val">UAE</span></div><div class="row"><span class="k">Role</span><span class="val">BA / Product Owner</span></div></div></div><div><div class="sl">Deliverables</div><div class="stack"><span class="pill">BRD / FSD / SRS</span><span class="pill">User Stories</span><span class="pill">UML</span></div></div></div></div><div class="high"><div class="hh">Project breakdown</div><div class="hl"><span class="b">+</span><span><b>Business Problem:</b> users needed accessible, always-available mental health support that remained clinically safe and bounded by doctor-approved guidance.</span></div><div class="hl"><span class="b">+</span><span><b>Solution:</b> elicited and documented requirements for a clinician-controlled AI support app (iOS &amp; Android) delivering 24/7 assistance in Arabic and English within a doctor-approved knowledge base.</span></div><div class="hl"><span class="b">+</span><span><b>My Role:</b> defined crisis-detection and safety-protocol requirements, and specified the subscription and monetisation model.</span></div><div class="hl"><span class="b">+</span><span><b>Discovery:</b> worked with clinical stakeholders to define a permanently visible Kill Switch and automated crisis-keyword detection in Arabic and English, triggering instant emergency redirection.</span></div><div class="hl"><span class="b">+</span><span><b>Business Value:</b> balanced clinical safety with monetisation via a four-tier subscription model spanning AI voice calls, mood tracking, journaling, assessments and direct doctor VoIP calling.</span></div><div class="hl"><span class="b">+</span><span><b>Scale:</b> iOS &amp; Android, bilingual (Arabic/English), four subscription tiers (Guest, Free, Basic, Premium).</span></div><div class="hl"><span class="b">+</span><span><b>Technology Exposure:</b> RevenueCat billing (Apple &amp; Google), AI scoped strictly to an approved knowledge base as a safety enabler (not open-ended), WhatsApp AI bot integration, admin panel, VoIP calling.</span></div></div></div></div></div>
 
-<div class="ovl" id="m8"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-shield-check"></i> Galway Safe App</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div><div class="cproj-hero"><div class="ch-metric"><span class="v">8</span><span class="l">danger zones</span></div><span class="ch-domain"><i class="bi bi-shield-check"></i> Public Safety</span><h2>Passive Night-Safety Application</h2><p>Commissioned by the Western Region Drug &amp; Alcohol Task Force, Galway. Silently monitors vulnerable users' locations at night and alerts emergency contacts if they may be at risk — without the user having to ask for help.</p><div class="ch-tags"><span class="pill">Geofencing</span><span class="pill">Privacy-first</span><span class="pill">On-device only</span></div></div></div><div class="m-side"><div><div class="sl">Context</div><div class="ctx"><div class="row"><span class="k">Employer</span><span class="val">Tech Exactly</span></div><div class="row"><span class="k">Client</span><span class="val">WRDATF, Galway</span></div><div class="row"><span class="k">Domain</span><span class="val">Public Safety</span></div><div class="row"><span class="k">Region</span><span class="val">Ireland</span></div></div></div><div><div class="sl">Deliverables</div><div class="stack"><span class="pill">BRD / FSD</span><span class="pill">User Stories</span><span class="pill">Process Maps</span></div></div></div></div><div class="high"><div class="hh">What I owned</div><div class="hl"><span class="b">+</span><span><b>Geofence &amp; alert logic:</b> 8 pre-defined danger zones monitored 00:00–05:55, a 5-minute dwell trigger generating a check-in prompt, and automated SMS to ICE contacts if unanswered.</span></div><div class="hl"><span class="b">+</span><span><b>Privacy-first architecture:</b> all data stored on-device only — no backend, no login, no external database — for a vulnerable population.</span></div><div class="hl"><span class="b">+</span><span><b>Three-state response:</b> specified a Fine / Need to Talk / Emergency flow with pre-dialled Samaritans and 999 escalation, functioning as a passive safety net with no user action required.</span></div></div></div></div></div>
+<div class="ovl" id="m8"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-shield-check"></i> Galway Safe App</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div><div class="cproj-hero"><div class="ch-metric"><span class="v">0</span><span class="l">user action required</span></div><span class="ch-domain"><i class="bi bi-shield-check"></i> Public Safety</span><h2>Galway Safe App — Passive Mobile Safety App</h2><p>Defined requirements for a passive, privacy-first safety app silently monitoring geofenced danger zones between midnight and early morning, commissioned by the Western Region Drug and Alcohol Task Force, Galway.</p><div class="ch-tags"><span class="pill">Geofencing</span><span class="pill">Privacy-first</span><span class="pill">On-device only</span></div></div></div><div class="m-side"><div><div class="sl">Context</div><div class="ctx"><div class="row"><span class="k">Employer</span><span class="val">Tech Exactly</span></div><div class="row"><span class="k">Client</span><span class="val">WRDATF, Galway</span></div><div class="row"><span class="k">Domain</span><span class="val">Public Safety</span></div><div class="row"><span class="k">Region</span><span class="val">Ireland</span></div></div></div><div><div class="sl">Deliverables</div><div class="stack"><span class="pill">BRD / FSD</span><span class="pill">User Stories</span><span class="pill">Process Maps</span></div></div></div></div><div class="high"><div class="hh">Project breakdown</div><div class="hl"><span class="b">+</span><span><b>Business Problem:</b> vulnerable individuals near water-adjacent danger zones at night lacked passive safety monitoring; commissioned by the Western Region Drug and Alcohol Task Force, Galway.</span></div><div class="hl"><span class="b">+</span><span><b>Solution:</b> defined requirements for a passive, privacy-first safety app silently monitoring geofenced danger zones between midnight and early morning.</span></div><div class="hl"><span class="b">+</span><span><b>My Role:</b> defined the alert-response flow, privacy architecture, and geofencing requirements.</span></div><div class="hl"><span class="b">+</span><span><b>Discovery:</b> balanced continuous safety monitoring against strict data-privacy obligations for a clinically vulnerable population.</span></div><div class="hl"><span class="b">+</span><span><b>Business Value:</b> delivered a zero-required-user-action safety net with automated SMS alerts, live location links, and pre-dialled rescue services.</span></div><div class="hl"><span class="b">+</span><span><b>Scale:</b> regional deployment across Galway, Ireland; three-state alert flow (Fine / Need to Talk / Emergency).</span></div><div class="hl"><span class="b">+</span><span><b>Technology Exposure:</b> geofencing, passive location monitoring, on-device architecture (no backend, no login, no external database), automated SMS alerting.</span></div></div></div></div></div>
 
-<div class="ovl" id="m9"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-recycle"></i> WasteOps</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div><div class="cproj-hero"><div class="ch-metric"><span class="v">300–500</span><span class="l">assets tracked</span></div><span class="ch-domain"><i class="bi bi-recycle"></i> Industrial SaaS</span><h2>Digital Waste-Management Platform</h2><p>Multi-tenant SaaS that digitises and tracks every bin service across large industrial sites in Saudi Arabia, replacing paper-based processes. Phase&nbsp;1 targets 3–5 projects, 300–500 assets and 20–30 field workers, with architecture built to scale internationally.</p><div class="ch-tags"><span class="pill">Multi-tenant</span><span class="pill">GPS + QR</span><span class="pill">Audit trail</span></div></div></div><div class="m-side"><div><div class="sl">Context</div><div class="ctx"><div class="row"><span class="k">Employer</span><span class="val">Tech Exactly</span></div><div class="row"><span class="k">Domain</span><span class="val">Industrial SaaS</span></div><div class="row"><span class="k">Region</span><span class="val">KSA</span></div><div class="row"><span class="k">Role</span><span class="val">BA / Product Owner</span></div></div></div><div><div class="sl">Deliverables</div><div class="stack"><span class="pill">BRD / FSD / SRS</span><span class="pill">User Stories</span><span class="pill">Process Maps</span></div></div></div></div><div class="high"><div class="hh">What I owned</div><div class="hl"><span class="b">+</span><span><b>Two-surface product:</b> defined end-to-end requirements for a field-worker mobile app (GPS validation, QR scanning, photo evidence) and a web admin panel for supervisors, PMs and EHS teams.</span></div><div class="hl"><span class="b">+</span><span><b>Audit-grade compliance:</b> authored requirements where each bin service generates an immutable record with GPS coordinates, timestamped photos and cryptographic hash chaining for legal defensibility.</span></div><div class="hl"><span class="b">+</span><span><b>Lifecycle mapping:</b> mapped tenant onboarding, scheduling, route assignment, task execution, CAPA, incident reporting and compliance reporting into structured user stories and flows.</span></div></div></div></div></div>
+<div class="ovl" id="m9"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-recycle"></i> WasteOps</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div><div class="cproj-hero"><div class="ch-metric"><span class="v">300–500</span><span class="l">assets tracked</span></div><span class="ch-domain"><i class="bi bi-recycle"></i> Industrial SaaS</span><h2>Digital Waste-Management Platform</h2><p>Defined requirements for a multi-tenant SaaS platform digitising bin services with GPS validation, QR scanning, and photo-evidenced field operations — replacing paper-based processes across large industrial sites.</p><div class="ch-tags"><span class="pill">Multi-tenant</span><span class="pill">GPS + QR</span><span class="pill">Audit trail</span></div></div></div><div class="m-side"><div><div class="sl">Context</div><div class="ctx"><div class="row"><span class="k">Employer</span><span class="val">Tech Exactly</span></div><div class="row"><span class="k">Domain</span><span class="val">Industrial SaaS</span></div><div class="row"><span class="k">Region</span><span class="val">KSA</span></div><div class="row"><span class="k">Role</span><span class="val">BA / Product Owner</span></div></div></div><div><div class="sl">Deliverables</div><div class="stack"><span class="pill">BRD / FSD / SRS</span><span class="pill">User Stories</span><span class="pill">Process Maps</span></div></div></div></div><div class="high"><div class="hh">Project breakdown</div><div class="hl"><span class="b">+</span><span><b>Business Problem:</b> industrial and infrastructure sites relied on paper-based bin service processes with no audit trail or legal defensibility.</span></div><div class="hl"><span class="b">+</span><span><b>Solution:</b> defined requirements for a multi-tenant SaaS platform digitising bin services with GPS validation, QR scanning, and photo-evidenced field operations.</span></div><div class="hl"><span class="b">+</span><span><b>My Role:</b> defined requirements, specified the immutable record architecture, and mapped the full operational lifecycle into structured user stories.</span></div><div class="hl"><span class="b">+</span><span><b>Discovery:</b> mapped tenant onboarding, schedule creation, route assignment, CAPA management, incident reporting, and EHS compliance reporting.</span></div><div class="hl"><span class="b">+</span><span><b>Business Value:</b> replaced paper-based processes with an audit-ready, legally defensible digital record for every bin service.</span></div><div class="hl"><span class="b">+</span><span><b>Scale:</b> multi-tenant SaaS deployed across large industrial and infrastructure sites; Phase 1 architected to scale internationally.</span></div><div class="hl"><span class="b">+</span><span><b>Technology Exposure:</b> GPS geolocation validation, QR code scanning, photo evidence capture, cryptographic hash chaining for record integrity.</span></div></div></div></div></div>
 
-<div class="ovl" id="m10"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-flag"></i> E2P Event Comms App</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div><div class="cproj-hero"><div class="ch-metric"><span class="v">4</span><span class="l">user roles</span></div><span class="ch-domain"><i class="bi bi-flag"></i> Event Management SaaS</span><h2>Motorsports Event Communication App</h2><p>Mobile app replacing WhatsApp and email as the primary channel between E2P Group and participants across racing, training and corporate driving events, with a web admin panel managing the full event lifecycle.</p><div class="ch-tags"><span class="pill">Role-based access</span><span class="pill">5-tab interface</span><span class="pill">Data governance</span></div></div></div><div class="m-side"><div><div class="sl">Context</div><div class="ctx"><div class="row"><span class="k">Employer</span><span class="val">Tech Exactly</span></div><div class="row"><span class="k">Domain</span><span class="val">Event SaaS</span></div><div class="row"><span class="k">Platform</span><span class="val">iOS &amp; Android</span></div><div class="row"><span class="k">Role</span><span class="val">BA / Product Owner</span></div></div></div><div><div class="sl">Deliverables</div><div class="stack"><span class="pill">BRD / FSD</span><span class="pill">User Stories</span><span class="pill">UML</span><span class="pill">Wireframes</span></div></div></div></div><div class="high"><div class="hh">What I owned</div><div class="hl"><span class="b">+</span><span><b>Access control:</b> defined role-based assignments (Piloto, Staff, Staff Técnico, Instructor), admin-controlled onboarding and event-type rules (public, approval-gated, invite-only corporate).</span></div><div class="hl"><span class="b">+</span><span><b>Five-tab interface:</b> specified Overview, Checklist, Notices, Messages and Media Gallery, plus admin capabilities across the lifecycle from Draft to Completed/Cancelled.</span></div><div class="hl"><span class="b">+</span><span><b>Data governance:</b> documented retention and privacy rules — all event data permanently deleted two months post-completion, aligned to the client's policy.</span></div></div></div></div></div>
+<div class="ovl" id="m10"><div class="sheet"><div class="sheet-head"><span class="st"><i class="bi bi-flag"></i> E2P Event Comms App</span><button class="x" data-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="sheet-body"><div class="sheet-layout"><div><div class="cproj-hero"><div class="ch-metric"><span class="v">5</span><span class="l">tab interface</span></div><span class="ch-domain"><i class="bi bi-flag"></i> Event Management SaaS</span><h2>E2P Motorsports — Event Communication Mobile App</h2><p>Defined requirements for a mobile event communication platform (iOS &amp; Android) to replace informal channels across Racing, Training, and corporate driving events for E2P Group.</p><div class="ch-tags"><span class="pill">Role-based access</span><span class="pill">5-tab interface</span><span class="pill">Data governance</span></div></div></div><div class="m-side"><div><div class="sl">Context</div><div class="ctx"><div class="row"><span class="k">Employer</span><span class="val">Tech Exactly</span></div><div class="row"><span class="k">Domain</span><span class="val">Event SaaS</span></div><div class="row"><span class="k">Platform</span><span class="val">iOS &amp; Android</span></div><div class="row"><span class="k">Role</span><span class="val">BA / Product Owner</span></div></div></div><div><div class="sl">Deliverables</div><div class="stack"><span class="pill">BRD / FSD</span><span class="pill">User Stories</span><span class="pill">UML</span><span class="pill">Wireframes</span></div></div></div></div><div class="high"><div class="hh">Project breakdown</div><div class="hl"><span class="b">+</span><span><b>Business Problem:</b> E2P Group relied on WhatsApp and email for event communication, with no structured role-based access or lifecycle management.</span></div><div class="hl"><span class="b">+</span><span><b>Solution:</b> defined requirements for a mobile event communication platform (iOS &amp; Android) to replace informal channels across Racing, Training, and corporate driving events.</span></div><div class="hl"><span class="b">+</span><span><b>My Role:</b> specified the interface structure, event lifecycle states, and role-based access controls.</span></div><div class="hl"><span class="b">+</span><span><b>Discovery:</b> mapped requirements across event types with differing access needs: public, approval-gated, and invite-only.</span></div><div class="hl"><span class="b">+</span><span><b>Business Value:</b> replaced fragmented communication tools with a single structured platform, improving event coordination and admin control.</span></div><div class="hl"><span class="b">+</span><span><b>Scale:</b> five-tab event interface; full lifecycle from Draft through Completed or Cancelled.</span></div><div class="hl"><span class="b">+</span><span><b>Technology Exposure:</b> role-based access control, admin-controlled onboarding, iOS &amp; Android.</span></div></div></div></div></div>
 
 <script>
 (function(){
@@ -1112,10 +1187,153 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
   if(askai){
     askai.addEventListener('click', function(){
       var exp = calcExp();
-      var p = "You are a recruiter's assistant. Give a sharp candidate brief on Manmathnath Mahanta, a Business Analyst (" + exp + " years, Kolkata, India) targeting MNC and product roles.\n\nFacts:\n- Bridges business and engineering: requirement elicitation, BRD/FSD/SRS, user stories, UML, process mapping, UAT, Agile/Scrum, Product Owner.\n- Currently sole BA on four concurrent product builds at Tech Exactly, working directly with international clients in the UAE, KSA and Ireland.\n- Client products: Dalilok (AI mental-health app, UAE healthcare, crisis-safety design), Galway Safe (passive public-safety app, Ireland), WasteOps (multi-tenant industrial waste SaaS, KSA), E2P (motorsports event-comms app).\n- Flagship at Sai Paramount: BBPS-integrated fintech platform, 10+ payment categories and first-of-its-kind real-time rent payment over IMPS; scaled to Rs 4,000 Cr+ across 6 lakh+ transactions in 5 months.\n- Impact: ~30% efficiency gain at Sai Paramount; 26.54% churn reduction (analytics project).\n- Analytics: Power BI, SQL, Excel.\n- Experience: Tech Exactly (Mar 2026-Present), Sai Paramount IT (Jul 2024-Mar 2026), GEEMSCO (Mar 2023-Jul 2024).\n\nWrite: Why he stands out (3-4 bullets), What he brings (3-4 bullets), Proof of work (4-5 bullets with numbers), Bottom line (1 sentence). Every bullet has a specific fact. Under 200 words.";
+      var p = "You are a recruiter's assistant. Give a sharp candidate brief on Manmathnath Mahanta, a Business Analyst / Product Owner (" + exp + " years, Kolkata, India) targeting MNC and product roles.\n\nFacts:\n- Bridges business and engineering: requirement elicitation, BRD/FSD/SRS, user stories, UML, process mapping, UAT, Agile/Scrum, Product Owner.\n- Currently sole BA across multiple concurrent product builds at Tech Exactly, working directly with international clients in the UAE, KSA and Ireland.\n- Uses AI-assisted tools to accelerate documentation, validation and productivity.\n- Client products: Dailok (AI mental-health app, UAE healthcare, crisis-safety design), Galway Safe App (passive, privacy-first public-safety app, Ireland), WasteOps (multi-tenant industrial waste SaaS, KSA), E2P Motorsports (event-comms app with role-based access).\n- Flagship at Sai Paramount: BBPS-integrated fintech platform, 10+ payment categories and first-of-its-kind real-time rent payment over IMPS; scaled to Rs 4,000 Cr+ across 6 lakh+ transactions in 5 months.\n- Impact: ~30% efficiency gain at Sai Paramount; 26.54% churn reduction (analytics project).\n- Analytics: SQL (joins, CTEs, window functions), Power BI, Advanced Excel, KPI design.\n- Tools: JIRA, Confluence, Figma, MS Office Suite.\n- Education: MBA - Business Analysis, Lovely Professional University (Online), Mar 2026-Present; B.Sc., North Odisha University, 2022.\n- Certifications: Business Analysis (Microsoft), Data Analytics Professional Certificate (Google), Power BI Data Analytics 2.0 (CodeBasics), SQL Beginner to Advanced (CodeBasics), Agile Requirements (LinkedIn Learning), Excel Beginner to Advanced (CodeBasics).\n- Experience: Tech Exactly (Mar 2026-Present), Sai Paramount IT (Jul 2024-Mar 2026), GEEMSCO (Mar 2023-Jul 2024).\n\nWrite: Why he stands out (3-4 bullets), What he brings (3-4 bullets), Proof of work (4-5 bullets with numbers), Bottom line (1 sentence). Every bullet has a specific fact. Under 200 words.";
       window.open('https://chatgpt.com/?q=' + encodeURIComponent(p), '_blank');
     });
   }
+})();
+</script>
+
+<!-- ===================== 3D SCROLL-DRIVEN SCENE ===================== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  if (typeof THREE === 'undefined') return;               // CDN blocked / offline -> silently skip
+  var canvas = document.getElementById('webgl-bg');
+  if (!canvas) return;
+
+  var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isTouch = window.matchMedia('(hover: none)').matches;
+  var isLowEnd = isTouch && (navigator.hardwareConcurrency || 4) <= 4;
+
+  var renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: !isLowEnd, powerPreference: 'high-performance' });
+  } catch (e) { return; }                                  // no WebGL support -> skip, CSS bg still looks fine
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isLowEnd ? 1 : 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(58, window.innerWidth / window.innerHeight, 0.1, 200);
+
+  /* ---- palette pulled straight from the site's CSS variables ---- */
+  var BLUE = 0x4F8CFF, BLUE2 = 0x6BA6FF, VIOLET = 0x8A6CFF, VIOLET2 = 0xB29CFF;
+
+  /* ---- the "spine": one 3D path with a stop for each stage in the process
+          (mirrors the 01-06 Problem -> Discovery -> ... -> Product spine in #about) ---- */
+  var STAGE_NAMES = ['Problem','Discovery','Analysis','Requirements','System','Product'];
+  var STAGES = STAGE_NAMES.length;
+  var stagePts = [];
+  for (var i = 0; i < STAGES; i++) {
+    var t = i / (STAGES - 1);
+    stagePts.push(new THREE.Vector3(
+      Math.sin(t * Math.PI * 1.7) * 3.1,
+      -t * 42,
+      Math.cos(t * Math.PI * 1.4) * 2.8
+    ));
+  }
+  var curve = new THREE.CatmullRomCurve3(stagePts, false, 'catmullrom', 0.4);
+
+  var tubeGeo = new THREE.TubeGeometry(curve, 220, 0.04, 8, false);
+  var tubeMat = new THREE.MeshBasicMaterial({ color: BLUE, transparent: true, opacity: 0.2 });
+  scene.add(new THREE.Mesh(tubeGeo, tubeMat));
+
+  var nodes = [];
+  stagePts.forEach(function (p, idx) {
+    var sphere = new THREE.Mesh(
+      new THREE.SphereGeometry(0.32, 20, 20),
+      new THREE.MeshBasicMaterial({ color: idx % 2 ? VIOLET2 : BLUE2, transparent: true, opacity: 0.4 })
+    );
+    sphere.position.copy(p);
+    scene.add(sphere);
+
+    var ring = new THREE.Mesh(
+      new THREE.RingGeometry(0.48, 0.54, 32),
+      new THREE.MeshBasicMaterial({ color: idx % 2 ? VIOLET : BLUE, transparent: true, opacity: 0.28, side: THREE.DoubleSide })
+    );
+    ring.position.copy(p);
+    scene.add(ring);
+
+    nodes.push({ mesh: sphere, ring: ring });
+  });
+
+  /* ---- ambient drifting particle field ---- */
+  var starCount = isLowEnd ? 220 : (isTouch ? 400 : 850);
+  var starGeo = new THREE.BufferGeometry();
+  var pos = new Float32Array(starCount * 3);
+  var col = new Float32Array(starCount * 3);
+  var c1 = new THREE.Color(BLUE2), c2 = new THREE.Color(VIOLET2);
+  for (var s = 0; s < starCount; s++) {
+    pos[s * 3]     = (Math.random() - 0.5) * 40;
+    pos[s * 3 + 1] = Math.random() * -50 + 4;
+    pos[s * 3 + 2] = (Math.random() - 0.5) * 40;
+    var c = Math.random() > 0.5 ? c1 : c2;
+    col[s * 3] = c.r; col[s * 3 + 1] = c.g; col[s * 3 + 2] = c.b;
+  }
+  starGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  starGeo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+  var stars = new THREE.Points(starGeo, new THREE.PointsMaterial({
+    size: 0.045, vertexColors: true, transparent: true, opacity: 0.5, sizeAttenuation: true
+  }));
+  scene.add(stars);
+
+  camera.position.set(stagePts[0].x, stagePts[0].y + 1, stagePts[0].z + 4.4);
+  camera.lookAt(stagePts[0]);
+
+  /* ---- mouse parallax ---- */
+  var mouseX = 0, mouseY = 0;
+  if (!isTouch) {
+    window.addEventListener('mousemove', function (e) {
+      mouseX = e.clientX / window.innerWidth - 0.5;
+      mouseY = e.clientY / window.innerHeight - 0.5;
+    }, { passive: true });
+  }
+
+  function docProgress() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    return h > 0 ? Math.min(1, Math.max(0, window.scrollY / h)) : 0;
+  }
+
+  var dispT = 0;
+  function frame(now) {
+    var targetT = docProgress();
+    dispT = RM ? targetT : dispT + (targetT - dispT) * 0.07;
+    var clampT = Math.min(dispT, 0.999);
+
+    var camPt = curve.getPointAt(clampT);
+    var lookPt = curve.getPointAt(Math.min(clampT + 0.02, 0.999));
+
+    camera.position.set(
+      camPt.x + mouseX * 1.1,
+      camPt.y + 1 - mouseY * 0.6,
+      camPt.z + 4.3 + (RM ? 0 : Math.sin(now * 0.00018) * 0.35)
+    );
+    camera.lookAt(lookPt.x, lookPt.y - 0.5, lookPt.z);
+
+    nodes.forEach(function (n, i) {
+      var active = dispT >= i / (STAGES - 1) - 0.06;
+      var targetOp = active ? 0.85 : 0.32;
+      n.mesh.material.opacity += (targetOp - n.mesh.material.opacity) * 0.08;
+      n.ring.material.opacity += ((active ? 0.55 : 0.2) - n.ring.material.opacity) * 0.08;
+      var targetScale = active ? 1.2 : 0.85;
+      var cur = n.mesh.scale.x + (targetScale - n.mesh.scale.x) * 0.08;
+      n.mesh.scale.setScalar(cur);
+      n.ring.rotation.z = now * 0.0004 * (i % 2 ? 1 : -1);
+    });
+
+    if (!RM) stars.rotation.y = now * 0.00002;
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  window.addEventListener('resize', function () {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
 })();
 </script>
 </body>
