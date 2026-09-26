@@ -244,16 +244,17 @@ section{position:relative;scroll-margin-top:96px}
 .pf-btn.active .c{color:#fff;background:rgba(255,255,255,.2)}
 
 /* ---- 3D bookshelf stage (progressive enhancement over .universe grid) ---- */
-.shelf-stage{position:relative;width:100%;aspect-ratio:16/10;max-height:620px;min-height:340px;
+.shelf-stage{position:relative;width:100%;aspect-ratio:16/9;max-height:560px;min-height:320px;
   border-radius:var(--r-lg);border:1px solid var(--border);overflow:hidden;margin-bottom:36px;
   background:
     repeating-linear-gradient(0deg,var(--grid-line) 0,var(--grid-line) 1px,transparent 1px,transparent 28px),
     linear-gradient(160deg,rgba(17,21,28,.85),rgba(5,6,8,.95));}
 .shelf-stage canvas{display:block;width:100%;height:100%;cursor:grab;touch-action:none}
 .shelf-stage.dragging canvas{cursor:grabbing}
-.shelf-hint{position:absolute;left:16px;bottom:14px;font-family:var(--mono);font-size:11px;color:var(--muted);
+.shelf-hint{position:absolute;left:16px;top:14px;font-family:var(--mono);font-size:11px;color:var(--muted);
   background:rgba(10,13,18,.7);backdrop-filter:blur(6px);border:1px solid var(--border-2);
   padding:5px 12px;border-radius:999px;pointer-events:none;z-index:2}
+@media(max-width:640px){.shelf-hint{display:none}}
 .shelf-tooltip{position:absolute;top:0;left:0;padding:8px 13px;background:rgba(10,13,18,.94);
   border:1px solid var(--border);border-radius:9px;font-family:var(--mono);font-size:12.5px;color:var(--text);
   pointer-events:none;transform:translate(-50%,-130%);white-space:nowrap;opacity:0;transition:opacity .18s ease;z-index:5}
@@ -263,7 +264,19 @@ section{position:relative;scroll-margin-top:96px}
   font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
   transition:opacity .4s ease;pointer-events:none;z-index:3}
 .shelf-loading.hide{opacity:0}
-@media(max-width:640px){.shelf-stage{aspect-ratio:4/5;max-height:520px}}
+.shelf-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:44px;height:44px;
+  border-radius:999px;border:1px solid var(--border);background:rgba(10,13,18,.7);backdrop-filter:blur(8px);
+  color:var(--text);font-size:17px;display:flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:all .25s;opacity:.75}
+.shelf-nav:hover{opacity:1;border-color:rgba(107,166,255,.5);background:rgba(10,13,18,.9)}
+.shelf-nav.prev{left:16px}
+.shelf-nav.next{right:16px}
+.shelf-caption{position:absolute;left:0;right:0;bottom:14px;z-index:2;display:flex;flex-direction:column;
+  align-items:center;gap:4px;pointer-events:none;text-align:center}
+.shelf-caption .sc-count{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted)}
+.shelf-caption .sc-name{font-family:var(--display);font-weight:600;font-size:17px;color:var(--text)}
+@media(max-width:640px){.shelf-nav{width:36px;height:36px;font-size:14px}}
+@media(max-width:640px){.shelf-stage{aspect-ratio:3/4;max-height:480px}}
 
 .proj-group{margin-bottom:44px}
 .proj-group[hidden]{display:none}
@@ -668,10 +681,16 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
     <!-- 3D bookshelf — progressive enhancement over the card grid below.
          Hidden until script confirms WebGL + motion are OK; the grid
          underneath is the real content and stays fully functional either way. -->
-    <div class="shelf-stage" id="shelfStage" data-rv hidden>
+    <div class="shelf-stage" id="shelfStage" data-rv hidden role="region" aria-roledescription="carousel" aria-label="Project carousel">
       <canvas id="shelfCanvas" aria-hidden="true"></canvas>
       <div class="shelf-tooltip" id="shelfTooltip" role="presentation"></div>
-      <div class="shelf-hint">Drag to rotate · Scroll to zoom · Click a book to open</div>
+      <button class="shelf-nav prev" id="shelfPrev" aria-label="Previous project" type="button"><i class="bi bi-chevron-left"></i></button>
+      <button class="shelf-nav next" id="shelfNext" aria-label="Next project" type="button"><i class="bi bi-chevron-right"></i></button>
+      <div class="shelf-caption" id="shelfCaption" aria-live="polite">
+        <span class="sc-count" id="shelfCount"></span>
+        <span class="sc-name" id="shelfName"></span>
+      </div>
+      <div class="shelf-hint">Drag or use the arrows · Click the centre book to open</div>
       <div class="shelf-loading" id="shelfLoading">Loading 3D shelf…</div>
     </div>
 
@@ -1314,38 +1333,30 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
     var canvas = document.getElementById('shelfCanvas');
     var tooltip = document.getElementById('shelfTooltip');
     var loading = document.getElementById('shelfLoading');
+    var prevBtn = document.getElementById('shelfPrev');
+    var nextBtn = document.getElementById('shelfNext');
+    var countEl = document.getElementById('shelfCount');
+    var nameEl = document.getElementById('shelfName');
 
     var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
 
     var scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x050608, 0.05);
+    scene.fog = new THREE.FogExp2(0x050608, 0.09);
 
-    var camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
-    var camDist = 11, camAz = -0.28, camPolar = 1.4, focusY = 0;
-    var targetDist = camDist, targetAz = camAz, targetPolar = camPolar, targetFocusY = focusY;
-
-    function applyCamera(){
-      var y = focusY;
-      camera.position.set(
-        camDist * Math.sin(camPolar) * Math.sin(camAz),
-        camDist * Math.cos(camPolar) + y,
-        camDist * Math.sin(camPolar) * Math.cos(camAz)
-      );
-      camera.lookAt(0, y, 0);
-    }
-    applyCamera();
+    var camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
+    camera.position.set(0, 0.25, 6.4);
+    camera.lookAt(0, 0, 0);
 
     scene.add(new THREE.HemisphereLight(0x3a5a9a, 0x0a0d12, 1.0));
-    var key = new THREE.DirectionalLight(0x9fc0ff, 1.2); key.position.set(4, 6, 5); scene.add(key);
-    var rim = new THREE.PointLight(0x8a6cff, 8, 22); rim.position.set(-5, 2, -3); scene.add(rim);
-    var rim2 = new THREE.PointLight(0x4f8cff, 5, 18); rim2.position.set(5, -1, 4); scene.add(rim2);
+    var key = new THREE.DirectionalLight(0x9fc0ff, 1.2); key.position.set(3, 5, 6); scene.add(key);
+    var rim = new THREE.PointLight(0x8a6cff, 9, 20); rim.position.set(-4, 1, 2); scene.add(rim);
+    var rim2 = new THREE.PointLight(0x4f8cff, 6, 18); rim2.position.set(4, -1, 3); scene.add(rim2);
 
     var shelfGroup = new THREE.Group(); scene.add(shelfGroup);
 
-    var rowGap = 2.35, shelfDepth = 0.22, shelfThk = 0.1;
-    var shelfMat = new THREE.MeshStandardMaterial({ color: 0x11151c, roughness: 0.55, metalness: 0.4 });
+    var shelfDepth = 0.22;
     var sideMat = new THREE.MeshStandardMaterial({ color: 0x171c24, roughness: 0.75, metalness: 0.1 });
 
     var COVER_W = 340, COVER_H = 500; // px, book-cover aspect (~0.68), matches a real book jacket
@@ -1428,46 +1439,67 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
       return tex;
     }
 
-    var books = []; // {mesh, baseY, data, row}
-    var rowFocus = {}; // key -> y
-    var bookW = 1.05, bookH = bookW * (COVER_H / COVER_W), gap = 0.14;
+    var bookW = 1.7, bookH = bookW * (COVER_H / COVER_W);
 
-    // build every cover texture first so the shelf appears whole rather than
-    // populating piecemeal as images resolve
+    // build every cover texture first so the carousel appears whole rather
+    // than populating piecemeal as images resolve
     var allBooks = [];
     cats.forEach(function(cat){ cat.books.forEach(function(b){ allBooks.push({ b: b, cat: cat }); }); });
     var textures = await Promise.all(allBooks.map(function(entry){ return coverTexture(entry.b, entry.cat); }));
-    var texByBook = new Map();
-    allBooks.forEach(function(entry, i){ texByBook.set(entry.b, textures[i]); });
 
-    var maxRowBooks = Math.max.apply(null, cats.map(function(c){ return c.books.length; }));
-    var shelfWidth = maxRowBooks * bookW + (maxRowBooks - 1) * gap + 0.7;
-
-    cats.forEach(function(cat, rowIdx){
-      var y = (cats.length - 1 - rowIdx) * rowGap - (rowGap * (cats.length - 1)) / 2;
-      rowFocus[cat.key] = y;
-
-      var plank = new THREE.Mesh(new THREE.BoxGeometry(shelfWidth, shelfThk, shelfDepth + 0.5), shelfMat);
-      plank.position.set(0, y - bookH / 2 - shelfThk / 2, -0.1);
-      shelfGroup.add(plank);
-
-      var n = cat.books.length;
-      var totalW = n * bookW + (n - 1) * gap;
-      var x = -totalW / 2 + bookW / 2;
-
-      cat.books.forEach(function(b){
-        var geo = new THREE.BoxGeometry(bookW, bookH, shelfDepth);
-        var coverMat = new THREE.MeshStandardMaterial({ map: texByBook.get(b), roughness: 0.55 });
-        var mats = [sideMat, sideMat, sideMat, sideMat, coverMat, sideMat];
-        var mesh = new THREE.Mesh(geo, mats);
-        var baseY = y;
-        mesh.position.set(x, baseY, 0);
-        mesh.userData = b;
-        shelfGroup.add(mesh);
-        books.push({ mesh: mesh, baseY: baseY, baseX: x, row: cat.key, data: b });
-        x += bookW + gap;
-      });
+    // one mesh per project, built once; the carousel only ever repositions
+    // them — nothing is added/removed when filtering or navigating
+    var books = allBooks.map(function(entry, i){
+      var geo = new THREE.BoxGeometry(bookW, bookH, shelfDepth);
+      var coverMat = new THREE.MeshStandardMaterial({ map: textures[i], roughness: 0.55, transparent: true });
+      var mats = [sideMat, sideMat, sideMat, sideMat, coverMat, sideMat];
+      var mesh = new THREE.Mesh(geo, mats);
+      shelfGroup.add(mesh);
+      return { mesh: mesh, mats: mats, data: entry.b, catKey: entry.cat.key };
     });
+
+    // a soft floor plane under the spotlight book so it doesn't float in void
+    var floorMat = new THREE.MeshStandardMaterial({ color: 0x0d1017, roughness: 0.9, transparent: true, opacity: 0.7 });
+    var floor = new THREE.Mesh(new THREE.PlaneGeometry(8, 2), floorMat);
+    floor.rotation.x = -Math.PI / 2;
+    floor.position.y = -bookH / 2 - 0.35;
+    shelfGroup.add(floor);
+
+    // ---- carousel state ----
+    var active = books.slice();          // the subset currently in play (filter changes this)
+    var centerIndex = 0;                 // integer index into `active` that is in the spotlight
+    var displayCenter = 0;               // eased/dragged float version used for layout each frame
+
+    function layout(){
+      var n = active.length;
+      active.forEach(function(book, i){
+        var offset = i - displayCenter;
+        var a = Math.abs(offset);
+        var scale = Math.max(0.4, 1.4 - a * 0.42);
+        var x = offset * (bookW * 0.95);
+        var z = -Math.min(a, 3) * 0.85;
+        var rotY = Math.max(-0.9, Math.min(0.9, -offset * 0.55));
+        var opacity = a > 4.2 ? 0 : Math.max(0, 1 - a * 0.32);
+        book.mesh.position.set(x, 0, z);
+        book.mesh.rotation.y = rotY;
+        book.mesh.scale.setScalar(scale * (book === hovered ? 1.04 : 1));
+        book.mats[4].opacity = opacity;
+        book.mesh.visible = opacity > 0.01;
+        book.mesh.renderOrder = 100 - Math.round(a * 10);
+      });
+      // books not in the active subset (filtered out) stay fully hidden
+      books.forEach(function(b){ if(active.indexOf(b) === -1) b.mesh.visible = false; });
+
+      var focused = active[Math.round(displayCenter)] || active[centerIndex];
+      if(focused && nameEl && countEl){
+        nameEl.textContent = focused.data.name.replace(/-/g, ' ') + (focused.data.stat ? ' · ' + focused.data.stat : '');
+        countEl.textContent = (Math.round(displayCenter) + 1) + ' / ' + n;
+      }
+    }
+
+    function goTo(i){
+      centerIndex = Math.max(0, Math.min(active.length - 1, i));
+    }
 
     function resize(){
       var r = stage.getBoundingClientRect();
@@ -1483,60 +1515,65 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
     // ---- interaction ----
     var raycaster = new THREE.Raycaster();
     var ndc = new THREE.Vector2();
-    var dragging = false, moved = false, downX = 0, downY = 0, lastX = 0, lastY = 0;
+    var dragging = false, moved = false, downX = 0, dragDX = 0, lastX = 0;
     var hovered = null, idleT = 0;
-
-    function setHover(entry){
-      if(hovered === entry) return;
-      if(hovered) hovered.mesh.scale.set(1, 1, 1), hovered.mesh.position.z = 0;
-      hovered = entry;
-      if(hovered){
-        hovered.mesh.position.z = 0.32;
-        hovered.mesh.scale.set(1.06, 1.06, 1.06);
-      }
-    }
 
     function pick(clientX, clientY){
       var r = canvas.getBoundingClientRect();
       ndc.x = ((clientX - r.left) / r.width) * 2 - 1;
       ndc.y = -((clientY - r.top) / r.height) * 2 + 1;
       raycaster.setFromCamera(ndc, camera);
-      var hits = raycaster.intersectObjects(books.map(function(b){ return b.mesh; }));
+      var hits = raycaster.intersectObjects(active.filter(function(b){ return b.mesh.visible; }).map(function(b){ return b.mesh; }));
       if(!hits.length) return null;
       var mesh = hits[0].object;
-      return books.filter(function(b){ return b.mesh === mesh; })[0] || null;
+      return active.filter(function(b){ return b.mesh === mesh; })[0] || null;
+    }
+
+    // how many carousel steps a full-width drag covers
+    // dragging right brings the NEXT project forward (per spec), so a
+    // positive pixel delta must produce a positive index delta.
+    function pxToIndex(px){
+      var r = canvas.getBoundingClientRect();
+      return px / (r.width / 4.2);
     }
 
     canvas.addEventListener('pointerdown', function(e){
-      dragging = true; moved = false; downX = lastX = e.clientX; downY = lastY = e.clientY;
+      dragging = true; moved = false; dragDX = 0; downX = lastX = e.clientX;
       stage.classList.add('dragging');
       canvas.setPointerCapture(e.pointerId);
       idleT = 0;
     });
-    window.addEventListener('pointerup', function(e){
+    canvas.addEventListener('pointerup', function(e){
       dragging = false; stage.classList.remove('dragging');
       if(!moved){
         var hit = pick(e.clientX, e.clientY);
-        if(hit && hit.data.el) hit.data.el.click();
+        if(hit){
+          var i = active.indexOf(hit);
+          if(i === centerIndex){ if(hit.data.el) hit.data.el.click(); }
+          else goTo(i);
+        }
+      } else {
+        goTo(Math.round(displayCenter));
       }
+      idleT = 0;
     });
     canvas.addEventListener('pointermove', function(e){
       if(dragging){
-        var dx = e.clientX - lastX, dy = e.clientY - lastY;
-        if(Math.abs(e.clientX - downX) > 4 || Math.abs(e.clientY - downY) > 4) moved = true;
-        targetAz -= dx * 0.006;
-        targetPolar = Math.min(1.45, Math.max(0.82, targetPolar - dy * 0.004));
-        lastX = e.clientX; lastY = e.clientY;
+        var dx = e.clientX - lastX;
+        dragDX += dx;
+        if(Math.abs(e.clientX - downX) > 4) moved = true;
+        displayCenter = centerIndex + pxToIndex(dragDX);
+        displayCenter = Math.max(-0.4, Math.min(active.length - 1 + 0.4, displayCenter));
+        lastX = e.clientX;
         tooltip.classList.remove('show');
-        setHover(null);
       } else {
         var hit = pick(e.clientX, e.clientY);
-        setHover(hit);
+        hovered = hit;
         if(hit){
           var r = stage.getBoundingClientRect();
           tooltip.style.left = (e.clientX - r.left) + 'px';
           tooltip.style.top = (e.clientY - r.top) + 'px';
-          tooltip.innerHTML = '<b>' + hit.data.name + '</b>' + (hit.data.stat ? ' · ' + hit.data.stat : '');
+          tooltip.innerHTML = '<b>' + hit.data.name.replace(/-/g, ' ') + '</b>' + (hit.data.stat ? ' · ' + hit.data.stat : '');
           tooltip.classList.add('show');
         } else {
           tooltip.classList.remove('show');
@@ -1544,27 +1581,46 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
       }
       idleT = 0;
     });
-    canvas.addEventListener('pointerleave', function(){ setHover(null); tooltip.classList.remove('show'); });
+    canvas.addEventListener('pointerleave', function(){ hovered = null; tooltip.classList.remove('show'); });
+
+    var wheelAccum = 0;
     canvas.addEventListener('wheel', function(e){
       e.preventDefault();
-      targetDist = Math.min(17, Math.max(7.5, targetDist + e.deltaY * 0.012));
+      wheelAccum += e.deltaY;
+      if(Math.abs(wheelAccum) > 60){ goTo(centerIndex + (wheelAccum > 0 ? 1 : -1)); wheelAccum = 0; }
       idleT = 0;
     }, { passive: false });
 
-    // filter buttons focus a shelf row in 3D too (grid filtering already works independently)
+    if(prevBtn) prevBtn.addEventListener('click', function(){ goTo(centerIndex - 1); idleT = 0; });
+    if(nextBtn) nextBtn.addEventListener('click', function(){ goTo(centerIndex + 1); idleT = 0; });
+
+    stage.setAttribute('tabindex', '0');
+    stage.addEventListener('keydown', function(e){
+      if(e.key === 'ArrowLeft'){ e.preventDefault(); goTo(centerIndex - 1); }
+      else if(e.key === 'ArrowRight'){ e.preventDefault(); goTo(centerIndex + 1); }
+      else if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        var focused = active[centerIndex];
+        if(focused && focused.data.el) focused.data.el.click();
+      }
+      idleT = 0;
+    });
+
+    // filter buttons swap which projects are in the carousel
     var filterBar = document.getElementById('projFilter');
     if(filterBar){
       filterBar.querySelectorAll('.pf-btn').forEach(function(btn){
         btn.addEventListener('click', function(){
           var f = btn.getAttribute('data-filter');
-          targetFocusY = (f === 'all' || rowFocus[f] === undefined) ? 0 : rowFocus[f];
-          targetDist = (f === 'all') ? 11 : 7.5;
+          active = (f === 'all') ? books.slice() : books.filter(function(b){ return b.catKey === f; });
+          centerIndex = 0; displayCenter = 0;
           idleT = 0;
         });
       });
     }
 
     if(loading) setTimeout(function(){ loading.classList.add('hide'); }, 150);
+    layout();
     stage.hidden = false;
     fallback.hidden = true;
 
@@ -1578,16 +1634,12 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
       requestAnimationFrame(frame);
       var dt = Math.min(0.05, (now - lastT) / 1000); lastT = now;
       if(!running) return;
-
       idleT += dt;
-      if(!dragging && idleT > 2.5) targetAz += dt * 0.05; // gentle idle drift
 
-      camAz += (targetAz - camAz) * 0.08;
-      camPolar += (targetPolar - camPolar) * 0.12;
-      camDist += (targetDist - camDist) * 0.1;
-      focusY += (targetFocusY - focusY) * 0.08;
-      applyCamera();
-
+      if(!dragging){
+        displayCenter += (centerIndex - displayCenter) * 0.14;
+      }
+      layout();
       renderer.render(scene, camera);
     }
     requestAnimationFrame(frame);
