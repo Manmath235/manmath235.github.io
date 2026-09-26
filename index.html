@@ -114,7 +114,11 @@ section{position:relative;scroll-margin-top:96px}
 /* ================= HERO ================= */
 #hero{height:auto}
 .hero-stage{position:relative;min-height:92vh;display:flex;align-items:center;justify-content:center;
-  padding:150px 0 90px}
+  padding:150px 0 90px;overflow:hidden}
+
+#heroCanvas{position:absolute;inset:0;z-index:1;width:100%;height:100%;
+  -webkit-mask-image:linear-gradient(180deg,#000 60%,transparent 96%);
+  mask-image:linear-gradient(180deg,#000 60%,transparent 96%)}
 
 .hero-core{position:relative;z-index:3;width:min(1040px,92vw)}
 
@@ -152,7 +156,7 @@ section{position:relative;scroll-margin-top:96px}
 .hero-teaser .tnode{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
   color:var(--text-2);border:1px solid var(--border);background:rgba(255,255,255,.86);
   padding:6px 12px;border-radius:999px;backdrop-filter:blur(6px)}
-.hero-teaser .tnode.first{color:#fff;border-color:rgba(76,99,168,.5);box-shadow:0 0 24px rgba(43,58,103,.25)}
+.hero-teaser .tnode.first{color:var(--text);background:var(--panel);border-color:rgba(76,99,168,.5);box-shadow:0 0 24px rgba(43,58,103,.15)}
 .hero-teaser .arrow{color:var(--muted);font-size:12px}
 
 /* ---------- generic block spacing ---------- */
@@ -186,7 +190,7 @@ section{position:relative;scroll-margin-top:96px}
 /* process spine (nodes + drawn line) */
 .spine{position:relative;padding-left:8px}
 .spine-line{position:absolute;left:22px;top:8px;bottom:8px;width:2px;
-  background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
+  background:rgba(20,24,36,.10);border-radius:2px;overflow:hidden}
 .spine-line i{position:absolute;left:0;top:0;width:100%;height:var(--fill,0%);
   background:linear-gradient(180deg,var(--blue),var(--violet));border-radius:2px;
   box-shadow:0 0 14px rgba(43,58,103,.5);transition:height .1s linear}
@@ -238,7 +242,7 @@ section{position:relative;scroll-margin-top:96px}
   background:var(--panel-2);border:1px solid var(--border);border-radius:999px;padding:9px 16px;cursor:pointer;
   display:inline-flex;align-items:center;gap:8px;transition:all .25s}
 .pf-btn:hover{color:var(--text);border-color:rgba(76,99,168,.4)}
-.pf-btn .c{font-family:var(--mono);font-size:11px;color:var(--muted);background:rgba(255,255,255,.05);
+.pf-btn .c{font-family:var(--mono);font-size:11px;color:var(--muted);background:rgba(20,24,36,.06);
   border-radius:999px;padding:1px 8px}
 .pf-btn.active{color:#fff;background:var(--accent);border-color:transparent}
 .pf-btn.active .c{color:#fff;background:rgba(255,255,255,.2)}
@@ -364,7 +368,7 @@ section{position:relative;scroll-margin-top:96px}
 .skill-row .st{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
 .skill-row .sn{font-size:14.5px;color:var(--text-2);font-weight:500}
 .skill-row .sp{font-family:var(--mono);font-size:13px;color:var(--blue-2)}
-.skill-bar{height:6px;border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden;
+.skill-bar{height:6px;border-radius:999px;background:rgba(20,24,36,.08);overflow:hidden;
   border:1px solid var(--border-2)}
 .skill-bar i{display:block;height:100%;width:0;border-radius:999px;background:var(--accent);
   box-shadow:0 0 12px rgba(43,58,103,.4);transition:width 1.2s cubic-bezier(.16,1,.3,1)}
@@ -388,7 +392,7 @@ section{position:relative;scroll-margin-top:96px}
 .xp:last-child{padding-bottom:0}
 .xp-dot{position:absolute;left:6px;top:6px;width:20px;height:20px;border-radius:50%;
   background:var(--panel);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;z-index:2}
-.xp-dot::after{content:"";width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2)}
+.xp-dot::after{content:"";width:8px;height:8px;border-radius:50%;background:rgba(20,24,36,.18)}
 .xp.now .xp-dot{border-color:rgba(76,99,168,.6);box-shadow:0 0 22px rgba(43,58,103,.45)}
 .xp.now .xp-dot::after{background:var(--accent);box-shadow:0 0 12px var(--blue-2)}
 .xp-panel{position:relative;border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;
@@ -425,7 +429,7 @@ section{position:relative;scroll-margin-top:96px}
 .cert-tag{font-family:var(--mono);font-size:11px;color:var(--blue-2);background:rgba(43,58,103,.1);
   border-radius:999px;padding:2px 10px}
 .cert-empty{grid-column:1/-1;border:1px dashed var(--border);border-radius:var(--r);padding:26px;
-  display:flex;gap:14px;align-items:flex-start;color:var(--text-2);background:rgba(255,255,255,.02)}
+  display:flex;gap:14px;align-items:flex-start;color:var(--text-2);background:rgba(20,24,36,.02)}
 .cert-empty i{color:var(--blue-2);font-size:20px;margin-top:2px}
 .cert-empty b{color:var(--text)}
 
@@ -573,6 +577,7 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
 <!-- ===================== HERO ===================== -->
 <section id="hero" aria-label="Introduction">
   <div class="hero-stage" id="heroStage">
+    <canvas id="heroCanvas" aria-hidden="true"></canvas>
     <div class="hero-core" id="heroCore">
       <div class="hero-id">
         <span class="hero-avail"><span class="p"></span> Business Analyst · Kolkata, India · UTC+5:30</span>
@@ -1095,7 +1100,7 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
     });
     var core = document.createElementNS(svgns,'circle');
     core.setAttribute('cx',200); core.setAttribute('cy',200); core.setAttribute('r',150);
-    core.setAttribute('fill','none'); core.setAttribute('stroke','rgba(255,255,255,0.06)'); core.setAttribute('stroke-width','1');
+    core.setAttribute('fill','none'); core.setAttribute('stroke','rgba(20,24,36,0.12)'); core.setAttribute('stroke-width','1');
     rsvg.insertBefore(core, rsvg.firstChild);
   }
 
@@ -1263,10 +1268,20 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
   }
   if(RM || coarse || !hasWebGL()) return; // keep the card grid — no 3D on touch/reduced-motion/unsupported
 
+  // Commit to the shelf's final layout size *immediately*, before Three.js
+  // has even started downloading — never after. If the swap from the tall
+  // fallback grid to the short carousel happened later (e.g. once the lazy
+  // import finishes), it would land at an unpredictable moment: mid-scroll,
+  // or mid-flight during a smooth nav-link jump to a section further down
+  // the page, which is a real, reproducible layout shift (confirmed by
+  // testing a scrollIntoView('#skills') landing hundreds of pixels off
+  // because the grid collapsed while that scroll was still animating).
+  // The loading spinner covers the wait; the page's shape never moves.
+  stage.hidden = false;
+  fallback.hidden = true;
+
   // Don't pay Three.js's download cost until the visitor actually scrolls
   // near the Work section (same lazy spirit as the loading="lazy" images).
-  // Watch #work itself, not #shelfStage — the stage starts `hidden`
-  // (display:none) until init succeeds, so it would never intersect.
   var workSection = document.getElementById('work');
   var lazyIO = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
@@ -1281,10 +1296,15 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
     var THREE;
     try{
       THREE = await import('./assets/vendor/three/three.module.min.js');
-    }catch(e){ return; } // self-hosted file missing/unreachable — grid stays as-is
+    }catch(e){ revertToFallback(); return; } // self-hosted file missing/unreachable
 
     try{ await initShelf(THREE); }
-    catch(e){ console.warn('3D shelf failed, showing card grid instead.', e); return; }
+    catch(e){ console.warn('3D shelf failed, showing card grid instead.', e); revertToFallback(); }
+  }
+
+  function revertToFallback(){
+    stage.hidden = true;
+    fallback.hidden = false;
   }
 
   // Real bootstrap-icons codepoints (verified against the installed bootstrap-icons
@@ -1620,9 +1640,7 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
     }
 
     if(loading) setTimeout(function(){ loading.classList.add('hide'); }, 150);
-    layout();
-    stage.hidden = false;
-    fallback.hidden = true;
+    layout(); // stage/fallback visibility was already committed synchronously, above
 
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){ running = e.isIntersecting; });
@@ -1640,6 +1658,146 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
         displayCenter += (centerIndex - displayCenter) * 0.14;
       }
       layout();
+      renderer.render(scene, camera);
+    }
+    requestAnimationFrame(frame);
+  }
+})();
+</script>
+
+<!-- ===================== HERO 3D NETWORK (progressive enhancement) =====================
+     A calm, ambient constellation of nodes behind the hero copy. Same capability
+     gate as the project shelf: skipped entirely on touch/reduced-motion/no-WebGL,
+     in which case the hero's existing CSS gradient wash (body::before) is all
+     that shows — never a blank gap. -->
+<script type="module">
+(async function(){
+  "use strict";
+  var canvas = document.getElementById('heroCanvas');
+  var stage = document.getElementById('heroStage');
+  if(!canvas || !stage) return;
+
+  var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var coarse = window.matchMedia('(pointer:coarse)').matches;
+  function hasWebGL(){
+    try{
+      var c = document.createElement('canvas');
+      return !!(window.WebGLRenderingContext && (c.getContext('webgl2') || c.getContext('webgl')));
+    }catch(e){ return false; }
+  }
+  if(RM || coarse || !hasWebGL()) return;
+
+  var THREE;
+  try{ THREE = await import('./assets/vendor/three/three.module.min.js'); }
+  catch(e){ return; }
+
+  try{ initNetwork(THREE); }
+  catch(e){ console.warn('Hero network failed, keeping the plain gradient background.', e); }
+
+  function initNetwork(THREE){
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
+    camera.position.set(0, 0, 11);
+
+    var N = 70;
+    var positions = new Float32Array(N * 3);
+    var speeds = [];
+    for(var i = 0; i < N; i++){
+      // bias the field to the right/back half so it doesn't sit under the headline text
+      var x = (Math.random() * 2 - 0.3) * 7.5;
+      var y = (Math.random() * 2 - 1) * 4.5;
+      var z = (Math.random() - 0.5) * 6 - 2;
+      positions[i*3] = x; positions[i*3+1] = y; positions[i*3+2] = z;
+      speeds.push(0.04 + Math.random() * 0.08);
+    }
+    var pGeo = new THREE.BufferGeometry();
+    pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    var pMat = new THREE.PointsMaterial({ color: 0x2B3A67, size: 0.09, transparent: true, opacity: 0.55, sizeAttenuation: true });
+    var points = new THREE.Points(pGeo, pMat);
+    scene.add(points);
+
+    // connecting lines between nearby nodes, rebuilt each frame (cheap at N=70)
+    var maxLines = N * 6;
+    var linePositions = new Float32Array(maxLines * 2 * 3);
+    var lGeo = new THREE.BufferGeometry();
+    lGeo.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+    lGeo.setDrawRange(0, 0);
+    var lMat = new THREE.LineBasicMaterial({ color: 0x4C63A8, transparent: true, opacity: 0.16 });
+    var lines = new THREE.LineSegments(lGeo, lMat);
+    scene.add(lines);
+
+    var LINK_DIST = 3.1, LINK_DIST_SQ = LINK_DIST * LINK_DIST;
+
+    function rebuildLinks(){
+      var arr = pGeo.attributes.position.array;
+      var idx = 0;
+      for(var i = 0; i < N && idx < maxLines; i++){
+        for(var j = i + 1; j < N && idx < maxLines; j++){
+          var dx = arr[i*3]-arr[j*3], dy = arr[i*3+1]-arr[j*3+1], dz = arr[i*3+2]-arr[j*3+2];
+          var d2 = dx*dx+dy*dy+dz*dz;
+          if(d2 < LINK_DIST_SQ){
+            linePositions[idx*6]   = arr[i*3];   linePositions[idx*6+1] = arr[i*3+1]; linePositions[idx*6+2] = arr[i*3+2];
+            linePositions[idx*6+3] = arr[j*3];   linePositions[idx*6+4] = arr[j*3+1]; linePositions[idx*6+5] = arr[j*3+2];
+            idx++;
+          }
+        }
+      }
+      lGeo.attributes.position.needsUpdate = true;
+      lGeo.setDrawRange(0, idx * 2);
+    }
+
+    function resize(){
+      var r = stage.getBoundingClientRect();
+      if(r.width < 2 || r.height < 2) return;
+      renderer.setSize(r.width, r.height, false);
+      camera.aspect = r.width / r.height;
+      camera.updateProjectionMatrix();
+    }
+    var ro = new ResizeObserver(resize);
+    ro.observe(stage);
+    resize();
+
+    // gentle parallax toward the pointer, subtle — this is ambient decoration, not a toy
+    var targetRotY = 0, targetRotX = 0, rotY = 0, rotX = 0;
+    window.addEventListener('pointermove', function(e){
+      var r = stage.getBoundingClientRect();
+      var nx = ((e.clientX - r.left) / r.width) * 2 - 1;
+      var ny = ((e.clientY - r.top) / r.height) * 2 - 1;
+      targetRotY = nx * 0.12;
+      targetRotX = -ny * 0.06;
+    }, { passive: true });
+
+    var running = true;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ running = e.isIntersecting; });
+    }, { threshold: 0.05 });
+    io.observe(stage);
+
+    var t = 0, lastT = performance.now();
+    function frame(now){
+      requestAnimationFrame(frame);
+      var dt = Math.min(0.05, (now - lastT) / 1000); lastT = now;
+      if(!running) return;
+      t += dt;
+
+      var arr = pGeo.attributes.position.array;
+      for(var i = 0; i < N; i++){
+        arr[i*3+1] += Math.sin(t * speeds[i] + i) * 0.0018;
+        arr[i*3]   += Math.cos(t * speeds[i] * 0.7 + i) * 0.0012;
+      }
+      pGeo.attributes.position.needsUpdate = true;
+      rebuildLinks();
+
+      rotY += (targetRotY - rotY) * 0.04;
+      rotX += (targetRotX - rotX) * 0.04;
+      points.rotation.y = rotY + t * 0.015;
+      points.rotation.x = rotX;
+      lines.rotation.y = points.rotation.y;
+      lines.rotation.x = points.rotation.x;
+
       renderer.render(scene, camera);
     }
     requestAnimationFrame(frame);
