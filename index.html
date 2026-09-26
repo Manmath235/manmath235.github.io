@@ -712,27 +712,27 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
     <div class="proj-group" data-group="data" data-rv>
       <div class="proj-group-h"><span class="gi"><i class="bi bi-bar-chart"></i></span><span class="gt">Data &amp; BI</span><span class="gc">5</span><span class="rule"></span></div>
       <div class="universe">
-        <div class="pcard" data-modal="m1" role="button" tabindex="0" style="--tab:#F2C811"><span class="folder-tab" aria-hidden="true"></span><i class="bi bi-paperclip pclip" aria-hidden="true"></i>
+        <div class="pcard" data-modal="m1" data-cover="assets/projects/EV_Market_Analysis/EV_market_analysis.jpg" role="button" tabindex="0" style="--tab:#F2C811"><span class="folder-tab" aria-hidden="true"></span><i class="bi bi-paperclip pclip" aria-hidden="true"></i>
           <div class="pcard-top"><span class="pcard-name"><span class="ic"><i class="bi bi-journal-code"></i></span><span class="nm">india-ev-market-analysis</span></span><span class="pcard-badge">Public</span></div>
           <p class="pcard-desc">Power BI study of India's EV market (2022–24): growth, brand share, state-level adoption and a go-to-market roadmap.</p>
           <div class="pcard-meta"><span class="cat"><span class="d" style="background:#F2C811"></span> Power BI</span><span class="stat"><i class="bi bi-broadcast-pin"></i> Live dashboard</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
         </div>
-        <div class="pcard" data-modal="m4" role="button" tabindex="0" style="--tab:#F2C811"><span class="folder-tab" aria-hidden="true"></span><i class="bi bi-paperclip pclip" aria-hidden="true"></i>
+        <div class="pcard" data-modal="m4" data-cover="assets/projects/Call_Center_Data_Analysis_details/Customer Retention_1.jpg" role="button" tabindex="0" style="--tab:#F2C811"><span class="folder-tab" aria-hidden="true"></span><i class="bi bi-paperclip pclip" aria-hidden="true"></i>
           <div class="pcard-top"><span class="pcard-name"><span class="ic"><i class="bi bi-journal-code"></i></span><span class="nm">customer-retention-dashboard</span></span><span class="pcard-badge">Public</span></div>
           <p class="pcard-desc">Segmentation and engagement model that cut customer churn by 26.54%, with call-centre KPI analysis.</p>
           <div class="pcard-meta"><span class="cat"><span class="d" style="background:#F2C811"></span> Power BI</span><span class="stat"><i class="bi bi-graph-down-arrow"></i> 26.54% churn</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
         </div>
-        <div class="pcard" data-modal="m2" role="button" tabindex="0" style="--tab:#F2C811"><span class="folder-tab" aria-hidden="true"></span><i class="bi bi-paperclip pclip" aria-hidden="true"></i>
+        <div class="pcard" data-modal="m2" data-cover="assets/projects/Google_Trend_Analysis/Google Trend Analysis Thumbnail.jpg" role="button" tabindex="0" style="--tab:#F2C811"><span class="folder-tab" aria-hidden="true"></span><i class="bi bi-paperclip pclip" aria-hidden="true"></i>
           <div class="pcard-top"><span class="pcard-name"><span class="ic"><i class="bi bi-journal-code"></i></span><span class="nm">google-trends-dashboard</span></span><span class="pcard-badge">Public</span></div>
           <p class="pcard-desc">Consumer-interest and opportunity dashboard mined from Google Trends across 60+ countries.</p>
           <div class="pcard-meta"><span class="cat"><span class="d" style="background:#F2C811"></span> Power BI</span><span class="stat"><i class="bi bi-globe"></i> 60+ countries</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
         </div>
-        <div class="pcard" data-modal="m5" role="button" tabindex="0" style="--tab:#F2C811"><span class="folder-tab" aria-hidden="true"></span><i class="bi bi-paperclip pclip" aria-hidden="true"></i>
+        <div class="pcard" data-modal="m5" data-cover="assets/projects/AtliQ Hardware Insights Report/AtliQ Hardware Insights Report.jpg" role="button" tabindex="0" style="--tab:#F2C811"><span class="folder-tab" aria-hidden="true"></span><i class="bi bi-paperclip pclip" aria-hidden="true"></i>
           <div class="pcard-top"><span class="pcard-name"><span class="ic"><i class="bi bi-journal-code"></i></span><span class="nm">atliq-hardware-insights</span></span><span class="pcard-badge">Public</span></div>
           <p class="pcard-desc">Sales &amp; manufacturing insights: operational efficiency, market penetration and discount-pattern analysis.</p>
           <div class="pcard-meta"><span class="cat"><span class="d" style="background:#F2C811"></span> Power BI</span><span class="stat"><i class="bi bi-cpu"></i> Sales + Ops</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
         </div>
-        <div class="pcard" data-modal="m3" role="button" tabindex="0" style="--tab:#F2C811"><span class="folder-tab" aria-hidden="true"></span><i class="bi bi-paperclip pclip" aria-hidden="true"></i>
+        <div class="pcard" data-modal="m3" data-cover="assets/projects/Train Accident Analysis/Indian Rail Accident Analysis.jpg" role="button" tabindex="0" style="--tab:#F2C811"><span class="folder-tab" aria-hidden="true"></span><i class="bi bi-paperclip pclip" aria-hidden="true"></i>
           <div class="pcard-top"><span class="pcard-name"><span class="ic"><i class="bi bi-journal-code"></i></span><span class="nm">rail-accident-analysis</span></span><span class="pcard-badge">Public</span></div>
           <p class="pcard-desc">Pinpointed high-risk routes and root causes to steer rail-safety policy and emergency preparedness.</p>
           <div class="pcard-meta"><span class="cat"><span class="d" style="background:#F2C811"></span> Power BI</span><span class="stat"><i class="bi bi-shield-check"></i> Safety analytics</span><span class="open">Open <i class="bi bi-arrow-right"></i></span></div>
@@ -1264,12 +1264,29 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
       THREE = await import('./assets/vendor/three/three.module.min.js');
     }catch(e){ return; } // self-hosted file missing/unreachable — grid stays as-is
 
-    try{ initShelf(THREE); }
+    try{ await initShelf(THREE); }
     catch(e){ console.warn('3D shelf failed, showing card grid instead.', e); return; }
   }
 
-  function initShelf(THREE){
+  // Real bootstrap-icons codepoints (verified against the installed bootstrap-icons
+  // 1.11.3 package, not guessed) — used only as a generated-cover fallback for
+  // projects that have no real screenshot asset (client work under NDA, and the
+  // BA markdown-style documents).
+  var ICON_CODEPOINTS = {
+    'bi-coin': '',
+    'bi-heart-pulse': '',
+    'bi-shield-check': '',
+    'bi-recycle': '',
+    'bi-flag': '',
+    'bi-journal-text': '',
+    'bi-journal-code': ''
+  };
+
+  async function initShelf(THREE){
     // ---- source of truth: read categories + books straight from the DOM ----
+    // name, category color, icon, cover image (if a real one exists) and the
+    // click target all come from the existing accessible card grid — nothing
+    // here is invented separately from what's already on the page.
     var groupEls = fallback.querySelectorAll('.proj-group');
     var cats = Array.prototype.slice.call(groupEls).map(function(g){
       return {
@@ -1279,7 +1296,16 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
           var color = (card.style.getPropertyValue('--tab') || '#4F8CFF').trim();
           var name = (card.querySelector('.nm') || {}).textContent || 'project';
           var stat = card.querySelector('.pcard-meta .stat');
-          return { el: card, name: name.trim(), stat: stat ? stat.textContent.trim() : '', color: color };
+          var iconEl = card.querySelector('.pcard-name .ic i');
+          var iconClass = iconEl ? Array.prototype.slice.call(iconEl.classList).filter(function(c){ return c.indexOf('bi-') === 0; })[0] : null;
+          return {
+            el: card,
+            name: name.trim(),
+            stat: stat ? stat.textContent.trim() : '',
+            color: color,
+            cover: card.getAttribute('data-cover') || null,
+            icon: ICON_CODEPOINTS[iconClass] || '' // bi-journal fallback glyph
+          };
         })
       };
     }).filter(function(c){ return c.books.length; });
@@ -1297,7 +1323,7 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
     scene.fog = new THREE.FogExp2(0x050608, 0.05);
 
     var camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
-    var camDist = 12.5, camAz = -0.35, camPolar = 1.12, focusY = 0;
+    var camDist = 11, camAz = -0.28, camPolar = 1.4, focusY = 0;
     var targetDist = camDist, targetAz = camAz, targetPolar = camPolar, targetFocusY = focusY;
 
     function applyCamera(){
@@ -1318,53 +1344,123 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
 
     var shelfGroup = new THREE.Group(); scene.add(shelfGroup);
 
-    var rowGap = 2.5, shelfWidth = 9.6, shelfDepth = 1.3, shelfThk = 0.12;
+    var rowGap = 2.35, shelfDepth = 0.22, shelfThk = 0.1;
     var shelfMat = new THREE.MeshStandardMaterial({ color: 0x11151c, roughness: 0.55, metalness: 0.4 });
-    var sideMat = new THREE.MeshStandardMaterial({ color: 0x171c24, roughness: 0.7, metalness: 0.15 });
+    var sideMat = new THREE.MeshStandardMaterial({ color: 0x171c24, roughness: 0.75, metalness: 0.1 });
 
-    function labelTexture(text, accent){
+    var COVER_W = 340, COVER_H = 500; // px, book-cover aspect (~0.68), matches a real book jacket
+
+    function loadImage(src){
+      return new Promise(function(resolve, reject){
+        var img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = function(){ resolve(img); };
+        img.onerror = reject;
+        img.src = src;
+      });
+    }
+
+    var fontReady = document.fonts ? document.fonts.load('400 ' + Math.round(COVER_W * 0.3) + 'px "bootstrap-icons"').catch(function(){}) : Promise.resolve();
+
+    function shade(hex, amt){
+      var n = parseInt(hex.replace('#', ''), 16);
+      var r = Math.min(255, Math.max(0, (n >> 16) + amt));
+      var g = Math.min(255, Math.max(0, ((n >> 8) & 0xff) + amt));
+      var b = Math.min(255, Math.max(0, (n & 0xff) + amt));
+      return 'rgb(' + r + ',' + g + ',' + b + ')';
+    }
+
+    // Draws the book's front cover onto a canvas: a real project screenshot when
+    // one exists, or a generated icon-on-gradient cover (reusing that project's
+    // own established accent color + Bootstrap Icon) when it doesn't — a client
+    // project under NDA, or a plain-document BA artifact.
+    async function coverTexture(b, cat){
       var cvs = document.createElement('canvas');
-      cvs.width = 96; cvs.height = 420;
+      cvs.width = COVER_W; cvs.height = COVER_H;
       var ctx = cvs.getContext('2d');
-      ctx.fillStyle = '#11151c'; ctx.fillRect(0, 0, cvs.width, cvs.height);
-      ctx.fillStyle = accent;
-      ctx.fillRect(0, 0, cvs.width, 8);
-      ctx.fillRect(0, cvs.height - 8, cvs.width, 8);
-      ctx.save();
-      ctx.translate(cvs.width / 2, cvs.height / 2);
-      ctx.rotate(-Math.PI / 2);
-      ctx.fillStyle = '#F4F7FA';
-      ctx.font = "700 22px 'Space Grotesk', sans-serif";
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText(text.length > 26 ? text.slice(0, 24) + '…' : text, 0, 0);
-      ctx.restore();
+
+      if(b.cover){
+        try{
+          var img = await loadImage(b.cover);
+          var s = Math.max(COVER_W / img.width, COVER_H / img.height);
+          var dw = img.width * s, dh = img.height * s;
+          ctx.drawImage(img, (COVER_W - dw) / 2, (COVER_H - dh) / 2, dw, dh);
+          var overlay = ctx.createLinearGradient(0, 0, 0, COVER_H);
+          overlay.addColorStop(0, 'rgba(5,6,8,.35)');
+          overlay.addColorStop(0.55, 'rgba(5,6,8,0)');
+          overlay.addColorStop(1, 'rgba(5,6,8,.82)');
+          ctx.fillStyle = overlay; ctx.fillRect(0, 0, COVER_W, COVER_H);
+        }catch(e){ b = Object.assign({}, b, { cover: null }); } // image failed to load -> fall through to generated cover
+      }
+      if(!b.cover){
+        var grad = ctx.createLinearGradient(0, 0, COVER_W, COVER_H);
+        grad.addColorStop(0, shade(b.color, -20));
+        grad.addColorStop(1, shade(b.color, -70));
+        ctx.fillStyle = grad; ctx.fillRect(0, 0, COVER_W, COVER_H);
+        await fontReady;
+        ctx.font = '400 ' + Math.round(COVER_W * 0.34) + 'px "bootstrap-icons"';
+        ctx.fillStyle = 'rgba(255,255,255,.9)';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText(b.icon, COVER_W / 2, COVER_H * 0.42);
+        var overlay2 = ctx.createLinearGradient(0, 0, 0, COVER_H);
+        overlay2.addColorStop(0.55, 'rgba(5,6,8,0)');
+        overlay2.addColorStop(1, 'rgba(5,6,8,.85)');
+        ctx.fillStyle = overlay2; ctx.fillRect(0, 0, COVER_W, COVER_H);
+      }
+
+      // shared kicker + title, like a real jacket
+      ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+      ctx.fillStyle = b.color;
+      ctx.font = "700 13px 'Space Mono', monospace";
+      ctx.fillText(cat.label.toUpperCase(), 18, 30);
+      ctx.fillStyle = 'rgba(255,255,255,.94)';
+      ctx.font = "700 24px 'Space Grotesk', sans-serif";
+      var title = b.name.replace(/-/g, ' ');
+      if(ctx.measureText(title).width > COVER_W - 36){
+        while(title.length > 4 && ctx.measureText(title + '…').width > COVER_W - 36) title = title.slice(0, -1);
+        title += '…';
+      }
+      ctx.fillText(title, 18, COVER_H - 24);
+
       var tex = new THREE.CanvasTexture(cvs);
       tex.colorSpace = THREE.SRGBColorSpace;
+      tex.anisotropy = 4;
       return tex;
     }
 
     var books = []; // {mesh, baseY, data, row}
     var rowFocus = {}; // key -> y
+    var bookW = 1.05, bookH = bookW * (COVER_H / COVER_W), gap = 0.14;
+
+    // build every cover texture first so the shelf appears whole rather than
+    // populating piecemeal as images resolve
+    var allBooks = [];
+    cats.forEach(function(cat){ cat.books.forEach(function(b){ allBooks.push({ b: b, cat: cat }); }); });
+    var textures = await Promise.all(allBooks.map(function(entry){ return coverTexture(entry.b, entry.cat); }));
+    var texByBook = new Map();
+    allBooks.forEach(function(entry, i){ texByBook.set(entry.b, textures[i]); });
+
+    var maxRowBooks = Math.max.apply(null, cats.map(function(c){ return c.books.length; }));
+    var shelfWidth = maxRowBooks * bookW + (maxRowBooks - 1) * gap + 0.7;
 
     cats.forEach(function(cat, rowIdx){
       var y = (cats.length - 1 - rowIdx) * rowGap - (rowGap * (cats.length - 1)) / 2;
       rowFocus[cat.key] = y;
 
-      var plank = new THREE.Mesh(new THREE.BoxGeometry(shelfWidth, shelfThk, shelfDepth), shelfMat);
-      plank.position.set(0, y - 0.62, 0);
+      var plank = new THREE.Mesh(new THREE.BoxGeometry(shelfWidth, shelfThk, shelfDepth + 0.5), shelfMat);
+      plank.position.set(0, y - bookH / 2 - shelfThk / 2, -0.1);
       shelfGroup.add(plank);
 
-      var n = cat.books.length, bookW = 0.64, gap = 0.16;
+      var n = cat.books.length;
       var totalW = n * bookW + (n - 1) * gap;
       var x = -totalW / 2 + bookW / 2;
 
       cat.books.forEach(function(b){
-        var h = 1.05 + Math.random() * 0.22;
-        var geo = new THREE.BoxGeometry(bookW, h, shelfDepth * 0.8);
-        var spineMat = new THREE.MeshStandardMaterial({ map: labelTexture(b.name.replace(/-/g, ' '), b.color), roughness: 0.6 });
-        var mats = [sideMat, sideMat, sideMat, sideMat, spineMat, sideMat];
+        var geo = new THREE.BoxGeometry(bookW, bookH, shelfDepth);
+        var coverMat = new THREE.MeshStandardMaterial({ map: texByBook.get(b), roughness: 0.55 });
+        var mats = [sideMat, sideMat, sideMat, sideMat, coverMat, sideMat];
         var mesh = new THREE.Mesh(geo, mats);
-        var baseY = y - 0.62 + shelfThk / 2 + h / 2;
+        var baseY = y;
         mesh.position.set(x, baseY, 0);
         mesh.userData = b;
         shelfGroup.add(mesh);
@@ -1462,7 +1558,7 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
         btn.addEventListener('click', function(){
           var f = btn.getAttribute('data-filter');
           targetFocusY = (f === 'all' || rowFocus[f] === undefined) ? 0 : rowFocus[f];
-          targetDist = (f === 'all') ? 12.5 : 9.5;
+          targetDist = (f === 'all') ? 11 : 7.5;
           idleT = 0;
         });
       });
