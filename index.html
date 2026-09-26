@@ -16,7 +16,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Fraunces:ital,opsz,wght@1,9..144,400..600&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <style>
 :root{
@@ -28,8 +28,8 @@
   --glow:0 0 22px rgba(43,58,103,.25);
   --positive:#1F9C6E; --positive-2:rgba(31,156,110,.14);
   --grid-line:rgba(20,24,36,.05);
-  --display:"Space Grotesk",system-ui,sans-serif;
-  --body:"Inter",system-ui,sans-serif;
+  --display:"Fraunces",Georgia,serif;
+  --body:"Work Sans",system-ui,sans-serif;
   --mono:"Space Mono",ui-monospace,monospace;
   --r:14px; --r-sm:10px; --r-lg:22px;
   --max:1180px;
@@ -72,7 +72,7 @@ section{position:relative;scroll-margin-top:96px}
 }
 .eyebrow::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--blue-2);
   box-shadow:0 0 8px var(--blue-2);flex-shrink:0}
-.sec-title{font-family:var(--display);font-weight:700;letter-spacing:-.02em;line-height:1.05;
+.sec-title{font-family:var(--display);font-weight:600;letter-spacing:-.01em;line-height:1.02;
   font-size:clamp(28px,4.4vw,46px);color:var(--text)}
 .sec-lead{color:var(--text-2);max-width:60ch;font-size:clamp(15px,1.4vw,17px);margin-top:14px}
 
@@ -128,7 +128,7 @@ section{position:relative;scroll-margin-top:96px}
 .hero-avail .p{width:8px;height:8px;border-radius:50%;background:var(--blue-2);
   box-shadow:0 0 10px var(--blue-2);animation:pulse 2.6s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-.hero-name{font-family:var(--display);font-weight:700;letter-spacing:-.03em;line-height:.98;
+.hero-name{font-family:var(--display);font-weight:600;letter-spacing:-.015em;line-height:.96;
   font-size:clamp(38px,8.4vw,104px);color:var(--text)}
 .hero-name .ln{display:block;white-space:nowrap}
 .hero-name .ch{display:inline-block}
@@ -161,7 +161,22 @@ section{position:relative;scroll-margin-top:96px}
 
 /* ---------- generic block spacing ---------- */
 .block{padding:clamp(84px,12vh,150px) 0}
-.block-head{margin-bottom:clamp(40px,6vh,72px);max-width:760px}
+/* Editorial header: eyebrow spans full width, then heading (wide) and
+   lead (narrow, baseline-aligned) sit side by side like a magazine
+   spread — replaces the identical centered-stack every section used
+   to share. Named grid areas mean this works with the existing markup
+   unchanged, even for the sections whose block-head has no .sec-lead. */
+.block-head{margin-bottom:clamp(48px,7vh,88px);max-width:none;
+  display:grid;grid-template-columns:1fr;row-gap:16px;
+  grid-template-areas:"eyebrow" "title" "lead"}
+.block-head .eyebrow{grid-area:eyebrow}
+.block-head .sec-title{grid-area:title}
+.block-head .sec-lead{grid-area:lead;max-width:44ch}
+@media(min-width:900px){
+  .block-head{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);column-gap:56px;align-items:end}
+  .block-head{grid-template-areas:"eyebrow eyebrow" "title lead"}
+  .block-head .sec-lead{padding-bottom:5px;border-left:2px solid var(--border);padding-left:26px}
+}
 
 /* reveal */
 [data-rv]{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
@@ -174,7 +189,7 @@ section{position:relative;scroll-margin-top:96px}
 .process{position:relative}
 .process-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,72px);align-items:start}
 .approach{position:sticky;top:120px}
-.approach h2{font-family:var(--display);font-weight:700;letter-spacing:-.02em;line-height:1.08;
+.approach h2{font-family:var(--display);font-weight:600;letter-spacing:-.01em;line-height:1.05;
   font-size:clamp(26px,3.4vw,40px);margin:18px 0 20px}
 .approach h2 em{font-style:normal;background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent}
 .approach p{color:var(--text-2);margin-bottom:16px}
@@ -212,7 +227,29 @@ section{position:relative;scroll-margin-top:96px}
 .pstep.on .d{color:var(--text-2)}
 
 /* ================= EVIDENCE ================= */
-.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:kpi}
+/* bento: one featured tile anchors the grid instead of six identical boxes */
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:18px;counter-reset:kpi;
+  grid-template-areas:"feat feat b" "feat feat c" "d e f"}
+.metric:nth-child(1){grid-area:feat}
+.metric:nth-child(2){grid-area:b}
+.metric:nth-child(3){grid-area:c}
+.metric:nth-child(4){grid-area:d}
+.metric:nth-child(5){grid-area:e}
+.metric:nth-child(6){grid-area:f}
+.metric.feat{padding:36px 34px;background:
+    repeating-linear-gradient(0deg,var(--grid-line) 0,var(--grid-line) 1px,transparent 1px,transparent 28px),
+    linear-gradient(160deg,rgba(255,255,255,.96),rgba(240,242,247,.98));
+  border-color:rgba(76,99,168,.28)}
+.metric.feat .mv{font-size:clamp(56px,7.5vw,92px)}
+.metric.feat .mnote{font-size:15.5px;max-width:46ch}
+@media(max-width:1000px){
+  /* matches the existing repeat(2,1fr) breakpoint below */
+  .metrics{grid-template-areas:"feat feat" "b c" "d e" "f f"}
+}
+@media(max-width:820px){
+  /* matches the existing single-column breakpoint below */
+  .metrics{grid-template-areas:"feat" "b" "c" "d" "e" "f"}
+}
 .metric{position:relative;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;
   background:
     repeating-linear-gradient(0deg,var(--grid-line) 0,var(--grid-line) 1px,transparent 1px,transparent 28px),
@@ -227,7 +264,7 @@ section{position:relative;scroll-margin-top:96px}
   display:flex;align-items:center;gap:6px}
 .metric:hover{transform:translateY(-6px);border-color:rgba(76,99,168,.4);box-shadow:0 20px 50px rgba(30,34,44,.14)}
 .metric:hover::before{opacity:1}
-.metric .mv{font-family:var(--display);font-weight:700;letter-spacing:-.03em;line-height:1;
+.metric .mv{font-family:var(--display);font-weight:600;letter-spacing:0em;line-height:1;
   font-size:clamp(38px,5vw,58px);color:var(--text);font-variant-numeric:tabular-nums}
 .metric .mv span{background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent}
 .metric .ml{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
@@ -416,10 +453,19 @@ section{position:relative;scroll-margin-top:96px}
 .xp-panel li b{color:var(--text);font-weight:600}
 
 /* ================= CERTIFICATIONS ================= */
-.certs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:crt}
+.certs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:crt;
+  grid-template-areas:"feat feat b"}
+.cert:nth-child(1){grid-area:feat}
+.cert:nth-child(2){grid-area:b}
+@media(max-width:1000px){ .certs{grid-template-areas:"feat feat" "b b"} }
+@media(max-width:820px){ .certs{grid-template-areas:"feat" "b"} }
 .cert{position:relative;border:1px solid var(--border);border-radius:var(--r);padding:22px;counter-increment:crt;
   background:linear-gradient(160deg,rgba(255,255,255,.9),rgba(247,248,250,.97));display:flex;flex-direction:column;
   transition:transform .4s cubic-bezier(.16,1,.3,1),border-color .4s,box-shadow .4s;text-decoration:none}
+.cert.feat{padding:28px 32px;
+  background:linear-gradient(160deg,rgba(255,255,255,.96),rgba(240,242,247,.98));border-color:rgba(76,99,168,.28)}
+.cert.feat h4{font-size:20px}
+.cert.feat p{font-size:14.5px;max-width:52ch}
 .cert::after{content:"CERT–0" counter(crt);position:absolute;top:14px;right:16px;
   font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--muted);
   background:rgba(26,30,39,.9);border:1px solid var(--border-2);border-radius:999px;padding:2px 8px;color:#fff}
@@ -439,7 +485,7 @@ section{position:relative;scroll-margin-top:96px}
 
 /* ================= CONTACT ================= */
 #contact{text-align:center;padding:clamp(100px,16vh,190px) 0 clamp(70px,10vh,120px)}
-.contact-big{font-family:var(--display);font-weight:700;letter-spacing:-.03em;line-height:1;
+.contact-big{font-family:var(--display);font-weight:600;letter-spacing:-.015em;line-height:.98;
   font-size:clamp(38px,8vw,88px);color:var(--text);max-width:16ch;margin:20px auto 0}
 .contact-big em{font-style:normal;background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent}
 .contact-sub{color:var(--text-2);font-size:clamp(15px,1.6vw,18px);margin:26px auto 0;max-width:52ch}
@@ -504,11 +550,11 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
 .cproj-hero .ch-domain{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
   font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--blue-2);
   background:rgba(43,58,103,.12);border:1px solid rgba(43,58,103,.28);padding:5px 12px;border-radius:999px}
-.cproj-hero h2{font-family:var(--display);font-size:24px;font-weight:700;letter-spacing:-.02em;line-height:1.15;color:var(--text)}
+.cproj-hero h2{font-family:var(--display);font-size:24px;font-weight:600;letter-spacing:0;line-height:1.15;color:var(--text)}
 .cproj-hero p{font-size:14px;color:var(--text-2);line-height:1.6;max-width:60ch}
 .cproj-hero .ch-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px}
 .cproj-hero .ch-metric{position:absolute;top:20px;right:22px;text-align:right}
-.cproj-hero .ch-metric .v{display:block;font-family:var(--display);font-size:22px;font-weight:700;color:var(--blue-2);line-height:1;letter-spacing:-.02em}
+.cproj-hero .ch-metric .v{display:block;font-family:var(--display);font-size:22px;font-weight:600;color:var(--blue-2);line-height:1;letter-spacing:0}
 .cproj-hero .ch-metric .l{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
 .ctx{display:flex;flex-direction:column;gap:10px}
 .ctx .row{display:flex;justify-content:space-between;gap:10px;font-size:13px}
@@ -661,12 +707,12 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
       <p class="sec-lead">Measurable results from real product delivery — every number here is backed by shipped work.</p>
     </div>
     <div class="metrics">
-      <div class="metric" data-rv><div><div class="mv"><span id="yrsMetric">3+</span></div><div class="mnote">Years bridging business and engineering as a BA / Product Owner.</div></div><div class="ml">Experience</div></div>
-      <div class="metric" data-rv data-delay="1"><div><div class="mv"><span>5</span></div><div class="mnote">Domains delivered in — FinTech, Healthcare AI, Industrial Ops, Public Safety and Event SaaS.</div></div><div class="ml">Industries</div></div>
-      <div class="metric" data-rv data-delay="2"><div><div class="mv"><span>26.54%</span></div><div class="mnote">Customer churn reduction via segmentation and proactive engagement.</div></div><div class="ml">Churn reduced</div></div>
-      <div class="metric" data-rv><div><div class="mv"><span>~30%</span></div><div class="mnote">Operational-efficiency gain from tighter requirements and fewer defects.</div></div><div class="ml">Efficiency gain</div></div>
-      <div class="metric" data-rv data-delay="1"><div><div class="mv"><span>6L+</span></div><div class="mnote">Transactions handled on the fintech platform in its first 5 months.</div></div><div class="ml">Transactions</div></div>
-      <div class="metric" data-rv data-delay="2"><div><div class="mv"><span>20+</span></div><div class="mnote">Product builds and analytics projects delivered across five industries.</div></div><div class="ml">Projects shipped</div></div>
+      <div class="metric feat" data-rv><div><div class="mv"><span>20+</span></div><div class="mnote">Product builds and analytics projects delivered across five industries — the full body of work this page is built to prove.</div></div><div class="ml">Projects shipped</div></div>
+      <div class="metric" data-rv data-delay="1"><div><div class="mv"><span id="yrsMetric">3+</span></div><div class="mnote">Years bridging business and engineering as a BA / Product Owner.</div></div><div class="ml">Experience</div></div>
+      <div class="metric" data-rv data-delay="2"><div><div class="mv"><span>5</span></div><div class="mnote">Domains delivered in — FinTech, Healthcare AI, Industrial Ops, Public Safety and Event SaaS.</div></div><div class="ml">Industries</div></div>
+      <div class="metric" data-rv><div><div class="mv"><span>26.54%</span></div><div class="mnote">Customer churn reduction via segmentation and proactive engagement.</div></div><div class="ml">Churn reduced</div></div>
+      <div class="metric" data-rv data-delay="1"><div><div class="mv"><span>~30%</span></div><div class="mnote">Operational-efficiency gain from tighter requirements and fewer defects.</div></div><div class="ml">Efficiency gain</div></div>
+      <div class="metric" data-rv data-delay="2"><div><div class="mv"><span>6L+</span></div><div class="mnote">Transactions handled on the fintech platform in its first 5 months.</div></div><div class="ml">Transactions</div></div>
     </div>
   </div>
 </section>
@@ -853,6 +899,7 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
     <div class="block-head" data-rv>
       <span class="eyebrow">Trajectory</span>
       <h2 class="sec-title" style="margin-top:16px">Where I've built.</h2>
+      <p class="sec-lead">Three years, three employers, one throughline: from supporting requirement docs to owning delivery end to end as Product Owner.</p>
     </div>
 
     <div class="timeline">
@@ -922,10 +969,10 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
       <p class="sec-lead">Formal education paired with hands-on certifications across business analysis, data and Agile delivery.</p>
     </div>
     <div class="certs" data-rv>
-      <div class="cert">
+      <div class="cert feat">
         <div class="cert-top"><span class="cert-iss">Lovely Professional University · Online</span><span class="cert-vf"><i class="bi bi-mortarboard"></i> Ongoing</span></div>
         <h4>MBA — Business Analysis</h4>
-        <p>March 2026 — Present</p>
+        <p>March 2026 — Present. The formal counterpart to three years of doing this work in practice.</p>
         <div class="cert-tags"><span class="cert-tag">MBA</span><span class="cert-tag">Business Analysis</span></div>
       </div>
       <div class="cert">
