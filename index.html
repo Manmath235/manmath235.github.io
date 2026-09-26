@@ -1415,7 +1415,7 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
     var shelfDepth = 0.22;
     var sideMat = new THREE.MeshStandardMaterial({ color: 0x171c24, roughness: 0.75, metalness: 0.1 });
 
-    var COVER_W = 340, COVER_H = 500; // px, book-cover aspect (~0.68), matches a real book jacket
+    var COVER_W = 480, COVER_H = 270; // px, 16:9 landscape — matches every real project screenshot's own aspect
 
     function loadImage(src){
       return new Promise(function(resolve, reject){
@@ -1465,29 +1465,30 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
         grad.addColorStop(1, shade(b.color, -70));
         ctx.fillStyle = grad; ctx.fillRect(0, 0, COVER_W, COVER_H);
         await fontReady;
-        ctx.font = '400 ' + Math.round(COVER_W * 0.34) + 'px "bootstrap-icons"';
-        ctx.fillStyle = 'rgba(255,255,255,.9)';
+        // icon sits upper-right, out of the way of the kicker/title block below
+        ctx.font = '400 ' + Math.round(COVER_H * 0.62) + 'px "bootstrap-icons"';
+        ctx.fillStyle = 'rgba(255,255,255,.16)';
         ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-        ctx.fillText(b.icon, COVER_W / 2, COVER_H * 0.42);
+        ctx.fillText(b.icon, COVER_W * 0.78, COVER_H * 0.42);
         var overlay2 = ctx.createLinearGradient(0, 0, 0, COVER_H);
-        overlay2.addColorStop(0.55, 'rgba(5,6,8,0)');
-        overlay2.addColorStop(1, 'rgba(5,6,8,.85)');
+        overlay2.addColorStop(0.45, 'rgba(5,6,8,0)');
+        overlay2.addColorStop(1, 'rgba(5,6,8,.82)');
         ctx.fillStyle = overlay2; ctx.fillRect(0, 0, COVER_W, COVER_H);
       }
 
       // shared kicker + title, like a real jacket
       ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
       ctx.fillStyle = b.color;
-      ctx.font = "700 13px 'Space Mono', monospace";
-      ctx.fillText(cat.label.toUpperCase(), 18, 30);
-      ctx.fillStyle = 'rgba(255,255,255,.94)';
-      ctx.font = "700 24px 'Space Grotesk', sans-serif";
+      ctx.font = "700 12px 'Space Mono', monospace";
+      ctx.fillText(cat.label.toUpperCase(), 18, 26);
+      ctx.fillStyle = 'rgba(255,255,255,.96)';
+      ctx.font = "700 22px 'Space Grotesk', sans-serif";
       var title = b.name.replace(/-/g, ' ');
       if(ctx.measureText(title).width > COVER_W - 36){
         while(title.length > 4 && ctx.measureText(title + '…').width > COVER_W - 36) title = title.slice(0, -1);
         title += '…';
       }
-      ctx.fillText(title, 18, COVER_H - 24);
+      ctx.fillText(title, 18, COVER_H - 20);
 
       var tex = new THREE.CanvasTexture(cvs);
       tex.colorSpace = THREE.SRGBColorSpace;
@@ -1495,7 +1496,7 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
       return tex;
     }
 
-    var bookW = 1.7, bookH = bookW * (COVER_H / COVER_W);
+    var bookW = 2.3, bookH = bookW * (COVER_H / COVER_W);
 
     // build every cover texture first so the carousel appears whole rather
     // than populating piecemeal as images resolve
