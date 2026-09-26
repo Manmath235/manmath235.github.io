@@ -398,7 +398,9 @@ section{position:relative;scroll-margin-top:96px}
 .xp.now .xp-dot{border-color:rgba(76,99,168,.6);box-shadow:0 0 22px rgba(43,58,103,.45)}
 .xp.now .xp-dot::after{background:var(--accent);box-shadow:0 0 12px var(--blue-2)}
 .xp-panel{position:relative;border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;
-  background:linear-gradient(160deg,rgba(255,255,255,.9),rgba(247,248,250,.97));transition:border-color .4s,box-shadow .4s}
+  background:linear-gradient(160deg,rgba(255,255,255,.9),rgba(247,248,250,.97));
+  transition:border-color .4s,box-shadow .4s,transform .12s ease-out;
+  transform-style:preserve-3d;will-change:transform}
 .xp-panel::after{content:"LOG–0" counter(log);position:absolute;top:14px;right:18px;
   font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--muted)}
 .xp.now .xp-panel{border-color:rgba(76,99,168,.35);box-shadow:0 0 40px rgba(43,58,103,.12)}
@@ -1116,6 +1118,37 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
   } else {
     document.querySelectorAll('[data-rv]').forEach(function(el){ el.classList.add('in'); });
   }
+
+  /* ---------- EXPERIENCE TIMELINE — scroll-driven 3D depth ----------
+     Real CSS 3D (not a WebGL canvas): the timeline is dense, selectable
+     paragraph text, and rendering that as canvas/WebGL text would hurt
+     readability, text selection and screen-reader access for no real
+     visual gain. Each panel tilts in on a perspective transform and
+     recedes slightly in depth the further it sits from the vertical
+     centre of the viewport, continuously, as the page scrolls. */
+  (function(){
+    var panels = document.querySelectorAll('.xp-panel');
+    if(!panels.length || RM) return;
+    var ticking = false;
+    function update(){
+      var vh = window.innerHeight;
+      panels.forEach(function(panel){
+        var r = panel.getBoundingClientRect();
+        var center = r.top + r.height / 2;
+        var progress = (center - vh / 2) / (vh / 2);
+        progress = Math.max(-1.4, Math.min(1.4, progress));
+        var rotate = progress * -6;
+        var z = -Math.abs(progress) * 40;
+        var scale = 1 - Math.abs(progress) * 0.035;
+        panel.style.transform = 'perspective(1400px) rotateX(' + rotate.toFixed(2) + 'deg) translateZ(' + z.toFixed(1) + 'px) scale(' + scale.toFixed(3) + ')';
+      });
+      ticking = false;
+    }
+    function onScroll(){ if(!ticking){ requestAnimationFrame(update); ticking = true; } }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+  })();
 
   /* ---------- SKILL BARS ---------- */
   function fillBars(){ document.querySelectorAll('.skill-bar i').forEach(function(b){ b.style.width = (b.getAttribute('data-w')||0)+'%'; }); }
