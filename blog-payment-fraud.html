@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tackling Payment Fraud in the Digital Era | Manmathnath Mahanta</title>
+<meta name="description" content="A Business Analyst's perspective on digital payment fraud: key fraud types, prevention strategies, real-world practices and research insights.">
+<link rel="icon" type="image/png" href="assets/img/M_logo.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tackling Payment Fraud in the Digital Era: A Business Analyst's Perspective">
+<meta property="og:description" content="Key fraud types, prevention strategies and real-world practices in digital payments.">
+<meta property="og:url" content="https://manmath235.github.io/blog-payment-fraud.html">
+<meta property="og:image" content="https://manmath235.github.io/assets/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f9ebd7; --panel:#fdf6ea; --text:#1A1E27; --text-2:#4B5262; --muted:#6B7280;
+  --border:rgba(20,24,36,.12); --green:#046A38; --orange:#E34222;
+  --display:"Fraunces",Georgia,serif; --body:"Work Sans",system-ui,sans-serif; --mono:"Space Mono",ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.top{max-width:760px;margin:0 auto;padding:28px 20px 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:13px}
+.top a{color:var(--green);text-decoration:none;font-weight:700}
+.top a:hover{color:var(--orange)}
+article{max-width:760px;margin:0 auto;padding:48px 20px 80px}
+.meta{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,5vw,46px);line-height:1.12;letter-spacing:-.01em;margin-bottom:28px}
+h1 em{font-style:normal;color:var(--green)}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(22px,3vw,28px);line-height:1.2;margin:44px 0 14px;color:var(--green)}
+h3{font-family:var(--display);font-weight:600;font-size:19px;margin:22px 0 6px}
+p{color:var(--text-2);margin-bottom:16px}
+ul,ol{margin:0 0 16px 22px;color:var(--text-2)}
+li{margin-bottom:8px}
+li b,p b{color:var(--text);font-weight:600}
+li::marker{color:var(--orange)}
+.lead{font-size:19px;color:var(--text)}
+.callout{border:1px solid var(--border);border-left:4px solid var(--green);background:var(--panel);border-radius:10px;padding:18px 22px;margin:28px 0}
+.callout p:last-child{margin-bottom:0}
+.src{margin-top:48px;padding-top:22px;border-top:1px solid var(--border);font-size:14px;color:var(--muted)}
+.src a{color:var(--green);font-weight:600}
+@media(max-width:520px){body{font-size:16px}.lead{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="top"><a href="index.html#writing">&larr; Back to portfolio</a><span>Manmathnath Mahanta</span></div>
+<article>
+  <div class="meta">Business Analysis · Digital Payments · Jan 2025 · 2 min read</div>
+  <h1>Tackling Payment Fraud in the Digital Era: <em>A Business Analyst's Perspective</em></h1>
+
+  <p class="lead">As digital payments grow rapidly, ensuring security and trust is critical. While working on a payment app project, I've researched strategies to mitigate payment fraud and safeguard users from evolving threats.</p>
+
+  <h2>Key Fraud Types in Digital Payments</h2>
+  <p>Fraudsters exploit vulnerabilities using methods such as:</p>
+  <ul>
+    <li><b>Phishing Attacks:</b> Stealing sensitive credentials via fake websites/emails.</li>
+    <li><b>Card-not-present (CNP) Fraud:</b> Unauthorized online use of card details.</li>
+    <li><b>Account Takeover:</b> Accessing accounts with compromised credentials.</li>
+    <li><b>Chargeback Fraud:</b> Filing false refund claims.</li>
+    <li><b>Payment Gateway Fraud:</b> Exploiting weak configurations in gateways.</li>
+  </ul>
+
+  <h2>Strategies for Fraud Prevention</h2>
+  <ol>
+    <li><b>Multi-Factor Authentication (MFA):</b> Adds extra verification layers (e.g., biometrics, OTP) to reduce fraud risks.</li>
+    <li><b>AI-Powered Fraud Detection:</b> Real-time machine learning flags anomalies like unusual transaction volumes or mismatched locations.</li>
+    <li><b>Tokenization:</b> Encrypts sensitive payment data, replacing it with tokens to prevent misuse during transactions.</li>
+    <li><b>Dynamic CVV Technology:</b> Generates CVVs that change per transaction, reducing stolen card reuse.</li>
+    <li><b>Behavioral Biometrics:</b> Monitors user behavior (e.g., typing speed, navigation patterns) to detect unusual activity.</li>
+    <li><b>Strengthening Payment Gateway Security:</b>
+      <ul style="margin-top:8px">
+        <li>Real-time transaction monitoring and IP blocking for suspicious activities.</li>
+        <li>Compliance with PCI DSS standards to enhance payment processing security.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h2>Real-World Practices</h2>
+  <ul>
+    <li><b>Stripe:</b> Employs AI to monitor billions of transactions for fraud detection.</li>
+    <li><b>PayPal:</b> Combines risk assessment with two-factor authentication.</li>
+    <li><b>Razorpay &amp; Paytm:</b> Adopt PCI DSS compliance and tokenization for secure transactions.</li>
+  </ul>
+
+  <h2>Insights from My Research</h2>
+  <ul>
+    <li><b>Balancing Security and User Experience:</b> Frictionless MFA and AI-based fraud scoring ensure strong protection without disrupting users.</li>
+    <li><b>Collaboration is Critical:</b> Fraud prevention requires teamwork between analysts, developers, compliance teams, and security experts.</li>
+    <li><b>Ongoing Vigilance:</b> Regular audits, real-time monitoring, and system updates are vital as fraud tactics evolve.</li>
+  </ul>
+
+  <div class="callout"><p>Fraud prevention is a continuous process demanding innovation, collaboration, and dedication. By adopting industry best practices and advanced technologies, we can build systems that inspire trust and security.</p></div>
+
+  <p class="src">Originally posted on <a href="https://www.linkedin.com/posts/connect-manmath_businessanalyst-digitalpayments-fraudprevention-ugcPost-7288620963317866496-NszL/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+</article>
+</body>
+</html>
