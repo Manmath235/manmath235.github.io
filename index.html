@@ -340,9 +340,6 @@ section{position:relative;scroll-margin-top:96px}
 .pcard::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .5s;pointer-events:none;
   border-radius:inherit;
   background:radial-gradient(130% 120% at 50% -10%,rgba(4,106,56,.16),transparent 55%)}
-.pcard::after{content:"PRJ–0" counter(prj);position:absolute;top:14px;right:16px;z-index:2;
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--muted);
-  background:rgba(26,30,39,.9);border:1px solid var(--border-2);border-radius:999px;padding:2px 8px;pointer-events:none;color:#fff}
 .pcard:hover,.pcard:focus-visible{transform:translateY(-8px) translateZ(40px) rotateX(3deg);
   border-color:rgba(227,66,34,.5);box-shadow:0 30px 70px rgba(30,34,44,.18),var(--glow);outline:none}
 .pcard:hover::before,.pcard:focus-visible::before{opacity:1}
@@ -467,9 +464,6 @@ section{position:relative;scroll-margin-top:96px}
   background:linear-gradient(160deg,rgba(255,255,255,.96),rgba(249,235,215,.98));border-color:rgba(227,66,34,.28)}
 .cert.feat h4{font-size:20px}
 .cert.feat p{font-size:14.5px;max-width:52ch}
-.cert::after{content:"CERT–0" counter(crt);position:absolute;top:14px;right:16px;
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--muted);
-  background:rgba(26,30,39,.9);border:1px solid var(--border-2);border-radius:999px;padding:2px 8px;color:#fff}
 .cert:hover{transform:translateY(-6px);border-color:rgba(227,66,34,.4);box-shadow:0 20px 50px rgba(30,34,44,.14)}
 .cert-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .cert-iss{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
