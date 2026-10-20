@@ -14,18 +14,18 @@
     --border: #d9c7a8;
     --border-bright: #bfa985;
     --accent-blue: #046A38;
-    --accent-cyan: #1b8a94;
-    --accent-gold: #A06A00;
+    --accent-cyan: #046A38;
+    --accent-gold: #E34222;
     --accent-green: #046A38;
     --accent-red: #E34222;
-    --accent-purple: #7a52c7;
+    --accent-purple: #046A38;
     --text-primary: #1A1E27;
     --text-secondary: #4B5262;
     --text-muted: #6B7280;
     --tag-high-bg: rgba(4,106,56,0.12);
     --tag-high-txt: #046A38;
-    --tag-medium-bg: rgba(160,106,0,0.12);
-    --tag-medium-txt: #A06A00;
+    --tag-medium-bg: rgba(227,66,34,0.12);
+    --tag-medium-txt: #E34222;
     --tag-low-bg: rgba(4,106,56,0.1);
     --tag-low-txt: #046A38;
     --glow-blue: none;
@@ -50,7 +50,7 @@
     position: fixed; inset: 0;
     background:
       radial-gradient(ellipse 80% 60% at 10% 0%, rgba(4,106,56,0.06) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 50% at 90% 100%, rgba(27,138,148,0.04) 0%, transparent 60%);
+      radial-gradient(ellipse 60% 50% at 90% 100%, rgba(4,106,56,0.04) 0%, transparent 60%);
     pointer-events: none; z-index: 0;
   }
 
@@ -315,8 +315,8 @@
   .module-meta { display: flex; gap: 12px; align-items: center; }
   .module-stories-badge {
     font-size: 10px; font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
-    color: var(--accent-cyan); background: rgba(27,138,148,0.08);
-    padding: 1px 7px; border-radius: 4px; border: 1px solid rgba(27,138,148,0.15);
+    color: var(--accent-cyan); background: rgba(4,106,56,0.08);
+    padding: 1px 7px; border-radius: 4px; border: 1px solid rgba(4,106,56,0.15);
   }
 
   /* ── CONVENTIONS ── */
@@ -352,11 +352,11 @@
   }
 
   .ph { background: var(--tag-high-bg); color: var(--tag-high-txt); border: 1px solid rgba(4,106,56,0.2); }
-  .pm { background: var(--tag-medium-bg); color: var(--tag-medium-txt); border: 1px solid rgba(160,106,0,0.2); }
+  .pm { background: var(--tag-medium-bg); color: var(--tag-medium-txt); border: 1px solid rgba(227,66,34,0.2); }
   .pl { background: var(--tag-low-bg); color: var(--tag-low-txt); border: 1px solid rgba(4,106,56,0.15); }
 
   .priority-item .ph-bg { background: rgba(4,106,56,0.04); border-color: rgba(4,106,56,0.1); }
-  .priority-item .pm-bg { background: rgba(160,106,0,0.04); border-color: rgba(160,106,0,0.1); }
+  .priority-item .pm-bg { background: rgba(227,66,34,0.04); border-color: rgba(227,66,34,0.1); }
 
   .priority-desc { font-size: 12px; color: var(--text-secondary); }
 
@@ -429,8 +429,8 @@
 
   .story-id {
     font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 11px; font-weight: 500;
-    color: var(--accent-cyan); background: rgba(27,138,148,0.08);
-    padding: 3px 9px; border-radius: 6px; border: 1px solid rgba(27,138,148,0.15);
+    color: var(--accent-cyan); background: rgba(4,106,56,0.08);
+    padding: 3px 9px; border-radius: 6px; border: 1px solid rgba(4,106,56,0.15);
     margin-right: 12px; white-space: nowrap;
   }
 
@@ -444,7 +444,7 @@
   .pts-badge {
     display: flex; align-items: center; gap: 4px;
     padding: 3px 9px; border-radius: 6px;
-    background: rgba(160,106,0,0.08); border: 1px solid rgba(160,106,0,0.2);
+    background: rgba(227,66,34,0.08); border: 1px solid rgba(227,66,34,0.2);
     font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 10px; color: var(--accent-gold);
   }
 
@@ -521,7 +521,7 @@
   .edge-cases-section {
     margin: 16px 20px 20px;
     padding: 16px;
-    background: rgba(122,82,199,0.04); border: 1px solid rgba(122,82,199,0.12);
+    background: rgba(4,106,56,0.04); border: 1px solid rgba(4,106,56,0.12);
     border-radius: 10px;
   }
 
@@ -534,7 +534,7 @@
   .edge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 
   .edge-item {
-    background: var(--bg-elevated); border: 1px solid rgba(122,82,199,0.1);
+    background: var(--bg-elevated); border: 1px solid rgba(4,106,56,0.1);
     border-radius: 8px; padding: 10px 12px;
     font-size: 11px; color: var(--text-secondary); line-height: 1.5;
   }
@@ -572,8 +572,8 @@
   .pts-chip {
     display: inline-flex; padding: 2px 8px; border-radius: 4px;
     font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 10px; font-weight: 600;
-    background: rgba(160,106,0,0.08); color: var(--accent-gold);
-    border: 1px solid rgba(160,106,0,0.2);
+    background: rgba(227,66,34,0.08); color: var(--accent-gold);
+    border: 1px solid rgba(227,66,34,0.2);
   }
 
   /* ── SPRINT PLAN ── */
@@ -810,11 +810,11 @@
       <tbody>
         <tr><td><div class="role-name"><div class="role-dot" style="background:#046A38"></div>Loan Applicant</div></td><td>Customer applying for a loan product</td><td><div class="module-tags"><span class="module-tag">Registration</span><span class="module-tag">KYC</span><span class="module-tag">Application</span><span class="module-tag">Repayment</span></div></td></tr>
         <tr><td><div class="role-name"><div class="role-dot" style="background:#046A38"></div>Loan Officer</div></td><td>Bank staff reviewing and processing applications</td><td><div class="module-tags"><span class="module-tag">Review</span><span class="module-tag">Approval</span><span class="module-tag">Disbursement</span></div></td></tr>
-        <tr><td><div class="role-name"><div class="role-dot" style="background:#A06A00"></div>Credit Analyst</div></td><td>Specialist assessing applicant credit risk</td><td><div class="module-tags"><span class="module-tag">Credit Assessment</span><span class="module-tag">Risk Scoring</span></div></td></tr>
-        <tr><td><div class="role-name"><div class="role-dot" style="background:#7a52c7"></div>Branch Manager</div></td><td>Manages team workload and monitors pipeline</td><td><div class="module-tags"><span class="module-tag">Approval Workflow</span><span class="module-tag">Admin</span><span class="module-tag">Reporting</span></div></td></tr>
-        <tr><td><div class="role-name"><div class="role-dot" style="background:#1b8a94"></div>Credit Committee</div></td><td>Senior body approving high-value loan applications</td><td><div class="module-tags"><span class="module-tag">Approval Workflow</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#E34222"></div>Credit Analyst</div></td><td>Specialist assessing applicant credit risk</td><td><div class="module-tags"><span class="module-tag">Credit Assessment</span><span class="module-tag">Risk Scoring</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#046A38"></div>Branch Manager</div></td><td>Manages team workload and monitors pipeline</td><td><div class="module-tags"><span class="module-tag">Approval Workflow</span><span class="module-tag">Admin</span><span class="module-tag">Reporting</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#046A38"></div>Credit Committee</div></td><td>Senior body approving high-value loan applications</td><td><div class="module-tags"><span class="module-tag">Approval Workflow</span></div></td></tr>
         <tr><td><div class="role-name"><div class="role-dot" style="background:#E34222"></div>Legal Officer</div></td><td>Conducts legal and technical property verification</td><td><div class="module-tags"><span class="module-tag">Document Collection</span><span class="module-tag">Legal</span></div></td></tr>
-        <tr><td><div class="role-name"><div class="role-dot" style="background:#A06A00"></div>Product Admin</div></td><td>Configures loan products, rates, and fee structures</td><td><div class="module-tags"><span class="module-tag">System Administration</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#E34222"></div>Product Admin</div></td><td>Configures loan products, rates, and fee structures</td><td><div class="module-tags"><span class="module-tag">System Administration</span></div></td></tr>
         <tr><td><div class="role-name"><div class="role-dot" style="background:#046A38"></div>System Admin</div></td><td>Manages user roles, workflows, and system rules</td><td><div class="module-tags"><span class="module-tag">System Administration</span></div></td></tr>
         <tr><td><div class="role-name"><div class="role-dot" style="background:#046A38"></div>Compliance Officer</div></td><td>Monitors audit trails and regulatory compliance</td><td><div class="module-tags"><span class="module-tag">Admin & Reporting</span></div></td></tr>
       </tbody>
@@ -866,7 +866,7 @@
       </div>
       <div class="conv-card">
         <div class="conv-header">
-          <div class="conv-icon" style="background:rgba(160,106,0,0.1)">⚡</div>
+          <div class="conv-icon" style="background:rgba(227,66,34,0.1)">⚡</div>
           <div class="conv-title">Story Points Reference</div>
         </div>
         <div class="points-list">

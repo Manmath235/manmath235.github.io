@@ -28,16 +28,16 @@
   --green-d:rgba(4,106,56,0.10);
   --red:#E34222;
   --red-d:rgba(227,66,34,0.10);
-  --orange:#A06A00;
-  --orange-d:rgba(160,106,0,0.10);
-  --purple:#7a52c7;
-  --purple-d:rgba(122,82,199,0.10);
-  --teal:#1b8a94;
-  --teal-d:rgba(27,138,148,0.10);
-  --teal-m:rgba(27,138,148,0.28);
-  --asis:#B8480F;
-  --asis-d:rgba(184,72,15,0.10);
-  --asis-m:rgba(184,72,15,0.28);
+  --orange:#E34222;
+  --orange-d:rgba(227,66,34,0.10);
+  --purple:#046A38;
+  --purple-d:rgba(4,106,56,0.10);
+  --teal:#046A38;
+  --teal-d:rgba(4,106,56,0.10);
+  --teal-m:rgba(4,106,56,0.28);
+  --asis:#E34222;
+  --asis-d:rgba(227,66,34,0.10);
+  --asis-m:rgba(227,66,34,0.28);
   --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
   --display:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
   --body:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
@@ -162,7 +162,7 @@ a:hover{text-decoration:underline}
   content:'PMP';
   position:absolute;right:-10px;top:50%;transform:translateY(-50%);
   font-family:var(--display);font-size:9rem;font-weight:800;
-  color:rgba(27,138,148,0.04);letter-spacing:-.05em;
+  color:rgba(4,106,56,0.04);letter-spacing:-.05em;
   pointer-events:none;user-select:none;line-height:1;
 }
 .cover-type-row{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
@@ -210,7 +210,7 @@ a:hover{text-decoration:underline}
 .kpi-delta{
   display:inline-block;font-size:.6rem;font-family:var(--mono);
   color:var(--teal);background:var(--teal-d);
-  border:1px solid rgba(27,138,148,.2);
+  border:1px solid rgba(4,106,56,.2);
   padding:2px 7px;border-radius:10px;margin-top:5px;
 }
 
@@ -290,8 +290,8 @@ td strong,td b{color:var(--fg)}
   transition:border-color .15s,box-shadow .2s;
 }
 .step-card:hover{border-color:var(--border2);transform:translateY(-1px);box-shadow:0 6px 24px rgba(30,34,44,.3)}
-.step-card.asis-card:hover{border-color:rgba(184,72,15,.3);box-shadow:0 0 24px var(--asis-d),0 6px 24px rgba(30,34,44,.3)}
-.step-card.tobe-card:hover{border-color:rgba(27,138,148,.3);box-shadow:0 0 24px var(--teal-d),0 6px 24px rgba(30,34,44,.3)}
+.step-card.asis-card:hover{border-color:rgba(227,66,34,.3);box-shadow:0 0 24px var(--asis-d),0 6px 24px rgba(30,34,44,.3)}
+.step-card.tobe-card:hover{border-color:rgba(4,106,56,.3);box-shadow:0 0 24px var(--teal-d),0 6px 24px rgba(30,34,44,.3)}
 .step-num{
   display:flex;align-items:center;justify-content:center;
   font-family:var(--mono);font-size:.75rem;font-weight:600;
@@ -307,7 +307,7 @@ td strong,td b{color:var(--fg)}
 /* ── ACTOR TAGS ── */
 .actor-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-family:var(--mono);font-size:.65rem;font-weight:600}
 .actor-hr{background:var(--blue-d);color:var(--blue)}
-.actor-it{background:rgba(160,106,0,.12);color:#A06A00}
+.actor-it{background:rgba(227,66,34,.12);color:#E34222}
 .actor-fin{background:var(--purple-d);color:var(--purple)}
 .actor-mgr{background:var(--orange-d);color:var(--orange)}
 .actor-emp{background:var(--teal-d);color:var(--teal)}
@@ -322,7 +322,7 @@ td strong,td b{color:var(--fg)}
 }
 .improve-tag{
   display:inline-block;padding:3px 8px;border-radius:4px;font-size:.7rem;
-  background:var(--teal-d);color:var(--teal);border:1px solid rgba(27,138,148,.2);
+  background:var(--teal-d);color:var(--teal);border:1px solid rgba(4,106,56,.2);
   margin-top:3px;line-height:1.45;
 }
 .tool-chip{
@@ -335,7 +335,7 @@ td strong,td b{color:var(--fg)}
 /* ── PRIORITY CHIPS ── */
 .ph{display:inline-flex;align-items:center;font-family:var(--mono);font-size:.62rem;font-weight:600;padding:2px 8px;border-radius:20px;white-space:nowrap}
 .ph-crit{background:var(--red-d);color:var(--red);border:1px solid rgba(227,66,34,.25)}
-.ph-h{background:var(--orange-d);color:var(--orange);border:1px solid rgba(160,106,0,.25)}
+.ph-h{background:var(--orange-d);color:var(--orange);border:1px solid rgba(227,66,34,.25)}
 .ph-m{background:var(--gold-d);color:var(--gold2);border:1px solid rgba(4,106,56,.25)}
 
 /* ── INFO BLOCK ── */
@@ -397,7 +397,7 @@ td strong,td b{color:var(--fg)}
 .tobe-fill{background:var(--teal)}
 .metric-delta-label{
   font-family:var(--mono);font-size:.68rem;color:var(--teal);
-  background:var(--teal-d);border:1px solid rgba(27,138,148,.2);
+  background:var(--teal-d);border:1px solid rgba(4,106,56,.2);
   padding:3px 9px;border-radius:var(--r);display:inline-block;margin-top:4px;
 }
 
@@ -722,7 +722,7 @@ td strong,td b{color:var(--fg)}
       <div class="stakeholder-change">TO-BE: <strong>Manages automated onboarding workflow in HRIS</strong> — from manual tracking to system-driven orchestration.</div>
     </div>
     <div class="stakeholder-card">
-      <div class="stakeholder-name" style="color:#A06A00">IT Helpdesk Lead</div>
+      <div class="stakeholder-name" style="color:#E34222">IT Helpdesk Lead</div>
       <div class="stakeholder-role">IT Provisioning · Information Technology</div>
       <div style="font-size:.75rem;color:var(--fg3);margin-bottom:8px">AS-IS: Receives email requests, creates tickets manually.</div>
       <div class="stakeholder-change">TO-BE: <strong>Auto-provisioning triggered by HRIS on joining date</strong> — from reactive to proactive and automated.</div>
@@ -998,7 +998,7 @@ td strong,td b{color:var(--fg)}
         <div class="swimlane-header">
           <div class="swim-head-cell">Phase</div>
           <div class="swim-head-cell" style="color:var(--blue)">HR BP</div>
-          <div class="swim-head-cell" style="color:#A06A00">IT Helpdesk</div>
+          <div class="swim-head-cell" style="color:#E34222">IT Helpdesk</div>
           <div class="swim-head-cell" style="color:var(--purple)">Finance</div>
           <div class="swim-head-cell" style="color:var(--orange)">Hiring Mgr</div>
           <div class="swim-head-cell" style="color:var(--teal)">New Employee / HRIS</div>
