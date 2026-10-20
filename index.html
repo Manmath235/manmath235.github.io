@@ -444,6 +444,18 @@ section{position:relative;scroll-margin-top:96px}
 .xp-panel li{display:flex;gap:12px;color:var(--text-2);font-size:14.5px;line-height:1.55}
 .xp-panel li i{color:var(--blue-2);font-size:14px;margin-top:4px;flex-shrink:0}
 .xp-panel li b{color:var(--text);font-weight:600}
+.xp-more{display:none;margin-top:14px;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.06em;
+  color:var(--blue);background:none;border:1px solid var(--border);border-radius:999px;padding:7px 14px;cursor:pointer}
+@media(max-width:640px){
+  .xp{padding-left:36px;padding-bottom:16px}
+  .timeline::before{left:11px}
+  .xp-dot{left:2px;width:18px;height:18px}
+  .xp-panel{padding:16px}
+  .xp-head{margin-bottom:10px}
+  .xp-panel li{font-size:14px}
+  .xp-panel:not(.open) li:nth-child(n+3){display:none}
+  .xp-more{display:inline-flex}
+}
 
 /* ================= CERTIFICATIONS ================= */
 .certs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:crt;
@@ -1326,6 +1338,21 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
     });
   }
 })();
+
+  // Mobile: show the first two bullets of each role, rest behind a toggle
+  document.querySelectorAll('.xp-panel').forEach(function(p){
+    var ul=p.querySelector('ul');
+    if(!ul||ul.children.length<=2) return;
+    var b=document.createElement('button');
+    b.type='button';b.className='xp-more';b.textContent='Show more';
+    b.setAttribute('aria-expanded','false');
+    b.addEventListener('click',function(){
+      var o=p.classList.toggle('open');
+      b.textContent=o?'Show less':'Show more';
+      b.setAttribute('aria-expanded',o);
+    });
+    ul.after(b);
+  });
 </script>
 
 <!-- ===================== 3D BOOKSHELF (progressive enhancement) =====================
