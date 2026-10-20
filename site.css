@@ -596,7 +596,6 @@ footer{border-top:1px solid var(--border-2);padding:30px 0;margin-top:20px}
 
 /* ================= MULTI-PAGE ================= */
 .nav-links a[aria-current="page"]{color:var(--text);background:rgba(4,106,56,.10)}
-body.sub #contact{padding-top:clamp(150px,24vh,230px)}
 
 /* ---- sub-page hero ---- */
 .page-hero{position:relative;padding:clamp(130px,19vh,200px) 0 clamp(44px,7vh,76px);border-bottom:1px solid var(--border);
@@ -627,3 +626,20 @@ body.sub #contact{padding-top:clamp(150px,24vh,230px)}
 .next-band a:hover .nb-t{color:var(--blue)}
 .next-band a:hover .nb-a{transform:translateX(10px)}
 @media(max-width:640px){.crumbs{margin-bottom:18px}.next-band a{gap:12px}}
+
+/* ---- contact cards ---- */
+.ph-title em{font-style:normal;background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent}
+#contact.block{text-align:left;padding:clamp(48px,7vh,84px) 0 clamp(60px,9vh,110px)}
+.ccards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ccard{display:flex;flex-direction:column;gap:6px;border:1px solid var(--border);border-radius:var(--r);padding:26px;text-decoration:none;color:inherit;
+  background:linear-gradient(160deg,rgba(255,255,255,.9),rgba(249,235,215,.97));transition:transform .3s,border-color .3s,box-shadow .3s}
+.ccard:hover,.ccard:focus-visible{transform:translateY(-6px);border-color:rgba(227,66,34,.4);box-shadow:0 20px 50px rgba(30,34,44,.14)}
+.ccard i{font-size:24px;color:var(--blue);margin-bottom:10px}
+.ccard .ck{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.ccard .cv{font-family:var(--display);font-weight:600;font-size:clamp(17px,1.6vw,21px);line-height:1.25;color:var(--text);overflow-wrap:anywhere}
+.ccard .cgo{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--blue-2);margin-top:12px}
+.ccard.feat{grid-column:span 2;background:var(--accent);border-color:transparent}
+.ccard.feat i,.ccard.feat .ck,.ccard.feat .cv,.ccard.feat .cgo{color:#fff}
+.ccard.feat .ck{opacity:.8}
+@media(max-width:1000px){.ccards{grid-template-columns:repeat(2,1fr)}.ccard.feat{grid-column:1/-1}}
+@media(max-width:640px){.ccards{grid-template-columns:1fr}.ccard.feat{grid-column:auto}}
