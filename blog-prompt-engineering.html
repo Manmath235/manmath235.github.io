@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Engineering for Business Analysts | Manmathnath Mahanta</title>
+<meta name="description" content="A practical guide to writing prompts that give Business Analysts useful drafts: a simple structure, example prompts, good habits and what to watch out for.">
+<link rel="icon" type="image/png" href="assets/img/M_logo.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Prompt Engineering for Business Analysts: A Practical Guide">
+<meta property="og:description" content="A simple structure for prompts that give useful BA drafts.">
+<meta property="og:url" content="https://manmath235.github.io/blog-prompt-engineering.html">
+<meta property="og:image" content="https://manmath235.github.io/assets/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="blog.css">
+</head>
+<body>
+<div class="top"><a href="writing.html">&larr; Back to portfolio</a><span>Manmathnath Mahanta</span></div>
+<article>
+  <div class="meta">Business Analysis · AI · Oct 2026 · 4 min read</div>
+  <h1>Prompt Engineering for Business Analysts: <em>A Practical Guide</em></h1>
+
+  <p class="lead">AI tools give you what you ask for, not what you meant. A vague request gets a vague answer. As Business Analysts, we already know how to fix that. We spend our days turning unclear needs into clear, testable requirements. A good prompt is the same skill.</p>
+
+  <h2>Why BAs are well placed for this</h2>
+  <p>A good requirement is specific, has context and can be checked. A good prompt works the same way. If you can write a clear user story with acceptance criteria, you can write a clear prompt. The difference is that your reader is an AI tool, and it cannot ask you a question across the desk.</p>
+
+  <h2>A simple structure for prompts</h2>
+  <p>Most useful BA prompts have five parts:</p>
+  <ol>
+    <li><b>Role:</b> Who the AI should act as, for example "a senior Business Analyst on a banking project".</li>
+    <li><b>Context:</b> The background it cannot guess: the product, the users, the problem and the stage of the project.</li>
+    <li><b>Task:</b> One clear job, such as "write user stories for the loan application module".</li>
+    <li><b>Format:</b> How you want the answer: a table, a numbered list, "As a... I want... so that..." with acceptance criteria.</li>
+    <li><b>Constraints:</b> What to include, what to avoid, the length and the tone.</li>
+  </ol>
+
+  <h2>An example</h2>
+  <p>Weak prompt:</p>
+  <div class="prompt">Write user stories for a loan app.</div>
+  <p>Stronger prompt:</p>
+  <div class="prompt">You are a senior Business Analyst on a retail banking project. Context: we are building a loan application module for a mobile app. The users are first-time borrowers and loan officers. Task: write user stories for the application submission step. Format: "As a [user], I want [goal], so that [benefit]", each with 3 to 5 acceptance criteria in Given/When/Then style. Constraints: do not assume any feature I have not listed. If something is unclear, list it as an open question at the end.</div>
+  <p>The second prompt takes a minute longer to write and saves much more time in rework.</p>
+
+  <h2>Where prompting helps a BA</h2>
+  <ul>
+    <li><b>First drafts:</b> BRD and FRD sections, user stories and acceptance criteria that you then refine.</li>
+    <li><b>Test ideas:</b> test cases and edge cases based on a user story.</li>
+    <li><b>Communication:</b> meeting summaries, agendas and clear emails.</li>
+    <li><b>Review:</b> asking the AI to find gaps, conflicts or unclear wording in a requirement you wrote.</li>
+    <li><b>Analysis:</b> comparing options or listing risks for a decision.</li>
+  </ul>
+
+  <h2>Habits that give better results</h2>
+  <ul>
+    <li><b>Ask it to ask you first.</b> Add "Ask me up to five questions before you start". This brings out the missing context, much like a discovery call.</li>
+    <li><b>Give an example.</b> If you have a good user story or document from your team, show it and ask for the same style.</li>
+    <li><b>Split big tasks.</b> Ask for one module or one section at a time instead of a whole document.</li>
+    <li><b>Ask for assumptions.</b> "List every assumption you made" shows you what the AI filled in by itself.</li>
+    <li><b>Iterate.</b> Treat the first answer as a draft. Reply with "make it shorter", "add error cases" or "use simpler words".</li>
+  </ul>
+
+  <h2>What to watch out for</h2>
+  <ul>
+    <li><b>AI can be confident and wrong.</b> It may invent facts, numbers or rules. Check everything against your real sources.</li>
+    <li><b>Protect confidential data.</b> Do not paste client names, personal data or sensitive documents into public AI tools. Remove or replace them first, and follow your company and client rules.</li>
+    <li><b>You own the result.</b> The AI writes a draft. You review it, correct it and take responsibility for what goes to the client or the team.</li>
+  </ul>
+
+  <div class="callout"><p>Prompt engineering is not a new skill for a BA. It is requirements writing for a new kind of reader. Be clear, give context, say what good looks like, and always review the result.</p></div>
+</article>
+</body>
+</html>
