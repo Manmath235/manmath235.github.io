@@ -21,9 +21,9 @@
     ctl.innerHTML = '<button type="button" class="sc-b" data-prev aria-label="Previous card"><i class="bi bi-chevron-left"></i></button>'
       + '<div class="sc-dots" role="tablist" aria-label="Choose a card"></div>'
       + '<button type="button" class="sc-b" data-next aria-label="Next card"><i class="bi bi-chevron-right"></i></button>'
-      + '<span class="sc-count" aria-live="polite"></span>';
+      ;
     root.insertAdjacentElement('afterend', ctl);
-    var dots = ctl.querySelector('.sc-dots'), count = ctl.querySelector('.sc-count');
+    var dots = ctl.querySelector('.sc-dots');
 
     function setFocusable(el, on){
       [].forEach.call(el.querySelectorAll('[data-ti]'), function(f){
@@ -59,7 +59,6 @@
           dots.appendChild(b);
         });
       }
-      count.textContent = (idx+1) + ' / ' + n;
       ctl.querySelector('[data-prev]').disabled = idx === 0;
       ctl.querySelector('[data-next]').disabled = idx === n-1;
       ctl.style.display = n > 1 ? '' : 'none';
