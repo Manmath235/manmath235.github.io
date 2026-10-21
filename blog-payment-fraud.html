@@ -27,46 +27,40 @@
 
   <h2>Key Fraud Types in Digital Payments</h2>
   <p>Fraudsters exploit vulnerabilities using methods such as:</p>
-  <ul>
-    <li><b>Phishing Attacks:</b> Stealing sensitive credentials via fake websites/emails.</li>
-    <li><b>Card-not-present (CNP) Fraud:</b> Unauthorized online use of card details.</li>
-    <li><b>Account Takeover:</b> Accessing accounts with compromised credentials.</li>
-    <li><b>Chargeback Fraud:</b> Filing false refund claims.</li>
-    <li><b>Payment Gateway Fraud:</b> Exploiting weak configurations in gateways.</li>
-  </ul>
+  <div class="viz wide"><div class="viz-cap">5 common fraud types</div><div class="grid c5">
+      <div class="card hot"><span class="num">1</span><b class="t">Phishing Attacks</b><p>Stealing sensitive credentials via fake websites/emails.</p></div>
+      <div class="card hot"><span class="num">2</span><b class="t">Card-not-present (CNP) Fraud</b><p>Unauthorized online use of card details.</p></div>
+      <div class="card hot"><span class="num">3</span><b class="t">Account Takeover</b><p>Accessing accounts with compromised credentials.</p></div>
+      <div class="card hot"><span class="num">4</span><b class="t">Chargeback Fraud</b><p>Filing false refund claims.</p></div>
+      <div class="card hot"><span class="num">5</span><b class="t">Payment Gateway Fraud</b><p>Exploiting weak configurations in gateways.</p></div>
+      </div></div>
 
   <h2>Strategies for Fraud Prevention</h2>
-  <ol>
-    <li><b>Multi-Factor Authentication (MFA):</b> Adds extra verification layers (e.g., biometrics, OTP) to reduce fraud risks.</li>
-    <li><b>AI-Powered Fraud Detection:</b> Real-time machine learning flags anomalies like unusual transaction volumes or mismatched locations.</li>
-    <li><b>Tokenization:</b> Encrypts sensitive payment data, replacing it with tokens to prevent misuse during transactions.</li>
-    <li><b>Dynamic CVV Technology:</b> Generates CVVs that change per transaction, reducing stolen card reuse.</li>
-    <li><b>Behavioral Biometrics:</b> Monitors user behavior (e.g., typing speed, navigation patterns) to detect unusual activity.</li>
-    <li><b>Strengthening Payment Gateway Security:</b>
-      <ul style="margin-top:8px">
-        <li>Real-time transaction monitoring and IP blocking for suspicious activities.</li>
-        <li>Compliance with PCI DSS standards to enhance payment processing security.</li>
-      </ul>
-    </li>
-  </ol>
+  <div class="viz wide"><div class="viz-cap">6 layers of defence: tap a ring or a name</div>
+    <div class="explorer" data-tabs>
+      <div><svg viewBox="0 0 300 300" role="group" aria-label="Six layers of defence around a payment"><circle class="ring svg-hit" data-i="0" cx="150" cy="150" r="136" tabindex="0" role="button" aria-label="Multi-Factor Authentication (MFA)"/><text class="svg-lbl" x="150" y="18" text-anchor="middle">1</text><circle class="ring svg-hit" data-i="1" cx="150" cy="150" r="116" tabindex="0" role="button" aria-label="AI-Powered Fraud Detection"/><text class="svg-lbl" x="150" y="38" text-anchor="middle">2</text><circle class="ring svg-hit" data-i="2" cx="150" cy="150" r="96" tabindex="0" role="button" aria-label="Tokenization"/><text class="svg-lbl" x="150" y="58" text-anchor="middle">3</text><circle class="ring svg-hit" data-i="3" cx="150" cy="150" r="76" tabindex="0" role="button" aria-label="Dynamic CVV Technology"/><text class="svg-lbl" x="150" y="78" text-anchor="middle">4</text><circle class="ring svg-hit" data-i="4" cx="150" cy="150" r="56" tabindex="0" role="button" aria-label="Behavioral Biometrics"/><text class="svg-lbl" x="150" y="98" text-anchor="middle">5</text><circle class="ring svg-hit" data-i="5" cx="150" cy="150" r="36" tabindex="0" role="button" aria-label="Strengthening Payment Gateway Security"/><text class="svg-lbl" x="150" y="118" text-anchor="middle">6</text><circle class="core" cx="150" cy="150" r="26"/><text class="core-t" x="150" y="154" text-anchor="middle">PAY</text></svg></div>
+      <div class="tablist" role="tablist" aria-label="Fraud prevention strategies"><button class="tab" role="tab" type="button"><i>1</i>Multi-Factor Authentication (MFA)</button><button class="tab" role="tab" type="button"><i>2</i>AI-Powered Fraud Detection</button><button class="tab" role="tab" type="button"><i>3</i>Tokenization</button><button class="tab" role="tab" type="button"><i>4</i>Dynamic CVV Technology</button><button class="tab" role="tab" type="button"><i>5</i>Behavioral Biometrics</button><button class="tab" role="tab" type="button"><i>6</i>Strengthening Payment Gateway Security</button></div>
+      <div class="tpanel" role="tabpanel"><h3>1. Multi-Factor Authentication (MFA)</h3><p>Adds extra verification layers (e.g., biometrics, OTP) to reduce fraud risks.</p></div><div class="tpanel" role="tabpanel"><h3>2. AI-Powered Fraud Detection</h3><p>Real-time machine learning flags anomalies like unusual transaction volumes or mismatched locations.</p></div><div class="tpanel" role="tabpanel"><h3>3. Tokenization</h3><p>Encrypts sensitive payment data, replacing it with tokens to prevent misuse during transactions.</p></div><div class="tpanel" role="tabpanel"><h3>4. Dynamic CVV Technology</h3><p>Generates CVVs that change per transaction, reducing stolen card reuse.</p></div><div class="tpanel" role="tabpanel"><h3>5. Behavioral Biometrics</h3><p>Monitors user behavior (e.g., typing speed, navigation patterns) to detect unusual activity.</p></div><div class="tpanel" role="tabpanel"><h3>6. Strengthening Payment Gateway Security</h3><ul><li>Real-time transaction monitoring and IP blocking for suspicious activities.</li><li>Compliance with PCI DSS standards to enhance payment processing security.</li></ul></div>
+    </div></div>
 
   <h2>Real-World Practices</h2>
-  <ul>
-    <li><b>Stripe:</b> Employs AI to monitor billions of transactions for fraud detection.</li>
-    <li><b>PayPal:</b> Combines risk assessment with two-factor authentication.</li>
-    <li><b>Razorpay &amp; Paytm:</b> Adopt PCI DSS compliance and tokenization for secure transactions.</li>
-  </ul>
+  <div class="viz"><div class="grid c3">
+      <div class="card cool"><b class="t">Stripe</b><p>Employs AI to monitor billions of transactions for fraud detection.</p></div>
+      <div class="card cool"><b class="t">PayPal</b><p>Combines risk assessment with two-factor authentication.</p></div>
+      <div class="card cool"><b class="t">Razorpay &amp; Paytm</b><p>Adopt PCI DSS compliance and tokenization for secure transactions.</p></div>
+      </div></div>
 
   <h2>Insights from My Research</h2>
-  <ul>
-    <li><b>Balancing Security and User Experience:</b> Frictionless MFA and AI-based fraud scoring ensure strong protection without disrupting users.</li>
-    <li><b>Collaboration is Critical:</b> Fraud prevention requires teamwork between analysts, developers, compliance teams, and security experts.</li>
-    <li><b>Ongoing Vigilance:</b> Regular audits, real-time monitoring, and system updates are vital as fraud tactics evolve.</li>
-  </ul>
+  <div class="viz"><div class="grid c3">
+      <div class="card cool"><span class="num">1</span><b class="t">Balancing Security and User Experience</b><p>Frictionless MFA and AI-based fraud scoring ensure strong protection without disrupting users.</p></div>
+      <div class="card cool"><span class="num">2</span><b class="t">Collaboration is Critical</b><p>Fraud prevention requires teamwork between analysts, developers, compliance teams, and security experts.</p></div>
+      <div class="card cool"><span class="num">3</span><b class="t">Ongoing Vigilance</b><p>Regular audits, real-time monitoring, and system updates are vital as fraud tactics evolve.</p></div>
+      </div></div>
 
   <div class="callout"><p>Fraud prevention is a continuous process demanding innovation, collaboration, and dedication. By adopting industry best practices and advanced technologies, we can build systems that inspire trust and security.</p></div>
 
   <p class="src">Originally posted on <a href="https://www.linkedin.com/posts/connect-manmath_businessanalyst-digitalpayments-fraudprevention-ugcPost-7288620963317866496-NszL/" target="_blank" rel="noopener">LinkedIn</a>.</p>
 </article>
+<script src="blog.js"></script>
 </body>
 </html>

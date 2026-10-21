@@ -30,13 +30,13 @@
 
   <h2>A simple structure for prompts</h2>
   <p>Most useful BA prompts have five parts:</p>
-  <ol>
-    <li><b>Role:</b> Who the AI should act as, for example "a senior Business Analyst on a banking project".</li>
-    <li><b>Context:</b> The background it cannot guess: the product, the users, the problem and the stage of the project.</li>
-    <li><b>Task:</b> One clear job, such as "write user stories for the loan application module".</li>
-    <li><b>Format:</b> How you want the answer: a table, a numbered list, "As a... I want... so that..." with acceptance criteria.</li>
-    <li><b>Constraints:</b> What to include, what to avoid, the length and the tone.</li>
-  </ol>
+  <div class="viz wide"><div class="viz-cap">The 5 parts of a prompt</div><div class="grid c5">
+      <div class="card cool"><span class="num">1</span><b class="t">Role</b><p>Who the AI should act as, for example "a senior Business Analyst on a banking project".</p></div>
+      <div class="card hot"><span class="num">2</span><b class="t">Context</b><p>The background it cannot guess: the product, the users, the problem and the stage of the project.</p></div>
+      <div class="card cool"><span class="num">3</span><b class="t">Task</b><p>One clear job, such as "write user stories for the loan application module".</p></div>
+      <div class="card hot"><span class="num">4</span><b class="t">Format</b><p>How you want the answer: a table, a numbered list, "As a... I want... so that..." with acceptance criteria.</p></div>
+      <div class="card cool"><span class="num">5</span><b class="t">Constraints</b><p>What to include, what to avoid, the length and the tone.</p></div>
+      </div></div>
 
   <h2>An example</h2>
   <p>Weak prompt:</p>
@@ -45,18 +45,67 @@
   <div class="prompt">You are a senior Business Analyst on a retail banking project. Context: we are building a loan application module for a mobile app. The users are first-time borrowers and loan officers. Task: write user stories for the application submission step. Format: "As a [user], I want [goal], so that [benefit]", each with 3 to 5 acceptance criteria in Given/When/Then style. Constraints: do not assume any feature I have not listed. If something is unclear, list it as an open question at the end.</div>
   <p>The second prompt takes a minute longer to write and saves much more time in rework.</p>
 
+  <div class="viz"><div class="builder" id="builder">
+    <h3>Try it: build your own prompt</h3>
+    <p class="hint">Edit any part and watch the full prompt update below. It starts with the loan example above.</p>
+    <div class="bgrid">
+      <div class="bfield"><label><span style="background:#046A38"></span>Role</label><textarea rows="1">a senior Business Analyst on a retail banking project</textarea></div>
+      <div class="bfield"><label><span style="background:#E34222"></span>Context</label><textarea rows="2">we are building a loan application module for a mobile app. The users are first-time borrowers and loan officers</textarea></div>
+      <div class="bfield"><label><span style="background:#046A38"></span>Task</label><textarea rows="1">write user stories for the application submission step</textarea></div>
+      <div class="bfield"><label><span style="background:#E34222"></span>Format</label><textarea rows="2">"As a [user], I want [goal], so that [benefit]", each with 3 to 5 acceptance criteria in Given/When/Then style</textarea></div>
+      <div class="bfield"><label><span style="background:#046A38"></span>Constraints</label><textarea rows="2">do not assume any feature I have not listed. If something is unclear, list it as an open question at the end</textarea></div>
+    </div>
+    <div class="bout" aria-live="polite"></div>
+    <div class="bactions"><button type="button" class="btn p" data-copy>Copy prompt</button><button type="button" class="btn" data-reset>Reset</button></div>
+  </div></div>
+
   <h2>Types of prompts</h2>
   <p>Once the basic structure is clear, it helps to know the common prompt types. You can mix them in one conversation.</p>
-  <ul>
-    <li><b>Zero-shot prompt:</b> You give the task with no examples. It is fast and works for simple jobs, for example "Summarise these meeting notes in five bullet points."</li>
-    <li><b>Few-shot prompt:</b> You show one or two examples of what good looks like, and the AI copies the style. For example, paste a well-written user story from your team and ask for ten more in the same format.</li>
-    <li><b>Role prompt:</b> You tell the AI who to be, such as a QA lead, a compliance officer or a product owner. The same requirement reviewed from each role shows different gaps.</li>
-    <li><b>Step-by-step prompt:</b> You ask it to think in steps before it answers, for example "List the process steps first, then find the bottlenecks." This helps with analysis and process work.</li>
-    <li><b>Prompt chaining:</b> You split a big job into a series of prompts, where each answer feeds the next. For example: list the stakeholders, then draft the requirements for each, then write the acceptance criteria.</li>
-    <li><b>Loop prompt:</b> You give the AI the full task once, and it keeps working on its own, step after step, until the task is finished. You do not send a new prompt for each step. For example: "Check every user story in this document against the checklist below, fix any story that fails, and keep going until all stories pass. Then give me a summary of what you changed." For a loop to work well, state a clear finish line ("done means every story has acceptance criteria"), set limits ("do not change the scope"), and ask it to report at the end or at checkpoints. Review the result carefully, because a small mistake early in a loop can carry through every later step.</li>
-    <li><b>Iterative prompt:</b> You stay in control and repeat a cycle by hand: get a draft, review it, ask for a fix, and repeat until it meets your standard. For example, "make it shorter", then "add error cases", then "use simpler words".</li>
-    <li><b>Clarifying-question prompt:</b> You ask the AI to interview you first, like "Ask me up to five questions before you start." This brings out missing context early.</li>
-  </ul>
+  <div class="viz wide"><div class="grid c2">
+      <div class="card cool"><b class="t">Zero-shot prompt</b><p>You give the task with no examples. It is fast and works for simple jobs, for example "Summarise these meeting notes in five bullet points."</p></div>
+      <div class="card cool"><b class="t">Few-shot prompt</b><p>You show one or two examples of what good looks like, and the AI copies the style. For example, paste a well-written user story from your team and ask for ten more in the same format.</p></div>
+      <div class="card cool"><b class="t">Role prompt</b><p>You tell the AI who to be, such as a QA lead, a compliance officer or a product owner. The same requirement reviewed from each role shows different gaps.</p></div>
+      <div class="card cool"><b class="t">Step-by-step prompt</b><p>You ask it to think in steps before it answers, for example "List the process steps first, then find the bottlenecks." This helps with analysis and process work.</p></div>
+      <div class="card cool"><b class="t">Prompt chaining</b><p>You split a big job into a series of prompts, where each answer feeds the next. For example: list the stakeholders, then draft the requirements for each, then write the acceptance criteria.</p></div>
+      <div class="card hot span2"><span class="tag o">AI runs it on its own</span><br><b class="t">Loop prompt</b><p>You give the AI the full task once, and it keeps working on its own, step after step, until the task is finished. You do not send a new prompt for each step. For example: "Check every user story in this document against the checklist below, fix any story that fails, and keep going until all stories pass. Then give me a summary of what you changed." For a loop to work well, state a clear finish line ("done means every story has acceptance criteria"), set limits ("do not change the scope"), and ask it to report at the end or at checkpoints. Review the result carefully, because a small mistake early in a loop can carry through every later step.</p></div>
+      <div class="card cool"><span class="tag">You steer each step</span><br><b class="t">Iterative prompt</b><p>You stay in control and repeat a cycle by hand: get a draft, review it, ask for a fix, and repeat until it meets your standard. For example, "make it shorter", then "add error cases", then "use simpler words".</p></div>
+      <div class="card cool"><b class="t">Clarifying-question prompt</b><p>You ask the AI to interview you first, like "Ask me up to five questions before you start." This brings out missing context early.</p></div>
+      </div></div>
+
+  <h2>Loop vs iterative: who keeps it moving?</h2>
+  <p>These two are easy to mix up. The difference is who decides when to go round again.</p>
+  <div class="viz wide">
+    <div data-tabs>
+      <div class="tabrow" role="tablist" aria-label="Choose a diagram">
+        <button class="tab" role="tab" type="button">Loop prompt</button>
+        <button class="tab" role="tab" type="button">Iterative prompt</button>
+      </div>
+      <div class="explorer" style="display:block">
+        <div class="tpanel" role="tabpanel" style="border:0;padding:0"><div class="flow"><svg viewBox="0 0 360 450" role="img" aria-label="Loop prompt: the AI keeps working until the finish line is met, then reports"><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#046A38"/></marker><marker id="ao" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#E34222"/></marker></defs>
+      <rect class="fb" x="40" y="8" width="280" height="50" rx="10"/><text class="ft" x="180" y="38">Full task + finish line</text><path class="fa" d="M180 58 L180 88" marker-end="url(#ah)"/>
+      <rect class="fb" x="40" y="90" width="280" height="50" rx="10"/><text class="ft" x="180" y="120">AI works step by step</text><path class="fa" d="M180 140 L180 168" marker-end="url(#ah)"/>
+      <polygon class="fd" points="180,170 270,215 180,260 90,215"/><text class="ft" x="180" y="212" style="font-size:13.5px">Finish line</text><text class="ft" x="180" y="229" style="font-size:13.5px">met?</text>
+      <text class="fs" x="305" y="205">AI checks</text>
+      <path class="fa back" d="M90 215 L16 215 L16 115 L38 115" marker-end="url(#ao)"/>
+      <text class="fs" x="52" y="208" style="text-anchor:middle">no</text>
+      <text class="fs" x="196" y="283" style="text-anchor:start">yes</text>
+      <path class="fa" d="M180 260 L180 308" marker-end="url(#ah)"/>
+      <rect class="fb" x="40" y="310" width="280" height="50" rx="10"/><text class="ft" x="180" y="340">Report to you</text>
+      <text class="fs" x="180" y="392" style="font-size:11.5px">the dotted line repeats on its own</text></svg><div><h3>Loop prompt</h3><ul><li>You give the full task and the finish line once.</li><li>The AI keeps working and checks itself.</li><li>It goes round again until the finish line is met, then reports to you.</li></ul></div></div></div>
+        <div class="tpanel" role="tabpanel" style="border:0;padding:0" hidden><div class="flow"><svg viewBox="0 0 360 450" role="img" aria-label="Iterative prompt: you review each draft and ask for a fix until it is good enough"><defs><marker id="ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#046A38"/></marker><marker id="ao2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#E34222"/></marker></defs>
+      <rect class="fb" x="40" y="8" width="280" height="50" rx="10"/><text class="ft" x="180" y="38">Your prompt</text><path class="fa" d="M180 58 L180 88" marker-end="url(#ah2)"/>
+      <rect class="fb" x="40" y="90" width="280" height="50" rx="10"/><text class="ft" x="180" y="120">AI writes a draft</text><path class="fa" d="M180 140 L180 168" marker-end="url(#ah2)"/>
+      <polygon class="fd" points="180,170 270,215 180,260 90,215"/><text class="ft" x="180" y="212" style="font-size:13.5px">Good</text><text class="ft" x="180" y="229" style="font-size:13.5px">enough?</text>
+      <text class="fs" x="305" y="205">You decide</text>
+      <path class="fa back" d="M90 215 L16 215 L16 115 L38 115" marker-end="url(#ao2)"/>
+      <text class="fs" x="52" y="208" style="text-anchor:middle">no</text>
+      <text class="fs" x="196" y="283" style="text-anchor:start">yes</text>
+      <path class="fa" d="M180 260 L180 308" marker-end="url(#ah2)"/>
+      <rect class="fb" x="40" y="310" width="280" height="50" rx="10"/><text class="ft" x="180" y="340">Final version</text>
+      <text class="fs" x="180" y="392" style="font-size:11.5px">you send a new prompt for each fix</text></svg><div><h3>Iterative prompt</h3><ul><li>You send a prompt and read the draft.</li><li>You decide whether it is good enough.</li><li>If not, you send a new prompt asking for a fix, and repeat.</li></ul></div></div></div>
+      </div>
+    </div>
+  </div>
 
   <h2>Where prompting helps a BA</h2>
   <ul>
@@ -84,5 +133,6 @@
 
   <div class="callout"><p>Prompt engineering is not a new skill for a BA. It is requirements writing for a new kind of reader. Be clear, give context, say what good looks like, and always review the result.</p></div>
 </article>
+<script src="blog.js"></script>
 </body>
 </html>
