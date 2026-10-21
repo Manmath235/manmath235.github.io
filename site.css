@@ -750,3 +750,12 @@ footer{padding-bottom:30px}
 @media(prefers-reduced-motion:reduce){.stack>.stack-item{transition:none}}
 .stack>.stack-item>*{transition:opacity .35s ease}
 .stack>.stack-item[aria-hidden="true"]>*{opacity:0}
+
+/* dock: outline icons, active page = filled icon + name */
+.dock-bar{display:flex;align-items:center;justify-content:space-around;gap:4px}
+.dock-i{flex:1 1 0;flex-direction:row;justify-content:center;gap:8px;padding:11px 6px;font-size:14px;min-width:0;transition:flex-grow .35s ease,background .25s,color .25s}
+.dock-i i{font-size:22px}
+.dock-i[aria-current="page"]{flex-grow:2.4;background:rgba(4,106,56,.12);color:#046A38}
+.dock-i[aria-current="page"] span{font-weight:700;white-space:nowrap}
+@media(max-width:380px){.dock-i{padding:11px 4px;font-size:13px;gap:6px}.dock-i[aria-current="page"]{flex-grow:2.1}}
+.dock-i[aria-current="page"] span{font-size:14px}
