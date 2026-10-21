@@ -17,6 +17,16 @@
   });
   var yrEl = document.getElementById('yr'); if(yrEl) yrEl.textContent = new Date().getFullYear();
 
+  /* ---------- DOCK (bottom navigation) ---------- */
+  var pill=document.getElementById('dockPill'), chev=document.getElementById('dockChev');
+  if(pill && chev){
+    chev.addEventListener('click', function(){
+      var c=pill.classList.toggle('collapsed');
+      chev.setAttribute('aria-expanded', c?'false':'true');
+      chev.setAttribute('aria-label', c?'Show quick links':'Collapse quick links');
+    });
+  }
+
   /* ---------- NAV ---------- */
   var nav = document.getElementById('nav');
   var burger = document.getElementById('burger'), navLinks = document.getElementById('navLinks');
@@ -89,37 +99,6 @@
   } else {
     document.querySelectorAll('[data-rv]').forEach(function(el){ el.classList.add('in'); });
   }
-
-  /* ---------- EXPERIENCE TIMELINE — scroll-driven 3D depth ----------
-     Real CSS 3D (not a WebGL canvas): the timeline is dense, selectable
-     paragraph text, and rendering that as canvas/WebGL text would hurt
-     readability, text selection and screen-reader access for no real
-     visual gain. Each panel tilts in on a perspective transform and
-     recedes slightly in depth the further it sits from the vertical
-     centre of the viewport, continuously, as the page scrolls. */
-  (function(){
-    var panels = document.querySelectorAll('.xp-panel');
-    if(!panels.length || RM) return;
-    var ticking = false;
-    function update(){
-      var vh = window.innerHeight;
-      panels.forEach(function(panel){
-        var r = panel.getBoundingClientRect();
-        var center = r.top + r.height / 2;
-        var progress = (center - vh / 2) / (vh / 2);
-        progress = Math.max(-1.4, Math.min(1.4, progress));
-        var rotate = progress * -6;
-        var z = -Math.abs(progress) * 40;
-        var scale = 1 - Math.abs(progress) * 0.035;
-        panel.style.transform = 'perspective(1400px) rotateX(' + rotate.toFixed(2) + 'deg) translateZ(' + z.toFixed(1) + 'px) scale(' + scale.toFixed(3) + ')';
-      });
-      ticking = false;
-    }
-    function onScroll(){ if(!ticking){ requestAnimationFrame(update); ticking = true; } }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    update();
-  })();
 
   /* ---------- SKILL BARS ---------- */
   function fillBars(){ document.querySelectorAll('.skill-bar i').forEach(function(b){ b.style.width = (b.getAttribute('data-w')||0)+'%'; }); }
