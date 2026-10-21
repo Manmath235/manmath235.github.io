@@ -759,3 +759,10 @@ footer{padding-bottom:30px}
 .dock-i[aria-current="page"] span{font-weight:700;white-space:nowrap}
 @media(max-width:380px){.dock-i{padding:11px 4px;font-size:13px;gap:6px}.dock-i[aria-current="page"]{flex-grow:2.1}}
 .dock-i[aria-current="page"] span{font-size:14px}
+
+/* dock pill: collapsed = a small round button with only the arrow */
+.dock-chev{display:grid;place-items:center;width:44px;height:44px;padding:0}
+.dock-chev svg{display:block;transition:transform .3s}
+.dock-pill.collapsed{max-width:44px;width:44px;height:44px;justify-content:center}
+.dock-pill.collapsed>a,.dock-pill.collapsed>.sep{display:none}
+.dock-pill.collapsed .dock-chev svg{transform:rotate(180deg)}
