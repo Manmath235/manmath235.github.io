@@ -20,7 +20,7 @@
 <body>
 <div class="top"><a href="writing.html">&larr; Back to portfolio</a><span>Manmathnath Mahanta</span></div>
 <article>
-  <div class="meta">Business Analysis · AI · Oct 2026 · 4 min read</div>
+  <div class="meta">Business Analysis · AI · Oct 2026 · 5 min read</div>
   <h1>Prompt Engineering for Business Analysts: <em>A Practical Guide</em></h1>
 
   <p class="lead">AI tools give you what you ask for, not what you meant. A vague request gets a vague answer. As Business Analysts, we already know how to fix that. We spend our days turning unclear needs into clear, testable requirements. A good prompt is the same skill.</p>
@@ -45,6 +45,18 @@
   <div class="prompt">You are a senior Business Analyst on a retail banking project. Context: we are building a loan application module for a mobile app. The users are first-time borrowers and loan officers. Task: write user stories for the application submission step. Format: "As a [user], I want [goal], so that [benefit]", each with 3 to 5 acceptance criteria in Given/When/Then style. Constraints: do not assume any feature I have not listed. If something is unclear, list it as an open question at the end.</div>
   <p>The second prompt takes a minute longer to write and saves much more time in rework.</p>
 
+  <h2>Types of prompts</h2>
+  <p>Once the basic structure is clear, it helps to know the common prompt types. You can mix them in one conversation.</p>
+  <ul>
+    <li><b>Zero-shot prompt:</b> You give the task with no examples. It is fast and works for simple jobs, for example "Summarise these meeting notes in five bullet points."</li>
+    <li><b>Few-shot prompt:</b> You show one or two examples of what good looks like, and the AI copies the style. For example, paste a well-written user story from your team and ask for ten more in the same format.</li>
+    <li><b>Role prompt:</b> You tell the AI who to be, such as a QA lead, a compliance officer or a product owner. The same requirement reviewed from each role shows different gaps.</li>
+    <li><b>Step-by-step prompt:</b> You ask it to think in steps before it answers, for example "List the process steps first, then find the bottlenecks." This helps with analysis and process work.</li>
+    <li><b>Prompt chaining:</b> You split a big job into a series of prompts, where each answer feeds the next. For example: list the stakeholders, then draft the requirements for each, then write the acceptance criteria.</li>
+    <li><b>Loop (iterative) prompt:</b> You repeat a cycle: generate a draft, review it, ask for a fix, and repeat until it meets your standard. You can also ask the AI to critique its own draft against your checklist and then improve it. Set a clear stop point, such as "repeat until there are no open questions."</li>
+    <li><b>Clarifying-question prompt:</b> You ask the AI to interview you first, like "Ask me up to five questions before you start." This brings out missing context early.</li>
+  </ul>
+
   <h2>Where prompting helps a BA</h2>
   <ul>
     <li><b>First drafts:</b> BRD and FRD sections, user stories and acceptance criteria that you then refine.</li>
@@ -56,11 +68,10 @@
 
   <h2>Habits that give better results</h2>
   <ul>
-    <li><b>Ask it to ask you first.</b> Add "Ask me up to five questions before you start". This brings out the missing context, much like a discovery call.</li>
-    <li><b>Give an example.</b> If you have a good user story or document from your team, show it and ask for the same style.</li>
-    <li><b>Split big tasks.</b> Ask for one module or one section at a time instead of a whole document.</li>
     <li><b>Ask for assumptions.</b> "List every assumption you made" shows you what the AI filled in by itself.</li>
-    <li><b>Iterate.</b> Treat the first answer as a draft. Reply with "make it shorter", "add error cases" or "use simpler words".</li>
+    <li><b>Keep a prompt library.</b> Save the prompts that work, such as your user story prompt or your meeting summary prompt, and reuse them as templates.</li>
+    <li><b>Change one thing at a time.</b> When you refine a prompt, change one part so you can see what made the difference.</li>
+    <li><b>Say what good looks like.</b> Give a length, a format and a checklist the answer must meet.</li>
   </ul>
 
   <h2>What to watch out for</h2>
