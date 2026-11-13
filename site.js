@@ -153,6 +153,101 @@
     fromHash();
   }
 
+  /* ---------- 3D DEPTH (desktop pointers only) ---------- */
+  var FINE = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  if(FINE && !RM){
+    // tilt cards with a moving glare
+    document.querySelectorAll('[data-tilt]').forEach(function(el){
+      var max = parseFloat(el.getAttribute('data-tilt-max')) || 7;
+      el.addEventListener('pointerenter', function(){ el.classList.add('tilting'); });
+      el.addEventListener('pointermove', function(e){
+        var r = el.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        el.style.transform = 'perspective(1000px) rotateX(' + ((.5 - y) * max).toFixed(2) + 'deg) rotateY(' + ((x - .5) * max).toFixed(2) + 'deg) translateY(-6px)';
+        el.style.setProperty('--mx', (x*100).toFixed(1) + '%');
+        el.style.setProperty('--my', (y*100).toFixed(1) + '%');
+      });
+      el.addEventListener('pointerleave', function(){ el.classList.remove('tilting'); el.style.transform = ''; });
+    });
+
+    // sections with parallax: portrait, chips, 3D stages, cursor light on orbs
+    document.querySelectorAll('[data-parallax]').forEach(function(sec){
+      var card = sec.querySelector('.portrait-card');
+      var chips = sec.querySelectorAll('[data-depth]');
+      var stage = sec.querySelector('.stage');
+      var orbs = sec.querySelector('.orbs');
+      var raf = 0, ev = null;
+      function paint(){
+        raf = 0; if(!ev) return;
+        var r = sec.getBoundingClientRect();
+        var px = Math.max(-1, Math.min(1, ((ev.clientX - r.left) / r.width - .5) * 2));
+        var py = Math.max(-1, Math.min(1, ((ev.clientY - r.top) / r.height - .5) * 2));
+        if(card){
+          card.style.setProperty('--rx', (-py*6).toFixed(2) + 'deg');
+          card.style.setProperty('--ry', (px*8).toFixed(2) + 'deg');
+          var cr = card.getBoundingClientRect();
+          card.style.setProperty('--mx', ((ev.clientX - cr.left) / cr.width * 100).toFixed(1) + '%');
+          card.style.setProperty('--my', ((ev.clientY - cr.top) / cr.height * 100).toFixed(1) + '%');
+        }
+        chips.forEach(function(c){
+          var d = parseFloat(c.getAttribute('data-depth')) || 20;
+          c.style.setProperty('--dx', (px*d).toFixed(1) + 'px');
+          c.style.setProperty('--dy', (py*d*.6).toFixed(1) + 'px');
+        });
+        if(stage){ stage.style.setProperty('--px', px.toFixed(3)); stage.style.setProperty('--py', py.toFixed(3)); }
+        if(orbs){ orbs.style.setProperty('--sx', (ev.clientX - r.left) + 'px'); orbs.style.setProperty('--sy', (ev.clientY - r.top) + 'px'); }
+      }
+      sec.addEventListener('pointermove', function(e){ ev = e; if(!raf) raf = requestAnimationFrame(paint); });
+      sec.addEventListener('pointerleave', function(){
+        ev = null;
+        if(card){ card.style.setProperty('--rx','0deg'); card.style.setProperty('--ry','0deg'); }
+        chips.forEach(function(c){ c.style.setProperty('--dx','0px'); c.style.setProperty('--dy','0px'); });
+        if(stage){ stage.style.setProperty('--px', 0); stage.style.setProperty('--py', 0); }
+        if(orbs){ orbs.style.setProperty('--sx','-999px'); orbs.style.setProperty('--sy','-999px'); }
+      });
+    });
+    // light orbs follow the cursor too
+    document.querySelectorAll('.has-orbs').forEach(function(sec){
+      var orbs = sec.querySelector('.orbs'); if(!orbs) return;
+      sec.addEventListener('pointermove', function(e){
+        var r = sec.getBoundingClientRect();
+        orbs.style.setProperty('--sx', (e.clientX - r.left) + 'px'); orbs.style.setProperty('--sy', (e.clientY - r.top) + 'px');
+      });
+      sec.addEventListener('pointerleave', function(){ orbs.style.setProperty('--sx','-999px'); orbs.style.setProperty('--sy','-999px'); });
+    });
+  }
+
+  /* ---------- COUNT-UP NUMBERS ---------- */
+  if('IntersectionObserver' in window && !RM){
+    var nums = document.querySelectorAll('.hero-stats .v, .metric-card .big em, .feature-stats b');
+    var cio = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        cio.unobserve(e.target);
+        var el = e.target, txt = el.textContent.trim();
+        var m = txt.match(/^([^0-9]*)([0-9][0-9,]*(?:\.[0-9]+)?)(.*)$/);
+        if(!m) return;
+        var pre = m[1], raw = m[2], suf = m[3];
+        var dec = (raw.split('.')[1] || '').length, comma = raw.indexOf(',') > -1;
+        var target = parseFloat(raw.replace(/,/g,'')), t0 = null, dur = 1400;
+        function fmt(v){
+          var s = v.toFixed(dec);
+          if(comma){ var p = s.split('.'); p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ','); s = p.join('.'); }
+          return pre + s + suf;
+        }
+        el.style.fontVariantNumeric = 'tabular-nums';
+        function step(t){
+          if(t0 === null) t0 = t;
+          var k = Math.min(1, (t - t0) / dur), ease = 1 - Math.pow(1 - k, 3);
+          el.textContent = fmt(target * ease);
+          if(k < 1) requestAnimationFrame(step); else el.textContent = txt;
+        }
+        requestAnimationFrame(step);
+      });
+    }, {threshold:.6});
+    nums.forEach(function(n){ cio.observe(n); });
+  }
+
   /* ---------- ASK AI ---------- */
   document.querySelectorAll('[data-askai]').forEach(function(btn){
     btn.addEventListener('click', function(){

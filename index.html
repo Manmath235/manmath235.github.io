@@ -38,7 +38,8 @@
 </header>
 <nav class="tabbar" aria-label="Primary mobile"><a href="index.html" aria-current="page"><i data-i="home"></i><span>Home</span></a><a href="work.html"><i data-i="grid"></i><span>Work</span></a><a href="experience.html"><i data-i="briefcase"></i><span>Experience</span></a><a href="skills.html"><i data-i="layers"></i><span>Skills</span></a><a href="writing.html"><i data-i="pen"></i><span>Writing</span></a></nav>
 <main id="main">
-<section class="hero dark glow" aria-labelledby="hero-h">
+<section class="hero dark glow" aria-labelledby="hero-h" data-parallax>
+  <div class="orbs" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap hero-grid">
     <div>
       <span class="status"><span class="dot"></span> Open to BA / Product Owner roles · Kolkata, India</span>
@@ -48,21 +49,21 @@
         <a class="btn btn--primary" href="https://wa.me/917008548402" target="_blank" rel="noopener"><i data-i="whatsapp"></i> Hire me</a>
         <a class="btn btn--ghost" href="work.html">View my work <i data-i="arrow-right"></i></a>
       </div>
-      <div class="hero-stats">
+      <div class="hero-stats glass-dark">
         <div><div class="v"><span data-years>3+</span></div><div class="l">Years experience</div></div>
         <div><div class="v">20+</div><div class="l">Projects delivered</div></div>
         <div><div class="v">5</div><div class="l">Industries</div></div>
         <div><div class="v">₹4,000Cr+</div><div class="l">Processed on a fintech build</div></div>
       </div>
     </div>
-    <div class="portrait">
-      <div class="portrait-card">
+    <div class="portrait" data-portrait>
+      <div class="portrait-card"><span class="glare" aria-hidden="true"></span>
         <img src="assets/img/profile.jpg" alt="Portrait of Manmathnath Mahanta" width="900" height="900">
         <div class="portrait-name"><strong>Manmathnath Mahanta</strong><span>Business Analyst · Product Owner</span></div>
       </div>
-      <div class="chip-float c1"><span class="ci"><i data-i="file"></i></span><span>BRD · FSD · SRS<small>Requirements</small></span></div>
-      <div class="chip-float c2"><span class="ci g"><i data-i="check-circle"></i></span><span>UAT sign-off<small>Product Owner</small></span></div>
-      <div class="chip-float c3"><span class="ci b"><i data-i="layers"></i></span><span>5 industries<small>FinTech to Public Safety</small></span></div>
+      <div class="chip-float c1" data-depth="26"><span class="ci"><i data-i="file"></i></span><span>BRD · FSD · SRS<small>Requirements</small></span></div>
+      <div class="chip-float c2" data-depth="40"><span class="ci g"><i data-i="check-circle"></i></span><span>UAT sign-off<small>Product Owner</small></span></div>
+      <div class="chip-float c3" data-depth="18"><span class="ci b"><i data-i="layers"></i></span><span>5 industries<small>FinTech to Public Safety</small></span></div>
     </div>
   </div>
 </section>
@@ -76,7 +77,8 @@
   </div>
 </section>
 
-<section class="section" id="about" aria-labelledby="about-h">
+<section class="section has-orbs" id="about" aria-labelledby="about-h">
+  <div class="orbs light" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap about-grid">
     <div class="about-copy rv">
       <span class="eyebrow">About me</span>
@@ -98,7 +100,8 @@
       <div class="rv"><span class="eyebrow">Selected work</span><h2 id="work-h">Products I've helped ship</h2><p>Client builds across five industries, each owned from discovery to sign-off.</p></div>
       <a class="btn btn--line rv" href="work.html">See all 13 projects <i data-i="arrow-right"></i></a>
     </div>
-    <a class="feature rv" href="work.html#bbps" data-group="client">
+    <a class="feature rv" href="work.html#bbps" data-group="client" data-tilt data-tilt-max="4">
+  <span class="glare" aria-hidden="true"></span>
   <div class="proj-cover"><span class="proj-badge hot">Flagship</span><img src="assets/covers/bbps.svg" alt="Illustration for BBPS Fintech Platform" width="800" height="500"></div>
   <div class="feature-body">
     <div class="proj-meta">Fintech SaaS<span class="sep"></span>Sai Paramount IT</div>
@@ -114,32 +117,36 @@
   </div>
 </a>
     <div class="proj-grid two">
-      <a class="proj rv d1 " href="work.html#dailok" data-group="client">
-  <div class="proj-cover"><span class="proj-badge">AI · iOS &amp; Android</span><img src="assets/covers/dailok.svg" alt="Illustration for Dailok: Mental Health AI" width="800" height="500" loading="lazy"></div>
+      <a class="proj rv d1 " href="work.html#dailok" data-group="client" data-tilt>
+  <span class="glare" aria-hidden="true"></span>
+  <div class="proj-cover"><span class="proj-badge">AI · iOS &amp; Android</span><img src="assets/covers/dailok.svg" alt="Illustration for Dailok: Mental Health AI" width="800" height="500" loading="lazy"><span class="peek" aria-hidden="true">View case study <i data-i="arrow-right"></i></span></div>
   <div class="proj-body">
     <div class="proj-meta">Healthcare SaaS<span class="sep"></span>Client build</div>
     <h3>Dailok: Mental Health AI</h3>
     <p>AI-powered mental-health support app (iOS &amp; Android): 24/7 AI assistance in Arabic &amp; English within a clinician-approved safety boundary.</p>
     <div class="proj-foot"><div class="metric"><b>24/7</b><span>AI support</span></div><span class="go"><i data-i="arrow-up-right"></i></span></div>
   </div>
-</a><a class="proj rv d2 " href="work.html#galway" data-group="client">
-  <div class="proj-cover"><span class="proj-badge">Privacy-first</span><img src="assets/covers/galway.svg" alt="Illustration for Galway Safe App" width="800" height="500" loading="lazy"></div>
+</a><a class="proj rv d2 " href="work.html#galway" data-group="client" data-tilt>
+  <span class="glare" aria-hidden="true"></span>
+  <div class="proj-cover"><span class="proj-badge">Privacy-first</span><img src="assets/covers/galway.svg" alt="Illustration for Galway Safe App" width="800" height="500" loading="lazy"><span class="peek" aria-hidden="true">View case study <i data-i="arrow-right"></i></span></div>
   <div class="proj-body">
     <div class="proj-meta">Public Safety<span class="sep"></span>Client build</div>
     <h3>Galway Safe App</h3>
     <p>Passive, privacy-first safety app commissioned by the Western Region Drug &amp; Alcohol Task Force, Galway; geofenced monitoring with automated SMS alerts and zero required user action.</p>
     <div class="proj-foot"><div class="metric"><b>0</b><span>user action required</span></div><span class="go"><i data-i="arrow-up-right"></i></span></div>
   </div>
-</a><a class="proj rv d1 " href="work.html#wasteops" data-group="client">
-  <div class="proj-cover"><span class="proj-badge">Multi-tenant SaaS</span><img src="assets/covers/wasteops.svg" alt="Illustration for WasteOps" width="800" height="500" loading="lazy"></div>
+</a><a class="proj rv d1 " href="work.html#wasteops" data-group="client" data-tilt>
+  <span class="glare" aria-hidden="true"></span>
+  <div class="proj-cover"><span class="proj-badge">Multi-tenant SaaS</span><img src="assets/covers/wasteops.svg" alt="Illustration for WasteOps" width="800" height="500" loading="lazy"><span class="peek" aria-hidden="true">View case study <i data-i="arrow-right"></i></span></div>
   <div class="proj-body">
     <div class="proj-meta">Industrial SaaS<span class="sep"></span>Client build</div>
     <h3>WasteOps</h3>
     <p>Multi-tenant waste-management SaaS digitising every bin service across industrial sites: GPS validation, QR scanning and photo-evidenced records replacing paper-based processes.</p>
     <div class="proj-foot"><div class="metric"><b>300–500</b><span>assets tracked</span></div><span class="go"><i data-i="arrow-up-right"></i></span></div>
   </div>
-</a><a class="proj rv d2 " href="work.html#e2p" data-group="client">
-  <div class="proj-cover"><span class="proj-badge">iOS &amp; Android</span><img src="assets/covers/e2p.svg" alt="Illustration for E2P Event Comms App" width="800" height="500" loading="lazy"></div>
+</a><a class="proj rv d2 " href="work.html#e2p" data-group="client" data-tilt>
+  <span class="glare" aria-hidden="true"></span>
+  <div class="proj-cover"><span class="proj-badge">iOS &amp; Android</span><img src="assets/covers/e2p.svg" alt="Illustration for E2P Event Comms App" width="800" height="500" loading="lazy"><span class="peek" aria-hidden="true">View case study <i data-i="arrow-right"></i></span></div>
   <div class="proj-body">
     <div class="proj-meta">Event SaaS<span class="sep"></span>Client build</div>
     <h3>E2P Event Comms App</h3>
@@ -151,7 +158,8 @@
   </div>
 </section>
 
-<section class="section dark glow" aria-labelledby="impact-h">
+<section class="section dark glow" aria-labelledby="impact-h" data-parallax>
+  <div class="orbs" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="wrap">
     <div class="sec-head">
       <div class="rv"><span class="eyebrow">Evidence</span><h2 id="impact-h">Outcomes, <span class="serif grad-text">not opinions.</span></h2><p>Measurable results from real product delivery.</p></div>
@@ -223,7 +231,8 @@
 </main>
 <section class="section section--tight" aria-labelledby="cta-h">
   <div class="wrap">
-    <div class="cta dark glow rv">
+    <div class="cta dark glow rv" data-parallax>
+      <div class="orbs" aria-hidden="true"><i></i><i></i><i></i></div>
       <div>
         <span class="eyebrow">Let's work together</span>
         <h2 id="cta-h" style="margin-top:14px">Need someone to make sure your team builds <span class="serif grad-text">the right thing?</span></h2>

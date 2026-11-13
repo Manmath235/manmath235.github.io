@@ -535,3 +535,166 @@ body.locked{overflow:hidden}
   .next .go{width:46px;height:46px}
   .xp li{font-size:.95rem}
 }
+
+/* =========================================================
+   v2 · Liquid glass + 3D depth
+   ========================================================= */
+:root{
+  --glass-dark-bg:rgba(255,255,255,.07);
+  --glass-light-bg:rgba(255,255,255,.62);
+  --blur:blur(20px) saturate(180%);
+  --spec:linear-gradient(135deg,rgba(255,255,255,.55),rgba(255,255,255,.1) 30%,rgba(255,255,255,0) 55%,rgba(255,255,255,.25));
+}
+
+/* specular glass edge (thin light-catching border) */
+.hdr-in::before,.tabbar::before,.chip-float::before,.glass-dark::before,.glass-light::before,.cta-actions::before,.askai::before,.metric-card::before,.peek::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:var(--spec);pointer-events:none;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+
+/* ---------- floating glass header ---------- */
+.hdr{top:12px;height:60px;padding:0 var(--gutter);background:none!important;border:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.hdr-in{position:relative;max-width:1184px;margin:0 auto;padding:0 10px 0 16px;border-radius:20px;
+  background:rgba(12,22,42,.5);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 12px 34px -14px rgba(2,6,14,.55);transition:background .3s}
+.hdr.scrolled .hdr-in{background:rgba(12,22,42,.74)}
+.nav a[aria-current="page"]{background:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+
+/* ---------- glass tab bar (mobile) ---------- */
+@media (max-width:860px){
+  .hdr{top:10px;height:52px}
+  .hdr-in{border-radius:18px;padding:0 8px 0 12px}
+  .tabbar{background:rgba(12,22,42,.7);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);
+    border:0;border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 18px 40px -12px rgba(2,6,14,.6)}
+  .tabbar a[aria-current="page"]{background:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
+}
+
+/* ---------- animated colour orbs (what the glass blurs) ---------- */
+.has-orbs{position:relative;isolation:isolate;overflow:clip}
+.orbs{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.orbs i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;will-change:transform;animation:drift 20s ease-in-out infinite alternate}
+.orbs i:nth-child(1){width:440px;height:440px;background:#F26B1D;top:-140px;right:6%}
+.orbs i:nth-child(2){width:400px;height:400px;background:#2F5BD3;bottom:-160px;left:-80px;animation-duration:24s;animation-delay:-6s}
+.orbs i:nth-child(3){width:280px;height:280px;background:#FFA41B;top:38%;left:42%;opacity:.22;animation-duration:28s;animation-delay:-12s}
+.orbs.light i:nth-child(1){opacity:.16}
+.orbs.light i:nth-child(2){opacity:.12}
+.orbs.light i:nth-child(3){opacity:.1}
+.orbs::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(520px circle at var(--sx,-999px) var(--sy,-999px),rgba(255,255,255,.07),transparent 60%)}
+.orbs.light::after{background:radial-gradient(480px circle at var(--sx,-999px) var(--sy,-999px),rgba(242,107,29,.07),transparent 60%)}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(70px,50px) scale(1.12)}}
+
+/* ---------- hero: glass stats, glass chips, 3D portrait ---------- */
+.hero-stats.glass-dark{position:relative;border-top:0;padding:22px 26px;border-radius:22px;background:var(--glass-dark-bg);
+  backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);box-shadow:0 20px 50px -24px rgba(2,6,14,.6)}
+.portrait{perspective:1100px}
+.portrait-card{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease-out;will-change:transform}
+.portrait-card .glare,.proj .glare,.feature .glare{position:absolute;inset:0;z-index:4;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .35s;
+  background:radial-gradient(520px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.2),transparent 45%)}
+.portrait:hover .glare,.proj:hover .glare,.feature:hover .glare{opacity:1}
+.chip-float{background:rgba(255,255,255,.14);color:#fff;backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 18px 40px -16px rgba(0,0,0,.6);
+  animation:float2 6s ease-in-out infinite;transform:translate(var(--dx,0px),var(--dy,0px));transition:transform .25s ease-out}
+.chip-float small{color:rgba(255,255,255,.72)}
+.chip-float.c2{animation-delay:-2s}.chip-float.c3{animation-delay:-4s}
+@keyframes float2{0%,100%{translate:0 0}50%{translate:0 -8px}}
+
+/* ---------- glossy 3D icon tiles ---------- */
+.value .vi,.edu .ei,.comp.core .vi{background:linear-gradient(150deg,#2A4677 0%,#0E1A30 72%);color:var(--orange-2);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -4px 8px rgba(0,0,0,.35),0 12px 22px -10px rgba(10,19,36,.6)}
+.value .vi .ico,.edu .ei .ico,.comp.core .vi .ico{filter:drop-shadow(0 2px 6px rgba(255,140,40,.55))}
+.comp .vi,.cert .ci,.chip-float .ci{background:linear-gradient(150deg,#FFF4EA 0%,#FFD1AC 100%);color:var(--orange-ink);
+  box-shadow:inset 0 1px 0 #fff,inset 0 -3px 6px rgba(194,65,12,.18),0 8px 16px -8px rgba(194,65,12,.45)}
+.chip-float .ci.g{background:linear-gradient(150deg,#ECFDF5,#A7F3D0);color:#047857;box-shadow:inset 0 1px 0 #fff,inset 0 -3px 6px rgba(4,120,87,.18),0 8px 16px -8px rgba(4,120,87,.45)}
+.chip-float .ci.b{background:linear-gradient(150deg,#EEF2FF,#BFD0FF);color:var(--blue);box-shadow:inset 0 1px 0 #fff,inset 0 -3px 6px rgba(47,91,211,.18),0 8px 16px -8px rgba(47,91,211,.45)}
+.step .knob{background:linear-gradient(180deg,#FFFFFF,#F0EEE9);border:1px solid rgba(255,255,255,.9);
+  box-shadow:inset 0 1px 0 #fff,inset 0 -3px 0 rgba(14,23,41,.06),0 12px 24px -12px rgba(14,23,41,.35);transition:transform .3s,background .3s,color .3s,box-shadow .3s}
+.step:hover .knob{transform:translateY(-4px);background:linear-gradient(150deg,#2A4677,#0E1A30);color:var(--orange-2);border-color:transparent;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 16px 28px -12px rgba(10,19,36,.6)}
+
+/* ---------- frosted light cards ---------- */
+.value,.xp,.comp:not(.core),.tool-group,.cert,.edu,.post,.proj{background:var(--glass-light-bg);
+  backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);
+  border-color:rgba(255,255,255,.8);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 14px 34px -22px rgba(14,23,41,.35)}
+.xp.current{box-shadow:0 0 0 4px rgba(255,241,230,.8),0 14px 34px -22px rgba(14,23,41,.35)}
+.comp.core{background:linear-gradient(160deg,#16284A,#0A1324);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 24px 50px -24px rgba(10,19,36,.7)}
+
+/* ---------- 3D tilt cards ---------- */
+.proj,.feature{transform-style:flat;will-change:transform}
+.proj.tilting,.feature.tilting{transition:transform .12s ease-out,box-shadow .3s}
+.proj-badge{background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.3);
+  backdrop-filter:blur(14px) saturate(180%);-webkit-backdrop-filter:blur(14px) saturate(180%)}
+.proj-badge.hot{border-color:transparent}
+.peek{position:absolute;left:50%;bottom:16px;z-index:3;display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;
+  font-size:.82rem;font-weight:700;color:#fff;white-space:nowrap;background:rgba(255,255,255,.16);
+  backdrop-filter:blur(16px) saturate(180%);-webkit-backdrop-filter:blur(16px) saturate(180%);
+  translate:-50% 12px;opacity:0;transition:opacity .3s,translate .3s}
+.peek .ico{width:15px;height:15px}
+.proj:hover .peek,.proj:focus-visible .peek{opacity:1;translate:-50% 0}
+
+/* ---------- glass metrics ---------- */
+.metrics{background:none;border:0;gap:16px;overflow:visible}
+.metric-card{position:relative;border-radius:22px;background:var(--glass-dark-bg);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
+  box-shadow:0 20px 50px -26px rgba(2,6,14,.7)}
+.light-metrics{background:none;border:0}
+.light-metrics .metric-card{background:var(--glass-light-bg);box-shadow:inset 0 1px 0 #fff,0 14px 34px -22px rgba(14,23,41,.35);border:1px solid rgba(255,255,255,.8)}
+.light-metrics .metric-card::before{display:none}
+
+/* ---------- glass CTA panel ---------- */
+.cta-actions{position:relative;padding:22px;border-radius:24px;background:var(--glass-dark-bg);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur)}
+
+/* ---------- sticky glass filter bar ---------- */
+.filters.glass-light{position:sticky;top:84px;z-index:20;width:fit-content;max-width:100%;padding:6px;border-radius:999px;
+  background:rgba(255,255,255,.62);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
+  box-shadow:0 14px 34px -18px rgba(14,23,41,.35)}
+.filters.glass-light .filter{border-color:transparent;background:transparent}
+.filters.glass-light .filter[aria-pressed="true"]{background:var(--ink);box-shadow:0 6px 16px -6px rgba(14,23,41,.5)}
+
+/* ---------- glass Ask AI ---------- */
+.askai{background:rgba(255,255,255,.66);border:0;backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur)}
+
+/* ---------- 3D page-hero visuals ---------- */
+.ph-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,64px);align-items:center}
+.h3d{position:relative;height:clamp(260px,28vw,360px);perspective:1400px}
+.stage{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .3s ease-out;animation:bob 7s ease-in-out infinite;
+  transform:rotateX(calc(12deg + var(--py,0) * -8deg)) rotateY(calc(-24deg + var(--px,0) * 12deg))}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -10px}}
+.layer{position:absolute;width:70%;aspect-ratio:16/10;border-radius:18px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.16);box-shadow:0 34px 60px -28px rgba(0,0,0,.8)}
+.layer img{width:100%;height:100%;object-fit:cover}
+.layer.l1{left:0;top:0;transform:translateZ(-110px);opacity:.75}
+.layer.l2{left:15%;top:17%;transform:translateZ(-20px);opacity:.9}
+.layer.l3{left:30%;top:34%;transform:translateZ(80px)}
+.role{height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;padding:22px;color:var(--on-dark-2);font-size:.9rem;
+  background:linear-gradient(150deg,rgba(255,255,255,.18),rgba(255,255,255,.04) 60%),linear-gradient(180deg,#16284A,#0B1529)}
+.role .when{font-family:var(--mono);font-size:.72rem;color:var(--orange-2);font-weight:600;letter-spacing:.04em}
+.role strong{color:#fff;font-size:1.12rem;letter-spacing:-.02em;line-height:1.2}
+.role em{position:absolute;top:16px;right:16px;font-style:normal;font-size:.7rem;font-weight:700;color:#fff;padding:4px 10px;border-radius:999px;background:var(--grad)}
+.stage.iso{transform:rotateX(calc(56deg + var(--py,0) * -6deg)) rotateZ(calc(-38deg + var(--px,0) * 8deg))}
+.plate{position:absolute;inset:16% 16%;border-radius:24px;display:flex;align-items:flex-end;padding:18px 20px;color:#fff;font-weight:800;letter-spacing:-.01em;
+  border:1px solid rgba(255,255,255,.2);box-shadow:0 30px 50px -20px rgba(0,0,0,.7)}
+.plate span{font-size:1.02rem}
+.plate.p1{transform:translateZ(0);background:linear-gradient(150deg,rgba(47,91,211,.55),rgba(14,26,48,.9))}
+.plate.p2{transform:translateZ(70px);background:linear-gradient(150deg,rgba(255,255,255,.22),rgba(20,36,66,.85))}
+.plate.p3{transform:translateZ(140px);background:var(--grad);box-shadow:0 30px 60px -16px rgba(242,107,29,.6)}
+
+@media (max-width:960px){
+  .ph-grid{grid-template-columns:1fr}
+  .h3d{height:clamp(220px,52vw,300px);max-width:520px;width:100%;margin:8px auto 0}
+}
+@media (max-width:640px){
+  .filters.glass-light{top:72px;width:auto;border-radius:18px;margin-left:0;margin-right:0;padding:6px}
+  .hero-stats.glass-dark{padding:18px}
+  .h3d{height:200px}
+  .layer{border-radius:14px}
+  .role{padding:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  .orbs i,.stage,.chip-float{animation:none}
+}
+@media (max-width:640px){
+  .h3d{height:190px;margin-top:18px}
+  .h3d .stage.iso{scale:.74;top:34px}
+  .chip-float.c1,.chip-float.c3{left:2px}
+  .chip-float.c2{right:2px}
+}

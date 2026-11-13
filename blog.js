@@ -54,3 +54,10 @@
     render();
   }
 })();
+
+/* reading progress bar */
+(function(){
+  var bar=document.createElement('div');bar.className='progress';bar.setAttribute('aria-hidden','true');document.body.appendChild(bar);
+  function upd(){var h=document.documentElement;var max=h.scrollHeight-h.clientHeight;bar.style.setProperty('--p',max>0?(h.scrollTop/max).toFixed(4):0);}
+  window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd();
+})();
