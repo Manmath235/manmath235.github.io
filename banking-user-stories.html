@@ -3,31 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<meta name="theme-color" content="#0A1324">
+<link rel="icon" type="image/png" href="assets/img/M_logo.png">
+
 <title>Banking Loan Origination System — User Stories</title>
 <style>
   :root {
-    --bg-base: #f9ebd7;
-    --bg-surface: #fdf6ea;
-    --bg-card: #fdf6ea;
+    --bg-base: #F6F5F2;
+    --bg-surface: #FFFFFF;
+    --bg-card: #FFFFFF;
     --bg-card-hover: #f5e6cd;
-    --bg-elevated: #f1dfc3;
-    --border: #d9c7a8;
+    --bg-elevated: #EEEBE6;
+    --border: #E5E2DC;
     --border-bright: #bfa985;
-    --accent-blue: #046A38;
-    --accent-cyan: #046A38;
-    --accent-gold: #E34222;
-    --accent-green: #046A38;
-    --accent-red: #E34222;
-    --accent-purple: #046A38;
-    --text-primary: #1A1E27;
-    --text-secondary: #4B5262;
-    --text-muted: #6B7280;
-    --tag-high-bg: rgba(4,106,56,0.12);
-    --tag-high-txt: #046A38;
-    --tag-medium-bg: rgba(227,66,34,0.12);
-    --tag-medium-txt: #E34222;
-    --tag-low-bg: rgba(4,106,56,0.1);
-    --tag-low-txt: #046A38;
+    --accent-blue: #1D3A6E;
+    --accent-cyan: #1D3A6E;
+    --accent-gold: #D9480F;
+    --accent-green: #1D3A6E;
+    --accent-red: #D9480F;
+    --accent-purple: #1D3A6E;
+    --text-primary: #0E1729;
+    --text-secondary: #334155;
+    --text-muted: #5B6474;
+    --tag-high-bg: rgba(29,58,110,0.12);
+    --tag-high-txt: #1D3A6E;
+    --tag-medium-bg: rgba(217,72,15,0.12);
+    --tag-medium-txt: #D9480F;
+    --tag-low-bg: rgba(29,58,110,0.1);
+    --tag-low-txt: #1D3A6E;
     --glow-blue: none;
   }
 
@@ -36,7 +42,7 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+    font-family: "Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
     background: var(--bg-base);
     color: var(--text-primary);
     min-height: 100vh;
@@ -49,8 +55,8 @@
     content: '';
     position: fixed; inset: 0;
     background:
-      radial-gradient(ellipse 80% 60% at 10% 0%, rgba(4,106,56,0.06) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 50% at 90% 100%, rgba(4,106,56,0.04) 0%, transparent 60%);
+      radial-gradient(ellipse 80% 60% at 10% 0%, rgba(29,58,110,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 90% 100%, rgba(29,58,110,0.04) 0%, transparent 60%);
     pointer-events: none; z-index: 0;
   }
 
@@ -86,19 +92,19 @@
     background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
     border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+    font-family: "Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
     font-weight: 800; font-size: 14px; color: #fff;
     flex-shrink: 0;
   }
 
-  .brand-text { font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; font-weight: 700; font-size: 13px; color: var(--text-primary); line-height: 1.3; }
+  .brand-text { font-family: "Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; font-weight: 700; font-size: 13px; color: var(--text-primary); line-height: 1.3; }
   .brand-sub { font-size: 10px; color: var(--text-muted); font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
 
   .doc-meta-pill {
     display: inline-flex; align-items: center; gap: 6px;
-    background: rgba(4,106,56,0.08); border: 1px solid rgba(4,106,56,0.2);
+    background: rgba(29,58,110,0.08); border: 1px solid rgba(29,58,110,0.2);
     border-radius: 20px; padding: 3px 10px;
-    font-size: 10px; color: var(--accent-blue); font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    font-size: 10px; color: var(--accent-blue); font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
   }
 
   .nav-section-label {
@@ -119,13 +125,13 @@
     cursor: pointer;
   }
 
-  .nav-item:hover { color: var(--text-primary); background: rgba(4,106,56,0.05); border-left-color: var(--accent-blue); }
-  .nav-item.active { color: var(--accent-blue); background: rgba(4,106,56,0.08); border-left-color: var(--accent-blue); }
+  .nav-item:hover { color: var(--text-primary); background: rgba(29,58,110,0.05); border-left-color: var(--accent-blue); }
+  .nav-item.active { color: var(--accent-blue); background: rgba(29,58,110,0.08); border-left-color: var(--accent-blue); }
 
   .nav-module-badge {
     width: 18px; height: 18px; border-radius: 4px;
     background: var(--bg-elevated); color: var(--accent-cyan);
-    font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 9px; font-weight: 500;
+    font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 9px; font-weight: 500;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
@@ -139,7 +145,7 @@
     border: 1px solid var(--border);
     border-radius: 10px;
   }
-  .nav-progress-label { font-size: 10px; color: var(--text-muted); margin-bottom: 8px; font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; }
+  .nav-progress-label { font-size: 10px; color: var(--text-muted); margin-bottom: 8px; font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; }
   .progress-bar-wrap { background: var(--bg-elevated); border-radius: 4px; height: 4px; margin-bottom: 6px; }
   .progress-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan)); }
   .progress-stats { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-muted); }
@@ -156,15 +162,15 @@
   .hero {
     padding: 64px 60px 48px;
     border-bottom: 1px solid var(--border);
-    background: linear-gradient(180deg, rgba(4,106,56,0.04) 0%, transparent 100%);
+    background: linear-gradient(180deg, rgba(29,58,110,0.04) 0%, transparent 100%);
     position: relative; overflow: hidden;
   }
 
   .hero::after {
     content: 'BLOS';
     position: absolute; right: 40px; bottom: -20px;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; font-weight: 800; font-size: 120px;
-    color: rgba(4,106,56,0.04); letter-spacing: -0.04em;
+    font-family: "Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; font-weight: 800; font-size: 120px;
+    color: rgba(29,58,110,0.04); letter-spacing: -0.04em;
     user-select: none; line-height: 1;
   }
 
@@ -175,14 +181,14 @@
   .eyebrow-tag {
     display: inline-flex; align-items: center; gap: 6px;
     padding: 4px 12px; border-radius: 20px;
-    font-size: 11px; font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    font-size: 11px; font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
     border: 1px solid; font-weight: 500;
   }
-  .eyebrow-tag.confidential { background: rgba(227,66,34,0.08); border-color: rgba(227,66,34,0.2); color: var(--accent-red); }
-  .eyebrow-tag.final { background: rgba(4,106,56,0.08); border-color: rgba(4,106,56,0.2); color: var(--accent-green); }
+  .eyebrow-tag.confidential { background: rgba(217,72,15,0.08); border-color: rgba(217,72,15,0.2); color: var(--accent-red); }
+  .eyebrow-tag.final { background: rgba(29,58,110,0.08); border-color: rgba(29,58,110,0.2); color: var(--accent-green); }
 
   .hero h1 {
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; font-weight: 800;
+    font-family: "Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; font-weight: 800;
     font-size: 38px; line-height: 1.12; letter-spacing: -0.02em;
     color: var(--text-primary); margin-bottom: 12px;
   }
@@ -206,7 +212,7 @@
   }
   .hero-stat:last-child { border-right: none; }
   .hero-stat-val {
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; font-weight: 800; font-size: 26px;
+    font-family: "Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; font-weight: 800; font-size: 26px;
     background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     line-height: 1;
@@ -218,7 +224,7 @@
 
   .section-heading {
     display: flex; align-items: center; gap: 12px;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; font-weight: 700; font-size: 20px;
+    font-family: "Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; font-weight: 700; font-size: 20px;
     color: var(--text-primary); margin-bottom: 24px;
   }
 
@@ -237,7 +243,7 @@
   .meta-cell {
     background: var(--bg-card); padding: 18px 20px;
   }
-  .meta-cell-label { font-size: 10px; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; }
+  .meta-cell-label { font-size: 10px; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; }
   .meta-cell-value { font-size: 14px; color: var(--text-primary); font-weight: 600; }
 
   /* ── CONTENT SECTIONS ── */
@@ -253,7 +259,7 @@
     background: var(--bg-elevated); padding: 12px 16px;
     text-align: left; font-size: 10px; font-weight: 600;
     letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--text-muted); font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    color: var(--text-muted); font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
     border-bottom: 1px solid var(--border);
   }
 
@@ -265,7 +271,7 @@
 
   .data-table tr:last-child td { border-bottom: none; }
 
-  .data-table tr:hover td { background: rgba(4,106,56,0.04); color: var(--text-primary); }
+  .data-table tr:hover td { background: rgba(29,58,110,0.04); color: var(--text-primary); }
 
   .role-name {
     font-weight: 600; color: var(--text-primary); font-size: 13px;
@@ -277,7 +283,7 @@
   .module-tags { display: flex; flex-wrap: wrap; gap: 5px; }
   .module-tag {
     padding: 2px 8px; border-radius: 4px;
-    font-size: 10px; font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    font-size: 10px; font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
     background: var(--bg-elevated); color: var(--text-muted);
     border: 1px solid var(--border);
   }
@@ -302,9 +308,9 @@
   }
 
   .module-num {
-    font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 11px; font-weight: 500;
-    color: var(--accent-blue); background: rgba(4,106,56,0.1);
-    border: 1px solid rgba(4,106,56,0.2);
+    font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 11px; font-weight: 500;
+    color: var(--accent-blue); background: rgba(29,58,110,0.1);
+    border: 1px solid rgba(29,58,110,0.2);
     width: 36px; height: 36px; border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
@@ -314,9 +320,9 @@
   .module-name { font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
   .module-meta { display: flex; gap: 12px; align-items: center; }
   .module-stories-badge {
-    font-size: 10px; font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
-    color: var(--accent-cyan); background: rgba(4,106,56,0.08);
-    padding: 1px 7px; border-radius: 4px; border: 1px solid rgba(4,106,56,0.15);
+    font-size: 10px; font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    color: var(--accent-cyan); background: rgba(29,58,110,0.08);
+    padding: 1px 7px; border-radius: 4px; border: 1px solid rgba(29,58,110,0.15);
   }
 
   /* ── CONVENTIONS ── */
@@ -328,7 +334,7 @@
 
   .conv-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
   .conv-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
-  .conv-title { font-size: 13px; font-weight: 700; color: var(--text-primary); font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; }
+  .conv-title { font-size: 13px; font-weight: 700; color: var(--text-primary); font-family: "Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; }
 
   .story-format-box {
     background: var(--bg-elevated); border: 1px solid var(--border);
@@ -348,15 +354,15 @@
 
   .priority-badge {
     padding: 2px 10px; border-radius: 20px; font-size: 10px; font-weight: 600;
-    font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; white-space: nowrap; flex-shrink: 0;
+    font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; white-space: nowrap; flex-shrink: 0;
   }
 
-  .ph { background: var(--tag-high-bg); color: var(--tag-high-txt); border: 1px solid rgba(4,106,56,0.2); }
-  .pm { background: var(--tag-medium-bg); color: var(--tag-medium-txt); border: 1px solid rgba(227,66,34,0.2); }
-  .pl { background: var(--tag-low-bg); color: var(--tag-low-txt); border: 1px solid rgba(4,106,56,0.15); }
+  .ph { background: var(--tag-high-bg); color: var(--tag-high-txt); border: 1px solid rgba(29,58,110,0.2); }
+  .pm { background: var(--tag-medium-bg); color: var(--tag-medium-txt); border: 1px solid rgba(217,72,15,0.2); }
+  .pl { background: var(--tag-low-bg); color: var(--tag-low-txt); border: 1px solid rgba(29,58,110,0.15); }
 
-  .priority-item .ph-bg { background: rgba(4,106,56,0.04); border-color: rgba(4,106,56,0.1); }
-  .priority-item .pm-bg { background: rgba(227,66,34,0.04); border-color: rgba(227,66,34,0.1); }
+  .priority-item .ph-bg { background: rgba(29,58,110,0.04); border-color: rgba(29,58,110,0.1); }
+  .priority-item .pm-bg { background: rgba(217,72,15,0.04); border-color: rgba(217,72,15,0.1); }
 
   .priority-desc { font-size: 12px; color: var(--text-secondary); }
 
@@ -368,13 +374,13 @@
   }
 
   .point-val {
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; font-weight: 800; font-size: 18px;
+    font-family: "Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; font-weight: 800; font-size: 18px;
     color: var(--accent-gold); width: 28px; text-align: right; flex-shrink: 0;
   }
 
   .point-meta { flex: 1; min-width: 0; }
   .point-complexity { font-size: 12px; font-weight: 600; color: var(--text-primary); }
-  .point-effort { font-size: 11px; color: var(--text-muted); font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; }
+  .point-effort { font-size: 11px; color: var(--text-muted); font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; }
 
   /* ── STORIES SECTION ── */
   .stories-section { padding: 48px 60px; }
@@ -384,7 +390,7 @@
   .module-header {
     display: flex; align-items: center; gap: 16px;
     padding: 20px 24px;
-    background: linear-gradient(135deg, rgba(4,106,56,0.08) 0%, transparent 60%);
+    background: linear-gradient(135deg, rgba(29,58,110,0.08) 0%, transparent 60%);
     border: 1px solid var(--border-bright); border-radius: 14px;
     margin-bottom: 20px;
     position: relative; overflow: hidden;
@@ -397,17 +403,17 @@
   }
 
   .mh-num {
-    font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 10px; font-weight: 500;
+    font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 10px; font-weight: 500;
     color: var(--accent-blue); letter-spacing: 0.05em;
   }
 
   .mh-title {
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; font-weight: 700; font-size: 18px;
+    font-family: "Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; font-weight: 700; font-size: 18px;
     color: var(--text-primary); flex: 1;
   }
 
   .mh-count {
-    font-size: 11px; color: var(--text-muted); font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    font-size: 11px; color: var(--text-muted); font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
     background: var(--bg-elevated); padding: 4px 10px; border-radius: 6px;
     border: 1px solid var(--border);
   }
@@ -428,14 +434,14 @@
   }
 
   .story-id {
-    font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 11px; font-weight: 500;
-    color: var(--accent-cyan); background: rgba(4,106,56,0.08);
-    padding: 3px 9px; border-radius: 6px; border: 1px solid rgba(4,106,56,0.15);
+    font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 11px; font-weight: 500;
+    color: var(--accent-cyan); background: rgba(29,58,110,0.08);
+    padding: 3px 9px; border-radius: 6px; border: 1px solid rgba(29,58,110,0.15);
     margin-right: 12px; white-space: nowrap;
   }
 
   .story-title {
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; font-weight: 700; font-size: 14px;
+    font-family: "Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; font-weight: 700; font-size: 14px;
     color: var(--text-primary); flex: 1; min-width: 0;
   }
 
@@ -444,8 +450,8 @@
   .pts-badge {
     display: flex; align-items: center; gap: 4px;
     padding: 3px 9px; border-radius: 6px;
-    background: rgba(227,66,34,0.08); border: 1px solid rgba(227,66,34,0.2);
-    font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 10px; color: var(--accent-gold);
+    background: rgba(217,72,15,0.08); border: 1px solid rgba(217,72,15,0.2);
+    font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 10px; color: var(--accent-gold);
   }
 
   .chevron {
@@ -464,7 +470,7 @@
   .story-user-statement {
     margin: 20px 20px 0;
     padding: 16px 18px;
-    background: rgba(4,106,56,0.05); border: 1px solid rgba(4,106,56,0.15);
+    background: rgba(29,58,110,0.05); border: 1px solid rgba(29,58,110,0.15);
     border-radius: 10px; border-left: 3px solid var(--accent-blue);
     font-size: 13px; color: var(--text-secondary); line-height: 1.7;
   }
@@ -484,7 +490,7 @@
 
   .field-label {
     font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--text-muted); margin-bottom: 10px; font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    color: var(--text-muted); margin-bottom: 10px; font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
     display: flex; align-items: center; gap: 6px;
   }
 
@@ -509,32 +515,32 @@
   .criterion {
     display: flex; align-items: flex-start; gap: 10px;
     font-size: 12px; color: var(--text-secondary); line-height: 1.5;
-    padding: 8px 10px; background: rgba(4,106,56,0.04);
-    border-radius: 7px; border: 1px solid rgba(4,106,56,0.08);
+    padding: 8px 10px; background: rgba(29,58,110,0.04);
+    border-radius: 7px; border: 1px solid rgba(29,58,110,0.08);
   }
 
   .criterion-num {
-    font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 10px; font-weight: 600;
+    font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 10px; font-weight: 600;
     color: var(--accent-green); min-width: 20px;
   }
 
   .edge-cases-section {
     margin: 16px 20px 20px;
     padding: 16px;
-    background: rgba(4,106,56,0.04); border: 1px solid rgba(4,106,56,0.12);
+    background: rgba(29,58,110,0.04); border: 1px solid rgba(29,58,110,0.12);
     border-radius: 10px;
   }
 
   .edge-label {
     font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--accent-purple); margin-bottom: 10px; font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    color: var(--accent-purple); margin-bottom: 10px; font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
     display: flex; align-items: center; gap: 6px;
   }
 
   .edge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 
   .edge-item {
-    background: var(--bg-elevated); border: 1px solid rgba(4,106,56,0.1);
+    background: var(--bg-elevated); border: 1px solid rgba(29,58,110,0.1);
     border-radius: 8px; padding: 10px 12px;
     font-size: 11px; color: var(--text-secondary); line-height: 1.5;
   }
@@ -552,7 +558,7 @@
   .summary-tbl th {
     padding: 11px 14px; text-align: left;
     font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--text-muted); font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    color: var(--text-muted); font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
     border-bottom: 1px solid var(--border-bright);
   }
 
@@ -562,18 +568,18 @@
   }
 
   .summary-tbl tr:last-child td { border-bottom: none; }
-  .summary-tbl tr:hover td { background: rgba(4,106,56,0.04); }
+  .summary-tbl tr:hover td { background: rgba(29,58,110,0.04); }
 
   .story-id-cell {
-    font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 11px; font-weight: 500;
+    font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 11px; font-weight: 500;
     color: var(--accent-cyan);
   }
 
   .pts-chip {
     display: inline-flex; padding: 2px 8px; border-radius: 4px;
-    font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 10px; font-weight: 600;
-    background: rgba(227,66,34,0.08); color: var(--accent-gold);
-    border: 1px solid rgba(227,66,34,0.2);
+    font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 10px; font-weight: 600;
+    background: rgba(217,72,15,0.08); color: var(--accent-gold);
+    border: 1px solid rgba(217,72,15,0.2);
   }
 
   /* ── SPRINT PLAN ── */
@@ -587,12 +593,12 @@
   .sprint-card:hover { border-color: var(--border-bright); transform: translateY(-2px); box-shadow: var(--glow-blue); }
 
   .sprint-num {
-    font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 10px; color: var(--text-muted);
+    font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 10px; color: var(--text-muted);
     margin-bottom: 6px; letter-spacing: 0.08em;
   }
 
   .sprint-points {
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; font-weight: 800; font-size: 28px;
+    font-family: "Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; font-weight: 800; font-size: 28px;
     background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     line-height: 1; margin-bottom: 4px;
@@ -608,7 +614,7 @@
   .sprint-story-tag {
     padding: 1px 6px; border-radius: 4px;
     background: var(--bg-elevated); color: var(--text-muted);
-    font-size: 9px; font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    font-size: 9px; font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
     border: 1px solid var(--border);
   }
 
@@ -621,7 +627,7 @@
   }
 
   .gloss-term {
-    font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 13px; font-weight: 600;
+    font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 13px; font-weight: 600;
     color: var(--accent-gold); min-width: 60px;
   }
 
@@ -635,18 +641,18 @@
     padding: 18px;
   }
 
-  .signoff-role { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; }
+  .signoff-role { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; }
   .signoff-name { font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
   .signoff-sub { font-size: 11px; color: var(--text-muted); }
 
   .signoff-status {
     display: inline-flex; align-items: center; gap: 5px;
     margin-top: 10px; padding: 3px 10px; border-radius: 20px;
-    font-size: 10px; font-weight: 600; font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    font-size: 10px; font-weight: 600; font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
   }
 
-  .status-approved { background: var(--tag-high-bg); color: var(--tag-high-txt); border: 1px solid rgba(4,106,56,0.2); }
-  .status-pending { background: rgba(4,106,56,0.08); color: var(--text-muted); border: 1px solid var(--border); }
+  .status-approved { background: var(--tag-high-bg); color: var(--tag-high-txt); border: 1px solid rgba(29,58,110,0.2); }
+  .status-pending { background: rgba(29,58,110,0.08); color: var(--text-muted); border: 1px solid var(--border); }
 
   /* ── FOOTER ── */
   footer {
@@ -657,7 +663,7 @@
     background: var(--bg-surface);
   }
 
-  .footer-doc-id { font-family: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 11px; color: var(--text-muted); }
+  .footer-doc-id { font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace; font-size: 11px; color: var(--text-muted); }
   .footer-copy { font-size: 11px; color: var(--text-muted); }
 
   /* ── SCROLLBAR ── */
@@ -690,6 +696,7 @@
   @keyframes fadeSlide { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
   .module-block { animation: fadeSlide 0.4s ease both; }
 </style>
+<style>@media(max-width:600px){.data-table{display:block;max-width:100%;overflow-x:auto}}</style>
 </head>
 <body>
 
@@ -774,14 +781,14 @@
   <section class="meta-section">
     <div class="section-heading"><div class="icon-dot"></div> Document Metadata</div>
     <div class="meta-grid">
-      <div class="meta-cell"><div class="meta-cell-label">Document ID</div><div class="meta-cell-value" style="font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;font-size:12px;color:var(--accent-cyan)">USR-BANK-2025-001</div></div>
+      <div class="meta-cell"><div class="meta-cell-label">Document ID</div><div class="meta-cell-value" style="font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;font-size:12px;color:var(--accent-cyan)">USR-BANK-2025-001</div></div>
       <div class="meta-cell"><div class="meta-cell-label">Version</div><div class="meta-cell-value">1.0</div></div>
       <div class="meta-cell"><div class="meta-cell-label">Prepared By</div><div class="meta-cell-value">Manmathnath Mahanta</div></div>
       <div class="meta-cell"><div class="meta-cell-label">Role</div><div class="meta-cell-value">Business Analyst</div></div>
       <div class="meta-cell"><div class="meta-cell-label">Date</div><div class="meta-cell-value">June 2025</div></div>
       <div class="meta-cell"><div class="meta-cell-label">Status</div><div class="meta-cell-value"><span class="priority-badge ph">Final</span></div></div>
-      <div class="meta-cell"><div class="meta-cell-label">Total Stories</div><div class="meta-cell-value" style="color:var(--accent-gold);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:20px;font-weight:800">34</div></div>
-      <div class="meta-cell"><div class="meta-cell-label">Modules</div><div class="meta-cell-value" style="color:var(--accent-gold);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:20px;font-weight:800">10</div></div>
+      <div class="meta-cell"><div class="meta-cell-label">Total Stories</div><div class="meta-cell-value" style="color:var(--accent-gold);font-family:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:20px;font-weight:800">34</div></div>
+      <div class="meta-cell"><div class="meta-cell-label">Modules</div><div class="meta-cell-value" style="color:var(--accent-gold);font-family:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";font-size:20px;font-weight:800">10</div></div>
     </div>
   </section>
 
@@ -808,15 +815,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td><div class="role-name"><div class="role-dot" style="background:#046A38"></div>Loan Applicant</div></td><td>Customer applying for a loan product</td><td><div class="module-tags"><span class="module-tag">Registration</span><span class="module-tag">KYC</span><span class="module-tag">Application</span><span class="module-tag">Repayment</span></div></td></tr>
-        <tr><td><div class="role-name"><div class="role-dot" style="background:#046A38"></div>Loan Officer</div></td><td>Bank staff reviewing and processing applications</td><td><div class="module-tags"><span class="module-tag">Review</span><span class="module-tag">Approval</span><span class="module-tag">Disbursement</span></div></td></tr>
-        <tr><td><div class="role-name"><div class="role-dot" style="background:#E34222"></div>Credit Analyst</div></td><td>Specialist assessing applicant credit risk</td><td><div class="module-tags"><span class="module-tag">Credit Assessment</span><span class="module-tag">Risk Scoring</span></div></td></tr>
-        <tr><td><div class="role-name"><div class="role-dot" style="background:#046A38"></div>Branch Manager</div></td><td>Manages team workload and monitors pipeline</td><td><div class="module-tags"><span class="module-tag">Approval Workflow</span><span class="module-tag">Admin</span><span class="module-tag">Reporting</span></div></td></tr>
-        <tr><td><div class="role-name"><div class="role-dot" style="background:#046A38"></div>Credit Committee</div></td><td>Senior body approving high-value loan applications</td><td><div class="module-tags"><span class="module-tag">Approval Workflow</span></div></td></tr>
-        <tr><td><div class="role-name"><div class="role-dot" style="background:#E34222"></div>Legal Officer</div></td><td>Conducts legal and technical property verification</td><td><div class="module-tags"><span class="module-tag">Document Collection</span><span class="module-tag">Legal</span></div></td></tr>
-        <tr><td><div class="role-name"><div class="role-dot" style="background:#E34222"></div>Product Admin</div></td><td>Configures loan products, rates, and fee structures</td><td><div class="module-tags"><span class="module-tag">System Administration</span></div></td></tr>
-        <tr><td><div class="role-name"><div class="role-dot" style="background:#046A38"></div>System Admin</div></td><td>Manages user roles, workflows, and system rules</td><td><div class="module-tags"><span class="module-tag">System Administration</span></div></td></tr>
-        <tr><td><div class="role-name"><div class="role-dot" style="background:#046A38"></div>Compliance Officer</div></td><td>Monitors audit trails and regulatory compliance</td><td><div class="module-tags"><span class="module-tag">Admin & Reporting</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#1D3A6E"></div>Loan Applicant</div></td><td>Customer applying for a loan product</td><td><div class="module-tags"><span class="module-tag">Registration</span><span class="module-tag">KYC</span><span class="module-tag">Application</span><span class="module-tag">Repayment</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#1D3A6E"></div>Loan Officer</div></td><td>Bank staff reviewing and processing applications</td><td><div class="module-tags"><span class="module-tag">Review</span><span class="module-tag">Approval</span><span class="module-tag">Disbursement</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#D9480F"></div>Credit Analyst</div></td><td>Specialist assessing applicant credit risk</td><td><div class="module-tags"><span class="module-tag">Credit Assessment</span><span class="module-tag">Risk Scoring</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#1D3A6E"></div>Branch Manager</div></td><td>Manages team workload and monitors pipeline</td><td><div class="module-tags"><span class="module-tag">Approval Workflow</span><span class="module-tag">Admin</span><span class="module-tag">Reporting</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#1D3A6E"></div>Credit Committee</div></td><td>Senior body approving high-value loan applications</td><td><div class="module-tags"><span class="module-tag">Approval Workflow</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#D9480F"></div>Legal Officer</div></td><td>Conducts legal and technical property verification</td><td><div class="module-tags"><span class="module-tag">Document Collection</span><span class="module-tag">Legal</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#D9480F"></div>Product Admin</div></td><td>Configures loan products, rates, and fee structures</td><td><div class="module-tags"><span class="module-tag">System Administration</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#1D3A6E"></div>System Admin</div></td><td>Manages user roles, workflows, and system rules</td><td><div class="module-tags"><span class="module-tag">System Administration</span></div></td></tr>
+        <tr><td><div class="role-name"><div class="role-dot" style="background:#1D3A6E"></div>Compliance Officer</div></td><td>Monitors audit trails and regulatory compliance</td><td><div class="module-tags"><span class="module-tag">Admin & Reporting</span></div></td></tr>
       </tbody>
     </table>
   </section>
@@ -844,7 +851,7 @@
     <div class="conventions-grid">
       <div class="conv-card">
         <div class="conv-header">
-          <div class="conv-icon" style="background:rgba(4,106,56,0.1)">📝</div>
+          <div class="conv-icon" style="background:rgba(29,58,110,0.1)">📝</div>
           <div class="conv-title">Standard Format</div>
         </div>
         <div class="story-format-box">
@@ -855,7 +862,7 @@
       </div>
       <div class="conv-card">
         <div class="conv-header">
-          <div class="conv-icon" style="background:rgba(4,106,56,0.1)">🎯</div>
+          <div class="conv-icon" style="background:rgba(29,58,110,0.1)">🎯</div>
           <div class="conv-title">Priority Definitions</div>
         </div>
         <div class="priority-list">
@@ -866,7 +873,7 @@
       </div>
       <div class="conv-card">
         <div class="conv-header">
-          <div class="conv-icon" style="background:rgba(227,66,34,0.1)">⚡</div>
+          <div class="conv-icon" style="background:rgba(217,72,15,0.1)">⚡</div>
           <div class="conv-title">Story Points Reference</div>
         </div>
         <div class="points-list">
@@ -1337,7 +1344,7 @@
       <div class="signoff-card"><div class="signoff-role">Engineering</div><div class="signoff-name">Tech Lead</div><div class="signoff-sub">Pending signature</div><div class="signoff-status status-pending">Pending</div></div>
       <div class="signoff-card"><div class="signoff-role">Quality Assurance</div><div class="signoff-name">QA Lead</div><div class="signoff-sub">Pending signature</div><div class="signoff-status status-pending">Pending</div></div>
     </div>
-    <p style="margin-top:24px;font-size:12px;color:var(--text-muted);font-style:italic;font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace">— End of Document — USR-BANK-2025-001 v1.0 — CONFIDENTIAL —</p>
+    <p style="margin-top:24px;font-size:12px;color:var(--text-muted);font-style:italic;font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace">— End of Document — USR-BANK-2025-001 v1.0 — CONFIDENTIAL —</p>
   </section>
 
   <footer>

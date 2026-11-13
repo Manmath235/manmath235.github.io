@@ -14,12 +14,14 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#0A1324">
 <link rel="stylesheet" href="blog.css">
 </head>
 <body>
-<div class="top"><a href="writing.html">&larr; Back to portfolio</a><span>Manmathnath Mahanta</span></div>
+<header class="top"><a class="top-brand" href="index.html"><img src="assets/img/M_logo.png" alt="" width="30" height="32"><span>Manmathnath Mahanta</span></a><a class="top-back" href="writing.html">&larr; All articles</a></header>
 <article>
+  <img class="cover" src="assets/covers/blog-prompt.svg" alt="" width="800" height="500">
   <div class="meta">Business Analysis · AI · Oct 2026 · 5 min read</div>
   <h1>Prompt Engineering for Business Analysts: <em>A Practical Guide</em></h1>
 
@@ -49,11 +51,11 @@
     <h3>Try it: build your own prompt</h3>
     <p class="hint">Edit any part and watch the full prompt update below. It starts with the loan example above.</p>
     <div class="bgrid">
-      <div class="bfield"><label><span style="background:#046A38"></span>Role</label><textarea rows="1">a senior Business Analyst on a retail banking project</textarea></div>
-      <div class="bfield"><label><span style="background:#E34222"></span>Context</label><textarea rows="2">we are building a loan application module for a mobile app. The users are first-time borrowers and loan officers</textarea></div>
-      <div class="bfield"><label><span style="background:#046A38"></span>Task</label><textarea rows="1">write user stories for the application submission step</textarea></div>
-      <div class="bfield"><label><span style="background:#E34222"></span>Format</label><textarea rows="2">"As a [user], I want [goal], so that [benefit]", each with 3 to 5 acceptance criteria in Given/When/Then style</textarea></div>
-      <div class="bfield"><label><span style="background:#046A38"></span>Constraints</label><textarea rows="2">do not assume any feature I have not listed. If something is unclear, list it as an open question at the end</textarea></div>
+      <div class="bfield"><label><span style="background:#1D3A6E"></span>Role</label><textarea rows="1">a senior Business Analyst on a retail banking project</textarea></div>
+      <div class="bfield"><label><span style="background:#D9480F"></span>Context</label><textarea rows="2">we are building a loan application module for a mobile app. The users are first-time borrowers and loan officers</textarea></div>
+      <div class="bfield"><label><span style="background:#1D3A6E"></span>Task</label><textarea rows="1">write user stories for the application submission step</textarea></div>
+      <div class="bfield"><label><span style="background:#D9480F"></span>Format</label><textarea rows="2">"As a [user], I want [goal], so that [benefit]", each with 3 to 5 acceptance criteria in Given/When/Then style</textarea></div>
+      <div class="bfield"><label><span style="background:#1D3A6E"></span>Constraints</label><textarea rows="2">do not assume any feature I have not listed. If something is unclear, list it as an open question at the end</textarea></div>
     </div>
     <div class="bout" aria-live="polite"></div>
     <div class="bactions"><button type="button" class="btn p" data-copy>Copy prompt</button><button type="button" class="btn" data-reset>Reset</button></div>
@@ -81,7 +83,7 @@
         <button class="tab" role="tab" type="button">Iterative prompt</button>
       </div>
       <div class="explorer" style="display:block">
-        <div class="tpanel" role="tabpanel" style="border:0;padding:0"><div class="flow"><svg viewBox="0 0 360 450" role="img" aria-label="Loop prompt: the AI keeps working until the finish line is met, then reports"><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#046A38"/></marker><marker id="ao" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#E34222"/></marker></defs>
+        <div class="tpanel" role="tabpanel" style="border:0;padding:0"><div class="flow"><svg viewBox="0 0 360 450" role="img" aria-label="Loop prompt: the AI keeps working until the finish line is met, then reports"><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1D3A6E"/></marker><marker id="ao" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#D9480F"/></marker></defs>
       <rect class="fb" x="40" y="8" width="280" height="50" rx="10"/><text class="ft" x="180" y="38">Full task + finish line</text><path class="fa" d="M180 58 L180 88" marker-end="url(#ah)"/>
       <rect class="fb" x="40" y="90" width="280" height="50" rx="10"/><text class="ft" x="180" y="120">AI works step by step</text><path class="fa" d="M180 140 L180 168" marker-end="url(#ah)"/>
       <polygon class="fd" points="180,170 270,215 180,260 90,215"/><text class="ft" x="180" y="212" style="font-size:13.5px">Finish line</text><text class="ft" x="180" y="229" style="font-size:13.5px">met?</text>
@@ -92,7 +94,7 @@
       <path class="fa" d="M180 260 L180 308" marker-end="url(#ah)"/>
       <rect class="fb" x="40" y="310" width="280" height="50" rx="10"/><text class="ft" x="180" y="340">Report to you</text>
       <text class="fs" x="180" y="392" style="font-size:11.5px">the dotted line repeats on its own</text></svg><div><h3>Loop prompt</h3><ul><li>You give the full task and the finish line once.</li><li>The AI keeps working and checks itself.</li><li>It goes round again until the finish line is met, then reports to you.</li></ul></div></div></div>
-        <div class="tpanel" role="tabpanel" style="border:0;padding:0" hidden><div class="flow"><svg viewBox="0 0 360 450" role="img" aria-label="Iterative prompt: you review each draft and ask for a fix until it is good enough"><defs><marker id="ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#046A38"/></marker><marker id="ao2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#E34222"/></marker></defs>
+        <div class="tpanel" role="tabpanel" style="border:0;padding:0" hidden><div class="flow"><svg viewBox="0 0 360 450" role="img" aria-label="Iterative prompt: you review each draft and ask for a fix until it is good enough"><defs><marker id="ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1D3A6E"/></marker><marker id="ao2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#D9480F"/></marker></defs>
       <rect class="fb" x="40" y="8" width="280" height="50" rx="10"/><text class="ft" x="180" y="38">Your prompt</text><path class="fa" d="M180 58 L180 88" marker-end="url(#ah2)"/>
       <rect class="fb" x="40" y="90" width="280" height="50" rx="10"/><text class="ft" x="180" y="120">AI writes a draft</text><path class="fa" d="M180 140 L180 168" marker-end="url(#ah2)"/>
       <polygon class="fd" points="180,170 270,215 180,260 90,215"/><text class="ft" x="180" y="212" style="font-size:13.5px">Good</text><text class="ft" x="180" y="229" style="font-size:13.5px">enough?</text>
