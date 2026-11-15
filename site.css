@@ -514,7 +514,7 @@ body.locked{overflow:hidden}
   .chip-float.c1{left:-6px;top:8%}.chip-float.c2{right:-6px}.chip-float.c3{left:-6px;bottom:22%}
   .values{grid-template-columns:1fr}
   .value.wide{grid-template-columns:1fr}
-  .proj-grid,.proj-grid.two,.post-grid,.comp-grid,.cert-grid,.edu-grid{grid-template-columns:1fr}
+  .proj-grid,.proj-grid.two,.post-grid,.post-grid.pair,.comp-grid,.cert-grid,.edu-grid{grid-template-columns:1fr}
   .metrics{grid-template-columns:1fr}
   .process{grid-template-columns:1fr;row-gap:0}
   .step{display:grid;grid-template-columns:56px 1fr;column-gap:16px;padding-bottom:22px;position:relative}
